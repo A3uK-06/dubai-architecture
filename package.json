@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "prebuild": "node scripts/generate-legacy-traps.mjs",
+    "prebuild": "node scripts/build-tailwind.mjs && node scripts/generate-legacy-traps.mjs",
     "build": "next build",
     "postbuild": "node scripts/postbuild.mjs",
     "start": "next start",
