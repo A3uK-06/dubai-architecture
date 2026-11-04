@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { useLang } from "@/context/LangContext";
 import CatalogSection from "@/components/CatalogSection";
 import DistrictsSection from "@/components/DistrictsSection";
@@ -24,6 +25,19 @@ export default function Home() {
     <div className="flex-1 flex flex-col bg-zinc-950 text-zinc-100 selection:bg-amber-500/20 selection:text-amber-300">
       {/* Hero Section */}
       <section className="relative overflow-hidden pt-12 pb-20 md:pt-20 md:pb-28 border-b border-zinc-800/80">
+        {/* Real Architectural Skyline Background */}
+        <div className="absolute inset-0 z-0 pointer-events-none">
+          <Image
+            src="/images/hero-dubai-skyline.jpg"
+            alt="Dubai Architectural Skyline"
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-center opacity-20"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-zinc-950/70 via-zinc-950/85 to-zinc-950" />
+        </div>
+
         {/* Glow Effects */}
         <div className="absolute top-1/4 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[350px] bg-gradient-to-tr from-amber-500/10 via-amber-600/5 to-transparent blur-3xl rounded-full pointer-events-none" />
         <div className="absolute -top-10 right-10 w-72 h-72 bg-amber-400/5 blur-2xl rounded-full pointer-events-none" />

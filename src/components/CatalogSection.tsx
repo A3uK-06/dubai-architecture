@@ -2,6 +2,7 @@
 
 import React, { useState, useMemo } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { BUILDINGS, Building } from "@/data/buildings";
 import { DISTRICTS } from "@/data/districts";
 import { useLang } from "@/context/LangContext";
@@ -239,36 +240,50 @@ export default function CatalogSection() {
                 key={building.id}
                 className="rounded-2xl border border-zinc-800 bg-zinc-900/70 overflow-hidden hover:border-amber-500/40 transition-all hover:shadow-2xl hover:shadow-amber-500/10 flex flex-col group"
               >
-                {/* Visual Header / Badge */}
-                <div className="p-6 bg-gradient-to-br from-zinc-800/90 via-zinc-900 to-zinc-950 relative border-b border-zinc-800">
-                  <div className="flex justify-between items-start mb-3">
-                    <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-amber-400/15 text-amber-300 border border-amber-400/30">
+                {/* Real Photography Image Header */}
+                <div className="relative h-56 w-full overflow-hidden bg-zinc-950 border-b border-zinc-800">
+                  <Image
+                    src={building.image}
+                    alt={building.name}
+                    fill
+                    sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                    className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/40 to-black/20" />
+
+                  {/* Top Badges */}
+                  <div className="absolute top-3 left-3 right-3 flex justify-between items-start z-10">
+                    <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-zinc-950/85 text-amber-300 border border-amber-400/40 backdrop-blur-md shadow-lg">
                       {building.heightMeters} m • {building.floors} {t.buildingCard.floors}
                     </span>
-                    <span className="text-xs text-zinc-400 font-mono px-2 py-0.5 rounded bg-zinc-950/60 border border-zinc-800">
+                    <span className="text-xs text-zinc-300 font-mono px-2 py-0.5 rounded bg-zinc-950/85 border border-zinc-800 backdrop-blur-md">
                       {building.yearBuilt}
                     </span>
                   </div>
 
-                  <Link href={`/districts/${building.districtSlug}/`} className="text-xs text-amber-400 font-semibold tracking-wider uppercase hover:underline">
-                    {building.district}
-                  </Link>
-
-                  <h3 className="text-2xl font-bold text-white group-hover:text-amber-400 transition-colors mt-1">
-                    <Link href={`/buildings/${building.slug}/`}>
-                      {building.name}
+                  {/* Bottom Image Info */}
+                  <div className="absolute bottom-3 left-4 right-4 z-10">
+                    <Link
+                      href={`/districts/${building.districtSlug}/`}
+                      className="text-xs text-amber-400 font-semibold tracking-wider uppercase hover:underline drop-shadow-md"
+                    >
+                      {building.district}
                     </Link>
-                  </h3>
-
-                  <div className="text-xs text-zinc-400 mt-1 flex items-center gap-2">
-                    <span className="px-2 py-0.5 rounded bg-zinc-800/80 text-[11px] text-zinc-300">
-                      {typeMap[building.type] || building.type}
-                    </span>
-                    {building.status === "Under Construction" && (
-                      <span className="px-2 py-0.5 rounded bg-amber-500/20 text-amber-300 text-[10px] font-semibold">
-                        {t.catalog.underConstruction}
+                    <h3 className="text-xl sm:text-2xl font-bold text-white group-hover:text-amber-300 transition-colors mt-0.5 drop-shadow-md truncate">
+                      <Link href={`/buildings/${building.slug}/`}>
+                        {building.name}
+                      </Link>
+                    </h3>
+                    <div className="text-xs text-zinc-300 mt-1 flex items-center gap-2">
+                      <span className="px-2 py-0.5 rounded bg-zinc-900/80 text-[11px] text-zinc-200 border border-zinc-700/60 backdrop-blur-sm">
+                        {typeMap[building.type] || building.type}
                       </span>
-                    )}
+                      {building.status === "Under Construction" && (
+                        <span className="px-2 py-0.5 rounded bg-amber-500/30 text-amber-200 text-[10px] font-semibold border border-amber-500/50 backdrop-blur-sm">
+                          {t.catalog.underConstruction}
+                        </span>
+                      )}
+                    </div>
                   </div>
                 </div>
 

@@ -9,12 +9,14 @@ export interface District {
   iconicTowersCount: number;
   description: string;
   investmentPros: string[];
+  image: string;
 }
 
 export const DISTRICTS: District[] = [
   {
     id: "downtown-dubai",
     slug: "downtown-dubai",
+    image: "/images/districts/downtown-dubai.jpg",
     name: "Downtown Dubai",
     developer: "Emaar Properties",
     overview:
@@ -33,6 +35,7 @@ export const DISTRICTS: District[] = [
   {
     id: "dubai-marina",
     slug: "dubai-marina",
+    image: "/images/districts/dubai-marina.jpg",
     name: "Dubai Marina",
     developer: "Emaar Properties / Multiple Developers",
     overview:
@@ -51,6 +54,7 @@ export const DISTRICTS: District[] = [
   {
     id: "difc",
     slug: "difc",
+    image: "/images/districts/difc.jpg",
     name: "DIFC & Sheikh Zayed Road",
     developer: "Dubai Holding / Multiple Developers",
     overview:
@@ -69,6 +73,7 @@ export const DISTRICTS: District[] = [
   {
     id: "palm-jumeirah",
     slug: "palm-jumeirah",
+    image: "/images/districts/palm-jumeirah.jpg",
     name: "Palm Jumeirah",
     developer: "Nakheel",
     overview:
@@ -87,6 +92,7 @@ export const DISTRICTS: District[] = [
   {
     id: "business-bay",
     slug: "business-bay",
+    image: "/images/districts/business-bay.jpg",
     name: "Business Bay",
     developer: "Dubai Properties",
     overview:
@@ -105,6 +111,7 @@ export const DISTRICTS: District[] = [
   {
     id: "jlt",
     slug: "jlt",
+    image: "/images/districts/jumeirah-lakes-towers.jpg",
     name: "Jumeirah Lakes Towers (JLT)",
     developer: "DMCC / Nakheel",
     overview:
@@ -123,6 +130,7 @@ export const DISTRICTS: District[] = [
   {
     id: "creek-harbour",
     slug: "creek-harbour",
+    image: "/images/districts/dubai-creek-harbour.jpg",
     name: "Dubai Creek Harbour",
     developer: "Emaar Properties",
     overview:
@@ -141,6 +149,7 @@ export const DISTRICTS: District[] = [
   {
     id: "jvc",
     slug: "jvc",
+    image: "/images/districts/dubai-harbour.jpg",
     name: "Jumeirah Village Circle (JVC)",
     developer: "Nakheel / Multiple Developers",
     overview:

@@ -2,6 +2,7 @@
 
 import React, { useMemo } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { District } from "@/data/districts";
 import { Building, BUILDINGS } from "@/data/buildings";
 import { useLang } from "@/context/LangContext";
@@ -80,6 +81,37 @@ export default function DistrictDetailClient({
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 space-y-16">
+        {/* Real District Photography Showcase */}
+        <div className="relative w-full h-72 sm:h-96 rounded-3xl overflow-hidden border border-zinc-800 shadow-2xl bg-zinc-950">
+          <Image
+            src={district.image}
+            alt={district.name}
+            fill
+            priority
+            sizes="(max-width: 1280px) 100vw, 1280px"
+            className="object-cover object-center"
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/25 to-black/10" />
+          <div className="absolute bottom-6 left-6 right-6 flex flex-wrap items-end justify-between gap-4 z-10">
+            <div>
+              <span className="text-xs uppercase font-mono tracking-wider text-amber-300 bg-zinc-950/85 px-3 py-1 rounded-full border border-amber-400/30 backdrop-blur-md">
+                {district.developer}
+              </span>
+              <h2 className="text-white text-3xl sm:text-4xl font-extrabold mt-1.5 drop-shadow-lg">
+                {district.name}
+              </h2>
+            </div>
+            <div className="flex items-center gap-3">
+              <span className="text-xs text-zinc-300 font-mono px-3 py-1.5 rounded-full bg-zinc-950/85 border border-zinc-800 backdrop-blur-md">
+                {district.iconicTowersCount}+ {dd.towersCount}
+              </span>
+              <span className="px-3 py-1.5 rounded-full text-xs font-bold bg-zinc-950/85 text-emerald-400 border border-emerald-500/40 backdrop-blur-md">
+                ROI: {district.averageRoi}
+              </span>
+            </div>
+          </div>
+        </div>
+
         {/* Investment Advantages & Master Plan */}
         <section className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div className="p-8 rounded-3xl bg-zinc-900/60 border border-zinc-800 space-y-4">
@@ -163,26 +195,43 @@ export default function DistrictDetailClient({
                 <Link
                   key={building.id}
                   href={`/buildings/${building.slug}/`}
-                  className="rounded-2xl border border-zinc-800 bg-zinc-900/60 p-6 flex flex-col justify-between hover:border-amber-400/40 hover:bg-zinc-900/90 transition-all group"
+                  className="rounded-2xl border border-zinc-800 bg-zinc-900/60 overflow-hidden flex flex-col justify-between hover:border-amber-400/40 hover:bg-zinc-900/90 transition-all group"
                 >
-                  <div className="space-y-3">
-                    <div className="flex justify-between items-start">
-                      <span className="px-2 py-0.5 rounded text-[11px] font-bold bg-amber-400/10 text-amber-300">
+                  <div className="relative h-44 w-full overflow-hidden bg-zinc-950">
+                    <Image
+                      src={building.image}
+                      alt={building.name}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-transparent" />
+                    <div className="absolute top-2.5 left-2.5 z-10">
+                      <span className="px-2 py-0.5 rounded text-[11px] font-bold bg-zinc-950/85 text-amber-300 border border-amber-400/30 backdrop-blur-md">
                         {building.heightMeters} m
                       </span>
-                      <span className="text-xs text-zinc-500">{building.yearBuilt}</span>
                     </div>
-                    <h3 className="text-xl font-bold text-white group-hover:text-amber-400 transition-colors">
-                      {building.name}
-                    </h3>
-                    <p className="text-xs text-zinc-400 line-clamp-3">
-                      {building.description}
-                    </p>
+                    <div className="absolute top-2.5 right-2.5 z-10">
+                      <span className="text-xs text-zinc-300 font-mono px-2 py-0.5 rounded bg-zinc-950/85 border border-zinc-800 backdrop-blur-md">
+                        {building.yearBuilt}
+                      </span>
+                    </div>
                   </div>
 
-                  <div className="mt-4 pt-3 border-t border-zinc-800/80 flex items-center justify-between text-xs font-semibold text-amber-400">
-                    <span>{t.buildingCard.viewDetails}</span>
-                    <span className="group-hover:translate-x-1 transition-transform">&rarr;</span>
+                  <div className="p-5 space-y-3 flex-1 flex flex-col justify-between">
+                    <div>
+                      <h3 className="text-xl font-bold text-white group-hover:text-amber-400 transition-colors">
+                        {building.name}
+                      </h3>
+                      <p className="text-xs text-zinc-400 line-clamp-3 mt-1.5">
+                        {building.description}
+                      </p>
+                    </div>
+
+                    <div className="pt-3 border-t border-zinc-800/80 flex items-center justify-between text-xs font-semibold text-amber-400">
+                      <span>{t.buildingCard.viewDetails}</span>
+                      <span className="group-hover:translate-x-1 transition-transform">&rarr;</span>
+                    </div>
                   </div>
                 </Link>
               ))}
