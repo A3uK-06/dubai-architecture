@@ -16,11 +16,11 @@ interface LeadModalProps {
 export default function LeadModal({
   isOpen,
   onClose,
-  title = "Download Top-10 Investment Towers Guide (PDF)",
-  subtitle = "Direct developer pricing, architectural floor plans, and verified net rental yields (7-10%).",
+  title,
+  subtitle,
   initialTower,
 }: LeadModalProps) {
-  const { lang } = useLang();
+  const { t, lang } = useLang();
 
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
@@ -31,6 +31,9 @@ export default function LeadModal({
   const [routingResult, setRoutingResult] = useState<LeadRoutingResult | null>(null);
 
   if (!isOpen) return null;
+
+  const modalTitle = title || t.leadModal.defaultTitle;
+  const modalSubtitle = subtitle || t.leadModal.defaultSubtitle;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -49,7 +52,6 @@ export default function LeadModal({
       timestamp: new Date().toISOString(),
     };
 
-    // Dispatch to smart routing engine + Telegram bot
     const result = await dispatchLead(leadPayload);
     setRoutingResult(result);
 
@@ -77,20 +79,20 @@ export default function LeadModal({
           <>
             <div className="space-y-2">
               <span className="inline-block px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-wider bg-amber-400 text-zinc-950">
-                Exclusive Real Estate Dossier
+                {t.leadModal.modalBadge}
               </span>
               <h3 className="text-2xl font-extrabold text-white tracking-tight">
-                {title}
+                {modalTitle}
               </h3>
               <p className="text-xs text-zinc-400 leading-relaxed">
-                {subtitle}
+                {modalSubtitle}
               </p>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
                 <label className="block text-xs font-semibold text-zinc-300 mb-1">
-                  Your Full Name
+                  {t.leadModal.nameLabel}
                 </label>
                 <input
                   type="text"
@@ -104,7 +106,7 @@ export default function LeadModal({
 
               <div>
                 <label className="block text-xs font-semibold text-zinc-300 mb-1">
-                  WhatsApp / Phone Number
+                  {t.leadModal.phoneLabel}
                 </label>
                 <input
                   type="tel"
@@ -118,7 +120,7 @@ export default function LeadModal({
 
               <div>
                 <label className="block text-xs font-semibold text-zinc-300 mb-1">
-                  Email (Optional for PDF delivery)
+                  {t.leadModal.emailLabel}
                 </label>
                 <input
                   type="email"
@@ -131,7 +133,7 @@ export default function LeadModal({
 
               <div>
                 <label className="block text-xs font-semibold text-zinc-300 mb-1">
-                  Target Investment Budget
+                  {t.leadModal.budgetLabel}
                 </label>
                 <select
                   value={budget}
@@ -148,48 +150,44 @@ export default function LeadModal({
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full py-3.5 rounded-xl bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-zinc-950 font-bold text-sm shadow-xl shadow-amber-500/20 transition-all disabled:opacity-50"
+                className="w-full py-4 px-6 rounded-xl bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-zinc-950 font-bold text-sm uppercase tracking-wider shadow-xl shadow-amber-500/25 transition-all transform hover:scale-[1.02] active:scale-95 disabled:opacity-50"
               >
-                {isSubmitting ? "Routing & Generating Dossier..." : "Get PDF & Floor Plans"}
+                {isSubmitting ? "..." : t.leadModal.submitBtn}
               </button>
 
-              <div className="text-[11px] text-zinc-500 text-center">
-                🔒 Privacy guaranteed. Zero spam. Handled exclusively by RERA-registered broker partners.
-              </div>
+              <p className="text-[11px] text-zinc-500 text-center leading-tight">
+                🔒 {t.leadModal.instantDelivery}
+              </p>
             </form>
           </>
         ) : (
-          <div className="text-center space-y-4 py-4 animate-fade-in">
-            <span className="text-5xl">📄</span>
-            <h3 className="text-2xl font-extrabold text-amber-300">
-              Thank You, {name}!
+          <div className="text-center py-6 space-y-4 animate-fade-in">
+            <div className="w-16 h-16 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-3xl mx-auto border border-emerald-500/30">
+              ✓
+            </div>
+            <h3 className="text-2xl font-bold text-white">
+              {t.leadModal.successTitle}
             </h3>
-            <p className="text-xs text-zinc-300 max-w-sm mx-auto leading-relaxed">
-              Your inquiry has been routed to our licensed partner agency:{" "}
-              <strong className="text-amber-400">{routingResult?.agency}</strong> ({routingResult?.agencyDesk}).
+            <p className="text-xs text-zinc-400 max-w-sm mx-auto leading-relaxed">
+              {t.leadModal.successDesc}
             </p>
 
-            <div className="p-3 rounded-xl bg-zinc-950 border border-zinc-800 text-[11px] text-zinc-400">
-              Reference: <code className="text-amber-400">{routingResult?.leadId}</code>
-            </div>
-
-            <div className="pt-2 space-y-3">
+            <div className="pt-4 flex flex-col gap-2">
               <a
                 href={`https://wa.me/971500000000?text=${whatsappMessage}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full inline-flex items-center justify-center gap-2 py-3 px-4 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-zinc-950 font-bold text-xs uppercase tracking-wider transition-all"
+                className="w-full py-3 px-4 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-zinc-950 font-bold text-sm shadow-lg shadow-emerald-500/20 transition-all flex items-center justify-center gap-2"
               >
                 <span>💬</span>
-                <span>Receive Instant PDF on WhatsApp</span>
+                <span>{t.leadModal.openWhatsApp}</span>
               </a>
 
               <button
-                type="button"
                 onClick={onClose}
-                className="w-full py-2.5 rounded-xl border border-zinc-700 text-zinc-400 hover:text-zinc-200 text-xs transition-colors"
+                className="w-full py-2.5 px-4 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-zinc-300 text-xs font-semibold transition-colors"
               >
-                Return to Site
+                {t.leadModal.close}
               </button>
             </div>
           </div>

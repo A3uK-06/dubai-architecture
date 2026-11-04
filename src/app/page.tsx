@@ -109,7 +109,7 @@ export default function Home() {
                 onClick={() => openLeadModal()}
                 className="px-6 py-3.5 rounded-xl bg-zinc-900/80 hover:bg-zinc-800 border border-zinc-700/80 text-zinc-200 hover:text-white font-medium text-sm tracking-wide transition-all backdrop-blur-md"
               >
-                📥 Download Top-10 Towers Guide (PDF)
+                {t.hero.downloadGuideBtn}
               </button>
             </div>
 
@@ -161,7 +161,7 @@ export default function Home() {
               </span>
             </div>
             <div className="text-zinc-500 font-mono">
-              Auto-saved to localStorage • TOP-10 DLD Investor Languages
+              {t.hero.statusBarText}
             </div>
           </div>
         </div>
@@ -185,20 +185,20 @@ export default function Home() {
           <div className="p-8 sm:p-12 rounded-3xl border border-amber-500/40 bg-zinc-950/80 flex flex-col md:flex-row items-center justify-between gap-8 shadow-2xl backdrop-blur-xl">
             <div className="space-y-3 max-w-2xl">
               <span className="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-amber-400 text-zinc-950">
-                Investor Dossier 2026
+                {t.investmentBanner.badge}
               </span>
               <h3 className="text-2xl sm:text-3xl font-extrabold text-white">
-                Download the Top-10 Architectural Investment Towers Guide
+                {t.investmentBanner.title}
               </h3>
               <p className="text-sm text-zinc-300 leading-relaxed">
-                Includes off-market floor plans, verified net yields (8%+), payment plan structures, and direct developer quotas for Burj Khalifa, One Za'abeel, The Opus, and Sobha Seahaven.
+                {t.investmentBanner.subtitle}
               </p>
             </div>
             <button
               onClick={() => openLeadModal()}
               className="px-8 py-4 rounded-xl bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-zinc-950 font-extrabold text-sm uppercase tracking-wider shadow-xl shadow-amber-500/25 transition-all transform hover:scale-105 active:scale-95 shrink-0"
             >
-              Get Free PDF Guide
+              {t.investmentBanner.ctaText}
             </button>
           </div>
         </div>

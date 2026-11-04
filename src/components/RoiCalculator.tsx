@@ -88,7 +88,7 @@ export default function RoiCalculator({
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
           <div>
             <div className="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-amber-400/10 text-amber-400 border border-amber-400/30 mb-2">
-              Financial Modeling • Multicurrency
+              {t.calculator.badge}
             </div>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
               {t.calculator.title}
@@ -102,7 +102,7 @@ export default function RoiCalculator({
         {/* Currency Switcher Bar */}
         <div className="flex flex-wrap items-center justify-between gap-4 p-3 rounded-2xl bg-zinc-900/60 border border-zinc-800 mb-8 backdrop-blur-md">
           <span className="text-xs font-semibold text-zinc-400 px-2 uppercase tracking-wider">
-            Select Currency:
+            {t.calculator.selectCurrency}
           </span>
           <div className="flex flex-wrap gap-1.5">
             {Object.values(CURRENCIES).map((c) => (
@@ -140,7 +140,7 @@ export default function RoiCalculator({
               <div className="flex flex-wrap gap-2 text-xs">
                 {[
                   { label: "1.5M AED", val: 1500000 },
-                  { label: "2M (Golden Visa)", val: 2000000 },
+                  { label: "2M AED (Golden Visa)", val: 2000000 },
                   { label: "3.5M AED", val: 3500000 },
                   { label: "5M AED", val: 5000000 },
                   { label: "10M AED", val: 10000000 },
@@ -195,9 +195,9 @@ export default function RoiCalculator({
                 className="w-full h-2 bg-zinc-950 rounded-lg appearance-none cursor-pointer accent-emerald-400"
               />
               <div className="flex justify-between text-[11px] text-zinc-500 font-mono">
-                <span>5.0% (Conservative)</span>
-                <span>8.5% (Dubai Avg)</span>
-                <span>12.0% (Short-term High)</span>
+                <span>{t.calculator.conservative}</span>
+                <span>{t.calculator.dubaiAvg}</span>
+                <span>{t.calculator.shortTermHigh}</span>
               </div>
             </div>
 
@@ -221,8 +221,8 @@ export default function RoiCalculator({
                 className="w-full h-2 bg-zinc-950 rounded-lg appearance-none cursor-pointer accent-amber-400"
               />
               <div className="flex justify-between text-[11px] text-zinc-500 font-mono">
-                <span>0.5% (Low Maintenance)</span>
-                <span>2.5% (Ultra-Luxury Tower)</span>
+                <span>{t.calculator.lowMaintenance}</span>
+                <span>{t.calculator.ultraLuxury}</span>
               </div>
             </div>
 
@@ -236,10 +236,10 @@ export default function RoiCalculator({
           <div className="lg:col-span-5 p-6 sm:p-8 rounded-3xl border border-amber-500/40 bg-gradient-to-br from-zinc-900 via-zinc-900 to-zinc-950 shadow-2xl space-y-6">
             <div className="flex items-center justify-between pb-4 border-b border-zinc-800">
               <span className="text-xs uppercase font-bold tracking-wider text-amber-400">
-                Annual Projections
+                {t.calculator.annualProjections}
               </span>
               <span className="px-2.5 py-0.5 rounded text-[11px] font-mono bg-zinc-800 text-zinc-300 border border-zinc-700">
-                0% Property Tax
+                {t.calculator.zeroTax}
               </span>
             </div>
 
@@ -252,7 +252,7 @@ export default function RoiCalculator({
                 {calculations.netRoiFormatted}%
               </div>
               <div className="text-xs text-zinc-400 pt-1">
-                Net annual cash-in-hand yield after maintenance
+                {t.calculator.netRoiSub}
               </div>
             </div>
 
@@ -265,7 +265,7 @@ export default function RoiCalculator({
                 </span>
               </div>
               <div className="flex justify-between items-center text-zinc-400 text-xs">
-                <span>Maintenance & Service Charges:</span>
+                <span>{t.calculator.maintenanceCharges}</span>
                 <span className="font-mono text-rose-400">
                   -{calculations.serviceChargesConverted} {curr.symbol}
                 </span>
@@ -273,11 +273,11 @@ export default function RoiCalculator({
               <div className="flex justify-between items-center text-zinc-200 pt-2 border-t border-zinc-800 font-bold">
                 <span>{t.calculator.estimatedNet}:</span>
                 <span className="font-mono text-emerald-400 text-base">
-                  {calculations.netIncomeConverted} {curr.symbol} / yr
+                  {calculations.netIncomeConverted} {curr.symbol} / {t.calculator.perYear}
                 </span>
               </div>
               <div className="flex justify-between items-center text-zinc-400 text-xs pt-1">
-                <span>5-Year Total Return (Rent + Growth):</span>
+                <span>{t.calculator.fiveYearReturn}</span>
                 <span className="font-mono text-amber-400 font-semibold">
                   ~{calculations.fiveYearTotalReturnConverted} {curr.symbol}
                 </span>
@@ -289,13 +289,13 @@ export default function RoiCalculator({
               <div className="p-3.5 rounded-xl bg-amber-400/10 border border-amber-400/30 flex items-center gap-3 text-xs text-amber-300">
                 <span className="text-xl">🏆</span>
                 <div>
-                  <div className="font-bold text-amber-400">UAE 10-Year Golden Visa Eligible</div>
-                  <div className="text-[11px] text-zinc-300">This budget qualifies you and your family for 10-year renewable residency.</div>
+                  <div className="font-bold text-amber-400">{t.calculator.goldenVisaQualified}</div>
+                  <div className="text-[11px] text-zinc-300">{t.calculator.goldenVisaQualifiedDesc}</div>
                 </div>
               </div>
             ) : (
               <div className="p-3.5 rounded-xl bg-zinc-800/40 border border-zinc-700/60 text-xs text-zinc-400">
-                💡 Need 2,000,000 AED ($545k) to qualify for UAE 10-Year Golden Visa.
+                {t.calculator.goldenVisaNeed}
               </div>
             )}
 
@@ -307,10 +307,10 @@ export default function RoiCalculator({
                 rel="noopener noreferrer"
                 className="w-full block text-center py-3.5 px-4 rounded-xl bg-gradient-to-r from-amber-400 via-amber-300 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-zinc-950 font-bold text-sm shadow-xl shadow-amber-500/20 transition-all transform hover:-translate-y-0.5 active:translate-y-0"
               >
-                Inquire Units Matching This Calculation
+                {t.calculator.inquireCalculationCta}
               </a>
               <div className="text-[11px] text-zinc-500 text-center">
-                Instant match with verified developer floor plans & off-market listings.
+                {t.calculator.instantMatchDesc}
               </div>
             </div>
           </div>

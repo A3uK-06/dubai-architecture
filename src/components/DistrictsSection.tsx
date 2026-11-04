@@ -1,12 +1,17 @@
 "use client";
 
-import React from "react";
+import React, { useMemo } from "react";
 import Link from "next/link";
 import { DISTRICTS } from "@/data/districts";
 import { useLang } from "@/context/LangContext";
+import { getLocalizedDistrict } from "@/data/localizedContent";
 
 export default function DistrictsSection() {
-  const { t } = useLang();
+  const { t, lang } = useLang();
+
+  const localizedDistricts = useMemo(() => {
+    return DISTRICTS.map((d) => getLocalizedDistrict(d, lang));
+  }, [lang]);
 
   return (
     <section id="districts" className="py-16 md:py-24 border-b border-zinc-800/80 bg-zinc-950">
@@ -14,19 +19,19 @@ export default function DistrictsSection() {
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
           <div>
             <div className="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-amber-400/10 text-amber-400 border border-amber-400/30 mb-2">
-              {t.nav.districts} • 8 Prime Investment Hubs
+              {t.nav.districts} • {t.districts.badge}
             </div>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-              Dubai's Iconic Urban Districts
+              {t.districts.title}
             </h2>
           </div>
           <p className="text-zinc-400 text-sm max-w-md">
-            From the world's highest density skyscraper corridor to private beachfront islands. Compare yield and architectural scale.
+            {t.districts.subtitle}
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {DISTRICTS.map((district) => (
+          {localizedDistricts.map((district) => (
             <Link
               key={district.id}
               href={`/districts/${district.slug}/`}
@@ -38,7 +43,7 @@ export default function DistrictsSection() {
                     ROI: {district.averageRoi}
                   </span>
                   <span className="text-xs text-zinc-400 font-mono">
-                    {district.iconicTowersCount}+ Towers
+                    {district.iconicTowersCount}+ {t.districts.towersCount}
                   </span>
                 </div>
 
@@ -57,7 +62,7 @@ export default function DistrictsSection() {
 
                 <div className="pt-2 border-t border-zinc-800/80">
                   <div className="text-[10px] uppercase tracking-wider text-zinc-500 mb-1">
-                    Key Landmarks:
+                    {t.districts.keyLandmarks}
                   </div>
                   <div className="text-xs text-zinc-400 truncate">
                     {district.keyLandmarks.slice(0, 3).join(" • ")}
@@ -66,7 +71,7 @@ export default function DistrictsSection() {
               </div>
 
               <div className="mt-4 pt-4 border-t border-zinc-800/60 flex items-center justify-between text-xs font-semibold text-amber-400 group-hover:text-amber-300">
-                <span>Explore District</span>
+                <span>{t.districts.exploreDistrict}</span>
                 <span className="group-hover:translate-x-1 transition-transform">&rarr;</span>
               </div>
             </Link>

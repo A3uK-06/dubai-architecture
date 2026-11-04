@@ -6,7 +6,7 @@ import { getAttributionData } from "@/lib/attribution";
 import { dispatchLead, LeadRoutingResult } from "@/lib/leadRouting";
 
 export default function GoldenVisaWidget() {
-  const { lang } = useLang();
+  const { t, lang } = useLang();
 
   const [step, setStep] = useState<1 | 2 | 3 | 4>(1);
   const [budget, setBudget] = useState<string>("2m-5m");
@@ -52,8 +52,10 @@ export default function GoldenVisaWidget() {
     setIsSubmitted(true);
   };
 
+  const gw = t.goldenVisaWidget;
+
   return (
-    <section id="golden-visa-widget" className="py-16 md:py-24 border-b border-zinc-800/80 bg-gradient-to-b from-zinc-950 via-zinc-900 to-zinc-950">
+    <section id="golden-visa" className="py-16 md:py-24 border-b border-zinc-800/80 bg-gradient-to-b from-zinc-950 via-zinc-900 to-zinc-950">
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="p-8 sm:p-12 rounded-3xl border border-amber-500/40 bg-zinc-900/90 shadow-2xl backdrop-blur-xl relative overflow-hidden">
           {/* Subtle Golden Glow */}
@@ -62,13 +64,13 @@ export default function GoldenVisaWidget() {
           {/* Header */}
           <div className="text-center max-w-2xl mx-auto space-y-3 mb-10">
             <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-amber-400/20 text-amber-300 border border-amber-400/30">
-              Official 2026 Regulations
+              {gw.badge}
             </span>
             <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
-              UAE 10-Year Golden Visa Eligibility Checker
+              {gw.title}
             </h2>
             <p className="text-sm text-zinc-300">
-              Answer 3 simple questions to verify your eligibility for 10-year residency via Dubai real estate acquisition.
+              {gw.subtitle}
             </p>
           </div>
 
@@ -76,15 +78,15 @@ export default function GoldenVisaWidget() {
           {step < 4 && (
             <div className="flex items-center justify-center gap-2 mb-10 text-xs font-mono">
               <span className={`px-3 py-1 rounded-full ${step === 1 ? "bg-amber-400 text-zinc-950 font-bold" : "bg-zinc-800 text-zinc-400"}`}>
-                1. Budget
+                {gw.step1}
               </span>
               <span className="text-zinc-600">→</span>
               <span className={`px-3 py-1 rounded-full ${step === 2 ? "bg-amber-400 text-zinc-950 font-bold" : "bg-zinc-800 text-zinc-400"}`}>
-                2. Readiness
+                {gw.step2}
               </span>
               <span className="text-zinc-600">→</span>
               <span className={`px-3 py-1 rounded-full ${step === 3 ? "bg-amber-400 text-zinc-950 font-bold" : "bg-zinc-800 text-zinc-400"}`}>
-                3. Family
+                {gw.step3}
               </span>
             </div>
           )}
@@ -93,7 +95,7 @@ export default function GoldenVisaWidget() {
           {step === 1 && (
             <div className="max-w-xl mx-auto space-y-6 animate-fade-in">
               <h3 className="text-lg font-bold text-white text-center">
-                What is your target property investment budget?
+                {gw.qBudget}
               </h3>
               <div className="space-y-3">
                 <button
@@ -106,10 +108,10 @@ export default function GoldenVisaWidget() {
                   }`}
                 >
                   <div>
-                    <div className="text-sm">Under 2,000,000 AED (&lt; $545,000 USD)</div>
-                    <div className="text-xs text-zinc-500 mt-0.5">Eligible for 2-Year Investor Residency</div>
+                    <div className="text-sm font-semibold">{gw.optUnder2m}</div>
+                    <div className="text-xs text-zinc-400 mt-0.5">{gw.optUnder2mDesc}</div>
                   </div>
-                  {budget === "under-2m" && <span className="text-amber-400">✓</span>}
+                  {budget === "under-2m" && <span className="text-amber-400 font-bold">✓</span>}
                 </button>
 
                 <button
@@ -122,10 +124,10 @@ export default function GoldenVisaWidget() {
                   }`}
                 >
                   <div>
-                    <div className="text-sm font-bold text-amber-300">2,000,000 – 5,000,000 AED ($545k – $1.36M)</div>
-                    <div className="text-xs text-zinc-400 mt-0.5">★ Direct UAE 10-Year Golden Visa Qualification</div>
+                    <div className="text-sm font-bold text-amber-300">{gw.opt2mTo5m}</div>
+                    <div className="text-xs text-zinc-400 mt-0.5">★ {gw.opt2mTo5mDesc}</div>
                   </div>
-                  {budget === "2m-5m" && <span className="text-amber-400">✓</span>}
+                  {budget === "2m-5m" && <span className="text-amber-400 font-bold">✓</span>}
                 </button>
 
                 <button
@@ -138,10 +140,10 @@ export default function GoldenVisaWidget() {
                   }`}
                 >
                   <div>
-                    <div className="text-sm font-bold text-amber-300">Over 5,000,000 AED (&gt; $1.36M USD)</div>
-                    <div className="text-xs text-zinc-400 mt-0.5">Ultra-Prime Asset + Golden Visa + Priority Bank Onboarding</div>
+                    <div className="text-sm font-bold text-amber-300">{gw.opt5mPlus}</div>
+                    <div className="text-xs text-zinc-400 mt-0.5">{gw.opt5mPlusDesc}</div>
                   </div>
-                  {budget === "5m+" && <span className="text-amber-400">✓</span>}
+                  {budget === "5m+" && <span className="text-amber-400 font-bold">✓</span>}
                 </button>
               </div>
 
@@ -151,7 +153,7 @@ export default function GoldenVisaWidget() {
                   onClick={handleNext}
                   className="px-6 py-3 rounded-xl bg-amber-400 hover:bg-amber-300 text-zinc-950 font-bold text-sm transition-all shadow-md shadow-amber-500/20"
                 >
-                  Next Step &rarr;
+                  {gw.next} &rarr;
                 </button>
               </div>
             </div>
@@ -161,7 +163,7 @@ export default function GoldenVisaWidget() {
           {step === 2 && (
             <div className="max-w-xl mx-auto space-y-6 animate-fade-in">
               <h3 className="text-lg font-bold text-white text-center">
-                What stage of property development do you prefer?
+                {gw.qReadiness}
               </h3>
               <div className="space-y-3">
                 <button
@@ -174,10 +176,9 @@ export default function GoldenVisaWidget() {
                   }`}
                 >
                   <div>
-                    <div className="text-sm font-bold">Off-Plan / Under Construction</div>
-                    <div className="text-xs text-zinc-400 mt-0.5">Flexible payment plans (e.g. 70/30 or 80/20), maximum capital appreciation</div>
+                    <div className="text-sm font-bold">{gw.optOffPlan}</div>
                   </div>
-                  {propertyType === "off-plan" && <span className="text-amber-400">✓</span>}
+                  {propertyType === "off-plan" && <span className="text-amber-400 font-bold">✓</span>}
                 </button>
 
                 <button
@@ -190,10 +191,24 @@ export default function GoldenVisaWidget() {
                   }`}
                 >
                   <div>
-                    <div className="text-sm font-bold">Ready / Completed Property</div>
-                    <div className="text-xs text-zinc-400 mt-0.5">Immediate title deed (Oqood/Title Deed), instant rental income</div>
+                    <div className="text-sm font-bold">{gw.optReady}</div>
                   </div>
-                  {propertyType === "ready" && <span className="text-amber-400">✓</span>}
+                  {propertyType === "ready" && <span className="text-amber-400 font-bold">✓</span>}
+                </button>
+
+                <button
+                  type="button"
+                  onClick={() => setPropertyType("mortgage")}
+                  className={`w-full p-4 rounded-2xl border text-left flex items-center justify-between transition-all ${
+                    propertyType === "mortgage"
+                      ? "border-amber-400 bg-amber-400/10 text-white font-semibold"
+                      : "border-zinc-800 bg-zinc-950/80 text-zinc-300 hover:border-zinc-700"
+                  }`}
+                >
+                  <div>
+                    <div className="text-sm font-bold">{gw.optMortgage}</div>
+                  </div>
+                  {propertyType === "mortgage" && <span className="text-amber-400 font-bold">✓</span>}
                 </button>
               </div>
 
@@ -203,14 +218,14 @@ export default function GoldenVisaWidget() {
                   onClick={() => setStep(1)}
                   className="px-5 py-2.5 rounded-xl bg-zinc-800 text-zinc-300 text-xs font-semibold"
                 >
-                  &larr; Back
+                  &larr; {gw.back}
                 </button>
                 <button
                   type="button"
                   onClick={handleNext}
                   className="px-6 py-3 rounded-xl bg-amber-400 hover:bg-amber-300 text-zinc-950 font-bold text-sm transition-all shadow-md shadow-amber-500/20"
                 >
-                  Next Step &rarr;
+                  {gw.next} &rarr;
                 </button>
               </div>
             </div>
@@ -220,7 +235,7 @@ export default function GoldenVisaWidget() {
           {step === 3 && (
             <div className="max-w-xl mx-auto space-y-6 animate-fade-in">
               <h3 className="text-lg font-bold text-white text-center">
-                Who will be included in the residency application?
+                {gw.qFamily}
               </h3>
               <div className="space-y-3">
                 <button
@@ -233,10 +248,9 @@ export default function GoldenVisaWidget() {
                   }`}
                 >
                   <div>
-                    <div className="text-sm font-bold">Primary Investor Only</div>
-                    <div className="text-xs text-zinc-400 mt-0.5">Single applicant with full banking & tax rights</div>
+                    <div className="text-sm font-bold">{gw.optIndividual}</div>
                   </div>
-                  {family === "single" && <span className="text-amber-400">✓</span>}
+                  {family === "single" && <span className="text-amber-400 font-bold">✓</span>}
                 </button>
 
                 <button
@@ -249,10 +263,9 @@ export default function GoldenVisaWidget() {
                   }`}
                 >
                   <div>
-                    <div className="text-sm font-bold">Investor + Spouse + Children</div>
-                    <div className="text-xs text-zinc-400 mt-0.5">Covers spouse and children without age restrictions under Golden Visa rules</div>
+                    <div className="text-sm font-bold">{gw.optFamily}</div>
                   </div>
-                  {family === "family" && <span className="text-amber-400">✓</span>}
+                  {family === "family" && <span className="text-amber-400 font-bold">✓</span>}
                 </button>
 
                 <button
@@ -265,10 +278,9 @@ export default function GoldenVisaWidget() {
                   }`}
                 >
                   <div>
-                    <div className="text-sm font-bold">Investor + Family + Dependent Parents</div>
-                    <div className="text-xs text-zinc-400 mt-0.5">Full multi-generation sponsorship package</div>
+                    <div className="text-sm font-bold">{gw.optParents}</div>
                   </div>
-                  {family === "extended" && <span className="text-amber-400">✓</span>}
+                  {family === "extended" && <span className="text-amber-400 font-bold">✓</span>}
                 </button>
               </div>
 
@@ -278,14 +290,14 @@ export default function GoldenVisaWidget() {
                   onClick={() => setStep(2)}
                   className="px-5 py-2.5 rounded-xl bg-zinc-800 text-zinc-300 text-xs font-semibold"
                 >
-                  &larr; Back
+                  &larr; {gw.back}
                 </button>
                 <button
                   type="button"
                   onClick={handleNext}
                   className="px-6 py-3 rounded-xl bg-amber-400 hover:bg-amber-300 text-zinc-950 font-bold text-sm transition-all shadow-md shadow-amber-500/20"
                 >
-                  See Visa Eligibility Results &rarr;
+                  {gw.next} &rarr;
                 </button>
               </div>
             </div>
@@ -297,12 +309,10 @@ export default function GoldenVisaWidget() {
               <div className="p-6 rounded-2xl bg-amber-500/10 border border-amber-500/40 text-center space-y-2">
                 <span className="text-4xl">🎉</span>
                 <h3 className="text-2xl font-extrabold text-amber-300">
-                  {isEligible10Year
-                    ? "Congratulations! You Qualify for the UAE 10-Year Golden Visa"
-                    : "You Qualify for the UAE 2-Year Investor Residency Visa"}
+                  {isEligible10Year ? gw.resultEligible : gw.resultStandard}
                 </h3>
                 <p className="text-xs text-zinc-300 max-w-lg mx-auto">
-                  Based on your parameters ({budget}, {propertyType}, {family}), your investment aligns 100% with Dubai Land Department (DLD) and Federal Authority for Identity and Citizenship (ICP) requirements.
+                  {isEligible10Year ? gw.resultDescEligible : gw.resultDescStandard}
                 </p>
               </div>
 
@@ -310,93 +320,79 @@ export default function GoldenVisaWidget() {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs text-zinc-300">
                 <div className="flex items-center gap-2 p-2.5 rounded-xl bg-zinc-950 border border-zinc-800">
                   <span className="text-emerald-400 font-bold">✓</span>
-                  <span>100% Foreign Property Ownership</span>
+                  <span>{t.goldenVisa.benefit1}</span>
                 </div>
                 <div className="flex items-center gap-2 p-2.5 rounded-xl bg-zinc-950 border border-zinc-800">
                   <span className="text-emerald-400 font-bold">✓</span>
-                  <span>0% Personal Income & Rental Tax</span>
+                  <span>{t.goldenVisa.benefit2}</span>
                 </div>
                 <div className="flex items-center gap-2 p-2.5 rounded-xl bg-zinc-950 border border-zinc-800">
                   <span className="text-emerald-400 font-bold">✓</span>
-                  <span>No minimum stay requirement</span>
+                  <span>{t.goldenVisa.benefit3}</span>
                 </div>
                 <div className="flex items-center gap-2 p-2.5 rounded-xl bg-zinc-950 border border-zinc-800">
                   <span className="text-emerald-400 font-bold">✓</span>
-                  <span>Access to UAE Premier Banking</span>
+                  <span>{t.goldenVisa.benefit4}</span>
                 </div>
               </div>
 
-              {/* Consultation Form */}
+              {/* Submission Form */}
               {!isSubmitted ? (
-                <form
-                  onSubmit={handleSubmit}
-                  className="p-6 rounded-2xl bg-zinc-950 border border-zinc-800 space-y-4"
-                >
-                  <div className="text-sm font-bold text-white">
-                    Request Approved Golden Visa Properties & Free Legal Assessment
-                  </div>
+                <form onSubmit={handleSubmit} className="p-6 rounded-2xl bg-zinc-950 border border-zinc-800 space-y-4">
+                  <h4 className="text-sm font-bold text-white text-center">
+                    {gw.submitBtn}
+                  </h4>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                    <input
-                      type="text"
-                      required
-                      value={name}
-                      onChange={(e) => setName(e.target.value)}
-                      placeholder="Your Full Name"
-                      className="px-4 py-3 rounded-xl bg-zinc-900 border border-zinc-700 text-sm text-zinc-100 placeholder-zinc-500 focus:outline-none focus:ring-1 focus:ring-amber-400"
-                    />
-                    <input
-                      type="tel"
-                      required
-                      value={phone}
-                      onChange={(e) => setPhone(e.target.value)}
-                      placeholder="WhatsApp / Phone (with country code)"
-                      className="px-4 py-3 rounded-xl bg-zinc-900 border border-zinc-700 text-sm text-zinc-100 placeholder-zinc-500 focus:outline-none focus:ring-1 focus:ring-amber-400"
-                    />
+                    <div>
+                      <label className="block text-xs text-zinc-400 mb-1">{gw.formName}</label>
+                      <input
+                        type="text"
+                        required
+                        value={name}
+                        onChange={(e) => setName(e.target.value)}
+                        placeholder="Alexander"
+                        className="w-full px-3.5 py-2.5 rounded-xl bg-zinc-900 border border-zinc-700 text-zinc-100 text-xs focus:outline-none focus:ring-1 focus:ring-amber-400"
+                      />
+                    </div>
+                    <div>
+                      <label className="block text-xs text-zinc-400 mb-1">{gw.formPhone}</label>
+                      <input
+                        type="tel"
+                        required
+                        value={phone}
+                        onChange={(e) => setPhone(e.target.value)}
+                        placeholder="+971 50 000 0000"
+                        className="w-full px-3.5 py-2.5 rounded-xl bg-zinc-900 border border-zinc-700 text-zinc-100 text-xs focus:outline-none focus:ring-1 focus:ring-amber-400"
+                      />
+                    </div>
                   </div>
+
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full py-3.5 rounded-xl bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-zinc-950 font-bold text-sm shadow-xl shadow-amber-500/20 transition-all disabled:opacity-50"
+                    className="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-300 hover:to-amber-400 text-zinc-950 font-bold text-xs uppercase tracking-wider shadow-lg shadow-amber-500/20 transition-all disabled:opacity-50"
                   >
-                    {isSubmitting ? "Routing to Assigned Broker..." : "Receive Golden Visa Property Catalog (PDF & WhatsApp)"}
+                    {isSubmitting ? "..." : gw.submitBtn}
                   </button>
-                  <div className="text-[11px] text-zinc-500 text-center">
-                    🔒 Official RERA licensed broker guidance. No fees, 100% confidential.
-                  </div>
                 </form>
               ) : (
                 <div className="p-6 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-center space-y-3">
-                  <div className="text-3xl">✅</div>
-                  <h4 className="text-lg font-bold text-emerald-400">
-                    Application Received, {name}!
-                  </h4>
-                  <p className="text-xs text-zinc-300">
-                    Your request has been routed to our partner agency:{" "}
-                    <strong className="text-amber-400">{routingResult?.agency}</strong> ({routingResult?.agencyDesk}).
-                  </p>
+                  <div className="text-2xl">✅</div>
+                  <h4 className="text-lg font-bold text-emerald-400">{gw.submittedTitle}</h4>
+                  <p className="text-xs text-zinc-300 max-w-md mx-auto">{gw.submittedDesc}</p>
                   <a
                     href={`https://wa.me/971500000000?text=${encodeURIComponent(
-                      `Hello, I completed the Golden Visa checker on Dubai-Architecture.info. My name is ${name}, budget: ${budget}. Please share the pre-approved property list.`
+                      `Hello, I verified my Golden Visa eligibility on Dubai-Architecture.info: Budget: ${budget}, Type: ${propertyType}, Family: ${family}. Name: ${name}`
                     )}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-zinc-950 text-xs font-bold transition-all"
+                    className="inline-flex items-center gap-2 px-6 py-2.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-zinc-950 font-bold text-xs shadow-lg shadow-emerald-500/20 transition-all"
                   >
                     <span>💬</span>
-                    <span>Continue in WhatsApp</span>
+                    <span>{t.whatsapp.buttonText}</span>
                   </a>
                 </div>
               )}
-
-              <div className="text-center pt-2">
-                <button
-                  type="button"
-                  onClick={() => setStep(1)}
-                  className="text-xs text-zinc-500 hover:text-zinc-300 underline"
-                >
-                  Restart Questionnaire
-                </button>
-              </div>
             </div>
           )}
         </div>
