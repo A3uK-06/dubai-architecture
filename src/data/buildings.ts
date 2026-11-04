@@ -888,7 +888,7 @@ export const BUILDINGS: Building[] = [
     id: "the-index-tower",
     legacyId: "DUB-012",
     slug: "the-index-tower",
-    image: "/images/buildings/the-index-tower.jpg",
+    image: "/images/buildings/index-tower.jpg",
     name: "The Index Tower",
     heightMeters: 328,
     heightFeet: 1076,

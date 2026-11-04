@@ -490,7 +490,7 @@ export const DISTRICTS: District[] = [
   {
     id: "jvc",
     slug: "jvc",
-    image: "/images/districts/dubai-harbour.jpg",
+    image: "/images/districts/jvc.jpg",
     name: "Jumeirah Village Circle (JVC)",
     developer: "Nakheel / Multiple Independent Developers",
     overview:
@@ -553,7 +553,7 @@ export const DISTRICTS: District[] = [
   {
     id: "dubai-hills",
     slug: "dubai-hills",
-    image: "/images/districts/downtown-dubai.jpg",
+    image: "/images/districts/dubai-hills.jpg",
     name: "Dubai Hills Estate",
     developer: "Emaar Properties / Meraas",
     overview:
