@@ -1682,7 +1682,7 @@ export const BUILDINGS: Building[] = [
   {
     id: "vela-by-omniyat",
     slug: "vela-by-omniyat",
-    image: "/images/buildings/the-opus.jpg",
+    image: "/images/buildings/vela-by-omniyat.jpg",
     name: "Vela by Omniyat",
     heightMeters: 150,
     heightFeet: 492,
