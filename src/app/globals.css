@@ -1,10 +1,24 @@
 @import "tailwindcss";
 
 :root {
-  --background: #09090b;
-  --foreground: #f2f2f2;
-  --text-muted: #cacaca;
-  --accent-gold: #f59e0b;
+  /* Concept #1: Desert Travertine & Warm Sand Design System */
+  --background: #F7F5F0;
+  --background-subtle: #EFECE4;
+  --surface: #FFFFFF;
+  --surface-raised: #FAF8F5;
+  --border: #E5DFD3;
+  --border-strong: #DDD7CA;
+  
+  --foreground: #1C1917;
+  --text-primary: #1C1917;
+  --text-secondary: #57534E;
+  --text-muted: #78716C;
+  
+  --accent-bronze: #8C6A48;
+  --accent-bronze-dark: #6D5135;
+  --accent-bronze-light: #B48256;
+  --accent-terracotta: #9E4732;
+  --accent-emerald: #2D6A4F;
 }
 
 body {
@@ -16,17 +30,17 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Three-tier tinted shadow system (Playbook standard) */
+/* Warm architectural shadows (Travertine System) */
 .shadow-soft-tint {
-  box-shadow: 0 4px 16px -2px rgba(245, 158, 11, 0.08), 0 2px 6px -1px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 4px 16px -2px rgba(140, 106, 72, 0.08), 0 2px 6px -1px rgba(28, 25, 23, 0.03);
 }
 
 .shadow-medium-tint {
-  box-shadow: 0 12px 32px -4px rgba(245, 158, 11, 0.12), 0 4px 12px -2px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 12px 32px -4px rgba(140, 106, 72, 0.12), 0 4px 12px -2px rgba(28, 25, 23, 0.05);
 }
 
 .shadow-strong-tint {
-  box-shadow: 0 24px 48px -6px rgba(245, 158, 11, 0.16), 0 8px 24px -4px rgba(0, 0, 0, 0.8);
+  box-shadow: 0 24px 48px -6px rgba(140, 106, 72, 0.15), 0 8px 24px -4px rgba(28, 25, 23, 0.06);
 }
 
 /* RTL Specific enhancements */

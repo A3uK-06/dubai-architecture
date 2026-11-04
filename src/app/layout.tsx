@@ -56,9 +56,9 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className="h-full antialiased dark"
+      className="h-full antialiased"
     >
-      <body className="min-h-full flex flex-col bg-zinc-950 text-zinc-100 selection:bg-amber-500/30 selection:text-amber-200 font-sans">
+      <body className="min-h-full flex flex-col bg-[#F7F5F0] text-[#1C1917] selection:bg-[#8C6A48]/20 selection:text-[#1C1917] font-sans">
         <Providers>
           <GoogleAnalytics />
           <Tracker />

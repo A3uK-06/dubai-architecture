@@ -4,7 +4,7 @@ import React, { useMemo } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { District } from "@/data/districts";
-import { Building, BUILDINGS } from "@/data/buildings";
+import { BUILDINGS } from "@/data/buildings";
 import { useLang } from "@/context/LangContext";
 import { getLocalizedDistrict, getLocalizedBuilding } from "@/data/localizedContent";
 
@@ -30,48 +30,48 @@ export default function DistrictDetailClient({
   const dd = t.districtDetail;
 
   return (
-    <article className="min-h-screen bg-zinc-950 text-zinc-100 pb-24">
-      {/* Header */}
-      <div className="border-b border-zinc-800 bg-gradient-to-b from-zinc-900 via-zinc-950 to-zinc-950 pt-10 pb-16">
+    <article className="min-h-screen bg-[#F7F5F0] text-[#1C1917] pb-24 transition-colors">
+      {/* Header in Warm Travertine */}
+      <div className="border-b border-[#E5DFD3] bg-[#EFECE4]/60 pt-10 pb-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <nav className="flex items-center gap-2 text-xs text-zinc-500 mb-6 font-medium">
-            <Link href="/" className="hover:text-amber-400">
+          <nav className="flex items-center gap-2 text-xs text-[#78716C] mb-6 font-semibold">
+            <Link href="/" className="hover:text-[#8C6A48] transition-colors">
               {dd.breadcrumbHome}
             </Link>
-            <span>/</span>
-            <Link href="/#districts" className="hover:text-amber-400">
+            <span className="text-[#DDD7CA]">/</span>
+            <Link href="/#districts" className="hover:text-[#8C6A48] transition-colors">
               {dd.breadcrumbDistricts}
             </Link>
-            <span>/</span>
-            <span className="text-zinc-300">{district.name}</span>
+            <span className="text-[#DDD7CA]">/</span>
+            <span className="text-[#1C1917] font-bold">{district.name}</span>
           </nav>
 
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
             <div className="space-y-3">
               <div className="flex items-center gap-3">
-                <span className="px-3 py-1 rounded-full text-xs font-semibold bg-amber-400/20 text-amber-300 border border-amber-400/30">
-                  {dd.masterDeveloper} {district.developer}
+                <span className="px-3 py-1 rounded-full text-xs font-bold bg-[#8C6A48] text-white shadow-soft-tint">
+                  {dd.masterDeveloper}: {district.developer}
                 </span>
-                <span className="text-xs text-zinc-400 font-mono">
+                <span className="text-xs text-[#57534E] font-mono font-semibold bg-white px-2.5 py-1 rounded-full border border-[#DDD7CA]">
                   {district.iconicTowersCount}+ {dd.towersCount}
                 </span>
               </div>
 
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-tight">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#1C1917] tracking-tight">
                 {district.name}
               </h1>
 
-              <p className="text-base sm:text-lg text-zinc-300 max-w-3xl leading-relaxed">
+              <p className="text-base sm:text-lg text-[#57534E] max-w-3xl leading-relaxed">
                 {district.overview}
               </p>
             </div>
 
-            <div className="p-4 rounded-2xl bg-zinc-900 border border-amber-500/30 flex items-center gap-6 shrink-0">
+            <div className="p-5 rounded-2xl bg-white border border-[#E5DFD3] shadow-soft-tint flex items-center gap-6 shrink-0">
               <div>
-                <div className="text-[11px] uppercase tracking-wider text-zinc-400">
+                <div className="text-[11px] uppercase tracking-wider text-[#78716C] font-bold">
                   {dd.avgRentalYield}
                 </div>
-                <div className="text-2xl font-extrabold text-emerald-400 font-mono">
+                <div className="text-2xl font-extrabold text-[#2D6A4F] font-mono mt-0.5">
                   {district.averageRoi}
                 </div>
               </div>
@@ -81,8 +81,8 @@ export default function DistrictDetailClient({
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 space-y-16">
-        {/* Real District Photography Showcase */}
-        <div className="relative w-full h-72 sm:h-96 rounded-3xl overflow-hidden border border-zinc-800 shadow-2xl bg-zinc-950">
+        {/* District Photography Showcase */}
+        <div className="relative w-full h-72 sm:h-96 rounded-3xl overflow-hidden border border-[#E5DFD3] shadow-medium-tint bg-[#EFECE4]">
           <Image
             src={district.image}
             alt={district.name}
@@ -91,103 +91,242 @@ export default function DistrictDetailClient({
             sizes="(max-width: 1280px) 100vw, 1280px"
             className="object-cover object-center"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/25 to-black/10" />
-          <div className="absolute bottom-6 left-6 right-6 flex flex-wrap items-end justify-between gap-4 z-10">
+          <div className="absolute inset-0 bg-gradient-to-t from-[#1C1917]/80 via-transparent to-transparent" />
+          <div className="absolute bottom-6 left-6 right-6 flex flex-wrap items-end justify-between gap-4 z-10 text-white">
             <div>
-              <span className="text-xs uppercase font-mono tracking-wider text-amber-300 bg-zinc-950/85 px-3 py-1 rounded-full border border-amber-400/30 backdrop-blur-md">
+              <span className="text-xs uppercase font-mono tracking-wider bg-black/60 px-3 py-1 rounded-full border border-white/20 backdrop-blur-md">
                 {district.developer}
               </span>
-              <h2 className="text-white text-3xl sm:text-4xl font-extrabold mt-1.5 drop-shadow-lg">
+              <h2 className="text-white text-3xl sm:text-4xl font-extrabold mt-1.5 drop-shadow-md">
                 {district.name}
               </h2>
             </div>
             <div className="flex items-center gap-3">
-              <span className="text-xs text-zinc-300 font-mono px-3 py-1.5 rounded-full bg-zinc-950/85 border border-zinc-800 backdrop-blur-md">
+              <span className="text-xs text-white font-mono px-3 py-1.5 rounded-full bg-black/70 border border-white/20 backdrop-blur-md">
                 {district.iconicTowersCount}+ {dd.towersCount}
               </span>
-              <span className="px-3 py-1.5 rounded-full text-xs font-bold bg-zinc-950/85 text-emerald-400 border border-emerald-500/40 backdrop-blur-md">
+              <span className="px-3.5 py-1.5 rounded-full text-xs font-bold font-mono bg-white text-[#2D6A4F] shadow-sm">
                 ROI: {district.averageRoi}
               </span>
             </div>
           </div>
         </div>
 
-        {/* Investment Advantages & Master Plan */}
-        <section className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="p-8 rounded-3xl bg-zinc-900/60 border border-zinc-800 space-y-4">
-            <h2 className="text-2xl font-bold text-white">
-              {dd.districtOverview}
-            </h2>
-            <p className="text-sm text-zinc-300 leading-relaxed">
-              {district.description}
-            </p>
-            <div className="pt-2">
-              <div className="text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-2">
-                {dd.districtHighlights}:
-              </div>
-              <div className="flex flex-wrap gap-2">
-                {district.keyLandmarks.map((lm) => (
-                  <span
-                    key={lm}
-                    className="px-2.5 py-1 rounded-lg bg-zinc-800 text-xs text-zinc-300 border border-zinc-700"
-                  >
-                    {lm}
-                  </span>
-                ))}
-              </div>
+        {/* 1. Urban Masterplan & Architectural DNA */}
+        <section className="p-8 rounded-3xl bg-white border border-[#E5DFD3] shadow-soft-tint space-y-4">
+          <div className="flex items-center justify-between border-b border-[#EFECE4] pb-3">
+            <div>
+              <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#8C6A48]">
+                URBAN MASTERPLANNING & ARCHITECTURAL DNA
+              </span>
+              <h2 className="text-2xl font-bold text-[#1C1917] mt-0.5">
+                Градостроительная концепция и генплан
+              </h2>
+            </div>
+            <span className="text-xs font-mono text-[#78716C]">MASTER DEVELOPER ANALYSIS</span>
+          </div>
+          <p className="text-base text-[#57534E] leading-relaxed max-w-4xl">
+            {district.urbanConcept || district.description}
+          </p>
+          <div className="pt-2">
+            <div className="text-xs font-bold text-[#78716C] uppercase tracking-wider mb-2">
+              {dd.districtHighlights}:
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {district.keyLandmarks.map((lm) => (
+                <span
+                  key={lm}
+                  className="px-3 py-1 rounded-lg bg-[#FAF8F5] text-xs font-semibold text-[#1C1917] border border-[#E5DFD3]"
+                >
+                  📍 {lm}
+                </span>
+              ))}
             </div>
           </div>
+        </section>
 
-          <div className="p-8 rounded-3xl bg-zinc-900/60 border border-amber-500/20 space-y-4">
-            <h2 className="text-2xl font-bold text-white">
-              {dd.districtInvestment}
+        {/* 2. Micro-zones & Sub-districts */}
+        {district.subZones && district.subZones.length > 0 && (
+          <section className="space-y-4">
+            <div className="flex items-center justify-between border-b border-[#E5DFD3] pb-3">
+              <div>
+                <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#8C6A48]">
+                  MICRO-LOCATION COMPARATIVE AUDIT
+                </span>
+                <h2 className="text-2xl font-bold text-[#1C1917] mt-0.5">
+                  Микролокации внутри района и диапазон цен
+                </h2>
+              </div>
+              <span className="text-xs font-mono font-bold text-[#8C6A48]">AED / SQ.FT</span>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {district.subZones.map((zone, idx) => (
+                <div key={idx} className="p-6 rounded-2xl bg-white border border-[#E5DFD3] shadow-soft-tint space-y-3 flex flex-col justify-between">
+                  <div className="space-y-2">
+                    <span className="text-xs font-mono font-bold px-2.5 py-0.5 rounded bg-[#EFECE4] text-[#8C6A48]">
+                      Зона {idx + 1}
+                    </span>
+                    <h3 className="text-lg font-bold text-[#1C1917]">{zone.name}</h3>
+                    <p className="text-xs text-[#57534E] leading-relaxed">{zone.character}</p>
+                  </div>
+                  <div className="pt-3 border-t border-[#EFECE4] space-y-2 text-xs">
+                    <div>
+                      <span className="text-[#78716C] block">Средняя стоимость:</span>
+                      <span className="font-mono font-bold text-base text-[#1C1917]">{zone.pricePerSqFtAed}</span>
+                    </div>
+                    <div>
+                      <span className="text-[#78716C] block">Для кого идеально:</span>
+                      <span className="font-medium text-[#57534E]">{zone.bestFor}</span>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+        )}
+
+        {/* 3. Transit, Highway Access & Bottlenecks */}
+        {district.transitAnalysis && (
+          <section className="p-8 rounded-3xl bg-white border border-[#E5DFD3] shadow-soft-tint space-y-6">
+            <div className="flex items-center justify-between border-b border-[#EFECE4] pb-3">
+              <div>
+                <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#8C6A48]">
+                  TRANSIT MOBILITY & BOTTLENECK AUDIT
+                </span>
+                <h2 className="text-2xl font-bold text-[#1C1917] mt-0.5">
+                  Транспортная логистика, выезды и пробки в час пик
+                </h2>
+              </div>
+              <span className="px-3 py-1 rounded-full text-xs font-bold font-mono bg-[#EFECE4] text-[#8C6A48] border border-[#DDD7CA]">
+                Пешеходность: {district.transitAnalysis.walkabilityScore}
+              </span>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs">
+              <div className="p-4 rounded-xl bg-[#FAF8F5] border border-[#EFECE4] space-y-1.5">
+                <div className="font-bold text-sm text-[#1C1917] flex items-center gap-2">
+                  <span>🛣️</span>
+                  <span>Выезды на шоссе</span>
+                </div>
+                <p className="text-[#57534E] leading-relaxed">{district.transitAnalysis.highwayAccess}</p>
+              </div>
+
+              <div className="p-4 rounded-xl bg-[#FFF5F5] border border-[#FED7D7] space-y-1.5">
+                <div className="font-bold text-sm text-[#9E4732] flex items-center gap-2">
+                  <span>⚠️</span>
+                  <span>Бутылочные горлышки (Час пик)</span>
+                </div>
+                <p className="text-[#57534E] leading-relaxed">{district.transitAnalysis.rushHourBottleneck}</p>
+              </div>
+
+              <div className="p-4 rounded-xl bg-[#FAF8F5] border border-[#EFECE4] space-y-1.5">
+                <div className="font-bold text-sm text-[#1C1917] flex items-center gap-2">
+                  <span>🚇</span>
+                  <span>Общественный транспорт</span>
+                </div>
+                <p className="text-[#57534E] leading-relaxed">{district.transitAnalysis.publicTransit}</p>
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* 4. Infrastructure & Operating Audit */}
+        {district.infrastructureAudit && (
+          <section className="p-8 rounded-3xl bg-[#FAF8F5] border border-[#E5DFD3] shadow-soft-tint space-y-6">
+            <div className="border-b border-[#E5DFD3] pb-3">
+              <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#8C6A48]">
+                OPERATING REALITY & INFRASTRUCTURE
+              </span>
+              <h2 className="text-2xl font-bold text-[#1C1917] mt-0.5">
+                Инженерная инфраструктура и коммунальные расходы
+              </h2>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 text-xs">
+              <div className="p-4 rounded-xl bg-white border border-[#E5DFD3]">
+                <div className="text-[#78716C] font-semibold">Охлаждение (Chiller)</div>
+                <div className="text-sm font-bold text-[#1C1917] mt-1">{district.infrastructureAudit.chillerType}</div>
+              </div>
+              <div className="p-4 rounded-xl bg-white border border-[#E5DFD3]">
+                <div className="text-[#78716C] font-semibold">Ливневая канализация</div>
+                <div className="text-sm font-bold text-[#1C1917] mt-1">{district.infrastructureAudit.stormwaterResilience}</div>
+              </div>
+              <div className="p-4 rounded-xl bg-white border border-[#E5DFD3]">
+                <div className="text-[#78716C] font-semibold">Вилка Service Charges</div>
+                <div className="text-sm font-bold text-[#8C6A48] font-mono mt-1">{district.infrastructureAudit.serviceChargeRangeAed}</div>
+              </div>
+              <div className="p-4 rounded-xl bg-white border border-[#E5DFD3]">
+                <div className="text-[#78716C] font-semibold">Заполняемость арендаторами</div>
+                <div className="text-sm font-bold text-[#2D6A4F] font-mono mt-1">{district.infrastructureAudit.occupancyRate}</div>
+              </div>
+              <div className="p-4 rounded-xl bg-white border border-[#E5DFD3] sm:col-span-2 md:col-span-4">
+                <div className="text-[#78716C] font-semibold">Портрет основного арендатора</div>
+                <div className="text-sm font-medium text-[#1C1917] mt-1">{district.infrastructureAudit.targetTenantProfile}</div>
+              </div>
+            </div>
+          </section>
+        )}
+
+        {/* 5. Honest Investment Pros & Risks */}
+        <section className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="p-8 rounded-3xl bg-white border border-[#E5DFD3] shadow-soft-tint space-y-4">
+            <h2 className="text-xl font-bold text-[#1C1917] flex items-center gap-2">
+              <span className="text-[#2D6A4F]">✓</span>
+              <span>Ключевые инвестиционные преимущества</span>
             </h2>
             <ul className="space-y-3">
               {district.investmentPros.map((pro, idx) => (
-                <li key={idx} className="flex items-start gap-3 text-sm text-zinc-300">
-                  <span className="w-5 h-5 rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-xs shrink-0 mt-0.5">
+                <li key={idx} className="flex items-start gap-3 text-sm text-[#57534E]">
+                  <span className="w-5 h-5 rounded-full bg-[#2D6A4F]/15 text-[#2D6A4F] flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">
                     ✓
                   </span>
                   <span>{pro}</span>
                 </li>
               ))}
             </ul>
+          </div>
 
-            <div className="pt-4 border-t border-zinc-800">
-              <a
-                href={`https://wa.me/971500000000?text=${encodeURIComponent(
-                  `Hello, I am interested in real estate investment allocations in ${district.name}, Dubai.`
-                )}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-amber-400 hover:bg-amber-300 text-zinc-950 font-bold text-xs uppercase tracking-wider shadow-md shadow-amber-500/20 transition-all"
-              >
-                <span>💬</span>
-                <span>{dd.inquireWhatsApp}</span>
-              </a>
-            </div>
+          <div className="p-8 rounded-3xl bg-white border border-[#E5DFD3] shadow-soft-tint space-y-4">
+            <h2 className="text-xl font-bold text-[#9E4732] flex items-center gap-2">
+              <span>⚠️</span>
+              <span>Честные риски и эксплуатационные нюансы</span>
+            </h2>
+            <ul className="space-y-3">
+              {(district.investmentRisks || [
+                "Высокая плотность трафика в вечерние часы пик на основных съездах.",
+                "Необходимость тщательной проверки надежности застройщика в частных проектах."
+              ]).map((risk, idx) => (
+                <li key={idx} className="flex items-start gap-3 text-sm text-[#57534E]">
+                  <span className="w-5 h-5 rounded-full bg-[#9E4732]/15 text-[#9E4732] flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">
+                    !
+                  </span>
+                  <span>{risk}</span>
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
 
-        {/* Skyscraper Catalog within this district */}
+        {/* 6. Iconic Skyscrapers in this District */}
         <section className="space-y-6">
-          <div className="flex justify-between items-end border-b border-zinc-800 pb-4">
+          <div className="flex justify-between items-end border-b border-[#E5DFD3] pb-4">
             <div>
-              <h2 className="text-2xl font-bold text-white">
+              <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#8C6A48]">
+                DISTRICT ARCHITECTURAL PORTFOLIO
+              </span>
+              <h2 className="text-2xl font-bold text-[#1C1917] mt-0.5">
                 {dd.iconicTowersInDistrict} {district.name}
               </h2>
-              <p className="text-xs text-zinc-400 mt-1">
-                {district.overview}
-              </p>
             </div>
-            <span className="text-xs text-amber-400 font-mono">
+            <span className="text-xs text-[#8C6A48] font-mono font-bold bg-[#EFECE4] px-3 py-1 rounded-full border border-[#DDD7CA]">
               {districtBuildings.length} {dd.towersCount}
             </span>
           </div>
 
           {districtBuildings.length === 0 ? (
-            <p className="text-zinc-500 text-sm italic">
-              {district.name}
+            <p className="text-[#78716C] text-sm italic py-8">
+              Каталог небоскребов для данного района обновляется.
             </p>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -195,9 +334,9 @@ export default function DistrictDetailClient({
                 <Link
                   key={building.id}
                   href={`/buildings/${building.slug}/`}
-                  className="rounded-2xl border border-zinc-800 bg-zinc-900/60 overflow-hidden flex flex-col justify-between hover:border-amber-400/40 hover:bg-zinc-900/90 transition-all group"
+                  className="rounded-2xl border border-[#E5DFD3] bg-white overflow-hidden flex flex-col justify-between hover:border-[#8C6A48] shadow-soft-tint hover:shadow-medium-tint transition-all group"
                 >
-                  <div className="relative h-44 w-full overflow-hidden bg-zinc-950">
+                  <div className="relative h-44 w-full overflow-hidden bg-[#EFECE4]">
                     <Image
                       src={building.image}
                       alt={building.name}
@@ -205,14 +344,14 @@ export default function DistrictDetailClient({
                       sizes="(max-width: 768px) 100vw, 33vw"
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                     <div className="absolute top-2.5 left-2.5 z-10">
-                      <span className="px-2 py-0.5 rounded text-[11px] font-bold bg-zinc-950/85 text-amber-300 border border-amber-400/30 backdrop-blur-md">
+                      <span className="px-2.5 py-1 rounded-full text-[11px] font-bold font-mono bg-black/75 text-white border border-white/20 backdrop-blur-md">
                         {building.heightMeters} m
                       </span>
                     </div>
                     <div className="absolute top-2.5 right-2.5 z-10">
-                      <span className="text-xs text-zinc-300 font-mono px-2 py-0.5 rounded bg-zinc-950/85 border border-zinc-800 backdrop-blur-md">
+                      <span className="text-xs text-white font-mono px-2 py-0.5 rounded bg-black/75 border border-white/20 backdrop-blur-md">
                         {building.yearBuilt}
                       </span>
                     </div>
@@ -220,15 +359,15 @@ export default function DistrictDetailClient({
 
                   <div className="p-5 space-y-3 flex-1 flex flex-col justify-between">
                     <div>
-                      <h3 className="text-xl font-bold text-white group-hover:text-amber-400 transition-colors">
+                      <h3 className="text-lg font-bold text-[#1C1917] group-hover:text-[#8C6A48] transition-colors">
                         {building.name}
                       </h3>
-                      <p className="text-xs text-zinc-400 line-clamp-3 mt-1.5">
+                      <p className="text-xs text-[#57534E] line-clamp-3 mt-1.5 leading-relaxed">
                         {building.description}
                       </p>
                     </div>
 
-                    <div className="pt-3 border-t border-zinc-800/80 flex items-center justify-between text-xs font-semibold text-amber-400">
+                    <div className="pt-3 border-t border-[#EFECE4] flex items-center justify-between text-xs font-bold text-[#8C6A48]">
                       <span>{t.buildingCard.viewDetails}</span>
                       <span className="group-hover:translate-x-1 transition-transform">&rarr;</span>
                     </div>

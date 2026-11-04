@@ -96,107 +96,111 @@ export default function CatalogSection() {
   };
 
   return (
-    <section id="catalog" className="py-16 md:py-24 border-b border-zinc-800/80 bg-zinc-950">
+    <section id="catalog" className="py-16 md:py-24 border-b border-[#E5DFD3] bg-[#F7F5F0]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-amber-400/10 text-amber-300 border border-amber-400/30 mb-3">
-              <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
-              <span>{t.nav.catalog} • {BUILDINGS.length} {t.catalog.masterpieces}</span>
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-[#EFECE4] text-[#8C6A48] border border-[#DDD7CA] mb-3">
+              <span className="w-1.5 h-1.5 rounded-full bg-[#8C6A48]" />
+              <span>{t.nav.catalog} • {BUILDINGS.length} {t.catalog.buildings}</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-zinc-100 tracking-tight leading-tight">
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#1C1917] tracking-tight leading-tight">
               {t.catalog.title}
             </h2>
           </div>
-          <p className="text-zinc-400 text-sm max-w-md leading-relaxed">
+          <p className="text-[#57534E] text-sm max-w-md leading-relaxed">
             {t.catalog.subtitle}
           </p>
         </div>
 
-        {/* Filter Controls Bar (4px spacing scale, WCAG AA contrast) */}
-        <div className="p-4 sm:p-6 rounded-2xl bg-zinc-900/80 border border-zinc-800 shadow-soft-tint backdrop-blur-md mb-8 space-y-4">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+        {/* Filter Controls Bar */}
+        <div className="p-6 rounded-3xl bg-white border border-[#E5DFD3] shadow-soft-tint mb-8 space-y-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {/* Search Input */}
-            <div className="relative">
+            <div>
+              <label className="block text-xs font-bold text-[#78716C] uppercase tracking-wider mb-1.5">
+                {t.filters.search}
+              </label>
               <input
                 type="text"
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 placeholder={t.filters.search}
-                className="w-full px-4 py-2.5 rounded-xl bg-zinc-950 border border-zinc-700 text-zinc-100 placeholder-zinc-500 text-sm focus:outline-none focus:ring-2 focus:ring-amber-400/50 focus:border-amber-400 transition-all"
+                className="w-full px-3.5 py-2.5 rounded-xl bg-[#FAF8F5] border border-[#E5DFD3] text-[#1C1917] text-xs focus:outline-none focus:ring-2 focus:ring-[#8C6A48] transition-all"
               />
-              {search && (
-                <button
-                  type="button"
-                  onClick={() => setSearch("")}
-                  aria-label="Clear search"
-                  className="absolute right-3 top-1/2 -translate-y-1/2 w-6 h-6 flex items-center justify-center text-zinc-400 hover:text-zinc-200 text-xs rounded-full hover:bg-zinc-800 transition-colors"
-                >
-                  ✕
-                </button>
-              )}
             </div>
 
-            {/* District Selector */}
-            <select
-              value={selectedDistrict}
-              onChange={(e) => setSelectedDistrict(e.target.value)}
-              aria-label="Filter by District"
-              className="px-3.5 py-2.5 rounded-xl bg-zinc-950 border border-zinc-700 text-zinc-200 text-sm focus:outline-none focus:ring-2 focus:ring-amber-400/50 focus:border-amber-400 transition-all"
-            >
-              <option value="all">{t.filters.allDistricts}</option>
-              {localizedDistricts.map((d) => (
-                <option key={d.id} value={d.slug}>
-                  {d.name}
-                </option>
-              ))}
-            </select>
+            {/* District Filter */}
+            <div>
+              <label className="block text-xs font-bold text-[#78716C] uppercase tracking-wider mb-1.5">
+                {t.filters.allDistricts}
+              </label>
+              <select
+                value={selectedDistrict}
+                onChange={(e) => setSelectedDistrict(e.target.value)}
+                className="w-full px-3.5 py-2.5 rounded-xl bg-[#FAF8F5] border border-[#E5DFD3] text-[#1C1917] text-xs focus:outline-none focus:ring-2 focus:ring-[#8C6A48] transition-all"
+              >
+                <option value="all">{t.filters.allDistricts}</option>
+                {localizedDistricts.map((d) => (
+                  <option key={d.slug} value={d.slug}>
+                    {d.name}
+                  </option>
+                ))}
+              </select>
+            </div>
 
-            {/* Height Selector */}
-            <select
-              value={selectedHeight}
-              onChange={(e) => setSelectedHeight(e.target.value)}
-              aria-label="Filter by Height"
-              className="px-3.5 py-2.5 rounded-xl bg-zinc-950 border border-zinc-700 text-zinc-200 text-sm focus:outline-none focus:ring-2 focus:ring-amber-400/50 focus:border-amber-400 transition-all"
-            >
-              <option value="all">{t.catalog.heightOptions.all}</option>
-              <option value="megatall">{t.catalog.heightOptions.megatall}</option>
-              <option value="supertall">{t.catalog.heightOptions.supertall}</option>
-              <option value="highrise">{t.catalog.heightOptions.highrise}</option>
-            </select>
+            {/* Height Category */}
+            <div>
+              <label className="block text-xs font-bold text-[#78716C] uppercase tracking-wider mb-1.5">
+                {t.filters.allHeights}
+              </label>
+              <select
+                value={selectedHeight}
+                onChange={(e) => setSelectedHeight(e.target.value)}
+                className="w-full px-3.5 py-2.5 rounded-xl bg-[#FAF8F5] border border-[#E5DFD3] text-[#1C1917] text-xs focus:outline-none focus:ring-2 focus:ring-[#8C6A48] transition-all"
+              >
+                <option value="all">{t.filters.allHeights}</option>
+                <option value="megatall">&gt; 600m (Megatall)</option>
+                <option value="supertall">300m - 600m (Supertall)</option>
+                <option value="highrise">&lt; 300m (Highrise)</option>
+              </select>
+            </div>
 
             {/* Sort Order */}
-            <select
-              value={sortBy}
-              onChange={(e) => setSortBy(e.target.value as any)}
-              aria-label="Sort order"
-              className="px-3.5 py-2.5 rounded-xl bg-zinc-950 border border-zinc-700 text-zinc-200 text-sm focus:outline-none focus:ring-2 focus:ring-amber-400/50 focus:border-amber-400 transition-all"
-            >
-              <option value="height">{t.catalog.sortOptions.height}</option>
-              <option value="year">{t.catalog.sortOptions.year}</option>
-              <option value="rating">{t.catalog.sortOptions.popularity}</option>
-              <option value="yield">{t.catalog.sortOptions.yield}</option>
-            </select>
+            <div>
+              <label className="block text-xs font-bold text-[#78716C] uppercase tracking-wider mb-1.5">
+                {t.filters.sortBy}
+              </label>
+              <select
+                value={sortBy}
+                onChange={(e) => setSortBy(e.target.value as any)}
+                className="w-full px-3.5 py-2.5 rounded-xl bg-[#FAF8F5] border border-[#E5DFD3] text-[#1C1917] text-xs focus:outline-none focus:ring-2 focus:ring-[#8C6A48] transition-all"
+              >
+                <option value="height">{t.filters.heightDesc}</option>
+                <option value="year">{t.filters.yearDesc}</option>
+                <option value="rating">{t.filters.popularity}</option>
+                <option value="yield">ROI (High to Low)</option>
+              </select>
+            </div>
           </div>
 
-          {/* Quick Pills for Building Types */}
-          <div className="flex flex-wrap items-center gap-2 pt-3 border-t border-zinc-800/80 text-xs">
-            <span className="text-zinc-400 font-medium mr-1">{t.catalog.type}:</span>
-            {["all", "Residential", "Commercial", "Hotel", "Mixed-Use", "Cultural"].map((typeKey) => {
+          {/* Quick Filter Pill Buttons */}
+          <div className="flex flex-wrap items-center gap-2 pt-2 border-t border-[#EFECE4]">
+            {Object.entries(typeMap).map(([typeKey, typeLabel]) => {
               const isActive = selectedType === typeKey;
               return (
                 <button
                   key={typeKey}
                   type="button"
                   onClick={() => setSelectedType(typeKey)}
-                  className={`px-3.5 py-1.5 rounded-lg transition-all font-medium ${
+                  className={`px-3 py-1.5 rounded-xl text-xs font-semibold transition-all ${
                     isActive
-                      ? "bg-amber-400 text-zinc-950 font-bold shadow-sm shadow-amber-400/20"
-                      : "bg-zinc-800/80 text-zinc-300 hover:bg-zinc-700 hover:text-white"
+                      ? "bg-[#8C6A48] text-white shadow-soft-tint"
+                      : "bg-[#FAF8F5] text-[#57534E] hover:bg-[#EFECE4] border border-[#E5DFD3]"
                   }`}
                 >
-                  {typeMap[typeKey] || typeKey}
+                  {typeLabel}
                 </button>
               );
             })}
@@ -205,7 +209,7 @@ export default function CatalogSection() {
               <button
                 type="button"
                 onClick={handleResetFilters}
-                className="ml-auto text-amber-400 hover:text-amber-300 text-xs font-semibold underline underline-offset-4 transition-colors"
+                className="ml-auto text-[#8C6A48] hover:text-[#6D5135] text-xs font-bold underline underline-offset-4 transition-colors"
               >
                 {t.catalog.resetFilters}
               </button>
@@ -214,14 +218,14 @@ export default function CatalogSection() {
         </div>
 
         {/* Results Counter */}
-        <div className="flex justify-between items-center mb-6 text-xs text-zinc-400">
+        <div className="flex justify-between items-center mb-6 text-xs text-[#78716C]">
           <span>
-            {t.catalog.showing} <strong className="text-amber-300 font-bold font-mono">{filteredBuildings.length}</strong> {t.catalog.buildings}
+            {t.catalog.showing} <strong className="text-[#1C1917] font-bold font-mono">{filteredBuildings.length}</strong> {t.catalog.buildings}
           </span>
           {selectedDistrict !== "all" && (
-            <span className="text-zinc-400">
+            <span>
               {t.catalog.filteredBy}{" "}
-              <strong className="text-zinc-200">
+              <strong className="text-[#8C6A48]">
                 {localizedDistricts.find((d) => d.slug === selectedDistrict)?.name}
               </strong>
             </span>
@@ -230,19 +234,18 @@ export default function CatalogSection() {
 
         {/* Buildings Grid */}
         {filteredBuildings.length === 0 ? (
-          /* Empty State - Playbook Section 7 standard with actionable recovery */
-          <div className="p-12 text-center rounded-2xl bg-zinc-900/40 border border-zinc-800 shadow-soft-tint">
-            <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-zinc-800/80 flex items-center justify-center text-3xl">
+          <div className="p-12 text-center rounded-2xl bg-white border border-[#E5DFD3] shadow-soft-tint">
+            <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-[#EFECE4] flex items-center justify-center text-3xl">
               🏙️
             </div>
-            <h3 className="text-lg font-bold text-zinc-100">{t.catalog.noMatch}</h3>
-            <p className="text-sm text-zinc-400 mt-2 max-w-sm mx-auto leading-relaxed">
+            <h3 className="text-lg font-bold text-[#1C1917]">{t.catalog.noMatch}</h3>
+            <p className="text-sm text-[#57534E] mt-2 max-w-sm mx-auto leading-relaxed">
               {t.catalog.clearSearch}
             </p>
             <button
               type="button"
               onClick={handleResetFilters}
-              className="mt-6 px-5 py-2.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-zinc-950 text-xs font-bold uppercase tracking-wider shadow-md shadow-amber-400/20 active:scale-95 transition-all"
+              className="mt-6 px-5 py-2.5 rounded-xl bg-[#8C6A48] hover:bg-[#6D5135] text-white text-xs font-bold uppercase tracking-wider shadow-soft-tint transition-all"
             >
               {t.catalog.resetAllFilters}
             </button>
@@ -252,10 +255,10 @@ export default function CatalogSection() {
             {filteredBuildings.map((building) => (
               <div
                 key={building.id}
-                className="rounded-2xl border border-zinc-800/90 bg-zinc-900/60 overflow-hidden hover:border-amber-500/40 transition-all duration-300 hover:shadow-medium-tint flex flex-col h-full group"
+                className="rounded-2xl border border-[#E5DFD3] bg-white overflow-hidden hover:border-[#8C6A48] transition-all duration-300 shadow-soft-tint hover:shadow-medium-tint flex flex-col h-full group"
               >
-                {/* Real Photography Image Header */}
-                <div className="relative h-60 w-full overflow-hidden bg-zinc-950 border-b border-zinc-800/80">
+                {/* Image Header */}
+                <div className="relative h-60 w-full overflow-hidden bg-[#EFECE4] border-b border-[#E5DFD3]">
                   <Image
                     src={building.image}
                     alt={building.name}
@@ -263,33 +266,33 @@ export default function CatalogSection() {
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/45 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
 
-                  {/* Top Badges (High Contrast WCAG AA) */}
+                  {/* Top Badges */}
                   <div className="absolute top-3 left-3 right-3 flex justify-between items-start z-10">
-                    <span className="px-2.5 py-1 rounded-full text-xs font-bold font-mono bg-zinc-950/90 text-amber-300 border border-amber-400/40 backdrop-blur-md shadow-sm">
+                    <span className="px-2.5 py-1 rounded-full text-xs font-bold font-mono bg-black/75 text-white border border-white/20 backdrop-blur-md shadow-sm">
                       {building.heightMeters} m • {building.floors} {t.buildingCard.floors}
                     </span>
-                    <span className="text-xs text-zinc-300 font-mono px-2.5 py-1 rounded-full bg-zinc-950/90 border border-zinc-800 backdrop-blur-md shadow-sm">
+                    <span className="text-xs text-white font-mono px-2.5 py-1 rounded-full bg-black/75 border border-white/20 backdrop-blur-md shadow-sm">
                       {building.yearBuilt}
                     </span>
                   </div>
 
-                  {/* District & Status Badges over photo */}
+                  {/* District & Status Badges */}
                   <div className="absolute bottom-3 left-4 right-4 z-10 flex items-center justify-between gap-2">
                     <Link
                       href={`/districts/${building.districtSlug}/`}
-                      className="text-xs text-amber-300 font-bold tracking-wider uppercase hover:underline drop-shadow-md truncate"
+                      className="text-xs text-white font-bold tracking-wider uppercase hover:underline drop-shadow-md truncate"
                     >
                       {building.district}
                     </Link>
 
                     <div className="flex items-center gap-1.5 shrink-0">
-                      <span className="px-2 py-0.5 rounded-md bg-zinc-900/90 text-[11px] font-medium text-zinc-200 border border-zinc-700/60 backdrop-blur-sm">
+                      <span className="px-2 py-0.5 rounded-md bg-white/90 text-[11px] font-bold text-[#1C1917] backdrop-blur-sm">
                         {typeMap[building.type] || building.type}
                       </span>
                       {building.status === "Under Construction" && (
-                        <span className="px-2 py-0.5 rounded-md bg-amber-500/25 text-amber-200 text-[11px] font-semibold border border-amber-500/40 backdrop-blur-sm">
+                        <span className="px-2 py-0.5 rounded-md bg-[#9E4732] text-white text-[11px] font-bold backdrop-blur-sm">
                           {t.catalog.underConstruction}
                         </span>
                       )}
@@ -297,75 +300,73 @@ export default function CatalogSection() {
                   </div>
                 </div>
 
-                {/* Card Content & Architectural Spec Hierarchy (Playbook elimination of 'Label: Value' anti-pattern) */}
+                {/* Card Content */}
                 <div className="p-5 flex-1 flex flex-col justify-between space-y-4">
                   <div>
                     {/* Tower Name */}
-                    <h3 className="text-xl font-bold text-zinc-100 group-hover:text-amber-300 transition-colors tracking-tight">
+                    <h3 className="text-xl font-bold text-[#1C1917] group-hover:text-[#8C6A48] transition-colors tracking-tight">
                       <Link href={`/buildings/${building.slug}/`}>
                         {building.name}
                       </Link>
                     </h3>
 
                     {/* Description Snippet */}
-                    <p className="text-xs text-zinc-400 mt-2 line-clamp-2 leading-relaxed">
+                    <p className="text-xs text-[#57534E] mt-2 line-clamp-2 leading-relaxed">
                       {building.description}
                     </p>
 
-                    {/* Architectural Specifications - structured tags with iconography */}
-                    <div className="mt-4 pt-3 border-t border-zinc-800/70 grid grid-cols-2 gap-2 text-xs">
+                    {/* Architectural Specifications Grid */}
+                    <div className="mt-4 pt-3 border-t border-[#EFECE4] grid grid-cols-2 gap-2 text-xs">
                       {/* Architect */}
-                      <div className="p-2 rounded-xl bg-zinc-950/60 border border-zinc-800/80">
-                        <div className="text-[11px] uppercase tracking-wider text-zinc-500 font-medium">
+                      <div className="p-2.5 rounded-xl bg-[#FAF8F5] border border-[#E5DFD3]">
+                        <div className="text-[11px] uppercase tracking-wider text-[#78716C] font-semibold">
                           {t.buildingCard.architect}
                         </div>
-                        <div className="text-zinc-200 font-semibold truncate mt-0.5" title={building.architectFirm}>
+                        <div className="font-bold text-[#1C1917] truncate mt-0.5">
                           {building.architect}
                         </div>
                       </div>
 
                       {/* Developer */}
-                      <div className="p-2 rounded-xl bg-zinc-950/60 border border-zinc-800/80">
-                        <div className="text-[11px] uppercase tracking-wider text-zinc-500 font-medium">
+                      <div className="p-2.5 rounded-xl bg-[#FAF8F5] border border-[#E5DFD3]">
+                        <div className="text-[11px] uppercase tracking-wider text-[#78716C] font-semibold">
                           {t.buildingCard.developer}
                         </div>
-                        <div className="text-zinc-200 font-semibold truncate mt-0.5">
+                        <div className="font-bold text-[#1C1917] truncate mt-0.5">
                           {building.developer}
                         </div>
                       </div>
                     </div>
-
-                    {/* Investment Yield Badge (Prominent Key Metric) */}
-                    {building.investmentYield !== "N/A" && (
-                      <div className="mt-2.5 px-3 py-1.5 rounded-xl bg-emerald-950/30 border border-emerald-500/30 flex items-center justify-between text-xs">
-                        <span className="text-emerald-300 font-medium flex items-center gap-1.5">
-                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-                          {t.catalog.estRentalYield}
-                        </span>
-                        <span className="text-emerald-400 font-bold font-mono text-sm">
-                          {building.investmentYield}
-                        </span>
-                      </div>
-                    )}
                   </div>
 
-                  {/* Card Actions: Primary & Secondary with strict 'mt-auto' bottom pinning */}
-                  <div className="mt-auto pt-4 border-t border-zinc-800/80 flex items-center justify-between gap-3">
-                    {/* Primary Button */}
+                  {/* Financial & Yield Metric Bar */}
+                  <div className="pt-3 border-t border-[#EFECE4] flex items-center justify-between">
+                    <div>
+                      <div className="text-[11px] uppercase text-[#78716C] font-bold">
+                        Net Yield
+                      </div>
+                      <div className="text-sm font-extrabold text-[#2D6A4F] font-mono">
+                        {building.investmentYield}
+                      </div>
+                    </div>
+                    <div className="text-right">
+                      <div className="text-[11px] uppercase text-[#78716C] font-bold">
+                        Цены от
+                      </div>
+                      <div className="text-sm font-bold text-[#8C6A48] font-mono">
+                        {building.startingPriceAed}
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* CTA Footer */}
+                  <div className="pt-2">
                     <Link
                       href={`/buildings/${building.slug}/`}
-                      className="flex-1 inline-flex items-center justify-center px-4 py-2 rounded-xl text-xs font-bold text-zinc-950 bg-amber-400 hover:bg-amber-300 transition-all shadow-sm shadow-amber-400/20 active:scale-98 group/btn"
+                      className="w-full flex items-center justify-center gap-1.5 py-2.5 rounded-xl bg-[#FAF8F5] hover:bg-[#8C6A48] text-[#8C6A48] hover:text-white border border-[#E5DFD3] hover:border-[#8C6A48] text-xs font-bold transition-all"
                     >
-                      <span>{t.buildingCard.viewDetails}</span>
-                      <span className="ml-1.5 group-hover/btn:translate-x-0.5 transition-transform">&rarr;</span>
-                    </Link>
-
-                    {/* Secondary Button */}
-                    <Link
-                      href={`/buildings/${building.slug}/#inquire`}
-                      className="px-3.5 py-2 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-zinc-200 hover:text-white text-xs font-semibold transition-colors border border-zinc-700/60"
-                    >
-                      {t.buildingCard.inquireUnits}
+                      <span>Инженерный паспорт ТТХ</span>
+                      <span>&rarr;</span>
                     </Link>
                   </div>
                 </div>

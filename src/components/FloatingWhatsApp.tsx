@@ -35,13 +35,13 @@ export default function FloatingWhatsApp() {
         <div
           className={`hidden sm:block absolute ${
             isRtl ? "left-16" : "right-16"
-          } bg-zinc-900 border border-emerald-500/30 text-zinc-100 text-xs px-3.5 py-2 rounded-xl shadow-2xl whitespace-nowrap backdrop-blur-md animate-fade-in`}
+          } bg-white border border-[#E5DFD3] text-[#1C1917] text-xs px-3.5 py-2 rounded-xl shadow-medium-tint whitespace-nowrap backdrop-blur-md animate-fade-in`}
         >
           <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-            <span className="font-semibold text-emerald-400">RERA Broker Online</span>
+            <span className="w-2 h-2 rounded-full bg-[#2D6A4F] animate-pulse" />
+            <span className="font-bold text-[#2D6A4F]">RERA Broker Online</span>
           </div>
-          <p className="text-[11px] text-zinc-400 mt-0.5">
+          <p className="text-[11px] text-[#78716C] mt-0.5">
             {t.whatsapp.tooltip}
           </p>
         </div>

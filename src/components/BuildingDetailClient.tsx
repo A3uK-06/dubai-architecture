@@ -36,69 +36,72 @@ export default function BuildingDetailClient({
   );
 
   return (
-    <article className="min-h-screen bg-zinc-950 text-zinc-100 pb-24">
+    <article className="min-h-screen bg-[#F7F5F0] text-[#1C1917] pb-24 transition-colors">
       <SchemaOrg type="building" building={building} />
 
-      {/* Hero Header */}
-      <div className="relative border-b border-zinc-800/80 bg-gradient-to-b from-zinc-900/80 via-zinc-950 to-zinc-950 pt-10 pb-16">
+      {/* Hero Header in Warm Sand & Travertine */}
+      <div className="relative border-b border-[#E5DFD3] bg-[#EFECE4]/60 pt-10 pb-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Breadcrumb */}
-          <nav className="flex items-center gap-2 text-xs text-zinc-400 mb-6 font-medium">
-            <Link href="/" className="hover:text-amber-400 transition-colors">
+          <nav className="flex items-center gap-2 text-xs text-[#78716C] mb-6 font-semibold">
+            <Link href="/" className="hover:text-[#8C6A48] transition-colors">
               {bd.breadcrumbHome}
             </Link>
-            <span className="text-zinc-600">/</span>
-            <Link href="/#catalog" className="hover:text-amber-400 transition-colors">
+            <span className="text-[#DDD7CA]">/</span>
+            <Link href="/#catalog" className="hover:text-[#8C6A48] transition-colors">
               {bd.breadcrumbCatalog}
             </Link>
-            <span className="text-zinc-600">/</span>
+            <span className="text-[#DDD7CA]">/</span>
             <Link
               href={`/districts/${building.districtSlug}/`}
-              className="hover:text-amber-400 transition-colors"
+              className="hover:text-[#8C6A48] transition-colors"
             >
               {building.district}
             </Link>
-            <span className="text-zinc-600">/</span>
-            <span className="text-zinc-200 font-semibold">{building.name}</span>
+            <span className="text-[#DDD7CA]">/</span>
+            <span className="text-[#1C1917] font-bold">{building.name}</span>
           </nav>
 
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
             <div className="space-y-3">
               <div className="flex flex-wrap items-center gap-2">
-                <span className="px-3 py-1 rounded-full text-xs font-bold font-mono bg-amber-400/15 text-amber-300 border border-amber-400/35">
+                <span className="px-3 py-1 rounded-full text-xs font-bold font-mono bg-[#8C6A48] text-white shadow-soft-tint">
                   {building.heightMeters} m ({building.heightFeet} ft)
                 </span>
-                <span className="px-3 py-1 rounded-full text-xs font-semibold bg-zinc-800/90 text-zinc-300 border border-zinc-700/60">
+                <span className="px-3 py-1 rounded-full text-xs font-semibold bg-white text-[#57534E] border border-[#DDD7CA]">
                   {building.floors} {bd.storeys}
                 </span>
-                <span className="px-3 py-1 rounded-full text-xs font-semibold bg-zinc-800/90 text-zinc-300 border border-zinc-700/60">
+                <span className="px-3 py-1 rounded-full text-xs font-semibold bg-white text-[#57534E] border border-[#DDD7CA]">
                   {bd.built} {building.yearBuilt}
                 </span>
+                <span className="px-3 py-1 rounded-full text-xs font-semibold bg-white text-[#57534E] border border-[#DDD7CA]">
+                  {building.type}
+                </span>
                 {building.legacyId && (
-                  <span className="px-2.5 py-1 rounded-full text-xs font-mono bg-zinc-900 border border-zinc-700 text-amber-400">
+                  <span className="px-2.5 py-1 rounded-full text-xs font-mono bg-[#EFECE4] border border-[#DDD7CA] text-[#8C6A48] font-bold">
                     {bd.archiveId}: {building.legacyId}
                   </span>
                 )}
               </div>
 
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-zinc-100 tracking-tight leading-tight">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#1C1917] tracking-tight leading-tight">
                 {building.name}
               </h1>
 
-              <div className="flex flex-wrap items-center gap-4 text-sm text-zinc-400 pt-1">
+              <div className="flex flex-wrap items-center gap-4 text-sm text-[#57534E] pt-1">
                 <div>
-                  <span className="text-zinc-500">{bd.architectLabel}: </span>
-                  <span className="text-zinc-200 font-semibold">{building.architect}</span> ({building.architectFirm})
+                  <span className="text-[#78716C]">{bd.architectLabel}: </span>
+                  <span className="text-[#1C1917] font-bold">{building.architect}</span> ({building.architectFirm})
                 </div>
-                <div className="text-zinc-600">•</div>
+                <div className="text-[#DDD7CA]">•</div>
                 <div>
-                  <span className="text-zinc-500">{bd.developerLabel}: </span>
-                  <span className="text-zinc-200 font-semibold">{building.developer}</span>
+                  <span className="text-[#78716C]">{bd.developerLabel}: </span>
+                  <span className="text-[#1C1917] font-bold">{building.developer}</span>
                 </div>
-                <div className="text-zinc-600">•</div>
+                <div className="text-[#DDD7CA]">•</div>
                 <div>
-                  <span className="text-zinc-500">{bd.districtLabel}: </span>
-                  <Link href={`/districts/${building.districtSlug}/`} className="text-amber-400 hover:underline font-medium">
+                  <span className="text-[#78716C]">{bd.districtLabel}: </span>
+                  <Link href={`/districts/${building.districtSlug}/`} className="text-[#8C6A48] hover:underline font-bold">
                     {building.district}
                   </Link>
                 </div>
@@ -106,20 +109,20 @@ export default function BuildingDetailClient({
             </div>
 
             {/* Quick Investment Metric Pill */}
-            <div className="p-4 rounded-2xl bg-zinc-900/90 border border-amber-500/30 shadow-soft-tint flex items-center gap-6 backdrop-blur-md">
+            <div className="p-5 rounded-2xl bg-white border border-[#E5DFD3] shadow-soft-tint flex items-center gap-6">
               <div>
-                <div className="text-xs uppercase tracking-wider text-zinc-400 font-medium">
+                <div className="text-xs uppercase tracking-wider text-[#78716C] font-bold">
                   {bd.estRentalYield}
                 </div>
-                <div className="text-2xl font-extrabold text-emerald-400 font-mono mt-0.5">
+                <div className="text-2xl font-extrabold text-[#2D6A4F] font-mono mt-0.5">
                   {building.investmentYield}
                 </div>
               </div>
-              <div className="border-l border-zinc-800 pl-6">
-                <div className="text-xs uppercase tracking-wider text-zinc-400 font-medium">
+              <div className="border-l border-[#E5DFD3] pl-6">
+                <div className="text-xs uppercase tracking-wider text-[#78716C] font-bold">
                   {bd.unitsFrom}
                 </div>
-                <div className="text-lg font-bold text-amber-300 font-mono mt-0.5">
+                <div className="text-lg font-bold text-[#8C6A48] font-mono mt-0.5">
                   {building.startingPriceAed}
                 </div>
               </div>
@@ -130,8 +133,8 @@ export default function BuildingDetailClient({
 
       {/* Main Content Layout */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12">
-        {/* Real Architectural Photography Showcase with Tinted Shadow */}
-        <div className="relative w-full h-80 sm:h-96 lg:h-[480px] rounded-3xl overflow-hidden border border-zinc-800/80 shadow-strong-tint mb-12 bg-zinc-950">
+        {/* Architectural Photography Showcase */}
+        <div className="relative w-full h-80 sm:h-96 lg:h-[480px] rounded-3xl overflow-hidden border border-[#E5DFD3] shadow-medium-tint mb-12 bg-[#EFECE4]">
           <Image
             src={building.image}
             alt={building.name}
@@ -140,21 +143,21 @@ export default function BuildingDetailClient({
             sizes="(max-width: 1280px) 100vw, 1280px"
             className="object-cover object-center"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/20 to-transparent" />
-          <div className="absolute bottom-6 left-6 right-6 flex flex-wrap items-end justify-between gap-4 z-10">
+          <div className="absolute inset-0 bg-gradient-to-t from-[#1C1917]/80 via-transparent to-transparent" />
+          <div className="absolute bottom-6 left-6 right-6 flex flex-wrap items-end justify-between gap-4 z-10 text-white">
             <div className="space-y-1">
-              <span className="text-xs uppercase font-mono tracking-wider text-amber-300 bg-zinc-950/85 px-3 py-1 rounded-full border border-amber-400/30 backdrop-blur-md">
+              <span className="text-xs uppercase font-mono tracking-wider bg-black/60 px-3 py-1 rounded-full border border-white/20 backdrop-blur-md">
                 {building.district} • {building.type}
               </span>
-              <h2 className="text-zinc-100 text-2xl sm:text-3xl font-extrabold drop-shadow-lg">
+              <h2 className="text-white text-2xl sm:text-3xl font-extrabold drop-shadow-md">
                 {building.name}
               </h2>
             </div>
             <div className="flex items-center gap-2">
-              <span className="px-3 py-1.5 rounded-full text-xs font-bold font-mono bg-zinc-950/85 text-emerald-400 border border-emerald-500/40 backdrop-blur-md">
+              <span className="px-3 py-1.5 rounded-full text-xs font-bold font-mono bg-white/90 text-[#2D6A4F] shadow-sm backdrop-blur-md">
                 {building.investmentYield}
               </span>
-              <span className="px-3 py-1.5 rounded-full text-xs font-mono font-bold bg-amber-400 text-zinc-950 shadow-md">
+              <span className="px-3 py-1.5 rounded-full text-xs font-mono font-bold bg-[#8C6A48] text-white shadow-md">
                 {building.startingPriceAed}
               </span>
             </div>
@@ -162,33 +165,39 @@ export default function BuildingDetailClient({
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-          {/* Left 2 Columns: Architectural Specs & History */}
+          {/* Left 2 Columns: Full Engineering Passport & Architectural Analysis */}
           <div className="lg:col-span-2 space-y-12">
+            
             {/* Architectural Overview */}
             <section className="space-y-4">
-              <h2 className="text-2xl font-bold text-zinc-100 border-b border-zinc-800/80 pb-3 tracking-tight">
-                {bd.historyTitle}
-              </h2>
-              <p className="text-base text-zinc-300 leading-relaxed max-w-prose">
+              <div className="flex items-center justify-between border-b border-[#E5DFD3] pb-3">
+                <h2 className="text-2xl font-bold text-[#1C1917] tracking-tight">
+                  {bd.historyTitle}
+                </h2>
+                <span className="text-xs font-mono font-bold text-[#8C6A48] uppercase tracking-wider">
+                  РАЗБОР КОНЦЕПЦИИ
+                </span>
+              </div>
+              <p className="text-base text-[#57534E] leading-relaxed max-w-prose">
                 {building.description}
               </p>
               {building.historicalNote && (
-                <div className="p-4 rounded-xl bg-amber-500/10 border border-amber-500/30 text-amber-300 text-sm leading-relaxed">
-                  <strong>{bd.historyNote}: </strong>
+                <div className="p-4 rounded-xl bg-[#EFECE4] border border-[#DDD7CA] text-[#57534E] text-sm leading-relaxed">
+                  <strong className="text-[#8C6A48] font-bold">{bd.historyNote}: </strong>
                   {building.historicalNote}
                 </div>
               )}
             </section>
 
-            {/* Engineering Highlights */}
+            {/* Architectural Highlights */}
             <section className="space-y-4">
-              <h2 className="text-2xl font-bold text-zinc-100 border-b border-zinc-800/80 pb-3 tracking-tight">
+              <h2 className="text-2xl font-bold text-[#1C1917] border-b border-[#E5DFD3] pb-3 tracking-tight">
                 {bd.highlightsTitle}
               </h2>
               <ul className="space-y-3">
                 {building.architecturalHighlights.map((highlight, index) => (
-                  <li key={index} className="flex items-start gap-3 text-sm text-zinc-300 leading-relaxed">
-                    <span className="w-5 h-5 rounded-full bg-amber-400/20 text-amber-400 flex items-center justify-center text-xs shrink-0 mt-0.5">
+                  <li key={index} className="flex items-start gap-3 text-sm text-[#57534E] leading-relaxed">
+                    <span className="w-5 h-5 rounded-full bg-[#8C6A48]/15 text-[#8C6A48] flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">
                       ✓
                     </span>
                     <span>{highlight}</span>
@@ -197,77 +206,229 @@ export default function BuildingDetailClient({
               </ul>
             </section>
 
-            {/* Structural Specification Matrix */}
-            <section className="space-y-4">
-              <h2 className="text-2xl font-bold text-zinc-100 border-b border-zinc-800/80 pb-3 tracking-tight">
-                {bd.ttxTitle}
-              </h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-sm">
-                <div className="p-4 rounded-xl bg-zinc-900/80 border border-zinc-800 shadow-soft-tint">
-                  <div className="text-xs text-zinc-400 font-medium">{bd.officialHeight}</div>
-                  <div className="text-base font-bold text-zinc-100 font-mono mt-1">
-                    {building.heightMeters} m / {building.heightFeet} ft
+            {/* HARD TTX: Full Structural & Geotechnical Passport */}
+            {building.foundation && (
+              <section className="space-y-6 pt-4">
+                <div className="flex items-center justify-between border-b-2 border-[#8C6A48] pb-3">
+                  <div>
+                    <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#8C6A48]">
+                      ENGINEERING SPECIFICATION MATRIX
+                    </span>
+                    <h2 className="text-2xl font-extrabold text-[#1C1917] tracking-tight">
+                      Инженерно-технический паспорт (Hard TTX)
+                    </h2>
+                  </div>
+                  <span className="hidden sm:inline-block px-3 py-1 rounded-full text-xs font-mono font-semibold bg-[#EFECE4] text-[#8C6A48] border border-[#DDD7CA]">
+                    VERIFIED DLD / CTBUH DATA
+                  </span>
+                </div>
+
+                {/* 1. Geotechnical & Foundation */}
+                <div className="rounded-2xl border border-[#E5DFD3] bg-white p-6 shadow-soft-tint space-y-4">
+                  <div className="flex items-center gap-2.5 text-sm font-bold text-[#8C6A48] border-b border-[#EFECE4] pb-2 uppercase tracking-wide">
+                    <span>🏗️</span>
+                    <span>Геотехника и свайный фундамент</span>
+                  </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 text-xs">
+                    <div className="p-3 rounded-xl bg-[#FAF8F5] border border-[#EFECE4]">
+                      <div className="text-[#78716C] font-medium">Количество свай</div>
+                      <div className="text-base font-bold text-[#1C1917] font-mono mt-1">{building.foundation.pilesCount} шт.</div>
+                    </div>
+                    <div className="p-3 rounded-xl bg-[#FAF8F5] border border-[#EFECE4]">
+                      <div className="text-[#78716C] font-medium">Глубина бурения свай</div>
+                      <div className="text-base font-bold text-[#1C1917] font-mono mt-1">{building.foundation.pileDepthMeters} м</div>
+                    </div>
+                    <div className="p-3 rounded-xl bg-[#FAF8F5] border border-[#EFECE4]">
+                      <div className="text-[#78716C] font-medium">Диаметр свай</div>
+                      <div className="text-base font-bold text-[#1C1917] font-mono mt-1">{building.foundation.pileDiameterMeters}</div>
+                    </div>
+                    <div className="p-3 rounded-xl bg-[#FAF8F5] border border-[#EFECE4] sm:col-span-2 md:col-span-1">
+                      <div className="text-[#78716C] font-medium">Толщина ростверка</div>
+                      <div className="text-base font-bold text-[#1C1917] font-mono mt-1">{building.foundation.raftThicknessMeters}</div>
+                    </div>
+                    <div className="p-3 rounded-xl bg-[#FAF8F5] border border-[#EFECE4] sm:col-span-2">
+                      <div className="text-[#78716C] font-medium">Опорная коренная порода</div>
+                      <div className="text-xs font-semibold text-[#1C1917] mt-1">{building.foundation.bedrockType}</div>
+                    </div>
                   </div>
                 </div>
-                <div className="p-4 rounded-xl bg-zinc-900/80 border border-zinc-800 shadow-soft-tint">
-                  <div className="text-xs text-zinc-400 font-medium">{bd.totalFloors}</div>
-                  <div className="text-base font-bold text-zinc-100 font-mono mt-1">
-                    {building.floors} {bd.aboveGroundLevels}
+
+                {/* 2. Wind Engineering & Structural Frame */}
+                <div className="rounded-2xl border border-[#E5DFD3] bg-white p-6 shadow-soft-tint space-y-4">
+                  <div className="flex items-center gap-2.5 text-sm font-bold text-[#8C6A48] border-b border-[#EFECE4] pb-2 uppercase tracking-wide">
+                    <span>💨</span>
+                    <span>Ветроустойчивость и несущий каркас</span>
+                  </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+                    <div className="p-3.5 rounded-xl bg-[#FAF8F5] border border-[#EFECE4]">
+                      <div className="text-[#78716C] font-medium">Пространственная схема жесткости</div>
+                      <div className="text-xs font-semibold text-[#1C1917] mt-1 leading-relaxed">{building.windStructural.lateralSystem}</div>
+                    </div>
+                    <div className="p-3.5 rounded-xl bg-[#FAF8F5] border border-[#EFECE4]">
+                      <div className="text-[#78716C] font-medium">Гашение вихрей (Vortex Shedding)</div>
+                      <div className="text-xs font-semibold text-[#1C1917] mt-1 leading-relaxed">{building.windStructural.dampingMechanism}</div>
+                    </div>
+                    <div className="p-3.5 rounded-xl bg-[#FAF8F5] border border-[#EFECE4]">
+                      <div className="text-[#78716C] font-medium">Максимальное отклонение верхушки (Шторм 50 лет)</div>
+                      <div className="text-sm font-bold text-[#8C6A48] font-mono mt-1">{building.windStructural.maxApexSwayMeters}</div>
+                    </div>
+                    <div className="p-3.5 rounded-xl bg-[#FAF8F5] border border-[#EFECE4]">
+                      <div className="text-[#78716C] font-medium">Класс прочности бетона ядра</div>
+                      <div className="text-sm font-bold text-[#1C1917] font-mono mt-1">{building.windStructural.concreteStrengthGrade}</div>
+                    </div>
                   </div>
                 </div>
-                <div className="p-4 rounded-xl bg-zinc-900/80 border border-zinc-800 shadow-soft-tint">
-                  <div className="text-xs text-zinc-400 font-medium">{bd.yearCompleted}</div>
-                  <div className="text-base font-bold text-zinc-100 font-mono mt-1">
-                    {building.yearBuilt}
+
+                {/* 3. Facade & Glazing Technologies */}
+                <div className="rounded-2xl border border-[#E5DFD3] bg-white p-6 shadow-soft-tint space-y-4">
+                  <div className="flex items-center gap-2.5 text-sm font-bold text-[#8C6A48] border-b border-[#EFECE4] pb-2 uppercase tracking-wide">
+                    <span>☀️</span>
+                    <span>Фасадное остекление и климатическая стойкость</span>
+                  </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
+                    <div className="p-3 rounded-xl bg-[#FAF8F5] border border-[#EFECE4] sm:col-span-3">
+                      <div className="text-[#78716C] font-medium">Спецификация стеклопакетов</div>
+                      <div className="text-xs font-semibold text-[#1C1917] mt-1 leading-relaxed">{building.facade.glazingType}</div>
+                    </div>
+                    <div className="p-3 rounded-xl bg-[#FAF8F5] border border-[#EFECE4]">
+                      <div className="text-[#78716C] font-medium">Солнцезащитный фактор (SHGC)</div>
+                      <div className="text-sm font-bold text-[#1C1917] font-mono mt-1">{building.facade.shgcSolarCoefficient}</div>
+                    </div>
+                    <div className="p-3 rounded-xl bg-[#FAF8F5] border border-[#EFECE4]">
+                      <div className="text-[#78716C] font-medium">Теплопередача U-Value</div>
+                      <div className="text-sm font-bold text-[#1C1917] font-mono mt-1">{building.facade.uValueWPerM2K}</div>
+                    </div>
+                    <div className="p-3 rounded-xl bg-[#FAF8F5] border border-[#EFECE4]">
+                      <div className="text-[#78716C] font-medium">Цикл мойки фасада люльками BMU</div>
+                      <div className="text-sm font-bold text-[#1C1917] font-mono mt-1">{building.facade.cleaningCycleDays}</div>
+                    </div>
+                    <div className="p-3 rounded-xl bg-[#FAF8F5] border border-[#EFECE4] sm:col-span-3">
+                      <div className="text-[#78716C] font-medium">Система фасадного обслуживания (BMU)</div>
+                      <div className="text-xs text-[#57534E] mt-1">{building.facade.bmuCleaningSystem}</div>
+                    </div>
                   </div>
                 </div>
-                <div className="p-4 rounded-xl bg-zinc-900/80 border border-zinc-800 shadow-soft-tint">
-                  <div className="text-xs text-zinc-400 font-medium">{bd.buildingType}</div>
-                  <div className="text-base font-bold text-zinc-100 mt-1">
-                    {building.type}
+
+                {/* 4. Vertical Transport (Elevators) */}
+                <div className="rounded-2xl border border-[#E5DFD3] bg-white p-6 shadow-soft-tint space-y-4">
+                  <div className="flex items-center gap-2.5 text-sm font-bold text-[#8C6A48] border-b border-[#EFECE4] pb-2 uppercase tracking-wide">
+                    <span>🛗</span>
+                    <span>Вертикальный транспорт (Лифты)</span>
+                  </div>
+                  <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs">
+                    <div className="p-3 rounded-xl bg-[#FAF8F5] border border-[#EFECE4]">
+                      <div className="text-[#78716C] font-medium">Производитель</div>
+                      <div className="text-base font-bold text-[#1C1917] mt-1">{building.verticalTransport.elevatorManufacturer}</div>
+                    </div>
+                    <div className="p-3 rounded-xl bg-[#FAF8F5] border border-[#EFECE4]">
+                      <div className="text-[#78716C] font-medium">Всего лифтов</div>
+                      <div className="text-base font-bold text-[#1C1917] font-mono mt-1">{building.verticalTransport.totalElevators} кабин</div>
+                    </div>
+                    <div className="p-3 rounded-xl bg-[#FAF8F5] border border-[#EFECE4]">
+                      <div className="text-[#78716C] font-medium">Макс. скорость</div>
+                      <div className="text-base font-bold text-[#8C6A48] font-mono mt-1">{building.verticalTransport.maxSpeedMs} м/с</div>
+                    </div>
+                    <div className="p-3 rounded-xl bg-[#FAF8F5] border border-[#EFECE4]">
+                      <div className="text-[#78716C] font-medium">Ожидание в пик</div>
+                      <div className="text-base font-bold text-[#1C1917] font-mono mt-1">{building.verticalTransport.peakWaitingSeconds}</div>
+                    </div>
+                    <div className="p-3 rounded-xl bg-[#FAF8F5] border border-[#EFECE4] col-span-2 sm:col-span-4">
+                      <div className="text-[#78716C] font-medium">Схема зонирования и шлюзы</div>
+                      <div className="text-xs text-[#57534E] mt-1">{building.verticalTransport.zoningStrategy}</div>
+                    </div>
                   </div>
                 </div>
-                <div className="p-4 rounded-xl bg-zinc-900/80 border border-zinc-800 sm:col-span-2 shadow-soft-tint">
-                  <div className="text-xs text-zinc-400 font-medium">{bd.structuralSystem}</div>
-                  <div className="text-base font-semibold text-zinc-200 mt-1 leading-relaxed">
-                    {building.structuralSystem || "Reinforced concrete structural core with high-performance perimeter columns"}
+
+                {/* 5. Resident Reality & Operating Economics */}
+                <div className="rounded-2xl border-2 border-[#8C6A48]/30 bg-white p-6 shadow-medium-tint space-y-4">
+                  <div className="flex items-center justify-between border-b border-[#EFECE4] pb-2">
+                    <div className="flex items-center gap-2.5 text-sm font-bold text-[#1C1917] uppercase tracking-wide">
+                      <span>📊</span>
+                      <span>Экономика резидента: Коммунальные платежи и комфорт</span>
+                    </div>
+                    <span className="text-xs font-mono font-bold text-[#8C6A48]">DLD OFFICIAL INDEX</span>
+                  </div>
+                  <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
+                    <div className="p-4 rounded-xl bg-[#EFECE4]/60 border border-[#DDD7CA]">
+                      <div className="text-[#78716C] font-medium uppercase">Service Charge (Ежегодно)</div>
+                      <div className="text-xl font-extrabold text-[#1C1917] font-mono mt-1">
+                        {building.operatingSpecs.annualServiceChargeAedSqFt} <span className="text-xs font-normal">AED/sq.ft</span>
+                      </div>
+                      <p className="text-[11px] text-[#78716C] mt-1">Официальный тариф реестра RERA на обслуживание</p>
+                    </div>
+                    <div className="p-4 rounded-xl bg-[#EFECE4]/60 border border-[#DDD7CA]">
+                      <div className="text-[#78716C] font-medium uppercase">Тип охлаждения (Chiller)</div>
+                      <div className="text-base font-bold text-[#1C1917] mt-1">{building.operatingSpecs.coolingProvider}</div>
+                      <span className={`inline-block mt-1 px-2 py-0.5 rounded text-[11px] font-bold ${
+                        building.operatingSpecs.chillerBilling === 'Chiller-Free' 
+                          ? 'bg-[#2D6A4F]/10 text-[#2D6A4F]' 
+                          : 'bg-[#9E4732]/10 text-[#9E4732]'
+                      }`}>
+                        {building.operatingSpecs.chillerBilling}
+                      </span>
+                    </div>
+                    <div className="p-4 rounded-xl bg-[#EFECE4]/60 border border-[#DDD7CA]">
+                      <div className="text-[#78716C] font-medium uppercase">Звукоизоляция межквартирная</div>
+                      <div className="text-xl font-extrabold text-[#1C1917] font-mono mt-1">{building.operatingSpecs.acousticRatingDb}</div>
+                      <p className="text-[11px] text-[#78716C] mt-1">Индекс снижения воздушного шума перекрытий</p>
+                    </div>
+                    <div className="p-3.5 rounded-xl bg-[#FAF8F5] border border-[#EFECE4]">
+                      <div className="text-[#78716C] font-medium">Высота потолков (В чистоте)</div>
+                      <div className="text-sm font-bold text-[#1C1917] font-mono mt-1">{building.operatingSpecs.clearCeilingHeightMeters} м</div>
+                    </div>
+                    <div className="p-3.5 rounded-xl bg-[#FAF8F5] border border-[#EFECE4]">
+                      <div className="text-[#78716C] font-medium">Колонны внутри планировок</div>
+                      <div className="text-xs font-bold text-[#1C1917] mt-1">{building.layoutEfficiency.columnImpact}</div>
+                    </div>
+                    <div className="p-3.5 rounded-xl bg-[#FAF8F5] border border-[#EFECE4]">
+                      <div className="text-[#78716C] font-medium">Полезная площадь (Net-to-Gross)</div>
+                      <div className="text-sm font-bold text-[#2D6A4F] font-mono mt-1">{building.layoutEfficiency.netToGrossRatio}</div>
+                    </div>
                   </div>
                 </div>
-              </div>
-            </section>
+
+              </section>
+            )}
+
           </div>
 
-          {/* Right Column: Lead Capture & Investment Widget (Right-aligned numeric data per Playbook) */}
+          {/* Right Column: Lead Capture & Investment Widget */}
           <div className="space-y-6">
-            <div id="inquire" className="sticky top-24 p-6 rounded-3xl border border-amber-500/40 bg-zinc-900/90 shadow-medium-tint backdrop-blur-xl space-y-6">
+            <div id="inquire" className="sticky top-24 p-6 rounded-3xl border border-[#E5DFD3] bg-white shadow-medium-tint space-y-6">
               <div className="space-y-1.5">
-                <div className="inline-block px-2.5 py-1 rounded-md text-xs font-bold uppercase tracking-wider bg-amber-400 text-zinc-950">
+                <div className="inline-block px-2.5 py-1 rounded-md text-xs font-bold uppercase tracking-wider bg-[#8C6A48] text-white">
                   {bd.verifiedAllocation}
                 </div>
-                <h3 className="text-xl font-bold text-zinc-100">
+                <h3 className="text-xl font-bold text-[#1C1917]">
                   {bd.investIn} {building.name}
                 </h3>
-                <p className="text-xs text-zinc-400 leading-relaxed">
+                <p className="text-xs text-[#57534E] leading-relaxed">
                   {bd.investSubtitle}
                 </p>
               </div>
 
-              <div className="space-y-3 py-3 border-y border-zinc-800 text-xs">
+              <div className="space-y-3 py-3 border-y border-[#EFECE4] text-xs">
                 <div className="flex justify-between items-center">
-                  <span className="text-zinc-400">{bd.entryPriceAed}</span>
-                  <span className="font-mono font-bold text-zinc-100 text-right">{building.startingPriceAed}</span>
+                  <span className="text-[#78716C]">{bd.entryPriceAed}</span>
+                  <span className="font-mono font-bold text-[#1C1917] text-right">{building.startingPriceAed}</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-zinc-400">{bd.entryPriceUsd}</span>
-                  <span className="font-mono font-bold text-zinc-100 text-right">{building.startingPriceUsd}</span>
+                  <span className="text-[#78716C]">{bd.entryPriceUsd}</span>
+                  <span className="font-mono font-bold text-[#1C1917] text-right">{building.startingPriceUsd}</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-zinc-400">{bd.projectedYield}</span>
-                  <span className="font-mono font-bold text-emerald-400 text-right">{building.investmentYield}</span>
+                  <span className="text-[#78716C]">{bd.projectedYield}</span>
+                  <span className="font-mono font-bold text-[#2D6A4F] text-right">{building.investmentYield}</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-zinc-400">{bd.goldenVisaEligible}</span>
-                  <span className="font-semibold text-amber-400 text-right">{bd.goldenVisaEligibleValue}</span>
+                  <span className="text-[#78716C]">Годовой сбор DLD</span>
+                  <span className="font-mono font-bold text-[#8C6A48] text-right">
+                    {building.operatingSpecs ? `${building.operatingSpecs.annualServiceChargeAedSqFt} AED/sq.ft` : "По запросу"}
+                  </span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-[#78716C]">{bd.goldenVisaEligible}</span>
+                  <span className="font-semibold text-[#8C6A48] text-right">{bd.goldenVisaEligibleValue}</span>
                 </div>
               </div>
 
@@ -276,7 +437,7 @@ export default function BuildingDetailClient({
                 href={`https://wa.me/971500000000?text=${whatsappMessage}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-zinc-950 font-bold text-sm shadow-md shadow-emerald-500/20 active:scale-98 transition-all"
+                className="w-full flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-[#2D6A4F] hover:bg-[#1E4D38] text-white font-bold text-sm shadow-soft-tint active:scale-98 transition-all"
               >
                 <span>💬</span>
                 <span>{bd.inquireWhatsApp}</span>
@@ -284,12 +445,12 @@ export default function BuildingDetailClient({
 
               <a
                 href="#inquire"
-                className="w-full block text-center px-4 py-2.5 rounded-xl border border-zinc-700/80 hover:bg-zinc-800 text-xs text-zinc-300 font-semibold transition-colors"
+                className="w-full block text-center px-4 py-2.5 rounded-xl border border-[#DDD7CA] hover:bg-[#FAF8F5] text-xs text-[#57534E] font-semibold transition-colors"
               >
                 {bd.requestFloorplans}
               </a>
 
-              <div className="text-xs text-zinc-500 text-center leading-normal">
+              <div className="text-xs text-[#78716C] text-center leading-normal">
                 {bd.reraNotice}
               </div>
             </div>
@@ -298,8 +459,8 @@ export default function BuildingDetailClient({
 
         {/* Related District Towers */}
         {relatedBuildings.length > 0 && (
-          <div className="mt-20 pt-12 border-t border-zinc-800/80">
-            <h2 className="text-xl font-bold text-zinc-100 mb-6 tracking-tight">
+          <div className="mt-20 pt-12 border-t border-[#E5DFD3]">
+            <h2 className="text-xl font-bold text-[#1C1917] mb-6 tracking-tight">
               {bd.moreTowersIn} {building.district}
             </h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -307,9 +468,9 @@ export default function BuildingDetailClient({
                 <Link
                   key={rel.id}
                   href={`/buildings/${rel.slug}/`}
-                  className="rounded-2xl bg-zinc-900/60 border border-zinc-800 hover:border-amber-400/40 transition-all overflow-hidden group flex flex-col justify-between shadow-soft-tint hover:shadow-medium-tint"
+                  className="rounded-2xl bg-white border border-[#E5DFD3] hover:border-[#8C6A48] transition-all overflow-hidden group flex flex-col justify-between shadow-soft-tint hover:shadow-medium-tint"
                 >
-                  <div className="relative h-44 w-full overflow-hidden bg-zinc-950">
+                  <div className="relative h-44 w-full overflow-hidden bg-[#EFECE4]">
                     <Image
                       src={rel.image}
                       alt={rel.name}
@@ -317,23 +478,23 @@ export default function BuildingDetailClient({
                       sizes="(max-width: 768px) 100vw, 33vw"
                       className="object-cover group-hover:scale-105 transition-transform duration-500"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
                     <div className="absolute top-2.5 left-2.5 z-10">
-                      <span className="text-xs text-amber-300 font-mono font-bold px-2.5 py-1 rounded-full bg-zinc-950/85 border border-amber-400/30 backdrop-blur-md shadow-sm">
+                      <span className="text-xs text-white font-mono font-bold px-2.5 py-1 rounded-full bg-black/70 border border-white/20 backdrop-blur-md shadow-sm">
                         {rel.heightMeters}m • {rel.floors} {bd.storeys}
                       </span>
                     </div>
                   </div>
                   <div className="p-4 space-y-2 flex-1 flex flex-col justify-between">
                     <div>
-                      <h4 className="text-base font-bold text-zinc-100 group-hover:text-amber-300 transition-colors">
+                      <h4 className="text-base font-bold text-[#1C1917] group-hover:text-[#8C6A48] transition-colors">
                         {rel.name}
                       </h4>
-                      <p className="text-xs text-zinc-400 mt-1 line-clamp-2 leading-relaxed">
+                      <p className="text-xs text-[#57534E] mt-1 line-clamp-2 leading-relaxed">
                         {rel.description}
                       </p>
                     </div>
-                    <div className="pt-2 text-xs font-bold text-amber-400 flex items-center justify-between">
+                    <div className="pt-2 text-xs font-bold text-[#8C6A48] flex items-center justify-between">
                       <span>{t.buildingCard.viewDetails}</span>
                       <span className="group-hover:translate-x-1 transition-transform">&rarr;</span>
                     </div>
