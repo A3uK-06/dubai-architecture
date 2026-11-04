@@ -39,23 +39,23 @@ export default function DistrictsSection() {
             <Link
               key={district.id}
               href={`/districts/${district.slug}/`}
-              className="group rounded-2xl border border-[#E5DFD3] bg-white overflow-hidden flex flex-col h-full hover:border-[#8C6A48] transition-all duration-300 shadow-soft-tint hover:shadow-medium-tint"
+              className="group rounded-2xl border border-[#E5DFD3] bg-white overflow-hidden flex flex-col h-full hover:border-[#8C6A48] transition-all duration-300 shadow-soft-tint hover:shadow-strong-tint luxury-card-sheen"
             >
               {/* Photography Header */}
-              <div className="relative h-48 w-full overflow-hidden bg-[#EFECE4] border-b border-[#E5DFD3]">
+              <div className="relative h-52 w-full overflow-hidden bg-[#EFECE4] border-b border-[#E5DFD3]">
                 <Image
                   src={district.image}
                   alt={district.name}
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
-                  className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                  className="object-cover group-hover:scale-108 transition-transform duration-700 ease-out"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-black/30" />
                 <div className="absolute top-3 left-3 right-3 flex justify-between items-start z-10">
-                  <span className="text-xs font-bold font-mono px-2.5 py-1 rounded-full bg-black/75 text-white border border-white/20 backdrop-blur-md shadow-sm">
+                  <span className="text-xs font-bold font-mono px-3 py-1 rounded-full bg-black/80 text-white border border-white/25 backdrop-blur-md shadow-sm">
                     ROI: {district.averageRoi}
                   </span>
-                  <span className="text-xs text-white font-mono px-2.5 py-1 rounded-full bg-black/75 border border-white/20 backdrop-blur-md shadow-sm">
+                  <span className="text-xs text-white font-mono font-bold px-2.5 py-1 rounded-full bg-black/80 border border-white/25 backdrop-blur-md shadow-sm">
                     {district.iconicTowersCount}+ {t.districts.towersCount}
                   </span>
                 </div>
@@ -64,7 +64,7 @@ export default function DistrictsSection() {
               {/* District Content */}
               <div className="p-5 flex-1 flex flex-col justify-between space-y-4">
                 <div>
-                  <h3 className="text-xl font-bold text-[#1C1917] group-hover:text-[#8C6A48] transition-colors tracking-tight">
+                  <h3 className="text-xl font-extrabold text-[#1C1917] font-heading group-hover:text-[#8C6A48] transition-colors tracking-tight">
                     {district.name}
                   </h3>
                   <div className="text-xs text-[#78716C] mt-1 font-semibold">

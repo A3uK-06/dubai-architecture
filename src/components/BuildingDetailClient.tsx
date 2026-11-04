@@ -178,6 +178,27 @@ export default function BuildingDetailClient({
                   РАЗБОР КОНЦЕПЦИИ
                 </span>
               </div>
+
+              {/* Prominent Clickable District Location Bar */}
+              <div className="p-4 rounded-2xl bg-[#FAF8F5] border border-[#DDD7CA] flex flex-wrap items-center justify-between gap-3 shadow-xs">
+                <div className="flex items-center gap-2.5">
+                  <span className="text-lg">📍</span>
+                  <span className="text-xs text-[#78716C] font-semibold">{bd.districtLocationLabel || "Район расположения:"}</span>
+                  <Link
+                    href={`/districts/${building.districtSlug}/`}
+                    className="text-sm font-extrabold text-[#8C6A48] hover:text-[#6D5135] underline underline-offset-4 transition-colors"
+                  >
+                    {building.district} ↗
+                  </Link>
+                </div>
+                <Link
+                  href={`/districts/${building.districtSlug}/`}
+                  className="px-3.5 py-1.5 rounded-xl bg-white border border-[#DDD7CA] hover:border-[#8C6A48] text-xs font-bold text-[#8C6A48] hover:text-[#6D5135] transition-all shadow-2xs"
+                >
+                  {bd.exploreDistrictCta || "Смотреть мастер-план района →"}
+                </Link>
+              </div>
+
               <p className="text-base text-[#57534E] leading-relaxed max-w-prose">
                 {building.description}
               </p>
@@ -206,6 +227,29 @@ export default function BuildingDetailClient({
               </ul>
             </section>
 
+            {/* Dedicated District Deep-Dive Navigation Banner */}
+            <div className="p-6 sm:p-7 rounded-2xl bg-gradient-to-r from-[#FAF8F5] via-[#EFECE4] to-[#FAF8F5] border-2 border-[#DDD7CA] shadow-soft-tint flex flex-col md:flex-row items-start md:items-center justify-between gap-5">
+              <div className="space-y-2">
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#8C6A48]/15 text-[#8C6A48] text-xs font-mono font-bold uppercase tracking-wider">
+                  <span>🏙️</span>
+                  <span>{bd.districtBannerBadge || "ГОРОДСКОЙ КОНТЕКСТ И АНАЛИТИКА"}</span>
+                </div>
+                <h3 className="text-xl font-extrabold text-[#1C1917] tracking-tight">
+                  {bd.districtBannerTitle || `Район расположения: ${building.district}`}
+                </h3>
+                <p className="text-xs text-[#57534E] max-w-xl leading-relaxed">
+                  {bd.districtBannerDesc || `Изучите инфраструктуру, транспортные развязки, пробки в часы пик, типы охлаждения (Chiller) и сервис-сборы района ${building.district}.`}
+                </p>
+              </div>
+              <Link
+                href={`/districts/${building.districtSlug}/`}
+                className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-[#8C6A48] hover:bg-[#6D5135] text-white font-bold text-xs uppercase tracking-wider transition-all shadow-md shrink-0 group"
+              >
+                <span>{bd.districtBannerButton || `Перейти к аналитике района ${building.district}`}</span>
+                <span className="group-hover:translate-x-1 transition-transform">&rarr;</span>
+              </Link>
+            </div>
+
             {/* HARD TTX: Full Structural & Geotechnical Passport */}
             {building.foundation && (
               <section className="space-y-6 pt-4">
@@ -222,6 +266,42 @@ export default function BuildingDetailClient({
                     VERIFIED DLD / CTBUH DATA
                   </span>
                 </div>
+
+                {/* 0. Engineering Teams & General Contractor */}
+                {(building.mainContractor || building.structuralEngineer) && (
+                  <div className="rounded-2xl border border-[#E5DFD3] bg-white p-6 shadow-soft-tint space-y-4">
+                    <div className="flex items-center gap-2.5 text-sm font-bold text-[#8C6A48] border-b border-[#EFECE4] pb-2 uppercase tracking-wide">
+                      <span>👷</span>
+                      <span>Генеральный подрядчик и инженерная команда</span>
+                    </div>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+                      {building.mainContractor && (
+                        <div className="p-3.5 rounded-xl bg-[#FAF8F5] border border-[#EFECE4]">
+                          <div className="text-[#78716C] font-medium">{bd.contractorLabel || "Генеральный подрядчик"}</div>
+                          <div className="text-sm font-bold text-[#1C1917] mt-1">{building.mainContractor}</div>
+                        </div>
+                      )}
+                      {building.structuralEngineer && (
+                        <div className="p-3.5 rounded-xl bg-[#FAF8F5] border border-[#EFECE4]">
+                          <div className="text-[#78716C] font-medium">{bd.structuralEngineerLabel || "Главный инженер-конструктор"}</div>
+                          <div className="text-sm font-bold text-[#1C1917] mt-1">{building.structuralEngineer}</div>
+                        </div>
+                      )}
+                      {building.mepEngineer && (
+                        <div className="p-3.5 rounded-xl bg-[#FAF8F5] border border-[#EFECE4]">
+                          <div className="text-[#78716C] font-medium">{bd.mepEngineerLabel || "MEP Инженерия"}</div>
+                          <div className="text-xs font-semibold text-[#1C1917] mt-1">{building.mepEngineer}</div>
+                        </div>
+                      )}
+                      {building.urbanIntegration && (
+                        <div className="p-3.5 rounded-xl bg-[#FAF8F5] border border-[#EFECE4]">
+                          <div className="text-[#78716C] font-medium">Транспортная интеграция</div>
+                          <div className="text-xs font-semibold text-[#8C6A48] mt-1">{building.urbanIntegration}</div>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                )}
 
                 {/* 1. Geotechnical & Foundation */}
                 <div className="rounded-2xl border border-[#E5DFD3] bg-white p-6 shadow-soft-tint space-y-4">

@@ -72,6 +72,10 @@ export interface Building {
   structuralSystem: string;
   image: string;
   gallery?: string[];
+  mainContractor?: string;
+  structuralEngineer?: string;
+  mepEngineer?: string;
+  urbanIntegration?: string;
 
   // Detailed Engineering TTX
   foundation: FoundationSpecs;
@@ -115,6 +119,10 @@ export const BUILDINGS: Building[] = [
     ],
     historicalNote: "Featured prominently on dubai-architecture.info during its initial construction phase as 'Burj Dubai'.",
     structuralSystem: "Reinforced concrete buttressed core with high-performance outriggers",
+    mainContractor: "Samsung C&T / BESIX / Arabtec Joint Venture",
+    structuralEngineer: "Bill Baker / Skidmore, Owings & Merrill (SOM) & Hyder Consulting",
+    mepEngineer: "Skidmore, Owings & Merrill (SOM)",
+    urbanIntegration: "Connected via climatized metro link to Dubai Mall & Burj Khalifa/Dubai Mall Metro Station",
     foundation: {
       pilesCount: 192,
       pileDepthMeters: 50,
@@ -188,6 +196,10 @@ export const BUILDINGS: Building[] = [
     ],
     historicalNote: "The signature flagship towers documented since the launch of dubai-architecture.info in 2006.",
     structuralSystem: "Steel and concrete composite frame with triangular spatial truss crown",
+    mainContractor: "Al Ghurair Multiplex",
+    structuralEngineer: "Hyder Consulting & Norr Group",
+    mepEngineer: "Drake & Scull International",
+    urbanIntegration: "Direct metro air-conditioned bridge to Emirates Towers Metro Station & DIFC gate",
     foundation: {
       pilesCount: 160,
       pileDepthMeters: 42,
@@ -261,6 +273,10 @@ export const BUILDINGS: Building[] = [
     ],
     historicalNote: "Architectural benchmark of UAE luxury since the domain's inception.",
     structuralSystem: "Steel exoskeleton truss with concrete triangular mast and shear walls",
+    mainContractor: "Murray & Roberts / Al Habtoor Engineering",
+    structuralEngineer: "Atkins Global",
+    mepEngineer: "Atkins Global",
+    urbanIntegration: "Private causeway connection to Jumeirah Beach Road and Madinat Jumeirah",
     foundation: {
       pilesCount: 250,
       pileDepthMeters: 45,
@@ -334,6 +350,10 @@ export const BUILDINGS: Building[] = [
     ],
     historicalNote: "Documented during its dramatic foundation sea-wall repair in 2007-2008.",
     structuralSystem: "Cast-in-place concrete cylindrical core with perimeter inclined columns",
+    mainContractor: "Arabtec Construction",
+    structuralEngineer: "Skidmore, Owings & Merrill (SOM)",
+    mepEngineer: "Khatib & Alami",
+    urbanIntegration: "Direct exit to Marina Walk and Dubai Tram Marina Towers station",
     foundation: {
       pilesCount: 144,
       pileDepthMeters: 38,
@@ -408,6 +428,10 @@ export const BUILDINGS: Building[] = [
     ],
     historicalNote: "The modern symbolic successor to Emirates Towers on dubai-architecture.info.",
     structuralSystem: "Diagrid steel framework with post-tensioned concrete ring beam foundation",
+    mainContractor: "BAM International",
+    structuralEngineer: "Buro Happold Engineering",
+    mepEngineer: "Buro Happold Engineering",
+    urbanIntegration: "Direct 212-meter pedestrian skybridge to Emirates Towers Metro Station",
     foundation: {
       pilesCount: 110,
       pileDepthMeters: 35,
@@ -481,6 +505,10 @@ export const BUILDINGS: Building[] = [
       "Home to the world's first One&Only urban vertical resort",
     ],
     structuralSystem: "Reinforced concrete core walls with composite structural steel outriggers and bridge trusses",
+    mainContractor: "ALEC Engineering & Contracting",
+    structuralEngineer: "Nikken Sekkei & WSP Middle East",
+    mepEngineer: "WSP Middle East",
+    urbanIntegration: "Elevated skyway bridge link to Dubai World Trade Centre & Max Metro Station",
     foundation: {
       pilesCount: 320,
       pileDepthMeters: 48,
@@ -554,6 +582,10 @@ export const BUILDINGS: Building[] = [
       "Over 90 swimming pools across the entire master development",
     ],
     structuralSystem: "Concrete shear walls with post-tensioned cantilever transfer trusses",
+    mainContractor: "Six Construct (BESIX) / Ssangyong Engineering JV",
+    structuralEngineer: "WSP Middle East",
+    mepEngineer: "WSP Middle East",
+    urbanIntegration: "Connected to Palm Jumeirah Monorail Crescent loop",
     foundation: {
       pilesCount: 350,
       pileDepthMeters: 42,
@@ -626,6 +658,10 @@ export const BUILDINGS: Building[] = [
       "Six subterranean parking levels accommodating over 950 vehicles",
     ],
     structuralSystem: "Reinforced concrete core wall with perimeter column frame",
+    mainContractor: "Arabian Construction Company (ACC)",
+    structuralEngineer: "Adnan Saffarini Office",
+    mepEngineer: "National Engineering Bureau (NEB)",
+    urbanIntegration: "Direct front-row frontage on Al Sufouh Tram Line & Marina Walk",
     foundation: {
       pilesCount: 220,
       pileDepthMeters: 45,
@@ -698,6 +734,10 @@ export const BUILDINGS: Building[] = [
       "Distinctive tiered spire illuminated with programmed RGB fiber optics",
     ],
     structuralSystem: "High-strength reinforced concrete shear core with concrete outrigger frames",
+    mainContractor: "Sheffield Holdings / TAV Construction",
+    structuralEngineer: "National Engineering Bureau (NEB)",
+    mepEngineer: "National Engineering Bureau (NEB)",
+    urbanIntegration: "Fast egress via King Salman Bin Abdulaziz Al Saud St",
     foundation: {
       pilesCount: 215,
       pileDepthMeters: 46,
@@ -770,6 +810,10 @@ export const BUILDINGS: Building[] = [
       "Award-winning Neos sky lounge on the 63rd floor",
     ],
     structuralSystem: "Reinforced concrete core and flat slab structural framing",
+    mainContractor: "Arabtec Construction",
+    structuralEngineer: "Atkins Global",
+    mepEngineer: "Atkins Global",
+    urbanIntegration: "Direct enclosed skybridge to Dubai Mall Fashion Avenue",
     foundation: {
       pilesCount: 175,
       pileDepthMeters: 40,
@@ -842,6 +886,10 @@ export const BUILDINGS: Building[] = [
       "Houses the Dubai Diamond Exchange and state-of-the-art secure vaults",
     ],
     structuralSystem: "Reinforced concrete core with radial outriggers",
+    mainContractor: "Taisei Corporation / Arabian Construction Company (ACC)",
+    structuralEngineer: "Atkins Global",
+    mepEngineer: "Atkins Global",
+    urbanIntegration: "Centrally positioned on JLT East Lake with direct footbridges to DMCC Metro Station",
     foundation: {
       pilesCount: 190,
       pileDepthMeters: 44,
@@ -915,6 +963,10 @@ export const BUILDINGS: Building[] = [
       "Column-free interior residential and commercial floorplates",
     ],
     structuralSystem: "Massive concrete buttress butt-ends with clear central column-free spans",
+    mainContractor: "Multiplex Constructions",
+    structuralEngineer: "Foster + Partners & Halvorson and Partners",
+    mepEngineer: "Foster + Partners & Battle McCarthy",
+    urbanIntegration: "Direct internal airbridge connection to DIFC Gate Avenue concourse",
     foundation: {
       pilesCount: 165,
       pileDepthMeters: 42,
@@ -989,6 +1041,10 @@ export const BUILDINGS: Building[] = [
       "Open-air vertical boulevard linking interlocking sky gardens",
     ],
     structuralSystem: "Reinforced concrete core with perimeter composite steel-concrete twisting columns",
+    mainContractor: "Arabtec / China State Construction (CSCEC)",
+    structuralEngineer: "Werner Sobek Engineering",
+    mepEngineer: "Werner Sobek Engineering",
+    urbanIntegration: "Direct frontage on Sheikh Zayed Road with direct pedestrian access to Financial Centre Metro",
     foundation: {
       pilesCount: 180,
       pileDepthMeters: 45,
@@ -1061,6 +1117,10 @@ export const BUILDINGS: Building[] = [
       "Dedicated concierge, private chef services, and Jacob & Co members club",
     ],
     structuralSystem: "Ultra-high-strength concrete central core with mega-column outriggers",
+    mainContractor: "Binghatti Contracting",
+    structuralEngineer: "Binghatti Engineering Consulting & Thornton Tomasetti",
+    mepEngineer: "Speirs Major & Binghatti In-House",
+    urbanIntegration: "Direct access to Al Khail Road and Business Bay water canal water taxis",
     foundation: {
       pilesCount: 260,
       pileDepthMeters: 60,
@@ -1133,6 +1193,10 @@ export const BUILDINGS: Building[] = [
       "Over 1,000 luxury hotel suites operated by Vignette Collection (IHG)",
     ],
     structuralSystem: "Reinforced concrete core walls with composite perimeter frames",
+    mainContractor: "China Railway 18th Bureau Group",
+    structuralEngineer: "NORR Group Consultants",
+    mepEngineer: "NORR Group Consultants",
+    urbanIntegration: "Located adjacent to Marina Walk and Dubai Marina Tram station",
     foundation: {
       pilesCount: 165,
       pileDepthMeters: 44,
@@ -1205,6 +1269,10 @@ export const BUILDINGS: Building[] = [
       "Private cigar lounge, screening cinema, and sky spa at Level 70",
     ],
     structuralSystem: "Reinforced concrete mega-core with composite steel-concrete outrigger trusses",
+    mainContractor: "London Gate Contracting",
+    structuralEngineer: "WSP Middle East",
+    mepEngineer: "Hilson Moran",
+    urbanIntegration: "Positioned on Marina North corridor with swift access to Sheikh Zayed Road E11",
     foundation: {
       pilesCount: 230,
       pileDepthMeters: 52,
@@ -1277,6 +1345,10 @@ export const BUILDINGS: Building[] = [
       "Direct VIP pedestrian tunnel connection into the Dubai Opera House",
     ],
     structuralSystem: "Reinforced concrete core with post-tensioned wide-span floorplates",
+    mainContractor: "TAV Construction",
+    structuralEngineer: "WSP Middle East",
+    mepEngineer: "WSP Middle East",
+    urbanIntegration: "Prime address directly opposite Dubai Opera on Mohammed Bin Rashid Boulevard",
     foundation: {
       pilesCount: 170,
       pileDepthMeters: 45,
@@ -1349,6 +1421,10 @@ export const BUILDINGS: Building[] = [
       "4,300 unique curved double-glazed panels manufactured using 3D hot-bending techniques",
     ],
     structuralSystem: "Reinforced concrete twin towers linked with curved structural steel sky bridge trusses",
+    mainContractor: "Multiplex Constructions",
+    structuralEngineer: "Buro Happold Engineering",
+    mepEngineer: "Buro Happold Engineering",
+    urbanIntegration: "Direct frontage on Al A'amal Street with quick link to Business Bay Metro",
     foundation: {
       pilesCount: 140,
       pileDepthMeters: 35,
@@ -1421,6 +1497,10 @@ export const BUILDINGS: Building[] = [
       "Anchor tower for DMCC's 10-million sq.ft new smart district masterplan",
     ],
     structuralSystem: "Reinforced concrete core with perimeter composite mega-columns",
+    mainContractor: "BESIX (Six Construct)",
+    structuralEngineer: "Adrian Smith + Gordon Gill Architecture & Thornton Tomasetti",
+    mepEngineer: "Adrian Smith + Gordon Gill",
+    urbanIntegration: "Central anchor of Uptown Dubai with direct highway ramps to First Al Khail St",
     foundation: {
       pilesCount: 185,
       pileDepthMeters: 48,
@@ -1493,6 +1573,10 @@ export const BUILDINGS: Building[] = [
       "Infinity sky pool and observation deck suspended on Level 65",
     ],
     structuralSystem: "Reinforced concrete core and flat slab system with perimeter outriggers",
+    mainContractor: "Sobha Constructions",
+    structuralEngineer: "P&T Group",
+    mepEngineer: "Sobha Engineering",
+    urbanIntegration: "Frontline position on Dubai Harbour Marina Boulevard with yacht berths",
     foundation: {
       pilesCount: 160,
       pileDepthMeters: 45,
@@ -1565,6 +1649,10 @@ export const BUILDINGS: Building[] = [
       "Direct covered bridge access into the 350-store Nakheel Mall",
     ],
     structuralSystem: "Reinforced concrete core and perimeter column frame with rooftop transfer cantilever",
+    mainContractor: "Trojan General Contracting",
+    structuralEngineer: "RSP Architects Planners & Engineers",
+    mepEngineer: "RSP Engineering",
+    urbanIntegration: "Integrated with Nakheel Mall and direct covered bridge to Palm Monorail",
     foundation: {
       pilesCount: 150,
       pileDepthMeters: 38,
@@ -1637,6 +1725,10 @@ export const BUILDINGS: Building[] = [
       "Delivers exceptional short-term holiday-let returns averaging 10%+ net",
     ],
     structuralSystem: "Reinforced concrete cylindrical core with post-tensioned cantilevered radial slabs",
+    mainContractor: "China State Construction Engineering Corporation (CSCEC)",
+    structuralEngineer: "Atkins Global",
+    mepEngineer: "Atkins Global",
+    urbanIntegration: "Immediate vehicular egress to Al Khail Road (E44) and Hessa Street (D61)",
     foundation: {
       pilesCount: 135,
       pileDepthMeters: 36,
@@ -1709,6 +1801,10 @@ export const BUILDINGS: Building[] = [
       "Double-height living rooms with 6.5-meter clear glass ceiling voids",
     ],
     structuralSystem: "Reinforced concrete core with wide post-tensioned spans and steel cantilever frames",
+    mainContractor: "Omniyat In-House / Roberts Construction",
+    structuralEngineer: "Foster + Partners & Buro Happold",
+    mepEngineer: "Buro Happold",
+    urbanIntegration: "Direct private marina berth on Marasi Bay canal with water limousine transit",
     foundation: {
       pilesCount: 110,
       pileDepthMeters: 38,
@@ -1780,6 +1876,10 @@ export const BUILDINGS: Building[] = [
       "Unobstructed views of the Downtown skyline and sunset reflections over Dubai Creek",
     ],
     structuralSystem: "Reinforced concrete frame with shear core walls",
+    mainContractor: "Al Basti & Muktha (ABM)",
+    structuralEngineer: "SSH Design",
+    mepEngineer: "SSH Design",
+    urbanIntegration: "Frontline promenade position on Creek Marina with RTA water taxi station",
     foundation: {
       pilesCount: 140,
       pileDepthMeters: 36,
@@ -1852,6 +1952,10 @@ export const BUILDINGS: Building[] = [
       "Direct climate-controlled airbridge into Dubai Mall and Metro station",
     ],
     structuralSystem: "Reinforced concrete core with structural steel bridge truss connection",
+    mainContractor: "Arabian Construction Company (ACC)",
+    structuralEngineer: "Skidmore, Owings & Merrill (SOM)",
+    mepEngineer: "Skidmore, Owings & Merrill (SOM)",
+    urbanIntegration: "Enclosed air-conditioned travelator bridge directly into Burj Khalifa/Dubai Mall Metro",
     foundation: {
       pilesCount: 210,
       pileDepthMeters: 44,
@@ -1924,6 +2028,10 @@ export const BUILDINGS: Building[] = [
       "Direct front-facing views of Burj Khalifa from expansive curved private terraces",
     ],
     structuralSystem: "High-performance concrete core with perimeter curved composite columns",
+    mainContractor: "Binghatti Contracting",
+    structuralEngineer: "Binghatti Engineering & Thornton Tomasetti",
+    mepEngineer: "Binghatti MEP Division",
+    urbanIntegration: "Situated on Mohammed Bin Rashid Boulevard within 4 minutes walking distance to Dubai Mall",
     foundation: {
       pilesCount: 175,
       pileDepthMeters: 46,

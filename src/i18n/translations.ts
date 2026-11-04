@@ -87,6 +87,9 @@ export interface TranslationDictionary {
     commercial: string;
     hotel: string;
     mixedUse: string;
+    exploreDistrict?: string;
+    districtLocationLabel?: string;
+    exploreDistrictInfrastructure?: string;
   };
   districts: {
     badge: string;
@@ -231,6 +234,15 @@ export interface TranslationDictionary {
     requestFloorplans: string;
     reraNotice: string;
     moreTowersIn: string;
+    districtBannerBadge?: string;
+    districtBannerTitle?: string;
+    districtBannerDesc?: string;
+    districtBannerButton?: string;
+    districtLocationLabel?: string;
+    exploreDistrictCta?: string;
+    contractorLabel?: string;
+    structuralEngineerLabel?: string;
+    mepEngineerLabel?: string;
   };
   districtDetail: {
     breadcrumbHome: string;
@@ -360,6 +372,9 @@ const enBase: TranslationDictionary = {
     commercial: "Commercial",
     hotel: "Luxury Hotel",
     mixedUse: "Mixed-Use",
+    exploreDistrict: "Explore District",
+    districtLocationLabel: "District:",
+    exploreDistrictInfrastructure: "infrastructure & prices",
   },
   districts: {
     badge: "8 Prime Investment Hubs",
@@ -504,6 +519,15 @@ const enBase: TranslationDictionary = {
     requestFloorplans: "Request Official PDF Floorplans",
     reraNotice: "🔒 Direct consultation via licensed RERA real estate brokers in Dubai. 0% buyer commission.",
     moreTowersIn: "More Architectural Icons in",
+    districtBannerBadge: "URBAN CONTEXT & DISTRICT PROFILE",
+    districtBannerTitle: "Explore District Infrastructure & Master Plan",
+    districtBannerDesc: "Examine rush-hour transit corridors, chiller specifications, service charges, and community investment yield.",
+    districtBannerButton: "Explore Full District Analytics",
+    districtLocationLabel: "District Location:",
+    exploreDistrictCta: "View District Master Plan & Transit",
+    contractorLabel: "Main Contractor:",
+    structuralEngineerLabel: "Structural Engineer:",
+    mepEngineerLabel: "MEP Consultant:",
   },
   districtDetail: {
     breadcrumbHome: "Home",
@@ -614,12 +638,15 @@ const ruTranslations: Partial<TranslationDictionary> = {
     architect: "Архитектор",
     developer: "Девелопер",
     district: "Район",
-    viewDetails: "Архитектурный профиль",
+    viewDetails: "Паспорт ТТХ",
     inquireUnits: "Цены и планировки",
     residential: "Жилой комплекс",
     commercial: "Бизнес-центр",
     hotel: "Отель люкс",
     mixedUse: "Многофункциональный",
+    exploreDistrict: "О районе",
+    districtLocationLabel: "Район:",
+    exploreDistrictInfrastructure: "инфраструктура и инвестиции",
   },
   districts: {
     badge: "8 ключевых инвестиционных центров",

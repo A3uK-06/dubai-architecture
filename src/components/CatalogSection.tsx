@@ -255,44 +255,46 @@ export default function CatalogSection() {
             {filteredBuildings.map((building) => (
               <div
                 key={building.id}
-                className="rounded-2xl border border-[#E5DFD3] bg-white overflow-hidden hover:border-[#8C6A48] transition-all duration-300 shadow-soft-tint hover:shadow-medium-tint flex flex-col h-full group"
+                className="rounded-2xl border border-[#E5DFD3] bg-white overflow-hidden hover:border-[#8C6A48] transition-all duration-300 shadow-soft-tint hover:shadow-strong-tint flex flex-col h-full group luxury-card-sheen"
               >
-                {/* Image Header */}
-                <div className="relative h-60 w-full overflow-hidden bg-[#EFECE4] border-b border-[#E5DFD3]">
+                {/* Image Header with Cinematic Luxury Vignette */}
+                <div className="relative h-64 w-full overflow-hidden bg-[#EFECE4] border-b border-[#E5DFD3]">
                   <Image
                     src={building.image}
                     alt={building.name}
                     fill
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                    className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
+                    className="object-cover object-center group-hover:scale-108 transition-transform duration-700 ease-out"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/25 to-black/30" />
 
                   {/* Top Badges */}
                   <div className="absolute top-3 left-3 right-3 flex justify-between items-start z-10">
-                    <span className="px-2.5 py-1 rounded-full text-xs font-bold font-mono bg-black/75 text-white border border-white/20 backdrop-blur-md shadow-sm">
+                    <span className="px-3 py-1 rounded-full text-xs font-bold font-mono bg-black/80 text-white border border-white/25 backdrop-blur-md shadow-sm">
                       {building.heightMeters} m • {building.floors} {t.buildingCard.floors}
                     </span>
-                    <span className="text-xs text-white font-mono px-2.5 py-1 rounded-full bg-black/75 border border-white/20 backdrop-blur-md shadow-sm">
+                    <span className="text-xs text-white font-mono font-bold px-2.5 py-1 rounded-full bg-black/80 border border-white/25 backdrop-blur-md shadow-sm">
                       {building.yearBuilt}
                     </span>
                   </div>
 
-                  {/* District & Status Badges */}
-                  <div className="absolute bottom-3 left-4 right-4 z-10 flex items-center justify-between gap-2">
+                  {/* District & Status Badges on Image */}
+                  <div className="absolute bottom-3 left-3 right-3 z-10 flex items-center justify-between gap-2">
                     <Link
                       href={`/districts/${building.districtSlug}/`}
-                      className="text-xs text-white font-bold tracking-wider uppercase hover:underline drop-shadow-md truncate"
+                      className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-black/75 hover:bg-[#8C6A48] text-white border border-white/20 backdrop-blur-md text-xs font-extrabold tracking-wider uppercase transition-colors truncate drop-shadow-md"
                     >
-                      {building.district}
+                      <span>📍</span>
+                      <span className="truncate">{building.district}</span>
+                      <span className="text-[10px]">↗</span>
                     </Link>
 
                     <div className="flex items-center gap-1.5 shrink-0">
-                      <span className="px-2 py-0.5 rounded-md bg-white/90 text-[11px] font-bold text-[#1C1917] backdrop-blur-sm">
+                      <span className="px-2.5 py-1 rounded-full bg-white/95 text-[11px] font-extrabold text-[#1C1917] backdrop-blur-md shadow-sm">
                         {typeMap[building.type] || building.type}
                       </span>
                       {building.status === "Under Construction" && (
-                        <span className="px-2 py-0.5 rounded-md bg-[#9E4732] text-white text-[11px] font-bold backdrop-blur-sm">
+                        <span className="px-2 py-0.5 rounded-full bg-[#9E4732] text-white text-[10px] font-bold backdrop-blur-sm shadow-xs">
                           {t.catalog.underConstruction}
                         </span>
                       )}
@@ -303,8 +305,22 @@ export default function CatalogSection() {
                 {/* Card Content */}
                 <div className="p-5 flex-1 flex flex-col justify-between space-y-4">
                   <div>
+                    {/* Explicit Clickable District Link in Card Body */}
+                    <div className="flex items-center gap-2 mb-2">
+                      <span className="text-xs">📍</span>
+                      <span className="text-[11px] font-bold text-[#78716C] uppercase tracking-wider">
+                        {t.buildingCard.districtLocationLabel || "Район:"}
+                      </span>
+                      <Link
+                        href={`/districts/${building.districtSlug}/`}
+                        className="text-xs font-extrabold text-[#8C6A48] hover:text-[#6D5135] underline underline-offset-2 transition-colors"
+                      >
+                        {building.district} ↗
+                      </Link>
+                    </div>
+
                     {/* Tower Name */}
-                    <h3 className="text-xl font-bold text-[#1C1917] group-hover:text-[#8C6A48] transition-colors tracking-tight">
+                    <h3 className="text-xl font-extrabold text-[#1C1917] font-heading group-hover:text-[#8C6A48] transition-colors tracking-tight">
                       <Link href={`/buildings/${building.slug}/`}>
                         {building.name}
                       </Link>
@@ -315,11 +331,22 @@ export default function CatalogSection() {
                       {building.description}
                     </p>
 
+                    {/* Prominent District Deep-Dive Bridge Link */}
+                    <Link
+                      href={`/districts/${building.districtSlug}/`}
+                      className="group/dst mt-3 p-2.5 rounded-xl bg-[#FAF8F5] hover:bg-[#EFECE4] border border-[#E5DFD3] hover:border-[#8C6A48]/40 transition-all flex items-center justify-between text-xs text-[#57534E]"
+                    >
+                      <span className="truncate">
+                        {t.buildingCard.districtLocationLabel || "Район:"} <strong className="text-[#1C1917]">{building.district}</strong> — {t.buildingCard.exploreDistrictInfrastructure || "инфраструктура и инвестиции"}
+                      </span>
+                      <span className="text-[#8C6A48] group-hover/dst:translate-x-1 transition-transform font-bold ml-1.5 shrink-0">→</span>
+                    </Link>
+
                     {/* Architectural Specifications Grid */}
-                    <div className="mt-4 pt-3 border-t border-[#EFECE4] grid grid-cols-2 gap-2 text-xs">
+                    <div className="mt-3.5 pt-3 border-t border-[#EFECE4] grid grid-cols-2 gap-2 text-xs">
                       {/* Architect */}
                       <div className="p-2.5 rounded-xl bg-[#FAF8F5] border border-[#E5DFD3]">
-                        <div className="text-[11px] uppercase tracking-wider text-[#78716C] font-semibold">
+                        <div className="text-[10px] uppercase tracking-wider text-[#78716C] font-semibold">
                           {t.buildingCard.architect}
                         </div>
                         <div className="font-bold text-[#1C1917] truncate mt-0.5">
@@ -329,7 +356,7 @@ export default function CatalogSection() {
 
                       {/* Developer */}
                       <div className="p-2.5 rounded-xl bg-[#FAF8F5] border border-[#E5DFD3]">
-                        <div className="text-[11px] uppercase tracking-wider text-[#78716C] font-semibold">
+                        <div className="text-[10px] uppercase tracking-wider text-[#78716C] font-semibold">
                           {t.buildingCard.developer}
                         </div>
                         <div className="font-bold text-[#1C1917] truncate mt-0.5">
@@ -342,31 +369,38 @@ export default function CatalogSection() {
                   {/* Financial & Yield Metric Bar */}
                   <div className="pt-3 border-t border-[#EFECE4] flex items-center justify-between">
                     <div>
-                      <div className="text-[11px] uppercase text-[#78716C] font-bold">
+                      <div className="text-[10px] uppercase tracking-wider text-[#78716C] font-bold">
                         Net Yield
                       </div>
-                      <div className="text-sm font-extrabold text-[#2D6A4F] font-mono">
+                      <div className="text-sm font-extrabold text-[#2D6A4F] font-mono mt-0.5">
                         {building.investmentYield}
                       </div>
                     </div>
                     <div className="text-right">
-                      <div className="text-[11px] uppercase text-[#78716C] font-bold">
+                      <div className="text-[10px] uppercase tracking-wider text-[#78716C] font-bold">
                         Цены от
                       </div>
-                      <div className="text-sm font-bold text-[#8C6A48] font-mono">
+                      <div className="text-sm font-bold text-[#8C6A48] font-mono mt-0.5">
                         {building.startingPriceAed}
                       </div>
                     </div>
                   </div>
 
-                  {/* CTA Footer */}
-                  <div className="pt-2">
+                  {/* Dual CTA Actions: Tower Passport + District Guide */}
+                  <div className="grid grid-cols-2 gap-2 pt-2">
                     <Link
                       href={`/buildings/${building.slug}/`}
-                      className="w-full flex items-center justify-center gap-1.5 py-2.5 rounded-xl bg-[#FAF8F5] hover:bg-[#8C6A48] text-[#8C6A48] hover:text-white border border-[#E5DFD3] hover:border-[#8C6A48] text-xs font-bold transition-all"
+                      className="flex items-center justify-center gap-1 py-2.5 px-3 rounded-xl bg-[#8C6A48] hover:bg-[#6D5135] text-white text-xs font-bold transition-all shadow-soft-tint group/btn"
                     >
-                      <span>Инженерный паспорт ТТХ</span>
-                      <span>&rarr;</span>
+                      <span>{t.buildingCard.viewDetails || "Паспорт ТТХ"}</span>
+                      <span className="group-hover/btn:translate-x-0.5 transition-transform">&rarr;</span>
+                    </Link>
+                    <Link
+                      href={`/districts/${building.districtSlug}/`}
+                      className="flex items-center justify-center gap-1 py-2.5 px-3 rounded-xl bg-[#FAF8F5] hover:bg-[#EFECE4] text-[#8C6A48] hover:text-[#6D5135] border border-[#E5DFD3] hover:border-[#8C6A48]/50 text-xs font-bold transition-all group/btn"
+                    >
+                      <span>{t.buildingCard.exploreDistrict || "О районе"}</span>
+                      <span className="group-hover/btn:translate-x-0.5 transition-transform">&rarr;</span>
                     </Link>
                   </div>
                 </div>
