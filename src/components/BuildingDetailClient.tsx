@@ -36,11 +36,11 @@ export default function BuildingDetailClient({
   );
 
   return (
-    <article className="min-h-screen bg-[#F7F5F0] text-[#1C1917] pb-24 transition-colors">
+    <article className="min-h-screen bg-[#F8F9FA] text-[#0F172A] pb-24 transition-colors">
       <SchemaOrg type="building" building={building} />
 
-      {/* Hero Header in Warm Sand & Travertine */}
-      <div className="relative border-b border-[#E5DFD3] bg-[#EFECE4]/60 pt-10 pb-16">
+      {/* Hero Header */}
+      <div className="relative border-b border-[#E2E8F0] bg-[#F1F5F9]/60 pt-10 pb-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-xs text-[#78716C] mb-6 font-semibold">

@@ -22,9 +22,9 @@ export default function Home() {
   };
 
   return (
-    <div className="flex-1 flex flex-col bg-[#F7F5F0] text-[#1C1917] transition-colors">
+    <div className="flex-1 flex flex-col bg-[#F8F9FA] text-[#0F172A] transition-colors">
       {/* Hero Section */}
-      <section className="relative overflow-hidden pt-12 pb-20 md:pt-20 md:pb-28 border-b border-[#E5DFD3] bg-[#EFECE4]/50">
+      <section className="relative overflow-hidden pt-12 pb-20 md:pt-20 md:pb-28 border-b border-[#E2E8F0] bg-gradient-to-b from-[#F1F5F9]/60 to-[#F8F9FA]">
         {/* Real Architectural Skyline Background */}
         <div className="absolute inset-0 z-0 pointer-events-none">
           <Image
@@ -33,21 +33,21 @@ export default function Home() {
             fill
             priority
             sizes="100vw"
-            className="object-cover object-center opacity-15"
+            className="object-cover object-center opacity-10"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#F7F5F0]/60 via-[#F7F5F0]/85 to-[#F7F5F0]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#F8F9FA]/60 via-[#F8F9FA]/85 to-[#F8F9FA]" />
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="flex flex-col items-center text-center max-w-4xl mx-auto space-y-6">
             {/* Heritage Trust Badge */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#DDD7CA] bg-white text-[#8C6A48] text-xs font-bold tracking-wide shadow-soft-tint">
-              <span className="w-2 h-2 rounded-full bg-[#8C6A48] animate-pulse" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#CBD5E1] bg-white text-[#0F172A] text-xs font-bold tracking-wide shadow-sm">
+              <span className="w-2 h-2 rounded-full bg-[#0F172A] animate-pulse" />
               <span>{t.hero.badge}</span>
             </div>
 
             {/* Main Headline */}
-            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight text-[#1C1917] leading-[1.1]">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-[#0F172A] font-heading leading-[1.12]">
               {t.hero.title}{" "}
               <span className="text-[#8C6A48]">
                 {t.hero.titleHighlight}
@@ -55,11 +55,11 @@ export default function Home() {
             </h1>
 
             {/* Subtitle */}
-            <p className="text-base sm:text-lg text-[#57534E] max-w-2xl font-normal leading-relaxed">
+            <p className="text-base sm:text-lg text-[#475569] max-w-[65ch] font-normal leading-relaxed">
               Независимый архитектурный архив с 2006 года: детальные инженерные паспорта небоскребов Дубая, геотехника свайных фундаментов, ветроустойчивость, коммунальные тарифы DLD и инвестиционный аудит планировок.
             </p>
 
-            {/* Search Bar */}
+            {/* Search Bar - Architectural Visual Anchor */}
             <div className="w-full max-w-2xl mt-4">
               <form
                 onSubmit={(e) => {
@@ -69,7 +69,7 @@ export default function Home() {
                 }}
                 className="relative flex items-center"
               >
-                <div className={`absolute ${isRtl ? "right-4" : "left-4"} text-[#78716C] pointer-events-none`}>
+                <div className={`absolute ${isRtl ? "right-4" : "left-4"} text-[#64748B] pointer-events-none`}>
                   <svg
                     className="w-5 h-5"
                     width="20"
@@ -91,7 +91,7 @@ export default function Home() {
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder={t.hero.searchPlaceholder}
-                  className={`w-full py-4 rounded-2xl bg-white border border-[#DDD7CA] text-[#1C1917] placeholder-[#78716C] shadow-medium-tint focus:outline-none focus:ring-2 focus:ring-[#8C6A48] transition-all text-sm sm:text-base ${
+                  className={`w-full h-[52px] rounded-xl bg-white border border-[#CBD5E1] text-[#0F172A] placeholder-[#64748B] shadow-float-card focus:outline-none focus:ring-2 focus:ring-[#0F172A] transition-all text-sm sm:text-base ${
                     isRtl ? "pr-12 pl-36" : "pl-12 pr-36"
                   }`}
                 />
@@ -99,7 +99,7 @@ export default function Home() {
                   type="submit"
                   className={`absolute ${
                     isRtl ? "left-2" : "right-2"
-                  } px-5 py-2.5 rounded-xl bg-[#8C6A48] hover:bg-[#6D5135] text-white font-bold text-xs uppercase tracking-wider transition-all shadow-soft-tint`}
+                  } h-10 px-5 rounded-lg bg-[#0F172A] hover:bg-[#1E293B] text-white font-bold text-xs uppercase tracking-wider transition-all shadow-sm`}
                 >
                   Поиск
                 </button>
@@ -107,50 +107,50 @@ export default function Home() {
             </div>
 
             {/* CTA Action Buttons */}
-            <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
+            <div className="flex flex-wrap items-center justify-center gap-3.5 pt-4">
               <a
                 href="#catalog"
-                className="px-6 py-3.5 rounded-xl font-bold text-sm bg-[#8C6A48] hover:bg-[#6D5135] text-white transition-all shadow-soft-tint"
+                className="px-6 py-3.5 rounded-xl font-bold text-sm bg-[#0F172A] hover:bg-[#1E293B] text-white transition-all shadow-sm"
               >
                 {t.hero.ctaCatalog}
               </a>
               <a
                 href="#districts"
-                className="px-6 py-3.5 rounded-xl font-semibold text-sm bg-white hover:bg-[#FAF8F5] text-[#1C1917] border border-[#DDD7CA] transition-all shadow-soft-tint"
+                className="px-6 py-3.5 rounded-xl font-semibold text-sm bg-white hover:bg-[#F8F9FA] text-[#0F172A] border border-[#CBD5E1] transition-all shadow-sm"
               >
                 {t.nav.districts}
               </a>
               <button
                 type="button"
                 onClick={() => openLeadModal()}
-                className="px-6 py-3.5 rounded-xl font-semibold text-sm bg-[#EFECE4] hover:bg-[#E5DFD3] text-[#8C6A48] border border-[#DDD7CA] transition-all"
+                className="px-6 py-3.5 rounded-xl font-semibold text-sm bg-[#F1F5F9] hover:bg-[#E2E8F0] text-[#0F172A] border border-[#CBD5E1] transition-all"
               >
                 {t.hero.downloadGuideBtn}
               </button>
             </div>
 
-            {/* Live Stats Counter Strip */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 w-full max-w-4xl pt-10 mt-6 border-t border-[#E5DFD3]">
-              <div className="p-4 rounded-2xl bg-white border border-[#E5DFD3] shadow-soft-tint">
-                <div className="text-3xl font-extrabold text-[#1C1917] font-mono">18+</div>
-                <div className="text-xs text-[#78716C] font-semibold mt-1">{t.hero.statsYears}</div>
+            {/* Live Stats Counter Strip with Floating Compound Shadows */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 w-full max-w-4xl pt-10 mt-6 border-t border-[#E2E8F0]">
+              <div className="p-5 rounded-2xl bg-white border border-[#E2E8F0] shadow-float-card text-center">
+                <div className="text-3xl font-extrabold text-[#0F172A] font-mono">18+</div>
+                <div className="text-xs text-[#64748B] font-semibold mt-1">{t.hero.statsYears}</div>
               </div>
-              <div className="p-4 rounded-2xl bg-white border border-[#E5DFD3] shadow-soft-tint">
+              <div className="p-5 rounded-2xl bg-white border border-[#E2E8F0] shadow-float-card text-center">
                 <div className="text-3xl font-extrabold text-[#8C6A48] font-mono">30+</div>
-                <div className="text-xs text-[#78716C] font-semibold mt-1">Культовых башен в базе</div>
+                <div className="text-xs text-[#64748B] font-semibold mt-1">Культовых башен в базе</div>
               </div>
-              <div className="p-4 rounded-2xl bg-white border border-[#E5DFD3] shadow-soft-tint">
-                <div className="text-3xl font-extrabold text-[#2D6A4F] font-mono">8.2%</div>
-                <div className="text-xs text-[#78716C] font-semibold mt-1">{t.hero.statsRoi}</div>
+              <div className="p-5 rounded-2xl bg-white border border-[#E2E8F0] shadow-float-card text-center">
+                <div className="text-3xl font-extrabold text-[#059669] font-mono">8.2%</div>
+                <div className="text-xs text-[#64748B] font-semibold mt-1">{t.hero.statsRoi}</div>
               </div>
-              <div className="p-4 rounded-2xl bg-white border border-[#E5DFD3] shadow-soft-tint">
-                <div className="text-3xl font-extrabold text-[#1C1917] font-mono">10</div>
-                <div className="text-xs text-[#78716C] font-semibold mt-1">{t.hero.statsDistricts}</div>
+              <div className="p-5 rounded-2xl bg-white border border-[#E2E8F0] shadow-float-card text-center">
+                <div className="text-3xl font-extrabold text-[#0F172A] font-mono">10</div>
+                <div className="text-xs text-[#64748B] font-semibold mt-1">{t.hero.statsDistricts}</div>
               </div>
             </div>
 
             {/* Language & DLD status info */}
-            <div className="text-xs text-[#78716C] font-mono pt-2">
+            <div className="text-xs text-[#64748B] font-mono pt-2">
               🌍 {t.hero.statusBarText} • Активный язык: <strong>{langInfo.name}</strong>
             </div>
           </div>

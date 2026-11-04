@@ -59,18 +59,18 @@ export default function GoldenVisaWidget({ onOpenInquire }: GoldenVisaWidgetProp
   const gw = t.goldenVisaWidget;
 
   return (
-    <section id="golden-visa" className="py-16 md:py-24 border-b border-[#E5DFD3] bg-[#EFECE4]/50">
-      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="p-8 sm:p-12 rounded-3xl border border-[#E5DFD3] bg-white shadow-medium-tint relative overflow-hidden">
+    <section id="golden-visa" className="py-16 md:py-24 border-b border-[#E2E8F0] bg-[#F8F9FA]">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="p-8 sm:p-12 rounded-3xl border border-[#E2E8F0] bg-white shadow-float-card relative overflow-hidden">
           {/* Header */}
           <div className="text-center max-w-2xl mx-auto space-y-3 mb-10">
-            <span className="inline-block px-3 py-1 rounded-full text-xs font-bold bg-[#EFECE4] text-[#8C6A48] border border-[#DDD7CA]">
+            <span className="inline-block px-3 py-1 rounded-full text-xs font-bold bg-[#F1F5F9] text-[#0F172A] border border-[#CBD5E1]">
               {gw.badge}
             </span>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-[#1C1917] tracking-tight">
+            <h2 className="text-3xl sm:text-4xl font-bold text-[#0F172A] tracking-tight font-heading">
               {gw.title}
             </h2>
-            <p className="text-sm text-[#57534E]">
+            <p className="text-sm text-[#475569] leading-relaxed">
               {gw.subtitle}
             </p>
           </div>
@@ -78,212 +78,260 @@ export default function GoldenVisaWidget({ onOpenInquire }: GoldenVisaWidgetProp
           {/* Stepper Progress */}
           {step < 4 && (
             <div className="flex items-center justify-center gap-2 mb-10 text-xs font-mono">
-              <span className={`px-3.5 py-1.5 rounded-full font-bold ${step === 1 ? "bg-[#8C6A48] text-white" : "bg-[#FAF8F5] text-[#78716C] border border-[#E5DFD3]"}`}>
-                {gw.step1}
+              <span
+                className={`px-4 py-1.5 rounded-full font-bold transition-all ${
+                  step === 1
+                    ? "bg-[#0F172A] text-white shadow-xs"
+                    : "bg-[#F8F9FA] text-[#64748B] border border-[#E2E8F0]"
+                }`}
+              >
+                1. {gw.step1}
               </span>
-              <span className="text-[#DDD7CA]">→</span>
-              <span className={`px-3.5 py-1.5 rounded-full font-bold ${step === 2 ? "bg-[#8C6A48] text-white" : "bg-[#FAF8F5] text-[#78716C] border border-[#E5DFD3]"}`}>
-                {gw.step2}
+              <span className="text-[#CBD5E1]">→</span>
+              <span
+                className={`px-4 py-1.5 rounded-full font-bold transition-all ${
+                  step === 2
+                    ? "bg-[#0F172A] text-white shadow-xs"
+                    : "bg-[#F8F9FA] text-[#64748B] border border-[#E2E8F0]"
+                }`}
+              >
+                2. {gw.step2}
               </span>
-              <span className="text-[#DDD7CA]">→</span>
-              <span className={`px-3.5 py-1.5 rounded-full font-bold ${step === 3 ? "bg-[#8C6A48] text-white" : "bg-[#FAF8F5] text-[#78716C] border border-[#E5DFD3]"}`}>
-                {gw.step3}
+              <span className="text-[#CBD5E1]">→</span>
+              <span
+                className={`px-4 py-1.5 rounded-full font-bold transition-all ${
+                  step === 3
+                    ? "bg-[#0F172A] text-white shadow-xs"
+                    : "bg-[#F8F9FA] text-[#64748B] border border-[#E2E8F0]"
+                }`}
+              >
+                3. {gw.step3}
               </span>
             </div>
           )}
 
-          {/* Step 1: Budget */}
+          {/* Step 1: Budget with Selectable Cards */}
           {step === 1 && (
             <div className="max-w-xl mx-auto space-y-6">
-              <h3 className="text-lg font-bold text-[#1C1917] text-center">
+              <h3 className="text-lg font-bold text-[#0F172A] text-center font-heading">
                 {gw.qBudget}
               </h3>
               <div className="space-y-3">
-                <button
-                  type="button"
+                {/* Option 1: Under 2M */}
+                <div
+                  role="radio"
+                  aria-checked={budget === "under-2m"}
+                  tabIndex={0}
                   onClick={() => setBudget("under-2m")}
-                  className={`w-full p-4 rounded-2xl border text-left flex items-center justify-between transition-all ${
+                  onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && setBudget("under-2m")}
+                  className={`w-full p-4 sm:p-5 rounded-2xl border-2 text-left flex items-center justify-between cursor-pointer transition-all duration-200 ${
                     budget === "under-2m"
-                      ? "border-[#8C6A48] bg-[#EFECE4] text-[#1C1917] font-semibold"
-                      : "border-[#E5DFD3] bg-[#FAF8F5] text-[#57534E] hover:border-[#DDD7CA]"
+                      ? "border-[#0F172A] bg-white shadow-md ring-2 ring-[#0F172A]/10"
+                      : "border-[#E2E8F0] bg-[#F8F9FA] hover:border-[#CBD5E1] hover:bg-white"
                   }`}
                 >
-                  <div>
-                    <div className="text-sm font-bold text-[#1C1917]">{gw.optUnder2m}</div>
-                    <div className="text-xs text-[#78716C] mt-0.5">{gw.optUnder2mDesc}</div>
+                  <div className="flex items-center gap-3.5">
+                    <div
+                      className={`w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0 transition-colors ${
+                        budget === "under-2m" ? "border-[#0F172A] bg-[#0F172A]" : "border-[#CBD5E1] bg-white"
+                      }`}
+                    >
+                      {budget === "under-2m" && <div className="w-2 h-2 rounded-full bg-white" />}
+                    </div>
+                    <div>
+                      <div className="text-sm sm:text-base font-bold text-[#0F172A]">{gw.optUnder2m}</div>
+                      <div className="text-xs text-[#64748B] mt-0.5">{gw.optUnder2mDesc}</div>
+                    </div>
                   </div>
-                  {budget === "under-2m" && <span className="text-[#8C6A48] font-bold">✓</span>}
-                </button>
+                </div>
 
-                <button
-                  type="button"
+                {/* Option 2: 2M - 5M (Golden Visa) */}
+                <div
+                  role="radio"
+                  aria-checked={budget === "2m-5m"}
+                  tabIndex={0}
                   onClick={() => setBudget("2m-5m")}
-                  className={`w-full p-4 rounded-2xl border text-left flex items-center justify-between transition-all ${
+                  onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && setBudget("2m-5m")}
+                  className={`w-full p-4 sm:p-5 rounded-2xl border-2 text-left flex items-center justify-between cursor-pointer transition-all duration-200 ${
                     budget === "2m-5m"
-                      ? "border-[#8C6A48] bg-[#EFECE4] text-[#1C1917] font-semibold shadow-soft-tint"
-                      : "border-[#E5DFD3] bg-[#FAF8F5] text-[#57534E] hover:border-[#DDD7CA]"
+                      ? "border-[#0F172A] bg-white shadow-md ring-2 ring-[#0F172A]/10"
+                      : "border-[#E2E8F0] bg-[#F8F9FA] hover:border-[#CBD5E1] hover:bg-white"
                   }`}
                 >
-                  <div>
-                    <div className="text-sm font-bold text-[#8C6A48]">{gw.opt2mTo5m}</div>
-                    <div className="text-xs text-[#57534E] mt-0.5">★ {gw.opt2mTo5mDesc}</div>
+                  <div className="flex items-center gap-3.5">
+                    <div
+                      className={`w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0 transition-colors ${
+                        budget === "2m-5m" ? "border-[#0F172A] bg-[#0F172A]" : "border-[#CBD5E1] bg-white"
+                      }`}
+                    >
+                      {budget === "2m-5m" && <div className="w-2 h-2 rounded-full bg-white" />}
+                    </div>
+                    <div>
+                      <div className="flex items-center gap-2">
+                        <span className="text-sm sm:text-base font-bold text-[#0F172A]">{gw.opt2mTo5m}</span>
+                        <span className="px-2 py-0.5 text-[10px] font-bold uppercase tracking-wider rounded-full bg-emerald-100 text-[#059669]">
+                          10-Year Golden Visa
+                        </span>
+                      </div>
+                      <div className="text-xs text-[#64748B] mt-0.5">{gw.opt2mTo5mDesc}</div>
+                    </div>
                   </div>
-                  {budget === "2m-5m" && <span className="text-[#8C6A48] font-bold">✓</span>}
-                </button>
+                </div>
 
-                <button
-                  type="button"
+                {/* Option 3: 5M+ */}
+                <div
+                  role="radio"
+                  aria-checked={budget === "5m+"}
+                  tabIndex={0}
                   onClick={() => setBudget("5m+")}
-                  className={`w-full p-4 rounded-2xl border text-left flex items-center justify-between transition-all ${
+                  onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && setBudget("5m+")}
+                  className={`w-full p-4 sm:p-5 rounded-2xl border-2 text-left flex items-center justify-between cursor-pointer transition-all duration-200 ${
                     budget === "5m+"
-                      ? "border-[#8C6A48] bg-[#EFECE4] text-[#1C1917] font-semibold"
-                      : "border-[#E5DFD3] bg-[#FAF8F5] text-[#57534E] hover:border-[#DDD7CA]"
+                      ? "border-[#0F172A] bg-white shadow-md ring-2 ring-[#0F172A]/10"
+                      : "border-[#E2E8F0] bg-[#F8F9FA] hover:border-[#CBD5E1] hover:bg-white"
                   }`}
                 >
-                  <div>
-                    <div className="text-sm font-bold text-[#8C6A48]">{gw.opt5mPlus}</div>
-                    <div className="text-xs text-[#57534E] mt-0.5">{gw.opt5mPlusDesc}</div>
+                  <div className="flex items-center gap-3.5">
+                    <div
+                      className={`w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0 transition-colors ${
+                        budget === "5m+" ? "border-[#0F172A] bg-[#0F172A]" : "border-[#CBD5E1] bg-white"
+                      }`}
+                    >
+                      {budget === "5m+" && <div className="w-2 h-2 rounded-full bg-white" />}
+                    </div>
+                    <div>
+                      <div className="text-sm sm:text-base font-bold text-[#0F172A]">{gw.opt5mPlus}</div>
+                      <div className="text-xs text-[#64748B] mt-0.5">{gw.opt5mPlusDesc}</div>
+                    </div>
                   </div>
-                  {budget === "5m+" && <span className="text-[#8C6A48] font-bold">✓</span>}
-                </button>
+                </div>
               </div>
 
               <div className="flex justify-end pt-4">
                 <button
                   type="button"
                   onClick={handleNext}
-                  className="px-6 py-3 rounded-xl bg-[#8C6A48] hover:bg-[#6D5135] text-white font-bold text-sm transition-all shadow-soft-tint"
+                  className="px-6 py-3 rounded-xl bg-[#0F172A] hover:bg-[#1E293B] text-white font-bold text-sm transition-all shadow-sm flex items-center gap-2"
                 >
-                  {gw.next} &rarr;
+                  <span>{gw.next}</span>
+                  <span>&rarr;</span>
                 </button>
               </div>
             </div>
           )}
 
-          {/* Step 2: Readiness */}
+          {/* Step 2: Readiness with Selectable Cards */}
           {step === 2 && (
             <div className="max-w-xl mx-auto space-y-6">
-              <h3 className="text-lg font-bold text-[#1C1917] text-center">
+              <h3 className="text-lg font-bold text-[#0F172A] text-center font-heading">
                 {gw.qReadiness}
               </h3>
               <div className="space-y-3">
-                <button
-                  type="button"
-                  onClick={() => setPropertyType("off-plan")}
-                  className={`w-full p-4 rounded-2xl border text-left flex items-center justify-between transition-all ${
-                    propertyType === "off-plan"
-                      ? "border-[#8C6A48] bg-[#EFECE4] text-[#1C1917] font-semibold"
-                      : "border-[#E5DFD3] bg-[#FAF8F5] text-[#57534E] hover:border-[#DDD7CA]"
-                  }`}
-                >
-                  <div>
-                    <div className="text-sm font-bold">{gw.optOffPlan}</div>
+                {[
+                  { id: "off-plan", label: gw.optOffPlan },
+                  { id: "ready", label: gw.optReady },
+                  { id: "mortgage", label: gw.optMortgage },
+                ].map((opt) => (
+                  <div
+                    key={opt.id}
+                    role="radio"
+                    aria-checked={propertyType === opt.id}
+                    tabIndex={0}
+                    onClick={() => setPropertyType(opt.id)}
+                    onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && setPropertyType(opt.id)}
+                    className={`w-full p-4 sm:p-5 rounded-2xl border-2 text-left flex items-center justify-between cursor-pointer transition-all duration-200 ${
+                      propertyType === opt.id
+                        ? "border-[#0F172A] bg-white shadow-md ring-2 ring-[#0F172A]/10"
+                        : "border-[#E2E8F0] bg-[#F8F9FA] hover:border-[#CBD5E1] hover:bg-white"
+                    }`}
+                  >
+                    <div className="flex items-center gap-3.5">
+                      <div
+                        className={`w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0 transition-colors ${
+                          propertyType === opt.id ? "border-[#0F172A] bg-[#0F172A]" : "border-[#CBD5E1] bg-white"
+                        }`}
+                      >
+                        {propertyType === opt.id && <div className="w-2 h-2 rounded-full bg-white" />}
+                      </div>
+                      <div className="text-sm sm:text-base font-bold text-[#0F172A]">{opt.label}</div>
+                    </div>
                   </div>
-                  {propertyType === "off-plan" && <span className="text-[#8C6A48] font-bold">✓</span>}
-                </button>
-
-                <button
-                  type="button"
-                  onClick={() => setPropertyType("ready")}
-                  className={`w-full p-4 rounded-2xl border text-left flex items-center justify-between transition-all ${
-                    propertyType === "ready"
-                      ? "border-[#8C6A48] bg-[#EFECE4] text-[#1C1917] font-semibold"
-                      : "border-[#E5DFD3] bg-[#FAF8F5] text-[#57534E] hover:border-[#DDD7CA]"
-                  }`}
-                >
-                  <div>
-                    <div className="text-sm font-bold">{gw.optReady}</div>
-                  </div>
-                  {propertyType === "ready" && <span className="text-[#8C6A48] font-bold">✓</span>}
-                </button>
-
-                <button
-                  type="button"
-                  onClick={() => setPropertyType("mortgage")}
-                  className={`w-full p-4 rounded-2xl border text-left flex items-center justify-between transition-all ${
-                    propertyType === "mortgage"
-                      ? "border-[#8C6A48] bg-[#EFECE4] text-[#1C1917] font-semibold"
-                      : "border-[#E5DFD3] bg-[#FAF8F5] text-[#57534E] hover:border-[#DDD7CA]"
-                  }`}
-                >
-                  <div>
-                    <div className="text-sm font-bold">{gw.optMortgage}</div>
-                  </div>
-                  {propertyType === "mortgage" && <span className="text-[#8C6A48] font-bold">✓</span>}
-                </button>
+                ))}
               </div>
 
               <div className="flex justify-between pt-4">
                 <button
                   type="button"
                   onClick={() => setStep(1)}
-                  className="px-5 py-2.5 rounded-xl bg-[#FAF8F5] border border-[#E5DFD3] text-[#57534E] text-xs font-semibold"
+                  className="px-5 py-2.5 rounded-xl bg-[#F8F9FA] border border-[#E2E8F0] text-[#475569] hover:text-[#0F172A] text-xs font-semibold"
                 >
                   &larr; {gw.back}
                 </button>
                 <button
                   type="button"
                   onClick={handleNext}
-                  className="px-6 py-3 rounded-xl bg-[#8C6A48] hover:bg-[#6D5135] text-white font-bold text-sm transition-all shadow-soft-tint"
+                  className="px-6 py-3 rounded-xl bg-[#0F172A] hover:bg-[#1E293B] text-white font-bold text-sm transition-all shadow-sm flex items-center gap-2"
                 >
-                  {gw.next} &rarr;
+                  <span>{gw.next}</span>
+                  <span>&rarr;</span>
                 </button>
               </div>
             </div>
           )}
 
-          {/* Step 3: Family */}
+          {/* Step 3: Family with Selectable Cards */}
           {step === 3 && (
             <div className="max-w-xl mx-auto space-y-6">
-              <h3 className="text-lg font-bold text-[#1C1917] text-center">
+              <h3 className="text-lg font-bold text-[#0F172A] text-center font-heading">
                 {gw.qFamily}
               </h3>
               <div className="space-y-3">
-                <button
-                  type="button"
-                  onClick={() => setFamily("single")}
-                  className={`w-full p-4 rounded-2xl border text-left flex items-center justify-between transition-all ${
-                    family === "single"
-                      ? "border-[#8C6A48] bg-[#EFECE4] text-[#1C1917] font-semibold"
-                      : "border-[#E5DFD3] bg-[#FAF8F5] text-[#57534E] hover:border-[#DDD7CA]"
-                  }`}
-                >
-                  <div>
-                    <div className="text-sm font-bold">{gw.optIndividual}</div>
+                {[
+                  { id: "single", label: gw.optIndividual },
+                  { id: "family", label: gw.optFamily },
+                ].map((opt) => (
+                  <div
+                    key={opt.id}
+                    role="radio"
+                    aria-checked={family === opt.id}
+                    tabIndex={0}
+                    onClick={() => setFamily(opt.id)}
+                    onKeyDown={(e) => (e.key === "Enter" || e.key === " ") && setFamily(opt.id)}
+                    className={`w-full p-4 sm:p-5 rounded-2xl border-2 text-left flex items-center justify-between cursor-pointer transition-all duration-200 ${
+                      family === opt.id
+                        ? "border-[#0F172A] bg-white shadow-md ring-2 ring-[#0F172A]/10"
+                        : "border-[#E2E8F0] bg-[#F8F9FA] hover:border-[#CBD5E1] hover:bg-white"
+                    }`}
+                  >
+                    <div className="flex items-center gap-3.5">
+                      <div
+                        className={`w-5 h-5 rounded-full border-2 flex items-center justify-center shrink-0 transition-colors ${
+                          family === opt.id ? "border-[#0F172A] bg-[#0F172A]" : "border-[#CBD5E1] bg-white"
+                        }`}
+                      >
+                        {family === opt.id && <div className="w-2 h-2 rounded-full bg-white" />}
+                      </div>
+                      <div className="text-sm sm:text-base font-bold text-[#0F172A]">{opt.label}</div>
+                    </div>
                   </div>
-                  {family === "single" && <span className="text-[#8C6A48] font-bold">✓</span>}
-                </button>
-
-                <button
-                  type="button"
-                  onClick={() => setFamily("family")}
-                  className={`w-full p-4 rounded-2xl border text-left flex items-center justify-between transition-all ${
-                    family === "family"
-                      ? "border-[#8C6A48] bg-[#EFECE4] text-[#1C1917] font-semibold"
-                      : "border-[#E5DFD3] bg-[#FAF8F5] text-[#57534E] hover:border-[#DDD7CA]"
-                  }`}
-                >
-                  <div>
-                    <div className="text-sm font-bold">{gw.optFamily}</div>
-                  </div>
-                  {family === "family" && <span className="text-[#8C6A48] font-bold">✓</span>}
-                </button>
+                ))}
               </div>
 
               <div className="flex justify-between pt-4">
                 <button
                   type="button"
                   onClick={() => setStep(2)}
-                  className="px-5 py-2.5 rounded-xl bg-[#FAF8F5] border border-[#E5DFD3] text-[#57534E] text-xs font-semibold"
+                  className="px-5 py-2.5 rounded-xl bg-[#F8F9FA] border border-[#E2E8F0] text-[#475569] hover:text-[#0F172A] text-xs font-semibold"
                 >
                   &larr; {gw.back}
                 </button>
                 <button
                   type="button"
                   onClick={handleNext}
-                  className="px-6 py-3 rounded-xl bg-[#8C6A48] hover:bg-[#6D5135] text-white font-bold text-sm transition-all shadow-soft-tint"
+                  className="px-6 py-3 rounded-xl bg-[#0F172A] hover:bg-[#1E293B] text-white font-bold text-sm transition-all shadow-sm flex items-center gap-2"
                 >
-                  {gw.next} &rarr;
+                  <span>{gw.next}</span>
+                  <span>&rarr;</span>
                 </button>
               </div>
             </div>
@@ -292,25 +340,25 @@ export default function GoldenVisaWidget({ onOpenInquire }: GoldenVisaWidgetProp
           {/* Step 4: Result & Form */}
           {step === 4 && (
             <div className="max-w-xl mx-auto space-y-6">
-              <div className="p-6 rounded-2xl bg-[#FAF8F5] border border-[#E5DFD3] text-center space-y-2">
-                <div className="text-2xl">{isEligible10Year ? "🎉" : "💡"}</div>
-                <h4 className="text-xl font-bold text-[#1C1917]">
+              <div className="p-6 rounded-2xl bg-[#F8F9FA] border border-[#E2E8F0] text-center space-y-2">
+                <div className="text-3xl">{isEligible10Year ? "🛡️" : "💡"}</div>
+                <h4 className="text-xl font-bold text-[#0F172A] font-heading">
                   {isEligible10Year ? gw.resultEligible : gw.resultStandard}
                 </h4>
-                <p className="text-xs text-[#57534E] max-w-md mx-auto leading-relaxed">
+                <p className="text-xs text-[#475569] max-w-md mx-auto leading-relaxed">
                   {isEligible10Year ? gw.resultDescEligible : gw.resultDescStandard}
                 </p>
               </div>
 
               {isSubmitted ? (
-                <div className="p-6 rounded-2xl bg-[#2D6A4F]/10 border border-[#2D6A4F]/30 text-center space-y-3">
+                <div className="p-6 rounded-2xl bg-emerald-50 border border-emerald-200 text-center space-y-3">
                   <div className="text-3xl">✅</div>
-                  <h4 className="text-lg font-bold text-[#2D6A4F]">Заявка успешно принята</h4>
-                  <p className="text-xs text-[#57534E] leading-relaxed">
+                  <h4 className="text-lg font-bold text-[#059669]">Заявка успешно принята</h4>
+                  <p className="text-xs text-[#475569] leading-relaxed">
                     Наш аккредитованный специалист свяжется с вами для оформления Золотой визы.
                   </p>
                   {routingResult && (
-                    <div className="text-xs font-mono text-[#8C6A48] pt-2">
+                    <div className="text-xs font-mono text-[#0F172A] pt-2">
                       Направлено в отдел: <strong>{routingResult.agencyDesk}</strong>
                     </div>
                   )}
@@ -318,7 +366,7 @@ export default function GoldenVisaWidget({ onOpenInquire }: GoldenVisaWidgetProp
               ) : (
                 <form onSubmit={handleSubmit} className="space-y-4">
                   <div>
-                    <label className="block text-xs font-bold text-[#78716C] uppercase mb-1">
+                    <label className="block text-xs font-bold text-[#64748B] uppercase tracking-wider mb-1.5">
                       {gw.formName}
                     </label>
                     <input
@@ -327,12 +375,12 @@ export default function GoldenVisaWidget({ onOpenInquire }: GoldenVisaWidgetProp
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       placeholder={gw.formName}
-                      className="w-full px-4 py-3 rounded-xl bg-[#FAF8F5] border border-[#E5DFD3] text-[#1C1917] text-sm focus:outline-none focus:ring-2 focus:ring-[#8C6A48]"
+                      className="w-full px-4 py-3 rounded-xl bg-[#F8F9FA] border border-[#E2E8F0] text-[#0F172A] text-sm focus:outline-none focus:ring-2 focus:ring-[#0F172A] focus:bg-white"
                     />
                   </div>
 
                   <div>
-                    <label className="block text-xs font-bold text-[#78716C] uppercase mb-1">
+                    <label className="block text-xs font-bold text-[#64748B] uppercase tracking-wider mb-1.5">
                       {gw.formPhone}
                     </label>
                     <input
@@ -341,19 +389,19 @@ export default function GoldenVisaWidget({ onOpenInquire }: GoldenVisaWidgetProp
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
                       placeholder="+971 50 ... / +7 999 ..."
-                      className="w-full px-4 py-3 rounded-xl bg-[#FAF8F5] border border-[#E5DFD3] text-[#1C1917] text-sm focus:outline-none focus:ring-2 focus:ring-[#8C6A48]"
+                      className="w-full px-4 py-3 rounded-xl bg-[#F8F9FA] border border-[#E2E8F0] text-[#0F172A] text-sm focus:outline-none focus:ring-2 focus:ring-[#0F172A] focus:bg-white"
                     />
                   </div>
 
                   <button
                     type="submit"
                     disabled={isSubmitting}
-                    className="w-full py-3.5 rounded-xl bg-[#8C6A48] hover:bg-[#6D5135] text-white font-bold text-sm uppercase tracking-wider shadow-soft-tint transition-all disabled:opacity-50"
+                    className="w-full py-3.5 rounded-xl bg-[#0F172A] hover:bg-[#1E293B] text-white font-bold text-xs uppercase tracking-wider shadow-sm transition-all disabled:opacity-50"
                   >
                     {isSubmitting ? "Отправка..." : gw.submitBtn}
                   </button>
 
-                  <p className="text-[11px] text-[#78716C] text-center">
+                  <p className="text-[11px] text-[#64748B] text-center">
                     🔒 Конфиденциально. Официальный протокол аккредитации RERA ОАЭ.
                   </p>
                 </form>

@@ -68,11 +68,11 @@ export default function LeadModal({
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-md animate-in fade-in duration-200">
-      <div className="relative w-full max-w-lg rounded-3xl bg-white border border-[#E5DFD3] p-6 sm:p-8 shadow-strong-tint space-y-6 text-[#1C1917]">
+      <div className="relative w-full max-w-lg rounded-3xl bg-white border border-[#E2E8F0] p-6 sm:p-8 shadow-float-card-hover space-y-6 text-[#0F172A]">
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-5 right-5 w-9 h-9 flex items-center justify-center text-[#78716C] hover:text-[#1C1917] hover:bg-[#FAF8F5] rounded-xl transition-colors text-lg font-bold"
+          className="absolute top-5 right-5 w-9 h-9 flex items-center justify-center text-[#64748B] hover:text-[#0F172A] hover:bg-[#F1F5F9] rounded-xl transition-colors text-lg font-bold"
           aria-label="Close modal"
         >
           ✕
@@ -81,20 +81,20 @@ export default function LeadModal({
         {!isSuccess ? (
           <>
             <div className="space-y-2">
-              <span className="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[#EFECE4] text-[#8C6A48] border border-[#DDD7CA]">
+              <span className="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[#F1F5F9] text-[#0F172A] border border-[#CBD5E1]">
                 {t.leadModal.modalBadge}
               </span>
-              <h3 className="text-2xl font-extrabold text-[#1C1917] tracking-tight">
+              <h3 className="text-2xl font-bold text-[#0F172A] tracking-tight font-heading">
                 {modalTitle}
               </h3>
-              <p className="text-xs text-[#57534E] leading-relaxed">
+              <p className="text-xs text-[#475569] leading-relaxed">
                 {modalSubtitle} ({targetBuildingName})
               </p>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-4">
               <div className="space-y-1.5">
-                <label className="block text-xs font-bold text-[#78716C] uppercase">
+                <label className="block text-xs font-bold text-[#64748B] uppercase tracking-wider">
                   {t.leadModal.nameLabel}
                 </label>
                 <input
@@ -103,12 +103,12 @@ export default function LeadModal({
                   value={name}
                   onChange={(e) => setName(e.target.value)}
                   placeholder="e.g. Alexander Smith"
-                  className="w-full px-4 py-3 rounded-xl bg-[#FAF8F5] border border-[#E5DFD3] text-sm text-[#1C1917] placeholder-[#78716C] focus:outline-none focus:ring-2 focus:ring-[#8C6A48] transition-all"
+                  className="w-full px-4 py-3 rounded-xl bg-[#F8F9FA] border border-[#E2E8F0] text-sm text-[#0F172A] placeholder-[#64748B] focus:outline-none focus:ring-2 focus:ring-[#0F172A] focus:bg-white transition-all"
                 />
               </div>
 
               <div className="space-y-1.5">
-                <label className="block text-xs font-bold text-[#78716C] uppercase">
+                <label className="block text-xs font-bold text-[#64748B] uppercase tracking-wider">
                   {t.leadModal.phoneLabel}
                 </label>
                 <input
@@ -117,12 +117,12 @@ export default function LeadModal({
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                   placeholder="+971 50 ... / +7 999 ... / +44 ..."
-                  className="w-full px-4 py-3 rounded-xl bg-[#FAF8F5] border border-[#E5DFD3] text-sm text-[#1C1917] placeholder-[#78716C] focus:outline-none focus:ring-2 focus:ring-[#8C6A48] transition-all"
+                  className="w-full px-4 py-3 rounded-xl bg-[#F8F9FA] border border-[#E2E8F0] text-sm text-[#0F172A] placeholder-[#64748B] focus:outline-none focus:ring-2 focus:ring-[#0F172A] focus:bg-white transition-all"
                 />
               </div>
 
               <div className="space-y-1.5">
-                <label className="block text-xs font-bold text-[#78716C] uppercase">
+                <label className="block text-xs font-bold text-[#64748B] uppercase tracking-wider">
                   {t.leadModal.emailLabel}
                 </label>
                 <input
@@ -130,18 +130,18 @@ export default function LeadModal({
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="name@example.com"
-                  className="w-full px-4 py-3 rounded-xl bg-[#FAF8F5] border border-[#E5DFD3] text-sm text-[#1C1917] placeholder-[#78716C] focus:outline-none focus:ring-2 focus:ring-[#8C6A48] transition-all"
+                  className="w-full px-4 py-3 rounded-xl bg-[#F8F9FA] border border-[#E2E8F0] text-sm text-[#0F172A] placeholder-[#64748B] focus:outline-none focus:ring-2 focus:ring-[#0F172A] focus:bg-white transition-all"
                 />
               </div>
 
               <div className="space-y-1.5">
-                <label className="block text-xs font-bold text-[#78716C] uppercase">
+                <label className="block text-xs font-bold text-[#64748B] uppercase tracking-wider">
                   {t.leadModal.budgetLabel}
                 </label>
                 <select
                   value={budget}
                   onChange={(e) => setBudget(e.target.value)}
-                  className="w-full px-4 py-3 rounded-xl bg-[#FAF8F5] border border-[#E5DFD3] text-sm text-[#1C1917] focus:outline-none focus:ring-2 focus:ring-[#8C6A48] transition-all"
+                  className="w-full px-4 py-3 rounded-xl bg-[#F8F9FA] border border-[#E2E8F0] text-sm text-[#0F172A] focus:outline-none focus:ring-2 focus:ring-[#0F172A] focus:bg-white transition-all"
                 >
                   <option value="under-2m">Under 2,000,000 AED (&lt; $545,000 USD)</option>
                   <option value="2m-5m">2,000,000 – 5,000,000 AED (Golden Visa 10-Yr)</option>
@@ -153,25 +153,25 @@ export default function LeadModal({
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full py-4 px-6 rounded-xl bg-[#8C6A48] hover:bg-[#6D5135] text-white font-bold text-sm uppercase tracking-wider shadow-soft-tint transition-all active:scale-98 disabled:opacity-50"
+                className="w-full py-4 px-6 rounded-xl bg-[#0F172A] hover:bg-[#1E293B] text-white font-bold text-sm uppercase tracking-wider shadow-sm transition-all active:scale-98 disabled:opacity-50"
               >
                 {isSubmitting ? "Отправка..." : t.leadModal.submitBtn}
               </button>
 
-              <p className="text-xs text-[#78716C] text-center leading-normal">
+              <p className="text-xs text-[#64748B] text-center leading-normal">
                 🔒 {t.leadModal.instantDelivery}
               </p>
             </form>
           </>
         ) : (
           <div className="text-center py-6 space-y-4">
-            <div className="w-16 h-16 rounded-full bg-[#2D6A4F]/10 text-[#2D6A4F] flex items-center justify-center text-3xl mx-auto border border-[#2D6A4F]/30">
+            <div className="w-16 h-16 rounded-full bg-emerald-50 text-[#059669] flex items-center justify-center text-3xl mx-auto border border-emerald-200">
               ✓
             </div>
-            <h3 className="text-2xl font-bold text-[#1C1917]">
+            <h3 className="text-2xl font-bold text-[#0F172A] font-heading">
               {t.leadModal.successTitle}
             </h3>
-            <p className="text-xs text-[#57534E] max-w-sm mx-auto leading-relaxed">
+            <p className="text-xs text-[#475569] max-w-sm mx-auto leading-relaxed">
               {t.leadModal.successDesc}
             </p>
 
@@ -180,7 +180,7 @@ export default function LeadModal({
                 href={`https://wa.me/971500000000?text=${whatsappMessage}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full py-3.5 px-4 rounded-xl bg-[#2D6A4F] hover:bg-[#1E4D38] text-white font-bold text-sm shadow-soft-tint transition-all flex items-center justify-center gap-2"
+                className="w-full py-3.5 px-4 rounded-xl bg-[#0F172A] hover:bg-[#1E293B] text-white font-bold text-sm shadow-sm transition-all flex items-center justify-center gap-2"
               >
                 <span>💬</span>
                 <span>{t.leadModal.openWhatsApp}</span>
@@ -188,7 +188,7 @@ export default function LeadModal({
 
               <button
                 onClick={onClose}
-                className="w-full py-2.5 px-4 rounded-xl bg-[#FAF8F5] hover:bg-[#EFECE4] text-[#57534E] border border-[#E5DFD3] text-xs font-semibold transition-colors"
+                className="w-full py-2.5 px-4 rounded-xl bg-[#F8F9FA] hover:bg-[#F1F5F9] text-[#475569] hover:text-[#0F172A] border border-[#E2E8F0] text-xs font-semibold transition-colors"
               >
                 {t.leadModal.close}
               </button>

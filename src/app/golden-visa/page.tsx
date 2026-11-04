@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 export default function GoldenVisaPage() {
   return (
-    <div className="min-h-screen bg-zinc-950 text-zinc-100 py-6">
+    <div className="min-h-screen bg-[#F8F9FA] text-[#0F172A]">
       <GoldenVisaWidget />
     </div>
   );

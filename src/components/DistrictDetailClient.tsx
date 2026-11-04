@@ -30,9 +30,9 @@ export default function DistrictDetailClient({
   const dd = t.districtDetail;
 
   return (
-    <article className="min-h-screen bg-[#F7F5F0] text-[#1C1917] pb-24 transition-colors">
-      {/* Header in Warm Travertine */}
-      <div className="border-b border-[#E5DFD3] bg-[#EFECE4]/60 pt-10 pb-16">
+    <article className="min-h-screen bg-[#F8F9FA] text-[#0F172A] pb-24 transition-colors">
+      {/* Header */}
+      <div className="border-b border-[#E2E8F0] bg-[#F1F5F9]/60 pt-10 pb-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <nav className="flex items-center gap-2 text-xs text-[#78716C] mb-6 font-semibold">
             <Link href="/" className="hover:text-[#8C6A48] transition-colors">
