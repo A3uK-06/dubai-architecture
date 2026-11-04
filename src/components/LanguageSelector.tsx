@@ -67,10 +67,10 @@ export default function LanguageSelector() {
 
       {isOpen && (
         <div
-          className={`absolute right-0 mt-2 w-64 rounded-xl bg-zinc-900/95 border border-zinc-700/80 shadow-2xl backdrop-blur-xl py-2 z-50 animate-in fade-in zoom-in-95 duration-150`}
+          className={`absolute right-0 mt-2 w-64 rounded-2xl bg-zinc-900/95 border border-zinc-700/80 shadow-strong-tint backdrop-blur-xl py-2 z-50 animate-in fade-in zoom-in-95 duration-150`}
           role="menu"
         >
-          <div className="px-3 py-1.5 border-b border-zinc-800 text-[11px] font-semibold tracking-wider uppercase text-zinc-400">
+          <div className="px-4 py-2 border-b border-zinc-800 text-xs font-semibold tracking-wider uppercase text-zinc-400">
             Top Investor Languages (DLD)
           </div>
           <div className="max-h-80 overflow-y-auto divide-y divide-zinc-800/40">
@@ -81,7 +81,7 @@ export default function LanguageSelector() {
                   key={item.code}
                   type="button"
                   onClick={() => handleSelect(item.code)}
-                  className={`w-full text-left px-3.5 py-2.5 flex items-center justify-between text-sm transition-colors hover:bg-zinc-800/80 ${
+                  className={`w-full text-left px-4 py-3 flex items-center justify-between text-sm transition-colors hover:bg-zinc-800/80 ${
                     isSelected
                       ? "bg-amber-500/10 text-amber-300 font-semibold"
                       : "text-zinc-200"

@@ -3,13 +3,13 @@
 import React, { useState, useMemo } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { BUILDINGS, Building } from "@/data/buildings";
+import { BUILDINGS } from "@/data/buildings";
 import { DISTRICTS } from "@/data/districts";
 import { useLang } from "@/context/LangContext";
 import { getLocalizedBuilding, getLocalizedDistrict } from "@/data/localizedContent";
 
 export default function CatalogSection() {
-  const { t, lang, isRtl } = useLang();
+  const { t, lang } = useLang();
 
   const [search, setSearch] = useState("");
   const [selectedDistrict, setSelectedDistrict] = useState("all");
@@ -57,7 +57,7 @@ export default function CatalogSection() {
         return false;
       if (selectedHeight === "highrise" && b.heightMeters >= 300) return false;
 
-      // Type (check both original and localized if needed, or by original slug/english key)
+      // Type
       if (selectedType !== "all") {
         const origBuilding = BUILDINGS.find((orig) => orig.id === b.id);
         if (origBuilding && origBuilding.type !== selectedType) {
@@ -88,26 +88,34 @@ export default function CatalogSection() {
     Cultural: t.catalog.types.cultural,
   };
 
+  const handleResetFilters = () => {
+    setSearch("");
+    setSelectedDistrict("all");
+    setSelectedHeight("all");
+    setSelectedType("all");
+  };
+
   return (
-    <section id="catalog" className="py-16 md:py-24 border-b border-zinc-800/80">
+    <section id="catalog" className="py-16 md:py-24 border-b border-zinc-800/80 bg-zinc-950">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
           <div>
-            <div className="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-amber-400/10 text-amber-400 border border-amber-400/30 mb-2">
-              {t.nav.catalog} • {BUILDINGS.length} {t.catalog.masterpieces}
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold bg-amber-400/10 text-amber-300 border border-amber-400/30 mb-3">
+              <span className="w-1.5 h-1.5 rounded-full bg-amber-400" />
+              <span>{t.nav.catalog} • {BUILDINGS.length} {t.catalog.masterpieces}</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+            <h2 className="text-3xl sm:text-4xl font-extrabold text-zinc-100 tracking-tight leading-tight">
               {t.catalog.title}
             </h2>
           </div>
-          <p className="text-zinc-400 text-sm max-w-md">
+          <p className="text-zinc-400 text-sm max-w-md leading-relaxed">
             {t.catalog.subtitle}
           </p>
         </div>
 
-        {/* Filter Controls Bar */}
-        <div className="p-4 sm:p-6 rounded-2xl bg-zinc-900/70 border border-zinc-800 shadow-xl backdrop-blur-md mb-10 space-y-4">
+        {/* Filter Controls Bar (4px spacing scale, WCAG AA contrast) */}
+        <div className="p-4 sm:p-6 rounded-2xl bg-zinc-900/80 border border-zinc-800 shadow-soft-tint backdrop-blur-md mb-8 space-y-4">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
             {/* Search Input */}
             <div className="relative">
@@ -116,12 +124,14 @@ export default function CatalogSection() {
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 placeholder={t.filters.search}
-                className="w-full px-3.5 py-2.5 rounded-xl bg-zinc-950 border border-zinc-700 text-zinc-100 placeholder-zinc-500 text-sm focus:outline-none focus:ring-1 focus:ring-amber-400"
+                className="w-full px-4 py-2.5 rounded-xl bg-zinc-950 border border-zinc-700 text-zinc-100 placeholder-zinc-500 text-sm focus:outline-none focus:ring-2 focus:ring-amber-400/50 focus:border-amber-400 transition-all"
               />
               {search && (
                 <button
+                  type="button"
                   onClick={() => setSearch("")}
-                  className="absolute right-3 top-1/2 -translate-y-1/2 text-zinc-500 hover:text-zinc-300 text-xs"
+                  aria-label="Clear search"
+                  className="absolute right-3 top-1/2 -translate-y-1/2 w-6 h-6 flex items-center justify-center text-zinc-400 hover:text-zinc-200 text-xs rounded-full hover:bg-zinc-800 transition-colors"
                 >
                   ✕
                 </button>
@@ -133,7 +143,7 @@ export default function CatalogSection() {
               value={selectedDistrict}
               onChange={(e) => setSelectedDistrict(e.target.value)}
               aria-label="Filter by District"
-              className="px-3.5 py-2.5 rounded-xl bg-zinc-950 border border-zinc-700 text-zinc-200 text-sm focus:outline-none focus:ring-1 focus:ring-amber-400"
+              className="px-3.5 py-2.5 rounded-xl bg-zinc-950 border border-zinc-700 text-zinc-200 text-sm focus:outline-none focus:ring-2 focus:ring-amber-400/50 focus:border-amber-400 transition-all"
             >
               <option value="all">{t.filters.allDistricts}</option>
               {localizedDistricts.map((d) => (
@@ -148,7 +158,7 @@ export default function CatalogSection() {
               value={selectedHeight}
               onChange={(e) => setSelectedHeight(e.target.value)}
               aria-label="Filter by Height"
-              className="px-3.5 py-2.5 rounded-xl bg-zinc-950 border border-zinc-700 text-zinc-200 text-sm focus:outline-none focus:ring-1 focus:ring-amber-400"
+              className="px-3.5 py-2.5 rounded-xl bg-zinc-950 border border-zinc-700 text-zinc-200 text-sm focus:outline-none focus:ring-2 focus:ring-amber-400/50 focus:border-amber-400 transition-all"
             >
               <option value="all">{t.catalog.heightOptions.all}</option>
               <option value="megatall">{t.catalog.heightOptions.megatall}</option>
@@ -161,7 +171,7 @@ export default function CatalogSection() {
               value={sortBy}
               onChange={(e) => setSortBy(e.target.value as any)}
               aria-label="Sort order"
-              className="px-3.5 py-2.5 rounded-xl bg-zinc-950 border border-zinc-700 text-zinc-200 text-sm focus:outline-none focus:ring-1 focus:ring-amber-400"
+              className="px-3.5 py-2.5 rounded-xl bg-zinc-950 border border-zinc-700 text-zinc-200 text-sm focus:outline-none focus:ring-2 focus:ring-amber-400/50 focus:border-amber-400 transition-all"
             >
               <option value="height">{t.catalog.sortOptions.height}</option>
               <option value="year">{t.catalog.sortOptions.year}</option>
@@ -171,31 +181,31 @@ export default function CatalogSection() {
           </div>
 
           {/* Quick Pills for Building Types */}
-          <div className="flex flex-wrap items-center gap-2 pt-2 border-t border-zinc-800/80 text-xs">
-            <span className="text-zinc-500 font-medium">{t.catalog.type}:</span>
-            {["all", "Residential", "Commercial", "Hotel", "Mixed-Use", "Cultural"].map((typeKey) => (
-              <button
-                key={typeKey}
-                onClick={() => setSelectedType(typeKey)}
-                className={`px-3 py-1 rounded-lg transition-all ${
-                  selectedType === typeKey
-                    ? "bg-amber-400 text-zinc-950 font-bold"
-                    : "bg-zinc-800 text-zinc-300 hover:bg-zinc-700"
-                }`}
-              >
-                {typeMap[typeKey] || typeKey}
-              </button>
-            ))}
+          <div className="flex flex-wrap items-center gap-2 pt-3 border-t border-zinc-800/80 text-xs">
+            <span className="text-zinc-400 font-medium mr-1">{t.catalog.type}:</span>
+            {["all", "Residential", "Commercial", "Hotel", "Mixed-Use", "Cultural"].map((typeKey) => {
+              const isActive = selectedType === typeKey;
+              return (
+                <button
+                  key={typeKey}
+                  type="button"
+                  onClick={() => setSelectedType(typeKey)}
+                  className={`px-3.5 py-1.5 rounded-lg transition-all font-medium ${
+                    isActive
+                      ? "bg-amber-400 text-zinc-950 font-bold shadow-sm shadow-amber-400/20"
+                      : "bg-zinc-800/80 text-zinc-300 hover:bg-zinc-700 hover:text-white"
+                  }`}
+                >
+                  {typeMap[typeKey] || typeKey}
+                </button>
+              );
+            })}
 
             {(search || selectedDistrict !== "all" || selectedHeight !== "all" || selectedType !== "all") && (
               <button
-                onClick={() => {
-                  setSearch("");
-                  setSelectedDistrict("all");
-                  setSelectedHeight("all");
-                  setSelectedType("all");
-                }}
-                className="ml-auto text-amber-400 hover:underline text-xs"
+                type="button"
+                onClick={handleResetFilters}
+                className="ml-auto text-amber-400 hover:text-amber-300 text-xs font-semibold underline underline-offset-4 transition-colors"
               >
                 {t.catalog.resetFilters}
               </button>
@@ -206,29 +216,33 @@ export default function CatalogSection() {
         {/* Results Counter */}
         <div className="flex justify-between items-center mb-6 text-xs text-zinc-400">
           <span>
-            {t.catalog.showing} <strong className="text-amber-400">{filteredBuildings.length}</strong> {t.catalog.buildings}
+            {t.catalog.showing} <strong className="text-amber-300 font-bold font-mono">{filteredBuildings.length}</strong> {t.catalog.buildings}
           </span>
           {selectedDistrict !== "all" && (
-            <span className="text-zinc-500">
-              {t.catalog.filteredBy} {localizedDistricts.find((d) => d.slug === selectedDistrict)?.name}
+            <span className="text-zinc-400">
+              {t.catalog.filteredBy}{" "}
+              <strong className="text-zinc-200">
+                {localizedDistricts.find((d) => d.slug === selectedDistrict)?.name}
+              </strong>
             </span>
           )}
         </div>
 
         {/* Buildings Grid */}
         {filteredBuildings.length === 0 ? (
-          <div className="p-12 text-center rounded-2xl bg-zinc-900/40 border border-zinc-800">
-            <div className="text-4xl mb-3">🏙️</div>
-            <h3 className="text-lg font-bold text-white">{t.catalog.noMatch}</h3>
-            <p className="text-sm text-zinc-400 mt-1">{t.catalog.clearSearch}</p>
+          /* Empty State - Playbook Section 7 standard with actionable recovery */
+          <div className="p-12 text-center rounded-2xl bg-zinc-900/40 border border-zinc-800 shadow-soft-tint">
+            <div className="w-16 h-16 mx-auto mb-4 rounded-2xl bg-zinc-800/80 flex items-center justify-center text-3xl">
+              🏙️
+            </div>
+            <h3 className="text-lg font-bold text-zinc-100">{t.catalog.noMatch}</h3>
+            <p className="text-sm text-zinc-400 mt-2 max-w-sm mx-auto leading-relaxed">
+              {t.catalog.clearSearch}
+            </p>
             <button
-              onClick={() => {
-                setSearch("");
-                setSelectedDistrict("all");
-                setSelectedHeight("all");
-                setSelectedType("all");
-              }}
-              className="mt-4 px-4 py-2 rounded-xl bg-amber-400 text-zinc-950 text-xs font-bold"
+              type="button"
+              onClick={handleResetFilters}
+              className="mt-6 px-5 py-2.5 rounded-xl bg-amber-400 hover:bg-amber-300 text-zinc-950 text-xs font-bold uppercase tracking-wider shadow-md shadow-amber-400/20 active:scale-95 transition-all"
             >
               {t.catalog.resetAllFilters}
             </button>
@@ -238,10 +252,10 @@ export default function CatalogSection() {
             {filteredBuildings.map((building) => (
               <div
                 key={building.id}
-                className="rounded-2xl border border-zinc-800 bg-zinc-900/70 overflow-hidden hover:border-amber-500/40 transition-all hover:shadow-2xl hover:shadow-amber-500/10 flex flex-col group"
+                className="rounded-2xl border border-zinc-800/90 bg-zinc-900/60 overflow-hidden hover:border-amber-500/40 transition-all duration-300 hover:shadow-medium-tint flex flex-col h-full group"
               >
                 {/* Real Photography Image Header */}
-                <div className="relative h-56 w-full overflow-hidden bg-zinc-950 border-b border-zinc-800">
+                <div className="relative h-60 w-full overflow-hidden bg-zinc-950 border-b border-zinc-800/80">
                   <Image
                     src={building.image}
                     alt={building.name}
@@ -249,37 +263,33 @@ export default function CatalogSection() {
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/40 to-black/20" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-zinc-950/45 to-transparent" />
 
-                  {/* Top Badges */}
+                  {/* Top Badges (High Contrast WCAG AA) */}
                   <div className="absolute top-3 left-3 right-3 flex justify-between items-start z-10">
-                    <span className="px-2.5 py-1 rounded-full text-xs font-bold bg-zinc-950/85 text-amber-300 border border-amber-400/40 backdrop-blur-md shadow-lg">
+                    <span className="px-2.5 py-1 rounded-full text-xs font-bold font-mono bg-zinc-950/90 text-amber-300 border border-amber-400/40 backdrop-blur-md shadow-sm">
                       {building.heightMeters} m • {building.floors} {t.buildingCard.floors}
                     </span>
-                    <span className="text-xs text-zinc-300 font-mono px-2 py-0.5 rounded bg-zinc-950/85 border border-zinc-800 backdrop-blur-md">
+                    <span className="text-xs text-zinc-300 font-mono px-2.5 py-1 rounded-full bg-zinc-950/90 border border-zinc-800 backdrop-blur-md shadow-sm">
                       {building.yearBuilt}
                     </span>
                   </div>
 
-                  {/* Bottom Image Info */}
-                  <div className="absolute bottom-3 left-4 right-4 z-10">
+                  {/* District & Status Badges over photo */}
+                  <div className="absolute bottom-3 left-4 right-4 z-10 flex items-center justify-between gap-2">
                     <Link
                       href={`/districts/${building.districtSlug}/`}
-                      className="text-xs text-amber-400 font-semibold tracking-wider uppercase hover:underline drop-shadow-md"
+                      className="text-xs text-amber-300 font-bold tracking-wider uppercase hover:underline drop-shadow-md truncate"
                     >
                       {building.district}
                     </Link>
-                    <h3 className="text-xl sm:text-2xl font-bold text-white group-hover:text-amber-300 transition-colors mt-0.5 drop-shadow-md truncate">
-                      <Link href={`/buildings/${building.slug}/`}>
-                        {building.name}
-                      </Link>
-                    </h3>
-                    <div className="text-xs text-zinc-300 mt-1 flex items-center gap-2">
-                      <span className="px-2 py-0.5 rounded bg-zinc-900/80 text-[11px] text-zinc-200 border border-zinc-700/60 backdrop-blur-sm">
+
+                    <div className="flex items-center gap-1.5 shrink-0">
+                      <span className="px-2 py-0.5 rounded-md bg-zinc-900/90 text-[11px] font-medium text-zinc-200 border border-zinc-700/60 backdrop-blur-sm">
                         {typeMap[building.type] || building.type}
                       </span>
                       {building.status === "Under Construction" && (
-                        <span className="px-2 py-0.5 rounded bg-amber-500/30 text-amber-200 text-[10px] font-semibold border border-amber-500/50 backdrop-blur-sm">
+                        <span className="px-2 py-0.5 rounded-md bg-amber-500/25 text-amber-200 text-[11px] font-semibold border border-amber-500/40 backdrop-blur-sm">
                           {t.catalog.underConstruction}
                         </span>
                       )}
@@ -287,49 +297,73 @@ export default function CatalogSection() {
                   </div>
                 </div>
 
-                {/* Body Details */}
-                <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
-                  <div className="text-xs text-zinc-400 space-y-2">
-                    <div className="flex justify-between items-center">
-                      <span className="text-zinc-500">{t.buildingCard.architect}:</span>
-                      <span className="text-zinc-200 font-medium text-right truncate max-w-[200px]" title={building.architectFirm}>
-                        {building.architect}
-                      </span>
+                {/* Card Content & Architectural Spec Hierarchy (Playbook elimination of 'Label: Value' anti-pattern) */}
+                <div className="p-5 flex-1 flex flex-col justify-between space-y-4">
+                  <div>
+                    {/* Tower Name */}
+                    <h3 className="text-xl font-bold text-zinc-100 group-hover:text-amber-300 transition-colors tracking-tight">
+                      <Link href={`/buildings/${building.slug}/`}>
+                        {building.name}
+                      </Link>
+                    </h3>
+
+                    {/* Description Snippet */}
+                    <p className="text-xs text-zinc-400 mt-2 line-clamp-2 leading-relaxed">
+                      {building.description}
+                    </p>
+
+                    {/* Architectural Specifications - structured tags with iconography */}
+                    <div className="mt-4 pt-3 border-t border-zinc-800/70 grid grid-cols-2 gap-2 text-xs">
+                      {/* Architect */}
+                      <div className="p-2 rounded-xl bg-zinc-950/60 border border-zinc-800/80">
+                        <div className="text-[11px] uppercase tracking-wider text-zinc-500 font-medium">
+                          {t.buildingCard.architect}
+                        </div>
+                        <div className="text-zinc-200 font-semibold truncate mt-0.5" title={building.architectFirm}>
+                          {building.architect}
+                        </div>
+                      </div>
+
+                      {/* Developer */}
+                      <div className="p-2 rounded-xl bg-zinc-950/60 border border-zinc-800/80">
+                        <div className="text-[11px] uppercase tracking-wider text-zinc-500 font-medium">
+                          {t.buildingCard.developer}
+                        </div>
+                        <div className="text-zinc-200 font-semibold truncate mt-0.5">
+                          {building.developer}
+                        </div>
+                      </div>
                     </div>
-                    <div className="flex justify-between items-center">
-                      <span className="text-zinc-500">{t.buildingCard.developer}:</span>
-                      <span className="text-zinc-200 font-medium text-right truncate max-w-[200px]">
-                        {building.developer}
-                      </span>
-                    </div>
+
+                    {/* Investment Yield Badge (Prominent Key Metric) */}
                     {building.investmentYield !== "N/A" && (
-                      <div className="flex justify-between items-center pt-1 border-t border-zinc-800/60">
-                        <span className="text-zinc-500">{t.catalog.estRentalYield}:</span>
-                        <span className="text-emerald-400 font-bold font-mono">
+                      <div className="mt-2.5 px-3 py-1.5 rounded-xl bg-emerald-950/30 border border-emerald-500/30 flex items-center justify-between text-xs">
+                        <span className="text-emerald-300 font-medium flex items-center gap-1.5">
+                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                          {t.catalog.estRentalYield}
+                        </span>
+                        <span className="text-emerald-400 font-bold font-mono text-sm">
                           {building.investmentYield}
                         </span>
                       </div>
                     )}
                   </div>
 
-                  {/* Highlights snippet */}
-                  <p className="text-xs text-zinc-300 line-clamp-2 leading-relaxed">
-                    {building.description}
-                  </p>
-
-                  {/* Card Actions */}
-                  <div className="pt-4 border-t border-zinc-800 flex items-center justify-between gap-3">
+                  {/* Card Actions: Primary & Secondary with strict 'mt-auto' bottom pinning */}
+                  <div className="mt-auto pt-4 border-t border-zinc-800/80 flex items-center justify-between gap-3">
+                    {/* Primary Button */}
                     <Link
                       href={`/buildings/${building.slug}/`}
-                      className="text-xs font-semibold text-amber-400 hover:text-amber-300 flex items-center gap-1 group/link"
+                      className="flex-1 inline-flex items-center justify-center px-4 py-2 rounded-xl text-xs font-bold text-zinc-950 bg-amber-400 hover:bg-amber-300 transition-all shadow-sm shadow-amber-400/20 active:scale-98 group/btn"
                     >
                       <span>{t.buildingCard.viewDetails}</span>
-                      <span className="group-hover/link:translate-x-1 transition-transform">&rarr;</span>
+                      <span className="ml-1.5 group-hover/btn:translate-x-0.5 transition-transform">&rarr;</span>
                     </Link>
 
+                    {/* Secondary Button */}
                     <Link
                       href={`/buildings/${building.slug}/#inquire`}
-                      className="px-3 py-1.5 rounded-lg bg-zinc-800 hover:bg-zinc-700 text-zinc-200 text-xs font-medium transition-colors"
+                      className="px-3.5 py-2 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-zinc-200 hover:text-white text-xs font-semibold transition-colors border border-zinc-700/60"
                     >
                       {t.buildingCard.inquireUnits}
                     </Link>
