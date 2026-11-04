@@ -20,15 +20,15 @@ export default function DistrictsSection() {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-4">
           <div>
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-[#F1F5F9] text-[#0F172A] border border-[#CBD5E1] mb-3">
-              <span className="w-1.5 h-1.5 rounded-full bg-[#0F172A]" />
+            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-bold bg-[#F1F5F9] text-[#0F172A] border border-[#CBD5E1] mb-3">
+              <span className="w-2 h-2 rounded-full bg-[#0F172A]" />
               <span>{t.nav.districts} • {t.districts.badge}</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-[#0F172A] tracking-tight leading-tight font-heading">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#0F172A] tracking-tight leading-tight font-heading">
               {t.districts.title}
             </h2>
           </div>
-          <p className="text-[#475569] text-sm max-w-md leading-relaxed">
+          <p className="text-[#475569] text-base sm:text-lg max-w-lg leading-relaxed">
             {t.districts.subtitle}
           </p>
         </div>
@@ -42,7 +42,7 @@ export default function DistrictsSection() {
               className="group rounded-2xl border border-[#E2E8F0] bg-white overflow-hidden flex flex-col h-full hover:border-[#0F172A]/40 transition-all duration-300 shadow-float-card hover:shadow-float-card-hover"
             >
               {/* Photography Header with Floating Badges */}
-              <div className="relative h-52 w-full overflow-hidden bg-[#F1F5F9]">
+              <div className="relative h-56 w-full overflow-hidden bg-[#F1F5F9]">
                 <Image
                   src={district.image}
                   alt={district.name}
@@ -52,40 +52,40 @@ export default function DistrictsSection() {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A]/85 via-[#0F172A]/20 to-transparent" />
                 <div className="absolute top-3 left-3 right-3 flex justify-between items-start z-10">
-                  <span className="text-xs font-bold font-mono px-3 py-1 rounded-full bg-[#0F172A]/85 text-white border border-white/20 backdrop-blur-md shadow-sm">
+                  <span className="text-xs sm:text-sm font-bold font-mono px-3 py-1.5 rounded-full bg-[#0F172A]/85 text-white border border-white/20 backdrop-blur-md shadow-sm">
                     ROI: {district.averageRoi}
                   </span>
-                  <span className="text-xs text-white font-mono font-bold px-2.5 py-1 rounded-full bg-[#0F172A]/85 border border-white/20 backdrop-blur-md shadow-sm">
+                  <span className="text-xs sm:text-sm text-white font-mono font-bold px-3 py-1.5 rounded-full bg-[#0F172A]/85 border border-white/20 backdrop-blur-md shadow-sm">
                     {district.iconicTowersCount}+ {t.districts.towersCount}
                   </span>
                 </div>
               </div>
 
               {/* District Content */}
-              <div className="p-5 flex-1 flex flex-col justify-between space-y-4">
+              <div className="p-6 flex-1 flex flex-col justify-between space-y-4">
                 <div>
-                  <h3 className="text-xl font-bold text-[#0F172A] font-heading group-hover:text-[#8C6A48] transition-colors tracking-tight">
+                  <h3 className="text-xl sm:text-2xl font-bold text-[#0F172A] font-heading group-hover:text-[#8C6A48] transition-colors tracking-tight">
                     {district.name}
                   </h3>
-                  <div className="text-xs text-[#64748B] mt-1 font-semibold">
+                  <div className="text-xs sm:text-sm text-[#64748B] mt-1 font-semibold">
                     {district.developer}
                   </div>
-                  <p className="text-xs text-[#475569] leading-relaxed line-clamp-3 mt-3 max-w-[65ch]">
+                  <p className="text-sm sm:text-base text-[#475569] leading-relaxed line-clamp-3 mt-3 max-w-[65ch]">
                     {district.overview}
                   </p>
                 </div>
 
-                <div className="pt-3 border-t border-[#F1F5F9]">
-                  <div className="text-[10px] font-bold uppercase tracking-wider text-[#64748B] mb-1.5">
+                <div className="pt-3.5 border-t border-[#F1F5F9]">
+                  <div className="text-xs sm:text-sm font-bold uppercase tracking-wider text-[#64748B] mb-1.5">
                     {t.districts.keyLandmarks}
                   </div>
-                  <div className="text-xs text-[#475569] truncate font-medium">
+                  <div className="text-xs sm:text-sm text-[#475569] truncate font-medium">
                     {district.keyLandmarks.slice(0, 3).join(" • ")}
                   </div>
                 </div>
 
                 {/* Bottom Pinned Link */}
-                <div className="mt-auto pt-3 border-t border-[#F1F5F9] flex items-center justify-between text-xs font-bold text-[#0F172A] group-hover:text-[#8C6A48] transition-colors">
+                <div className="mt-auto pt-3.5 border-t border-[#F1F5F9] flex items-center justify-between text-sm sm:text-base font-bold text-[#0F172A] group-hover:text-[#8C6A48] transition-colors">
                   <span>{t.districts.exploreDistrict}</span>
                   <span className="group-hover:translate-x-1 transition-transform">&rarr;</span>
                 </div>

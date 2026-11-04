@@ -15,36 +15,50 @@ export default function Header() {
         <div className="flex items-center justify-between h-20">
           {/* Logo & Historical Archive Badge */}
           <Link href="/" className="flex items-center gap-3.5 group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0F172A] rounded-xl">
-            <div className="w-10 h-10 rounded-xl bg-[#0F172A] text-white flex items-center justify-center shadow-md shadow-[#0F172A]/20 group-hover:bg-[#8C6A48] transition-all duration-200">
+            <div className="w-10 h-10 rounded-xl bg-[#0F172A] p-1 flex items-center justify-center shadow-md shadow-[#0F172A]/20 group-hover:scale-105 transition-all duration-200 border border-white/10">
               <svg
-                className="w-5 h-5 text-white"
-                width="24"
-                height="24"
-                viewBox="0 0 24 24"
-                fill="currentColor"
+                className="w-full h-full"
+                viewBox="0 0 64 64"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
                 aria-hidden="true"
               >
-                <path d="M12 2L2 22h20L12 2zm0 4.5l6.5 13H5.5L12 6.5z" />
-                <path d="M11 11h2v7h-2z" />
+                {/* Baseline */}
+                <line x1="9" y1="54" x2="55" y2="54" stroke="#F59E0B" strokeWidth="2" strokeLinecap="round" opacity="0.9" />
+                
+                {/* Burj Al Arab (Парус) */}
+                <line x1="9.5" y1="24.5" x2="18.5" y2="24.5" stroke="#F59E0B" strokeWidth="2.2" strokeLinecap="round" />
+                <path d="M 16.5,19 C 27,24 30.5,38 23.5,53.5 L 16.5,53.5 Z" fill="#FFFFFF" />
+                <path d="M 16.5,29 C 23.5,33 25.5,43 20.5,53.5" stroke="#94A3B8" strokeWidth="1" opacity="0.6" />
+                <line x1="16.5" y1="17" x2="16.5" y2="53.5" stroke="#FFFFFF" strokeWidth="2.4" strokeLinecap="round" />
+
+                {/* Burj Khalifa */}
+                <polygon points="34,53.5 52,53.5 50.5,43 35.5,43" fill="#D97706" />
+                <polygon points="36.5,43 49.5,43 48.5,33 37.5,33" fill="#F59E0B" />
+                <polygon points="38.5,33 47.5,33 46.5,23 39.5,23" fill="#F59E0B" />
+                <polygon points="40.5,23 45.5,23 44.5,13.5 41.5,13.5" fill="#FDE68A" />
+                <line x1="43" y1="13.5" x2="43" y2="6.5" stroke="#FDE68A" strokeWidth="2.2" strokeLinecap="round" />
+                <circle cx="43" cy="6.5" r="1.5" fill="#FFFFFF" />
+                <line x1="43" y1="14" x2="43" y2="53.5" stroke="#FEF3C7" strokeWidth="1.2" opacity="0.8" />
               </svg>
             </div>
             <div className="flex flex-col">
               <div className="flex items-center gap-2">
-                <span className="font-bold text-lg text-[#0F172A] tracking-tight group-hover:text-[#8C6A48] transition-colors">
+                <span className="font-bold text-lg sm:text-xl text-[#0F172A] tracking-tight group-hover:text-[#8C6A48] transition-colors">
                   Dubai Architecture
                 </span>
                 <span className="hidden sm:inline-block px-2 py-0.5 text-xs font-semibold bg-[#F1F5F9] text-[#64748B] border border-[#E2E8F0] rounded-md font-mono">
                   EST. 2006
                 </span>
               </div>
-              <span className="text-xs text-[#64748B] font-mono tracking-wider">
+              <span className="text-xs sm:text-sm text-[#64748B] font-mono tracking-wider">
                 dubai-architecture.info
               </span>
             </div>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8 text-sm font-semibold text-[#475569]">
+          <nav className="hidden md:flex items-center gap-8 text-[15px] sm:text-base font-semibold text-[#475569]">
             <Link
               href="/"
               className="hover:text-[#0F172A] transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-[#0F172A] after:scale-x-0 hover:after:scale-x-100 after:transition-transform"

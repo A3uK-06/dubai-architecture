@@ -41,8 +41,8 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="flex flex-col items-center text-center max-w-4xl mx-auto space-y-6">
             {/* Heritage Trust Badge */}
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[#CBD5E1] bg-white text-[#0F172A] text-xs font-bold tracking-wide shadow-sm">
-              <span className="w-2 h-2 rounded-full bg-[#0F172A] animate-pulse" />
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#CBD5E1] bg-white text-[#0F172A] text-xs sm:text-sm font-bold tracking-wide shadow-sm">
+              <span className="w-2.5 h-2.5 rounded-full bg-[#0F172A] animate-pulse" />
               <span>{t.hero.badge}</span>
             </div>
 
@@ -55,7 +55,7 @@ export default function Home() {
             </h1>
 
             {/* Subtitle */}
-            <p className="text-base sm:text-lg text-[#475569] max-w-[65ch] font-normal leading-relaxed">
+            <p className="text-lg sm:text-xl text-[#475569] max-w-[65ch] font-normal leading-relaxed">
               Независимый архитектурный архив с 2006 года: детальные инженерные паспорта небоскребов Дубая, геотехника свайных фундаментов, ветроустойчивость, коммунальные тарифы DLD и инвестиционный аудит планировок.
             </p>
 
@@ -71,9 +71,7 @@ export default function Home() {
               >
                 <div className={`absolute ${isRtl ? "right-4" : "left-4"} text-[#64748B] pointer-events-none`}>
                   <svg
-                    className="w-5 h-5"
-                    width="20"
-                    height="20"
+                    className="w-5 h-5 sm:w-6 sm:h-6"
                     fill="none"
                     stroke="currentColor"
                     viewBox="0 0 24 24"
@@ -91,15 +89,15 @@ export default function Home() {
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
                   placeholder={t.hero.searchPlaceholder}
-                  className={`w-full h-[52px] rounded-xl bg-white border border-[#CBD5E1] text-[#0F172A] placeholder-[#64748B] shadow-float-card focus:outline-none focus:ring-2 focus:ring-[#0F172A] transition-all text-sm sm:text-base ${
-                    isRtl ? "pr-12 pl-36" : "pl-12 pr-36"
+                  className={`w-full h-[56px] rounded-xl bg-white border border-[#CBD5E1] text-[#0F172A] placeholder-[#64748B] shadow-float-card focus:outline-none focus:ring-2 focus:ring-[#0F172A] transition-all text-base sm:text-lg ${
+                    isRtl ? "pr-14 pl-36" : "pl-14 pr-36"
                   }`}
                 />
                 <button
                   type="submit"
                   className={`absolute ${
                     isRtl ? "left-2" : "right-2"
-                  } h-10 px-5 rounded-lg bg-[#0F172A] hover:bg-[#1E293B] text-white font-bold text-xs uppercase tracking-wider transition-all shadow-sm`}
+                  } h-11 px-6 rounded-lg bg-[#0F172A] hover:bg-[#1E293B] text-white font-bold text-xs sm:text-sm uppercase tracking-wider transition-all shadow-sm`}
                 >
                   Поиск
                 </button>
@@ -107,23 +105,23 @@ export default function Home() {
             </div>
 
             {/* CTA Action Buttons */}
-            <div className="flex flex-wrap items-center justify-center gap-3.5 pt-4">
+            <div className="flex flex-wrap items-center justify-center gap-4 pt-4">
               <a
                 href="#catalog"
-                className="px-6 py-3.5 rounded-xl font-bold text-sm bg-[#0F172A] hover:bg-[#1E293B] text-white transition-all shadow-sm"
+                className="px-7 py-4 rounded-xl font-bold text-base bg-[#0F172A] hover:bg-[#1E293B] text-white transition-all shadow-sm"
               >
                 {t.hero.ctaCatalog}
               </a>
               <a
                 href="#districts"
-                className="px-6 py-3.5 rounded-xl font-semibold text-sm bg-white hover:bg-[#F8F9FA] text-[#0F172A] border border-[#CBD5E1] transition-all shadow-sm"
+                className="px-7 py-4 rounded-xl font-semibold text-base bg-white hover:bg-[#F8F9FA] text-[#0F172A] border border-[#CBD5E1] transition-all shadow-sm"
               >
                 {t.nav.districts}
               </a>
               <button
                 type="button"
                 onClick={() => openLeadModal()}
-                className="px-6 py-3.5 rounded-xl font-semibold text-sm bg-[#F1F5F9] hover:bg-[#E2E8F0] text-[#0F172A] border border-[#CBD5E1] transition-all"
+                className="px-7 py-4 rounded-xl font-semibold text-base bg-[#F1F5F9] hover:bg-[#E2E8F0] text-[#0F172A] border border-[#CBD5E1] transition-all"
               >
                 {t.hero.downloadGuideBtn}
               </button>
@@ -131,26 +129,26 @@ export default function Home() {
 
             {/* Live Stats Counter Strip with Floating Compound Shadows */}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 w-full max-w-4xl pt-10 mt-6 border-t border-[#E2E8F0]">
-              <div className="p-5 rounded-2xl bg-white border border-[#E2E8F0] shadow-float-card text-center">
-                <div className="text-3xl font-extrabold text-[#0F172A] font-mono">18+</div>
-                <div className="text-xs text-[#64748B] font-semibold mt-1">{t.hero.statsYears}</div>
+              <div className="p-6 rounded-2xl bg-white border border-[#E2E8F0] shadow-float-card text-center">
+                <div className="text-4xl sm:text-5xl font-extrabold text-[#0F172A] font-mono">18+</div>
+                <div className="text-xs sm:text-sm text-[#64748B] font-semibold mt-1.5">{t.hero.statsYears}</div>
               </div>
-              <div className="p-5 rounded-2xl bg-white border border-[#E2E8F0] shadow-float-card text-center">
-                <div className="text-3xl font-extrabold text-[#8C6A48] font-mono">30+</div>
-                <div className="text-xs text-[#64748B] font-semibold mt-1">Культовых башен в базе</div>
+              <div className="p-6 rounded-2xl bg-white border border-[#E2E8F0] shadow-float-card text-center">
+                <div className="text-4xl sm:text-5xl font-extrabold text-[#8C6A48] font-mono">30+</div>
+                <div className="text-xs sm:text-sm text-[#64748B] font-semibold mt-1.5">Культовых башен в базе</div>
               </div>
-              <div className="p-5 rounded-2xl bg-white border border-[#E2E8F0] shadow-float-card text-center">
-                <div className="text-3xl font-extrabold text-[#059669] font-mono">8.2%</div>
-                <div className="text-xs text-[#64748B] font-semibold mt-1">{t.hero.statsRoi}</div>
+              <div className="p-6 rounded-2xl bg-white border border-[#E2E8F0] shadow-float-card text-center">
+                <div className="text-4xl sm:text-5xl font-extrabold text-[#059669] font-mono">8.2%</div>
+                <div className="text-xs sm:text-sm text-[#64748B] font-semibold mt-1.5">{t.hero.statsRoi}</div>
               </div>
-              <div className="p-5 rounded-2xl bg-white border border-[#E2E8F0] shadow-float-card text-center">
-                <div className="text-3xl font-extrabold text-[#0F172A] font-mono">10</div>
-                <div className="text-xs text-[#64748B] font-semibold mt-1">{t.hero.statsDistricts}</div>
+              <div className="p-6 rounded-2xl bg-white border border-[#E2E8F0] shadow-float-card text-center">
+                <div className="text-4xl sm:text-5xl font-extrabold text-[#0F172A] font-mono">10</div>
+                <div className="text-xs sm:text-sm text-[#64748B] font-semibold mt-1.5">{t.hero.statsDistricts}</div>
               </div>
             </div>
 
             {/* Language & DLD status info */}
-            <div className="text-xs text-[#64748B] font-mono pt-2">
+            <div className="text-xs sm:text-sm text-[#64748B] font-mono pt-2">
               🌍 {t.hero.statusBarText} • Активный язык: <strong>{langInfo.name}</strong>
             </div>
           </div>

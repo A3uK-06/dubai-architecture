@@ -434,12 +434,12 @@ export default function BuildingDetailClient({
                       <div className="text-xl font-extrabold text-[#1C1917] font-mono mt-1">
                         {building.operatingSpecs.annualServiceChargeAedSqFt} <span className="text-xs font-normal">AED/sq.ft</span>
                       </div>
-                      <p className="text-[11px] text-[#78716C] mt-1">Официальный тариф реестра RERA на обслуживание</p>
+                      <p className="text-xs text-[#64748B] mt-1">Официальный тариф реестра RERA на обслуживание</p>
                     </div>
                     <div className="p-4 rounded-xl bg-[#EFECE4]/60 border border-[#DDD7CA]">
                       <div className="text-[#78716C] font-medium uppercase">Тип охлаждения (Chiller)</div>
                       <div className="text-base font-bold text-[#1C1917] mt-1">{building.operatingSpecs.coolingProvider}</div>
-                      <span className={`inline-block mt-1 px-2 py-0.5 rounded text-[11px] font-bold ${
+                      <span className={`inline-block mt-1 px-2.5 py-0.5 rounded text-xs font-bold ${
                         building.operatingSpecs.chillerBilling === 'Chiller-Free' 
                           ? 'bg-[#2D6A4F]/10 text-[#2D6A4F]' 
                           : 'bg-[#9E4732]/10 text-[#9E4732]'
@@ -450,7 +450,7 @@ export default function BuildingDetailClient({
                     <div className="p-4 rounded-xl bg-[#EFECE4]/60 border border-[#DDD7CA]">
                       <div className="text-[#78716C] font-medium uppercase">Звукоизоляция межквартирная</div>
                       <div className="text-xl font-extrabold text-[#1C1917] font-mono mt-1">{building.operatingSpecs.acousticRatingDb}</div>
-                      <p className="text-[11px] text-[#78716C] mt-1">Индекс снижения воздушного шума перекрытий</p>
+                      <p className="text-xs text-[#64748B] mt-1">Индекс снижения воздушного шума перекрытий</p>
                     </div>
                     <div className="p-3.5 rounded-xl bg-[#FAF8F5] border border-[#EFECE4]">
                       <div className="text-[#78716C] font-medium">Высота потолков (В чистоте)</div>

@@ -1,5 +1,22 @@
 @import "tailwindcss";
 
+html {
+  font-size: 16px;
+}
+
+/* 2K and High-Resolution 27"+ desktop monitors scaling */
+@media (min-width: 1440px) {
+  html {
+    font-size: 17px;
+  }
+}
+
+@media (min-width: 1920px) {
+  html {
+    font-size: 18px;
+  }
+}
+
 :root {
   /* Architectural Portal Design System */
   --background: #F8F9FA;

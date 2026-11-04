@@ -1,0 +1,76 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1E293B" />
+      <stop offset="100%" stop-color="#0F172A" />
+    </linearGradient>
+
+    <!-- Warm Architectural Gold Gradient for Burj Khalifa -->
+    <linearGradient id="goldGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FDE68A" />
+      <stop offset="25%" stop-color="#F59E0B" />
+      <stop offset="70%" stop-color="#D97706" />
+      <stop offset="100%" stop-color="#92400E" />
+    </linearGradient>
+
+    <!-- Crisp Platinum Gradient for Burj Al Arab Sail -->
+    <linearGradient id="sailGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="50%" stop-color="#F8FAFC" />
+      <stop offset="100%" stop-color="#CBD5E1" />
+    </linearGradient>
+
+    <!-- Spire Glow -->
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="1.5" result="blur" />
+      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+    </filter>
+  </defs>
+
+  <!-- Dark Luxury Rounded Base Squircle -->
+  <rect width="64" height="64" rx="15" fill="url(#bgGrad)" />
+  <rect x="1" y="1" width="62" height="62" rx="14" fill="none" stroke="rgba(255, 255, 255, 0.12)" stroke-width="1.2" />
+
+  <!-- Architectural Baseline / Horizon -->
+  <line x1="9" y1="54" x2="55" y2="54" stroke="#F59E0B" stroke-width="1.8" stroke-linecap="round" opacity="0.85" />
+  <line x1="13" y1="57" x2="51" y2="57" stroke="#334155" stroke-width="1" stroke-linecap="round" />
+
+  <!-- ================= BURJ AL ARAB (ПАРУС) - LEFT ================= -->
+  <!-- Helipad Cantilever Disk -->
+  <line x1="9.5" y1="24.5" x2="18.5" y2="24.5" stroke="#F59E0B" stroke-width="2.2" stroke-linecap="round" />
+  
+  <!-- Curved White Sail Body -->
+  <path d="M 16.5,19 C 27,24 30.5,38 23.5,53.5 L 16.5,53.5 Z" fill="url(#sailGrad)" />
+  
+  <!-- Internal Sail Structural Ribs -->
+  <path d="M 16.5,29 C 23.5,33 25.5,43 20.5,53.5" fill="none" stroke="#94A3B8" stroke-width="1" opacity="0.6" />
+  <path d="M 16.5,39 C 20.5,42 22,48 18.5,53.5" fill="none" stroke="#94A3B8" stroke-width="0.8" opacity="0.5" />
+  
+  <!-- Main Vertical Structural Mast Spine -->
+  <line x1="16.5" y1="17" x2="16.5" y2="53.5" stroke="#FFFFFF" stroke-width="2.4" stroke-linecap="round" />
+
+  <!-- ================= BURJ KHALIFA - CENTER/RIGHT ================= -->
+  <!-- Stepped Tier 4 (Base) -->
+  <polygon points="34,53.5 52,53.5 50.5,43 35.5,43" fill="url(#goldGrad)" opacity="0.9" />
+  
+  <!-- Stepped Tier 3 -->
+  <polygon points="36.5,43 49.5,43 48.5,33 37.5,33" fill="url(#goldGrad)" />
+  
+  <!-- Stepped Tier 2 -->
+  <polygon points="38.5,33 47.5,33 46.5,23 39.5,23" fill="url(#goldGrad)" />
+  
+  <!-- Stepped Tier 1 (Upper Tower) -->
+  <polygon points="40.5,23 45.5,23 44.5,13.5 41.5,13.5" fill="url(#goldGrad)" />
+
+  <!-- Slender Pinnacle Spire Needle with Radiant Tip -->
+  <line x1="43" y1="13.5" x2="43" y2="6.5" stroke="#FDE68A" stroke-width="2.2" stroke-linecap="round" filter="url(#glow)" />
+  <circle cx="43" cy="6.5" r="1.4" fill="#FFFFFF" />
+
+  <!-- Center Vertical Light Reflection Crease on Burj Khalifa -->
+  <line x1="43" y1="14" x2="43" y2="53.5" stroke="#FEF3C7" stroke-width="1.2" opacity="0.85" />
+
+  <!-- Side Architectural Accent Stepped Notches -->
+  <line x1="33" y1="53.5" x2="35.5" y2="43" stroke="#FDE68A" stroke-width="0.8" opacity="0.6" />
+  <line x1="53" y1="53.5" x2="50.5" y2="43" stroke="#B45309" stroke-width="0.8" opacity="0.7" />
+</svg>
