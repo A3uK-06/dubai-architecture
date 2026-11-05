@@ -8,7 +8,7 @@ const RAW_GTM_ID = process.env.NEXT_PUBLIC_GTM_ID?.trim();
 
 // Support both GTM container (GTM-XXXXXX) and direct GA4 stream (G-XXXXXX)
 const GTM_ID = RAW_GTM_ID || (RAW_GA_ID?.startsWith("GTM-") ? RAW_GA_ID : undefined);
-const GA_ID = RAW_GA_ID?.startsWith("G-") ? RAW_GA_ID : (!RAW_GTM_ID && !RAW_GA_ID?.startsWith("GTM-") ? RAW_GA_ID : undefined);
+const GA_ID = RAW_GA_ID?.startsWith("G-") ? RAW_GA_ID : undefined;
 
 const CLARITY_ID = process.env.NEXT_PUBLIC_CLARITY_ID?.trim();
 const IGNORE_STORAGE_KEY = "ignore_analytics";
@@ -70,19 +70,18 @@ export default function GoogleAnalytics() {
         </div>
       )}
 
-      {/* Google Tag Manager (GTM) */}
+      {/* Google Tag (GTM-P5QVMKMB / GTM Container) */}
       {GTM_ID && (
         <>
           <Script
-            id="google-tag-manager"
+            strategy="afterInteractive"
+            src={`https://www.googletagmanager.com/gtm.js?id=${GTM_ID}`}
+          />
+          <Script
+            id="google-tag"
             strategy="afterInteractive"
             dangerouslySetInnerHTML={{
               __html: `
-                (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-                new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-                j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-                'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-                })(window,document,'script','dataLayer','${GTM_ID}');
                 window.dataLayer = window.dataLayer || [];
                 function gtag(){dataLayer.push(arguments);}
                 gtag('js', new Date());

@@ -36,6 +36,9 @@ jobs:
         run: npm ci
 
       - name: Build with Next.js
+        env:
+          NEXT_PUBLIC_GA_ID: ${{ vars.NEXT_PUBLIC_GA_ID || 'G-S9Q49RFJE1' }}
+          NEXT_PUBLIC_GTM_ID: ${{ vars.NEXT_PUBLIC_GTM_ID || 'GTM-P5QVMKMB' }}
         run: |
           npm run build
           touch ./out/.nojekyll
