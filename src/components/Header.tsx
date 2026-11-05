@@ -10,12 +10,12 @@ export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-white/30 bg-white/85 backdrop-blur-[16px] shadow-soft-tint transition-all duration-200">
+    <header className="sticky top-0 z-40 w-full border-b border-[rgba(212,175,55,0.15)] bg-[#0B0F17]/80 backdrop-blur-[20px] shadow-luxury-card transition-all duration-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo & Historical Archive Badge */}
-          <Link href="/" className="flex items-center gap-3.5 group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0F172A] rounded-xl">
-            <div className="w-10 h-10 rounded-xl bg-[#0F172A] p-1 flex items-center justify-center shadow-md shadow-[#0F172A]/20 group-hover:scale-105 transition-all duration-200 border border-white/10">
+          <Link href="/" className="flex items-center gap-3.5 group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#D4AF37] rounded-xl">
+            <div className="w-10 h-10 rounded-xl bg-[#131B26] p-1 flex items-center justify-center shadow-lg shadow-black/40 group-hover:scale-105 group-hover:border-[#D4AF37]/50 transition-all duration-200 border border-[rgba(212,175,55,0.3)]">
               <svg
                 className="w-full h-full"
                 viewBox="0 0 64 64"
@@ -44,140 +44,138 @@ export default function Header() {
             </div>
             <div className="flex flex-col">
               <div className="flex items-center gap-2">
-                <span className="font-bold text-lg sm:text-xl text-[#0F172A] tracking-tight group-hover:text-[#8C6A48] transition-colors">
+                <span className="font-bold text-lg sm:text-xl text-[#F8FAFC] tracking-tight group-hover:text-[#D4AF37] transition-colors font-editorial">
                   Dubai Architecture
                 </span>
-                <span className="hidden sm:inline-block px-2 py-0.5 text-xs font-semibold bg-[#F1F5F9] text-[#64748B] border border-[#E2E8F0] rounded-md font-mono">
+                <span className="hidden sm:inline-block px-2 py-0.5 text-xs font-semibold bg-[#131B26] text-[#D4AF37] border border-[rgba(212,175,55,0.3)] rounded-md font-mono">
                   EST. 2006
                 </span>
               </div>
-              <span className="text-xs sm:text-sm text-[#64748B] font-mono tracking-wider">
+              <span className="text-xs sm:text-sm text-[#94A3B8] font-mono tracking-wider">
                 dubai-architecture.info
               </span>
             </div>
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8 text-[15px] sm:text-base font-semibold text-[#475569]">
+          <nav className="hidden md:flex items-center gap-8 text-[15px] sm:text-base font-medium text-[#94A3B8]">
             <Link
               href="/"
-              className="hover:text-[#0F172A] transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-[#0F172A] after:scale-x-0 hover:after:scale-x-100 after:transition-transform"
+              className="hover:text-[#F8FAFC] transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-[#D4AF37] after:scale-x-0 hover:after:scale-x-100 after:transition-transform"
             >
               {t.nav.home}
             </Link>
             <Link
               href="/#catalog"
-              className="hover:text-[#0F172A] transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-[#0F172A] after:scale-x-0 hover:after:scale-x-100 after:transition-transform"
+              className="hover:text-[#F8FAFC] transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-[#D4AF37] after:scale-x-0 hover:after:scale-x-100 after:transition-transform"
             >
               {t.nav.catalog}
             </Link>
             <Link
               href="/#districts"
-              className="hover:text-[#0F172A] transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-[#0F172A] after:scale-x-0 hover:after:scale-x-100 after:transition-transform"
+              className="hover:text-[#F8FAFC] transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-[#D4AF37] after:scale-x-0 hover:after:scale-x-100 after:transition-transform"
             >
               {t.nav.districts}
             </Link>
             <Link
               href="/#calculator"
-              className="hover:text-[#0F172A] transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-[#0F172A] after:scale-x-0 hover:after:scale-x-100 after:transition-transform"
+              className="hover:text-[#F8FAFC] transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-[#D4AF37] after:scale-x-0 hover:after:scale-x-100 after:transition-transform"
             >
               {t.nav.calculator}
             </Link>
             <Link
               href="/#golden-visa"
-              className="hover:text-[#0F172A] transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-[#0F172A] after:scale-x-0 hover:after:scale-x-100 after:transition-transform"
+              className="hover:text-[#F8FAFC] transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-[#D4AF37] after:scale-x-0 hover:after:scale-x-100 after:transition-transform"
             >
               {t.nav.goldenVisa}
             </Link>
           </nav>
 
-          {/* Right Actions: Language Selector & Primary CTA Button */}
+          {/* Header Controls */}
           <div className="flex items-center gap-4">
             <LanguageSelector />
 
-            <Link
+            {/* Direct Inquire CTA Button */}
+            <a
               href="#contact"
-              className="hidden lg:inline-flex items-center justify-center px-5 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider text-white bg-[#0F172A] hover:bg-[#1E293B] transition-all shadow-soft-tint active:scale-95 focus:outline-none focus:ring-2 focus:ring-[#0F172A] focus:ring-offset-2"
+              className="hidden lg:inline-flex items-center justify-center px-5 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider text-[#0B0F17] bg-gradient-to-r from-[#E5C378] via-[#D4AF37] to-[#B89628] hover:from-[#FDE68A] hover:to-[#D4AF37] transition-all shadow-md shadow-[#D4AF37]/20 active:scale-95 focus:outline-none focus:ring-2 focus:ring-[#D4AF37] focus:ring-offset-2 focus:ring-offset-[#0B0F17]"
             >
               {t.nav.contactBroker}
-            </Link>
+            </a>
 
-            {/* Mobile menu toggle */}
+            {/* Mobile Menu Button */}
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden w-11 h-11 flex items-center justify-center text-[#475569] hover:text-[#0F172A] hover:bg-[#F1F5F9] rounded-xl transition-colors focus:outline-none focus:ring-2 focus:ring-[#0F172A]"
+              className="md:hidden w-11 h-11 flex items-center justify-center text-[#94A3B8] hover:text-[#F8FAFC] hover:bg-[#131B26] rounded-xl transition-colors border border-[rgba(255,255,255,0.08)] focus:outline-none focus:ring-2 focus:ring-[#D4AF37]"
               aria-label="Toggle navigation menu"
               aria-expanded={mobileMenuOpen}
             >
-              <svg
-                className="w-6 h-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                strokeWidth="2"
-                stroke="currentColor"
-                aria-hidden="true"
-              >
-                {mobileMenuOpen ? (
+              {mobileMenuOpen ? (
+                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-                ) : (
+                </svg>
+              ) : (
+                <svg className="w-6 h-6" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
-                )}
-              </svg>
+                </svg>
+              )}
             </button>
           </div>
         </div>
-      </div>
 
-      {/* Mobile Drawer */}
-      {mobileMenuOpen && (
-        <div className="md:hidden border-t border-[#E2E8F0] bg-white/95 backdrop-blur-[16px] px-4 pt-4 pb-6 space-y-3 shadow-lg">
-          <Link
-            href="/"
-            onClick={() => setMobileMenuOpen(false)}
-            className="block px-3 py-2 text-base font-semibold text-[#0F172A] rounded-lg hover:bg-[#F1F5F9]"
-          >
-            {t.nav.home}
-          </Link>
-          <Link
-            href="/#catalog"
-            onClick={() => setMobileMenuOpen(false)}
-            className="block px-3 py-2 text-base font-semibold text-[#0F172A] rounded-lg hover:bg-[#F1F5F9]"
-          >
-            {t.nav.catalog}
-          </Link>
-          <Link
-            href="/#districts"
-            onClick={() => setMobileMenuOpen(false)}
-            className="block px-3 py-2 text-base font-semibold text-[#0F172A] rounded-lg hover:bg-[#F1F5F9]"
-          >
-            {t.nav.districts}
-          </Link>
-          <Link
-            href="/#calculator"
-            onClick={() => setMobileMenuOpen(false)}
-            className="block px-3 py-2 text-base font-semibold text-[#0F172A] rounded-lg hover:bg-[#F1F5F9]"
-          >
-            {t.nav.calculator}
-          </Link>
-          <Link
-            href="/#golden-visa"
-            onClick={() => setMobileMenuOpen(false)}
-            className="block px-3 py-2 text-base font-semibold text-[#0F172A] rounded-lg hover:bg-[#F1F5F9]"
-          >
-            {t.nav.goldenVisa}
-          </Link>
-          <div className="pt-2">
-            <Link
-              href="#contact"
-              onClick={() => setMobileMenuOpen(false)}
-              className="block w-full text-center px-4 py-3 text-xs font-bold uppercase tracking-wider text-white bg-[#0F172A] hover:bg-[#1E293B] rounded-xl shadow-soft-tint"
-            >
-              {t.nav.contactBroker}
-            </Link>
+        {/* Mobile Dropdown Menu */}
+        {mobileMenuOpen && (
+          <div className="md:hidden py-4 border-t border-[rgba(255,255,255,0.08)] bg-[#0B0F17]/95 backdrop-blur-xl animate-in slide-in-from-top duration-200">
+            <nav className="flex flex-col space-y-3 px-2">
+              <Link
+                href="/"
+                onClick={() => setMobileMenuOpen(false)}
+                className="px-4 py-2.5 rounded-xl text-base font-semibold text-[#F8FAFC] hover:bg-[#131B26] hover:text-[#D4AF37] transition-colors"
+              >
+                {t.nav.home}
+              </Link>
+              <Link
+                href="/#catalog"
+                onClick={() => setMobileMenuOpen(false)}
+                className="px-4 py-2.5 rounded-xl text-base font-semibold text-[#F8FAFC] hover:bg-[#131B26] hover:text-[#D4AF37] transition-colors"
+              >
+                {t.nav.catalog}
+              </Link>
+              <Link
+                href="/#districts"
+                onClick={() => setMobileMenuOpen(false)}
+                className="px-4 py-2.5 rounded-xl text-base font-semibold text-[#F8FAFC] hover:bg-[#131B26] hover:text-[#D4AF37] transition-colors"
+              >
+                {t.nav.districts}
+              </Link>
+              <Link
+                href="/#calculator"
+                onClick={() => setMobileMenuOpen(false)}
+                className="px-4 py-2.5 rounded-xl text-base font-semibold text-[#F8FAFC] hover:bg-[#131B26] hover:text-[#D4AF37] transition-colors"
+              >
+                {t.nav.calculator}
+              </Link>
+              <Link
+                href="/#golden-visa"
+                onClick={() => setMobileMenuOpen(false)}
+                className="px-4 py-2.5 rounded-xl text-base font-semibold text-[#F8FAFC] hover:bg-[#131B26] hover:text-[#D4AF37] transition-colors"
+              >
+                {t.nav.goldenVisa}
+              </Link>
+              <div className="pt-2">
+                <a
+                  href="#contact"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="w-full flex items-center justify-center px-5 py-3 rounded-xl text-sm font-bold uppercase tracking-wider text-[#0B0F17] bg-gradient-to-r from-[#E5C378] to-[#D4AF37] shadow-md transition-all"
+                >
+                  {t.nav.contactBroker}
+                </a>
+              </div>
+            </nav>
           </div>
-        </div>
-      )}
+        )}
+      </div>
     </header>
   );
 }

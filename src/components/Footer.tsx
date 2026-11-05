@@ -8,13 +8,13 @@ export default function Footer() {
   const { t } = useLang();
 
   return (
-    <footer className="w-full bg-[#0F172A] text-white border-t border-[#1E293B] mt-auto">
+    <footer className="w-full bg-[#070A0F] text-[#F8FAFC] border-t border-[rgba(212,175,55,0.15)] mt-auto">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           {/* Brand & Historical Archive Statement */}
           <div className="md:col-span-2 space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-xl bg-white/10 p-1 flex items-center justify-center border border-white/20">
+              <div className="w-10 h-10 rounded-xl bg-[#131B26] p-1 flex items-center justify-center border border-[rgba(212,175,55,0.3)] shadow-luxury-card">
                 <svg
                   className="w-full h-full"
                   viewBox="0 0 64 64"
@@ -35,19 +35,21 @@ export default function Footer() {
                 </svg>
               </div>
               <div>
-                <span className="font-bold text-xl text-white tracking-tight">Dubai Architecture</span>
-                <span className="ml-2 px-2 py-0.5 text-xs font-semibold bg-white/10 text-amber-400 border border-white/20 rounded font-mono">
+                <span className="font-bold text-xl text-[#F8FAFC] tracking-tight font-editorial">
+                  Dubai Architecture
+                </span>
+                <span className="ml-2 px-2 py-0.5 text-xs font-semibold bg-[#131B26] text-[#D4AF37] border border-[rgba(212,175,55,0.3)] rounded font-mono">
                   EST. 2006
                 </span>
               </div>
             </div>
 
-            <p className="text-sm text-slate-400 leading-relaxed max-w-lg">
+            <p className="text-sm text-[#94A3B8] leading-relaxed max-w-lg">
               {t.footer.description}
             </p>
 
             <div className="pt-2">
-              <span className="inline-block px-3 py-1 rounded-full text-xs font-mono bg-white/5 border border-white/10 text-slate-300">
+              <span className="inline-block px-3.5 py-1.5 rounded-full text-xs font-mono bg-[#131B26] border border-[rgba(212,175,55,0.2)] text-[#D4AF37]">
                 🏛️ {t.footer.historicalArchiveNote}
               </span>
             </div>
@@ -55,32 +57,32 @@ export default function Footer() {
 
           {/* Navigation Links */}
           <div className="space-y-4">
-            <h3 className="text-sm font-bold uppercase tracking-wider text-slate-200">
+            <h3 className="text-sm font-bold uppercase tracking-wider text-[#D4AF37] font-mono">
               {t.footer.linksTitle}
             </h3>
-            <ul className="space-y-2.5 text-sm text-slate-400 font-medium">
+            <ul className="space-y-2.5 text-sm text-[#94A3B8] font-medium">
               <li>
-                <Link href="/" className="hover:text-amber-400 transition-colors">
+                <Link href="/" className="hover:text-[#D4AF37] transition-colors">
                   {t.nav.home}
                 </Link>
               </li>
               <li>
-                <Link href="/#catalog" className="hover:text-amber-400 transition-colors">
+                <Link href="/#catalog" className="hover:text-[#D4AF37] transition-colors">
                   {t.nav.catalog}
                 </Link>
               </li>
               <li>
-                <Link href="/#districts" className="hover:text-amber-400 transition-colors">
+                <Link href="/#districts" className="hover:text-[#D4AF37] transition-colors">
                   {t.nav.districts}
                 </Link>
               </li>
               <li>
-                <Link href="/#calculator" className="hover:text-amber-400 transition-colors">
+                <Link href="/#calculator" className="hover:text-[#D4AF37] transition-colors">
                   {t.nav.calculator}
                 </Link>
               </li>
               <li>
-                <Link href="/#golden-visa" className="hover:text-amber-400 transition-colors">
+                <Link href="/#golden-visa" className="hover:text-[#D4AF37] transition-colors">
                   {t.nav.goldenVisa}
                 </Link>
               </li>
@@ -89,27 +91,27 @@ export default function Footer() {
 
           {/* Legal / Compliance */}
           <div className="space-y-4">
-            <h3 className="text-sm font-bold uppercase tracking-wider text-slate-200">
+            <h3 className="text-sm font-bold uppercase tracking-wider text-[#D4AF37] font-mono">
               {t.footer.legalTitle}
             </h3>
-            <p className="text-xs text-slate-400 leading-relaxed">
+            <p className="text-xs text-[#94A3B8] leading-relaxed">
               {t.footer.disclaimer}
             </p>
-            <div className="pt-2 text-xs font-mono text-slate-500">
+            <div className="pt-2 text-xs font-mono text-[#64748B]">
               RERA / DLD Standard Transparency • ISO 9001
             </div>
           </div>
         </div>
 
         {/* Bottom Bar */}
-        <div className="pt-8 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 font-mono">
+        <div className="pt-8 border-t border-[rgba(255,255,255,0.08)] flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-[#94A3B8] font-mono">
           <div>
             © {new Date().getFullYear()} Dubai Architecture (dubai-architecture.info). {t.footer.rightsReserved}
           </div>
           <div className="flex items-center gap-4">
             <span>Dubai, United Arab Emirates</span>
             <span>•</span>
-            <span className="text-amber-400">Archive ID: DUB-ARCH-2006</span>
+            <span className="text-[#D4AF37]">Archive ID: DUB-ARCH-2006</span>
           </div>
         </div>
       </div>

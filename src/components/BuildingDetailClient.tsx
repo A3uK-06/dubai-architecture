@@ -38,72 +38,72 @@ export default function BuildingDetailClient({
   );
 
   return (
-    <article className="min-h-screen bg-[#F8F9FA] text-[#0F172A] pb-24 transition-colors">
+    <article className="min-h-screen bg-[#0B0F17] text-[#F8FAFC] pb-24 transition-colors">
       <SchemaOrg type="building" building={building} />
 
       {/* Hero Header */}
-      <div className="relative border-b border-[#E2E8F0] bg-[#F1F5F9]/60 pt-10 pb-16">
+      <div className="relative border-b border-[rgba(255,255,255,0.06)] bg-[#0B0F17]/80 pt-10 pb-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Breadcrumb */}
-          <nav className="flex items-center gap-2 text-xs text-[#78716C] mb-6 font-semibold">
-            <Link href="/" className="hover:text-[#8C6A48] transition-colors">
+          <nav className="flex items-center gap-2 text-xs text-[#94A3B8] mb-6 font-semibold font-mono">
+            <Link href="/" className="hover:text-[#D4AF37] transition-colors">
               {bd.breadcrumbHome}
             </Link>
-            <span className="text-[#DDD7CA]">/</span>
-            <Link href="/#catalog" className="hover:text-[#8C6A48] transition-colors">
+            <span className="text-[rgba(255,255,255,0.2)]">/</span>
+            <Link href="/#catalog" className="hover:text-[#D4AF37] transition-colors">
               {bd.breadcrumbCatalog}
             </Link>
-            <span className="text-[#DDD7CA]">/</span>
+            <span className="text-[rgba(255,255,255,0.2)]">/</span>
             <Link
               href={`/districts/${building.districtSlug}/`}
-              className="hover:text-[#8C6A48] transition-colors"
+              className="hover:text-[#D4AF37] transition-colors"
             >
               {building.district}
             </Link>
-            <span className="text-[#DDD7CA]">/</span>
-            <span className="text-[#1C1917] font-bold">{building.name}</span>
+            <span className="text-[rgba(255,255,255,0.2)]">/</span>
+            <span className="text-[#D4AF37] font-bold">{building.name}</span>
           </nav>
 
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
             <div className="space-y-3">
               <div className="flex flex-wrap items-center gap-2">
-                <span className="px-3 py-1 rounded-full text-xs font-bold font-mono bg-[#8C6A48] text-white shadow-soft-tint">
+                <span className="px-3.5 py-1 rounded-full text-xs font-bold font-mono bg-gradient-to-r from-[#E5C378] to-[#D4AF37] text-[#0B0F17] shadow-md">
                   {building.heightMeters} m ({building.heightFeet} ft)
                 </span>
-                <span className="px-3 py-1 rounded-full text-xs font-semibold bg-white text-[#57534E] border border-[#DDD7CA]">
+                <span className="px-3 py-1 rounded-full text-xs font-semibold bg-[#131B26] text-[#F8FAFC] border border-[rgba(255,255,255,0.1)]">
                   {building.floors} {bd.storeys}
                 </span>
-                <span className="px-3 py-1 rounded-full text-xs font-semibold bg-white text-[#57534E] border border-[#DDD7CA]">
+                <span className="px-3 py-1 rounded-full text-xs font-semibold bg-[#131B26] text-[#F8FAFC] border border-[rgba(255,255,255,0.1)]">
                   {bd.built} {building.yearBuilt}
                 </span>
-                <span className="px-3 py-1 rounded-full text-xs font-semibold bg-white text-[#57534E] border border-[#DDD7CA]">
+                <span className="px-3 py-1 rounded-full text-xs font-semibold bg-[#131B26] text-[#F8FAFC] border border-[rgba(255,255,255,0.1)]">
                   {building.type}
                 </span>
                 {building.legacyId && (
-                  <span className="px-2.5 py-1 rounded-full text-xs font-mono bg-[#EFECE4] border border-[#DDD7CA] text-[#8C6A48] font-bold">
+                  <span className="px-2.5 py-1 rounded-full text-xs font-mono bg-[#131B26] border border-[#D4AF37]/30 text-[#D4AF37] font-bold">
                     {bd.archiveId}: {building.legacyId}
                   </span>
                 )}
               </div>
 
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#1C1917] tracking-tight leading-tight">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#F8FAFC] tracking-tight leading-tight font-editorial">
                 {building.name}
               </h1>
 
-              <div className="flex flex-wrap items-center gap-4 text-sm text-[#57534E] pt-1">
+              <div className="flex flex-wrap items-center gap-4 text-sm text-[#94A3B8] pt-1">
                 <div>
-                  <span className="text-[#78716C]">{bd.architectLabel}: </span>
-                  <span className="text-[#1C1917] font-bold">{building.architect}</span> ({building.architectFirm})
+                  <span className="text-[#64748B]">{bd.architectLabel}: </span>
+                  <span className="text-[#F8FAFC] font-semibold">{building.architect}</span> ({building.architectFirm})
                 </div>
-                <div className="text-[#DDD7CA]">•</div>
+                <div className="text-[rgba(255,255,255,0.2)]">•</div>
                 <div>
-                  <span className="text-[#78716C]">{bd.developerLabel}: </span>
-                  <span className="text-[#1C1917] font-bold">{building.developer}</span>
+                  <span className="text-[#64748B]">{bd.developerLabel}: </span>
+                  <span className="text-[#F8FAFC] font-semibold">{building.developer}</span>
                 </div>
-                <div className="text-[#DDD7CA]">•</div>
+                <div className="text-[rgba(255,255,255,0.2)]">•</div>
                 <div>
-                  <span className="text-[#78716C]">{bd.districtLabel}: </span>
-                  <Link href={`/districts/${building.districtSlug}/`} className="text-[#8C6A48] hover:underline font-bold">
+                  <span className="text-[#64748B]">{bd.districtLabel}: </span>
+                  <Link href={`/districts/${building.districtSlug}/`} className="text-[#D4AF37] hover:underline font-bold">
                     {building.district}
                   </Link>
                 </div>
@@ -111,20 +111,20 @@ export default function BuildingDetailClient({
             </div>
 
             {/* Quick Investment Metric Pill */}
-            <div className="p-5 rounded-2xl bg-white border border-[#E5DFD3] shadow-soft-tint flex items-center gap-6">
+            <div className="p-5 rounded-3xl bg-[#131B26] border border-[rgba(212,175,55,0.25)] shadow-luxury-card flex items-center gap-6">
               <div>
-                <div className="text-xs uppercase tracking-wider text-[#78716C] font-bold">
+                <div className="text-xs uppercase tracking-wider text-[#94A3B8] font-bold font-mono">
                   {bd.estRentalYield}
                 </div>
-                <div className="text-2xl font-extrabold text-[#2D6A4F] font-mono mt-0.5">
+                <div className="text-2xl font-extrabold text-[#D4AF37] font-mono mt-0.5 tabular-nums">
                   {building.investmentYield}
                 </div>
               </div>
-              <div className="border-l border-[#E5DFD3] pl-6">
-                <div className="text-xs uppercase tracking-wider text-[#78716C] font-bold">
+              <div className="border-l border-[rgba(255,255,255,0.08)] pl-6">
+                <div className="text-xs uppercase tracking-wider text-[#94A3B8] font-bold font-mono">
                   {bd.unitsFrom}
                 </div>
-                <div className="text-lg font-bold text-[#8C6A48] font-mono mt-0.5">
+                <div className="text-lg font-bold text-[#F8FAFC] font-mono mt-0.5 tabular-nums">
                   {building.startingPriceAed}
                 </div>
               </div>

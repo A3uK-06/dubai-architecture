@@ -31,7 +31,7 @@ interface RoiCalculatorProps {
 
 export default function RoiCalculator({
   initialPriceAed = 2000000,
-  initialYieldPercent = 8.0,
+  initialYieldPercent = 8.5,
   buildingName,
   onOpenInquire,
 }: RoiCalculatorProps) {
@@ -78,29 +78,29 @@ export default function RoiCalculator({
   };
 
   const whatsappMessage = encodeURIComponent(
-    `Hello, I used the ROI Calculator on Dubai-Architecture.info. Property budget: ${calculations.priceConverted} ${curr.symbol}. Projected Net ROI: ${calculations.netRoiFormatted}%. Please send matching verified units${buildingName ? ` in ${buildingName}` : ""}.`
+    `Hello, I used the Investment Terminal on Dubai-Architecture.info. Property budget: ${calculations.priceConverted} ${curr.symbol}. Projected Net ROI: ${calculations.netRoiFormatted}%. Please send matching verified units${buildingName ? ` in ${buildingName}` : ""}.`
   );
 
   return (
-    <section id="calculator" className="py-16 md:py-24 border-b border-[#E2E8F0] bg-[#F8F9FA]">
+    <section id="calculator" className="py-20 md:py-28 border-b border-[rgba(255,255,255,0.06)] bg-[#0B0F17]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header with Glassmorphic Currency Switcher */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
           <div>
-            <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-bold bg-[#F1F5F9] text-[#0F172A] border border-[#CBD5E1] mb-3">
-              <span className="w-2 h-2 rounded-full bg-[#0F172A]" />
-              <span>{t.calculator.badge}</span>
+            <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full text-xs sm:text-sm font-semibold bg-[#131B26] text-[#D4AF37] border border-[rgba(212,175,55,0.3)] mb-3.5 shadow-luxury-card">
+              <span className="w-2 h-2 rounded-full bg-[#D4AF37]" />
+              <span className="font-mono tracking-wider">{t.calculator.badge}</span>
             </div>
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#0F172A] tracking-tight leading-tight font-heading">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-[#F8FAFC] tracking-tight leading-tight font-editorial">
               {t.calculator.title}
             </h2>
-            <p className="text-[#475569] text-base sm:text-lg max-w-xl mt-2 leading-relaxed">
+            <p className="text-[#94A3B8] text-base sm:text-lg max-w-xl mt-2 leading-relaxed">
               {t.calculator.subtitle}
             </p>
           </div>
 
-          {/* Glassmorphic Currency Pill Switcher */}
-          <div className="flex flex-wrap items-center gap-1.5 p-1.5 rounded-2xl backdrop-blur-[16px] bg-white/85 border border-white/60 shadow-sm">
+          {/* Dark Glass Currency Switcher */}
+          <div className="flex flex-wrap items-center gap-1.5 p-1.5 rounded-2xl bg-[#131B26] border border-[rgba(255,255,255,0.08)] shadow-luxury-card backdrop-blur-xl">
             {(Object.keys(CURRENCIES) as CurrencyCode[]).map((cCode) => (
               <button
                 key={cCode}
@@ -108,8 +108,8 @@ export default function RoiCalculator({
                 onClick={() => setSelectedCurrency(cCode)}
                 className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-mono font-bold transition-all ${
                   selectedCurrency === cCode
-                    ? "bg-[#0F172A] text-white shadow-sm"
-                    : "text-[#64748B] hover:text-[#0F172A] hover:bg-white"
+                    ? "bg-gradient-to-r from-[#E5C378] to-[#D4AF37] text-[#0B0F17] shadow-md shadow-[#D4AF37]/20"
+                    : "text-[#94A3B8] hover:text-[#F8FAFC] hover:bg-[#1A2433]"
                 }`}
               >
                 {cCode}
@@ -118,22 +118,22 @@ export default function RoiCalculator({
           </div>
         </div>
 
-        {/* Two-Column Interactive Dashboard */}
+        {/* Two-Column Interactive Cockpit Dashboard */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
-          {/* Left Column: Sliders & Controls */}
-          <div className="lg:col-span-7 p-6 sm:p-8 rounded-3xl bg-white border border-[#E2E8F0] space-y-7 shadow-float-card">
+          {/* Left Column: Cockpit Sliders & Controls */}
+          <div className="lg:col-span-7 p-6 sm:p-8 rounded-3xl bg-[#131B26] border border-[rgba(255,255,255,0.08)] space-y-8 shadow-luxury-card card-sheen">
             {/* Property Price Slider */}
-            <div className="space-y-3.5">
+            <div className="space-y-4">
               <div className="flex justify-between items-baseline">
-                <label className="text-sm sm:text-base font-bold text-[#0F172A]">
+                <label className="text-sm sm:text-base font-bold text-[#F8FAFC] font-editorial uppercase tracking-wider">
                   {t.calculator.propertyPrice}
                 </label>
-                <div className="text-2xl sm:text-3xl font-bold font-mono text-[#0F172A]">
-                  {calculations.priceConverted} <span className="text-[#64748B] text-base sm:text-lg">{curr.symbol}</span>
+                <div className="text-2xl sm:text-3xl font-bold font-mono text-[#F8FAFC] tabular-nums">
+                  {calculations.priceConverted} <span className="text-[#D4AF37] text-lg font-normal">{curr.symbol}</span>
                 </div>
               </div>
 
-              {/* Quick Presets */}
+              {/* Quick Preset Glass Chips */}
               <div className="flex flex-wrap gap-2 text-xs sm:text-sm pt-1">
                 {[
                   { label: "1.5M AED", val: 1500000 },
@@ -148,8 +148,8 @@ export default function RoiCalculator({
                     onClick={() => handlePresetPrice(item.val)}
                     className={`px-3.5 py-2 rounded-xl border font-mono text-xs sm:text-sm transition-all ${
                       priceAed === item.val
-                        ? "bg-[#0F172A] text-white border-[#0F172A] font-bold shadow-xs"
-                        : "bg-[#F8F9FA] text-[#475569] border-[#E2E8F0] hover:bg-[#F1F5F9] hover:text-[#0F172A]"
+                        ? "bg-[#D4AF37] text-[#0B0F17] border-[#D4AF37] font-bold shadow-md shadow-[#D4AF37]/20"
+                        : "bg-[#0B0F17] text-[#94A3B8] border-[rgba(255,255,255,0.08)] hover:bg-[#1A2433] hover:text-[#F8FAFC]"
                     }`}
                   >
                     {item.label}
@@ -158,7 +158,7 @@ export default function RoiCalculator({
               </div>
 
               {/* Tactile Range Slider */}
-              <div className="pt-2">
+              <div className="pt-3">
                 <input
                   type="range"
                   min="500000"
@@ -166,9 +166,8 @@ export default function RoiCalculator({
                   step="100000"
                   value={priceAed}
                   onChange={(e) => setPriceAed(Number(e.target.value))}
-                  className="w-full h-3 bg-[#E2E8F0] rounded-lg appearance-none cursor-pointer accent-[#0F172A]"
                 />
-                <div className="flex justify-between text-xs sm:text-sm font-mono text-[#64748B] mt-2">
+                <div className="flex justify-between text-xs font-mono text-[#94A3B8] mt-2.5">
                   <span>500K AED</span>
                   <span>25M AED</span>
                 </div>
@@ -176,10 +175,12 @@ export default function RoiCalculator({
             </div>
 
             {/* Gross Yield Slider */}
-            <div className="space-y-3 pt-4 border-t border-[#F1F5F9]">
+            <div className="space-y-4 pt-6 border-t border-[rgba(255,255,255,0.06)]">
               <div className="flex justify-between items-baseline">
-                <span className="text-sm sm:text-base font-bold text-[#0F172A]">{t.calculator.rentalYield}</span>
-                <span className="font-mono font-bold text-[#059669] text-xl sm:text-2xl">{grossYield}%</span>
+                <span className="text-sm sm:text-base font-bold text-[#F8FAFC] font-editorial uppercase tracking-wider">
+                  {t.calculator.rentalYield}
+                </span>
+                <span className="font-mono font-bold text-[#D4AF37] text-2xl tabular-nums">{grossYield}%</span>
               </div>
               <input
                 type="range"
@@ -188,19 +189,20 @@ export default function RoiCalculator({
                 step="0.1"
                 value={grossYield}
                 onChange={(e) => setGrossYield(Number(e.target.value))}
-                className="w-full h-3 bg-[#E2E8F0] rounded-lg appearance-none cursor-pointer accent-[#0F172A]"
               />
-              <div className="flex justify-between text-xs sm:text-sm font-mono text-[#64748B] mt-1.5">
+              <div className="flex justify-between text-xs font-mono text-[#94A3B8] mt-2.5">
                 <span>4.0%</span>
                 <span>14.0%</span>
               </div>
             </div>
 
             {/* Service Charges Slider */}
-            <div className="space-y-3 pt-4 border-t border-[#F1F5F9]">
+            <div className="space-y-4 pt-6 border-t border-[rgba(255,255,255,0.06)]">
               <div className="flex justify-between items-baseline">
-                <span className="text-sm sm:text-base font-bold text-[#0F172A]">{t.calculator.serviceCharge}</span>
-                <span className="font-mono font-bold text-[#9E4732] text-lg sm:text-xl">{serviceChargePercent}%</span>
+                <span className="text-sm sm:text-base font-bold text-[#F8FAFC] font-editorial uppercase tracking-wider">
+                  {t.calculator.serviceCharge}
+                </span>
+                <span className="font-mono font-bold text-[#94A3B8] text-xl tabular-nums">{serviceChargePercent}%</span>
               </div>
               <input
                 type="range"
@@ -209,70 +211,89 @@ export default function RoiCalculator({
                 step="0.1"
                 value={serviceChargePercent}
                 onChange={(e) => setServiceChargePercent(Number(e.target.value))}
-                className="w-full h-3 bg-[#E2E8F0] rounded-lg appearance-none cursor-pointer accent-[#0F172A]"
               />
-              <div className="flex justify-between text-xs sm:text-sm font-mono text-[#64748B] mt-1.5">
+              <div className="flex justify-between text-xs font-mono text-[#94A3B8] mt-2.5">
                 <span>0.5% (~12 AED/sq.ft)</span>
-                <span>3.0% (~55 AED/sq.ft Burj)</span>
+                <span>3.0% (~55 AED/sq.ft Burj Khalifa)</span>
               </div>
             </div>
           </div>
 
-          {/* Right Column: Floating Summary Card (Sticky) */}
-          <div className="lg:col-span-5 lg:sticky lg:top-28 p-6 sm:p-8 rounded-3xl bg-white border border-[#E2E8F0] space-y-6 shadow-float-card">
+          {/* Right Column: Premium Golden Visa Residence Card (Sticky Dashboard) */}
+          <div
+            className={`lg:col-span-5 lg:sticky lg:top-28 p-7 sm:p-8 rounded-3xl bg-[#131B26] border transition-all duration-300 space-y-6 shadow-luxury-card ${
+              calculations.isGoldenVisaEligible
+                ? "gold-neon-card"
+                : "border-[rgba(255,255,255,0.08)]"
+            }`}
+          >
+            {/* Top Emblem Strip */}
+            <div className="flex items-center justify-between pb-2 border-b border-[rgba(255,255,255,0.06)]">
+              <div className="flex items-center gap-2">
+                <span className="text-lg">🏛️</span>
+                <span className="text-xs font-mono uppercase tracking-widest text-[#D4AF37] font-semibold">
+                  UAE INVESTOR DOSSIER
+                </span>
+              </div>
+              <span className="text-xs font-mono text-[#94A3B8]">OFFICIAL DLD MODEL</span>
+            </div>
+
+            {/* Accent Net Yield Display */}
             <div>
-              <span className="text-xs sm:text-sm font-mono font-bold uppercase tracking-wider text-[#64748B]">
+              <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#94A3B8]">
                 {t.calculator.annualProjections}
               </span>
               <div className="mt-2 flex items-baseline gap-3">
-                <div className="text-5xl sm:text-6xl font-extrabold font-mono text-[#059669] tracking-tight">
+                <div className="text-5xl sm:text-6xl font-extrabold font-mono text-[#D4AF37] tracking-tight tabular-nums">
                   {calculations.netRoiFormatted}%
                 </div>
-                <span className="text-sm sm:text-base font-semibold text-[#475569]">
+                <span className="text-sm sm:text-base font-semibold text-[#94A3B8]">
                   {t.calculator.netRoiSub}
                 </span>
               </div>
             </div>
 
             {/* Financial Metrics Breakdown */}
-            <div className="space-y-4 py-4 border-y border-[#F1F5F9] text-sm sm:text-base">
+            <div className="space-y-4 py-4 border-y border-[rgba(255,255,255,0.06)] text-sm sm:text-base">
               <div className="flex justify-between items-center">
-                <span className="text-[#64748B]">{t.calculator.estimatedGross}</span>
-                <span className="font-mono font-bold text-[#0F172A]">
+                <span className="text-[#94A3B8]">{t.calculator.estimatedGross}</span>
+                <span className="font-mono font-bold text-[#F8FAFC] tabular-nums">
                   {calculations.grossIncomeConverted} {curr.symbol}
                 </span>
               </div>
               <div className="flex justify-between items-center">
-                <span className="text-[#64748B]">{t.calculator.maintenanceCharges}</span>
-                <span className="font-mono font-bold text-[#9E4732]">
+                <span className="text-[#94A3B8]">{t.calculator.maintenanceCharges}</span>
+                <span className="font-mono font-bold text-[#EF4444] tabular-nums">
                   - {calculations.serviceChargesConverted} {curr.symbol}
                 </span>
               </div>
-              <div className="flex justify-between items-center pt-3 border-t border-[#F1F5F9]">
-                <span className="font-bold text-[#0F172A]">{t.calculator.annualNetProfit}</span>
-                <span className="font-mono font-bold text-[#059669] text-base sm:text-lg">
+              <div className="flex justify-between items-center pt-3 border-t border-[rgba(255,255,255,0.06)]">
+                <span className="font-bold text-[#F8FAFC] font-editorial">{t.calculator.annualNetProfit}</span>
+                <span className="font-mono font-bold text-[#D4AF37] text-lg tabular-nums">
                   {calculations.netIncomeConverted} {curr.symbol}
                 </span>
               </div>
               <div className="flex justify-between items-center">
-                <span className="text-[#64748B]">{t.calculator.fiveYearReturn}</span>
-                <span className="font-mono font-bold text-[#0F172A]">
+                <span className="text-[#94A3B8]">{t.calculator.fiveYearReturn}</span>
+                <span className="font-mono font-bold text-[#10B981] tabular-nums">
                   {calculations.fiveYearTotalReturnConverted} {curr.symbol}
                 </span>
               </div>
             </div>
 
-            {/* Golden Visa Status: Pill Badge with Shield Icon */}
+            {/* Golden Visa Resident Status Card with Shield Emblem */}
             <div
               className={`p-4 sm:p-5 rounded-2xl border text-sm sm:text-base flex items-center gap-3.5 transition-all ${
                 calculations.isGoldenVisaEligible
-                  ? "bg-emerald-50 border-emerald-200 text-[#059669]"
-                  : "bg-[#F8F9FA] border-[#E2E8F0] text-[#64748B]"
+                  ? "bg-[#0B0F17] border-[#D4AF37]/50 text-[#D4AF37]"
+                  : "bg-[#0B0F17] border-[rgba(255,255,255,0.08)] text-[#94A3B8]"
               }`}
             >
               <div
-                className={`w-9 h-9 rounded-full flex items-center justify-center shrink-0 ${
-                  calculations.isGoldenVisaEligible ? "bg-emerald-100 text-[#059669]" : "bg-[#E2E8F0] text-[#64748B]"
+                className={`w-10 h-10 rounded-full flex items-center justify-center shrink-0 ${
+                  calculations.isGoldenVisaEligible
+                    ? "bg-[#D4AF37]/20 text-[#D4AF37] ring-2 ring-[#D4AF37]/40"
+                    : "bg-[#1A2433] text-[#94A3B8]"
                 }`}
               >
                 <svg
@@ -303,7 +324,7 @@ export default function RoiCalculator({
                 href={`https://wa.me/971500000000?text=${whatsappMessage}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full flex items-center justify-center gap-2 px-5 py-4 rounded-xl bg-[#0F172A] hover:bg-[#1E293B] text-white font-bold text-sm sm:text-base uppercase tracking-wider shadow-sm transition-all"
+                className="w-full flex items-center justify-center gap-2 px-5 py-4 rounded-xl bg-gradient-to-r from-[#E5C378] to-[#D4AF37] hover:from-[#FDE68A] hover:to-[#D4AF37] text-[#0B0F17] font-extrabold text-sm sm:text-base uppercase tracking-wider shadow-lg shadow-[#D4AF37]/25 transition-all active:scale-95"
               >
                 <span>💬</span>
                 <span>{t.calculator.whatsappConsultation}</span>
@@ -313,7 +334,7 @@ export default function RoiCalculator({
                 <button
                   type="button"
                   onClick={() => onOpenInquire(buildingName || `${t.goldenVisaWidget.step1}: ${calculations.priceConverted} ${curr.symbol}`)}
-                  className="w-full py-3 rounded-xl border border-[#E2E8F0] hover:bg-[#F8F9FA] text-xs sm:text-sm font-semibold text-[#475569] hover:text-[#0F172A] transition-colors"
+                  className="w-full py-3 rounded-xl border border-[rgba(255,255,255,0.1)] hover:border-[#D4AF37]/50 bg-[#0B0F17] hover:bg-[#1A2433] text-xs sm:text-sm font-semibold text-[#F8FAFC] transition-colors"
                 >
                   {t.calculator.inquireCalculationCta}
                 </button>
