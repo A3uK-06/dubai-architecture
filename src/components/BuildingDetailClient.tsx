@@ -256,7 +256,7 @@ export default function BuildingDetailClient({
                 <div className="flex items-center justify-between border-b-2 border-[#8C6A48] pb-3">
                   <div>
                     <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#8C6A48]">
-                      ENGINEERING SPECIFICATION MATRIX
+                      {t.ttxLabels.specMatrix}
                     </span>
                     <h2 className="text-2xl font-extrabold text-[#1C1917] tracking-tight">
                       {t.ttxLabels.title}

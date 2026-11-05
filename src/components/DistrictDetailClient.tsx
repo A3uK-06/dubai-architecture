@@ -117,13 +117,13 @@ export default function DistrictDetailClient({
           <div className="flex items-center justify-between border-b border-[#EFECE4] pb-3">
             <div>
               <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#8C6A48]">
-                URBAN MASTERPLANNING & ARCHITECTURAL DNA
+                {dd.masterplanBadge}
               </span>
               <h2 className="text-2xl font-bold text-[#1C1917] mt-0.5">
                 {dd.masterplanTitle}
               </h2>
             </div>
-            <span className="text-xs font-mono text-[#78716C]">MASTER DEVELOPER ANALYSIS</span>
+            <span className="text-xs font-mono text-[#78716C]">{dd.masterDeveloperAnalysis}</span>
           </div>
           <p className="text-base text-[#57534E] leading-relaxed max-w-4xl">
             {district.urbanConcept || district.description}
@@ -157,7 +157,7 @@ export default function DistrictDetailClient({
                   {dd.subzonesTitle}
                 </h2>
               </div>
-              <span className="text-xs font-mono font-bold text-[#8C6A48]">AED / SQ.FT</span>
+              <span className="text-xs font-mono font-bold text-[#8C6A48]">{dd.sqFtPrice}</span>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -313,7 +313,7 @@ export default function DistrictDetailClient({
           <div className="flex justify-between items-end border-b border-[#E5DFD3] pb-4">
             <div>
               <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#8C6A48]">
-                DISTRICT ARCHITECTURAL PORTFOLIO
+                {dd.architecturalPortfolio}
               </span>
               <h2 className="text-2xl font-bold text-[#1C1917] mt-0.5">
                 {dd.iconicTowersInDistrict} {district.name}

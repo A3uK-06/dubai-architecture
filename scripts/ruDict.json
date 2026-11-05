@@ -254,7 +254,8 @@
     "speedUnit": "м/с",
     "chillerLabel": "Chiller",
     "officialBrochureNotice": "Официальный паспорт застройщика",
-    "exploreOtherTowers": "Изучить другие башни в районе"
+    "exploreOtherTowers": "Изучить другие башни в районе",
+    "specMatrix": "Матрица инженерно-технических характеристик"
   },
   "buildingDetail": {
     "breadcrumbHome": "Главная",
@@ -334,7 +335,11 @@
     "tenantProfileLabel": "Портрет основного арендатора",
     "defaultRisk1": "Высокая плотность трафика в вечерние часы пик на основных съездах с магистралей.",
     "defaultRisk2": "Необходимость тщательной проверки надежности застройщика в частных проектах.",
-    "contactDistrictBroker": "Связаться с брокером по району"
+    "contactDistrictBroker": "Связаться с брокером по району",
+    "masterplanBadge": "Градостроительный мастер-план и архитектурный код",
+    "masterDeveloperAnalysis": "Анализ главного девелопера",
+    "architecturalPortfolio": "Архитектурный фонд района",
+    "sqFtPrice": "AED / кв. фут"
   },
   "whatsapp": {
     "buttonText": "Консультация в WhatsApp",

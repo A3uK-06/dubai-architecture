@@ -610,7 +610,8 @@ export const TRANSLATIONS: Record<LanguageCode, TranslationDictionary> = {
     "speedUnit": "m/s",
     "chillerLabel": "Chiller",
     "officialBrochureNotice": "Official Developer Passport",
-    "exploreOtherTowers": "Explore other towers in district"
+    "exploreOtherTowers": "Explore other towers in district",
+    "specMatrix": "Engineering Specification Matrix"
   },
   "buildingDetail": {
     "breadcrumbHome": "Home",
@@ -690,7 +691,11 @@ export const TRANSLATIONS: Record<LanguageCode, TranslationDictionary> = {
     "tenantProfileLabel": "Primary Tenant Profile",
     "defaultRisk1": "High traffic density during evening rush hour on major highway access ramps.",
     "defaultRisk2": "Thorough due diligence required when evaluating secondary private developers.",
-    "contactDistrictBroker": "Contact District Broker"
+    "contactDistrictBroker": "Contact District Broker",
+    "masterplanBadge": "Urban Masterplanning & Architectural DNA",
+    "masterDeveloperAnalysis": "Master Developer Analysis",
+    "architecturalPortfolio": "District Architectural Portfolio",
+    "sqFtPrice": "AED / SQ.FT"
   },
   "whatsapp": {
     "buttonText": "WhatsApp Consultation",
@@ -962,7 +967,8 @@ export const TRANSLATIONS: Record<LanguageCode, TranslationDictionary> = {
     "speedUnit": "м/с",
     "chillerLabel": "Chiller",
     "officialBrochureNotice": "Официальный паспорт застройщика",
-    "exploreOtherTowers": "Изучить другие башни в районе"
+    "exploreOtherTowers": "Изучить другие башни в районе",
+    "specMatrix": "Матрица инженерно-технических характеристик"
   },
   "buildingDetail": {
     "breadcrumbHome": "Главная",
@@ -1042,7 +1048,11 @@ export const TRANSLATIONS: Record<LanguageCode, TranslationDictionary> = {
     "tenantProfileLabel": "Портрет основного арендатора",
     "defaultRisk1": "Высокая плотность трафика в вечерние часы пик на основных съездах с магистралей.",
     "defaultRisk2": "Необходимость тщательной проверки надежности застройщика в частных проектах.",
-    "contactDistrictBroker": "Связаться с брокером по району"
+    "contactDistrictBroker": "Связаться с брокером по району",
+    "masterplanBadge": "Градостроительный мастер-план и архитектурный код",
+    "masterDeveloperAnalysis": "Анализ главного девелопера",
+    "architecturalPortfolio": "Архитектурный фонд района",
+    "sqFtPrice": "AED / кв. фут"
   },
   "whatsapp": {
     "buttonText": "Консультация в WhatsApp",
@@ -1314,7 +1324,8 @@ export const TRANSLATIONS: Record<LanguageCode, TranslationDictionary> = {
     "speedUnit": "م/ث",
     "chillerLabel": "Chiller",
     "officialBrochureNotice": "جواز السفر الرسمي المعتمد من المطور",
-    "exploreOtherTowers": "استكشف أبراجاً أخرى في نفس المنطقة"
+    "exploreOtherTowers": "استكشف أبراجاً أخرى في نفس المنطقة",
+    "specMatrix": "مصفوفة المواصفات الهندسية"
   },
   "buildingDetail": {
     "breadcrumbHome": "الرئيسية",
@@ -1394,7 +1405,11 @@ export const TRANSLATIONS: Record<LanguageCode, TranslationDictionary> = {
     "tenantProfileLabel": "الملف الديموغرافي للمستأجرين",
     "defaultRisk1": "كثافة مرورية مرتفعة في ساعات المساء على المخارج الرئيسية المؤدية للطرق السريعة.",
     "defaultRisk2": "ضرورة الفحص النافي للجهالة والتدقيق في سمعة المطورين من القطاع الخاص الصغير.",
-    "contactDistrictBroker": "تواصل مع وسيط المنطقة المتخصص"
+    "contactDistrictBroker": "تواصل مع وسيط المنطقة المتخصص",
+    "masterplanBadge": "المخطط الرئيسي الحضري والهوية المعمارية",
+    "masterDeveloperAnalysis": "تحليل المطور الرئيسي",
+    "architecturalPortfolio": "المحفظة المعمارية للحي",
+    "sqFtPrice": "درهم / قدم مربع"
   },
   "whatsapp": {
     "buttonText": "محادثة واتساب مباشرة",
@@ -1666,7 +1681,8 @@ export const TRANSLATIONS: Record<LanguageCode, TranslationDictionary> = {
     "speedUnit": "米/秒",
     "chillerLabel": "Chiller",
     "officialBrochureNotice": "开发商官方核发建筑档案",
-    "exploreOtherTowers": "查看该区域内其他地标大厦"
+    "exploreOtherTowers": "查看该区域内其他地标大厦",
+    "specMatrix": "工程技术规格矩阵"
   },
   "buildingDetail": {
     "breadcrumbHome": "首页",
@@ -1746,7 +1762,11 @@ export const TRANSLATIONS: Record<LanguageCode, TranslationDictionary> = {
     "tenantProfileLabel": "主力租客画像分析",
     "defaultRisk1": "晚高峰时段通往城市主干道快速路匝道车流量极大，存在通行拥堵。",
     "defaultRisk2": "投资小型私营开发商项目时，需对其资金履约与交付品控执行更严格的尽职调查。",
-    "contactDistrictBroker": "联系本区域专家顾问"
+    "contactDistrictBroker": "联系本区域专家顾问",
+    "masterplanBadge": "城市总体规划与建筑基因",
+    "masterDeveloperAnalysis": "主要开发商规划分析",
+    "architecturalPortfolio": "区域建筑地标资产组合",
+    "sqFtPrice": "迪拉姆 / 平方英尺"
   },
   "whatsapp": {
     "buttonText": "WhatsApp 在线即时咨询",
@@ -2018,7 +2038,8 @@ export const TRANSLATIONS: Record<LanguageCode, TranslationDictionary> = {
     "speedUnit": "m/s",
     "chillerLabel": "Chiller",
     "officialBrochureNotice": "Offizieller Bauträgerpass",
-    "exploreOtherTowers": "Weitere Türme in diesem Bezirk erkunden"
+    "exploreOtherTowers": "Weitere Türme in diesem Bezirk erkunden",
+    "specMatrix": "Technische Spezifikationsmatrix"
   },
   "buildingDetail": {
     "breadcrumbHome": "Startseite",
@@ -2098,7 +2119,11 @@ export const TRANSLATIONS: Record<LanguageCode, TranslationDictionary> = {
     "tenantProfileLabel": "Hauptmieterprofil",
     "defaultRisk1": "Hohe Verkehrsdichte während der abendlichen Hauptverkehrszeit an den Autobahnauffahrten.",
     "defaultRisk2": "Sorgfältige Prüfung der Bauträgerbonität bei privaten Nischenprojekten ratsam.",
-    "contactDistrictBroker": "Bezirksmakler kontaktieren"
+    "contactDistrictBroker": "Bezirksmakler kontaktieren",
+    "masterplanBadge": "Städtebaulicher Masterplan & Architektur-DNA",
+    "masterDeveloperAnalysis": "Analyse des Master-Entwicklers",
+    "architecturalPortfolio": "Architektonisches Portfolio des Distrikts",
+    "sqFtPrice": "AED / sq.ft"
   },
   "whatsapp": {
     "buttonText": "WhatsApp-Beratung",
@@ -2370,7 +2395,8 @@ export const TRANSLATIONS: Record<LanguageCode, TranslationDictionary> = {
     "speedUnit": "m/s",
     "chillerLabel": "Chiller",
     "officialBrochureNotice": "Passeport officiel du promoteur",
-    "exploreOtherTowers": "Découvrir d'autres tours dans ce quartier"
+    "exploreOtherTowers": "Découvrir d'autres tours dans ce quartier",
+    "specMatrix": "Matrice des spécifications techniques"
   },
   "buildingDetail": {
     "breadcrumbHome": "Accueil",
@@ -2450,7 +2476,11 @@ export const TRANSLATIONS: Record<LanguageCode, TranslationDictionary> = {
     "tenantProfileLabel": "Profil type des locataires",
     "defaultRisk1": "Trafic dense en fin de journée sur les bretelles d'accès principales aux autoroutes.",
     "defaultRisk2": "Audits de solvabilité et de réputation requis sur les programmes de promoteurs privés indépendants.",
-    "contactDistrictBroker": "Contacter le courtier spécialiste du quartier"
+    "contactDistrictBroker": "Contacter le courtier spécialiste du quartier",
+    "masterplanBadge": "Masterplan urbain & ADN architectural",
+    "masterDeveloperAnalysis": "Analyse du promoteur principal",
+    "architecturalPortfolio": "Portefeuille architectural du quartier",
+    "sqFtPrice": "AED / pi²"
   },
   "whatsapp": {
     "buttonText": "Conseil sur WhatsApp",
@@ -2722,7 +2752,8 @@ export const TRANSLATIONS: Record<LanguageCode, TranslationDictionary> = {
     "speedUnit": "मी/से",
     "chillerLabel": "चिलर",
     "officialBrochureNotice": "डेवलपर का आधिकारिक पासपोर्ट",
-    "exploreOtherTowers": "इस जिले के अन्य टावरों का अन्वेषण करें"
+    "exploreOtherTowers": "इस जिले के अन्य टावरों का अन्वेषण करें",
+    "specMatrix": "इंजीनियरिंग तकनीकी विनिर्देश मैट्रिक्स"
   },
   "buildingDetail": {
     "breadcrumbHome": "होम",
@@ -2802,7 +2833,11 @@ export const TRANSLATIONS: Record<LanguageCode, TranslationDictionary> = {
     "tenantProfileLabel": "प्राथमिक किरायेदार प्रोफाइल",
     "defaultRisk1": "शाम के पीक ऑवर्स में मुख्य राजमार्ग निकास रैंप पर भारी यातायात घनत्व।",
     "defaultRisk2": "निजी छोटे डेवलपर्स की परियोजनाओं का मूल्यांकन करते समय गहन जांच आवश्यक।",
-    "contactDistrictBroker": "जिला विशेषज्ञ ब्रोकर से संपर्क करें"
+    "contactDistrictBroker": "जिला विशेषज्ञ ब्रोकर से संपर्क करें",
+    "masterplanBadge": "शहरी मास्टरप्लानिंग और वास्तुशिल्प डीएनए",
+    "masterDeveloperAnalysis": "मुख्य डेवलपर विश्लेषण",
+    "architecturalPortfolio": "जिले का वास्तुशिल्प पोर्टफोलियो",
+    "sqFtPrice": "AED / वर्ग फुट"
   },
   "whatsapp": {
     "buttonText": "व्हाट्सएप परामर्श",
@@ -3074,7 +3109,8 @@ export const TRANSLATIONS: Record<LanguageCode, TranslationDictionary> = {
     "speedUnit": "میٹر فی سیکنڈ",
     "chillerLabel": "Chiller",
     "officialBrochureNotice": "ڈویلپر کا سرکاری پاسپورٹ",
-    "exploreOtherTowers": "علاقے کے دیگر ٹاورز دریافت کریں"
+    "exploreOtherTowers": "علاقے کے دیگر ٹاورز دریافت کریں",
+    "specMatrix": "تکنیکی انجینئرنگ میٹرکس"
   },
   "buildingDetail": {
     "breadcrumbHome": "ہوم",
@@ -3154,7 +3190,11 @@ export const TRANSLATIONS: Record<LanguageCode, TranslationDictionary> = {
     "tenantProfileLabel": "بنیادی کرائے داروں کا پروفائل",
     "defaultRisk1": "شام کے اوقات میں موٹروے پر چڑھنے والے راستوں پر شدید ٹریفک۔",
     "defaultRisk2": "چھوٹے نجی بلڈرز کے پروجیکٹس کا انتخاب کرتے وقت محتاط تفتیش ضروری ہے۔",
-    "contactDistrictBroker": "علاقائی بروکر سے رابطہ کریں"
+    "contactDistrictBroker": "علاقائی بروکر سے رابطہ کریں",
+    "masterplanBadge": "شہری ماسٹر پلاننگ اور تعمیراتی شناخت",
+    "masterDeveloperAnalysis": "مرکزی ڈویلپر کا تجزیہ",
+    "architecturalPortfolio": "علاقے کا تعمیراتی پورٹ فولیو",
+    "sqFtPrice": "درہم / مربع فٹ"
   },
   "whatsapp": {
     "buttonText": "واٹس ایپ مشاورت",
@@ -3426,7 +3466,8 @@ export const TRANSLATIONS: Record<LanguageCode, TranslationDictionary> = {
     "speedUnit": "m/s",
     "chillerLabel": "Chiller",
     "officialBrochureNotice": "Passaporto ufficiale del costruttore",
-    "exploreOtherTowers": "Esplora altre torri in questo distretto"
+    "exploreOtherTowers": "Esplora altre torri in questo distretto",
+    "specMatrix": "Matrice delle specifiche ingegneristiche"
   },
   "buildingDetail": {
     "breadcrumbHome": "Home",
@@ -3506,7 +3547,11 @@ export const TRANSLATIONS: Record<LanguageCode, TranslationDictionary> = {
     "tenantProfileLabel": "Profilo demografico dei locatari",
     "defaultRisk1": "Intensità di traffico nelle ore serali di punta sulle rampe di innesto autostradali.",
     "defaultRisk2": "Necessaria approfondita due diligence sull'affidabilità di piccoli costruttori privati.",
-    "contactDistrictBroker": "Contatta il broker specializzato del distretto"
+    "contactDistrictBroker": "Contatta il broker specializzato del distretto",
+    "masterplanBadge": "Masterplan urbano e DNA architettonico",
+    "masterDeveloperAnalysis": "Analisi del master developer",
+    "architecturalPortfolio": "Portfolio architettonico del distretto",
+    "sqFtPrice": "AED / sq.ft"
   },
   "whatsapp": {
     "buttonText": "Consulenza WhatsApp",
@@ -3778,7 +3823,8 @@ export const TRANSLATIONS: Record<LanguageCode, TranslationDictionary> = {
     "speedUnit": "m/sn",
     "chillerLabel": "Chiller",
     "officialBrochureNotice": "İnşaat Firması Resmi Teknik Pasaportu",
-    "exploreOtherTowers": "Bu bölgedeki diğer kuleleri keşfedin"
+    "exploreOtherTowers": "Bu bölgedeki diğer kuleleri keşfedin",
+    "specMatrix": "Mühendislik Teknik Şartname Matrisi"
   },
   "buildingDetail": {
     "breadcrumbHome": "Ana Sayfa",
@@ -3858,7 +3904,11 @@ export const TRANSLATIONS: Record<LanguageCode, TranslationDictionary> = {
     "tenantProfileLabel": "Baskın Kiracı Profili",
     "defaultRisk1": "Akşam yoğun saatlerde ana otoyol bağlantı kollarında yoğun trafik.",
     "defaultRisk2": "Küçük ölçekli özel geliştirici projelerinde kapsamlı hukuki inceleme yapılması önerilir.",
-    "contactDistrictBroker": "Bölge Danışmanına Ulaşın"
+    "contactDistrictBroker": "Bölge Danışmanına Ulaşın",
+    "masterplanBadge": "Kentsel İmar Planı ve Mimari DNA",
+    "masterDeveloperAnalysis": "Ana Geliştirici Analizi",
+    "architecturalPortfolio": "Bölgenin Mimari Portföyü",
+    "sqFtPrice": "AED / sq.ft"
   },
   "whatsapp": {
     "buttonText": "WhatsApp Danışmanlığı",

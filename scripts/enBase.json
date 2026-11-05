@@ -254,7 +254,8 @@
     "speedUnit": "m/s",
     "chillerLabel": "Chiller",
     "officialBrochureNotice": "Official Developer Passport",
-    "exploreOtherTowers": "Explore other towers in district"
+    "exploreOtherTowers": "Explore other towers in district",
+    "specMatrix": "Engineering Specification Matrix"
   },
   "buildingDetail": {
     "breadcrumbHome": "Home",
@@ -334,7 +335,11 @@
     "tenantProfileLabel": "Primary Tenant Profile",
     "defaultRisk1": "High traffic density during evening rush hour on major highway access ramps.",
     "defaultRisk2": "Thorough due diligence required when evaluating secondary private developers.",
-    "contactDistrictBroker": "Contact District Broker"
+    "contactDistrictBroker": "Contact District Broker",
+    "masterplanBadge": "Urban Masterplanning & Architectural DNA",
+    "masterDeveloperAnalysis": "Master Developer Analysis",
+    "architecturalPortfolio": "District Architectural Portfolio",
+    "sqFtPrice": "AED / SQ.FT"
   },
   "whatsapp": {
     "buttonText": "WhatsApp Consultation",
