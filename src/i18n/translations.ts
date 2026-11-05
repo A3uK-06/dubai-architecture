@@ -257,6 +257,7 @@ export interface TranslationDictionary {
     chillerLabel: string;
     officialBrochureNotice: string;
     exploreOtherTowers: string;
+    specMatrix: string;
   };
   buildingDetail: {
     breadcrumbHome: string;
@@ -337,6 +338,10 @@ export interface TranslationDictionary {
     defaultRisk1: string;
     defaultRisk2: string;
     contactDistrictBroker: string;
+    masterplanBadge: string;
+    masterDeveloperAnalysis: string;
+    architecturalPortfolio: string;
+    sqFtPrice: string;
   };
   whatsapp: {
     buttonText: string;

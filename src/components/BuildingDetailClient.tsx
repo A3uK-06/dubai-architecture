@@ -32,7 +32,9 @@ export default function BuildingDetailClient({
   const bd = t.buildingDetail;
 
   const whatsappMessage = encodeURIComponent(
-    `Hello, I am inquiring through Dubai-Architecture.info regarding available luxury units in ${building.name}.`
+    lang === "ru"
+      ? `Здравствуйте! Я обращаюсь через Dubai-Architecture.info по поводу доступных резиденций в ${building.name}.`
+      : `Hello, I am inquiring through Dubai-Architecture.info regarding available luxury units in ${building.name}.`
   );
 
   return (
@@ -432,7 +434,7 @@ export default function BuildingDetailClient({
                     <div className="p-4 rounded-xl bg-[#EFECE4]/60 border border-[#DDD7CA]">
                       <div className="text-[#78716C] font-medium uppercase">{t.ttxLabels.serviceCharge}</div>
                       <div className="text-xl font-extrabold text-[#1C1917] font-mono mt-1">
-                        {building.operatingSpecs.annualServiceChargeAedSqFt} <span className="text-xs font-normal">AED/sq.ft</span>
+                        {building.operatingSpecs.annualServiceChargeAedSqFt} <span className="text-xs font-normal">{lang === "ru" ? "AED / кв. фут" : "AED/sq.ft"}</span>
                       </div>
                       <p className="text-xs text-[#64748B] mt-1">{t.ttxLabels.reraNotice}</p>
                     </div>
@@ -440,7 +442,7 @@ export default function BuildingDetailClient({
                       <div className="text-[#78716C] font-medium uppercase">{t.ttxLabels.coolingProvider}</div>
                       <div className="text-base font-bold text-[#1C1917] mt-1">{building.operatingSpecs.coolingProvider}</div>
                       <span className={`inline-block mt-1 px-2.5 py-0.5 rounded text-xs font-bold ${
-                        building.operatingSpecs.chillerBilling === 'Chiller-Free' 
+                        building.operatingSpecs.chillerBilling.includes('Chiller-Free') 
                           ? 'bg-[#2D6A4F]/10 text-[#2D6A4F]' 
                           : 'bg-[#9E4732]/10 text-[#9E4732]'
                       }`}>
@@ -503,7 +505,7 @@ export default function BuildingDetailClient({
                 <div className="flex justify-between items-center">
                   <span className="text-[#78716C]">{t.ttxLabels.serviceCharge}</span>
                   <span className="font-mono font-bold text-[#8C6A48] text-right">
-                    {building.operatingSpecs ? `${building.operatingSpecs.annualServiceChargeAedSqFt} AED/sq.ft` : "—"}
+                    {building.operatingSpecs ? `${building.operatingSpecs.annualServiceChargeAedSqFt} ${lang === "ru" ? "AED / кв. фут" : "AED/sq.ft"}` : "—"}
                   </span>
                 </div>
                 <div className="flex justify-between items-center">

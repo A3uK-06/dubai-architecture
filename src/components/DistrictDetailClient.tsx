@@ -29,6 +29,22 @@ export default function DistrictDetailClient({
 
   const dd = t.districtDetail;
 
+  const getWalkabilityDisplay = (score?: string) => {
+    if (!score) return "";
+    if (lang === "ru") {
+      if (score.includes("High") || score.includes("Превосходная") || score.includes("Высокая")) {
+        return "Высокая (Пешеходные бульвары)";
+      }
+      if (score.includes("Moderate") || score.includes("Средняя") || score.includes("Умеренная")) {
+        return "Умеренная (Внутри кластеров)";
+      }
+      if (score.includes("Car-Dependent") || score.includes("Автомобильная")) {
+        return "Автомобильная зависимость";
+      }
+    }
+    return score;
+  };
+
   return (
     <article className="min-h-screen bg-[#F8F9FA] text-[#0F172A] pb-24 transition-colors">
       {/* Header */}
@@ -199,7 +215,7 @@ export default function DistrictDetailClient({
                 </h2>
               </div>
               <span className="px-3 py-1 rounded-full text-xs font-bold font-mono bg-[#EFECE4] text-[#8C6A48] border border-[#DDD7CA]">
-                {dd.walkabilityLabel} {district.transitAnalysis.walkabilityScore}
+                {dd.walkabilityLabel} {getWalkabilityDisplay(district.transitAnalysis.walkabilityScore)}
               </span>
             </div>
 

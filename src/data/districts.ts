@@ -9,7 +9,7 @@ export interface DistrictTransitAnalysis {
   highwayAccess: string;
   rushHourBottleneck: string;
   publicTransit: string;
-  walkabilityScore: "High (Pedestrian Boulevards)" | "Moderate (Within clusters only)" | "Car-Dependent";
+  walkabilityScore: "High (Pedestrian Boulevards)" | "Moderate (Within clusters only)" | "Car-Dependent" | string;
 }
 
 export interface DistrictInfrastructureAudit {
