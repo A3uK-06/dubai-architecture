@@ -42,7 +42,7 @@ export default function DistrictsSection() {
               className="group rounded-2xl border border-[#E2E8F0] bg-white overflow-hidden flex flex-col h-full hover:border-[#0F172A]/40 transition-all duration-300 shadow-float-card hover:shadow-float-card-hover"
             >
               {/* Photography Header with Floating Badges */}
-              <div className="relative h-56 w-full overflow-hidden bg-[#0F172A]">
+              <div className="relative h-56 w-full overflow-hidden bg-[#0F172A] photo-gold-sheen">
                 <Image
                   src={district.image}
                   alt={district.name}

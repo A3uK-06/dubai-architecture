@@ -332,7 +332,7 @@ export default function CatalogSection() {
                 className="rounded-2xl border border-[#E2E8F0] bg-white overflow-hidden hover:border-[#0F172A]/40 transition-all duration-300 shadow-float-card hover:shadow-float-card-hover flex flex-col h-full group"
               >
                 {/* 1. МЕДИА/ХЕДЕР с парящими бейджами и Overlapping-эффектом */}
-                <div className="relative h-64 sm:h-72 w-full overflow-hidden bg-[#0F172A]">
+                <div className="relative h-64 sm:h-72 w-full overflow-hidden bg-[#0F172A] photo-gold-sheen">
                   <Image
                     src={building.image}
                     alt={building.name}

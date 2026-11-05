@@ -63,27 +63,45 @@ a, button, input, select {
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Luxury Wow-Effect Image Treatments */
-.luxury-card-sheen {
+/* Luxury Golden Sheen Effect on Photos (Hover and Touch/Tap) */
+.luxury-card-sheen,
+.photo-gold-sheen {
   position: relative;
   overflow: hidden;
 }
 
-.luxury-card-sheen::after {
+.luxury-card-sheen::after,
+.photo-gold-sheen::after {
   content: '';
   position: absolute;
   top: 0;
-  left: -100%;
-  width: 50%;
+  left: -130%;
+  width: 60%;
   height: 100%;
-  background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.15), transparent);
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(245, 158, 11, 0.08) 25%,
+    rgba(254, 240, 138, 0.5) 50%,
+    rgba(217, 119, 6, 0.35) 65%,
+    transparent 100%
+  );
   transform: skewX(-25deg);
-  transition: 0.75s;
+  transition: left 0.85s cubic-bezier(0.2, 0.8, 0.2, 1);
   pointer-events: none;
+  z-index: 15;
 }
 
-.luxury-card-sheen:hover::after {
-  left: 200%;
+.luxury-card-sheen:hover::after,
+.luxury-card-sheen:active::after,
+.photo-gold-sheen:hover::after,
+.photo-gold-sheen:active::after,
+.group:hover .photo-gold-sheen::after,
+.group:active .photo-gold-sheen::after,
+.group:focus-within .photo-gold-sheen::after,
+.group:hover .luxury-card-sheen::after,
+.group:active .luxury-card-sheen::after {
+  left: 210%;
 }
 
 /* Compound Tinted Floating Shadows */

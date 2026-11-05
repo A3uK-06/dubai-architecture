@@ -98,7 +98,7 @@ export default function DistrictDetailClient({
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 space-y-16">
         {/* District Photography Showcase */}
-        <div className="relative w-full h-80 sm:h-96 md:h-[440px] rounded-3xl overflow-hidden border border-[#E2E8F0] shadow-float-card bg-[#0F172A]">
+        <div className="relative w-full h-80 sm:h-96 md:h-[440px] rounded-3xl overflow-hidden border border-[#E2E8F0] shadow-float-card bg-[#0F172A] photo-gold-sheen">
           <Image
             src={district.image}
             alt={district.name}
@@ -352,7 +352,7 @@ export default function DistrictDetailClient({
                   href={`/buildings/${building.slug}/`}
                   className="rounded-2xl border border-[#E5DFD3] bg-white overflow-hidden flex flex-col justify-between hover:border-[#8C6A48] shadow-soft-tint hover:shadow-medium-tint transition-all group"
                 >
-                  <div className="relative h-44 w-full overflow-hidden bg-[#EFECE4]">
+                  <div className="relative h-44 w-full overflow-hidden bg-[#EFECE4] photo-gold-sheen">
                     <Image
                       src={building.image}
                       alt={building.name}
