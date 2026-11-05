@@ -3,6 +3,20 @@
 import React, { useState } from "react";
 import { useLang } from "@/context/LangContext";
 import { getAttributionData } from "@/lib/attribution";
+import { LanguageCode } from "@/i18n/languages";
+
+const RERA_STATUS: Record<LanguageCode, string> = {
+  en: "RERA Broker Online",
+  ru: "RERA брокер онлайн",
+  ar: "وسيط ريرا متصل الآن",
+  zh: "RERA 认证经纪人在线",
+  de: "RERA-Makler online",
+  fr: "Courtier RERA en ligne",
+  hi: "RERA ब्रोकर ऑनलाइन",
+  ur: "ریرا بروکر آن لائن",
+  it: "Broker RERA online",
+  tr: "RERA Brokeri Çevrimiçi",
+};
 
 export default function FloatingWhatsApp() {
   const { t, isRtl, lang } = useLang();
@@ -39,7 +53,7 @@ export default function FloatingWhatsApp() {
         >
           <div className="flex items-center gap-2">
             <span className="w-2 h-2 rounded-full bg-[#2D6A4F] animate-pulse" />
-            <span className="font-bold text-[#2D6A4F]">RERA Broker Online</span>
+            <span className="font-bold text-[#2D6A4F]">{RERA_STATUS[lang] || RERA_STATUS.en}</span>
           </div>
           <p className="text-[11px] text-[#78716C] mt-0.5">
             {t.whatsapp.tooltip}
