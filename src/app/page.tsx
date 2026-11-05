@@ -142,7 +142,7 @@ export default function Home() {
                 <div className="text-xs sm:text-sm text-[#64748B] font-semibold mt-1.5">{t.hero.statsRoi}</div>
               </div>
               <div className="p-6 rounded-2xl bg-white border border-[#E2E8F0] shadow-float-card text-center">
-                <div className="text-4xl sm:text-5xl font-extrabold text-[#0F172A] font-mono">10</div>
+                <div className="text-4xl sm:text-5xl font-extrabold text-[#0F172A] font-mono">14</div>
                 <div className="text-xs sm:text-sm text-[#64748B] font-semibold mt-1.5">{t.hero.statsDistricts}</div>
               </div>
             </div>

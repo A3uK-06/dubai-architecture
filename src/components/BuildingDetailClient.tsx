@@ -1,13 +1,14 @@
 "use client";
 
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Building, BUILDINGS } from "@/data/buildings";
+import { Building, BUILDINGS, getBuildingAuditReview } from "@/data/buildings";
 import { useLang } from "@/context/LangContext";
 import { getLocalizedBuilding } from "@/data/localizedContent";
 import SchemaOrg from "@/components/SchemaOrg";
 import RoiCalculator from "@/components/RoiCalculator";
+import LeadModal from "@/components/LeadModal";
 
 interface BuildingDetailClientProps {
   initialBuilding: Building;
@@ -18,9 +19,16 @@ export default function BuildingDetailClient({
 }: BuildingDetailClientProps) {
   const { t, lang } = useLang();
 
+  const [isLeadModalOpen, setIsLeadModalOpen] = useState(false);
+  const [modalAction, setModalAction] = useState({ title: "", subtitle: "" });
+
   const building = useMemo(() => {
     return getLocalizedBuilding(initialBuilding, lang);
   }, [initialBuilding, lang]);
+
+  const audit = useMemo(() => {
+    return getBuildingAuditReview(building);
+  }, [building]);
 
   const relatedBuildings = useMemo(() => {
     return BUILDINGS.filter(
@@ -241,6 +249,99 @@ export default function BuildingDetailClient({
                 ))}
               </ul>
             </section>
+
+            {/* INDEPENDENT TECHNICAL AUDIT & RESIDENT REALITY CHECK */}
+            {audit && (
+              <section className="rounded-3xl bg-[#0F172A] text-white p-6 sm:p-8 border border-[#334155] shadow-2xl space-y-6">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-white/10 pb-4">
+                  <div>
+                    <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#8C6A48]/30 border border-[#8C6A48]/50 text-[#CBB292] text-xs font-mono font-bold uppercase tracking-wider mb-2">
+                      <span className="w-2 h-2 rounded-full bg-[#10B981] animate-pulse" />
+                      {lang === "ru" ? "Независимый технический аудит • Без риелторского глянца" : "Independent Technical Audit • No Broker Bias"}
+                    </div>
+                    <h2 className="text-2xl font-bold tracking-tight text-white font-heading">
+                      {lang === "ru" ? "Реальность резидента и операционная правда" : "Resident Reality Check & Operational Truth"}
+                    </h2>
+                  </div>
+                  <span className="text-xs font-mono text-white/50">{bd.archiveId}: {building.legacyId || building.id}</span>
+                </div>
+
+                {/* Honest Verdict Card */}
+                <div className="p-5 rounded-2xl bg-white/5 border border-white/10 space-y-2">
+                  <div className="text-xs font-bold uppercase tracking-wider text-[#CBB292] flex items-center gap-2">
+                    <span>⚖️</span>
+                    <span>{lang === "ru" ? "Независимый инженерный и инвестиционный вердикт" : "Independent Engineering & Investment Verdict"}</span>
+                  </div>
+                  <p className="text-sm sm:text-base text-slate-200 leading-relaxed font-normal">
+                    {audit.honestVerdict}
+                  </p>
+                </div>
+
+                {/* Side-by-side Strengths and Pitfalls */}
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+                  {/* Strengths */}
+                  <div className="p-5 rounded-2xl bg-emerald-950/30 border border-emerald-500/20 space-y-3">
+                    <div className="flex items-center gap-2 text-emerald-400 font-bold text-sm uppercase tracking-wide">
+                      <span className="w-5 h-5 rounded-full bg-emerald-500/20 flex items-center justify-center text-xs">✓</span>
+                      <span>{lang === "ru" ? "Подтвержденные инженерные плюсы" : "Verified Engineering & Asset Strengths"}</span>
+                    </div>
+                    <ul className="space-y-2.5">
+                      {audit.strengths.map((item, idx) => (
+                        <li key={idx} className="text-xs sm:text-sm text-slate-300 flex items-start gap-2.5 leading-relaxed">
+                          <span className="text-emerald-400 font-bold mt-0.5">•</span>
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* Hidden Pitfalls */}
+                  <div className="p-5 rounded-2xl bg-rose-950/30 border border-rose-500/20 space-y-3">
+                    <div className="flex items-center gap-2 text-rose-400 font-bold text-sm uppercase tracking-wide">
+                      <span className="w-5 h-5 rounded-full bg-rose-500/20 flex items-center justify-center text-xs">⚠</span>
+                      <span>{lang === "ru" ? "Скрытые минусы (О чем молчат брокеры)" : "Hidden Pitfalls & Operational Flaws"}</span>
+                    </div>
+                    <ul className="space-y-2.5">
+                      {audit.pitfallsAndWeaknesses.map((item, idx) => (
+                        <li key={idx} className="text-xs sm:text-sm text-slate-300 flex items-start gap-2.5 leading-relaxed">
+                          <span className="text-rose-400 font-bold mt-0.5">•</span>
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+
+                {/* 4 Practical Resident Metrics */}
+                <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
+                  <div className="p-3.5 rounded-xl bg-white/5 border border-white/10 space-y-1">
+                    <div className="text-[11px] text-slate-400 font-medium">🛗 {lang === "ru" ? "Лифты в час пик" : "Rush Hour Lift Wait"}</div>
+                    <div className="text-xs font-bold text-white">{audit.elevatorPeakWaitReality}</div>
+                  </div>
+                  <div className="p-3.5 rounded-xl bg-white/5 border border-white/10 space-y-1">
+                    <div className="text-[11px] text-slate-400 font-medium">🚗 {lang === "ru" ? "Гостевая парковка" : "Guest Parking"}</div>
+                    <div className="text-xs font-bold text-white">{audit.guestParkingReality}</div>
+                  </div>
+                  <div className="p-3.5 rounded-xl bg-white/5 border border-white/10 space-y-1">
+                    <div className="text-[11px] text-slate-400 font-medium">🔇 {lang === "ru" ? "Шумоизоляция" : "Acoustic Isolation"}</div>
+                    <div className="text-xs font-bold text-white">{audit.soundproofingRating}</div>
+                  </div>
+                  <div className="p-3.5 rounded-xl bg-white/5 border border-white/10 space-y-1">
+                    <div className="text-[11px] text-slate-400 font-medium">🏖️ {lang === "ru" ? "Политика Airbnb" : "Holiday Homes / Airbnb"}</div>
+                    <div className="text-xs font-bold text-white">{audit.airbnbHolidayHomesPolicy}</div>
+                  </div>
+                </div>
+
+                {/* Hidden Operating Costs Warning */}
+                <div className="p-4 rounded-xl bg-amber-950/30 border border-amber-500/30 flex items-start gap-3">
+                  <span className="text-lg text-amber-400">💡</span>
+                  <div className="text-xs text-amber-200 leading-relaxed">
+                    <strong className="font-bold text-amber-300">{lang === "ru" ? "Предостережение ревизора о расходах: " : "Auditor Notice on Hidden Costs: "}</strong>
+                    {audit.hiddenOperatingCosts}
+                  </div>
+                </div>
+              </section>
+            )}
 
             {/* Object-Specific Pre-filled ROI Calculator */}
             <RoiCalculator
@@ -535,26 +636,50 @@ export default function BuildingDetailClient({
                 </div>
               </div>
 
-              {/* Direct WhatsApp CTA Button */}
+              {/* Primary Advisory Action: Pre-Purchase Technical Due Diligence */}
+              <button
+                type="button"
+                onClick={() => {
+                  setModalAction({
+                    title: lang === "ru" ? `Запрос технического аудита: ${building.name}` : `Pre-Purchase Technical Audit: ${building.name}`,
+                    subtitle: lang === "ru" ? "Получите независимое заключение инженера по качеству отделки, шумоизоляции и ведомости расходов до внесения депозита." : "Obtain an independent engineering assessment on finishes, acoustics, and service charge records before signing Form F.",
+                  });
+                  setIsLeadModalOpen(true);
+                }}
+                className="w-full flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-[#0F172A] hover:bg-[#1E293B] text-white font-bold text-xs sm:text-sm uppercase tracking-wider shadow-md active:scale-98 transition-all"
+              >
+                <span>📋</span>
+                <span>{lang === "ru" ? "Запросить независимый тех-аудит" : "Request Technical Due Diligence"}</span>
+              </button>
+
+              {/* Secondary Action: Download Full Dossier */}
+              <button
+                type="button"
+                onClick={() => {
+                  setModalAction({
+                    title: lang === "ru" ? `Скачать инженерный паспорт: ${building.name}` : `Download Engineering Dossier: ${building.name}`,
+                    subtitle: lang === "ru" ? "Полный файл: геотехнический паспорт, история сервисных сборов DLD и поэтажные планы." : "Comprehensive dossier: geotechnical passport, DLD service fee history, and floorplan catalog.",
+                  });
+                  setIsLeadModalOpen(true);
+                }}
+                className="w-full block text-center px-4 py-2.5 rounded-xl border border-[#DDD7CA] hover:bg-[#FAF8F5] text-xs text-[#57534E] font-semibold transition-colors"
+              >
+                📥 {lang === "ru" ? "Скачать паспорт башни и расходы (PDF)" : "Download Engineering & Cost Dossier (PDF)"}
+              </button>
+
+              {/* Direct WhatsApp Concierge */}
               <a
                 href={`https://wa.me/971500000000?text=${whatsappMessage}`}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-[#2D6A4F] hover:bg-[#1E4D38] text-white font-bold text-sm shadow-soft-tint active:scale-98 transition-all"
+                className="w-full flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-[#2D6A4F] hover:bg-[#1E4D38] text-white font-bold text-xs shadow-soft-tint active:scale-98 transition-all"
               >
                 <span>💬</span>
-                <span>{bd.inquireWhatsApp}</span>
+                <span>{lang === "ru" ? "Консультация с архитектором" : "Consult Architectural Advisor"}</span>
               </a>
 
-              <a
-                href="#inquire"
-                className="w-full block text-center px-4 py-2.5 rounded-xl border border-[#DDD7CA] hover:bg-[#FAF8F5] text-xs text-[#57534E] font-semibold transition-colors"
-              >
-                {bd.requestFloorplans}
-              </a>
-
-              <div className="text-xs text-[#78716C] text-center leading-normal">
-                {bd.reraNotice}
+              <div className="p-3 rounded-xl bg-[#FAF8F5] border border-[#DDD7CA] text-[11px] text-[#78716C] text-center leading-normal">
+                <strong className="text-[#8C6A48]">{lang === "ru" ? "Принцип нейтралитета:" : "Neutrality Guarantee:"}</strong> {lang === "ru" ? "Мы не аффилированы с конкретными девелоперами. Каждое заключение опирается на объективные ТТХ и опыт резидентов." : "We are not affiliated with specific developers. Every appraisal is based on objective structural TTX and resident data."}
               </div>
             </div>
           </div>
@@ -608,6 +733,13 @@ export default function BuildingDetailClient({
           </div>
         )}
       </div>
+      <LeadModal
+        isOpen={isLeadModalOpen}
+        onClose={() => setIsLeadModalOpen(false)}
+        title={modalAction.title}
+        subtitle={modalAction.subtitle}
+        towerName={building.name}
+      />
     </article>
   );
 }

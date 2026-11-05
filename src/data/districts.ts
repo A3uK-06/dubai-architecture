@@ -671,4 +671,232 @@ export const DISTRICTS: District[] = [
       "Active ongoing infrastructure completion on marina berths and hospitality zones.",
     ],
   },
+  {
+    id: "sobha-hartland",
+    slug: "sobha-hartland",
+    image: "/images/districts/sobha-hartland.jpg",
+    name: "Sobha Hartland & MBR City",
+    developer: "Sobha Realty",
+    overview:
+      "An 8-million sq.ft ultra-luxury freehold community situated within Mohammed Bin Rashid Al Maktoum City (MBR City), distinguished by 30% dedicated green parks, two top-tier British international schools, and a panoramic crystal lagoon.",
+    urbanConcept:
+      "Engineered by Sobha's backward-integrated design philosophy, Hartland combines mid-rise garden residences, canal waterfront villas, and sleek residential towers around a central 1.8 km crystal boardwalk. Positioned just 3 km from Downtown Dubai and Ras Al Khor Wildlife Sanctuary, it balances dense urban connectivity with ecological serenity.",
+    keyLandmarks: [
+      "Sobha Waves Opulence & Waves Grande",
+      "The Crest Crystal Lagoon Towers",
+      "North London Collegiate School (NLCS Dubai)",
+      "Hartland International School",
+      "Ras Al Khor Flamingo Sanctuary Viewpoints",
+    ],
+    averageRoi: "7.2% - 8.6%",
+    iconicTowersCount: 18,
+    description:
+      "Sobha Hartland has emerged as one of Dubai's most reliable rental and capital appreciation powerhouses for high-income expatriate families. In-house German engineering, rigorous build quality, and direct walking access to two premier schools ensure ultra-low vacancy rates and resilient yields.",
+    subZones: [
+      {
+        name: "Hartland Waterfront & Crystal Lagoon",
+        character: "High-end residential high-rises along the boardwalk with direct lagoon and Downtown skyline panoramas.",
+        pricePerSqFtAed: "2,200 - 3,400 AED/sq.ft",
+        bestFor: "High-yield rental portfolios and executive corporate tenants.",
+      },
+      {
+        name: "Hartland Estates & Garden Villas",
+        character: "Exclusive gated villa enclave with private swimming pools, lush courtyards, and forest landscaping.",
+        pricePerSqFtAed: "2,600 - 4,200 AED/sq.ft",
+        bestFor: "UHNW family residence and generational asset preservation.",
+      },
+    ],
+    transitAnalysis: {
+      highwayAccess: "Quick dual access to Ras Al Khor Road (E44) and Al Ain Road (E66); 8 minutes to Downtown Dubai.",
+      rushHourBottleneck: "Evening delays on the Ras Al Khor Road interchange toward Business Bay during peak hours.",
+      publicTransit: "RTA bus lines connected to Creek and Dubai Healthcare City Metro Stations; future Green Line extension corridor.",
+      walkabilityScore: "High (Pedestrian Boulevards)",
+    },
+    infrastructureAudit: {
+      chillerType: "High-efficiency localized district cooling plants.",
+      stormwaterResilience: "High: Modern multi-stage culverts and natural retention basins.",
+      serviceChargeRangeAed: "18 - 26 AED / sq.ft.",
+      occupancyRate: "94% - 97%.",
+      targetTenantProfile: "European and multinational executive families, school parents, tech founders, and diplomats.",
+    },
+    investmentPros: [
+      "Sobha's proprietary backward integration guarantees exceptional build quality and finishing durability.",
+      "Captive rental demand from families of students attending North London Collegiate School and Hartland International.",
+      "Prime central location 8 minutes from Downtown Dubai with significantly lower entry prices than Burj Khalifa superblock.",
+    ],
+    investmentRisks: [
+      "Surrounding MBR City parcels remain under active masterplan infrastructure construction.",
+    ],
+  },
+  {
+    id: "city-walk",
+    slug: "city-walk",
+    image: "/images/districts/city-walk.jpg",
+    name: "City Walk & Jumeirah",
+    developer: "Meraas (Dubai Holding)",
+    overview:
+      "A pedestrianized, design-forward European-style urban quarter located between Downtown Dubai and Jumeirah Beach, renowned for low-to-mid-rise modern architecture and Central Park green lungs.",
+    urbanConcept:
+      "Master-planned as a counter-concept to Dubai's typical high-rise sprawl, City Walk features wide tree-lined boulevards, public art installations, open-air retail arcades, and Central Park: a lush 48,000 m² residential green sanctuary with 80+ sports and lifestyle amenities.",
+    keyLandmarks: [
+      "Central Park at City Walk (Meraas)",
+      "Coca-Cola Arena (17,000 capacity indoor arena)",
+      "The Green Planet Biodome",
+      "Roxy Cinemas & Gourmet Al Fresco Boulevard",
+      "Jumeirah Beach Road Connector",
+    ],
+    averageRoi: "7.0% - 8.4%",
+    iconicTowersCount: 14,
+    description:
+      "City Walk represents Dubai's most authentic European lifestyle enclave. Low-density residential buildings, floor-to-ceiling glass architecture, and true doorstep walkability make it a magnets for affluent Western expats, creatives, and design-conscious owner-occupiers.",
+    subZones: [
+      {
+        name: "Central Park Residences",
+        character: "Modern mid-rise glass pavilions nestled directly inside lush landscaped botanical parks.",
+        pricePerSqFtAed: "2,500 - 3,800 AED/sq.ft",
+        bestFor: "Pet-owners, active professionals, and premium long-term tenancies.",
+      },
+      {
+        name: "City Walk Boulevard Retail Quarter",
+        character: "Loft-style apartments directly above high-fashion boutiques, fine dining, and entertainment venues.",
+        pricePerSqFtAed: "2,300 - 3,200 AED/sq.ft",
+        bestFor: "Short-term holiday lets and urban nightlife lovers.",
+      },
+    ],
+    transitAnalysis: {
+      highwayAccess: "Unrivalled central access to Sheikh Zayed Road (E11), Al Wasl Road (D92), and Jumeirah Beach Road (D94).",
+      rushHourBottleneck: "Weekend concert traffic around Coca-Cola Arena on Al Safa Street.",
+      publicTransit: "Direct walking distance (700 m) to Burj Khalifa / Dubai Mall Metro Station via pedestrian concourse.",
+      walkabilityScore: "High (Pedestrian Boulevards)",
+    },
+    infrastructureAudit: {
+      chillerType: "Empower District Cooling.",
+      stormwaterResilience: "High: Newly upgraded urban drainage corridors with direct discharge to the Arabian Gulf.",
+      serviceChargeRangeAed: "19 - 25 AED / sq.ft.",
+      occupancyRate: "95% - 98%.",
+      targetTenantProfile: "European executives, creative agency directors, medical specialists, and affluent tech entrepreneurs.",
+    },
+    investmentPros: [
+      "Extremely rare low-rise pedestrian urbanism in a city dominated by high-density skyscraper clusters.",
+      "Top-tier capital liquidity due to perpetual demand from affluent Western owner-occupiers.",
+      "Direct adjacency to Jumeirah 1 and coastline while holding 100% freehold ownership rights.",
+    ],
+    investmentRisks: [
+      "Premium price per square foot with strict building height limitations limiting massive volume scale.",
+    ],
+  },
+  {
+    id: "palm-jebel-ali",
+    slug: "palm-jebel-ali",
+    image: "/images/districts/palm-jebel-ali.jpg",
+    name: "Palm Jebel Ali",
+    developer: "Nakheel",
+    overview:
+      "Dubai's monumental reborn offshore archipelago, twice the geographic scale of Palm Jumeirah. The designated crown jewel and ultra-luxury waterfront growth engine of the Dubai 2040 Urban Master Plan.",
+    urbanConcept:
+      "Spanning 13.4 square kilometers and adding 110 kilometers of private coastline to Dubai. The masterplan comprises 16 fronds, 7 connected islands, 80+ luxury hotels and resorts, and is engineered to run up to 30% of its public infrastructure on renewable green energy with advanced smart city grids.",
+    keyLandmarks: [
+      "The Grand Gateway & Central Island Marina",
+      "Palm Jebel Ali Coral Collection Mansions",
+      "Beach Collection Custom Luxury Villas",
+      "Crescent Hospitality & Resort Belt",
+      "Future Ultra-Luxury Yachting Marinas",
+    ],
+    averageRoi: "8.5% - 11.0% (Early-Cycle Appreciation)",
+    iconicTowersCount: 12,
+    description:
+      "Palm Jebel Ali offers investors the rare opportunity to enter an iconic world wonder at Phase 1 master-launch pricing, echoing the legendary 400%+ capital gains achieved by early Palm Jumeirah buyers between 2003 and 2024.",
+    subZones: [
+      {
+        name: "Frond Luxury Villas (Coral & Beach Collections)",
+        character: "Exclusive private beachfront mansions with private yacht moorings and 8 distinct architectural facade typologies.",
+        pricePerSqFtAed: "3,000 - 5,500 AED/sq.ft",
+        bestFor: "Generational billionaire wealth preservation and sovereign-tier privacy.",
+      },
+      {
+        name: "The Crescent Marina & High-End Towers",
+        character: "Future mixed-use waterfront skyscraper corridor, 5-star hospitality, and superyacht slips.",
+        pricePerSqFtAed: "2,600 - 4,500 AED/sq.ft",
+        bestFor: "Institutional capital and high-growth early-stage property funds.",
+      },
+    ],
+    transitAnalysis: {
+      highwayAccess: "Direct causeway link to Sheikh Zayed Road (E11) and future connection to Dubai Waterfront.",
+      rushHourBottleneck: "Currently greenfield construction traffic; minimal bottlenecks during early reclamation phase.",
+      publicTransit: "Planned Red Line Metro branch expansion and marine water-taxi shuttle network.",
+      walkabilityScore: "Moderate (Within clusters only)",
+    },
+    infrastructureAudit: {
+      chillerType: "Autonomous sustainable district cooling plants utilizing deep seawater heat exchangers.",
+      stormwaterResilience: "Maximum: State-of-the-art hydraulic engineering with automated tidal wave dissipation breakwaters.",
+      serviceChargeRangeAed: "24 - 40 AED / sq.ft (Projected).",
+      occupancyRate: "Phase 1 completion target 2027-2028.",
+      targetTenantProfile: "Global UHNW families, international sports icons, and institutional real estate funds.",
+    },
+    investmentPros: [
+      "Historic entry point mirroring early Palm Jumeirah capital multiples.",
+      "110 km of pristine new coastline in a market where beachfront land has reached absolute scarcity.",
+      "Direct government backing under the high-priority Dubai 2040 Urban Master Plan.",
+    ],
+    investmentRisks: [
+      "Multi-year development timeline; long-term capital commitment required before full community maturity.",
+    ],
+  },
+  {
+    id: "dubai-south",
+    slug: "dubai-south",
+    image: "/images/districts/dubai-south.jpg",
+    name: "Dubai South & Expo City",
+    developer: "Dubai South Master Developer / Government of Dubai",
+    overview:
+      "Dubai's 145-sq.km strategic master-city of the future, anchored by the $35-billion expansion of Al Maktoum International Airport (DWC) to become the largest airport on Earth.",
+    urbanConcept:
+      "An integrated economic metropolis comprising eight specialized districts: Logistics, Aviation, Residential, Business, Golf, and Expo City Dubai. Designed to host 1 million residents and generate 500,000 high-skilled jobs, completely re-centering Dubai's economic gravity toward the south.",
+    keyLandmarks: [
+      "Al Maktoum International Airport (DWC - 260M Passenger Masterplan)",
+      "Expo City Dubai & Al Wasl Plaza",
+      "South Bay 3-km Crystal Lagoon Community",
+      "The Oasis by Emaar ($20B Luxury Megaproject)",
+      "Dubai South Aerospace & Logistics Hub",
+    ],
+    averageRoi: "8.5% - 10.5%",
+    iconicTowersCount: 10,
+    description:
+      "Following the official approval of the 128-billion AED mega expansion for Al Maktoum International Airport in 2024, Dubai South has transformed into the highest-upside capital growth corridor in the Middle East, capturing the migration of Emirates Airline operations and international trade.",
+    subZones: [
+      {
+        name: "Residential City & South Bay",
+        character: "Vibrant family apartment communities, townhouses, and waterfront crystal lagoon mansions.",
+        pricePerSqFtAed: "1,100 - 1,800 AED/sq.ft",
+        bestFor: "High-yield rental cash flow and budget-conscious capital growth investors.",
+      },
+      {
+        name: "Expo City Dubai Urban Enclave",
+        character: "Sustainable, pedestrian-first smart city pavilions transformed into LEED Platinum corporate and residential lofts.",
+        pricePerSqFtAed: "1,600 - 2,400 AED/sq.ft",
+        bestFor: "Tech innovators, multinational executives, and ESG-focused institutional investors.",
+      },
+    ],
+    transitAnalysis: {
+      highwayAccess: "Superb quadruple arterial connectivity: Emirates Road (E611), Sheikh Mohammed Bin Zayed Road (E311), and Expo Road (E77).",
+      rushHourBottleneck: "Minimal; wide 6-lane masterplan expressways with ample throughput capacity.",
+      publicTransit: "Direct Expo 2020 Metro Station (Red Line) with planned blue line extensions into airport terminals.",
+      walkabilityScore: "Moderate (Within clusters only)",
+    },
+    infrastructureAudit: {
+      chillerType: "Empower and localized modern green chiller networks.",
+      stormwaterResilience: "Maximum: Engineered underground dual stormwater channels built for Expo 2020 standards.",
+      serviceChargeRangeAed: "12 - 18 AED / sq.ft (Lowest in prime Dubai).",
+      occupancyRate: "92% - 95%.",
+      targetTenantProfile: "Aviation personnel, logistics directors, Expo City tech workers, and smart value investors.",
+    },
+    investmentPros: [
+      "Monumental government-backed catalyst: Al Maktoum Airport will scale to 5x the capacity of DXB.",
+      "Lowest service charges among major Dubai masterplans (12-18 AED/sq.ft), maximizing net rental yields.",
+      "Substantial capital appreciation upside as Emirates Airline phases commercial flights into DWC.",
+    ],
+    investmentRisks: [
+      "Located 30 minutes south of Downtown Dubai, catering primarily to an aviation and southern corridor demographic.",
+    ],
+  },
 ];

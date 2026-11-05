@@ -3,8 +3,14 @@
 import React, { useEffect, useState } from "react";
 import Script from "next/script";
 
-const GA_ID = process.env.NEXT_PUBLIC_GA_ID;
-const CLARITY_ID = process.env.NEXT_PUBLIC_CLARITY_ID;
+const RAW_GA_ID = process.env.NEXT_PUBLIC_GA_ID?.trim();
+const RAW_GTM_ID = process.env.NEXT_PUBLIC_GTM_ID?.trim();
+
+// Support both GTM container (GTM-XXXXXX) and direct GA4 stream (G-XXXXXX)
+const GTM_ID = RAW_GTM_ID || (RAW_GA_ID?.startsWith("GTM-") ? RAW_GA_ID : undefined);
+const GA_ID = RAW_GA_ID?.startsWith("G-") ? RAW_GA_ID : (!RAW_GTM_ID && !RAW_GA_ID?.startsWith("GTM-") ? RAW_GA_ID : undefined);
+
+const CLARITY_ID = process.env.NEXT_PUBLIC_CLARITY_ID?.trim();
 const IGNORE_STORAGE_KEY = "ignore_analytics";
 
 export default function GoogleAnalytics() {
@@ -64,7 +70,37 @@ export default function GoogleAnalytics() {
         </div>
       )}
 
-      {/* Google Analytics 4 (only loads if NEXT_PUBLIC_GA_ID is provided by owner) */}
+      {/* Google Tag Manager (GTM) */}
+      {GTM_ID && (
+        <>
+          <Script
+            id="google-tag-manager"
+            strategy="afterInteractive"
+            dangerouslySetInnerHTML={{
+              __html: `
+                (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+                })(window,document,'script','dataLayer','${GTM_ID}');
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+              `,
+            }}
+          />
+          <noscript>
+            <iframe
+              src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
+              height="0"
+              width="0"
+              style={{ display: "none", visibility: "hidden" }}
+            />
+          </noscript>
+        </>
+      )}
+
+      {/* Google Analytics 4 (Direct GA4 stream if G-XXXXXX provided) */}
       {GA_ID && (
         <>
           <Script

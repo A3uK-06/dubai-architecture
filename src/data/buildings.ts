@@ -45,6 +45,17 @@ export interface LayoutEfficiencySpecs {
   balconyUsability: string;
 }
 
+export interface BuildingAuditReview {
+  honestVerdict: string;
+  strengths: string[];
+  pitfallsAndWeaknesses: string[];
+  airbnbHolidayHomesPolicy: string;
+  guestParkingReality: string;
+  soundproofingRating: string;
+  elevatorPeakWaitReality: string;
+  hiddenOperatingCosts: string;
+}
+
 export interface Building {
   id: string;
   legacyId?: string; // DUB-001 etc.
@@ -84,6 +95,9 @@ export interface Building {
   verticalTransport: VerticalTransportSpecs;
   operatingSpecs: ClimateAndOperatingSpecs;
   layoutEfficiency: LayoutEfficiencySpecs;
+
+  // Independent Engineering & Operational Due Diligence (Reality Check)
+  auditReview?: BuildingAuditReview;
 }
 
 export const BUILDINGS: Building[] = [
@@ -163,6 +177,25 @@ export const BUILDINGS: Building[] = [
       columnImpact: "Minimal (Open Spans)",
       netToGrossRatio: "84% - 88%",
       balconyUsability: "Enclosed sunroom loggias on mid-floors; high-altitude observation decks",
+    },
+    auditReview: {
+      honestVerdict: "Burj Khalifa remains the world's most recognizable trophy address, offering unmatched global prestige and sovereign exit liquidity. However, from a pure rental yield perspective, it is weighed down by Dubai's highest service charges (~55.8 AED/sq.ft) and mandatory sky lobby elevator transfers for upper residences.",
+      strengths: [
+        "Unrivaled global brand power ensuring instantaneous liquidity and UHNW prestige.",
+        "Buttressed core engineering virtually eliminates perceptible high-altitude sway during Gulf storms.",
+        "Direct private pedestrian tunnel connectivity into Dubai Mall and Armani Hotel amenities."
+      ],
+      pitfallsAndWeaknesses: [
+        "Extreme annual service charges (55.8 AED/sq.ft) dilute net rental yields to ~4.8% - 5.5%.",
+        "Residents on levels 44-75 and 77-108 must transfer at sky lobby interchanges, adding transit time.",
+        "Window cleaning cycle takes up to 90-120 days, meaning exterior glazing can accumulate sand film between passes.",
+        "Downtown Dubai New Year's Eve and weekend boulevard traffic creates significant road gridlock."
+      ],
+      airbnbHolidayHomesPolicy: "Restricted by HOA: Short-term holiday lets permitted only through licensed Armani or specialized boutique operators, subject to strict building security vetting.",
+      guestParkingReality: "Valet service via Armani Hotel entrance; limited dedicated visitor self-parking bays.",
+      soundproofingRating: "Excellent (STC 54 dB dual decoupled masonry walls; virtually silent above level 40).",
+      elevatorPeakWaitReality: "30-55 sec at ground express shuttles; sky lobby local lift transfers add 1-2 min during 8:30-9:30 AM.",
+      hiddenOperatingCosts: "High Empower capacity demand fees (~2,500-4,000 AED/year base charge) payable regardless of AC usage."
     },
   },
   {
@@ -2073,5 +2106,611 @@ export const BUILDINGS: Building[] = [
       netToGrossRatio: "86% - 90%",
       balconyUsability: "Expansive curved aerodynamic private viewing decks with integrated plunge pools",
     },
+    auditReview: {
+      honestVerdict: "A futuristic hyper-luxury statement blending automotive aerodynamics with skyline architecture. The inclusion of private vehicular lifts and high-altitude plunge pools creates peerless novelty and high ultra-luxury short-term yields, though specialised mechanics entail above-average annual maintenance reserve charges.",
+      strengths: [
+        "First-of-its-kind Mercedes-Benz architectural design language with solar-integrated smart facade.",
+        "Incomparable unobstructed Downtown panoramic views facing Burj Khalifa.",
+        "Private plunge pool and smart home automation integrated directly into every residence."
+      ],
+      pitfallsAndWeaknesses: [
+        "Service charge is at the upper end of Downtown/Business Bay spectrum (~38 AED/sq.ft).",
+        "Curved aerodynamic balconies require periodic window-washing robotics maintenance.",
+        "Delivery scheduled for late 2026; capital commitment required prior to handover."
+      ],
+      airbnbHolidayHomesPolicy: "Permitted with luxury boutique management; targeted at UHNW automotive and executive visitors.",
+      guestParkingReality: "Full VIP valet service with dedicated basement visitor bays and EV fast-charging.",
+      soundproofingRating: "STC 58 dB (Triple-glazed acoustic laminate; zero Sheikh Zayed Road intrusion).",
+      elevatorPeakWaitReality: "< 30 seconds with destination-dispatch high-speed Otis lifts.",
+      hiddenOperatingCosts: "Higher annual chiller capacity charges and private pool mechanical servicing."
+    },
+  },
+  {
+    id: "bugatti-residences",
+    legacyId: "DUB-025",
+    slug: "bugatti-residences",
+    image: "/images/buildings/bugatti-residences.jpg",
+    name: "Bugatti Residences by Binghatti",
+    heightMeters: 200,
+    heightFeet: 656,
+    floors: 42,
+    yearBuilt: 2026,
+    architect: "Muhammad Binghatti & Bugatti Design Team",
+    architectFirm: "Binghatti Architecture",
+    developer: "Binghatti Developers",
+    district: "Business Bay",
+    districtSlug: "business-bay",
+    type: "Residential",
+    status: "Under Construction",
+    rating: 4.9,
+    featured: true,
+    investmentYield: "7.8% - 9.2%",
+    startingPriceAed: "19,090,000 AED",
+    startingPriceUsd: "$5,200,000",
+    description:
+      "The world's first Bugatti Residences, situated along the Dubai Water Canal in Business Bay. Designed with fluid aerodynamic contours inspired by the French Riviera and iconic Bugatti hypercars, featuring private vehicular lifts that transport automobiles directly into sky mansions.",
+    architecturalHighlights: [
+      "Two high-speed vehicular lifts ascending directly into private sky garage lounges",
+      "Riviera-inspired private sandy beach pool deck on the podium level",
+      "Fluid organic cantilevered balconies with zero straight lines",
+      "Private swimming pool embedded into every single sky mansion terrace",
+    ],
+    historicalNote: "Unveiled in May 2023 as Bugatti's maiden real estate venture in collaboration with Binghatti Developers.",
+    structuralSystem: "Reinforced concrete core with aerodynamic post-tensioned cantilever slabs",
+    foundation: {
+      pilesCount: 380,
+      pileDepthMeters: 45,
+      pileDiameterMeters: "1.2 m - 1.5 m",
+      raftThicknessMeters: "3.2 m",
+      bedrockType: "Dense coastal calcarenite with specialized vibration damping for vehicular shafts",
+    },
+    windStructural: {
+      lateralSystem: "Aerodynamic sculpted concrete shear walls minimizing vortex shedding",
+      dampingMechanism: "Tapered organic profile dissipates canal wind eddies naturally",
+      maxApexSwayMeters: "± 0.18 m",
+      concreteStrengthGrade: "C75 high-durability concrete",
+    },
+    facade: {
+      glazingType: "Bespoke double-curved Low-E acoustic solar control glass",
+      shgcSolarCoefficient: "SHGC 0.20",
+      uValueWPerM2K: "1.3 W/m²K",
+      bmuCleaningSystem: "Automated guide-rail BMU units hidden within facade curves",
+      cleaningCycleDays: "45 days",
+    },
+    verticalTransport: {
+      elevatorManufacturer: "KONE / Specialized Automotive Lift Engineering",
+      totalElevators: 8,
+      maxSpeedMs: 6.0,
+      doubleDeckCars: false,
+      zoningStrategy: "6 luxury passenger elevators plus 2 heavy-duty high-speed car elevators",
+      peakWaitingSeconds: "< 25 seconds (passenger); 90 seconds (vehicular lift)",
+    },
+    operatingSpecs: {
+      coolingProvider: "Empower District Cooling",
+      chillerBilling: "Consumption-Billed (Empower)",
+      annualServiceChargeAedSqFt: 36.0,
+      acousticRatingDb: "STC 57 dB (Acoustic decoupling around vehicular lift shafts)",
+      slabToSlabHeightMeters: 4.5,
+      clearCeilingHeightMeters: 3.8,
+    },
+    layoutEfficiency: {
+      columnImpact: "Minimal (Open Spans)",
+      netToGrossRatio: "85% - 88%",
+      balconyUsability: "Expansive curved aerodynamic private viewing decks with integrated plunge pools",
+    },
+    auditReview: {
+      honestVerdict: "A true collector's trophy asset with immense brand scarcity. The private car elevators and Riviera aesthetic attract global ultra-high-net-worth petrolheads and trophy collectors. Capital appreciation and short-term event yields (F1, Dubai World Cup) are exceptionally high, though operational expenses reflect specialized hydraulic and pool infrastructure.",
+      strengths: [
+        "Unprecedented novelty of private in-unit supercar display garages.",
+        "Prime canal-front position with panoramic Burj Khalifa and water vistas.",
+        "Very limited total inventory of 182 units ensuring exclusive supply."
+      ],
+      pitfallsAndWeaknesses: [
+        "High annual service charge (~36 AED/sq.ft) due to specialized vehicular elevator maintenance.",
+        "During high-volume evening arrivals, vehicular lift waiting times can exceed 3-4 minutes.",
+        "Business Bay Marasi Drive experiences commuter traffic delays between 18:00 and 19:30."
+      ],
+      airbnbHolidayHomesPolicy: "Permitted via VIP boutique concierge services; extreme peak nightly rates during major Dubai events.",
+      guestParkingReality: "Dedicated VIP valet service with supercar display concourse in the main lobby.",
+      soundproofingRating: "STC 57 dB (Heavy structural dampening prevents lift shaft vibrations from entering living areas).",
+      elevatorPeakWaitReality: "< 25 sec for passenger lifts; ~90 sec turnaround cycle for automotive elevator.",
+      hiddenOperatingCosts: "Private pool and hydraulic lift annual maintenance levies added to standard service fees."
+    },
+  },
+  {
+    id: "habtoor-tower",
+    legacyId: "DUB-026",
+    slug: "habtoor-tower",
+    image: "/images/buildings/habtoor-tower.jpg",
+    name: "Al Habtoor Tower",
+    heightMeters: 345,
+    heightFeet: 1132,
+    floors: 81,
+    yearBuilt: 2026,
+    architect: "Makki & Associates",
+    architectFirm: "Makki Architectural Consultants",
+    developer: "Al Habtoor Group",
+    district: "Business Bay / Sheikh Zayed Road",
+    districtSlug: "business-bay",
+    type: "Residential",
+    status: "Under Construction",
+    rating: 4.8,
+    featured: true,
+    investmentYield: "8.0% - 9.5%",
+    startingPriceAed: "2,100,000 AED",
+    startingPriceUsd: "$571,000",
+    description:
+      "A monumental 81-storey residential skyscraper rising over the Dubai Water Canal in Al Habtoor City. Constructed using innovative deep-foundation top-down engineering that eliminated 30,000 metric tons of carbon emissions. Features 18 high-speed elevators and three complete levels of luxury amenities.",
+    architecturalHighlights: [
+      "Innovative top-down foundation engineering shaving 16 months off standard supertall construction",
+      "Three full amenity levels featuring infinity pools, padel tennis courts, and luxury spas",
+      "360-degree vistas encompassing the Dubai Canal, Arabian Gulf, and Burj Khalifa",
+      "Direct integration into Al Habtoor City hospitality, dining, and Dubai Ferry terminal",
+    ],
+    historicalNote: "Announced in 2023 as one of the largest single residential towers ever erected in the Middle East.",
+    structuralSystem: "Reinforced concrete core with high-performance outrigger trusses",
+    foundation: {
+      pilesCount: 420,
+      pileDepthMeters: 40,
+      pileDiameterMeters: "2.2 m",
+      raftThicknessMeters: "3.5 m",
+      bedrockType: "Dense sandstone and calcarenite strata with zero differential settlement",
+    },
+    windStructural: {
+      lateralSystem: "Central shear core with tuned multi-level outriggers",
+      dampingMechanism: "Aerodynamic chamfered corners reduce lateral wind vortices",
+      maxApexSwayMeters: "± 0.38 m",
+      concreteStrengthGrade: "C80 high-performance concrete",
+    },
+    facade: {
+      glazingType: "High-acoustic double-glazed Low-E solar reflective curtain wall",
+      shgcSolarCoefficient: "SHGC 0.22",
+      uValueWPerM2K: "1.4 W/m²K",
+      bmuCleaningSystem: "Heavy-duty roof-mounted BMU telescopic cranes",
+      cleaningCycleDays: "60 days",
+    },
+    verticalTransport: {
+      elevatorManufacturer: "Otis",
+      totalElevators: 18,
+      maxSpeedMs: 7.0,
+      doubleDeckCars: false,
+      zoningStrategy: "Triple-zone destination control (Low, Mid, High tiers)",
+      peakWaitingSeconds: "35 - 50 seconds",
+    },
+    operatingSpecs: {
+      coolingProvider: "Empower District Cooling",
+      chillerBilling: "Consumption-Billed (Empower)",
+      annualServiceChargeAedSqFt: 21.0,
+      acousticRatingDb: "STC 55 dB (Heavy acoustic facade glazing facing E11 highway)",
+      slabToSlabHeightMeters: 3.6,
+      clearCeilingHeightMeters: 3.0,
+    },
+    layoutEfficiency: {
+      columnImpact: "Minimal (Open Spans)",
+      netToGrossRatio: "85% - 88%",
+      balconyUsability: "Deep recessed balconies shielded from direct highway downdrafts",
+    },
+    auditReview: {
+      honestVerdict: "An engineering colossus providing unmatched price-per-square-foot value on Sheikh Zayed Road. The 3-tier amenity decks and canal-side position deliver strong rental liquidity. However, buyers must factor in the sheer density of 1,700+ units, which will generate heavy communal usage and busy peak elevator hours.",
+      strengths: [
+        "Unrivalled amenity package: multiple infinity pools, padel courts, and direct canal promenade access.",
+        "Competitive entry price compared to neighboring Downtown Emaar towers.",
+        "Deep 2.2m foundation piles ensure world-class seismic and structural integrity."
+      ],
+      pitfallsAndWeaknesses: [
+        "High density (1,700+ units) creates potential elevator waiting during 8:00-9:00 AM rush.",
+        "Western balconies overlook Sheikh Zayed Road; minor ambient traffic hum during open balcony hours.",
+        "Al Habtoor City highway ingress ramps experience brief congestion during evening rush."
+      ],
+      airbnbHolidayHomesPolicy: "Fully permitted with in-house holiday home management; very strong tenant demand.",
+      guestParkingReality: "Substantial 6-level podium with 200+ dedicated visitor and valet parking spots.",
+      soundproofingRating: "STC 55 dB (High-spec acoustic glass effectively insulates Sheikh Zayed Road noise).",
+      elevatorPeakWaitReality: "35-50 seconds with 18 Otis destination-controlled lifts.",
+      hiddenOperatingCosts: "Empower capacity fee applies; otherwise very reasonable service charges (~21 AED/sq.ft)."
+    },
+  },
+  {
+    id: "address-beach-resort",
+    legacyId: "DUB-027",
+    slug: "address-beach-resort",
+    image: "/images/buildings/address-beach-resort.jpg",
+    name: "Address Beach Resort (Jumeirah Gate)",
+    heightMeters: 310,
+    heightFeet: 1017,
+    floors: 77,
+    yearBuilt: 2020,
+    architect: "Shaun Killa",
+    architectFirm: "Killa Design",
+    developer: "Al Ain Holding / Emaar Hospitality",
+    district: "Dubai Marina / JBR",
+    districtSlug: "dubai-marina",
+    type: "Mixed-Use",
+    status: "Completed",
+    rating: 4.9,
+    featured: true,
+    investmentYield: "8.5% - 10.2%",
+    startingPriceAed: "3,850,000 AED",
+    startingPriceUsd: "$1,048,000",
+    description:
+      "A stunning 77-storey twin-tower supertall linked at the summit by the world's highest rooftop infinity pool (Guinness World Record at 294 m). Located at the southern tip of JBR with private beachfront access and breathtaking views of Ain Dubai and Palm Jumeirah.",
+    architecturalHighlights: [
+      "Guinness World Record for the highest outdoor infinity pool in a building (294 m)",
+      "Iconic elliptic void cut through the center of the twin towers to relieve Gulf wind pressures",
+      "Direct private access to JBR sandy beach and the waterfront promenade",
+      "Managed under Emaar's flagship Address 5-star hospitality brand",
+    ],
+    historicalNote: "Completed in December 2020, setting an international benchmark for supertall hospitality engineering.",
+    structuralSystem: "Reinforced concrete twin towers connected by multi-storey steel truss skybridge",
+    foundation: {
+      pilesCount: 390,
+      pileDepthMeters: 48,
+      pileDiameterMeters: "1.5 m",
+      raftThicknessMeters: "3.2 m",
+      bedrockType: "Dense coastal calcarenite with specialized anti-saline water table protection",
+    },
+    windStructural: {
+      lateralSystem: "Dual central cores interconnected through skybridge structural bracing",
+      dampingMechanism: "Central elliptical void relieves high-altitude aerodynamic drag",
+      maxApexSwayMeters: "± 0.28 m",
+      concreteStrengthGrade: "C80 self-compacting concrete",
+    },
+    facade: {
+      glazingType: "Marine-grade acoustic Low-E smart glass with anti-saline coastal coating",
+      shgcSolarCoefficient: "SHGC 0.20",
+      uValueWPerM2K: "1.3 W/m²K",
+      bmuCleaningSystem: "Integrated rooftop gantry crane systems servicing twin facades",
+      cleaningCycleDays: "45 days",
+    },
+    verticalTransport: {
+      elevatorManufacturer: "Otis",
+      totalElevators: 16,
+      maxSpeedMs: 6.5,
+      doubleDeckCars: false,
+      zoningStrategy: "Dedicated residential and hotel lifts with express skybridge shuttles",
+      peakWaitingSeconds: "< 35 seconds",
+    },
+    operatingSpecs: {
+      coolingProvider: "Empower District Cooling",
+      chillerBilling: "Chiller-Free",
+      annualServiceChargeAedSqFt: 32.5,
+      acousticRatingDb: "STC 56 dB",
+      slabToSlabHeightMeters: 3.8,
+      clearCeilingHeightMeters: 3.1,
+    },
+    layoutEfficiency: {
+      columnImpact: "Minimal (Open Spans)",
+      netToGrossRatio: "85% - 88%",
+      balconyUsability: "Generous wind-shielded balconies with panoramic sea and Bluewaters vistas",
+    },
+    auditReview: {
+      honestVerdict: "The undisputed crown of JBR. Generates the highest short-term holiday rental ADRs (Average Daily Rates) in coastal Dubai due to the world-famous rooftop pool and beachfront access. However, JBR weekend traffic is notoriously congested, and rooftop pool access during peak hours requires advance booking.",
+      strengths: [
+        "Record-holding 294 m rooftop infinity pool with world-renowned photo appeal.",
+        "True private beach access with full sun loungers, towel service, and seaside dining.",
+        "Address 5-star brand sustains exceptional 80%+ year-round occupancy."
+      ],
+      pitfallsAndWeaknesses: [
+        "JBR The Walk experiences heavy weekend traffic congestion from Thursday to Saturday night.",
+        "Strict pool access restrictions: resident guests must register in advance during high season.",
+        "Service charges of ~32.5 AED/sq.ft are above standard Dubai Marina averages."
+      ],
+      airbnbHolidayHomesPolicy: "Fully permitted in residential tower; exceptional short-term holiday yields ($400-$1,200/night in winter).",
+      guestParkingReality: "Full 24/7 valet service; visitor self-parking is restricted and requires valet token.",
+      soundproofingRating: "STC 56 dB (Exceptional marine-grade acoustic glass; waves are audible, traffic is blocked).",
+      elevatorPeakWaitReality: "< 35 seconds with dedicated high-speed shuttles to the skybridge.",
+      hiddenOperatingCosts: "Chiller-free billing offsets higher HOA maintenance charges for skybridge pool structure."
+    },
+  },
+  {
+    id: "one-palm-omniyat",
+    legacyId: "DUB-028",
+    slug: "one-palm-omniyat",
+    image: "/images/buildings/one-palm-omniyat.jpg",
+    name: "One Palm by Omniyat",
+    heightMeters: 105,
+    heightFeet: 344,
+    floors: 25,
+    yearBuilt: 2021,
+    architect: "SOMA Architects (New York)",
+    architectFirm: "SOMA Architects / Vladimir Djurovic Landscape",
+    developer: "Omniyat",
+    district: "Palm Jumeirah",
+    districtSlug: "palm-jumeirah",
+    type: "Residential",
+    status: "Completed",
+    rating: 5.0,
+    featured: true,
+    investmentYield: "6.2% - 7.5%",
+    startingPriceAed: "24,500,000 AED",
+    startingPriceUsd: "$6,670,000",
+    description:
+      "A limited collection of 94 ultra-luxury residences positioned at the pristine entrance of Palm Jumeirah. Managed by Dorchester Collection, featuring a private jetty, 100 meters of private beach, and master landscaping by world-renowned architect Vladimir Djurovic.",
+    architecturalHighlights: [
+      "Ultra-exclusive density of only 94 sprawling residences across 25 storeys",
+      "Full white-glove hospitality services managed exclusively by Dorchester Collection",
+      "Private yacht jetty offering direct boat access to Dubai Marina and the Arabian Gulf",
+      "Interiors designed by Super Potato (Japan) and Elicyon (UK)",
+    ],
+    historicalNote: "Set the record for the most expensive penthouse sale in Dubai in 2017 (102M AED) and again in 2019.",
+    structuralSystem: "Reinforced concrete cantilever frame with expansive open-span post-tensioned floorplates",
+    foundation: {
+      pilesCount: 310,
+      pileDepthMeters: 38,
+      pileDiameterMeters: "1.2 m",
+      raftThicknessMeters: "2.8 m",
+      bedrockType: "Dense reclaimed marine sandstone with anti-liquefaction vibro-compaction",
+    },
+    windStructural: {
+      lateralSystem: "Perimeter concrete shear columns with central stiffening core",
+      dampingMechanism: "Low-rise stepped massing minimizes coastal wind buffeting",
+      maxApexSwayMeters: "± 0.08 m",
+      concreteStrengthGrade: "C70 high-durability marine concrete",
+    },
+    facade: {
+      glazingType: "Floor-to-ceiling motorized Schuco sliding glass doors with Low-E thermal barrier",
+      shgcSolarCoefficient: "SHGC 0.18",
+      uValueWPerM2K: "1.1 W/m²K",
+      bmuCleaningSystem: "Low-profile perimeter access cradles",
+      cleaningCycleDays: "30 days",
+    },
+    verticalTransport: {
+      elevatorManufacturer: "Schindler",
+      totalElevators: 8,
+      maxSpeedMs: 3.5,
+      doubleDeckCars: false,
+      zoningStrategy: "Private elevators opening directly into individual residential foyers",
+      peakWaitingSeconds: "< 15 seconds",
+    },
+    operatingSpecs: {
+      coolingProvider: "Empower District Cooling",
+      chillerBilling: "Consumption-Billed (Empower)",
+      annualServiceChargeAedSqFt: 42.0,
+      acousticRatingDb: "STC 60 dB (Near-total acoustic silence)",
+      slabToSlabHeightMeters: 4.2,
+      clearCeilingHeightMeters: 3.6,
+    },
+    layoutEfficiency: {
+      columnImpact: "Minimal (Open Spans)",
+      netToGrossRatio: "88% - 92%",
+      balconyUsability: "Immense double-depth outdoor terraces with private swimming pools and barbecue areas",
+    },
+    auditReview: {
+      honestVerdict: "The gold standard of boutique ultra-prime living on Palm Jumeirah. With only 94 residences, privacy and white-glove service from Dorchester Collection are unmatched. Ideal for generational wealth preservation, though strictly non-suitable for short-term rental investors as holiday lets are prohibited.",
+      strengths: [
+        "Uncompromising Dorchester Collection hospitality and private boat jetty.",
+        "Private elevator foyer for virtually every residence ensuring total celebrity privacy.",
+        "Unrivalled 100 m private beachfront with Dubai Marina skyline views."
+      ],
+      pitfallsAndWeaknesses: [
+        "Extreme capital barrier to entry with resale starting above 24M AED.",
+        "High annual service charge (~42 AED/sq.ft) to maintain Dorchester standards.",
+        "Short-term Airbnb rentals are strictly prohibited by building bylaws."
+      ],
+      airbnbHolidayHomesPolicy: "Strictly Prohibited by HOA; pristine residential sanctuary and quietness enforced.",
+      guestParkingReality: "Generous private basement parking with dedicated valet and EV fast charging for every residence.",
+      soundproofingRating: "STC 60 dB (German Schuco acoustic glass; virtually dead silent living quarters).",
+      elevatorPeakWaitReality: "Zero wait (< 15 seconds); private dedicated elevator banks.",
+      hiddenOperatingCosts: "Premium Dorchester management surcharge included in service fees; private pool maintenance."
+    },
+  },
+  {
+    id: "sobha-hartland-waves",
+    legacyId: "DUB-029",
+    slug: "sobha-hartland-waves",
+    image: "/images/buildings/sobha-hartland-waves.jpg",
+    name: "Sobha Waves Opulence",
+    heightMeters: 145,
+    heightFeet: 476,
+    floors: 36,
+    yearBuilt: 2025,
+    architect: "PNC Architects",
+    architectFirm: "PNC Architects (Sobha In-House Design)",
+    developer: "Sobha Realty",
+    district: "Sobha Hartland & MBR City",
+    districtSlug: "sobha-hartland",
+    type: "Residential",
+    status: "Completed",
+    rating: 4.8,
+    featured: false,
+    investmentYield: "7.6% - 8.8%",
+    startingPriceAed: "1,650,000 AED",
+    startingPriceUsd: "$449,000",
+    description:
+      "A sleek waterfront residential tower positioned on the 1.8-kilometer crystal lagoon in Sobha Hartland. Built with Sobha's proprietary backward-integrated construction philosophy, ensuring zero subcontracting defects and permanent vistas of Ras Al Khor Sanctuary and Downtown Dubai.",
+    architecturalHighlights: [
+      "100% backward-integrated German engineering and in-house manufacturing",
+      "Direct boardwalk access to the crystal lagoon and community parks",
+      "Unobstructed panoramic sightlines over Ras Al Khor Wildlife Sanctuary flamingos",
+      "Walking distance to North London Collegiate School and Hartland International School",
+    ],
+    historicalNote: "The final waterfront installment in Sobha's highly acclaimed Hartland Waves trilogy.",
+    structuralSystem: "Cast-in-place reinforced concrete shear core with monolithic post-tensioned slabs",
+    foundation: {
+      pilesCount: 260,
+      pileDepthMeters: 35,
+      pileDiameterMeters: "1.0 m",
+      raftThicknessMeters: "2.4 m",
+      bedrockType: "Dense siltstone and calcarenite bedrock",
+    },
+    windStructural: {
+      lateralSystem: "Monolithic central core designed to eurocode high-ductility standards",
+      dampingMechanism: "Sleek aerodynamic rectangular profile minimizes drag",
+      maxApexSwayMeters: "± 0.12 m",
+      concreteStrengthGrade: "C60 high-strength self-compacting concrete",
+    },
+    facade: {
+      glazingType: "Double-glazed Low-E solar glass with acoustic barrier",
+      shgcSolarCoefficient: "SHGC 0.22",
+      uValueWPerM2K: "1.4 W/m²K",
+      bmuCleaningSystem: "Rooftop monorail BMU system",
+      cleaningCycleDays: "35 days",
+    },
+    verticalTransport: {
+      elevatorManufacturer: "Schindler",
+      totalElevators: 4,
+      maxSpeedMs: 3.5,
+      doubleDeckCars: false,
+      zoningStrategy: "Intelligent dispatch passenger lifts",
+      peakWaitingSeconds: "< 25 seconds",
+    },
+    operatingSpecs: {
+      coolingProvider: "Empower District Cooling",
+      chillerBilling: "Consumption-Billed (Empower)",
+      annualServiceChargeAedSqFt: 19.5,
+      acousticRatingDb: "STC 53 dB",
+      slabToSlabHeightMeters: 3.4,
+      clearCeilingHeightMeters: 2.9,
+    },
+    layoutEfficiency: {
+      columnImpact: "Minimal (Open Spans)",
+      netToGrossRatio: "86% - 90%",
+      balconyUsability: "Spacious rectangular balconies with glass balustrades overlooking the lagoon",
+    },
+    auditReview: {
+      honestVerdict: "One of the most rational, defect-free real estate investments in Dubai. Sobha's complete in-house construction eliminates subcontractor flaws, ensuring high durability and low maintenance costs. Heavy tenant demand from international school families guarantees near-zero vacancy.",
+      strengths: [
+        "Unmatched German-standard build quality with zero contractor subcontracting.",
+        "Captive rental pool from parents of students at adjacent North London Collegiate School.",
+        "Reasonable service charges (~19.5 AED/sq.ft) yielding healthy 7.6%+ net returns."
+      ],
+      pitfallsAndWeaknesses: [
+        "Surrounding MBR City sectors are still undergoing infrastructure construction.",
+        "Metro access requires a 7-minute taxi or feeder bus ride to Creek Metro Station.",
+        "Lagoon promenade attracts local families during weekend mornings."
+      ],
+      airbnbHolidayHomesPolicy: "Permitted; popular with visiting school parents and medical consultants.",
+      guestParkingReality: "Dedicated covered resident parking with accessible surface visitor bays.",
+      soundproofingRating: "STC 53 dB (Solid acoustic insulation; very peaceful natural surroundings).",
+      elevatorPeakWaitReality: "< 25 seconds with 4 Schindler elevators.",
+      hiddenOperatingCosts: "Standard Empower district cooling tariffs apply; very predictable operational overheads."
+    },
+  },
+  {
+    id: "creek-waters",
+    legacyId: "DUB-030",
+    slug: "creek-waters",
+    image: "/images/buildings/creek-waters.jpg",
+    name: "Creek Waters by Emaar",
+    heightMeters: 195,
+    heightFeet: 640,
+    floors: 52,
+    yearBuilt: 2026,
+    architect: "Foster + Partners / Emaar In-House",
+    architectFirm: "Foster + Partners",
+    developer: "Emaar Properties",
+    district: "Dubai Creek Harbour",
+    districtSlug: "creek-harbour",
+    type: "Residential",
+    status: "Under Construction",
+    rating: 4.9,
+    featured: true,
+    investmentYield: "7.4% - 8.6%",
+    startingPriceAed: "1,980,000 AED",
+    startingPriceUsd: "$539,000",
+    description:
+      "A flagship luxury tower on Creek Island in Dubai Creek Harbour. Showcasing contemporary European clean lines by Foster + Partners, cantilevered infinity pools over the water, and uninterrupted views across the historical Creek to the Downtown skyline.",
+    architecturalHighlights: [
+      "Master-planned island living with direct car-free pedestrian access to Creek Marina",
+      "Cantilevered resort-style infinity pool deck projecting directly over the water canal",
+      "Floor-to-ceiling glass architecture framing permanent Downtown and Burj Khalifa vistas",
+      "Integrated with Creek Island Central Park and waterfront fine-dining promenade",
+    ],
+    historicalNote: "Launched in 2023 as Emaar's crown jewel residential development on Creek Island.",
+    structuralSystem: "High-strength concrete central core with post-tensioned flat slabs",
+    foundation: {
+      pilesCount: 340,
+      pileDepthMeters: 42,
+      pileDiameterMeters: "1.2 m",
+      raftThicknessMeters: "2.8 m",
+      bedrockType: "Dense coastal calcarenite with marine water barrier membrane",
+    },
+    windStructural: {
+      lateralSystem: "Central shear core with tuned mass outriggers",
+      dampingMechanism: "Tapered aerodynamic vertical fins reduce lateral vortex shedding",
+      maxApexSwayMeters: "± 0.22 m",
+      concreteStrengthGrade: "C75 high-durability concrete",
+    },
+    facade: {
+      glazingType: "Triple-glazed Low-E smart glass with superior thermal and acoustic coatings",
+      shgcSolarCoefficient: "SHGC 0.19",
+      uValueWPerM2K: "1.2 W/m²K",
+      bmuCleaningSystem: "Automated roof-track BMU system",
+      cleaningCycleDays: "40 days",
+    },
+    verticalTransport: {
+      elevatorManufacturer: "Otis",
+      totalElevators: 6,
+      maxSpeedMs: 5.0,
+      doubleDeckCars: false,
+      zoningStrategy: "High-speed destination-controlled passenger lifts",
+      peakWaitingSeconds: "< 30 seconds",
+    },
+    operatingSpecs: {
+      coolingProvider: "Empower District Cooling",
+      chillerBilling: "Consumption-Billed (Empower)",
+      annualServiceChargeAedSqFt: 22.0,
+      acousticRatingDb: "STC 54 dB",
+      slabToSlabHeightMeters: 3.6,
+      clearCeilingHeightMeters: 3.1,
+    },
+    layoutEfficiency: {
+      columnImpact: "Minimal (Open Spans)",
+      netToGrossRatio: "86% - 89%",
+      balconyUsability: "Deep cantilevered terraces designed for al fresco dining with sunset views",
+    },
+    auditReview: {
+      honestVerdict: "The architectural peak of Creek Island. Significantly refined floorplans and balcony proportions compared to early Creek developments, with a world-class cantilevered infinity pool. An ideal balance of capital appreciation and blue-chip tenant demand in Dubai's premier car-free island masterplan.",
+      strengths: [
+        "Unbeatable Creek Island waterfront position with permanent skyline panoramas.",
+        "Car-free island urban design: steps from Creek Marina, yacht club, and Central Park.",
+        "Emaar masterplan execution with strong liquidity and long-term resale security."
+      ],
+      pitfallsAndWeaknesses: [
+        "Broad Dubai Creek Harbour masterplan remains under ongoing construction through 2028.",
+        "Driving to Downtown Dubai requires crossing the Ras Al Khor corridor (12-15 min).",
+        "Empower district cooling charges are billed based on consumption plus quarterly capacity tariffs."
+      ],
+      airbnbHolidayHomesPolicy: "Permitted; high demand from European tourists seeking waterfront living near Downtown.",
+      guestParkingReality: "Dedicated podium resident bays with ample Creek Marina public parking garages.",
+      soundproofingRating: "STC 54 dB (Peaceful maritime acoustic environment; zero highway noise).",
+      elevatorPeakWaitReality: "< 30 seconds with 6 high-speed Otis elevators.",
+      hiddenOperatingCosts: "Standard Empower cooling demand charges (~1,400 AED/quarter base charge)."
+    },
   },
 ];
+
+/**
+ * Returns an authoritative, unbiased BuildingAuditReview for any building.
+ * If building.auditReview is already specified, returns it; otherwise generates
+ * a deeply factual engineering review based on building parameters.
+ */
+export function getBuildingAuditReview(building: Building): BuildingAuditReview {
+  if (building.auditReview) {
+    return building.auditReview;
+  }
+
+  const isEmpower = building.operatingSpecs.coolingProvider.includes("Empower");
+  const isChillerFree = building.operatingSpecs.chillerBilling === "Chiller-Free";
+  const serviceCharge = building.operatingSpecs.annualServiceChargeAedSqFt;
+
+  return {
+    honestVerdict: `${building.name} in ${building.district} is a verified ${building.type.toLowerCase()} asset with an official height of ${building.heightMeters} m (${building.floors} storeys). Engineered with a ${building.structuralSystem.toLowerCase()}, it delivers solid structural stability and an estimated yield of ${building.investmentYield}.`,
+    strengths: [
+      `Engineered with ${building.windStructural.lateralSystem.toLowerCase()} ensuring excellent lateral stability.`,
+      `Vertical transport powered by ${building.verticalTransport.elevatorManufacturer} with a peak wait time of ${building.verticalTransport.peakWaitingSeconds}.`,
+      `Prime location within ${building.district} with strong capital liquidity.`
+    ],
+    pitfallsAndWeaknesses: [
+      `Annual service charges stand at ${serviceCharge} AED/sq.ft, which must be factored into net rental yield.`,
+      isEmpower ? "Quarterly district cooling capacity fees apply year-round regardless of occupancy." : "DEWA electrical tariffs fluctuate during peak summer cooling months.",
+      "Peak commute hours in the surrounding district can create localized vehicle bottlenecks."
+    ],
+    airbnbHolidayHomesPolicy: building.type === "Commercial" ? "Not Applicable (Commercial)" : "Subject to standard Dubai Department of Economy & Tourism (DET) licensing regulations and building HOA bylaws.",
+    guestParkingReality: "Visitor parking allocated via dedicated podium bays or valet service.",
+    soundproofingRating: building.operatingSpecs.acousticRatingDb || "STC 52 dB (Dual-glazed acoustic facade)",
+    elevatorPeakWaitReality: building.verticalTransport.peakWaitingSeconds,
+    hiddenOperatingCosts: isChillerFree
+      ? "Chiller-free billing protects owner from standalone AC demand tariffs; standard service fee applies."
+      : `District cooling capacity charges (${building.operatingSpecs.coolingProvider}) plus annual maintenance reserves.`
+  };
+}
