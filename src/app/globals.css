@@ -19,8 +19,8 @@ html {
 
 :root {
   /* Architectural Portal Design System */
-  --background: #F8F9FA;
-  --background-subtle: #F1F5F9;
+  --background: #FFFFFF;
+  --background-subtle: #F8F9FA;
   --surface: #FFFFFF;
   --surface-raised: #FFFFFF;
   --border: #E2E8F0;
@@ -40,10 +40,10 @@ html {
 }
 
 body {
-  background-color: var(--background);
-  background-image: url("/patterns/dubai-monogram.svg");
+  background-color: #FFFFFF;
+  background-image: url("/patterns/dubai-monogram-multicolore.svg");
   background-repeat: repeat;
-  background-size: 160px 160px;
+  background-size: 300px 300px;
   background-attachment: fixed;
   color: var(--foreground);
   font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
@@ -53,9 +53,9 @@ body {
 }
 
 .bg-dubai-monogram {
-  background-image: url("/patterns/dubai-monogram.svg");
+  background-image: url("/patterns/dubai-monogram-multicolore.svg");
   background-repeat: repeat;
-  background-size: 160px 160px;
+  background-size: 300px 300px;
 }
 
 h1, h2, .font-heading {

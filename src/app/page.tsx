@@ -24,7 +24,7 @@ export default function Home() {
   return (
     <div className="flex-1 flex flex-col bg-transparent text-[#0F172A] transition-colors">
       {/* Hero Section */}
-      <section className="relative overflow-hidden pt-12 pb-20 md:pt-20 md:pb-28 border-b border-[#E2E8F0] bg-gradient-to-b from-[#F1F5F9]/60 to-[#F8F9FA]">
+      <section className="relative overflow-hidden pt-12 pb-20 md:pt-20 md:pb-28 border-b border-[#E2E8F0] bg-gradient-to-b from-[#F8F9FA]/70 to-white">
         {/* Real Architectural Skyline Background */}
         <div className="absolute inset-0 z-0 pointer-events-none">
           <Image
@@ -35,7 +35,7 @@ export default function Home() {
             sizes="100vw"
             className="object-cover object-center opacity-10"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#F8F9FA]/60 via-[#F8F9FA]/85 to-[#F8F9FA]" />
+          <div className="absolute inset-0 bg-gradient-to-b from-white/60 via-white/85 to-white" />
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">

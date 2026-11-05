@@ -1,0 +1,173 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="320" viewBox="0 0 320 320">
+  <defs>
+    <style>
+      .multi-stroke {
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        fill: none;
+        opacity: 0.12;
+      }
+      .c-cobalt  { stroke: #2563EB; fill: none; }
+      .c-green   { stroke: #16A34A; fill: none; }
+      .c-cyan    { stroke: #0284C7; fill: none; }
+      .c-gold    { stroke: #D97706; fill: none; }
+      .c-violet  { stroke: #9333EA; fill: none; }
+      .c-magenta { stroke: #E11D48; fill: none; }
+      .c-aqua    { stroke: #0D9488; fill: none; }
+      .c-orange  { stroke: #EA580C; fill: none; }
+      .c-rosette-mag { stroke: #E11D48; fill: none; }
+      .c-rosette-cya { stroke: #0284C7; fill: none; }
+      .c-rosette-gol { stroke: #D97706; fill: none; }
+      .c-rosette-gre { stroke: #16A34A; fill: none; }
+      .c-rosette-vio { stroke: #9333EA; fill: none; }
+    </style>
+    
+    <!-- Motif: Burj Khalifa -->
+    <g id="burj-khalifa">
+      <line x1="-10" y1="14" x2="10" y2="14" stroke-width="1.1" />
+      <path d="M-8,14 L-6,7 L6,7 L8,14" stroke-width="1.1" />
+      <path d="M-5,7 L-4,0 L4,0 L5,7" stroke-width="1.1" />
+      <path d="M-3,0 L-2,-7 L2,-7 L3,0" stroke-width="1.1" />
+      <line x1="0" y1="-7" x2="0" y2="-16" stroke-width="1.1" />
+      <circle cx="0" cy="-16" r="1.1" />
+      <line x1="0" y1="-7" x2="0" y2="14" stroke-width="0.8" stroke-dasharray="1 2" />
+    </g>
+
+    <!-- Motif: Palm Tree (Пальма) -->
+    <g id="palm-tree">
+      <path d="M0,14 C-1,8 -0.5,2 0,-3" stroke-width="1.3" />
+      <path d="M0,-3 C-4,-8 -10,-8 -14,-4" stroke-width="1.1" />
+      <path d="M0,-3 C-3,-10 -6,-14 -10,-13" stroke-width="1.1" />
+      <path d="M0,-3 C-2,-12 2,-14 0,-16" stroke-width="1.1" />
+      <path d="M0,-3 C3,-10 6,-14 10,-13" stroke-width="1.1" />
+      <path d="M0,-3 C4,-8 10,-8 14,-4" stroke-width="1.1" />
+      <path d="M-5,14 C-2,13 2,13 5,14" stroke-width="1" />
+      <circle cx="0" cy="-3" r="1.2" />
+    </g>
+
+    <!-- Motif: Palm Jumeirah (Остров Пальма) -->
+    <g id="palm-jumeirah">
+      <path d="M-15,4 C-17,-6 -7,-15 0,-15 C7,-15 17,-6 15,4 C12,8 9,10 6,11" stroke-width="1.1" />
+      <path d="M-6,11 C-9,10 -12,8 -15,4" stroke-width="1.1" />
+      <line x1="0" y1="12" x2="0" y2="-11" stroke-width="1.2" />
+      <path d="M-9,3 C-5,3 -2,5 0,5 C2,5 5,3 9,3" stroke-width="0.9" />
+      <path d="M-9,-1 C-5,-1 -2,1 0,1 C2,1 5,-1 9,-1" stroke-width="0.9" />
+      <path d="M-8,-5 C-4,-5 -2,-3 0,-3 C2,-3 4,-5 8,-5" stroke-width="0.9" />
+      <path d="M-6,-8 C-3,-8 -1,-7 0,-7 C1,-7 3,-8 6,-8" stroke-width="0.9" />
+    </g>
+
+    <!-- Motif: Desert Dunes (Барханы) -->
+    <g id="dunes">
+      <path d="M-14,6 Q-6,-3 0,3 Q7,9 14,2" stroke-width="1.1" />
+      <path d="M-12,12 Q-4,4 2,8 Q8,12 14,9" stroke-width="1.0" />
+      <path d="M-9,-3 Q-2,-10 5,-4 Q10,0 13,-2" stroke-width="0.9" />
+      <circle cx="-8" cy="-10" r="1.3" />
+    </g>
+
+    <!-- Motif: The World Islands (Острова Земли / Мир) -->
+    <g id="world-islands">
+      <ellipse cx="0" cy="0" rx="15" ry="11" stroke-width="0.8" stroke-dasharray="1.5 2" />
+      <circle cx="-8" cy="-4" r="1.3" />
+      <circle cx="-7" cy="3" r="1.2" />
+      <circle cx="-2" cy="-4" r="1.1" />
+      <circle cx="-3" cy="2" r="1.4" />
+      <circle cx="3" cy="-4" r="1.5" />
+      <circle cx="3" cy="1" r="1.2" />
+      <circle cx="7" cy="4" r="1.3" />
+      <circle cx="8" cy="-2" r="1.1" />
+    </g>
+
+    <!-- Motif: Burj Al Arab (Парус) -->
+    <g id="burj-al-arab">
+      <line x1="-12" y1="14" x2="12" y2="14" stroke-width="1.1" />
+      <path d="M-6,14 L-6,-11 Q-6,-15 -2,-16 L-2,14" stroke-width="1.1" />
+      <path d="M-2,-16 Q9,-6 8,14" stroke-width="1.2" />
+      <line x1="-6" y1="-5" x2="-12" y2="-5" stroke-width="1.0" />
+      <ellipse cx="-12" cy="-5" rx="2.5" ry="0.8" stroke-width="0.9" />
+    </g>
+
+    <!-- Motif: Persian Gulf Wave (Морская волна) -->
+    <g id="wave">
+      <path d="M-14,6 C-10,6 -7,0 -4,0 C-1,0 1,4 5,4 C9,4 11,1 14,1" stroke-width="1.1" />
+      <path d="M-14,11 C-9,11 -6,6 -2,6 C2,6 5,9 9,9 C12,9 13,7 14,7" stroke-width="1.0" />
+      <path d="M-6,0 C-6,-6 -1,-9 4,-9 C8,-9 11,-6 9,-3 C8,-1 6,-1 6,-3 C6,-5 7,-6 5,-6 C3,-6 2,-4 2,-2" stroke-width="1.1" />
+      <circle cx="11" cy="-5" r="0.8" />
+      <circle cx="13" cy="-9" r="0.7" />
+    </g>
+
+    <!-- Motif: Emirates Towers (Башни Эмирейтс) -->
+    <g id="emirates-towers">
+      <line x1="-14" y1="14" x2="14" y2="14" stroke-width="1.1" />
+      <path d="M-10,14 L-10,-12 L-4,-4 L-4,14 Z" stroke-width="1.1" />
+      <path d="M2,14 L2,-2 L8,-8 L8,14 Z" stroke-width="1.1" />
+      <line x1="-4" y1="8" x2="2" y2="8" stroke-width="0.9" />
+    </g>
+
+    <!-- Motif: Monogram Rosette (LV Flower / Diamond) -->
+    <g id="rosette">
+      <path d="M0,-6 Q0,0 -6,0 Q0,0 0,6 Q0,0 6,0 Q0,0 0,-6 Z" stroke-width="0.9" />
+      <circle cx="0" cy="0" r="1.1" />
+    </g>
+
+    <!-- Motif: Micro Diamond Accent -->
+    <g id="micro-diamond">
+      <path d="M0,-2.5 L2.5,0 L0,2.5 L-2.5,0 Z" />
+    </g>
+  
+  </defs>
+
+  <!-- Row 0: y = 40 -->
+  <use href="#burj-khalifa" x="40" y="40" class="multi-stroke c-cobalt" />
+  <use href="#palm-tree" x="120" y="40" class="multi-stroke c-green" />
+  <use href="#palm-jumeirah" x="200" y="40" class="multi-stroke c-cyan" />
+  <use href="#dunes" x="280" y="40" class="multi-stroke c-gold" />
+
+  <!-- Row 1: y = 120 -->
+  <use href="#world-islands" x="40" y="120" class="multi-stroke c-violet" />
+  <use href="#burj-al-arab" x="120" y="120" class="multi-stroke c-magenta" />
+  <use href="#wave" x="200" y="120" class="multi-stroke c-aqua" />
+  <use href="#emirates-towers" x="280" y="120" class="multi-stroke c-orange" />
+
+  <!-- Row 2: y = 200 -->
+  <use href="#palm-jumeirah" x="40" y="200" class="multi-stroke c-cyan" />
+  <use href="#dunes" x="120" y="200" class="multi-stroke c-gold" />
+  <use href="#burj-khalifa" x="200" y="200" class="multi-stroke c-cobalt" />
+  <use href="#palm-tree" x="280" y="200" class="multi-stroke c-green" />
+
+  <!-- Row 3: y = 280 -->
+  <use href="#wave" x="40" y="280" class="multi-stroke c-aqua" />
+  <use href="#emirates-towers" x="120" y="280" class="multi-stroke c-orange" />
+  <use href="#world-islands" x="200" y="280" class="multi-stroke c-violet" />
+  <use href="#burj-al-arab" x="280" y="280" class="multi-stroke c-magenta" />
+
+  <!-- Diamond Rosettes & Intersections with Murakami Alternating Palette -->
+  <use href="#rosette" x="0" y="0" class="multi-stroke c-rosette-mag" />
+  <use href="#rosette" x="80" y="0" class="multi-stroke c-rosette-cya" />
+  <use href="#rosette" x="160" y="0" class="multi-stroke c-rosette-gol" />
+  <use href="#rosette" x="240" y="0" class="multi-stroke c-rosette-gre" />
+  <use href="#rosette" x="320" y="0" class="multi-stroke c-rosette-mag" />
+
+  <use href="#rosette" x="0" y="80" class="multi-stroke c-rosette-vio" />
+  <use href="#rosette" x="80" y="80" class="multi-stroke c-rosette-gol" />
+  <use href="#rosette" x="160" y="80" class="multi-stroke c-rosette-mag" />
+  <use href="#rosette" x="240" y="80" class="multi-stroke c-rosette-cya" />
+  <use href="#rosette" x="320" y="80" class="multi-stroke c-rosette-vio" />
+
+  <use href="#rosette" x="0" y="160" class="multi-stroke c-rosette-cya" />
+  <use href="#rosette" x="80" y="160" class="multi-stroke c-rosette-gre" />
+  <use href="#rosette" x="160" y="160" class="multi-stroke c-rosette-vio" />
+  <use href="#rosette" x="240" y="160" class="multi-stroke c-rosette-gol" />
+  <use href="#rosette" x="320" y="160" class="multi-stroke c-rosette-cya" />
+
+  <use href="#rosette" x="0" y="240" class="multi-stroke c-rosette-gol" />
+  <use href="#rosette" x="80" y="240" class="multi-stroke c-rosette-mag" />
+  <use href="#rosette" x="160" y="240" class="multi-stroke c-rosette-gre" />
+  <use href="#rosette" x="240" y="240" class="multi-stroke c-rosette-vio" />
+  <use href="#rosette" x="320" y="240" class="multi-stroke c-rosette-gol" />
+
+  <use href="#rosette" x="0" y="320" class="multi-stroke c-rosette-mag" />
+  <use href="#rosette" x="80" y="320" class="multi-stroke c-rosette-cya" />
+  <use href="#rosette" x="160" y="320" class="multi-stroke c-rosette-gol" />
+  <use href="#rosette" x="240" y="320" class="multi-stroke c-rosette-gre" />
+  <use href="#rosette" x="320" y="320" class="multi-stroke c-rosette-mag" />
+</svg>
