@@ -42,7 +42,7 @@ function scanDir(dir) {
       scanDir(full);
     } else if (/\.(tsx|ts|jsx|js|html)$/.test(entry.name)) {
       const content = fs.readFileSync(full, 'utf-8');
-      const tokens = content.match(/[\w\-\/:\.\[\]#%_!(),]+/g) || [];
+      const tokens = content.match(/[\w\-\/:\.\[\]#%]+/g) || [];
       for (const t of tokens) candidateSet.add(t);
     }
   }

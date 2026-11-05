@@ -46,48 +46,48 @@ export default function DistrictDetailClient({
   };
 
   return (
-    <article className="min-h-screen bg-[#0B0F17] text-[#F8FAFC] pb-24 transition-colors">
+    <article className="min-h-screen bg-[#F8F9FA] text-[#0F172A] pb-24 transition-colors">
       {/* Header */}
-      <div className="border-b border-[rgba(255,255,255,0.06)] bg-[#0B0F17]/80 pt-10 pb-16">
+      <div className="border-b border-[#E2E8F0] bg-[#F1F5F9]/60 pt-10 pb-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <nav className="flex items-center gap-2 text-xs text-[#94A3B8] mb-6 font-semibold font-mono">
-            <Link href="/" className="hover:text-[#D4AF37] transition-colors">
+          <nav className="flex items-center gap-2 text-xs text-[#78716C] mb-6 font-semibold">
+            <Link href="/" className="hover:text-[#8C6A48] transition-colors">
               {dd.breadcrumbHome}
             </Link>
-            <span className="text-[rgba(255,255,255,0.2)]">/</span>
-            <Link href="/#districts" className="hover:text-[#D4AF37] transition-colors">
+            <span className="text-[#DDD7CA]">/</span>
+            <Link href="/#districts" className="hover:text-[#8C6A48] transition-colors">
               {dd.breadcrumbDistricts}
             </Link>
-            <span className="text-[rgba(255,255,255,0.2)]">/</span>
-            <span className="text-[#D4AF37] font-bold">{district.name}</span>
+            <span className="text-[#DDD7CA]">/</span>
+            <span className="text-[#1C1917] font-bold">{district.name}</span>
           </nav>
 
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
             <div className="space-y-3">
               <div className="flex items-center gap-3">
-                <span className="px-3.5 py-1 rounded-full text-xs font-bold font-mono bg-gradient-to-r from-[#E5C378] to-[#D4AF37] text-[#0B0F17] shadow-md">
+                <span className="px-3 py-1 rounded-full text-xs font-bold bg-[#8C6A48] text-white shadow-soft-tint">
                   {dd.masterDeveloper}: {district.developer}
                 </span>
-                <span className="text-xs text-[#F8FAFC] font-mono font-semibold bg-[#131B26] px-2.5 py-1 rounded-full border border-[rgba(255,255,255,0.1)]">
+                <span className="text-xs text-[#57534E] font-mono font-semibold bg-white px-2.5 py-1 rounded-full border border-[#DDD7CA]">
                   {district.iconicTowersCount}+ {dd.towersCount}
                 </span>
               </div>
 
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-[#F8FAFC] tracking-tight font-editorial">
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-[#1C1917] tracking-tight">
                 {district.name}
               </h1>
 
-              <p className="text-base sm:text-lg text-[#94A3B8] max-w-3xl leading-relaxed">
+              <p className="text-base sm:text-lg text-[#57534E] max-w-3xl leading-relaxed">
                 {district.overview}
               </p>
             </div>
 
-            <div className="p-5 rounded-3xl bg-[#131B26] border border-[rgba(212,175,55,0.25)] shadow-luxury-card flex items-center gap-6 shrink-0">
+            <div className="p-5 rounded-2xl bg-white border border-[#E5DFD3] shadow-soft-tint flex items-center gap-6 shrink-0">
               <div>
-                <div className="text-[11px] uppercase tracking-wider text-[#94A3B8] font-bold font-mono">
+                <div className="text-[11px] uppercase tracking-wider text-[#78716C] font-bold">
                   {dd.avgRentalYield}
                 </div>
-                <div className="text-2xl font-extrabold text-[#D4AF37] font-mono mt-0.5 tabular-nums">
+                <div className="text-2xl font-extrabold text-[#2D6A4F] font-mono mt-0.5">
                   {district.averageRoi}
                 </div>
               </div>

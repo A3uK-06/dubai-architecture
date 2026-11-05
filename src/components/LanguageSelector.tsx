@@ -36,20 +36,20 @@ export default function LanguageSelector() {
         onClick={() => setIsOpen(!isOpen)}
         aria-expanded={isOpen}
         aria-label="Select language"
-        className="flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-[rgba(212,175,55,0.25)] bg-[#131B26]/90 hover:bg-[#1A2433] text-[#F8FAFC] hover:border-[#D4AF37] transition-all text-sm font-medium shadow-luxury-card backdrop-blur-md"
+        className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#DDD7CA] bg-[#EFECE4] hover:bg-[#E5DFD3] text-[#1C1917] hover:border-[#8C6A48] transition-all text-sm font-medium shadow-soft-tint backdrop-blur-md"
       >
         <span className="text-base leading-none" role="img" aria-hidden="true">
           {langInfo.flag}
         </span>
-        <span className="font-semibold tracking-wider uppercase text-xs text-[#D4AF37]">
+        <span className="font-semibold tracking-wider uppercase text-xs text-[#8C6A48]">
           {langInfo.code}
         </span>
-        <span className="hidden sm:inline text-[#94A3B8] text-xs">
+        <span className="hidden sm:inline text-[#57534E] text-xs">
           {langInfo.nativeName}
         </span>
         <svg
-          className={`w-3.5 h-3.5 text-[#94A3B8] transition-transform duration-200 ${
-            isOpen ? "rotate-180 text-[#D4AF37]" : ""
+          className={`w-3.5 h-3.5 text-[#78716C] transition-transform duration-200 ${
+            isOpen ? "rotate-180 text-[#8C6A48]" : ""
           }`}
           fill="none"
           stroke="currentColor"
@@ -65,9 +65,9 @@ export default function LanguageSelector() {
       </button>
 
       {isOpen && (
-        <div className="absolute right-0 mt-2 w-64 origin-top-right rounded-2xl bg-[#131B26] border border-[rgba(212,175,55,0.25)] shadow-2xl z-50 overflow-hidden divide-y divide-[rgba(255,255,255,0.06)]">
-          <div className="px-3.5 py-2.5 bg-[#0B0F17]/90 border-b border-[rgba(255,255,255,0.06)]">
-            <p className="text-xs font-semibold text-[#D4AF37] uppercase tracking-wider font-mono">
+        <div className="absolute right-0 mt-2 w-64 origin-top-right rounded-2xl bg-white border border-[#E5DFD3] shadow-strong-tint z-50 overflow-hidden divide-y divide-[#EFECE4]">
+          <div className="px-3 py-2 bg-[#FAF8F5]">
+            <p className="text-xs font-semibold text-[#78716C] uppercase tracking-wider">
               Select Language
             </p>
           </div>
@@ -81,8 +81,8 @@ export default function LanguageSelector() {
                   onClick={() => handleSelect(item.code)}
                   className={`w-full flex items-center justify-between px-3.5 py-2.5 text-xs text-left transition-colors ${
                     isSelected
-                      ? "bg-[#1A2433] text-[#D4AF37] font-bold"
-                      : "text-[#F8FAFC] hover:bg-[#1A2433]/70 hover:text-[#D4AF37]"
+                      ? "bg-[#EFECE4] text-[#8C6A48] font-bold"
+                      : "text-[#1C1917] hover:bg-[#FAF8F5]"
                   }`}
                 >
                   <div className="flex items-center gap-2.5">
@@ -90,15 +90,15 @@ export default function LanguageSelector() {
                       {item.flag}
                     </span>
                     <div>
-                      <div className="font-medium text-[#F8FAFC]">{item.name}</div>
-                      <div className="text-[11px] text-[#94A3B8]">
+                      <div className="font-medium text-[#1C1917]">{item.name}</div>
+                      <div className="text-[11px] text-[#78716C]">
                         {item.nativeName}
                       </div>
                     </div>
                   </div>
                   {isSelected && (
                     <svg
-                      className="w-4 h-4 text-[#D4AF37]"
+                      className="w-4 h-4 text-[#8C6A48]"
                       fill="none"
                       stroke="currentColor"
                       viewBox="0 0 24 24"

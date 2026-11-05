@@ -2,10 +2,9 @@
 
 html {
   font-size: 16px;
-  scroll-behavior: smooth;
 }
 
-/* 2K, 4K and Ultra-Wide High-Resolution (27"+) desktop monitors scaling */
+/* 2K and High-Resolution 27"+ desktop monitors scaling */
 @media (min-width: 1440px) {
   html {
     font-size: 17px;
@@ -18,35 +17,26 @@ html {
   }
 }
 
-@media (min-width: 2560px) {
-  html {
-    font-size: 19px;
-  }
-}
-
 :root {
-  /* Dark Luxury Editorial Architectural Design System */
-  --background: #0B0F17;
-  --background-subtle: #0E141F;
-  --surface: #131B26;
-  --surface-raised: #1A2433;
-  --surface-elevated: #222E3F;
+  /* Architectural Portal Design System */
+  --background: #F8F9FA;
+  --background-subtle: #F1F5F9;
+  --surface: #FFFFFF;
+  --surface-raised: #FFFFFF;
+  --border: #E2E8F0;
+  --border-strong: #CBD5E1;
   
-  --border: rgba(255, 255, 255, 0.07);
-  --border-subtle: rgba(255, 255, 255, 0.04);
-  --border-gold: rgba(212, 175, 55, 0.25);
-  --border-gold-strong: rgba(212, 175, 55, 0.5);
-
-  --foreground: #F8FAFC;
-  --text-primary: #F8FAFC;
-  --text-secondary: #CBD5E1;
-  --text-muted: #94A3B8;
-
-  --accent-gold: #D4AF37;
-  --accent-gold-light: #E5C378;
-  --accent-gold-dark: #B89628;
-  --accent-emerald: #10B981;
-  --accent-emerald-soft: #059669;
+  --foreground: #0F172A;
+  --text-primary: #0F172A;
+  --text-secondary: #475569;
+  --text-muted: #64748B;
+  
+  --accent-slate: #0F172A;
+  --accent-bronze: #8C6A48;
+  --accent-bronze-dark: #6D5135;
+  --accent-bronze-light: #B48256;
+  --accent-terracotta: #9E4732;
+  --accent-emerald: #059669;
 }
 
 body {
@@ -56,31 +46,16 @@ body {
   line-height: 1.6;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
 }
 
-/* Headings with Robb Report / Architectural Digest Monumental Serifs & Geometry */
 h1, h2, .font-heading {
-  font-family: 'Cinzel', 'Space Grotesk', 'Plus Jakarta Sans', serif;
-  letter-spacing: -0.015em;
-  line-height: 1.15;
+  font-family: 'Space Grotesk', 'Plus Jakarta Sans', sans-serif;
+  letter-spacing: -0.025em;
 }
 
 h3, h4, h5, h6 {
-  font-family: 'Cinzel', 'Space Grotesk', 'Plus Jakarta Sans', serif;
-  letter-spacing: -0.01em;
-}
-
-.font-editorial {
-  font-family: 'Cinzel', serif;
-}
-
-.font-modern {
-  font-family: 'Syne', 'Space Grotesk', sans-serif;
-}
-
-.tabular-nums {
-  font-variant-numeric: tabular-nums;
+  font-family: 'Space Grotesk', 'Plus Jakarta Sans', sans-serif;
+  letter-spacing: -0.015em;
 }
 
 /* Micro-animations and interactive feedback */
@@ -88,139 +63,64 @@ a, button, input, select {
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Dark Luxury Floating Shadows with Gold Tint Dispersion */
-.shadow-luxury-card {
-  box-shadow: 0 20px 48px -12px rgba(0, 0, 0, 0.6), 0 0 24px rgba(212, 175, 55, 0.04);
-}
-
-.shadow-luxury-card-hover {
-  box-shadow: 0 24px 56px -12px rgba(0, 0, 0, 0.8), 0 0 32px rgba(212, 175, 55, 0.12);
-}
-
-.shadow-float-card {
-  box-shadow: 0 20px 48px -12px rgba(0, 0, 0, 0.6), 0 0 24px rgba(212, 175, 55, 0.04);
-}
-
-.shadow-float-card-hover {
-  box-shadow: 0 24px 56px -12px rgba(0, 0, 0, 0.8), 0 0 32px rgba(212, 175, 55, 0.12);
-}
-
-.shadow-soft-tint {
-  box-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.5), 0 0 16px rgba(212, 175, 55, 0.03);
-}
-
-.shadow-strong-tint {
-  box-shadow: 0 25px 60px -15px rgba(0, 0, 0, 0.8), 0 0 30px rgba(212, 175, 55, 0.08);
-}
-
-/* Luxury Glassmorphism */
-.glass-nav {
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  background: rgba(11, 15, 23, 0.75);
-  border-bottom: 1px solid rgba(212, 175, 55, 0.15);
-}
-
-.glass-card {
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  background: rgba(19, 27, 38, 0.75);
-  border: 1px solid rgba(255, 255, 255, 0.07);
-}
-
-.glass-chip {
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  background: rgba(19, 27, 38, 0.85);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-.glass-chip:hover {
-  border-color: rgba(212, 175, 55, 0.4);
-  background: rgba(26, 36, 50, 0.95);
-}
-
-/* Neon Gold Glow on Qualification */
-.gold-neon-card {
-  border-color: rgba(212, 175, 55, 0.65) !important;
-  box-shadow: 0 0 32px rgba(212, 175, 55, 0.28), inset 0 0 24px rgba(212, 175, 55, 0.08) !important;
-}
-
-/* Tactile Cockpit Gold Range Slider */
-input[type="range"] {
-  -webkit-appearance: none;
-  appearance: none;
-  background: transparent;
-  cursor: pointer;
-  width: 100%;
-}
-
-input[type="range"]:focus {
-  outline: none;
-}
-
-input[type="range"]::-webkit-slider-runnable-track {
-  background: #1A2432;
-  height: 6px;
-  border-radius: 9999px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-input[type="range"]::-webkit-slider-thumb {
-  -webkit-appearance: none;
-  appearance: none;
-  margin-top: -8px;
-  background: linear-gradient(135deg, #FDE68A 0%, #D4AF37 55%, #92400E 100%);
-  height: 22px;
-  width: 22px;
-  border-radius: 50%;
-  border: 2px solid #FFFFFF;
-  box-shadow: 0 0 14px rgba(212, 175, 55, 0.6), 0 2px 6px rgba(0, 0, 0, 0.5);
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
-}
-
-input[type="range"]::-webkit-slider-thumb:hover {
-  transform: scale(1.18);
-  box-shadow: 0 0 22px rgba(212, 175, 55, 0.9), 0 3px 8px rgba(0, 0, 0, 0.7);
-}
-
-input[type="range"]::-moz-range-track {
-  background: #1A2432;
-  height: 6px;
-  border-radius: 9999px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-}
-
-input[type="range"]::-moz-range-thumb {
-  background: linear-gradient(135deg, #FDE68A 0%, #D4AF37 55%, #92400E 100%);
-  height: 22px;
-  width: 22px;
-  border-radius: 50%;
-  border: 2px solid #FFFFFF;
-  box-shadow: 0 0 14px rgba(212, 175, 55, 0.6);
-  transition: transform 0.15s ease, box-shadow 0.15s ease;
-}
-
-input[type="range"]::-moz-range-thumb:hover {
-  transform: scale(1.18);
-  box-shadow: 0 0 22px rgba(212, 175, 55, 0.9);
-}
-
-/* Card inner sheen */
-.card-sheen {
+/* Luxury Wow-Effect Image Treatments */
+.luxury-card-sheen {
   position: relative;
   overflow: hidden;
 }
 
-.card-sheen::before {
+.luxury-card-sheen::after {
   content: '';
   position: absolute;
   top: 0;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(212, 175, 55, 0.4), transparent);
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(to right, transparent, rgba(255, 255, 255, 0.15), transparent);
+  transform: skewX(-25deg);
+  transition: 0.75s;
   pointer-events: none;
+}
+
+.luxury-card-sheen:hover::after {
+  left: 200%;
+}
+
+/* Compound Tinted Floating Shadows */
+.shadow-soft-tint {
+  box-shadow: 0 4px 20px -2px rgba(15, 23, 42, 0.05), 0 2px 6px -1px rgba(15, 23, 42, 0.03);
+}
+
+.shadow-medium-tint {
+  box-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.06), 0 4px 12px -2px rgba(15, 23, 42, 0.04);
+}
+
+.shadow-strong-tint {
+  box-shadow: 0 20px 40px -10px rgba(15, 23, 42, 0.1), 0 8px 24px -4px rgba(15, 23, 42, 0.06);
+}
+
+.shadow-float-card {
+  box-shadow: 0 10px 30px -5px rgba(15, 23, 42, 0.05), 0 20px 40px -15px rgba(15, 23, 42, 0.07), 0 0 1px 1px rgba(15, 23, 42, 0.04);
+}
+
+.shadow-float-card-hover {
+  box-shadow: 0 20px 40px -10px rgba(15, 23, 42, 0.12), 0 30px 60px -20px rgba(15, 23, 42, 0.08), 0 0 1px 1px rgba(15, 23, 42, 0.06);
+}
+
+/* Glassmorphism Presets */
+.glass-nav {
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  background: rgba(255, 255, 255, 0.85);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.glass-pill {
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
 }
 
 /* RTL Specific enhancements */
