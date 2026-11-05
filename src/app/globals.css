@@ -73,7 +73,7 @@ a, button, input, select {
   transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Luxury Golden Sheen Effect on Photos (Hover and Touch/Tap) */
+/* Luxury Golden Optical Sheen on Photos (Silky, Elegant, Non-Intrusive) */
 .luxury-card-sheen,
 .photo-gold-sheen {
   position: relative;
@@ -85,21 +85,27 @@ a, button, input, select {
   content: '';
   position: absolute;
   top: 0;
-  left: -130%;
-  width: 60%;
+  left: -120%;
+  width: 75%;
   height: 100%;
   background: linear-gradient(
-    90deg,
+    105deg,
     transparent 0%,
-    rgba(245, 158, 11, 0.08) 25%,
-    rgba(254, 240, 138, 0.5) 50%,
-    rgba(217, 119, 6, 0.35) 65%,
+    transparent 20%,
+    rgba(255, 255, 255, 0.04) 35%,
+    rgba(235, 210, 160, 0.16) 46%,
+    rgba(255, 250, 235, 0.28) 50%,
+    rgba(235, 210, 160, 0.16) 54%,
+    rgba(255, 255, 255, 0.04) 65%,
+    transparent 80%,
     transparent 100%
   );
-  transform: skewX(-25deg);
-  transition: left 0.85s cubic-bezier(0.2, 0.8, 0.2, 1);
+  transform: skewX(-20deg);
+  opacity: 0;
   pointer-events: none;
   z-index: 15;
+  mix-blend-mode: screen;
+  transition: opacity 0.6s ease, left 0s 0.6s;
 }
 
 .luxury-card-sheen:hover::after,
@@ -111,7 +117,9 @@ a, button, input, select {
 .group:focus-within .photo-gold-sheen::after,
 .group:hover .luxury-card-sheen::after,
 .group:active .luxury-card-sheen::after {
-  left: 210%;
+  opacity: 1;
+  left: 200%;
+  transition: left 1.5s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.3s ease;
 }
 
 /* Compound Tinted Floating Shadows */
