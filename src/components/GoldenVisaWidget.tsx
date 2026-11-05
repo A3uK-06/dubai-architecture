@@ -59,7 +59,7 @@ export default function GoldenVisaWidget({ onOpenInquire }: GoldenVisaWidgetProp
   const gw = t.goldenVisaWidget;
 
   return (
-    <section id="golden-visa" className="py-16 md:py-24 border-b border-[#E2E8F0] bg-[#F8F9FA]">
+    <section id="golden-visa" className="py-16 md:py-24 border-b border-[#E2E8F0] bg-transparent">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="p-8 sm:p-12 rounded-3xl border border-[#E2E8F0] bg-white shadow-float-card relative overflow-hidden">
           {/* Header */}

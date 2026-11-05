@@ -123,7 +123,7 @@ export default function CatalogSection() {
   };
 
   return (
-    <section id="catalog" className="py-16 md:py-24 border-b border-[#E2E8F0] bg-[#F8F9FA]">
+    <section id="catalog" className="py-16 md:py-24 border-b border-[#E2E8F0] bg-transparent">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-4">

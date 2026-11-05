@@ -22,7 +22,7 @@ export default function Home() {
   };
 
   return (
-    <div className="flex-1 flex flex-col bg-[#F8F9FA] text-[#0F172A] transition-colors">
+    <div className="flex-1 flex flex-col bg-transparent text-[#0F172A] transition-colors">
       {/* Hero Section */}
       <section className="relative overflow-hidden pt-12 pb-20 md:pt-20 md:pb-28 border-b border-[#E2E8F0] bg-gradient-to-b from-[#F1F5F9]/60 to-[#F8F9FA]">
         {/* Real Architectural Skyline Background */}

@@ -41,11 +41,21 @@ html {
 
 body {
   background-color: var(--background);
+  background-image: url("/patterns/dubai-monogram.svg");
+  background-repeat: repeat;
+  background-size: 160px 160px;
+  background-attachment: fixed;
   color: var(--foreground);
   font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
   line-height: 1.6;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
+}
+
+.bg-dubai-monogram {
+  background-image: url("/patterns/dubai-monogram.svg");
+  background-repeat: repeat;
+  background-size: 160px 160px;
 }
 
 h1, h2, .font-heading {
@@ -139,6 +149,12 @@ a, button, input, select {
   background: rgba(255, 255, 255, 0.85);
   border: 1px solid rgba(255, 255, 255, 0.6);
   box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
+}
+
+/* Luxury Photo Title Contrast Guarantee */
+.text-photo-title {
+  color: #FFFFFF !important;
+  text-shadow: 0 2px 14px rgba(0, 0, 0, 0.95), 0 4px 28px rgba(0, 0, 0, 0.85);
 }
 
 /* RTL Specific enhancements */

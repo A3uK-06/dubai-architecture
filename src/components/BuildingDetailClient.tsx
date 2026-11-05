@@ -38,7 +38,7 @@ export default function BuildingDetailClient({
   );
 
   return (
-    <article className="min-h-screen bg-[#F8F9FA] text-[#0F172A] pb-24 transition-colors">
+    <article className="min-h-screen bg-transparent text-[#0F172A] pb-24 transition-colors">
       <SchemaOrg type="building" building={building} />
 
       {/* Hero Header */}
@@ -145,13 +145,13 @@ export default function BuildingDetailClient({
             sizes="(max-width: 1280px) 100vw, 1280px"
             className="object-cover object-center"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/50 to-black/20" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/60 to-transparent pointer-events-none" />
           <div className="absolute bottom-6 left-6 right-6 flex flex-wrap items-end justify-between gap-4 z-10">
             <div className="space-y-2 max-w-2xl">
-              <span className="inline-block text-xs uppercase font-mono tracking-wider bg-white/20 text-white px-3.5 py-1.5 rounded-full border border-white/30 backdrop-blur-md">
+              <span className="inline-block text-xs uppercase font-mono font-bold tracking-wider bg-black/75 text-amber-300 px-3.5 py-1.5 rounded-full border border-amber-400/40 backdrop-blur-md shadow-md">
                 {building.district} • {building.type}
               </span>
-              <h2 className="!text-white text-3xl sm:text-4xl md:text-5xl font-extrabold font-heading tracking-tight drop-shadow-[0_3px_16px_rgba(0,0,0,0.95)]" style={{ color: '#FFFFFF' }}>
+              <h2 className="text-photo-title text-3xl sm:text-4xl md:text-5xl font-extrabold font-heading tracking-tight" style={{ color: '#FFFFFF' }}>
                 {building.name}
               </h2>
             </div>

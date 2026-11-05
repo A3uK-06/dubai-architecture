@@ -1,0 +1,123 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160">
+  <defs>
+    <style>
+      .mono-stroke {
+        stroke: #8C6A48;
+        stroke-width: 1.1;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        fill: none;
+        opacity: 0.05;
+      }
+      .mono-stroke-subtle {
+        stroke: #8C6A48;
+        stroke-width: 0.9;
+        stroke-linecap: round;
+        stroke-linejoin: round;
+        fill: none;
+        opacity: 0.035;
+      }
+      .mono-fill {
+        fill: #8C6A48;
+        opacity: 0.04;
+      }
+      .mono-dot {
+        fill: #8C6A48;
+        opacity: 0.045;
+      }
+    </style>
+  </defs>
+
+  <!-- ================= MOTIF 1: BURJ KHALIFA (Center: x=40, y=40) ================= -->
+  <g transform="translate(40, 40)">
+    <!-- Baseline -->
+    <line x1="-12" y1="18" x2="12" y2="18" class="mono-stroke" />
+    <!-- Outer Tier Base -->
+    <path d="M-10,18 L-8,10 L8,10 L10,18" class="mono-stroke" />
+    <!-- Tier 2 -->
+    <path d="M-6,10 L-5,1 L5,1 L6,10" class="mono-stroke" />
+    <!-- Tier 3 -->
+    <path d="M-3,1 L-2,-8 L2,-8 L3,1" class="mono-stroke" />
+    <!-- Spire Needle -->
+    <line x1="0" y1="-8" x2="0" y2="-19" class="mono-stroke" />
+    <circle cx="0" cy="-19" r="0.8" class="mono-fill" />
+    <!-- Central Accent Spine -->
+    <line x1="0" y1="-8" x2="0" y2="18" class="mono-stroke-subtle" />
+  </g>
+
+  <!-- ================= MOTIF 2: BURJ AL ARAB (Center: x=120, y=40) ================= -->
+  <g transform="translate(120, 40)">
+    <!-- Baseline -->
+    <line x1="-13" y1="18" x2="13" y2="18" class="mono-stroke" />
+    <!-- Helipad Cantilever -->
+    <line x1="-13" y1="-4" x2="-6" y2="-4" class="mono-stroke" />
+    <circle cx="-13" cy="-4" r="0.8" class="mono-fill" />
+    <!-- Vertical Mast -->
+    <line x1="-7" y1="-17" x2="-7" y2="18" class="mono-stroke" />
+    <!-- Sail Arc -->
+    <path d="M-7,-15 C2,-10 6,3 1,18" class="mono-stroke" />
+    <!-- Internal Rib Arc -->
+    <path d="M-7,-4 C-1,2 2,10 -2,18" class="mono-stroke-subtle" />
+    <!-- Outer Structural Bow Truss -->
+    <path d="M-7,-15 L-11,18" class="mono-stroke-subtle" />
+  </g>
+
+  <!-- ================= MOTIF 3: EMIRATES TOWERS (Center: x=40, y=120) ================= -->
+  <g transform="translate(40, 120)">
+    <!-- Shared Podium Baseline -->
+    <line x1="-14" y1="18" x2="14" y2="18" class="mono-stroke" />
+    <path d="M-12,18 L-10,13 L10,13 L12,18" class="mono-stroke" />
+    <!-- Tower 1 (Taller Tower) -->
+    <path d="M-9,13 L-9,-18 L-2,-8 L-2,13" class="mono-stroke" />
+    <!-- Tower 2 (Companion Tower) -->
+    <path d="M2,13 L2,-11 L8,-3 L8,13" class="mono-stroke" />
+  </g>
+
+  <!-- ================= MOTIF 4: ARCHITECTURAL MONOGRAM QUATREFOIL (Center: x=120, y=120) ================= -->
+  <g transform="translate(120, 120)">
+    <!-- Luxury 4-Point Geometric Compass Flower -->
+    <path d="M0,-16 L4,-5 L15,0 L4,5 L0,16 L-4,5 L-15,0 L-4,-5 Z" class="mono-stroke" />
+    <circle cx="0" cy="0" r="3.5" class="mono-stroke" />
+    <circle cx="0" cy="0" r="1.2" class="mono-fill" />
+    <!-- Micro Petal Dots -->
+    <circle cx="-7" cy="-7" r="0.7" class="mono-dot" />
+    <circle cx="7" cy="-7" r="0.7" class="mono-dot" />
+    <circle cx="-7" cy="7" r="0.7" class="mono-dot" />
+    <circle cx="7" cy="7" r="0.7" class="mono-dot" />
+  </g>
+
+  <!-- ================= STAGGERED ACCENTS (Center: x=80, y=80 and Edges) ================= -->
+  <!-- Central Diamond Accent (80, 80) -->
+  <g transform="translate(80, 80)">
+    <path d="M0,-7 L2.5,-2 L7,0 L2.5,2 L0,7 L-2.5,2 L-7,0 L-2.5,-2 Z" class="mono-stroke-subtle" />
+    <circle cx="0" cy="0" r="1" class="mono-fill" />
+  </g>
+
+  <!-- Corner Stars -->
+  <g transform="translate(0, 0)">
+    <path d="M0,-6 L2,-1.5 L6,0 L2,1.5 L0,6 L-2,1.5 L-6,0 L-2,-1.5 Z" class="mono-stroke-subtle" />
+  </g>
+  <g transform="translate(160, 0)">
+    <path d="M0,-6 L2,-1.5 L6,0 L2,1.5 L0,6 L-2,1.5 L-6,0 L-2,-1.5 Z" class="mono-stroke-subtle" />
+  </g>
+  <g transform="translate(0, 160)">
+    <path d="M0,-6 L2,-1.5 L6,0 L2,1.5 L0,6 L-2,1.5 L-6,0 L-2,-1.5 Z" class="mono-stroke-subtle" />
+  </g>
+  <g transform="translate(160, 160)">
+    <path d="M0,-6 L2,-1.5 L6,0 L2,1.5 L0,6 L-2,1.5 L-6,0 L-2,-1.5 Z" class="mono-stroke-subtle" />
+  </g>
+
+  <!-- Mid-Edge Accent Dots -->
+  <g transform="translate(80, 0)">
+    <circle cx="0" cy="0" r="1.5" class="mono-stroke-subtle" />
+  </g>
+  <g transform="translate(80, 160)">
+    <circle cx="0" cy="0" r="1.5" class="mono-stroke-subtle" />
+  </g>
+  <g transform="translate(0, 80)">
+    <circle cx="0" cy="0" r="1.5" class="mono-stroke-subtle" />
+  </g>
+  <g transform="translate(160, 80)">
+    <circle cx="0" cy="0" r="1.5" class="mono-stroke-subtle" />
+  </g>
+</svg>

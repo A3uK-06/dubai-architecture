@@ -82,7 +82,7 @@ export default function RoiCalculator({
   );
 
   return (
-    <section id="calculator" className="py-16 md:py-24 border-b border-[#E2E8F0] bg-[#F8F9FA]">
+    <section id="calculator" className="py-16 md:py-24 border-b border-[#E2E8F0] bg-transparent">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header with Glassmorphic Currency Switcher */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
