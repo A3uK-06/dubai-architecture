@@ -7,6 +7,7 @@ import { Building, BUILDINGS } from "@/data/buildings";
 import { useLang } from "@/context/LangContext";
 import { getLocalizedBuilding } from "@/data/localizedContent";
 import SchemaOrg from "@/components/SchemaOrg";
+import RoiCalculator from "@/components/RoiCalculator";
 
 interface BuildingDetailClientProps {
   initialBuilding: Building;
@@ -30,6 +31,18 @@ export default function BuildingDetailClient({
   }, [building, lang]);
 
   const bd = t.buildingDetail;
+
+  const initialPrice = useMemo(() => {
+    if (!building.startingPriceAed) return 2000000;
+    const digits = parseInt(building.startingPriceAed.replace(/[^\d]/g, ""), 10);
+    return digits > 0 ? digits : 2000000;
+  }, [building.startingPriceAed]);
+
+  const initialYield = useMemo(() => {
+    if (!building.investmentYield) return 8.0;
+    const match = building.investmentYield.match(/(\d+(\.\d+)?)/);
+    return match ? parseFloat(match[1]) : 8.0;
+  }, [building.investmentYield]);
 
   const whatsappMessage = encodeURIComponent(
     lang === "ru"
@@ -228,6 +241,14 @@ export default function BuildingDetailClient({
                 ))}
               </ul>
             </section>
+
+            {/* Object-Specific Pre-filled ROI Calculator */}
+            <RoiCalculator
+              isEmbedded
+              buildingName={building.name}
+              initialPriceAed={initialPrice}
+              initialYieldPercent={initialYield}
+            />
 
             {/* Dedicated District Deep-Dive Navigation Banner */}
             <div className="p-6 sm:p-7 rounded-2xl bg-gradient-to-r from-[#FAF8F5] via-[#EFECE4] to-[#FAF8F5] border-2 border-[#DDD7CA] shadow-soft-tint flex flex-col md:flex-row items-start md:items-center justify-between gap-5">
