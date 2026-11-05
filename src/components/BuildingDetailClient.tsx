@@ -9,6 +9,7 @@ import { getLocalizedBuilding } from "@/data/localizedContent";
 import SchemaOrg from "@/components/SchemaOrg";
 import RoiCalculator from "@/components/RoiCalculator";
 import LeadModal from "@/components/LeadModal";
+import { trackEvent } from "@/lib/analytics";
 
 interface BuildingDetailClientProps {
   initialBuilding: Building;
@@ -670,6 +671,7 @@ export default function BuildingDetailClient({
               {/* Direct WhatsApp Concierge */}
               <a
                 href={`https://wa.me/971500000000?text=${whatsappMessage}`}
+                onClick={() => { trackEvent("consult_architect_click", { building: building.id, building_name: building.name }); }}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="w-full flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-[#2D6A4F] hover:bg-[#1E4D38] text-white font-bold text-xs shadow-soft-tint active:scale-98 transition-all"

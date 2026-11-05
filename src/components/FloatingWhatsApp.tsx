@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { useLang } from "@/context/LangContext";
 import { getAttributionData } from "@/lib/attribution";
 import { LanguageCode } from "@/i18n/languages";
+import { trackEvent } from "@/lib/analytics";
 
 const RERA_STATUS: Record<LanguageCode, string> = {
   en: "RERA Broker Online",
@@ -67,6 +68,12 @@ export default function FloatingWhatsApp() {
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Direct WhatsApp Consultation"
+        onClick={() => {
+          trackEvent("generate_lead", {
+            channel: "whatsapp",
+            location: typeof window !== "undefined" ? window.location.pathname : "unknown",
+          });
+        }}
         className="flex items-center gap-2.5 px-4 py-3 rounded-full bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 text-zinc-950 font-bold text-sm shadow-2xl shadow-emerald-500/30 transition-all transform hover:scale-105 active:scale-95 border border-emerald-300/40"
       >
         <span className="text-xl leading-none">💬</span>
