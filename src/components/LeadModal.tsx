@@ -155,7 +155,7 @@ export default function LeadModal({
                 disabled={isSubmitting}
                 className="w-full py-4 px-6 rounded-xl bg-[#0F172A] hover:bg-[#1E293B] text-white font-bold text-sm uppercase tracking-wider shadow-sm transition-all active:scale-98 disabled:opacity-50"
               >
-                {isSubmitting ? "Отправка..." : t.leadModal.submitBtn}
+                {isSubmitting ? t.leadModal.submitting : t.leadModal.submitBtn}
               </button>
 
               <p className="text-xs text-[#64748B] text-center leading-normal">

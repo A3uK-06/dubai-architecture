@@ -82,7 +82,7 @@ export default function DistrictDetailClient({
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12 space-y-16">
         {/* District Photography Showcase */}
-        <div className="relative w-full h-72 sm:h-96 rounded-3xl overflow-hidden border border-[#E5DFD3] shadow-medium-tint bg-[#EFECE4]">
+        <div className="relative w-full h-80 sm:h-96 md:h-[440px] rounded-3xl overflow-hidden border border-[#E2E8F0] shadow-float-card bg-[#0F172A]">
           <Image
             src={district.image}
             alt={district.name}
@@ -91,21 +91,21 @@ export default function DistrictDetailClient({
             sizes="(max-width: 1280px) 100vw, 1280px"
             className="object-cover object-center"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#1C1917]/80 via-transparent to-transparent" />
-          <div className="absolute bottom-6 left-6 right-6 flex flex-wrap items-end justify-between gap-4 z-10 text-white">
-            <div>
-              <span className="text-xs uppercase font-mono tracking-wider bg-black/60 px-3 py-1 rounded-full border border-white/20 backdrop-blur-md">
+          <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/50 to-black/20" />
+          <div className="absolute bottom-6 left-6 right-6 flex flex-wrap items-end justify-between gap-4 z-10">
+            <div className="max-w-2xl space-y-2">
+              <span className="inline-block text-xs uppercase font-mono tracking-wider bg-white/20 text-white px-3.5 py-1.5 rounded-full border border-white/30 backdrop-blur-md">
                 {district.developer}
               </span>
-              <h2 className="text-white text-3xl sm:text-4xl font-extrabold mt-1.5 drop-shadow-md">
+              <h2 className="!text-white text-3xl sm:text-4xl md:text-5xl font-extrabold font-heading tracking-tight drop-shadow-[0_3px_16px_rgba(0,0,0,0.95)]" style={{ color: '#FFFFFF' }}>
                 {district.name}
               </h2>
             </div>
             <div className="flex items-center gap-3">
-              <span className="text-xs text-white font-mono px-3 py-1.5 rounded-full bg-black/70 border border-white/20 backdrop-blur-md">
+              <span className="text-xs sm:text-sm text-white font-mono font-bold px-4 py-2 rounded-full bg-black/60 border border-white/30 backdrop-blur-md shadow-sm">
                 {district.iconicTowersCount}+ {dd.towersCount}
               </span>
-              <span className="px-3.5 py-1.5 rounded-full text-xs font-bold font-mono bg-white text-[#2D6A4F] shadow-sm">
+              <span className="px-4 py-2 rounded-full text-xs sm:text-sm font-bold font-mono bg-white text-[#059669] shadow-md">
                 ROI: {district.averageRoi}
               </span>
             </div>
@@ -120,7 +120,7 @@ export default function DistrictDetailClient({
                 URBAN MASTERPLANNING & ARCHITECTURAL DNA
               </span>
               <h2 className="text-2xl font-bold text-[#1C1917] mt-0.5">
-                Градостроительная концепция и генплан
+                {dd.masterplanTitle}
               </h2>
             </div>
             <span className="text-xs font-mono text-[#78716C]">MASTER DEVELOPER ANALYSIS</span>
@@ -151,10 +151,10 @@ export default function DistrictDetailClient({
             <div className="flex items-center justify-between border-b border-[#E5DFD3] pb-3">
               <div>
                 <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#8C6A48]">
-                  MICRO-LOCATION COMPARATIVE AUDIT
+                  {dd.subzonesSubtitle}
                 </span>
                 <h2 className="text-2xl font-bold text-[#1C1917] mt-0.5">
-                  Микролокации внутри района и диапазон цен
+                  {dd.subzonesTitle}
                 </h2>
               </div>
               <span className="text-xs font-mono font-bold text-[#8C6A48]">AED / SQ.FT</span>
@@ -165,18 +165,18 @@ export default function DistrictDetailClient({
                 <div key={idx} className="p-6 rounded-2xl bg-white border border-[#E5DFD3] shadow-soft-tint space-y-3 flex flex-col justify-between">
                   <div className="space-y-2">
                     <span className="text-xs font-mono font-bold px-2.5 py-0.5 rounded bg-[#EFECE4] text-[#8C6A48]">
-                      Зона {idx + 1}
+                      {dd.zoneLabel} {idx + 1}
                     </span>
                     <h3 className="text-lg font-bold text-[#1C1917]">{zone.name}</h3>
                     <p className="text-xs text-[#57534E] leading-relaxed">{zone.character}</p>
                   </div>
                   <div className="pt-3 border-t border-[#EFECE4] space-y-2 text-xs">
                     <div>
-                      <span className="text-[#78716C] block">Средняя стоимость:</span>
+                      <span className="text-[#78716C] block">{dd.avgPriceLabel}</span>
                       <span className="font-mono font-bold text-base text-[#1C1917]">{zone.pricePerSqFtAed}</span>
                     </div>
                     <div>
-                      <span className="text-[#78716C] block">Для кого идеально:</span>
+                      <span className="text-[#78716C] block">{dd.bestForLabel}</span>
                       <span className="font-medium text-[#57534E]">{zone.bestFor}</span>
                     </div>
                   </div>
@@ -192,14 +192,14 @@ export default function DistrictDetailClient({
             <div className="flex items-center justify-between border-b border-[#EFECE4] pb-3">
               <div>
                 <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#8C6A48]">
-                  TRANSIT MOBILITY & BOTTLENECK AUDIT
+                  {dd.transitSubtitle}
                 </span>
                 <h2 className="text-2xl font-bold text-[#1C1917] mt-0.5">
-                  Транспортная логистика, выезды и пробки в час пик
+                  {dd.transitTitle}
                 </h2>
               </div>
               <span className="px-3 py-1 rounded-full text-xs font-bold font-mono bg-[#EFECE4] text-[#8C6A48] border border-[#DDD7CA]">
-                Пешеходность: {district.transitAnalysis.walkabilityScore}
+                {dd.walkabilityLabel} {district.transitAnalysis.walkabilityScore}
               </span>
             </div>
 
@@ -207,7 +207,7 @@ export default function DistrictDetailClient({
               <div className="p-4 rounded-xl bg-[#FAF8F5] border border-[#EFECE4] space-y-1.5">
                 <div className="font-bold text-sm text-[#1C1917] flex items-center gap-2">
                   <span>🛣️</span>
-                  <span>Выезды на шоссе</span>
+                  <span>{dd.highwayAccessLabel}</span>
                 </div>
                 <p className="text-[#57534E] leading-relaxed">{district.transitAnalysis.highwayAccess}</p>
               </div>
@@ -215,7 +215,7 @@ export default function DistrictDetailClient({
               <div className="p-4 rounded-xl bg-[#FFF5F5] border border-[#FED7D7] space-y-1.5">
                 <div className="font-bold text-sm text-[#9E4732] flex items-center gap-2">
                   <span>⚠️</span>
-                  <span>Бутылочные горлышки (Час пик)</span>
+                  <span>{dd.bottlenecksLabel}</span>
                 </div>
                 <p className="text-[#57534E] leading-relaxed">{district.transitAnalysis.rushHourBottleneck}</p>
               </div>
@@ -223,7 +223,7 @@ export default function DistrictDetailClient({
               <div className="p-4 rounded-xl bg-[#FAF8F5] border border-[#EFECE4] space-y-1.5">
                 <div className="font-bold text-sm text-[#1C1917] flex items-center gap-2">
                   <span>🚇</span>
-                  <span>Общественный транспорт</span>
+                  <span>{dd.publicTransitLabel}</span>
                 </div>
                 <p className="text-[#57534E] leading-relaxed">{district.transitAnalysis.publicTransit}</p>
               </div>
@@ -236,32 +236,32 @@ export default function DistrictDetailClient({
           <section className="p-8 rounded-3xl bg-[#FAF8F5] border border-[#E5DFD3] shadow-soft-tint space-y-6">
             <div className="border-b border-[#E5DFD3] pb-3">
               <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#8C6A48]">
-                OPERATING REALITY & INFRASTRUCTURE
+                {dd.infrastructureSubtitle}
               </span>
               <h2 className="text-2xl font-bold text-[#1C1917] mt-0.5">
-                Инженерная инфраструктура и коммунальные расходы
+                {dd.infrastructureTitle}
               </h2>
             </div>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 text-xs">
               <div className="p-4 rounded-xl bg-white border border-[#E5DFD3]">
-                <div className="text-[#78716C] font-semibold">Охлаждение (Chiller)</div>
+                <div className="text-[#78716C] font-semibold">{dd.chillerLabel}</div>
                 <div className="text-sm font-bold text-[#1C1917] mt-1">{district.infrastructureAudit.chillerType}</div>
               </div>
               <div className="p-4 rounded-xl bg-white border border-[#E5DFD3]">
-                <div className="text-[#78716C] font-semibold">Ливневая канализация</div>
+                <div className="text-[#78716C] font-semibold">{dd.stormwaterLabel}</div>
                 <div className="text-sm font-bold text-[#1C1917] mt-1">{district.infrastructureAudit.stormwaterResilience}</div>
               </div>
               <div className="p-4 rounded-xl bg-white border border-[#E5DFD3]">
-                <div className="text-[#78716C] font-semibold">Вилка Service Charges</div>
+                <div className="text-[#78716C] font-semibold">{dd.serviceChargesLabel}</div>
                 <div className="text-sm font-bold text-[#8C6A48] font-mono mt-1">{district.infrastructureAudit.serviceChargeRangeAed}</div>
               </div>
               <div className="p-4 rounded-xl bg-white border border-[#E5DFD3]">
-                <div className="text-[#78716C] font-semibold">Заполняемость арендаторами</div>
+                <div className="text-[#78716C] font-semibold">{dd.occupancyLabel}</div>
                 <div className="text-sm font-bold text-[#2D6A4F] font-mono mt-1">{district.infrastructureAudit.occupancyRate}</div>
               </div>
               <div className="p-4 rounded-xl bg-white border border-[#E5DFD3] sm:col-span-2 md:col-span-4">
-                <div className="text-[#78716C] font-semibold">Портрет основного арендатора</div>
+                <div className="text-[#78716C] font-semibold">{dd.tenantProfileLabel}</div>
                 <div className="text-sm font-medium text-[#1C1917] mt-1">{district.infrastructureAudit.targetTenantProfile}</div>
               </div>
             </div>
@@ -273,7 +273,7 @@ export default function DistrictDetailClient({
           <div className="p-8 rounded-3xl bg-white border border-[#E5DFD3] shadow-soft-tint space-y-4">
             <h2 className="text-xl font-bold text-[#1C1917] flex items-center gap-2">
               <span className="text-[#2D6A4F]">✓</span>
-              <span>Ключевые инвестиционные преимущества</span>
+              <span>{dd.prosTitle}</span>
             </h2>
             <ul className="space-y-3">
               {district.investmentPros.map((pro, idx) => (
@@ -290,12 +290,12 @@ export default function DistrictDetailClient({
           <div className="p-8 rounded-3xl bg-white border border-[#E5DFD3] shadow-soft-tint space-y-4">
             <h2 className="text-xl font-bold text-[#9E4732] flex items-center gap-2">
               <span>⚠️</span>
-              <span>Честные риски и эксплуатационные нюансы</span>
+              <span>{dd.risksTitle}</span>
             </h2>
             <ul className="space-y-3">
               {(district.investmentRisks || [
-                "Высокая плотность трафика в вечерние часы пик на основных съездах.",
-                "Необходимость тщательной проверки надежности застройщика в частных проектах."
+                dd.defaultRisk1,
+                dd.defaultRisk2
               ]).map((risk, idx) => (
                 <li key={idx} className="flex items-start gap-3 text-sm text-[#57534E]">
                   <span className="w-5 h-5 rounded-full bg-[#9E4732]/15 text-[#9E4732] flex items-center justify-center text-xs font-bold shrink-0 mt-0.5">
@@ -326,7 +326,7 @@ export default function DistrictDetailClient({
 
           {districtBuildings.length === 0 ? (
             <p className="text-[#78716C] text-sm italic py-8">
-              Каталог небоскребов для данного района обновляется.
+              {t.catalog.noMatch}
             </p>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

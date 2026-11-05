@@ -248,7 +248,7 @@ export default function CatalogSection() {
                   <option value="height">{t.filters.heightDesc}</option>
                   <option value="year">{t.filters.yearDesc}</option>
                   <option value="rating">{t.filters.popularity}</option>
-                  <option value="yield">ROI (High to Low)</option>
+                  <option value="yield">{t.catalog.sortOptions.yield}</option>
                 </select>
                 <div className="absolute inset-y-0 right-0 pr-3.5 flex items-center pointer-events-none text-[#64748B]">
                   <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" strokeWidth="2" stroke="currentColor">
@@ -332,7 +332,7 @@ export default function CatalogSection() {
                 className="rounded-2xl border border-[#E2E8F0] bg-white overflow-hidden hover:border-[#0F172A]/40 transition-all duration-300 shadow-float-card hover:shadow-float-card-hover flex flex-col h-full group"
               >
                 {/* 1. МЕДИА/ХЕДЕР с парящими бейджами и Overlapping-эффектом */}
-                <div className="relative h-64 sm:h-72 w-full overflow-hidden bg-[#F1F5F9]">
+                <div className="relative h-64 sm:h-72 w-full overflow-hidden bg-[#0F172A]">
                   <Image
                     src={building.image}
                     alt={building.name}
@@ -340,11 +340,11 @@ export default function CatalogSection() {
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                     className="object-cover object-center group-hover:scale-105 transition-transform duration-700 ease-out"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A]/85 via-[#0F172A]/20 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-black/10" />
 
                   {/* Top Floating Badges: Height & Status */}
                   <div className="absolute top-3.5 left-3.5 right-3.5 flex justify-between items-start z-10">
-                    <span className="px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-bold font-mono bg-[#0F172A]/85 text-white border border-white/20 backdrop-blur-md shadow-sm">
+                    <span className="px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-bold font-mono bg-black/80 text-white border border-white/25 backdrop-blur-md shadow-sm">
                       {building.heightMeters} m • {building.floors} {t.buildingCard.floors}
                     </span>
                     {building.status === "Under Construction" ? (
@@ -352,7 +352,7 @@ export default function CatalogSection() {
                         {t.catalog.underConstruction}
                       </span>
                     ) : (
-                      <span className="px-3 py-1 rounded-full bg-white/95 text-[#0F172A] text-xs sm:text-sm font-bold backdrop-blur-md shadow-xs">
+                      <span className="px-3 py-1 rounded-full bg-white text-[#0F172A] text-xs sm:text-sm font-bold shadow-sm">
                         {typeMap[building.type] || building.type}
                       </span>
                     )}
@@ -362,7 +362,7 @@ export default function CatalogSection() {
                   <div className="absolute bottom-4 left-3.5 z-10">
                     <Link
                       href={`/districts/${building.districtSlug}/`}
-                      className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#0F172A]/85 hover:bg-[#8C6A48] text-white border border-white/20 backdrop-blur-md text-xs sm:text-sm font-semibold tracking-wide transition-colors truncate drop-shadow-md"
+                      className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-black/80 hover:bg-[#8C6A48] text-white border border-white/25 backdrop-blur-md text-xs sm:text-sm font-semibold tracking-wide transition-colors truncate drop-shadow-md"
                     >
                       <span>📍</span>
                       <span className="truncate">{building.district}</span>
@@ -428,7 +428,7 @@ export default function CatalogSection() {
                         {building.startingPriceAed.replace(" AED", "")}
                       </div>
                       <div className="text-xs font-semibold text-[#64748B] uppercase tracking-wider mt-1.5">
-                        Старт (AED)
+                        {t.catalog.startingPriceLabel} (AED)
                       </div>
                     </div>
                     <div>
@@ -436,7 +436,7 @@ export default function CatalogSection() {
                         {building.yearBuilt}
                       </div>
                       <div className="text-xs font-semibold text-[#64748B] uppercase tracking-wider mt-1.5">
-                        Год
+                        {t.buildingCard.year}
                       </div>
                     </div>
                   </div>
@@ -447,14 +447,14 @@ export default function CatalogSection() {
                       href={`/buildings/${building.slug}/`}
                       className="flex items-center justify-center gap-1.5 py-3 px-3.5 rounded-xl bg-[#0F172A] hover:bg-[#1E293B] text-white text-xs sm:text-sm font-bold transition-all shadow-sm group/btn text-center"
                     >
-                      <span className="truncate">{t.buildingCard.viewDetails || "Паспорт ТТХ"}</span>
+                      <span className="truncate">{t.buildingCard.viewDetails}</span>
                       <span className="group-hover/btn:translate-x-1 transition-transform">&rarr;</span>
                     </Link>
                     <Link
                       href={`/districts/${building.districtSlug}/`}
                       className="flex items-center justify-center gap-1 py-3 px-3.5 rounded-xl bg-[#F8F9FA] hover:bg-[#F1F5F9] text-[#475569] hover:text-[#0F172A] border border-[#E2E8F0] text-xs sm:text-sm font-semibold transition-all group/btn text-center"
                     >
-                      <span className="truncate">{t.buildingCard.exploreDistrict || "О районе"}</span>
+                      <span className="truncate">{t.buildingCard.exploreDistrict}</span>
                       <span className="group-hover/btn:translate-x-0.5 transition-transform">&rarr;</span>
                     </Link>
                   </div>

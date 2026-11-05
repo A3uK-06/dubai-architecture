@@ -56,7 +56,7 @@ export default function Home() {
 
             {/* Subtitle */}
             <p className="text-lg sm:text-xl text-[#475569] max-w-[65ch] font-normal leading-relaxed">
-              Независимый архитектурный архив с 2006 года: детальные инженерные паспорта небоскребов Дубая, геотехника свайных фундаментов, ветроустойчивость, коммунальные тарифы DLD и инвестиционный аудит планировок.
+              {t.hero.subtitle}
             </p>
 
             {/* Search Bar - Architectural Visual Anchor */}
@@ -99,7 +99,7 @@ export default function Home() {
                     isRtl ? "left-2" : "right-2"
                   } h-11 px-6 rounded-lg bg-[#0F172A] hover:bg-[#1E293B] text-white font-bold text-xs sm:text-sm uppercase tracking-wider transition-all shadow-sm`}
                 >
-                  Поиск
+                  {t.filters.search.replace("...", "")}
                 </button>
               </form>
             </div>
@@ -135,7 +135,7 @@ export default function Home() {
               </div>
               <div className="p-6 rounded-2xl bg-white border border-[#E2E8F0] shadow-float-card text-center">
                 <div className="text-4xl sm:text-5xl font-extrabold text-[#8C6A48] font-mono">30+</div>
-                <div className="text-xs sm:text-sm text-[#64748B] font-semibold mt-1.5">Культовых башен в базе</div>
+                <div className="text-xs sm:text-sm text-[#64748B] font-semibold mt-1.5">{t.hero.statsTowers}</div>
               </div>
               <div className="p-6 rounded-2xl bg-white border border-[#E2E8F0] shadow-float-card text-center">
                 <div className="text-4xl sm:text-5xl font-extrabold text-[#059669] font-mono">8.2%</div>
@@ -149,7 +149,7 @@ export default function Home() {
 
             {/* Language & DLD status info */}
             <div className="text-xs sm:text-sm text-[#64748B] font-mono pt-2">
-              🌍 {t.hero.statusBarText} • Активный язык: <strong>{langInfo.name}</strong>
+              🌍 {t.hero.statusBarText} • {t.hero.activeLanguage} <strong>{langInfo.name}</strong>
             </div>
           </div>
         </div>

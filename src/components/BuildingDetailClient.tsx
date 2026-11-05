@@ -134,7 +134,7 @@ export default function BuildingDetailClient({
       {/* Main Content Layout */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-12">
         {/* Architectural Photography Showcase */}
-        <div className="relative w-full h-80 sm:h-96 lg:h-[480px] rounded-3xl overflow-hidden border border-[#E5DFD3] shadow-medium-tint mb-12 bg-[#EFECE4]">
+        <div className="relative w-full h-80 sm:h-96 lg:h-[480px] rounded-3xl overflow-hidden border border-[#E2E8F0] shadow-float-card mb-12 bg-[#0F172A]">
           <Image
             src={building.image}
             alt={building.name}
@@ -143,21 +143,21 @@ export default function BuildingDetailClient({
             sizes="(max-width: 1280px) 100vw, 1280px"
             className="object-cover object-center"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-[#1C1917]/80 via-transparent to-transparent" />
-          <div className="absolute bottom-6 left-6 right-6 flex flex-wrap items-end justify-between gap-4 z-10 text-white">
-            <div className="space-y-1">
-              <span className="text-xs uppercase font-mono tracking-wider bg-black/60 px-3 py-1 rounded-full border border-white/20 backdrop-blur-md">
+          <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/50 to-black/20" />
+          <div className="absolute bottom-6 left-6 right-6 flex flex-wrap items-end justify-between gap-4 z-10">
+            <div className="space-y-2 max-w-2xl">
+              <span className="inline-block text-xs uppercase font-mono tracking-wider bg-white/20 text-white px-3.5 py-1.5 rounded-full border border-white/30 backdrop-blur-md">
                 {building.district} • {building.type}
               </span>
-              <h2 className="text-white text-2xl sm:text-3xl font-extrabold drop-shadow-md">
+              <h2 className="!text-white text-3xl sm:text-4xl md:text-5xl font-extrabold font-heading tracking-tight drop-shadow-[0_3px_16px_rgba(0,0,0,0.95)]" style={{ color: '#FFFFFF' }}>
                 {building.name}
               </h2>
             </div>
-            <div className="flex items-center gap-2">
-              <span className="px-3 py-1.5 rounded-full text-xs font-bold font-mono bg-white/90 text-[#2D6A4F] shadow-sm backdrop-blur-md">
-                {building.investmentYield}
+            <div className="flex items-center gap-3">
+              <span className="px-4 py-2 rounded-full text-xs sm:text-sm font-bold font-mono bg-white text-[#059669] shadow-md">
+                ROI: {building.investmentYield}
               </span>
-              <span className="px-3 py-1.5 rounded-full text-xs font-mono font-bold bg-[#8C6A48] text-white shadow-md">
+              <span className="px-4 py-2 rounded-full text-xs sm:text-sm font-mono font-bold bg-[#0F172A] text-white border border-white/25 shadow-md">
                 {building.startingPriceAed}
               </span>
             </div>
@@ -175,7 +175,7 @@ export default function BuildingDetailClient({
                   {bd.historyTitle}
                 </h2>
                 <span className="text-xs font-mono font-bold text-[#8C6A48] uppercase tracking-wider">
-                  РАЗБОР КОНЦЕПЦИИ
+                  {bd.archiveId}: {building.id}
                 </span>
               </div>
 
@@ -183,7 +183,7 @@ export default function BuildingDetailClient({
               <div className="p-4 rounded-2xl bg-[#FAF8F5] border border-[#DDD7CA] flex flex-wrap items-center justify-between gap-3 shadow-xs">
                 <div className="flex items-center gap-2.5">
                   <span className="text-lg">📍</span>
-                  <span className="text-xs text-[#78716C] font-semibold">{bd.districtLocationLabel || "Район расположения:"}</span>
+                  <span className="text-xs text-[#78716C] font-semibold">{bd.districtLocationLabel}</span>
                   <Link
                     href={`/districts/${building.districtSlug}/`}
                     className="text-sm font-extrabold text-[#8C6A48] hover:text-[#6D5135] underline underline-offset-4 transition-colors"
@@ -195,7 +195,7 @@ export default function BuildingDetailClient({
                   href={`/districts/${building.districtSlug}/`}
                   className="px-3.5 py-1.5 rounded-xl bg-white border border-[#DDD7CA] hover:border-[#8C6A48] text-xs font-bold text-[#8C6A48] hover:text-[#6D5135] transition-all shadow-2xs"
                 >
-                  {bd.exploreDistrictCta || "Смотреть мастер-план района →"}
+                  {bd.exploreDistrictCta}
                 </Link>
               </div>
 
@@ -232,20 +232,20 @@ export default function BuildingDetailClient({
               <div className="space-y-2">
                 <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#8C6A48]/15 text-[#8C6A48] text-xs font-mono font-bold uppercase tracking-wider">
                   <span>🏙️</span>
-                  <span>{bd.districtBannerBadge || "ГОРОДСКОЙ КОНТЕКСТ И АНАЛИТИКА"}</span>
+                  <span>{bd.districtBannerBadge}</span>
                 </div>
                 <h3 className="text-xl font-extrabold text-[#1C1917] tracking-tight">
-                  {bd.districtBannerTitle || `Район расположения: ${building.district}`}
+                  {bd.districtBannerTitle} {building.district}
                 </h3>
                 <p className="text-xs text-[#57534E] max-w-xl leading-relaxed">
-                  {bd.districtBannerDesc || `Изучите инфраструктуру, транспортные развязки, пробки в часы пик, типы охлаждения (Chiller) и сервис-сборы района ${building.district}.`}
+                  {bd.districtBannerDesc} {building.district}.
                 </p>
               </div>
               <Link
                 href={`/districts/${building.districtSlug}/`}
                 className="inline-flex items-center gap-2 px-5 py-3 rounded-xl bg-[#8C6A48] hover:bg-[#6D5135] text-white font-bold text-xs uppercase tracking-wider transition-all shadow-md shrink-0 group"
               >
-                <span>{bd.districtBannerButton || `Перейти к аналитике района ${building.district}`}</span>
+                <span>{bd.districtBannerButton}</span>
                 <span className="group-hover:translate-x-1 transition-transform">&rarr;</span>
               </Link>
             </div>
@@ -259,11 +259,11 @@ export default function BuildingDetailClient({
                       ENGINEERING SPECIFICATION MATRIX
                     </span>
                     <h2 className="text-2xl font-extrabold text-[#1C1917] tracking-tight">
-                      Инженерно-технический паспорт (Hard TTX)
+                      {t.ttxLabels.title}
                     </h2>
                   </div>
                   <span className="hidden sm:inline-block px-3 py-1 rounded-full text-xs font-mono font-semibold bg-[#EFECE4] text-[#8C6A48] border border-[#DDD7CA]">
-                    VERIFIED DLD / CTBUH DATA
+                    {t.ttxLabels.verifiedBadge}
                   </span>
                 </div>
 
@@ -272,30 +272,30 @@ export default function BuildingDetailClient({
                   <div className="rounded-2xl border border-[#E5DFD3] bg-white p-6 shadow-soft-tint space-y-4">
                     <div className="flex items-center gap-2.5 text-sm font-bold text-[#8C6A48] border-b border-[#EFECE4] pb-2 uppercase tracking-wide">
                       <span>👷</span>
-                      <span>Генеральный подрядчик и инженерная команда</span>
+                      <span>{t.ttxLabels.engineeringTeam}</span>
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
                       {building.mainContractor && (
                         <div className="p-3.5 rounded-xl bg-[#FAF8F5] border border-[#EFECE4]">
-                          <div className="text-[#78716C] font-medium">{bd.contractorLabel || "Генеральный подрядчик"}</div>
+                          <div className="text-[#78716C] font-medium">{t.ttxLabels.contractorLabel}</div>
                           <div className="text-sm font-bold text-[#1C1917] mt-1">{building.mainContractor}</div>
                         </div>
                       )}
                       {building.structuralEngineer && (
                         <div className="p-3.5 rounded-xl bg-[#FAF8F5] border border-[#EFECE4]">
-                          <div className="text-[#78716C] font-medium">{bd.structuralEngineerLabel || "Главный инженер-конструктор"}</div>
+                          <div className="text-[#78716C] font-medium">{t.ttxLabels.structuralEngineerLabel}</div>
                           <div className="text-sm font-bold text-[#1C1917] mt-1">{building.structuralEngineer}</div>
                         </div>
                       )}
                       {building.mepEngineer && (
                         <div className="p-3.5 rounded-xl bg-[#FAF8F5] border border-[#EFECE4]">
-                          <div className="text-[#78716C] font-medium">{bd.mepEngineerLabel || "MEP Инженерия"}</div>
+                          <div className="text-[#78716C] font-medium">{t.ttxLabels.mepEngineerLabel}</div>
                           <div className="text-xs font-semibold text-[#1C1917] mt-1">{building.mepEngineer}</div>
                         </div>
                       )}
                       {building.urbanIntegration && (
                         <div className="p-3.5 rounded-xl bg-[#FAF8F5] border border-[#EFECE4]">
-                          <div className="text-[#78716C] font-medium">Транспортная интеграция</div>
+                          <div className="text-[#78716C] font-medium">{t.ttxLabels.transitIntegration}</div>
                           <div className="text-xs font-semibold text-[#8C6A48] mt-1">{building.urbanIntegration}</div>
                         </div>
                       )}
@@ -307,27 +307,27 @@ export default function BuildingDetailClient({
                 <div className="rounded-2xl border border-[#E5DFD3] bg-white p-6 shadow-soft-tint space-y-4">
                   <div className="flex items-center gap-2.5 text-sm font-bold text-[#8C6A48] border-b border-[#EFECE4] pb-2 uppercase tracking-wide">
                     <span>🏗️</span>
-                    <span>Геотехника и свайный фундамент</span>
+                    <span>{t.ttxLabels.geotechnical}</span>
                   </div>
                   <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 text-xs">
                     <div className="p-3 rounded-xl bg-[#FAF8F5] border border-[#EFECE4]">
-                      <div className="text-[#78716C] font-medium">Количество свай</div>
-                      <div className="text-base font-bold text-[#1C1917] font-mono mt-1">{building.foundation.pilesCount} шт.</div>
+                      <div className="text-[#78716C] font-medium">{t.ttxLabels.pilesCount}</div>
+                      <div className="text-base font-bold text-[#1C1917] font-mono mt-1">{building.foundation.pilesCount} {t.ttxLabels.units}</div>
                     </div>
                     <div className="p-3 rounded-xl bg-[#FAF8F5] border border-[#EFECE4]">
-                      <div className="text-[#78716C] font-medium">Глубина бурения свай</div>
-                      <div className="text-base font-bold text-[#1C1917] font-mono mt-1">{building.foundation.pileDepthMeters} м</div>
+                      <div className="text-[#78716C] font-medium">{t.ttxLabels.pileDepth}</div>
+                      <div className="text-base font-bold text-[#1C1917] font-mono mt-1">{building.foundation.pileDepthMeters} {t.ttxLabels.meters}</div>
                     </div>
                     <div className="p-3 rounded-xl bg-[#FAF8F5] border border-[#EFECE4]">
-                      <div className="text-[#78716C] font-medium">Диаметр свай</div>
+                      <div className="text-[#78716C] font-medium">{t.ttxLabels.pileDiameter}</div>
                       <div className="text-base font-bold text-[#1C1917] font-mono mt-1">{building.foundation.pileDiameterMeters}</div>
                     </div>
                     <div className="p-3 rounded-xl bg-[#FAF8F5] border border-[#EFECE4] sm:col-span-2 md:col-span-1">
-                      <div className="text-[#78716C] font-medium">Толщина ростверка</div>
+                      <div className="text-[#78716C] font-medium">{t.ttxLabels.raftThickness}</div>
                       <div className="text-base font-bold text-[#1C1917] font-mono mt-1">{building.foundation.raftThicknessMeters}</div>
                     </div>
                     <div className="p-3 rounded-xl bg-[#FAF8F5] border border-[#EFECE4] sm:col-span-2">
-                      <div className="text-[#78716C] font-medium">Опорная коренная порода</div>
+                      <div className="text-[#78716C] font-medium">{t.ttxLabels.bedrock}</div>
                       <div className="text-xs font-semibold text-[#1C1917] mt-1">{building.foundation.bedrockType}</div>
                     </div>
                   </div>
@@ -337,23 +337,23 @@ export default function BuildingDetailClient({
                 <div className="rounded-2xl border border-[#E5DFD3] bg-white p-6 shadow-soft-tint space-y-4">
                   <div className="flex items-center gap-2.5 text-sm font-bold text-[#8C6A48] border-b border-[#EFECE4] pb-2 uppercase tracking-wide">
                     <span>💨</span>
-                    <span>Ветроустойчивость и несущий каркас</span>
+                    <span>{t.ttxLabels.windStructural}</span>
                   </div>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
                     <div className="p-3.5 rounded-xl bg-[#FAF8F5] border border-[#EFECE4]">
-                      <div className="text-[#78716C] font-medium">Пространственная схема жесткости</div>
+                      <div className="text-[#78716C] font-medium">{t.ttxLabels.lateralSystem}</div>
                       <div className="text-xs font-semibold text-[#1C1917] mt-1 leading-relaxed">{building.windStructural.lateralSystem}</div>
                     </div>
                     <div className="p-3.5 rounded-xl bg-[#FAF8F5] border border-[#EFECE4]">
-                      <div className="text-[#78716C] font-medium">Гашение вихрей (Vortex Shedding)</div>
+                      <div className="text-[#78716C] font-medium">{t.ttxLabels.vortexDamping}</div>
                       <div className="text-xs font-semibold text-[#1C1917] mt-1 leading-relaxed">{building.windStructural.dampingMechanism}</div>
                     </div>
                     <div className="p-3.5 rounded-xl bg-[#FAF8F5] border border-[#EFECE4]">
-                      <div className="text-[#78716C] font-medium">Максимальное отклонение верхушки (Шторм 50 лет)</div>
+                      <div className="text-[#78716C] font-medium">{t.ttxLabels.maxApexSway}</div>
                       <div className="text-sm font-bold text-[#8C6A48] font-mono mt-1">{building.windStructural.maxApexSwayMeters}</div>
                     </div>
                     <div className="p-3.5 rounded-xl bg-[#FAF8F5] border border-[#EFECE4]">
-                      <div className="text-[#78716C] font-medium">Класс прочности бетона ядра</div>
+                      <div className="text-[#78716C] font-medium">{t.ttxLabels.concreteStrength}</div>
                       <div className="text-sm font-bold text-[#1C1917] font-mono mt-1">{building.windStructural.concreteStrengthGrade}</div>
                     </div>
                   </div>
@@ -363,27 +363,27 @@ export default function BuildingDetailClient({
                 <div className="rounded-2xl border border-[#E5DFD3] bg-white p-6 shadow-soft-tint space-y-4">
                   <div className="flex items-center gap-2.5 text-sm font-bold text-[#8C6A48] border-b border-[#EFECE4] pb-2 uppercase tracking-wide">
                     <span>☀️</span>
-                    <span>Фасадное остекление и климатическая стойкость</span>
+                    <span>{t.ttxLabels.facadeGlazing}</span>
                   </div>
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
                     <div className="p-3 rounded-xl bg-[#FAF8F5] border border-[#EFECE4] sm:col-span-3">
-                      <div className="text-[#78716C] font-medium">Спецификация стеклопакетов</div>
+                      <div className="text-[#78716C] font-medium">{t.ttxLabels.glazingSpec}</div>
                       <div className="text-xs font-semibold text-[#1C1917] mt-1 leading-relaxed">{building.facade.glazingType}</div>
                     </div>
                     <div className="p-3 rounded-xl bg-[#FAF8F5] border border-[#EFECE4]">
-                      <div className="text-[#78716C] font-medium">Солнцезащитный фактор (SHGC)</div>
+                      <div className="text-[#78716C] font-medium">{t.ttxLabels.shgc}</div>
                       <div className="text-sm font-bold text-[#1C1917] font-mono mt-1">{building.facade.shgcSolarCoefficient}</div>
                     </div>
                     <div className="p-3 rounded-xl bg-[#FAF8F5] border border-[#EFECE4]">
-                      <div className="text-[#78716C] font-medium">Теплопередача U-Value</div>
+                      <div className="text-[#78716C] font-medium">{t.ttxLabels.uValue}</div>
                       <div className="text-sm font-bold text-[#1C1917] font-mono mt-1">{building.facade.uValueWPerM2K}</div>
                     </div>
                     <div className="p-3 rounded-xl bg-[#FAF8F5] border border-[#EFECE4]">
-                      <div className="text-[#78716C] font-medium">Цикл мойки фасада люльками BMU</div>
+                      <div className="text-[#78716C] font-medium">{t.ttxLabels.cleaningCycle}</div>
                       <div className="text-sm font-bold text-[#1C1917] font-mono mt-1">{building.facade.cleaningCycleDays}</div>
                     </div>
                     <div className="p-3 rounded-xl bg-[#FAF8F5] border border-[#EFECE4] sm:col-span-3">
-                      <div className="text-[#78716C] font-medium">Система фасадного обслуживания (BMU)</div>
+                      <div className="text-[#78716C] font-medium">{t.ttxLabels.bmu}</div>
                       <div className="text-xs text-[#57534E] mt-1">{building.facade.bmuCleaningSystem}</div>
                     </div>
                   </div>
@@ -393,27 +393,27 @@ export default function BuildingDetailClient({
                 <div className="rounded-2xl border border-[#E5DFD3] bg-white p-6 shadow-soft-tint space-y-4">
                   <div className="flex items-center gap-2.5 text-sm font-bold text-[#8C6A48] border-b border-[#EFECE4] pb-2 uppercase tracking-wide">
                     <span>🛗</span>
-                    <span>Вертикальный транспорт (Лифты)</span>
+                    <span>{t.ttxLabels.verticalTransport}</span>
                   </div>
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs">
                     <div className="p-3 rounded-xl bg-[#FAF8F5] border border-[#EFECE4]">
-                      <div className="text-[#78716C] font-medium">Производитель</div>
+                      <div className="text-[#78716C] font-medium">{t.ttxLabels.elevatorMfg}</div>
                       <div className="text-base font-bold text-[#1C1917] mt-1">{building.verticalTransport.elevatorManufacturer}</div>
                     </div>
                     <div className="p-3 rounded-xl bg-[#FAF8F5] border border-[#EFECE4]">
-                      <div className="text-[#78716C] font-medium">Всего лифтов</div>
-                      <div className="text-base font-bold text-[#1C1917] font-mono mt-1">{building.verticalTransport.totalElevators} кабин</div>
+                      <div className="text-[#78716C] font-medium">{t.ttxLabels.elevatorsTotal}</div>
+                      <div className="text-base font-bold text-[#1C1917] font-mono mt-1">{building.verticalTransport.totalElevators} {t.ttxLabels.units}</div>
                     </div>
                     <div className="p-3 rounded-xl bg-[#FAF8F5] border border-[#EFECE4]">
-                      <div className="text-[#78716C] font-medium">Макс. скорость</div>
-                      <div className="text-base font-bold text-[#8C6A48] font-mono mt-1">{building.verticalTransport.maxSpeedMs} м/с</div>
+                      <div className="text-[#78716C] font-medium">{t.ttxLabels.maxSpeed}</div>
+                      <div className="text-base font-bold text-[#8C6A48] font-mono mt-1">{building.verticalTransport.maxSpeedMs} {t.ttxLabels.speedUnit}</div>
                     </div>
                     <div className="p-3 rounded-xl bg-[#FAF8F5] border border-[#EFECE4]">
-                      <div className="text-[#78716C] font-medium">Ожидание в пик</div>
+                      <div className="text-[#78716C] font-medium">{t.ttxLabels.peakWait}</div>
                       <div className="text-base font-bold text-[#1C1917] font-mono mt-1">{building.verticalTransport.peakWaitingSeconds}</div>
                     </div>
                     <div className="p-3 rounded-xl bg-[#FAF8F5] border border-[#EFECE4] col-span-2 sm:col-span-4">
-                      <div className="text-[#78716C] font-medium">Схема зонирования и шлюзы</div>
+                      <div className="text-[#78716C] font-medium">{t.ttxLabels.zoningStrategy}</div>
                       <div className="text-xs text-[#57534E] mt-1">{building.verticalTransport.zoningStrategy}</div>
                     </div>
                   </div>
@@ -424,20 +424,20 @@ export default function BuildingDetailClient({
                   <div className="flex items-center justify-between border-b border-[#EFECE4] pb-2">
                     <div className="flex items-center gap-2.5 text-sm font-bold text-[#1C1917] uppercase tracking-wide">
                       <span>📊</span>
-                      <span>Экономика резидента: Коммунальные платежи и комфорт</span>
+                      <span>{t.ttxLabels.operatingClimate}</span>
                     </div>
                     <span className="text-xs font-mono font-bold text-[#8C6A48]">DLD OFFICIAL INDEX</span>
                   </div>
                   <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 text-xs">
                     <div className="p-4 rounded-xl bg-[#EFECE4]/60 border border-[#DDD7CA]">
-                      <div className="text-[#78716C] font-medium uppercase">Service Charge (Ежегодно)</div>
+                      <div className="text-[#78716C] font-medium uppercase">{t.ttxLabels.serviceCharge}</div>
                       <div className="text-xl font-extrabold text-[#1C1917] font-mono mt-1">
                         {building.operatingSpecs.annualServiceChargeAedSqFt} <span className="text-xs font-normal">AED/sq.ft</span>
                       </div>
-                      <p className="text-xs text-[#64748B] mt-1">Официальный тариф реестра RERA на обслуживание</p>
+                      <p className="text-xs text-[#64748B] mt-1">{t.ttxLabels.reraNotice}</p>
                     </div>
                     <div className="p-4 rounded-xl bg-[#EFECE4]/60 border border-[#DDD7CA]">
-                      <div className="text-[#78716C] font-medium uppercase">Тип охлаждения (Chiller)</div>
+                      <div className="text-[#78716C] font-medium uppercase">{t.ttxLabels.coolingProvider}</div>
                       <div className="text-base font-bold text-[#1C1917] mt-1">{building.operatingSpecs.coolingProvider}</div>
                       <span className={`inline-block mt-1 px-2.5 py-0.5 rounded text-xs font-bold ${
                         building.operatingSpecs.chillerBilling === 'Chiller-Free' 
@@ -448,20 +448,20 @@ export default function BuildingDetailClient({
                       </span>
                     </div>
                     <div className="p-4 rounded-xl bg-[#EFECE4]/60 border border-[#DDD7CA]">
-                      <div className="text-[#78716C] font-medium uppercase">Звукоизоляция межквартирная</div>
+                      <div className="text-[#78716C] font-medium uppercase">{t.ttxLabels.acoustic}</div>
                       <div className="text-xl font-extrabold text-[#1C1917] font-mono mt-1">{building.operatingSpecs.acousticRatingDb}</div>
-                      <p className="text-xs text-[#64748B] mt-1">Индекс снижения воздушного шума перекрытий</p>
+                      <p className="text-xs text-[#64748B] mt-1">{t.ttxLabels.acousticDesc}</p>
                     </div>
                     <div className="p-3.5 rounded-xl bg-[#FAF8F5] border border-[#EFECE4]">
-                      <div className="text-[#78716C] font-medium">Высота потолков (В чистоте)</div>
-                      <div className="text-sm font-bold text-[#1C1917] font-mono mt-1">{building.operatingSpecs.clearCeilingHeightMeters} м</div>
+                      <div className="text-[#78716C] font-medium">{t.ttxLabels.ceilingHeight}</div>
+                      <div className="text-sm font-bold text-[#1C1917] font-mono mt-1">{building.operatingSpecs.clearCeilingHeightMeters} {t.ttxLabels.meters}</div>
                     </div>
                     <div className="p-3.5 rounded-xl bg-[#FAF8F5] border border-[#EFECE4]">
-                      <div className="text-[#78716C] font-medium">Колонны внутри планировок</div>
+                      <div className="text-[#78716C] font-medium">{t.ttxLabels.columnImpact}</div>
                       <div className="text-xs font-bold text-[#1C1917] mt-1">{building.layoutEfficiency.columnImpact}</div>
                     </div>
                     <div className="p-3.5 rounded-xl bg-[#FAF8F5] border border-[#EFECE4]">
-                      <div className="text-[#78716C] font-medium">Полезная площадь (Net-to-Gross)</div>
+                      <div className="text-[#78716C] font-medium">{t.ttxLabels.netGross}</div>
                       <div className="text-sm font-bold text-[#2D6A4F] font-mono mt-1">{building.layoutEfficiency.netToGrossRatio}</div>
                     </div>
                   </div>
@@ -501,9 +501,9 @@ export default function BuildingDetailClient({
                   <span className="font-mono font-bold text-[#2D6A4F] text-right">{building.investmentYield}</span>
                 </div>
                 <div className="flex justify-between items-center">
-                  <span className="text-[#78716C]">Годовой сбор DLD</span>
+                  <span className="text-[#78716C]">{t.ttxLabels.serviceCharge}</span>
                   <span className="font-mono font-bold text-[#8C6A48] text-right">
-                    {building.operatingSpecs ? `${building.operatingSpecs.annualServiceChargeAedSqFt} AED/sq.ft` : "По запросу"}
+                    {building.operatingSpecs ? `${building.operatingSpecs.annualServiceChargeAedSqFt} AED/sq.ft` : "—"}
                   </span>
                 </div>
                 <div className="flex justify-between items-center">

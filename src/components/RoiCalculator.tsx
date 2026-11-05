@@ -222,14 +222,14 @@ export default function RoiCalculator({
           <div className="lg:col-span-5 lg:sticky lg:top-28 p-6 sm:p-8 rounded-3xl bg-white border border-[#E2E8F0] space-y-6 shadow-float-card">
             <div>
               <span className="text-xs sm:text-sm font-mono font-bold uppercase tracking-wider text-[#64748B]">
-                ПРОГНОЗ ДОХОДНОСТИ
+                {t.calculator.annualProjections}
               </span>
               <div className="mt-2 flex items-baseline gap-3">
                 <div className="text-5xl sm:text-6xl font-extrabold font-mono text-[#059669] tracking-tight">
                   {calculations.netRoiFormatted}%
                 </div>
                 <span className="text-sm sm:text-base font-semibold text-[#475569]">
-                  Чистая доходность (Net ROI)
+                  {t.calculator.netRoiSub}
                 </span>
               </div>
             </div>
@@ -237,25 +237,25 @@ export default function RoiCalculator({
             {/* Financial Metrics Breakdown */}
             <div className="space-y-4 py-4 border-y border-[#F1F5F9] text-sm sm:text-base">
               <div className="flex justify-between items-center">
-                <span className="text-[#64748B]">Валовый доход / год</span>
+                <span className="text-[#64748B]">{t.calculator.estimatedGross}</span>
                 <span className="font-mono font-bold text-[#0F172A]">
                   {calculations.grossIncomeConverted} {curr.symbol}
                 </span>
               </div>
               <div className="flex justify-between items-center">
-                <span className="text-[#64748B]">Сборы Service Charges (DLD)</span>
+                <span className="text-[#64748B]">{t.calculator.maintenanceCharges}</span>
                 <span className="font-mono font-bold text-[#9E4732]">
                   - {calculations.serviceChargesConverted} {curr.symbol}
                 </span>
               </div>
               <div className="flex justify-between items-center pt-3 border-t border-[#F1F5F9]">
-                <span className="font-bold text-[#0F172A]">Чистый доход / год</span>
+                <span className="font-bold text-[#0F172A]">{t.calculator.annualNetProfit}</span>
                 <span className="font-mono font-bold text-[#059669] text-base sm:text-lg">
                   {calculations.netIncomeConverted} {curr.symbol}
                 </span>
               </div>
               <div className="flex justify-between items-center">
-                <span className="text-[#64748B]">Прогноз возврата за 5 лет (+капитализация)</span>
+                <span className="text-[#64748B]">{t.calculator.fiveYearReturn}</span>
                 <span className="font-mono font-bold text-[#0F172A]">
                   {calculations.fiveYearTotalReturnConverted} {curr.symbol}
                 </span>
@@ -292,10 +292,8 @@ export default function RoiCalculator({
               </div>
               <div className="font-semibold leading-relaxed">
                 {calculations.isGoldenVisaEligible
-                  ? "Соответствует порогу Золотой визы ОАЭ на 10 лет (от 2 млн AED)"
-                  : "До порога Золотой визы: + " +
-                    new Intl.NumberFormat("en-US").format(Math.max(0, 2000000 - priceAed)) +
-                    " AED"}
+                  ? t.calculator.goldenVisaQualified
+                  : `${t.calculator.goldenVisaNeed} + ${new Intl.NumberFormat("en-US").format(Math.max(0, 2000000 - priceAed))} AED`}
               </div>
             </div>
 
@@ -308,16 +306,16 @@ export default function RoiCalculator({
                 className="w-full flex items-center justify-center gap-2 px-5 py-4 rounded-xl bg-[#0F172A] hover:bg-[#1E293B] text-white font-bold text-sm sm:text-base uppercase tracking-wider shadow-sm transition-all"
               >
                 <span>💬</span>
-                <span>Запросить лоты под расчет (WhatsApp)</span>
+                <span>{t.calculator.whatsappConsultation}</span>
               </a>
 
               {onOpenInquire && (
                 <button
                   type="button"
-                  onClick={() => onOpenInquire(buildingName || `Бюджет ${calculations.priceConverted} ${curr.symbol}`)}
+                  onClick={() => onOpenInquire(buildingName || `${t.goldenVisaWidget.step1}: ${calculations.priceConverted} ${curr.symbol}`)}
                   className="w-full py-3 rounded-xl border border-[#E2E8F0] hover:bg-[#F8F9FA] text-xs sm:text-sm font-semibold text-[#475569] hover:text-[#0F172A] transition-colors"
                 >
-                  Отправить заявку брокеру
+                  {t.calculator.inquireCalculationCta}
                 </button>
               )}
             </div>

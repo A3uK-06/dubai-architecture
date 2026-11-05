@@ -42,7 +42,7 @@ export default function DistrictsSection() {
               className="group rounded-2xl border border-[#E2E8F0] bg-white overflow-hidden flex flex-col h-full hover:border-[#0F172A]/40 transition-all duration-300 shadow-float-card hover:shadow-float-card-hover"
             >
               {/* Photography Header with Floating Badges */}
-              <div className="relative h-56 w-full overflow-hidden bg-[#F1F5F9]">
+              <div className="relative h-56 w-full overflow-hidden bg-[#0F172A]">
                 <Image
                   src={district.image}
                   alt={district.name}
@@ -50,12 +50,12 @@ export default function DistrictsSection() {
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 25vw"
                   className="object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0F172A]/85 via-[#0F172A]/20 to-transparent" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent" />
                 <div className="absolute top-3 left-3 right-3 flex justify-between items-start z-10">
-                  <span className="text-xs sm:text-sm font-bold font-mono px-3 py-1.5 rounded-full bg-[#0F172A]/85 text-white border border-white/20 backdrop-blur-md shadow-sm">
+                  <span className="text-xs sm:text-sm font-bold font-mono px-3 py-1.5 rounded-full bg-black/80 text-white border border-white/25 backdrop-blur-md shadow-sm">
                     ROI: {district.averageRoi}
                   </span>
-                  <span className="text-xs sm:text-sm text-white font-mono font-bold px-3 py-1.5 rounded-full bg-[#0F172A]/85 border border-white/20 backdrop-blur-md shadow-sm">
+                  <span className="text-xs sm:text-sm text-white font-mono font-bold px-3 py-1.5 rounded-full bg-black/80 border border-white/25 backdrop-blur-md shadow-sm">
                     {district.iconicTowersCount}+ {t.districts.towersCount}
                   </span>
                 </div>

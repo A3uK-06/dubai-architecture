@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./compiled-tailwind.css";
 import Providers from "@/components/Providers";
 import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 import SchemaOrg from "@/components/SchemaOrg";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 import Tracker from "@/components/Tracker";
@@ -75,6 +76,7 @@ export default function RootLayout({
           <SchemaOrg type="website" />
           <Header />
           {children}
+          <Footer />
           <FloatingWhatsApp />
         </Providers>
       </body>

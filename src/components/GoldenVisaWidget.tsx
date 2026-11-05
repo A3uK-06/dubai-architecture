@@ -353,13 +353,13 @@ export default function GoldenVisaWidget({ onOpenInquire }: GoldenVisaWidgetProp
               {isSubmitted ? (
                 <div className="p-7 rounded-2xl bg-emerald-50 border border-emerald-200 text-center space-y-3.5">
                   <div className="text-4xl">✅</div>
-                  <h4 className="text-xl font-bold text-[#059669]">Заявка успешно принята</h4>
+                  <h4 className="text-xl font-bold text-[#059669]">{gw.submittedTitle}</h4>
                   <p className="text-sm sm:text-base text-[#475569] leading-relaxed">
-                    Наш аккредитованный специалист свяжется с вами для оформления Золотой визы.
+                    {gw.submittedDesc}
                   </p>
                   {routingResult && (
                     <div className="text-xs sm:text-sm font-mono text-[#0F172A] pt-2">
-                      Направлено в отдел: <strong>{routingResult.agencyDesk}</strong>
+                      {gw.routedTo} <strong>{routingResult.agencyDesk}</strong>
                     </div>
                   )}
                 </div>
@@ -398,11 +398,11 @@ export default function GoldenVisaWidget({ onOpenInquire }: GoldenVisaWidgetProp
                     disabled={isSubmitting}
                     className="w-full py-4 rounded-xl bg-[#0F172A] hover:bg-[#1E293B] text-white font-bold text-sm sm:text-base uppercase tracking-wider shadow-sm transition-all disabled:opacity-50"
                   >
-                    {isSubmitting ? "Отправка..." : gw.submitBtn}
+                    {isSubmitting ? gw.submitting : gw.submitBtn}
                   </button>
 
                   <p className="text-xs sm:text-sm text-[#64748B] text-center">
-                    🔒 Конфиденциально. Официальный протокол аккредитации RERA ОАЭ.
+                    {gw.confidentialNotice}
                   </p>
                 </form>
               )}
