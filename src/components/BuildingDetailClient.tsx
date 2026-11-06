@@ -210,7 +210,7 @@ export default function BuildingDetailClient({
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
           {/* Left 2 Columns: Full Engineering Passport & Architectural Analysis */}
-          <div className="lg:col-span-2 space-y-12">
+          <div className="lg:col-span-2 space-y-16">
             
             {/* Architectural Overview */}
             <section className="space-y-4">
@@ -336,19 +336,19 @@ export default function BuildingDetailClient({
                 {/* 4 Practical Resident Metrics */}
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
                   <div className="p-3.5 rounded-xl bg-white/5 border border-white/10 space-y-1">
-                    <div className="text-[11px] text-slate-400 font-medium">🛗 {tAudit.liftWait}</div>
+                    <div className="text-xs text-slate-300 font-medium">🛗 {tAudit.liftWait}</div>
                     <div className="text-xs font-bold text-white">{audit.elevatorPeakWaitReality}</div>
                   </div>
                   <div className="p-3.5 rounded-xl bg-white/5 border border-white/10 space-y-1">
-                    <div className="text-[11px] text-slate-400 font-medium">🚗 {tAudit.guestParking}</div>
+                    <div className="text-xs text-slate-300 font-medium">🚗 {tAudit.guestParking}</div>
                     <div className="text-xs font-bold text-white">{audit.guestParkingReality}</div>
                   </div>
                   <div className="p-3.5 rounded-xl bg-white/5 border border-white/10 space-y-1">
-                    <div className="text-[11px] text-slate-400 font-medium">🔇 {tAudit.soundproofing}</div>
+                    <div className="text-xs text-slate-300 font-medium">🔇 {tAudit.soundproofing}</div>
                     <div className="text-xs font-bold text-white">{audit.soundproofingRating}</div>
                   </div>
                   <div className="p-3.5 rounded-xl bg-white/5 border border-white/10 space-y-1">
-                    <div className="text-[11px] text-slate-400 font-medium">🏖️ {tAudit.airbnbPolicy}</div>
+                    <div className="text-xs text-slate-300 font-medium">🏖️ {tAudit.airbnbPolicy}</div>
                     <div className="text-xs font-bold text-white">{audit.airbnbHolidayHomesPolicy}</div>
                   </div>
                 </div>
@@ -712,7 +712,7 @@ export default function BuildingDetailClient({
                 <span>{tAudit.consultArchitectBtn}</span>
               </a>
 
-              <div className="p-3 rounded-xl bg-[#FAF8F5] border border-[#DDD7CA] text-[11px] text-[#78716C] text-center leading-normal">
+              <div className="p-3 rounded-xl bg-[#FAF8F5] border border-[#DDD7CA] text-xs text-[#78716C] text-center leading-normal">
                 <strong className="text-[#8C6A48]">{tAudit.neutralityLabel}</strong> {tAudit.neutralityText}
               </div>
             </div>

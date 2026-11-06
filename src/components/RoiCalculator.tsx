@@ -379,7 +379,7 @@ export default function RoiCalculator({
             <div className="flex justify-between items-start gap-2 pt-3 border-t border-[#F1F5F9] bg-[#F8FAFC] -mx-3 p-3 rounded-xl">
               <div className="min-w-0">
                 <span className="font-extrabold text-[#0F172A] block break-words">{t.calculator.annualNetProfit}</span>
-                <span className="text-[11px] text-[#64748B] font-mono block break-words">
+                <span className="text-xs text-[#64748B] font-sans block break-words">
                   {({
     ru: "Реальный Net Cash Flow",
     ar: "صافي التدفق النقدي الفعلي",
@@ -407,7 +407,7 @@ export default function RoiCalculator({
           </div>
 
           {/* Independent Auditor Stamp */}
-          <div className="p-3 rounded-xl bg-[#FAF8F5] border border-[#E5DFD3] text-[11px] text-[#78716C] leading-normal flex items-start gap-2">
+          <div className="p-3 rounded-xl bg-[#FAF8F5] border border-[#E5DFD3] text-xs text-[#78716C] leading-relaxed flex items-start gap-2.5">
             <span className="text-sm">🛡️</span>
             <div>
               <strong className="text-[#8C6A48] font-bold">
