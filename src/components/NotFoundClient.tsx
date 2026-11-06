@@ -142,6 +142,11 @@ export default function NotFoundClient() {
 
     const path = window.location.pathname.toLowerCase();
 
+    // SPAM QUARANTINE: Never redirect historical casino/lottery spam (404 hard stop)
+    if (/togel|slot|judi|casino|poker|gacor|bandar|sbobet/i.test(path)) {
+      return;
+    }
+
     // Check against legacy patterns or building names
     for (const building of BUILDINGS) {
       if (
