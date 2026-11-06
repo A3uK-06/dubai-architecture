@@ -3,6 +3,7 @@
 import React, { useMemo } from "react";
 import { Building, getBuildingAuditReview, getBuildingFloorPlans, getBuildingDldLedger } from "@/data/buildings";
 import { useLang } from "@/context/LangContext";
+import { getLocalizedFloorPlan, TYPOLOGY_NAMES } from "@/data/floorPlanI18n";
 
 interface DossierViewerModalProps {
   isOpen: boolean;
@@ -18,8 +19,12 @@ export default function DossierViewerModal({
   const { lang } = useLang();
 
   const audit = useMemo(() => getBuildingAuditReview(building), [building]);
-  const plans = useMemo(() => getBuildingFloorPlans(building), [building]);
+  const rawPlans = useMemo(() => getBuildingFloorPlans(building), [building]);
   const ledger = useMemo(() => getBuildingDldLedger(building), [building]);
+
+  const plans = useMemo(() => {
+    return rawPlans.map((p) => getLocalizedFloorPlan(p, lang, building.name));
+  }, [rawPlans, lang, building.name]);
 
   if (!isOpen) return null;
 
@@ -45,7 +50,7 @@ export default function DossierViewerModal({
             <button
               type="button"
               onClick={handlePrint}
-              className="px-4 py-2 rounded-xl bg-[#0F172A] hover:bg-[#1E293B] text-white text-xs font-mono font-bold transition-all flex items-center gap-2 shadow-xs"
+              className="px-4 py-2 rounded-xl bg-[#0F172A] hover:bg-[#1E293B] text-white text-xs font-mono font-bold transition-all flex items-center gap-2 shadow-xs cursor-pointer"
             >
               <span>🖨️</span>
               <span>{lang === "ru" ? "Сохранить как PDF / Печать" : "Save as PDF / Print Document"}</span>
@@ -53,7 +58,7 @@ export default function DossierViewerModal({
             <button
               type="button"
               onClick={onClose}
-              className="w-8 h-8 rounded-xl bg-[#F1F5F9] hover:bg-[#E2E8F0] text-[#64748B] hover:text-[#0F172A] flex items-center justify-center font-bold text-sm transition-colors"
+              className="w-8 h-8 rounded-xl bg-[#F1F5F9] hover:bg-[#E2E8F0] text-[#64748B] hover:text-[#0F172A] flex items-center justify-center font-bold text-sm transition-colors cursor-pointer"
             >
               ✕
             </button>
@@ -144,7 +149,7 @@ export default function DossierViewerModal({
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
               <div className="p-3 rounded-xl border border-[#E2E8F0] bg-white">
                 <div className="text-[#64748B] font-mono">{lang === "ru" ? "Свайное поле" : "Deep Foundations"}:</div>
-                <div className="font-bold mt-1 text-[#0F172A]">{building.foundation.pilesCount} piles • {building.foundation.pileDepthMeters}m depth</div>
+                <div className="font-bold mt-1 text-[#0F172A]">{building.foundation.pilesCount} {lang === "ru" ? "свай" : "piles"} • {building.foundation.pileDepthMeters}m depth</div>
                 <div className="text-[11px] text-[#64748B] mt-0.5">{building.foundation.bedrockType}</div>
               </div>
 
@@ -186,7 +191,7 @@ export default function DossierViewerModal({
                 <strong className="text-sm font-bold text-[#059669]">{audit.airbnbHolidayHomesPolicy}</strong>
               </div>
             </div>
-            <div className="text-[11px] text-[#64748B] font-mono p-2 bg-[#FAF8F5] rounded-lg">
+            <div className="text-[11px] text-[#64748B] font-mono p-2.5 bg-[#FAF8F5] rounded-xl border border-[#DDD7CA]">
               💡 {audit.hiddenOperatingCosts}
             </div>
           </div>
@@ -199,13 +204,15 @@ export default function DossierViewerModal({
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
               {plans.map((p) => (
-                <div key={p.id} className="p-3 rounded-xl border border-[#E2E8F0] bg-white space-y-1">
-                  <div className="flex justify-between font-bold text-[#0F172A]">
-                    <span>{p.typeTag}</span>
-                    <span className="font-mono text-[#8C6A48]">{p.totalAreaSqFt} sq.ft ({p.totalAreaSqM} m²)</span>
+                <div key={p.id} className="p-3.5 rounded-xl border border-[#E2E8F0] bg-white space-y-1.5">
+                  <div className="flex justify-between items-baseline font-bold text-[#0F172A]">
+                    <span className="text-sm font-heading">{p.typeTag}</span>
+                    <span className="font-mono text-[#8C6A48] font-bold">{p.totalAreaSqFt} sq.ft ({p.totalAreaSqM} m²)</span>
                   </div>
-                  <div className="text-[#64748B] text-[11px]">
-                    Internal: {p.internalAreaSqFt} sq.ft • Balcony: {p.balconyAreaSqFt} sq.ft • {p.roomsBreakdown.bedrooms} Bed, {p.roomsBreakdown.bathrooms} Bath
+                  <div className="text-[#64748B] text-[11px] leading-relaxed">
+                    {lang === "ru"
+                      ? `Жилая площадь: ${p.internalAreaSqFt} sq.ft • Балкон: ${p.balconyAreaSqFt} sq.ft • Спален: ${p.roomsBreakdown.bedrooms}, Санузлов: ${p.roomsBreakdown.bathrooms}`
+                      : `Internal: ${p.internalAreaSqFt} sq.ft • Balcony: ${p.balconyAreaSqFt} sq.ft • ${p.roomsBreakdown.bedrooms} Bed, ${p.roomsBreakdown.bathrooms} Bath`}
                   </div>
                 </div>
               ))}
@@ -221,21 +228,21 @@ export default function DossierViewerModal({
             <table className="w-full text-left text-xs border border-[#E2E8F0] rounded-xl overflow-hidden">
               <thead className="bg-[#F8FAFC] font-mono text-[#64748B] text-[10px] uppercase">
                 <tr>
-                  <th className="p-2.5">Date / ID</th>
-                  <th className="p-2.5">Unit Typology</th>
-                  <th className="p-2.5">Area</th>
-                  <th className="p-2.5">Rate / sq.ft</th>
-                  <th className="p-2.5 text-right">Amount (AED)</th>
+                  <th className="p-2.5">{lang === "ru" ? "Дата / ID" : "Date / ID"}</th>
+                  <th className="p-2.5">{lang === "ru" ? "Типология" : "Unit Typology"}</th>
+                  <th className="p-2.5">{lang === "ru" ? "Площадь" : "Area"}</th>
+                  <th className="p-2.5">{lang === "ru" ? "Цена / кв.фут" : "Rate / sq.ft"}</th>
+                  <th className="p-2.5 text-right">{lang === "ru" ? "Сумма сделки" : "Amount (AED)"}</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-[#F1F5F9] font-mono">
                 {ledger.recentTransactions.slice(0, 4).map((tx) => (
                   <tr key={tx.id}>
-                    <td className="p-2 text-[#64748B]">{tx.date} ({tx.id})</td>
-                    <td className="p-2 font-bold text-[#0F172A]">{tx.unitType}</td>
-                    <td className="p-2">{tx.areaSqFt} sq.ft</td>
-                    <td className="p-2 text-[#8C6A48] font-bold">{tx.pricePerSqFtAed} AED</td>
-                    <td className="p-2 text-right font-bold text-[#0F172A]">{new Intl.NumberFormat("en-US").format(tx.amountAed)} AED</td>
+                    <td className="p-2.5 text-[#64748B]">{tx.date} ({tx.id})</td>
+                    <td className="p-2.5 font-bold text-[#0F172A]">{TYPOLOGY_NAMES[tx.unitType]?.[lang] || tx.unitType}</td>
+                    <td className="p-2.5">{tx.areaSqFt} sq.ft</td>
+                    <td className="p-2.5 text-[#8C6A48] font-bold">{tx.pricePerSqFtAed} AED</td>
+                    <td className="p-2.5 text-right font-bold text-[#0F172A]">{new Intl.NumberFormat("en-US").format(tx.amountAed)} AED</td>
                   </tr>
                 ))}
               </tbody>
@@ -249,12 +256,19 @@ export default function DossierViewerModal({
                 DUBAI-ARCHITECTURE.INFO • INDEPENDENT REPOSITORY
               </div>
               <div className="text-[11px]">
-                Data certified against DLD open transactions, Mollak service charge index, and municipal engineering records.
+                {lang === "ru"
+                  ? "Данные сверены с открытыми реестрами DLD, сервисом Mollak и муниципальной технической документацией."
+                  : "Data certified against DLD open transactions, Mollak service charge index, and municipal engineering records."}
               </div>
             </div>
 
-            <div className="p-3 rounded-xl bg-[#FAF8F5] border border-[#DDD7CA] text-[11px] text-[#78716C] max-w-sm">
-              <strong className="text-[#8C6A48] font-bold">Confidential Pre-Purchase Due Diligence:</strong> For independent physical engineering inspections or RERA escrow verification, contact senior audit desk: <strong>info@dubai-architecture.info</strong>
+            <div className="p-3.5 rounded-xl bg-[#FAF8F5] border border-[#DDD7CA] text-[11px] text-[#78716C] max-w-sm">
+              <strong className="text-[#8C6A48] font-bold">
+                {lang === "ru" ? "Конфиденциальная предпродажная экспертиза:" : "Confidential Pre-Purchase Due Diligence:"}
+              </strong>{" "}
+              {lang === "ru"
+                ? "Для независимой выездной инженерной проверки объекта или верификации эскроу-счетов RERA свяжитесь с аудиторским отделом: info@dubai-architecture.info"
+                : "For independent physical engineering inspections or RERA escrow verification, contact senior audit desk: info@dubai-architecture.info"}
             </div>
           </div>
         </div>

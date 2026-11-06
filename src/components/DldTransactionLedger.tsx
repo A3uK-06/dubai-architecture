@@ -3,6 +3,7 @@
 import React, { useState, useMemo } from "react";
 import { Building, getBuildingDldLedger } from "@/data/buildings";
 import { useLang } from "@/context/LangContext";
+import { DLD_PROCEDURES, TYPOLOGY_NAMES, localizeFloorZone } from "@/data/floorPlanI18n";
 
 interface DldTransactionLedgerProps {
   building: Building;
@@ -31,6 +32,14 @@ export default function DldTransactionLedger({ building }: DldTransactionLedgerP
     return new Intl.NumberFormat("en-US").format(num);
   };
 
+  const getLocalizedProcedure = (procedure: string) => {
+    return DLD_PROCEDURES[procedure]?.[lang] || procedure;
+  };
+
+  const getLocalizedUnitType = (unitType: string) => {
+    return TYPOLOGY_NAMES[unitType]?.[lang] || unitType;
+  };
+
   return (
     <section id="dld-ledger" className="rounded-3xl bg-white border border-[#E2E8F0] p-6 sm:p-8 shadow-float-card space-y-6">
       {/* Header with DLD Open Data Badge */}
@@ -40,7 +49,7 @@ export default function DldTransactionLedger({ building }: DldTransactionLedgerP
             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
             <span>{lang === "ru" ? "Официальные данные DLD Open Data" : "Verified DLD Open Data Stream"}</span>
           </div>
-          <h2 className="text-2xl font-bold tracking-tight text-[#0F172A] font-heading">
+          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#0F172A] font-heading">
             {lang === "ru" ? "Реестр зарегистрированных сделок (DLD)" : "Dubai Land Department Transaction Ledger"}
           </h2>
           <p className="text-xs sm:text-sm text-[#64748B] mt-1">
@@ -49,9 +58,9 @@ export default function DldTransactionLedger({ building }: DldTransactionLedgerP
               : `Actual title-deed sales and mortgage transactions in ${building.name} officially registered with DLD.`}
           </p>
         </div>
-        <div className="text-right self-start sm:self-auto">
-          <div className="text-[11px] font-mono text-[#64748B]">{ledger.metrics.lastUpdatedDld}</div>
-          <div className="text-xs font-bold text-[#8C6A48]">{building.district}</div>
+        <div className="text-right self-start sm:self-auto font-mono text-xs">
+          <div className="text-[#64748B]">{ledger.metrics.lastUpdatedDld}</div>
+          <div className="font-bold text-[#8C6A48]">{building.district}</div>
         </div>
       </div>
 
@@ -115,9 +124,9 @@ export default function DldTransactionLedger({ building }: DldTransactionLedgerP
         <div className="flex flex-wrap gap-1.5 text-xs font-mono">
           {[
             { id: "all", label: lang === "ru" ? "Все сделки" : "All Deeds" },
-            { id: "1bed", label: "1-Bedroom" },
-            { id: "2bed", label: "2-Bedroom" },
-            { id: "3bed", label: "3-Bedroom" },
+            { id: "1bed", label: TYPOLOGY_NAMES["1-Bedroom Suite"]?.[lang] || "1-Bedroom" },
+            { id: "2bed", label: TYPOLOGY_NAMES["2-Bedroom Executive"]?.[lang] || "2-Bedroom" },
+            { id: "3bed", label: TYPOLOGY_NAMES["3-Bedroom Residence"]?.[lang] || "3-Bedroom" },
           ].map((tab) => (
             <button
               key={tab.id}
@@ -156,7 +165,7 @@ export default function DldTransactionLedger({ building }: DldTransactionLedgerP
               <tr key={tx.id} className="hover:bg-[#FAF8F5]/80 transition-colors">
                 <td className="py-3.5 px-4">
                   <div className="font-mono font-bold text-[#0F172A]">{tx.id}</div>
-                  <div className="text-[11px] text-[#64748B]">{tx.date}</div>
+                  <div className="text-[11px] text-[#64748B] font-mono">{tx.date}</div>
                 </td>
                 <td className="py-3.5 px-4">
                   <span
@@ -168,12 +177,12 @@ export default function DldTransactionLedger({ building }: DldTransactionLedgerP
                         : "bg-amber-50 text-amber-700 border border-amber-200"
                     }`}
                   >
-                    {tx.procedure}
+                    {getLocalizedProcedure(tx.procedure)}
                   </span>
                 </td>
                 <td className="py-3.5 px-4">
-                  <div className="font-bold text-[#0F172A]">{tx.unitType}</div>
-                  <div className="text-[11px] text-[#64748B] font-mono">{tx.floorZone}</div>
+                  <div className="font-bold text-[#0F172A]">{getLocalizedUnitType(tx.unitType)}</div>
+                  <div className="text-[11px] text-[#64748B] font-mono">{localizeFloorZone(tx.floorZone, lang)}</div>
                 </td>
                 <td className="py-3.5 px-4 font-mono font-semibold">
                   {formatNumber(tx.areaSqFt)} sq.ft
