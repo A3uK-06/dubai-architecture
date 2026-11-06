@@ -423,11 +423,11 @@ export default function CatalogSection() {
                         Net Yield
                       </div>
                     </div>
-                    <div className="border-x border-[#E2E8F0] px-1">
-                      <div className="text-base sm:text-lg font-bold text-[#0F172A] font-mono leading-none truncate" title={building.startingPriceAed}>
+                    <div className="border-x border-[#E2E8F0] px-1 min-w-0">
+                      <div className="text-sm sm:text-base font-bold text-[#0F172A] font-mono leading-none tracking-tight" title={building.startingPriceAed}>
                         {building.startingPriceAed.replace(" AED", "")}
                       </div>
-                      <div className="text-xs font-semibold text-[#64748B] uppercase tracking-wider mt-1.5">
+                      <div className="text-[10px] sm:text-xs font-semibold text-[#64748B] uppercase tracking-wider mt-1.5 truncate">
                         {t.catalog.startingPriceLabel} (AED)
                       </div>
                     </div>

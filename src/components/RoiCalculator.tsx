@@ -229,7 +229,7 @@ export default function RoiCalculator({
                   key={item.label}
                   type="button"
                   onClick={() => handlePresetPrice(item.val)}
-                  className={`px-3.5 py-2 rounded-xl border font-mono text-xs sm:text-sm transition-all ${
+                  className={`px-3.5 py-2 rounded-xl border font-mono text-xs sm:text-sm text-left transition-all break-words max-w-full ${
                     priceAed === item.val
                       ? "bg-[#0F172A] text-white border-[#0F172A] font-bold shadow-xs"
                       : "bg-[#F8F9FA] text-[#475569] border-[#E2E8F0] hover:bg-[#F1F5F9] hover:text-[#0F172A]"
@@ -302,43 +302,43 @@ export default function RoiCalculator({
         </div>
 
         {/* Right Column: Floating Summary Card */}
-        <div className={`${isEmbedded ? "xl:col-span-5" : "lg:col-span-5 lg:sticky lg:top-28"} p-6 sm:p-8 rounded-3xl bg-white border border-[#E2E8F0] space-y-6 shadow-float-card`}>
+        <div className={`${isEmbedded ? "xl:col-span-5" : "lg:col-span-5 lg:sticky lg:top-28"} p-6 sm:p-8 rounded-3xl bg-white border border-[#E2E8F0] space-y-6 shadow-float-card overflow-hidden`}>
           <div>
             <span className="text-xs sm:text-sm font-mono font-bold uppercase tracking-wider text-[#64748B]">
               {t.calculator.annualProjections}
             </span>
-            <div className="mt-2 flex items-baseline gap-3">
-              <div className="text-5xl sm:text-6xl font-extrabold font-mono text-[#059669] tracking-tight">
+            <div className="mt-2 space-y-1">
+              <div className="text-4xl sm:text-5xl lg:text-6xl font-extrabold font-mono text-[#059669] tracking-tight leading-none">
                 {calculations.netRoiFormatted}%
               </div>
-              <span className="text-sm sm:text-base font-semibold text-[#475569]">
+              <p className="text-xs sm:text-sm font-semibold text-[#475569] leading-snug break-words">
                 {t.calculator.netRoiSub}
-              </span>
+              </p>
             </div>
           </div>
 
           {/* Financial Metrics Breakdown with Honest Line Items */}
           <div className="space-y-3.5 py-4 border-y border-[#F1F5F9] text-xs sm:text-sm">
-            <div className="flex justify-between items-center">
-              <span className="text-[#64748B] font-medium">{t.calculator.estimatedGross}</span>
-              <span className="font-mono font-bold text-[#0F172A]">
+            <div className="flex justify-between items-start gap-2">
+              <span className="text-[#64748B] font-medium min-w-0 break-words">{t.calculator.estimatedGross}</span>
+              <span className="font-mono font-bold text-[#0F172A] shrink-0 text-right">
                 +{calculations.grossIncomeConverted} {curr.symbol}
               </span>
             </div>
 
-            <div className="flex justify-between items-center text-rose-700">
-              <span className="text-[#64748B] flex items-center gap-1.5">
-                <span>🏢</span>
-                <span>{t.calculator.maintenanceCharges}</span>
+            <div className="flex justify-between items-start gap-2 text-rose-700">
+              <span className="text-[#64748B] flex items-start gap-1.5 min-w-0 break-words">
+                <span className="shrink-0">🏢</span>
+                <span className="break-words">{t.calculator.maintenanceCharges}</span>
               </span>
-              <span className="font-mono font-bold text-[#9E4732]">
+              <span className="font-mono font-bold text-[#9E4732] shrink-0 text-right">
                 -{calculations.serviceChargesConverted} {curr.symbol}
               </span>
             </div>
 
-            <div className="flex justify-between items-center text-rose-700">
-              <span className="text-[#64748B] flex items-center gap-1.5">
-                <span>❄️</span>
+            <div className="flex justify-between items-start gap-2 text-rose-700">
+              <span className="text-[#64748B] flex items-start gap-1.5 min-w-0 break-words">
+                <span className="shrink-0">❄️</span>
                 <span>{({
     ru: "Охлаждение Empower / Резерв",
     ar: "تبريد إمباور / احتياطي السعة",
@@ -351,14 +351,14 @@ export default function RoiCalculator({
     ur: "ایم پاور کولنگ / ریزرو فنڈ"
   } as Record<string, string>)[lang] || "Empower AC & Capacity Reserve"}</span>
               </span>
-              <span className="font-mono font-bold text-[#9E4732]">
+              <span className="font-mono font-bold text-[#9E4732] shrink-0 text-right">
                 -{calculations.coolingReserveConverted} {curr.symbol}
               </span>
             </div>
 
-            <div className="flex justify-between items-center text-rose-700">
-              <span className="text-[#64748B] flex items-center gap-1.5">
-                <span>🔑</span>
+            <div className="flex justify-between items-start gap-2 text-rose-700">
+              <span className="text-[#64748B] flex items-start gap-1.5 min-w-0 break-words">
+                <span className="shrink-0">🔑</span>
                 <span>{({
     ru: "Управление и сдача (8%)",
     ar: "إدارة العقار والتأجير (8%)",
@@ -371,15 +371,15 @@ export default function RoiCalculator({
     ur: "پراپرٹی مینجمنٹ و کرایہ داری (8%)"
   } as Record<string, string>)[lang] || "Property Management (8%)"}</span>
               </span>
-              <span className="font-mono font-bold text-[#9E4732]">
+              <span className="font-mono font-bold text-[#9E4732] shrink-0 text-right">
                 -{calculations.managementFeeConverted} {curr.symbol}
               </span>
             </div>
 
-            <div className="flex justify-between items-center pt-3 border-t border-[#F1F5F9] bg-[#F8FAFC] -mx-3 p-3 rounded-xl">
-              <div>
-                <span className="font-extrabold text-[#0F172A] block">{t.calculator.annualNetProfit}</span>
-                <span className="text-[11px] text-[#64748B] font-mono">
+            <div className="flex justify-between items-start gap-2 pt-3 border-t border-[#F1F5F9] bg-[#F8FAFC] -mx-3 p-3 rounded-xl">
+              <div className="min-w-0">
+                <span className="font-extrabold text-[#0F172A] block break-words">{t.calculator.annualNetProfit}</span>
+                <span className="text-[11px] text-[#64748B] font-mono block break-words">
                   {({
     ru: "Реальный Net Cash Flow",
     ar: "صافي التدفق النقدي الفعلي",
@@ -393,14 +393,14 @@ export default function RoiCalculator({
   } as Record<string, string>)[lang] || "True Net Cash Flow"}
                 </span>
               </div>
-              <span className="font-mono font-extrabold text-[#059669] text-base sm:text-lg">
+              <span className="font-mono font-extrabold text-[#059669] text-base sm:text-lg shrink-0 text-right">
                 {calculations.netIncomeConverted} {curr.symbol}
               </span>
             </div>
 
-            <div className="flex justify-between items-center pt-1">
-              <span className="text-[#64748B]">{t.calculator.fiveYearReturn}</span>
-              <span className="font-mono font-bold text-[#0F172A]">
+            <div className="flex justify-between items-start gap-2 pt-1">
+              <span className="text-[#64748B] min-w-0 break-words">{t.calculator.fiveYearReturn}</span>
+              <span className="font-mono font-bold text-[#0F172A] shrink-0 text-right">
                 {calculations.fiveYearTotalReturnConverted} {curr.symbol}
               </span>
             </div>

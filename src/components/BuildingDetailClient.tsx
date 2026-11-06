@@ -11,6 +11,9 @@ import { getLocalizedBuilding } from "@/data/localizedContent";
 import SchemaOrg from "@/components/SchemaOrg";
 import RoiCalculator from "@/components/RoiCalculator";
 import LeadModal from "@/components/LeadModal";
+import FloorPlansExplorer from "@/components/FloorPlansExplorer";
+import DldTransactionLedger from "@/components/DldTransactionLedger";
+import DossierViewerModal from "@/components/DossierViewerModal";
 import { trackEvent } from "@/lib/analytics";
 
 interface BuildingDetailClientProps {
@@ -23,6 +26,7 @@ export default function BuildingDetailClient({
   const { t, lang } = useLang();
 
   const [isLeadModalOpen, setIsLeadModalOpen] = useState(false);
+  const [isDossierOpen, setIsDossierOpen] = useState(false);
   const [modalAction, setModalAction] = useState({ title: "", subtitle: "" });
 
   const building = useMemo(() => {
@@ -360,6 +364,21 @@ export default function BuildingDetailClient({
               </section>
             )}
 
+            {/* INTERACTIVE ARCHITECTURAL FLOOR PLANS EXPLORER */}
+            <FloorPlansExplorer
+              building={building}
+              onOpenConsultation={(planName) => {
+                setModalAction({
+                  title: `${tAudit.requestAuditBtn}: ${planName}`,
+                  subtitle: tAudit.prePurchaseAuditSubtitle,
+                });
+                setIsLeadModalOpen(true);
+              }}
+            />
+
+            {/* OFFICIAL DUBAI LAND DEPARTMENT (DLD) TRANSACTION LEDGER */}
+            <DldTransactionLedger building={building} />
+
             {/* Object-Specific Pre-filled ROI Calculator */}
             <RoiCalculator
               isEmbedded
@@ -629,27 +648,27 @@ export default function BuildingDetailClient({
               </div>
 
               <div className="space-y-3 py-3 border-y border-[#EFECE4] text-xs">
-                <div className="flex justify-between items-center">
-                  <span className="text-[#78716C]">{bd.entryPriceAed}</span>
-                  <span className="font-mono font-bold text-[#1C1917] text-right">{building.startingPriceAed}</span>
+                <div className="flex justify-between items-start gap-2">
+                  <span className="text-[#78716C] min-w-0 break-words">{bd.entryPriceAed}</span>
+                  <span className="font-mono font-bold text-[#1C1917] text-right shrink-0">{building.startingPriceAed}</span>
                 </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-[#78716C]">{bd.entryPriceUsd}</span>
-                  <span className="font-mono font-bold text-[#1C1917] text-right">{building.startingPriceUsd}</span>
+                <div className="flex justify-between items-start gap-2">
+                  <span className="text-[#78716C] min-w-0 break-words">{bd.entryPriceUsd}</span>
+                  <span className="font-mono font-bold text-[#1C1917] text-right shrink-0">{building.startingPriceUsd}</span>
                 </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-[#78716C]">{bd.projectedYield}</span>
-                  <span className="font-mono font-bold text-[#2D6A4F] text-right">{building.investmentYield}</span>
+                <div className="flex justify-between items-start gap-2">
+                  <span className="text-[#78716C] min-w-0 break-words">{bd.projectedYield}</span>
+                  <span className="font-mono font-bold text-[#2D6A4F] text-right shrink-0">{building.investmentYield}</span>
                 </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-[#78716C]">{t.ttxLabels.serviceCharge}</span>
-                  <span className="font-mono font-bold text-[#8C6A48] text-right">
+                <div className="flex justify-between items-start gap-2">
+                  <span className="text-[#78716C] min-w-0 break-words">{t.ttxLabels.serviceCharge}</span>
+                  <span className="font-mono font-bold text-[#8C6A48] text-right shrink-0">
                     {building.operatingSpecs ? `${building.operatingSpecs.annualServiceChargeAedSqFt} ${tAudit.serviceChargeUnit}` : "—"}
                   </span>
                 </div>
-                <div className="flex justify-between items-center">
-                  <span className="text-[#78716C]">{bd.goldenVisaEligible}</span>
-                  <span className="font-semibold text-[#8C6A48] text-right">{bd.goldenVisaEligibleValue}</span>
+                <div className="flex justify-between items-start gap-2">
+                  <span className="text-[#78716C] min-w-0 break-words">{bd.goldenVisaEligible}</span>
+                  <span className="font-semibold text-[#8C6A48] text-right shrink-0 max-w-[55%] break-words">{bd.goldenVisaEligibleValue}</span>
                 </div>
               </div>
 
@@ -669,17 +688,14 @@ export default function BuildingDetailClient({
                 <span>{tAudit.requestAuditBtn}</span>
               </button>
 
-              {/* Secondary Action: Download Full Dossier */}
+              {/* Secondary Action: Instant Download / Print Full Dossier (ZERO CONTACT GATE!) */}
               <button
                 type="button"
                 onClick={() => {
-                  setModalAction({
-                    title: tAudit.downloadDossierTitle(building.name),
-                    subtitle: tAudit.downloadDossierSubtitle,
-                  });
-                  setIsLeadModalOpen(true);
+                  trackEvent("open_dossier_modal", { building: building.id, building_name: building.name });
+                  setIsDossierOpen(true);
                 }}
-                className="w-full block text-center px-4 py-2.5 rounded-xl border border-[#DDD7CA] hover:bg-[#FAF8F5] text-xs text-[#57534E] font-semibold transition-colors"
+                className="w-full block text-center px-4 py-2.5 rounded-xl border border-[#DDD7CA] hover:bg-[#FAF8F5] text-xs text-[#57534E] font-semibold transition-colors shadow-2xs hover:border-[#8C6A48]"
               >
                 📥 {tAudit.downloadDossierBtn}
               </button>
@@ -757,6 +773,11 @@ export default function BuildingDetailClient({
         title={modalAction.title}
         subtitle={modalAction.subtitle}
         towerName={building.name}
+      />
+      <DossierViewerModal
+        isOpen={isDossierOpen}
+        onClose={() => setIsDossierOpen(false)}
+        building={building}
       />
     </article>
   );
