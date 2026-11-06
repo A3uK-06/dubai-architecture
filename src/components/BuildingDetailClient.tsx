@@ -14,6 +14,7 @@ import LeadModal from "@/components/LeadModal";
 import FloorPlansExplorer from "@/components/FloorPlansExplorer";
 import DldTransactionLedger from "@/components/DldTransactionLedger";
 import DossierViewerModal from "@/components/DossierViewerModal";
+import AiQuickFactsAndCitations from "@/components/AiQuickFactsAndCitations";
 import { trackEvent } from "@/lib/analytics";
 
 interface BuildingDetailClientProps {
@@ -212,6 +213,9 @@ export default function BuildingDetailClient({
           {/* Left 2 Columns: Full Engineering Passport & Architectural Analysis */}
           <div className="lg:col-span-2 space-y-16">
             
+            {/* AI Overview & Quick Facts (GEO & Search Authority) */}
+            <AiQuickFactsAndCitations building={building} />
+
             {/* Architectural Overview */}
             <section className="space-y-4">
               <div className="flex items-center justify-between border-b border-[#E5DFD3] pb-3">

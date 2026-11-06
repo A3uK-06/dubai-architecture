@@ -136,6 +136,22 @@
   * Golden Visa: `FAQPage` (4 ключевых ответа для расширенных сниппетов Google и AI Overviews).
   * На всех страницах: `BreadcrumbList` (хлебные крошки).
 
+---
+
+### ЭТАП 10. E-E-A-T Институциональное доверие, GEO и Cloudflare 301 (Завершено)
+- [x] **Страницы институционального доверия (E-E-A-T & YMYL)**:
+  * `/about` — История архива с 2006 года, миссия независимой оцифровки небоскребов, источники данных DLD & CTBUH.
+  * `/editorial-policy` — Разделение коммерческих запросов и технической экспертизы, публикация строительных дефектов и Mollak-тарифов.
+  * `/affiliate-disclosure` — Официальное раскрытие партнерства по RERA (Закон №85 от 2006 г.) с Metropolitan Premium Properties и Whitewill, эскроу-гарантии (Закон №8 от 2007 г.).
+  * `/contact` — Контакты редакции, пресс-офис для архитекторов и инженеров, форма связи в Дубае.
+- [x] **GEO (Generative Engine Optimization) & AI Overviews**:
+  * Компонент `AiQuickFactsAndCitations.tsx` в карточке каждого здания: сжатая выжимка ТТХ для прямого цитирования в ChatGPT Search, Perplexity, Google AI Overviews, Microsoft Copilot.
+- [x] **Внешние ссылки в глобальный граф знаний (Knowledge Graph)**:
+  * Прямые авторитетные сноски на **CTBUH Skyscraper Center**, **Dubai Land Department (DLD)** и официальные сайты мастер-архитекторов (SOM, Foster + Partners, Atkins, Zaha Hadid Architects, Killa Design и др.).
+- [x] **Инструменты склейки старых ссылок через Cloudflare (301 Permanent Redirect)**:
+  * Скрипт `scripts/generate-cloudflare-rules.mjs` генерирует 214 правил 301-редиректов в `docs/cloudflare-bulk-redirects.csv`.
+  * Инструкция по настройке DNS и Bulk Redirects в `docs/CLOUDFLARE_301_SETUP.md`.
+
 #### ⚠️ Правило добавления принципиально новых разделов:
 При создании новых типов страниц (блог `/blog`, каталог девелоперов `/developers`, статьи) **всегда** подключать `<SchemaOrg />` в корень страницы:
 ```tsx

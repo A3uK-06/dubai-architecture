@@ -13,7 +13,7 @@ export interface FAQItem {
 }
 
 interface SchemaOrgProps {
-  type?: "website" | "building" | "district" | "calculator" | "golden-visa" | "breadcrumbs";
+  type?: "website" | "building" | "district" | "calculator" | "golden-visa" | "breadcrumbs" | "about" | "contact" | "policy";
   building?: Building;
   district?: District;
   breadcrumbs?: BreadcrumbItem[];
@@ -371,6 +371,49 @@ export default function SchemaOrg({
     schemaToRender = getGoldenVisaSchema();
   } else if (type === "breadcrumbs") {
     schemaToRender = getCustomBreadcrumbsSchema() || websiteSchema;
+  } else if (type === "about") {
+    schemaToRender = {
+      "@context": "https://schema.org",
+      "@graph": [
+        ...(breadcrumbs && breadcrumbs.length > 0 ? [getCustomBreadcrumbsSchema()] : []),
+        {
+          "@type": "AboutPage",
+          "@id": `${BASE_URL}/about/#webpage`,
+          url: `${BASE_URL}/about/`,
+          name: "About Dubai Architecture Archive (Est. 2006)",
+          description: "Historical archive and structural engineering encyclopedia of Dubai skyscrapers, established in 2006.",
+          isPartOf: { "@id": `${BASE_URL}/#website` },
+          about: { "@id": `${BASE_URL}/#organization` },
+        },
+      ],
+    };
+  } else if (type === "contact") {
+    schemaToRender = {
+      "@context": "https://schema.org",
+      "@graph": [
+        ...(breadcrumbs && breadcrumbs.length > 0 ? [getCustomBreadcrumbsSchema()] : []),
+        {
+          "@type": "ContactPage",
+          "@id": `${BASE_URL}/contact/#webpage`,
+          url: `${BASE_URL}/contact/`,
+          name: "Contact Editorial & Research Office | Dubai Architecture",
+          description: "Contact the editorial, engineering research desk, and press office of Dubai Architecture.",
+          isPartOf: { "@id": `${BASE_URL}/#website` },
+        },
+      ],
+    };
+  } else if (type === "policy") {
+    schemaToRender = {
+      "@context": "https://schema.org",
+      "@graph": [
+        ...(breadcrumbs && breadcrumbs.length > 0 ? [getCustomBreadcrumbsSchema()] : []),
+        {
+          "@type": "WebPage",
+          "@id": `${BASE_URL}/#webpage`,
+          isPartOf: { "@id": `${BASE_URL}/#website` },
+        },
+      ],
+    };
   }
 
   // Optional extra FAQ injection

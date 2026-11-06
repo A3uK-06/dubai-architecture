@@ -61,6 +61,34 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.7,
       alternates: getAlternates("/methodology/"),
     },
+    {
+      url: `${BASE_URL}/about/`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.8,
+      alternates: getAlternates("/about/"),
+    },
+    {
+      url: `${BASE_URL}/editorial-policy/`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.7,
+      alternates: getAlternates("/editorial-policy/"),
+    },
+    {
+      url: `${BASE_URL}/affiliate-disclosure/`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.7,
+      alternates: getAlternates("/affiliate-disclosure/"),
+    },
+    {
+      url: `${BASE_URL}/contact/`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.7,
+      alternates: getAlternates("/contact/"),
+    },
   ];
 
   const buildingPages: MetadataRoute.Sitemap = BUILDINGS.map((building) => ({

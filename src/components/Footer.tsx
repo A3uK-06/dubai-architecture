@@ -101,6 +101,26 @@ export default function Footer() {
                     {isRu ? "Методология и DLD" : "Methodology & DLD"}
                   </Link>
                 </li>
+                <li>
+                  <Link href="/about/" className="hover:text-amber-400 transition-colors">
+                    {isRu ? "О проекте (Архив с 2006)" : "About Archive (Est. 2006)"}
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/editorial-policy/" className="hover:text-amber-400 transition-colors">
+                    {isRu ? "Редакционная политика" : "Editorial Policy"}
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/affiliate-disclosure/" className="hover:text-amber-400 transition-colors">
+                    {isRu ? "Раскрытие партнерства RERA" : "Affiliate & RERA Disclosure"}
+                  </Link>
+                </li>
+                <li>
+                  <Link href="/contact/" className="hover:text-amber-400 transition-colors">
+                    {isRu ? "Контакты редакции" : "Contact & Press"}
+                  </Link>
+                </li>
               </ul>
             </div>
 
