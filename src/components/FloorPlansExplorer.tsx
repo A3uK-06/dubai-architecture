@@ -4,6 +4,7 @@ import React, { useState, useMemo, useEffect } from "react";
 import { Building, FloorPlan, getBuildingFloorPlans } from "@/data/buildings";
 import { useLang } from "@/context/LangContext";
 import { FLOOR_PLAN_LABELS, getLocalizedFloorPlan } from "@/data/floorPlanI18n";
+import LeadModal from "@/components/LeadModal";
 
 interface FloorPlansExplorerProps {
   building: Building;
@@ -62,6 +63,8 @@ export default function FloorPlansExplorer({
   onOpenConsultation,
 }: FloorPlansExplorerProps) {
   const { lang } = useLang();
+  const [isLeadModalOpen, setIsLeadModalOpen] = useState(false);
+  const isRu = lang === "ru";
   const rawPlans = useMemo(() => getBuildingFloorPlans(building), [building]);
   const [activePlanId, setActivePlanId] = useState<string>(rawPlans[0]?.id || "");
   const [isFullscreen, setIsFullscreen] = useState(false);
@@ -1014,6 +1017,23 @@ export default function FloorPlansExplorer({
                 ☀️ {labels.themeLight}
               </button>
             </div>
+
+            {/* Download PDF & Pricing Booklet Button */}
+            <button
+              type="button"
+              onClick={() => {
+                if (onOpenConsultation) {
+                  onOpenConsultation(`${building.name} - ${activePlan.name} PDF`);
+                } else {
+                  setIsLeadModalOpen(true);
+                }
+              }}
+              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/30 text-amber-900 text-xs font-sans font-bold transition-all shadow-2xs cursor-pointer"
+            >
+              <span>📥</span>
+              <span className="hidden md:inline">{isRu ? "PDF-буклет с ценами" : "Floor Plans PDF & Pricing"}</span>
+              <span className="md:hidden">PDF</span>
+            </button>
 
             {/* Print Button */}
             <button

@@ -2,6 +2,7 @@
 
 import React, { useState, useMemo, useEffect } from "react";
 import { useLang } from "@/context/LangContext";
+import MethodologyModal from "@/components/MethodologyModal";
 
 type CurrencyCode = "AED" | "USD" | "EUR" | "GBP" | "RUB" | "CNY";
 
@@ -38,6 +39,8 @@ export default function RoiCalculator({
   isEmbedded = false,
 }: RoiCalculatorProps) {
   const { t, lang } = useLang();
+  const [isMethodologyOpen, setIsMethodologyOpen] = useState(false);
+  const isRu = lang === "ru";
 
   const [priceAed, setPriceAed] = useState<number>(initialPriceAed);
   const [grossYield, setGrossYield] = useState<number>(initialYieldPercent);
@@ -489,6 +492,21 @@ export default function RoiCalculator({
             </div>
           </div>
 
+          {/* Statutory YMYL Disclaimer & Methodology */}
+          <div className="pb-2 text-center space-y-1">
+            <p className="text-[11px] text-[#78716C] leading-snug">
+              {isRu
+                ? "Расчеты носят ориентировочный характер на основе открытых индексов DLD и тарифов DEWA. Не является публичной офертой или гарантией дохода."
+                : "Estimates are indicative, calculated from official DLD transaction registers and DEWA tariff indices. Does not constitute a guaranteed financial offer."}
+            </p>
+            <button
+              type="button"
+              onClick={() => setIsMethodologyOpen(true)}
+              className="text-[11px] text-[#8C6A48] hover:text-[#1C1917] underline font-medium transition-colors"
+            >
+              {isRu ? "📋 Методология расчетов и открытые данные DLD →" : "📋 Calculation Methodology & DLD Open Data →"}
+            </button>
+          </div>
           {/* Action Buttons */}
           <div className="space-y-3 pt-2">
             <a
@@ -533,6 +551,10 @@ export default function RoiCalculator({
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {content}
       </div>
+      <MethodologyModal
+        isOpen={isMethodologyOpen}
+        onClose={() => setIsMethodologyOpen(false)}
+      />
     </section>
   );
 }

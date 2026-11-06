@@ -13,7 +13,7 @@ const buildingContent = fs.readFileSync('src/data/buildings.ts', 'utf-8');
 const districtSlugs = [...districtsContent.matchAll(/slug:\s*["']([^"']+)["']/g)].map(m => m[1]);
 const buildingSlugs = [...buildingContent.matchAll(/slug:\s*["']([^"']+)["']/g)].map(m => m[1]);
 
-const staticPages = ['calculator', 'golden-visa', 'buildings', 'districts'];
+const staticPages = ['calculator', 'golden-visa', 'buildings', 'districts', 'methodology'];
 
 for (const p of staticPages) {
   const dir = path.join(outDir, p);

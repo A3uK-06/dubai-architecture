@@ -59,6 +59,14 @@ export default function SchemaOrg({
           "https://en.wikipedia.org/wiki/Architecture_of_Dubai",
           "https://en.wikipedia.org/wiki/List_of_tallest_buildings_in_Dubai",
         ],
+        knowsAbout: [
+          "Dubai Architecture & Structural Engineering",
+          "High-Rise Construction & Wind Damping Systems",
+          "Dubai Land Department Open Data & Transaction Registers",
+          "UAE Golden Visa Property Investment Criteria",
+          "RERA Real Estate Brokerage Compliance"
+        ],
+        publishingPrinciples: "https://dubai-architecture.info/#methodology",
       },
     ],
   };
@@ -96,6 +104,7 @@ export default function SchemaOrg({
               "@type": "PropertyValue",
               name: "Height (Meters)",
               value: building.heightMeters,
+              unitCode: "MTR",
             },
             {
               "@type": "PropertyValue",
@@ -116,6 +125,16 @@ export default function SchemaOrg({
               "@type": "PropertyValue",
               name: "Estimated Investment Yield",
               value: building.investmentYield,
+            },
+            {
+              "@type": "PropertyValue",
+              name: "Annual Service Charge (AED/sq.ft)",
+              value: building.operatingSpecs?.annualServiceChargeAedSqFt || 20,
+            },
+            {
+              "@type": "PropertyValue",
+              name: "District Cooling Infrastructure",
+              value: building.operatingSpecs?.chillerBilling || "Empower Metered",
             },
           ],
         },

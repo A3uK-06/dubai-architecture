@@ -2731,6 +2731,371 @@ export const BUILDINGS: Building[] = [
       hiddenOperatingCosts: "Standard Empower cooling demand charges (~1,400 AED/quarter base charge)."
     },
   },
+  {
+    id: "park-field-dubai-hills",
+    legacyId: "DUB-033",
+    slug: "park-field-dubai-hills",
+    image: "/images/buildings/park-field-dubai-hills.jpg",
+    name: "Park Field Dubai Hills",
+    heightMeters: 98,
+    heightFeet: 321,
+    floors: 24,
+    yearBuilt: 2024,
+    architect: "U+A Architects / Emaar",
+    architectFirm: "U+A Architects",
+    developer: "Emaar Properties",
+    district: "Dubai Hills Estate",
+    districtSlug: "dubai-hills",
+    type: "Residential",
+    status: "Completed",
+    rating: 4.8,
+    featured: true,
+    investmentYield: "7.2% - 8.1%",
+    startingPriceAed: "1,850,000 AED",
+    startingPriceUsd: "$504,000",
+    description: "Contemporary twin residential towers situated directly on the perimeter of the 180,000 sq.m Dubai Hills Park. Features minimalist floor-to-ceiling Low-E glass facades, panoramic golf course vistas, and immediate pedestrian connectivity to Dubai Hills Mall and King's College Hospital.",
+    architecturalHighlights: [
+      "Direct frontage onto Dubai Hills Central Park with zero car-crossing pedestrian promenades",
+      "Expansive floorplates with deep recessed balconies designed to shield Gulf afternoon solar radiation",
+      "Elevated infinity pool deck with unobstructed views of the Downtown skyline and championship golf fairways",
+      "Seamless integration with 54 km of dedicated bicycle and jogging tracks throughout the master community"
+    ],
+    historicalNote: "Completed in 2024 as part of Emaar's green masterplan corridor in Dubai Hills Estate.",
+    structuralSystem: "Reinforced concrete frame with flat-slab post-tensioned floors and shear core",
+    foundation: {
+      pilesCount: 180,
+      pileDepthMeters: 26,
+      pileDiameterMeters: "1.0 m",
+      raftThicknessMeters: "2.2 m",
+      bedrockType: "Dense cemented calcarenite siltstone"
+    },
+    windStructural: {
+      lateralSystem: "Coupled shear walls around elevator cores and stair shafts",
+      dampingMechanism: "Low aspect ratio and staggered balcony geometry naturally dissipate crosswinds",
+      maxApexSwayMeters: "± 0.08 m",
+      concreteStrengthGrade: "C50/60 high-performance concrete"
+    },
+    facade: {
+      glazingType: "Double-glazed high-performance solar Low-E glass with extruded architectural aluminum louvers",
+      shgcSolarCoefficient: "SHGC 0.22",
+      uValueWPerM2K: "1.4 W/m²K",
+      bmuCleaningSystem: "Automated monorail roof BMU system",
+      cleaningCycleDays: "30 days"
+    },
+    verticalTransport: {
+      elevatorManufacturer: "KONE",
+      totalElevators: 5,
+      maxSpeedMs: 3.5,
+      doubleDeckCars: false,
+      zoningStrategy: "Simplex/Duplex collective passenger control",
+      peakWaitingSeconds: "< 25 seconds"
+    },
+    operatingSpecs: {
+      coolingProvider: "Emaar District Cooling",
+      chillerBilling: "Consumption-Billed (Empower)",
+      annualServiceChargeAedSqFt: 16.5,
+      acousticRatingDb: "STC 52 dB",
+      slabToSlabHeightMeters: 3.4,
+      clearCeilingHeightMeters: 2.9
+    },
+    layoutEfficiency: {
+      columnImpact: "Minimal (Open Spans)",
+      netToGrossRatio: "88% - 91%",
+      balconyUsability: "Spacious rectangular balconies offering practical al fresco dining directly over the park"
+    },
+    auditReview: {
+      honestVerdict: "Dubai Hills Estate's benchmark family-and-investor residential address. Exceptional tenant retention driven by direct park access, lower service charges (16.5 AED/sq.ft) compared to Downtown, and strong long-term capital preservation from Emaar's flagship master community.",
+      strengths: [
+        "Direct doorstep access to Dubai Hills Park and 3-minute drive to Dubai Hills Mall.",
+        "Significantly lower service charges (16.5 AED/sq.ft) vs Downtown towers, optimizing net yield.",
+        "High family tenant demand backed by top international schools (GEMS Wellington) within 5 minutes."
+      ],
+      pitfallsAndWeaknesses: [
+        "Al Khail Road exit can experience 5-10 minute morning rush-hour slowdowns.",
+        "Dubai Metro connectivity currently requires feeder buses (future Metro Purple Line planned).",
+        "Higher barrier to entry for larger 3-bedroom configurations due to scarcity of supply."
+      ],
+      airbnbHolidayHomesPolicy: "Permitted with community permit; primarily attracts affluent family stays and medical tourists.",
+      guestParkingReality: "Dedicated visitor basement parking with EV charging stations.",
+      soundproofingRating: "STC 52 dB (Suburban tranquility with zero ambient city highway drone).",
+      elevatorPeakWaitReality: "< 25 seconds with 5 KONE regenerative lifts.",
+      hiddenOperatingCosts: "Standard district cooling connection fees (~1,100 AED/quarter base charge)."
+    }
+  },
+  {
+    id: "central-park-city-walk",
+    legacyId: "DUB-034",
+    slug: "central-park-city-walk",
+    image: "/images/buildings/central-park-city-walk.jpg",
+    name: "Central Park at City Walk",
+    heightMeters: 85,
+    heightFeet: 279,
+    floors: 19,
+    yearBuilt: 2025,
+    architect: "Foster + Partners / Meraas Design Lab",
+    architectFirm: "Foster + Partners",
+    developer: "Meraas",
+    district: "City Walk & Jumeirah",
+    districtSlug: "city-walk",
+    type: "Residential",
+    status: "Under Construction",
+    rating: 4.9,
+    featured: true,
+    investmentYield: "7.8% - 8.9%",
+    startingPriceAed: "2,200,000 AED",
+    startingPriceUsd: "$599,000",
+    description: "An urban biophilic residential masterpiece nestled within 230,000 sq.m of lush private parkland in City Walk. Features cascading garden terraces, glass-curtain walls framing the Downtown skyline, and immediate walking proximity to Jumeirah beaches and Coca-Cola Arena.",
+    architecturalHighlights: [
+      "Biophilic architectural concept with stepped vertical gardens and integrated planter boxes on all facades",
+      "Low-density mid-rise design in Dubai's premier European-style pedestrian boulevard district",
+      "Spectacular direct sightlines of the Burj Khalifa and Zabeel Palace grounds",
+      "Private resident sports pavilions including padel tennis courts, running tracks, and lawn swimming pools"
+    ],
+    historicalNote: "Conceived by Meraas in 2021 to bring lush green residential living into the central City Walk urban retail precinct.",
+    structuralSystem: "Cast-in-place reinforced concrete with post-tensioned slabs and cantilevered terrace trays",
+    foundation: {
+      pilesCount: 210,
+      pileDepthMeters: 28,
+      pileDiameterMeters: "1.0 m",
+      raftThicknessMeters: "2.0 m",
+      bedrockType: "Interbedded sandstone and coastal calcisiltite"
+    },
+    windStructural: {
+      lateralSystem: "Dual system comprising core walls and moment-resisting concrete portal frames",
+      dampingMechanism: "Terraced aerodynamic massing suppresses vortex generation naturally",
+      maxApexSwayMeters: "± 0.06 m",
+      concreteStrengthGrade: "C60 self-compacting durable concrete"
+    },
+    facade: {
+      glazingType: "Triple-glazed acoustic Low-E glass with integrated thermally broken aluminum planter frames",
+      shgcSolarCoefficient: "SHGC 0.18",
+      uValueWPerM2K: "1.25 W/m²K",
+      bmuCleaningSystem: "Concealed perimeter davit arm BMU units",
+      cleaningCycleDays: "35 days"
+    },
+    verticalTransport: {
+      elevatorManufacturer: "Schindler",
+      totalElevators: 6,
+      maxSpeedMs: 3.0,
+      doubleDeckCars: false,
+      zoningStrategy: "Schindler PORT destination dispatch system",
+      peakWaitingSeconds: "< 20 seconds"
+    },
+    operatingSpecs: {
+      coolingProvider: "Empower District Cooling",
+      chillerBilling: "Consumption-Billed (Empower)",
+      annualServiceChargeAedSqFt: 21.0,
+      acousticRatingDb: "STC 55 dB",
+      slabToSlabHeightMeters: 3.5,
+      clearCeilingHeightMeters: 3.0
+    },
+    layoutEfficiency: {
+      columnImpact: "Minimal (Open Spans)",
+      netToGrossRatio: "87% - 90%",
+      balconyUsability: "Expansive garden terraces (up to 3.2 m depth) functioning as genuine outdoor living rooms"
+    },
+    auditReview: {
+      honestVerdict: "The undisputed capital of urban lifestyle in Dubai. Unmatched tenant desirability combining Jumeirah's low-rise charm with Downtown's proximity. Exceptional capital growth trajectory and premium short-term holiday rental yields due to walking access to Coca-Cola Arena and boutique dining.",
+      strengths: [
+        "Rare central Dubai park lifestyle with walking access to City Walk dining and entertainment.",
+        "Only 5 minutes drive to Jumeirah 1 beach and 5 minutes to Downtown / DIFC financial hub.",
+        "Deep landscaped balconies with automatic drip irrigation systems included in developer specs."
+      ],
+      pitfallsAndWeaknesses: [
+        "Premium initial entry price per sq.ft compared to suburban master communities.",
+        "City Walk retail promenade can draw heavy visitor footfall on weekend evenings.",
+        "Empower district cooling demand charges apply quarterly."
+      ],
+      airbnbHolidayHomesPolicy: "Fully permitted; prime Airbnb yield hotspot for concert-goers and luxury tourists.",
+      guestParkingReality: "Dedicated basement visitor bays with direct lift access to residential lobbies.",
+      soundproofingRating: "STC 55 dB (Acoustic laminated glass suppresses all surrounding street noise).",
+      elevatorPeakWaitReality: "< 20 seconds with Schindler PORT intelligent dispatch.",
+      hiddenOperatingCosts: "Slightly higher service charges (21 AED/sq.ft) attributable to extensive private park maintenance."
+    }
+  },
+  {
+    id: "palm-jebel-ali-towers",
+    legacyId: "DUB-035",
+    slug: "palm-jebel-ali-towers",
+    image: "/images/buildings/palm-jebel-ali-towers.jpg",
+    name: "Palm Jebel Ali Water Residences",
+    heightMeters: 120,
+    heightFeet: 394,
+    floors: 30,
+    yearBuilt: 2027,
+    architect: "Killa Design / Nakheel Masterplan",
+    architectFirm: "Killa Design",
+    developer: "Nakheel",
+    district: "Palm Jebel Ali",
+    districtSlug: "palm-jebel-ali",
+    type: "Residential",
+    status: "Under Construction",
+    rating: 5.0,
+    featured: true,
+    investmentYield: "8.2% - 9.5%",
+    startingPriceAed: "3,500,000 AED",
+    startingPriceUsd: "$953,000",
+    description: "The crown jewel of Dubai's next maritime frontier on Palm Jebel Ali. Featuring sculpted aerodynamic forms inspired by Gulf ocean swells, private marina slips, and 110 kilometers of crystalline beachfront coastlines in a sustainable, renewable-powered archipelago twice the size of Palm Jumeirah.",
+    architecturalHighlights: [
+      "Monumental beachfront positioning on the Trunk of Palm Jebel Ali with 360-degree marine horizons",
+      "Parametric aerodynamic facade developed by Shaun Killa (designer of Museum of the Future)",
+      "Zero-carbon masterplan integration with smart microgrids and self-cleaning solar facade paneling",
+      "Private yacht docking berths and direct private beach access for all residential tiers"
+    ],
+    historicalNote: "Relaunched under high-level decree in 2023, Palm Jebel Ali represents Dubai's most anticipated luxury coastal expansion.",
+    structuralSystem: "Marine-grade high-durability reinforced concrete with cathodic protection and deep diaphragm marine walls",
+    foundation: {
+      pilesCount: 380,
+      pileDepthMeters: 45,
+      pileDiameterMeters: "1.2 m",
+      raftThicknessMeters: "3.2 m",
+      bedrockType: "Dense reclaimed hydraulic fill over deep marine calcarenite strata"
+    },
+    windStructural: {
+      lateralSystem: "Concrete central spine with outrigger blades connected to perimeter mega-columns",
+      dampingMechanism: "Curved aerodynamic nautical profile engineered to slice maritime gale squalls",
+      maxApexSwayMeters: "± 0.14 m",
+      concreteStrengthGrade: "C80 marine-grade sulfate-resistant concrete"
+    },
+    facade: {
+      glazingType: "Triple-laminated marine Low-E glass with hydrophobic anti-salt crystallization coating",
+      shgcSolarCoefficient: "SHGC 0.17",
+      uValueWPerM2K: "1.15 W/m²K",
+      bmuCleaningSystem: "Fully automated robotic climbing BMU arms",
+      cleaningCycleDays: "25 days"
+    },
+    verticalTransport: {
+      elevatorManufacturer: "Mitsubishi Electric",
+      totalElevators: 8,
+      maxSpeedMs: 6.0,
+      doubleDeckCars: false,
+      zoningStrategy: "Intelligent destination dispatch with private biometric penthouse express keys",
+      peakWaitingSeconds: "< 25 seconds"
+    },
+    operatingSpecs: {
+      coolingProvider: "Nakheel Marine District Cooling",
+      chillerBilling: "Consumption-Billed (Empower)",
+      annualServiceChargeAedSqFt: 24.5,
+      acousticRatingDb: "STC 56 dB",
+      slabToSlabHeightMeters: 3.8,
+      clearCeilingHeightMeters: 3.3
+    },
+    layoutEfficiency: {
+      columnImpact: "Minimal (Open Spans)",
+      netToGrossRatio: "85% - 88%",
+      balconyUsability: "Wraparound cantilevered marine terraces with structural glass balustrades offering horizon sunset vistas"
+    },
+    auditReview: {
+      honestVerdict: "The ultimate generational wealth play in UAE real estate. With Palm Jumeirah nearing 100% saturation, Palm Jebel Ali captures the next two decades of global billionaire capital inflows. Unmatched capital appreciation projections of 40-60% toward full infrastructure completion.",
+      strengths: [
+        "Archipelago twice the scale of Palm Jumeirah with 110 km of pristine new coastline.",
+        "Shaun Killa signature architectural pedigree commanding instant international trophy status.",
+        "Massive infrastructure investment by the Dubai Government including high-speed marine and road connections."
+      ],
+      pitfallsAndWeaknesses: [
+        "Off-plan timeline with phased delivery spanning 2027 to 2030 across the wider crescent.",
+        "Distance to Downtown Dubai is approximately 35 minutes via Sheikh Zayed Road.",
+        "Marine environment demands rigorous preventive maintenance on exterior metal trims."
+      ],
+      airbnbHolidayHomesPolicy: "Regulated luxury holiday home operators; peak winter daily rates expected to match Palm Jumeirah.",
+      guestParkingReality: "Full valet with private subterranean resident garages accommodating supercars.",
+      soundproofingRating: "STC 56 dB (Supreme marine acoustic tranquility broken only by ocean waves).",
+      elevatorPeakWaitReality: "< 25 seconds with 6 m/s high-speed Mitsubishi elevators.",
+      hiddenOperatingCosts: "Higher marine building maintenance reserves due to coastal salt air exposure."
+    }
+  },
+  {
+    id: "south-bay-towers",
+    legacyId: "DUB-036",
+    slug: "south-bay-towers",
+    image: "/images/buildings/south-bay-towers.jpg",
+    name: "South Bay Executive Towers",
+    heightMeters: 76,
+    heightFeet: 249,
+    floors: 18,
+    yearBuilt: 2026,
+    architect: "LACASA Architects & Engineering",
+    architectFirm: "LACASA Architects",
+    developer: "Dubai South Properties",
+    district: "Dubai South & Expo City",
+    districtSlug: "dubai-south",
+    type: "Residential",
+    status: "Under Construction",
+    rating: 4.8,
+    featured: true,
+    investmentYield: "8.5% - 9.8%",
+    startingPriceAed: "1,250,000 AED",
+    startingPriceUsd: "$340,000",
+    description: "Flanking a 3-kilometer crystal freshwater lagoon, South Bay Executive Towers represent the premier residential address in Dubai South. Capitalizing on the historic $35 billion Al Maktoum International Airport (DWC) expansion to create the world's largest aviation, logistics, and innovation metropolis.",
+    architecturalHighlights: [
+      "Direct frontage onto the 3 km crystal lagoon with private sandy beaches and waterfront boardwalk",
+      "Crisp contemporary lines with shaded cantilevers optimizing passive solar energy efficiency",
+      "Immediate strategic adjacency to Al Maktoum International Airport and the Expo City innovation hub",
+      "Full community clubhouse, wellness spa, and private kayak launching docks on the lagoon"
+    ],
+    historicalNote: "Launched to anchor residential expansion surrounding the mega-expansion of DWC Airport.",
+    structuralSystem: "Reinforced concrete moment frames with post-tensioned slabs and piled foundation",
+    foundation: {
+      pilesCount: 160,
+      pileDepthMeters: 24,
+      pileDiameterMeters: "0.9 m",
+      raftThicknessMeters: "1.8 m",
+      bedrockType: "Dense calcisiltite bedrock formation"
+    },
+    windStructural: {
+      lateralSystem: "Coupled reinforced shear cores designed to UAE seismic and wind codes",
+      dampingMechanism: "Low-rise aspect ratio provides exceptional structural rigidity without auxiliary dampers",
+      maxApexSwayMeters: "± 0.05 m",
+      concreteStrengthGrade: "C50/60 concrete"
+    },
+    facade: {
+      glazingType: "Double-glazed high-efficiency reflective Low-E glass with exterior ceramic frit patterns",
+      shgcSolarCoefficient: "SHGC 0.20",
+      uValueWPerM2K: "1.35 W/m²K",
+      bmuCleaningSystem: "Roof gantry crane BMU system",
+      cleaningCycleDays: "30 days"
+    },
+    verticalTransport: {
+      elevatorManufacturer: "Otis",
+      totalElevators: 4,
+      maxSpeedMs: 2.5,
+      doubleDeckCars: false,
+      zoningStrategy: "Collective selective passenger control",
+      peakWaitingSeconds: "< 25 seconds"
+    },
+    operatingSpecs: {
+      coolingProvider: "Empower / South Cooling",
+      chillerBilling: "Consumption-Billed (Empower)",
+      annualServiceChargeAedSqFt: 13.5,
+      acousticRatingDb: "STC 54 dB (Specialized airport acoustic attenuation envelope)",
+      slabToSlabHeightMeters: 3.3,
+      clearCeilingHeightMeters: 2.85
+    },
+    layoutEfficiency: {
+      columnImpact: "Minimal (Open Spans)",
+      netToGrossRatio: "89% - 92%",
+      balconyUsability: "Deep shaded outdoor loggias overlooking the crystal freshwater lagoon"
+    },
+    auditReview: {
+      honestVerdict: "Dubai's highest cash-flow growth engine. With the relocation of all Emirates airline operations to DWC over the next 10 years, tenant demand from aviation professionals, logistics executives, and tech innovators in Expo City is guaranteed. Extremely low service charges (13.5 AED/sq.ft) yield net cash returns approaching 8%.",
+      strengths: [
+        "Unbeatable entry price point (~1.25M AED) with highest gross rental yield in the market (8.5%+).",
+        "Direct beach access on a 3-kilometer swimmable crystal lagoon.",
+        "Massive macroeconomic catalyst: Al Maktoum Airport $35B expansion creating 500,000+ new jobs."
+      ],
+      pitfallsAndWeaknesses: [
+        "Current distance to Downtown Dubai is ~40 minutes (to be shortened by planned Metro extensions).",
+        "Wider community infrastructure is developing in active phases through 2030.",
+        "Secondary resale market currently more oriented toward yield-seeking investors than UHNW trophy buyers."
+      ],
+      airbnbHolidayHomesPolicy: "Permitted; high demand expected during major Expo City summits and aviation expos.",
+      guestParkingReality: "Ample outdoor and shaded visitor parking around the lagoon promenade.",
+      soundproofingRating: "STC 54 dB (Multi-layered acoustic glazing guarantees complete silence inside residences).",
+      elevatorPeakWaitReality: "< 25 seconds with reliable Otis elevators.",
+      hiddenOperatingCosts: "Very modest operating costs (13.5 AED/sq.ft) keeping net profits high."
+    }
+  },
+
 ];
 
 /**

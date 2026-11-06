@@ -54,6 +54,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.8,
       alternates: getAlternates("/golden-visa/"),
     },
+    {
+      url: `${BASE_URL}/methodology/`,
+      lastModified: new Date(),
+      changeFrequency: "monthly",
+      priority: 0.7,
+      alternates: getAlternates("/methodology/"),
+    },
   ];
 
   const buildingPages: MetadataRoute.Sitemap = BUILDINGS.map((building) => ({

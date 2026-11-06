@@ -8,6 +8,7 @@ import { BUILDINGS } from "@/data/buildings";
 import { useLang } from "@/context/LangContext";
 import { getLocalizedDistrict, getLocalizedBuilding } from "@/data/localizedContent";
 import SchemaOrg from "@/components/SchemaOrg";
+import InvestmentLivabilityMatrix from "@/components/InvestmentLivabilityMatrix";
 
 interface DistrictDetailClientProps {
   initialDistrict: District;
@@ -335,6 +336,14 @@ export default function DistrictDetailClient({
             </ul>
           </div>
         </section>
+
+        {/* Investment & Livability Comparative Matrix */}
+        {districtBuildings.length > 0 && (
+          <InvestmentLivabilityMatrix
+            buildings={districtBuildings}
+            districtName={district.name}
+          />
+        )}
 
         {/* 6. Iconic Skyscrapers in this District */}
         <section className="space-y-6">
