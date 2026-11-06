@@ -1,6 +1,7 @@
 import React from "react";
 import type { Metadata } from "next";
 import RoiCalculator from "@/components/RoiCalculator";
+import SchemaOrg from "@/components/SchemaOrg";
 
 export const metadata: Metadata = {
   title: "Dubai Real Estate ROI & Rental Yield Calculator",
@@ -14,6 +15,7 @@ export const metadata: Metadata = {
 export default function CalculatorPage() {
   return (
     <div className="min-h-screen bg-[#F8F9FA] text-[#0F172A]">
+      <SchemaOrg type="calculator" />
       <RoiCalculator />
     </div>
   );

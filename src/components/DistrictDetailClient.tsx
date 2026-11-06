@@ -7,6 +7,7 @@ import { District } from "@/data/districts";
 import { BUILDINGS } from "@/data/buildings";
 import { useLang } from "@/context/LangContext";
 import { getLocalizedDistrict, getLocalizedBuilding } from "@/data/localizedContent";
+import SchemaOrg from "@/components/SchemaOrg";
 
 interface DistrictDetailClientProps {
   initialDistrict: District;
@@ -47,6 +48,7 @@ export default function DistrictDetailClient({
 
   return (
     <article className="min-h-screen bg-transparent text-[#0F172A] pb-24 transition-colors">
+      <SchemaOrg type="district" district={district} />
       {/* Header */}
       <div className="border-b border-[#E2E8F0] bg-[#F1F5F9]/60 pt-10 pb-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

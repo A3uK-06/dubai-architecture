@@ -1,6 +1,7 @@
 import React from "react";
 import type { Metadata } from "next";
 import GoldenVisaWidget from "@/components/GoldenVisaWidget";
+import SchemaOrg from "@/components/SchemaOrg";
 
 export const metadata: Metadata = {
   title: "UAE 10-Year Golden Visa via Real Estate — Qualification Guide",
@@ -14,6 +15,7 @@ export const metadata: Metadata = {
 export default function GoldenVisaPage() {
   return (
     <div className="min-h-screen bg-[#F8F9FA] text-[#0F172A]">
+      <SchemaOrg type="golden-visa" />
       <GoldenVisaWidget />
     </div>
   );

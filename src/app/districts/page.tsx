@@ -1,6 +1,7 @@
 import React from "react";
 import type { Metadata } from "next";
 import DistrictsSection from "@/components/DistrictsSection";
+import SchemaOrg from "@/components/SchemaOrg";
 
 export const metadata: Metadata = {
   title: "Dubai Districts Directory — Master Communities",
@@ -14,6 +15,13 @@ export const metadata: Metadata = {
 export default function DistrictsPage() {
   return (
     <div className="min-h-screen bg-[#F8F9FA] text-[#0F172A]">
+      <SchemaOrg
+        type="breadcrumbs"
+        breadcrumbs={[
+          { name: "Home", url: "https://dubai-architecture.info/" },
+          { name: "Dubai Districts", url: "https://dubai-architecture.info/districts/" },
+        ]}
+      />
       <DistrictsSection />
     </div>
   );
