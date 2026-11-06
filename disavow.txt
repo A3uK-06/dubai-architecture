@@ -1,0 +1,17 @@
+# Google Search Console Disavow File for dubai-architecture.info
+# Generated on: 2026-11-07
+# Purpose: Neutralize historical toxic spam backlink networks (gambling, lottery, automated PBNs from intermediate drop period)
+# Common toxic gambling & automated scraper domains targeting dropped URLs
+domain:togel-hk.com
+domain:bandar-judi.net
+domain:slotgacor.id
+domain:situsjudionline.com
+domain:daftar-slot.org
+domain:prediksitogel.cc
+domain:judionline24jam.com
+domain:togelonline.me
+domain:linkalternatifsitus.com
+domain:agenjuditerpercaya.com
+domain:slot-online-resmi.vip
+domain:sbobet-indonesia.net
+domain:maxwin-gacor.club
