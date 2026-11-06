@@ -37,6 +37,7 @@
     --color-rose-700: oklch(51.4% 0.222 16.935);
     --color-rose-800: oklch(45.5% 0.188 13.697);
     --color-rose-950: oklch(27.1% 0.105 12.094);
+    --color-slate-50: oklch(98.4% 0.003 247.858);
     --color-slate-200: oklch(92.9% 0.013 255.508);
     --color-slate-300: oklch(86.9% 0.022 252.894);
     --color-slate-400: oklch(70.4% 0.04 256.788);
@@ -1031,6 +1032,9 @@
       border-color: color-mix(in oklab, var(--color-rose-500) 20%, transparent);
     }
   }
+  .border-slate-200 {
+    border-color: var(--color-slate-200);
+  }
   .border-slate-800 {
     border-color: var(--color-slate-800);
   }
@@ -1249,6 +1253,9 @@
     @supports (color: color-mix(in lab, red, red)) {
       background-color: color-mix(in oklab, var(--color-rose-950) 30%, transparent);
     }
+  }
+  .bg-slate-50 {
+    background-color: var(--color-slate-50);
   }
   .bg-transparent {
     background-color: transparent;
@@ -1602,9 +1609,6 @@
   .pb-2 {
     padding-bottom: calc(var(--spacing) * 2);
   }
-  .pb-2\.5 {
-    padding-bottom: calc(var(--spacing) * 2.5);
-  }
   .pb-3 {
     padding-bottom: calc(var(--spacing) * 3);
   }
@@ -1776,6 +1780,9 @@
   .text-\[\#8C6A48\] {
     color: #8C6A48;
   }
+  .text-\[\#8C6A48\]\/70 {
+    color: color-mix(in oklab, #8C6A48 70%, transparent);
+  }
   .text-\[\#9E4732\] {
     color: #9E4732;
   }
@@ -1790,6 +1797,9 @@
   }
   .text-\[\#059669\] {
     color: #059669;
+  }
+  .text-\[\#059669\]\/70 {
+    color: color-mix(in oklab, #059669 70%, transparent);
   }
   .text-\[\#64748B\] {
     color: #64748B;
@@ -2175,6 +2185,12 @@
     .hover\:border-\[\#8C6A48\]:hover {
       border-color: #8C6A48;
     }
+    .hover\:border-\[\#8C6A48\]\/40:hover {
+      border-color: color-mix(in oklab, #8C6A48 40%, transparent);
+    }
+    .hover\:border-\[\#8C6A48\]\/50:hover {
+      border-color: color-mix(in oklab, #8C6A48 50%, transparent);
+    }
     .hover\:border-\[\#CBD5E1\]:hover {
       border-color: #CBD5E1;
     }
@@ -2391,9 +2407,6 @@
     }
     .sm\:gap-3 {
       gap: calc(var(--spacing) * 3);
-    }
-    .sm\:gap-4 {
-      gap: calc(var(--spacing) * 4);
     }
     .sm\:gap-5 {
       gap: calc(var(--spacing) * 5);

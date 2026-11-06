@@ -68,6 +68,12 @@ export interface FloorPlanLabels {
   officialPlanBadge: (dev: string) => string;
   cornerDualAspect: string;
   enSuiteBadge: string;
+  svgSomCore: string;
+  svgTwistedCol: string;
+  svgZahaVoid: string;
+  svgCarLift: string;
+  svgOceanFront: string;
+  svgServiceCore: string;
 }
 
 export const FLOOR_PLAN_LABELS: Record<LanguageCode, FloorPlanLabels> = {
@@ -135,8 +141,14 @@ export const FLOOR_PLAN_LABELS: Record<LanguageCode, FloorPlanLabels> = {
     svgPowderRoom: "ГОСТЕВОЙ WC / УБОРНАЯ",
     seriesBadge: (name) => `Архитектурная серия ${name}`,
     officialPlanBadge: (dev) => `Официальный план: ${dev}`,
-    cornerDualAspect: "УГЛОВОЙ ДВУХСТОРОННИЙ ОБЗОР",
+        cornerDualAspect: "УГЛОВОЙ ДВУХСТОРОННИЙ ОБЗОР",
     enSuiteBadge: "ПРИВАТНЫЙ САНУЗЕЛ",
+    svgSomCore: "ШЕСТИГРАННОЕ ЯДРО SOM",
+    svgTwistedCol: "ПОВОРОТНЫЕ КОЛОННЫ 90° (ТОРСИОННЫЙ СТОЯК)",
+    svgZahaVoid: "СВОБОДНЫЙ ОРГАНИЧЕСКИЙ АТРИУМ-ПУСТОТА (ZAHA HADID)",
+    svgCarLift: "ПРИВАТНЫЙ АВТОМОБИЛЬНЫЙ ЛИФТ В АПАРТАМЕНТЫ",
+    svgOceanFront: "ПАНОРАМНЫЙ МОРСКОЙ ФАСАД (ПЕРВАЯ ЛИНИЯ)",
+    svgServiceCore: "ЦЕНТРАЛЬНОЕ ЛИФТОВОЕ ЯДРО ВЫСОТКИ",
   },
   en: {
     sectionBadge: "Architectural Typologies & Floor Plans",
@@ -202,8 +214,14 @@ export const FLOOR_PLAN_LABELS: Record<LanguageCode, FloorPlanLabels> = {
     svgPowderRoom: "GUEST POWDER ROOM / WC",
     seriesBadge: (name) => `${name} Architectural Series`,
     officialPlanBadge: (dev) => `Official Plan: ${dev}`,
-    cornerDualAspect: "CORNER DUAL-ASPECT PANORAMA",
+        cornerDualAspect: "CORNER DUAL-ASPECT PANORAMA",
     enSuiteBadge: "EN-SUITE BATH",
+    svgSomCore: "SOM HEXAGONAL BUTTRESSED CORE",
+    svgTwistedCol: "90° ROTATED HELICAL COLUMN ARRAY",
+    svgZahaVoid: "ORGANIC VOID CURTAIN WALL (ZAHA HADID)",
+    svgCarLift: "PRIVATE VEHICULAR SKY LIFT & DISPLAY",
+    svgOceanFront: "PRIME WATERFRONT OCEAN GLAZING",
+    svgServiceCore: "HIGH-SPEED PASSENGER & SERVICE CORE",
   },
   ar: {
     sectionBadge: "المخططات الهندسية والمساحات",
@@ -269,8 +287,14 @@ export const FLOOR_PLAN_LABELS: Record<LanguageCode, FloorPlanLabels> = {
     svgPowderRoom: "حمام الضيوف",
     seriesBadge: (name) => `السلسلة المعمارية ${name}`,
     officialPlanBadge: (dev) => `المخطط الرسمي: ${dev}`,
-    cornerDualAspect: "إطلالة زاوية مزدوجة الاتجاه",
+        cornerDualAspect: "إطلالة زاوية مزدوجة الاتجاه",
     enSuiteBadge: "حمام خاص ملحق",
+    svgSomCore: "نواة SOM السداسية المدعمة",
+    svgTwistedCol: "أعمدة ملتوية بزاوية 90 درجة",
+    svgZahaVoid: "الجدار المنحني للفراغ المركزي (زاها حديد)",
+    svgCarLift: "مصعد سيارات خاص للشقق الفاخرة",
+    svgOceanFront: "واجهة بحرية بانورامية مفتوحة",
+    svgServiceCore: "نواة المصاعد والخدمات المركزية",
   },
   zh: {
     sectionBadge: "建筑户型与技术参数",
@@ -336,8 +360,14 @@ export const FLOOR_PLAN_LABELS: Record<LanguageCode, FloorPlanLabels> = {
     svgPowderRoom: "客用洗手间",
     seriesBadge: (name) => `${name} 建筑图纸系列`,
     officialPlanBadge: (dev) => `开发商官方图纸: ${dev}`,
-    cornerDualAspect: "双面转角全景视界",
+        cornerDualAspect: "双面转角全景视界",
     enSuiteBadge: "独立套房卫浴",
+    svgSomCore: "SOM六边形中央支撑核心筒",
+    svgTwistedCol: "90度扭转螺旋承重柱网",
+    svgZahaVoid: "扎哈流体雕塑中空玻璃幕墙",
+    svgCarLift: "私人汽车入户专属电梯及展示廊",
+    svgOceanFront: "一线正南向无遮挡海景幕墙",
+    svgServiceCore: "高速客梯与机电综合核心筒",
   },
   de: {
     sectionBadge: "Architektonische Grundrisse & Flächen",
@@ -403,8 +433,14 @@ export const FLOOR_PLAN_LABELS: Record<LanguageCode, FloorPlanLabels> = {
     svgPowderRoom: "GÄSTE-WC",
     seriesBadge: (name) => `Architekturserie ${name}`,
     officialPlanBadge: (dev) => `Offizieller Plan: ${dev}`,
-    cornerDualAspect: "ZWEISEITIGES ECKPANORAMA",
+        cornerDualAspect: "ZWEISEITIGES ECKPANORAMA",
     enSuiteBadge: "EN-SUITE-BAD",
+    svgSomCore: "SOM-SECHSKANT-STÜTZKERN",
+    svgTwistedCol: "90°-VERDREHTE WENDELSÄULEN",
+    svgZahaVoid: "ORGANISCHE VOID-FASSADE (ZAHA HADID)",
+    svgCarLift: "PRIVATER PKW-SKY-AUFZUG",
+    svgOceanFront: "PRIME-MEERESFRONT-VERGLASUNG",
+    svgServiceCore: "HOCHGESCHWINDIGKEITS-KERN",
   },
   fr: {
     sectionBadge: "Typologies Architecturales & Plans",
@@ -470,8 +506,14 @@ export const FLOOR_PLAN_LABELS: Record<LanguageCode, FloorPlanLabels> = {
     svgPowderRoom: "TOILETTES INVITÉS",
     seriesBadge: (name) => `Série Architecturale ${name}`,
     officialPlanBadge: (dev) => `Plan Officiel : ${dev}`,
-    cornerDualAspect: "PANORAMA D'ANGLE DOUBLE ORIENTATION",
+        cornerDualAspect: "PANORAMA D'ANGLE DOUBLE ORIENTATION",
     enSuiteBadge: "SDB EN-SUITE",
+    svgSomCore: "NOYAU HEXAGONAL CONTREFORT SOM",
+    svgTwistedCol: "COLONNES TORSADÉES À 90°",
+    svgZahaVoid: "FAÇADE COURBE DU VIDE CENTRAL (ZAHA HADID)",
+    svgCarLift: "ASCENSEUR À VOITURE PRIVATIF",
+    svgOceanFront: "FAÇADE PANORAMIQUE SUR MER",
+    svgServiceCore: "NOYAU CENTRAL ASCENSEURS & GAINES",
   },
   it: {
     sectionBadge: "Tipologie Architettoniche & Planimetrie",
@@ -537,8 +579,14 @@ export const FLOOR_PLAN_LABELS: Record<LanguageCode, FloorPlanLabels> = {
     svgPowderRoom: "BAGNO OSPITI",
     seriesBadge: (name) => `Serie Architettonica ${name}`,
     officialPlanBadge: (dev) => `Piano Ufficiale: ${dev}`,
-    cornerDualAspect: "PANORAMA D'ANGOLO DOPPIA ESPOSIZIONE",
+        cornerDualAspect: "PANORAMA D'ANGOLO DOPPIA ESPOSIZIONE",
     enSuiteBadge: "BAGNO EN-SUITE",
+    svgSomCore: "NUCLEO ESAGONALE A CONTRAFFORTE SOM",
+    svgTwistedCol: "COLONNE ELICOIDALI RUOTATE DI 90°",
+    svgZahaVoid: "FACCIATA CURVA DEL VUOTO CENTRALE (ZAHA HADID)",
+    svgCarLift: "ASCENSORE PER AUTO PRIVATO",
+    svgOceanFront: "FACCIATA PANORAMICA SUL MARE",
+    svgServiceCore: "NUCLEO ASCENSORI AD ALTA VELOCITÀ",
   },
   tr: {
     sectionBadge: "Mimari Kat Planları ve Alanlar",
@@ -604,8 +652,14 @@ export const FLOOR_PLAN_LABELS: Record<LanguageCode, FloorPlanLabels> = {
     svgPowderRoom: "MİSAFİR TUVALETİ",
     seriesBadge: (name) => `${name} Mimari Serisi`,
     officialPlanBadge: (dev) => `Resmi Plan: ${dev}`,
-    cornerDualAspect: "ÇİFT CEPHE KÖŞE MANZARA",
+        cornerDualAspect: "ÇİFT CEPHE KÖŞE MANZARA",
     enSuiteBadge: "EBEVEYN BANYOSU",
+    svgSomCore: "SOM ALTIGEN TAŞIYICI ÇEKİRDEK",
+    svgTwistedCol: "90° DÖNÜŞLÜ HELİKAL KOLONLAR",
+    svgZahaVoid: "ORGANİK BOŞLUK CEPHE HATTI (ZAHA HADID)",
+    svgCarLift: "ÖZEL ARAÇ ASANSÖRÜ",
+    svgOceanFront: "DENİZE SIFIR PANORAMİK CAM CEPHE",
+    svgServiceCore: "YÜKSEK HIZLI ASANSÖR VE SERVİS ÇEKİRDEĞİ",
   },
   hi: {
     sectionBadge: "आर्किटेक्चरल फ्लोर प्लान और विनिर्देश",
@@ -671,8 +725,14 @@ export const FLOOR_PLAN_LABELS: Record<LanguageCode, FloorPlanLabels> = {
     svgPowderRoom: "गेस्ट पाउडर रूम",
     seriesBadge: (name) => `${name} आर्किटेक्चरल सीरीज़`,
     officialPlanBadge: (dev) => `आधिकारिक योजना: ${dev}`,
-    cornerDualAspect: "कॉर्नर डुअल-एस्पेक्ट पैनोरमा",
+        cornerDualAspect: "कॉर्नर डुअल-एस्पेक्ट पैनोरमा",
     enSuiteBadge: "एन-सुइट बाथरूम",
+    svgSomCore: "SOM हेक्सागोनल बट्रेस्ड कोर",
+    svgTwistedCol: "90° घुमावदार स्तंभ सरणी",
+    svgZahaVoid: "ऑर्गेनिक वॉइड कर्टेन वॉल (ज़ाहा हदीद)",
+    svgCarLift: "प्राइवेट कार स्काई लिफ्ट",
+    svgOceanFront: "प्राइम वॉटरफ्रंट महासागर ग्लेज़िंग",
+    svgServiceCore: "हाई-स्पीड लिफ्ट व सर्विस कोर",
   },
   ur: {
     sectionBadge: "معماری فلور پلان اور رقبہ",
@@ -738,8 +798,14 @@ export const FLOOR_PLAN_LABELS: Record<LanguageCode, FloorPlanLabels> = {
     svgPowderRoom: "مہمان واش روم",
     seriesBadge: (name) => `${name} آرکیٹیکچرل سیریز`,
     officialPlanBadge: (dev) => `سرکاری پلان: ${dev}`,
-    cornerDualAspect: "کونے کا دو طرفہ پینورما",
+        cornerDualAspect: "کونے کا دو طرفہ پینورما",
     enSuiteBadge: "منسلک باتھ روم",
+    svgSomCore: "ایس او ایم چھ رخی سپورٹ کور",
+    svgTwistedCol: "90 ڈگری گھومتے ہوئے ستون",
+    svgZahaVoid: "آرگینک خالی حصہ کرٹین وال (زہا حدید)",
+    svgCarLift: "نجی کار اسکائی لفٹ",
+    svgOceanFront: "پہلی قطار سمندری گلیزنگ",
+    svgServiceCore: "ہائی اسپیڈ لفٹ اور سروس کور",
   },
 };
 
