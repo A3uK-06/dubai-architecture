@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useMemo, useEffect } from "react";
+import React, { useState, useMemo, useEffect, useRef } from "react";
 import { Building, FloorPlan, getBuildingFloorPlans } from "@/data/buildings";
 import { useLang } from "@/context/LangContext";
 import { FLOOR_PLAN_LABELS, getLocalizedFloorPlan } from "@/data/floorPlanI18n";
@@ -69,9 +69,91 @@ export default function FloorPlansExplorer({
   const [activePlanId, setActivePlanId] = useState<string>(rawPlans[0]?.id || "");
   const [isFullscreen, setIsFullscreen] = useState(false);
   const [zoomLevel, setZoomLevel] = useState<number>(1);
+  const [pan, setPan] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
+  const [isDragging, setIsDragging] = useState(false);
+  const dragStartRef = useRef<{ x: number; y: number }>({ x: 0, y: 0 });
+  const dragStartPanRef = useRef<{ x: number; y: number }>({ x: 0, y: 0 });
   const [blueprintTheme, setBlueprintTheme] = useState<"dark" | "light">("dark");
 
   const labels = FLOOR_PLAN_LABELS[lang] || FLOOR_PLAN_LABELS.en;
+
+  const resetView = () => {
+    setZoomLevel(1);
+    setPan({ x: 0, y: 0 });
+  };
+
+  const handleZoomIn = () => {
+    setZoomLevel((z) => Math.min(Number((z + 0.25).toFixed(2)), 3.0));
+  };
+
+  const handleZoomOut = () => {
+    setZoomLevel((z) => {
+      const next = Math.max(Number((z - 0.25).toFixed(2)), 0.75);
+      if (next <= 1 && (pan.x !== 0 || pan.y !== 0)) {
+        setPan({ x: 0, y: 0 });
+      }
+      return next;
+    });
+  };
+
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (e.button !== 0) return; // Left click only
+    setIsDragging(true);
+    dragStartRef.current = { x: e.clientX, y: e.clientY };
+    dragStartPanRef.current = { ...pan };
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging) return;
+    const dx = e.clientX - dragStartRef.current.x;
+    const dy = e.clientY - dragStartRef.current.y;
+    setPan({
+      x: Math.round(dragStartPanRef.current.x + dx),
+      y: Math.round(dragStartPanRef.current.y + dy),
+    });
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+  };
+
+  // Touch drag for mobile / tablet
+  const handleTouchStart = (e: React.TouchEvent) => {
+    if (e.touches.length === 1) {
+      setIsDragging(true);
+      dragStartRef.current = { x: e.touches[0].clientX, y: e.touches[0].clientY };
+      dragStartPanRef.current = { ...pan };
+    }
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (!isDragging || e.touches.length !== 1) return;
+    const dx = e.touches[0].clientX - dragStartRef.current.x;
+    const dy = e.touches[0].clientY - dragStartRef.current.y;
+    setPan({
+      x: Math.round(dragStartPanRef.current.x + dx),
+      y: Math.round(dragStartPanRef.current.y + dy),
+    });
+  };
+
+  const handleTouchEnd = () => {
+    setIsDragging(false);
+  };
+
+  // Smooth mouse wheel zoom
+  const handleWheel = (e: React.WheelEvent) => {
+    if (e.deltaY < 0) {
+      setZoomLevel((z) => Math.min(Number((z + 0.15).toFixed(2)), 3.0));
+    } else {
+      setZoomLevel((z) => {
+        const next = Math.max(Number((z - 0.15).toFixed(2)), 0.75);
+        if (next <= 1 && (pan.x !== 0 || pan.y !== 0)) {
+          setPan({ x: 0, y: 0 });
+        }
+        return next;
+      });
+    }
+  };
 
   const plans = useMemo(() => {
     return rawPlans.map((p) => getLocalizedFloorPlan(p, lang, building.name));
@@ -84,7 +166,7 @@ export default function FloorPlansExplorer({
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape" && isFullscreen) {
         setIsFullscreen(false);
-        setZoomLevel(1);
+        resetView();
       }
     };
     window.addEventListener("keydown", handleKeyDown);
@@ -405,8 +487,8 @@ export default function FloorPlansExplorer({
             <text x={leftOffset + 360} y="68" fill={themeColors.titleFill} fontSize="13" fontFamily={ARCH_FONT} fontWeight="700" letterSpacing="0.05em">
               {labels.svgKitchen}
             </text>
-            <text x={leftOffset + 360} y="88" fill={themeColors.subMetricFill} fontSize="11" fontFamily={ARCH_FONT} fontWeight="600">
-              {plan.roomsBreakdown.kitchenType}
+            <text x={leftOffset + 360} y="88" fill={themeColors.metricFill} fontSize="11" fontFamily={ARCH_FONT} fontWeight="600">
+              {Math.round(plan.internalAreaSqFt * 0.14)} SQ.FT • {Math.round(plan.internalAreaSqFt * 0.14 * 0.0929)} M²
             </text>
             <g transform={`translate(${leftOffset + 360}, 105)`}>
               <rect x="0" y="0" width="165" height="55" rx="5" stroke={themeColors.subMetricFill} strokeWidth="1.4" fill={themeColors.furnitureFill} />
@@ -792,10 +874,9 @@ export default function FloorPlansExplorer({
     return (
       <svg
         viewBox="0 0 920 540"
-        className={`w-full select-none transition-transform duration-200 ${
+        className={`w-full select-none ${
           isLarge ? "h-full max-h-[82vh]" : "h-auto max-h-[480px]"
         }`}
-        style={isLarge ? { transform: `scale(${zoomLevel})` } : undefined}
         fill="none"
       >
         {/* Architectural Drafting Grid */}
@@ -1315,30 +1396,38 @@ export default function FloorPlansExplorer({
                 🖨️
               </button>
 
-              {/* Zoom Buttons */}
+              {/* Zoom & Pan Controls */}
+              <div className="flex items-center rounded-lg bg-white/10 p-0.5 text-xs font-sans font-semibold">
+                <button
+                  type="button"
+                  onClick={handleZoomIn}
+                  className="px-3 py-1.5 rounded-md hover:bg-white/20 text-white transition-colors cursor-pointer"
+                  title={labels.zoomIn}
+                >
+                  + {labels.zoomIn}
+                </button>
+                <span className="px-2 font-mono text-[11px] text-sky-400 font-bold select-none min-w-[42px] text-center">
+                  {Math.round(zoomLevel * 100)}%
+                </span>
+                <button
+                  type="button"
+                  onClick={handleZoomOut}
+                  className="px-3 py-1.5 rounded-md hover:bg-white/20 text-white transition-colors cursor-pointer"
+                  title={labels.zoomOut}
+                >
+                  - {labels.zoomOut}
+                </button>
+              </div>
+
+              {/* Reset View Button */}
               <button
                 type="button"
-                onClick={() => setZoomLevel((z) => Math.min(z + 0.25, 2.5))}
-                className="px-3.5 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white font-sans text-xs font-bold transition-colors cursor-pointer"
-                title={labels.zoomIn}
-              >
-                + {labels.zoomIn}
-              </button>
-              <button
-                type="button"
-                onClick={() => setZoomLevel((z) => Math.max(z - 0.25, 0.75))}
-                className="px-3.5 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white font-sans text-xs font-bold transition-colors cursor-pointer"
-                title={labels.zoomOut}
-              >
-                - {labels.zoomOut}
-              </button>
-              <button
-                type="button"
-                onClick={() => setZoomLevel(1)}
-                className="px-3.5 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white font-sans text-xs font-bold transition-colors cursor-pointer"
+                onClick={resetView}
+                className="px-3 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white font-sans text-xs font-bold transition-colors cursor-pointer flex items-center gap-1.5"
                 title={labels.resetZoom}
               >
-                {labels.resetZoom}
+                <span>🎯</span>
+                <span>{labels.resetZoom}</span>
               </button>
 
               {/* Close Button */}
@@ -1346,7 +1435,7 @@ export default function FloorPlansExplorer({
                 type="button"
                 onClick={() => {
                   setIsFullscreen(false);
-                  setZoomLevel(1);
+                  resetView();
                 }}
                 className="w-10 h-10 rounded-xl bg-rose-500/20 hover:bg-rose-500/40 text-rose-300 flex items-center justify-center font-bold text-lg transition-colors ml-2 cursor-pointer"
                 title={labels.closeFullscreen}
@@ -1356,10 +1445,40 @@ export default function FloorPlansExplorer({
             </div>
           </div>
 
-          {/* Lightbox Canvas Area */}
-          <div className="flex-1 overflow-auto flex items-center justify-center p-2 sm:p-4">
-            <div className="w-full max-w-6xl shadow-2xl rounded-2xl overflow-hidden border border-white/10">
+          {/* Lightbox Canvas Area with Pan & Zoom */}
+          <div
+            className="flex-1 overflow-hidden relative flex items-center justify-center p-2 sm:p-4 select-none touch-none"
+            onMouseDown={handleMouseDown}
+            onMouseMove={handleMouseMove}
+            onMouseUp={handleMouseUp}
+            onMouseLeave={handleMouseUp}
+            onTouchStart={handleTouchStart}
+            onTouchMove={handleTouchMove}
+            onTouchEnd={handleTouchEnd}
+            onWheel={handleWheel}
+            style={{
+              cursor: isDragging ? "grabbing" : zoomLevel > 1 ? "grab" : "default",
+            }}
+          >
+            {/* Draggable & Scalable Drawing Container */}
+            <div
+              className="w-full max-w-6xl shadow-2xl rounded-2xl overflow-hidden border border-white/10 will-change-transform"
+              style={{
+                transform: `translate3d(${pan.x}px, ${pan.y}px, 0) scale(${zoomLevel})`,
+                transformOrigin: "center center",
+                transition: isDragging ? "none" : "transform 0.15s cubic-bezier(0.2, 0, 0, 1)",
+              }}
+            >
               {renderBlueprintSvg(true)}
+            </div>
+
+            {/* Floating Navigation & Drag Helper Pill */}
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-full bg-slate-900/85 backdrop-blur-md border border-white/15 text-white/85 text-xs font-sans font-medium pointer-events-none shadow-xl flex items-center gap-3">
+              <span>✋ {isRu ? "Зажмите левую кнопку мыши для перемещения (Drag)" : "Click & drag to pan"}</span>
+              <span className="text-white/30">•</span>
+              <span>🔍 {isRu ? "Колёсико мыши: масштаб" : "Mouse wheel: zoom"}</span>
+              <span className="text-white/30">•</span>
+              <span className="font-mono text-sky-400 font-bold">{Math.round(zoomLevel * 100)}%</span>
             </div>
           </div>
 
