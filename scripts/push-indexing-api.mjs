@@ -187,7 +187,7 @@ async function main() {
     }
 
     // Gentle 100ms throttle between requests
-    await new Promise((r) => setTimeout(r, 100));
+    await new Promise((r) => setTimeout(r, 500));
   }
 
   console.log(`\n🎉 Google Indexing API finished: ${successCount} published, ${failCount} failed.`);
