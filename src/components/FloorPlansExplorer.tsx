@@ -32,6 +32,9 @@ export default function FloorPlansExplorer({
 
   const activePlan = plans.find((p) => p.id === activePlanId) || plans[0];
 
+  const isFosterIndex = building.id.includes("index") || building.slug.includes("index");
+  const isBurjKhalifa = building.id.includes("burj-khalifa") || building.slug.includes("burj-khalifa");
+
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape" && isFullscreen) {
@@ -71,11 +74,14 @@ export default function FloorPlansExplorer({
     compassText: isDark ? "#FFFFFF" : "#0F172A",
     poolWater: isDark ? "#0284C7" : "#38BDF8",
     poolOpacity: isDark ? "0.25" : "0.20",
+    concreteFill: isDark ? "#1E293B" : "#E2E8F0",
   };
 
   // RENDER DYNAMIC TYPOLOGY SCHEMATICS (1BR, 2BR, 3BR, PENTHOUSE)
   const renderTypologyContent = (plan: FloorPlan) => {
     const type = plan.blueprintType || "1br";
+    const leftOffset = isFosterIndex ? 65 : 35;
+    const contentWidth = isFosterIndex ? 820 : 850;
 
     switch (type) {
       // ==========================================
@@ -85,115 +91,115 @@ export default function FloorPlansExplorer({
         return (
           <>
             {/* 1. Master Bedroom Suite (Top-Left) */}
-            <rect x="35" y="30" width="370" height="280" stroke={themeColors.partitionStroke} strokeWidth="2" fill="none" />
-            <text x="60" y="68" fill={themeColors.titleFill} fontSize="14" fontFamily={ARCH_FONT} fontWeight="700" letterSpacing="0.05em">
+            <rect x={leftOffset} y="30" width="350" height="270" stroke={themeColors.partitionStroke} strokeWidth="2" fill="none" />
+            <text x={leftOffset + 25} y="68" fill={themeColors.titleFill} fontSize="14" fontFamily={ARCH_FONT} fontWeight="700" letterSpacing="0.05em">
               {labels.svgMasterBed}
             </text>
-            <text x="60" y="88" fill={themeColors.metricFill} fontSize="12" fontFamily={ARCH_FONT} fontWeight="600">
+            <text x={leftOffset + 25} y="88" fill={themeColors.metricFill} fontSize="12" fontFamily={ARCH_FONT} fontWeight="600">
               {Math.round(plan.internalAreaSqFt * 0.38)} SQ.FT • {Math.round(plan.internalAreaSqFt * 0.38 * 0.0929)} M²
             </text>
 
             {/* King Bed */}
-            <g transform="translate(155, 120)">
-              <rect x="0" y="0" width="145" height="130" rx="6" stroke={themeColors.furnitureStroke} strokeWidth="1.2" fill={themeColors.furnitureFill} />
-              <line x1="72" y1="0" x2="72" y2="130" stroke={themeColors.furnitureStroke} strokeWidth="1" strokeDasharray="4 3" />
-              <rect x="14" y="10" width="48" height="26" rx="4" stroke={themeColors.furnitureStroke} strokeWidth="1" fill={themeColors.furnitureAccent} />
-              <rect x="82" y="10" width="48" height="26" rx="4" stroke={themeColors.furnitureStroke} strokeWidth="1" fill={themeColors.furnitureAccent} />
-              <path d="M 0 52 Q 72 62 145 52" stroke={themeColors.furnitureStroke} strokeWidth="1.2" fill="none" />
-              <rect x="-32" y="10" width="26" height="32" rx="3" stroke={themeColors.furnitureStroke} strokeWidth="1" fill={themeColors.furnitureFill} />
-              <rect x="151" y="10" width="26" height="32" rx="3" stroke={themeColors.furnitureStroke} strokeWidth="1" fill={themeColors.furnitureFill} />
+            <g transform={`translate(${leftOffset + 120}, 115)`}>
+              <rect x="0" y="0" width="140" height="125" rx="6" stroke={themeColors.furnitureStroke} strokeWidth="1.2" fill={themeColors.furnitureFill} />
+              <line x1="70" y1="0" x2="70" y2="125" stroke={themeColors.furnitureStroke} strokeWidth="1" strokeDasharray="4 3" />
+              <rect x="14" y="10" width="46" height="24" rx="4" stroke={themeColors.furnitureStroke} strokeWidth="1" fill={themeColors.furnitureAccent} />
+              <rect x="80" y="10" width="46" height="24" rx="4" stroke={themeColors.furnitureStroke} strokeWidth="1" fill={themeColors.furnitureAccent} />
+              <path d="M 0 50 Q 70 60 140 50" stroke={themeColors.furnitureStroke} strokeWidth="1.2" fill="none" />
+              <rect x="-30" y="10" width="24" height="30" rx="3" stroke={themeColors.furnitureStroke} strokeWidth="1" fill={themeColors.furnitureFill} />
+              <rect x="146" y="10" width="24" height="30" rx="3" stroke={themeColors.furnitureStroke} strokeWidth="1" fill={themeColors.furnitureFill} />
             </g>
 
             {/* Wardrobe */}
-            <rect x="60" y="120" width="60" height="135" rx="4" stroke={themeColors.furnitureStroke} strokeWidth="1" strokeDasharray="4 3" fill={themeColors.furnitureFill} />
-            <text x="90" y="190" fill={themeColors.furnitureText} fontSize="10" fontFamily={ARCH_FONT} fontWeight="600" letterSpacing="0.08em" textAnchor="middle" transform="rotate(-90 90 190)">
+            <rect x={leftOffset + 25} y="115" width="55" height="125" rx="4" stroke={themeColors.furnitureStroke} strokeWidth="1" strokeDasharray="4 3" fill={themeColors.furnitureFill} />
+            <text x={leftOffset + 52} y="180" fill={themeColors.furnitureText} fontSize="10" fontFamily={ARCH_FONT} fontWeight="600" letterSpacing="0.08em" textAnchor="middle" transform={`rotate(-90 ${leftOffset + 52} 180)`}>
               {labels.svgWardrobe}
             </text>
 
             {/* Bedroom Door */}
-            <path d="M 345 310 A 40 40 0 0 1 385 270" stroke={themeColors.doorSwing} strokeWidth="1.2" strokeDasharray="4 3" fill="none" />
-            <line x1="345" y1="310" x2="385" y2="310" stroke={themeColors.doorSwing} strokeWidth="1.8" />
+            <path d={`M ${leftOffset + 310} 300 A 40 40 0 0 1 ${leftOffset + 350} 260`} stroke={themeColors.doorSwing} strokeWidth="1.2" strokeDasharray="4 3" fill="none" />
+            <line x1={leftOffset + 310} y1="300" x2={leftOffset + 350} y2="300" stroke={themeColors.doorSwing} strokeWidth="1.8" />
 
             {/* 2. En-Suite Master Bath (Bottom-Left) */}
-            <rect x="35" y="310" width="370" height="195" stroke={themeColors.partitionStroke} strokeWidth="2" fill="none" />
-            <text x="60" y="342" fill={themeColors.titleFill} fontSize="13" fontFamily={ARCH_FONT} fontWeight="700" letterSpacing="0.05em">
+            <rect x={leftOffset} y="300" width="350" height="205" stroke={themeColors.partitionStroke} strokeWidth="2" fill="none" />
+            <text x={leftOffset + 25} y="330" fill={themeColors.titleFill} fontSize="13" fontFamily={ARCH_FONT} fontWeight="700" letterSpacing="0.05em">
               {labels.svgBath}
             </text>
-            <text x="60" y="360" fill={themeColors.metricFill} fontSize="11" fontFamily={ARCH_FONT} fontWeight="600">
+            <text x={leftOffset + 25} y="348" fill={themeColors.metricFill} fontSize="11" fontFamily={ARCH_FONT} fontWeight="600">
               {Math.round(plan.internalAreaSqFt * 0.12)} SQ.FT • {Math.round(plan.internalAreaSqFt * 0.12 * 0.0929)} M²
             </text>
-            <g transform="translate(60, 380)">
-              <rect x="0" y="0" width="115" height="58" rx="14" stroke={themeColors.furnitureStroke} strokeWidth="1.2" fill={themeColors.furnitureFill} />
-              <ellipse cx="57" cy="29" rx="46" ry="20" stroke={themeColors.furnitureStroke} strokeWidth="1" fill={themeColors.furnitureAccent} />
-              <circle cx="20" cy="29" r="3" fill={themeColors.metricFill} />
+            <g transform={`translate(${leftOffset + 25}, 365)`}>
+              <rect x="0" y="0" width="110" height="55" rx="14" stroke={themeColors.furnitureStroke} strokeWidth="1.2" fill={themeColors.furnitureFill} />
+              <ellipse cx="55" cy="27" rx="44" ry="19" stroke={themeColors.furnitureStroke} strokeWidth="1" fill={themeColors.furnitureAccent} />
+              <circle cx="20" cy="27" r="3" fill={themeColors.metricFill} />
             </g>
-            <g transform="translate(195, 380)">
-              <rect x="0" y="0" width="180" height="44" rx="4" stroke={themeColors.furnitureStroke} strokeWidth="1.2" fill={themeColors.furnitureFill} />
-              <ellipse cx="45" cy="22" rx="24" ry="14" stroke={themeColors.furnitureStroke} strokeWidth="1" fill={themeColors.furnitureAccent} />
-              <ellipse cx="135" cy="22" rx="24" ry="14" stroke={themeColors.furnitureStroke} strokeWidth="1" fill={themeColors.furnitureAccent} />
+            <g transform={`translate(${leftOffset + 155}, 365)`}>
+              <rect x="0" y="0" width="165" height="42" rx="4" stroke={themeColors.furnitureStroke} strokeWidth="1.2" fill={themeColors.furnitureFill} />
+              <ellipse cx="40" cy="21" rx="22" ry="13" stroke={themeColors.furnitureStroke} strokeWidth="1" fill={themeColors.furnitureAccent} />
+              <ellipse cx="125" cy="21" rx="22" ry="13" stroke={themeColors.furnitureStroke} strokeWidth="1" fill={themeColors.furnitureAccent} />
             </g>
-            <rect x="250" y="438" width="125" height="54" stroke={themeColors.metricFill} strokeWidth="1.2" strokeDasharray="4 2" fill={themeColors.furnitureAccent} />
-            <text x="312" y="470" fill={themeColors.furnitureText} fontSize="10" fontFamily={ARCH_FONT} fontWeight="700" letterSpacing="0.06em" textAnchor="middle">
+            <rect x={leftOffset + 210} y="420" width="115" height="50" stroke={themeColors.metricFill} strokeWidth="1.2" strokeDasharray="4 2" fill={themeColors.furnitureAccent} />
+            <text x={leftOffset + 267} y="450" fill={themeColors.furnitureText} fontSize="10" fontFamily={ARCH_FONT} fontWeight="700" letterSpacing="0.06em" textAnchor="middle">
               {labels.svgShower}
             </text>
 
             {/* 3. Kitchen Pavilion (Top-Center) */}
-            <rect x="405" y="30" width="230" height="220" stroke={themeColors.partitionStroke} strokeWidth="2" fill="none" />
-            <text x="430" y="68" fill={themeColors.titleFill} fontSize="13" fontFamily={ARCH_FONT} fontWeight="700" letterSpacing="0.05em">
+            <rect x={leftOffset + 350} y="30" width="220" height="210" stroke={themeColors.partitionStroke} strokeWidth="2" fill="none" />
+            <text x={leftOffset + 370} y="68" fill={themeColors.titleFill} fontSize="13" fontFamily={ARCH_FONT} fontWeight="700" letterSpacing="0.05em">
               {labels.svgKitchen}
             </text>
-            <text x="430" y="88" fill={themeColors.subMetricFill} fontSize="11" fontFamily={ARCH_FONT} fontWeight="600">
+            <text x={leftOffset + 370} y="88" fill={themeColors.subMetricFill} fontSize="11" fontFamily={ARCH_FONT} fontWeight="600">
               {plan.roomsBreakdown.kitchenType}
             </text>
-            <g transform="translate(430, 110)">
-              <rect x="0" y="0" width="170" height="58" rx="5" stroke={themeColors.subMetricFill} strokeWidth="1.4" fill={themeColors.furnitureFill} />
-              <circle cx="38" cy="29" r="13" stroke={themeColors.subMetricFill} strokeWidth="1" fill={themeColors.furnitureAccent} />
-              <circle cx="85" cy="29" r="13" stroke={themeColors.subMetricFill} strokeWidth="1" fill={themeColors.furnitureAccent} />
-              <circle cx="132" cy="29" r="10" stroke={themeColors.subMetricFill} strokeWidth="1" fill={themeColors.furnitureAccent} />
-              <circle cx="38" cy="80" r="8" stroke={themeColors.furnitureStroke} strokeWidth="1" fill={themeColors.furnitureAccent} />
-              <circle cx="85" cy="80" r="8" stroke={themeColors.furnitureStroke} strokeWidth="1" fill={themeColors.furnitureAccent} />
-              <circle cx="132" cy="80" r="8" stroke={themeColors.furnitureStroke} strokeWidth="1" fill={themeColors.furnitureAccent} />
+            <g transform={`translate(${leftOffset + 370}, 105)`}>
+              <rect x="0" y="0" width="165" height="55" rx="5" stroke={themeColors.subMetricFill} strokeWidth="1.4" fill={themeColors.furnitureFill} />
+              <circle cx="36" cy="27" r="12" stroke={themeColors.subMetricFill} strokeWidth="1" fill={themeColors.furnitureAccent} />
+              <circle cx="82" cy="27" r="12" stroke={themeColors.subMetricFill} strokeWidth="1" fill={themeColors.furnitureAccent} />
+              <circle cx="128" cy="27" r="9" stroke={themeColors.subMetricFill} strokeWidth="1" fill={themeColors.furnitureAccent} />
+              <circle cx="36" cy="75" r="7" stroke={themeColors.furnitureStroke} strokeWidth="1" fill={themeColors.furnitureAccent} />
+              <circle cx="82" cy="75" r="7" stroke={themeColors.furnitureStroke} strokeWidth="1" fill={themeColors.furnitureAccent} />
+              <circle cx="128" cy="75" r="7" stroke={themeColors.furnitureStroke} strokeWidth="1" fill={themeColors.furnitureAccent} />
             </g>
-            <text x="515" y="218" fill={themeColors.furnitureText} fontSize="10" fontFamily={ARCH_FONT} fontWeight="600" letterSpacing="0.06em" textAnchor="middle">
+            <text x={leftOffset + 452} y="208" fill={themeColors.furnitureText} fontSize="10" fontFamily={ARCH_FONT} fontWeight="600" letterSpacing="0.06em" textAnchor="middle">
               {labels.svgIsland}
             </text>
 
             {/* 4. Balcony Loggia (Top-Right) */}
-            <rect x="635" y="30" width="250" height="220" stroke={themeColors.partitionStroke} strokeWidth="2" strokeDasharray="6 4" fill={themeColors.metricFill} fillOpacity={isDark ? "0.05" : "0.08"} />
-            <text x="655" y="68" fill={themeColors.titleFill} fontSize="13" fontFamily={ARCH_FONT} fontWeight="700" letterSpacing="0.05em">
+            <rect x={leftOffset + 570} y="30" width="250" height="210" stroke={themeColors.partitionStroke} strokeWidth="2" strokeDasharray="6 4" fill={themeColors.metricFill} fillOpacity={isDark ? "0.05" : "0.08"} />
+            <text x={leftOffset + 590} y="68" fill={themeColors.titleFill} fontSize="13" fontFamily={ARCH_FONT} fontWeight="700" letterSpacing="0.05em">
               {labels.svgBalcony}
             </text>
-            <text x="655" y="88" fill={themeColors.metricFill} fontSize="11" fontFamily={ARCH_FONT} fontWeight="600">
+            <text x={leftOffset + 590} y="88" fill={themeColors.metricFill} fontSize="11" fontFamily={ARCH_FONT} fontWeight="600">
               {plan.balconyAreaSqFt} SQ.FT • {Math.round(plan.balconyAreaSqFt * 0.0929)} M²
             </text>
-            <g transform="translate(660, 115)">
-              <rect x="0" y="0" width="160" height="65" rx="8" stroke={themeColors.furnitureStroke} strokeWidth="1.2" fill={themeColors.furnitureFill} />
-              <text x="80" y="38" fill={themeColors.furnitureText} fontSize="10" fontFamily={ARCH_FONT} fontWeight="600" letterSpacing="0.06em" textAnchor="middle">
+            <g transform={`translate(${leftOffset + 600}, 110)`}>
+              <rect x="0" y="0" width="160" height="60" rx="8" stroke={themeColors.furnitureStroke} strokeWidth="1.2" fill={themeColors.furnitureFill} />
+              <text x="80" y="35" fill={themeColors.furnitureText} fontSize="10" fontFamily={ARCH_FONT} fontWeight="600" letterSpacing="0.06em" textAnchor="middle">
                 {labels.svgLounge}
               </text>
             </g>
 
             {/* 5. Main Living & Dining (Bottom Right) */}
-            <rect x="405" y="250" width="480" height="255" stroke={themeColors.partitionStroke} strokeWidth="2" fill="none" />
-            <text x="430" y="280" fill={themeColors.titleFill} fontSize="14" fontFamily={ARCH_FONT} fontWeight="700" letterSpacing="0.05em">
+            <rect x={leftOffset + 350} y="240" width="470" height="265" stroke={themeColors.partitionStroke} strokeWidth="2" fill="none" />
+            <text x={leftOffset + 375} y="270" fill={themeColors.titleFill} fontSize="14" fontFamily={ARCH_FONT} fontWeight="700" letterSpacing="0.05em">
               {labels.svgLiving}
             </text>
-            <text x="430" y="300" fill={themeColors.metricFill} fontSize="12" fontFamily={ARCH_FONT} fontWeight="600">
+            <text x={leftOffset + 375} y="290" fill={themeColors.metricFill} fontSize="12" fontFamily={ARCH_FONT} fontWeight="600">
               {Math.round(plan.internalAreaSqFt * 0.50)} SQ.FT • {plan.ceilingHeightMeters}m {labels.svgCeilingHeight}
             </text>
-            <g transform="translate(435, 335)">
-              <rect x="15" y="15" width="125" height="65" rx="8" stroke={themeColors.furnitureStroke} strokeWidth="1.2" fill={themeColors.furnitureFill} />
-              <text x="77" y="52" fill={themeColors.furnitureText} fontSize="10" fontFamily={ARCH_FONT} fontWeight="600" letterSpacing="0.06em" textAnchor="middle">
+            <g transform={`translate(${leftOffset + 375}, 320)`}>
+              <rect x="15" y="15" width="120" height="60" rx="8" stroke={themeColors.furnitureStroke} strokeWidth="1.2" fill={themeColors.furnitureFill} />
+              <text x="75" y="50" fill={themeColors.furnitureText} fontSize="10" fontFamily={ARCH_FONT} fontWeight="600" letterSpacing="0.06em" textAnchor="middle">
                 {labels.svgDining}
               </text>
-              <rect x="35" y="-2" width="26" height="12" rx="2" stroke={themeColors.furnitureStroke} strokeWidth="1" fill={themeColors.furnitureAccent} />
-              <rect x="95" y="-2" width="26" height="12" rx="2" stroke={themeColors.furnitureStroke} strokeWidth="1" fill={themeColors.furnitureAccent} />
-              <rect x="35" y="85" width="26" height="12" rx="2" stroke={themeColors.furnitureStroke} strokeWidth="1" fill={themeColors.furnitureAccent} />
-              <rect x="95" y="85" width="26" height="12" rx="2" stroke={themeColors.furnitureStroke} strokeWidth="1" fill={themeColors.furnitureAccent} />
+              <rect x="35" y="-2" width="24" height="12" rx="2" stroke={themeColors.furnitureStroke} strokeWidth="1" fill={themeColors.furnitureAccent} />
+              <rect x="90" y="-2" width="24" height="12" rx="2" stroke={themeColors.furnitureStroke} strokeWidth="1" fill={themeColors.furnitureAccent} />
+              <rect x="35" y="80" width="24" height="12" rx="2" stroke={themeColors.furnitureStroke} strokeWidth="1" fill={themeColors.furnitureAccent} />
+              <rect x="90" y="80" width="24" height="12" rx="2" stroke={themeColors.furnitureStroke} strokeWidth="1" fill={themeColors.furnitureAccent} />
             </g>
-            <g transform="translate(630, 325)">
-              <path d="M 15 0 L 180 0 L 180 125 L 140 125 L 140 42 L 15 42 Z" stroke={themeColors.furnitureStroke} strokeWidth="1.2" fill={themeColors.furnitureFill} />
-              <rect x="45" y="60" width="75" height="42" rx="5" stroke={themeColors.furnitureStroke} strokeWidth="1" fill={themeColors.furnitureAccent} />
+            <g transform={`translate(${leftOffset + 560}, 310)`}>
+              <path d="M 15 0 L 160 0 L 160 115 L 125 115 L 125 38 L 15 38 Z" stroke={themeColors.furnitureStroke} strokeWidth="1.2" fill={themeColors.furnitureFill} />
+              <rect x="40" y="55" width="70" height="38" rx="5" stroke={themeColors.furnitureStroke} strokeWidth="1" fill={themeColors.furnitureAccent} />
             </g>
           </>
         );
@@ -205,119 +211,106 @@ export default function FloorPlansExplorer({
         return (
           <>
             {/* Primary Master Suite (Top-Left) */}
-            <rect x="35" y="30" width="310" height="270" stroke={themeColors.partitionStroke} strokeWidth="2" fill="none" />
-            <text x="55" y="65" fill={themeColors.titleFill} fontSize="13" fontFamily={ARCH_FONT} fontWeight="700" letterSpacing="0.05em">
+            <rect x={leftOffset} y="30" width="290" height="260" stroke={themeColors.partitionStroke} strokeWidth="2" fill="none" />
+            <text x={leftOffset + 20} y="62" fill={themeColors.titleFill} fontSize="13" fontFamily={ARCH_FONT} fontWeight="700" letterSpacing="0.05em">
               {labels.svgMasterBed}
             </text>
-            <text x="55" y="83" fill={themeColors.metricFill} fontSize="11" fontFamily={ARCH_FONT} fontWeight="600">
-              {Math.round(plan.internalAreaSqFt * 0.28)} SQ.FT • EN-SUITE
+            <text x={leftOffset + 20} y="80" fill={themeColors.metricFill} fontSize="11" fontFamily={ARCH_FONT} fontWeight="600">
+              {Math.round(plan.internalAreaSqFt * 0.28)} SQ.FT • {labels.enSuiteBadge}
             </text>
-            {/* Master Bed */}
-            <g transform="translate(130, 110)">
-              <rect x="0" y="0" width="130" height="120" rx="5" stroke={themeColors.furnitureStroke} strokeWidth="1.2" fill={themeColors.furnitureFill} />
-              <rect x="12" y="8" width="44" height="24" rx="4" stroke={themeColors.furnitureStroke} strokeWidth="1" fill={themeColors.furnitureAccent} />
-              <rect x="74" y="8" width="44" height="24" rx="4" stroke={themeColors.furnitureStroke} strokeWidth="1" fill={themeColors.furnitureAccent} />
-              <path d="M 0 48 Q 65 56 130 48" stroke={themeColors.furnitureStroke} strokeWidth="1" fill="none" />
-              <rect x="-26" y="8" width="22" height="28" rx="2" stroke={themeColors.furnitureStroke} strokeWidth="1" fill={themeColors.furnitureFill} />
-              <rect x="134" y="8" width="22" height="28" rx="2" stroke={themeColors.furnitureStroke} strokeWidth="1" fill={themeColors.furnitureFill} />
+            <g transform={`translate(${leftOffset + 110}, 100)`}>
+              <rect x="0" y="0" width="125" height="115" rx="5" stroke={themeColors.furnitureStroke} strokeWidth="1.2" fill={themeColors.furnitureFill} />
+              <rect x="12" y="8" width="42" height="22" rx="4" stroke={themeColors.furnitureStroke} strokeWidth="1" fill={themeColors.furnitureAccent} />
+              <rect x="70" y="8" width="42" height="22" rx="4" stroke={themeColors.furnitureStroke} strokeWidth="1" fill={themeColors.furnitureAccent} />
+              <path d="M 0 46 Q 62 54 125 46" stroke={themeColors.furnitureStroke} strokeWidth="1" fill="none" />
             </g>
-            {/* Dressing Walk-in */}
-            <rect x="55" y="110" width="55" height="120" rx="4" stroke={themeColors.furnitureStroke} strokeWidth="1" strokeDasharray="3 3" fill={themeColors.furnitureFill} />
-            <text x="82" y="170" fill={themeColors.furnitureText} fontSize="9" fontFamily={ARCH_FONT} fontWeight="600" textAnchor="middle" transform="rotate(-90 82 170)">
+            <rect x={leftOffset + 20} y="100" width="55" height="115" rx="4" stroke={themeColors.furnitureStroke} strokeWidth="1" strokeDasharray="3 3" fill={themeColors.furnitureFill} />
+            <text x={leftOffset + 47} y="158" fill={themeColors.furnitureText} fontSize="9" fontFamily={ARCH_FONT} fontWeight="600" textAnchor="middle" transform={`rotate(-90 ${leftOffset + 47} 158)`}>
               {labels.svgWardrobe}
             </text>
 
             {/* Master Bath (Bottom-Left) */}
-            <rect x="35" y="300" width="310" height="205" stroke={themeColors.partitionStroke} strokeWidth="2" fill="none" />
-            <text x="55" y="328" fill={themeColors.titleFill} fontSize="12" fontFamily={ARCH_FONT} fontWeight="700">
+            <rect x={leftOffset} y="290" width="290" height="215" stroke={themeColors.partitionStroke} strokeWidth="2" fill="none" />
+            <text x={leftOffset + 20} y="318" fill={themeColors.titleFill} fontSize="12" fontFamily={ARCH_FONT} fontWeight="700">
               {labels.svgBath}
             </text>
-            <g transform="translate(55, 345)">
-              <rect x="0" y="0" width="105" height="50" rx="12" stroke={themeColors.furnitureStroke} strokeWidth="1.2" fill={themeColors.furnitureFill} />
-              <ellipse cx="52" cy="25" rx="42" ry="18" stroke={themeColors.furnitureStroke} strokeWidth="1" fill={themeColors.furnitureAccent} />
+            <g transform={`translate(${leftOffset + 20}, 335)`}>
+              <rect x="0" y="0" width="100" height="48" rx="12" stroke={themeColors.furnitureStroke} strokeWidth="1.2" fill={themeColors.furnitureFill} />
+              <ellipse cx="50" cy="24" rx="40" ry="17" stroke={themeColors.furnitureStroke} strokeWidth="1" fill={themeColors.furnitureAccent} />
             </g>
-            <g transform="translate(175, 345)">
-              <rect x="0" y="0" width="150" height="40" rx="4" stroke={themeColors.furnitureStroke} strokeWidth="1.2" fill={themeColors.furnitureFill} />
-              <ellipse cx="38" cy="20" rx="20" ry="12" stroke={themeColors.furnitureStroke} strokeWidth="1" fill={themeColors.furnitureAccent} />
-              <ellipse cx="112" cy="20" rx="20" ry="12" stroke={themeColors.furnitureStroke} strokeWidth="1" fill={themeColors.furnitureAccent} />
+            <g transform={`translate(${leftOffset + 135}, 335)`}>
+              <rect x="0" y="0" width="140" height="38" rx="4" stroke={themeColors.furnitureStroke} strokeWidth="1.2" fill={themeColors.furnitureFill} />
+              <ellipse cx="35" cy="19" rx="19" ry="11" stroke={themeColors.furnitureStroke} strokeWidth="1" fill={themeColors.furnitureAccent} />
+              <ellipse cx="105" cy="19" rx="19" ry="11" stroke={themeColors.furnitureStroke} strokeWidth="1" fill={themeColors.furnitureAccent} />
             </g>
-            <rect x="200" y="405" width="125" height="50" stroke={themeColors.metricFill} strokeWidth="1" strokeDasharray="4 2" fill={themeColors.furnitureAccent} />
-            <text x="262" y="435" fill={themeColors.furnitureText} fontSize="10" fontFamily={ARCH_FONT} fontWeight="600" textAnchor="middle">
+            <rect x={leftOffset + 155} y="390" width="120" height="48" stroke={themeColors.metricFill} strokeWidth="1" strokeDasharray="4 2" fill={themeColors.furnitureAccent} />
+            <text x={leftOffset + 215} y="420" fill={themeColors.furnitureText} fontSize="10" fontFamily={ARCH_FONT} fontWeight="600" textAnchor="middle">
               {labels.svgShower}
             </text>
 
             {/* Foyer & Powder Room (Center-Bottom) */}
-            <rect x="345" y="330" width="180" height="175" stroke={themeColors.partitionStroke} strokeWidth="2" fill="none" />
-            <text x="365" y="358" fill={themeColors.titleFill} fontSize="11" fontFamily={ARCH_FONT} fontWeight="700">
+            <rect x={leftOffset + 290} y="330" width="170" height="175" stroke={themeColors.partitionStroke} strokeWidth="2" fill="none" />
+            <text x={leftOffset + 310} y="358" fill={themeColors.titleFill} fontSize="11" fontFamily={ARCH_FONT} fontWeight="700">
               {labels.svgFoyer}
             </text>
-            <rect x="365" y="380" width="140" height="70" rx="4" stroke={themeColors.subMetricFill} strokeWidth="1" strokeDasharray="3 3" fill={themeColors.furnitureFill} />
-            <text x="435" y="420" fill={themeColors.subMetricFill} fontSize="10" fontFamily={ARCH_FONT} fontWeight="600" textAnchor="middle">
-              WC / POWDER ROOM
+            <rect x={leftOffset + 310} y="380" width="130" height="65" rx="4" stroke={themeColors.subMetricFill} strokeWidth="1" strokeDasharray="3 3" fill={themeColors.furnitureFill} />
+            <text x={leftOffset + 375} y="418" fill={themeColors.subMetricFill} fontSize="10" fontFamily={ARCH_FONT} fontWeight="600" textAnchor="middle">
+              {labels.svgPowderRoom}
             </text>
 
             {/* Bedroom 2 (Center-Top) */}
-            <rect x="345" y="30" width="250" height="300" stroke={themeColors.partitionStroke} strokeWidth="2" fill="none" />
-            <text x="365" y="65" fill={themeColors.titleFill} fontSize="13" fontFamily={ARCH_FONT} fontWeight="700" letterSpacing="0.05em">
+            <rect x={leftOffset + 290} y="30" width="240" height="300" stroke={themeColors.partitionStroke} strokeWidth="2" fill="none" />
+            <text x={leftOffset + 310} y="62" fill={themeColors.titleFill} fontSize="13" fontFamily={ARCH_FONT} fontWeight="700" letterSpacing="0.05em">
               {labels.svgBed2}
             </text>
-            <text x="365" y="83" fill={themeColors.metricFill} fontSize="11" fontFamily={ARCH_FONT} fontWeight="600">
+            <text x={leftOffset + 310} y="80" fill={themeColors.metricFill} fontSize="11" fontFamily={ARCH_FONT} fontWeight="600">
               {Math.round(plan.internalAreaSqFt * 0.22)} SQ.FT
             </text>
-            {/* Queen Bed */}
-            <g transform="translate(385, 120)">
-              <rect x="0" y="0" width="120" height="120" rx="5" stroke={themeColors.furnitureStroke} strokeWidth="1.2" fill={themeColors.furnitureFill} />
-              <rect x="12" y="8" width="40" height="24" rx="4" stroke={themeColors.furnitureStroke} strokeWidth="1" fill={themeColors.furnitureAccent} />
-              <rect x="68" y="8" width="40" height="24" rx="4" stroke={themeColors.furnitureStroke} strokeWidth="1" fill={themeColors.furnitureAccent} />
-              <path d="M 0 45 Q 60 52 120 45" stroke={themeColors.furnitureStroke} strokeWidth="1" fill="none" />
+            <g transform={`translate(${leftOffset + 325}, 115)`}>
+              <rect x="0" y="0" width="115" height="115" rx="5" stroke={themeColors.furnitureStroke} strokeWidth="1.2" fill={themeColors.furnitureFill} />
+              <rect x="12" y="8" width="38" height="22" rx="4" stroke={themeColors.furnitureStroke} strokeWidth="1" fill={themeColors.furnitureAccent} />
+              <rect x="65" y="8" width="38" height="22" rx="4" stroke={themeColors.furnitureStroke} strokeWidth="1" fill={themeColors.furnitureAccent} />
             </g>
-            <rect x="520" y="120" width="60" height="110" rx="4" stroke={themeColors.furnitureStroke} strokeWidth="1" strokeDasharray="3 3" fill={themeColors.furnitureFill} />
-            <text x="550" y="175" fill={themeColors.furnitureText} fontSize="9" fontFamily={ARCH_FONT} fontWeight="600" textAnchor="middle" transform="rotate(-90 550 175)">
+            <rect x={leftOffset + 455} y="115" width="55" height="105" rx="4" stroke={themeColors.furnitureStroke} strokeWidth="1" strokeDasharray="3 3" fill={themeColors.furnitureFill} />
+            <text x={leftOffset + 482} y="168" fill={themeColors.furnitureText} fontSize="9" fontFamily={ARCH_FONT} fontWeight="600" textAnchor="middle" transform={`rotate(-90 ${leftOffset + 482} 168)`}>
               {labels.svgWardrobe}
             </text>
 
-            {/* Living, Dining & Gourmet Kitchen (Right 325px) */}
-            <rect x="595" y="160" width="290" height="345" stroke={themeColors.partitionStroke} strokeWidth="2" fill="none" />
-            <text x="615" y="195" fill={themeColors.titleFill} fontSize="14" fontFamily={ARCH_FONT} fontWeight="700" letterSpacing="0.05em">
+            {/* Living, Dining & Gourmet Kitchen (Right Side) */}
+            <rect x={leftOffset + 530} y="160" width="290" height="345" stroke={themeColors.partitionStroke} strokeWidth="2" fill="none" />
+            <text x={leftOffset + 550} y="195" fill={themeColors.titleFill} fontSize="14" fontFamily={ARCH_FONT} fontWeight="700" letterSpacing="0.05em">
               {labels.svgLiving}
             </text>
-            <text x="615" y="215" fill={themeColors.metricFill} fontSize="12" fontFamily={ARCH_FONT} fontWeight="600">
-              {Math.round(plan.internalAreaSqFt * 0.42)} SQ.FT • CORNER DUAL-ASPECT
+            <text x={leftOffset + 550} y="215" fill={themeColors.metricFill} fontSize="12" fontFamily={ARCH_FONT} fontWeight="600">
+              {Math.round(plan.internalAreaSqFt * 0.42)} SQ.FT • {labels.cornerDualAspect}
             </text>
-            {/* Kitchen & Island */}
-            <g transform="translate(615, 235)">
-              <rect x="0" y="0" width="140" height="45" rx="4" stroke={themeColors.subMetricFill} strokeWidth="1.2" fill={themeColors.furnitureFill} />
-              <circle cx="35" cy="22" r="10" stroke={themeColors.subMetricFill} strokeWidth="1" fill={themeColors.furnitureAccent} />
-              <circle cx="70" cy="22" r="10" stroke={themeColors.subMetricFill} strokeWidth="1" fill={themeColors.furnitureAccent} />
-              <circle cx="105" cy="22" r="8" stroke={themeColors.subMetricFill} strokeWidth="1" fill={themeColors.furnitureAccent} />
+            <g transform={`translate(${leftOffset + 550}, 235)`}>
+              <rect x="0" y="0" width="135" height="42" rx="4" stroke={themeColors.subMetricFill} strokeWidth="1.2" fill={themeColors.furnitureFill} />
+              <circle cx="34" cy="21" r="9" stroke={themeColors.subMetricFill} strokeWidth="1" fill={themeColors.furnitureAccent} />
+              <circle cx="68" cy="21" r="9" stroke={themeColors.subMetricFill} strokeWidth="1" fill={themeColors.furnitureAccent} />
+              <circle cx="102" cy="21" r="7" stroke={themeColors.subMetricFill} strokeWidth="1" fill={themeColors.furnitureAccent} />
             </g>
-            {/* Dining Table */}
-            <g transform="translate(615, 305)">
-              <rect x="0" y="0" width="115" height="55" rx="6" stroke={themeColors.furnitureStroke} strokeWidth="1.2" fill={themeColors.furnitureFill} />
-              <text x="57" y="32" fill={themeColors.furnitureText} fontSize="10" fontFamily={ARCH_FONT} fontWeight="600" textAnchor="middle">
+            <g transform={`translate(${leftOffset + 550}, 300)`}>
+              <rect x="0" y="0" width="110" height="52" rx="6" stroke={themeColors.furnitureStroke} strokeWidth="1.2" fill={themeColors.furnitureFill} />
+              <text x="55" y="30" fill={themeColors.furnitureText} fontSize="10" fontFamily={ARCH_FONT} fontWeight="600" textAnchor="middle">
                 {labels.svgDining}
               </text>
-              <rect x="15" y="-8" width="22" height="8" rx="2" stroke={themeColors.furnitureStroke} strokeWidth="1" fill={themeColors.furnitureAccent} />
-              <rect x="75" y="-8" width="22" height="8" rx="2" stroke={themeColors.furnitureStroke} strokeWidth="1" fill={themeColors.furnitureAccent} />
-              <rect x="15" y="55" width="22" height="8" rx="2" stroke={themeColors.furnitureStroke} strokeWidth="1" fill={themeColors.furnitureAccent} />
-              <rect x="75" y="55" width="22" height="8" rx="2" stroke={themeColors.furnitureStroke} strokeWidth="1" fill={themeColors.furnitureAccent} />
             </g>
-            {/* Corner Sofa */}
-            <g transform="translate(740, 340)">
-              <path d="M 0 0 L 120 0 L 120 100 L 85 100 L 85 35 L 0 35 Z" stroke={themeColors.furnitureStroke} strokeWidth="1.2" fill={themeColors.furnitureFill} />
+            <g transform={`translate(${leftOffset + 670}, 335)`}>
+              <path d="M 0 0 L 115 0 L 115 95 L 80 95 L 80 32 L 0 32 Z" stroke={themeColors.furnitureStroke} strokeWidth="1.2" fill={themeColors.furnitureFill} />
             </g>
 
             {/* Wrap-Around Corner Sky Terrace (Top-Right) */}
-            <rect x="595" y="30" width="290" height="130" stroke={themeColors.partitionStroke} strokeWidth="2" strokeDasharray="6 4" fill={themeColors.metricFill} fillOpacity={isDark ? "0.06" : "0.08"} />
-            <text x="615" y="65" fill={themeColors.titleFill} fontSize="13" fontFamily={ARCH_FONT} fontWeight="700">
+            <rect x={leftOffset + 530} y="30" width="290" height="130" stroke={themeColors.partitionStroke} strokeWidth="2" strokeDasharray="6 4" fill={themeColors.metricFill} fillOpacity={isDark ? "0.06" : "0.08"} />
+            <text x={leftOffset + 550} y="62" fill={themeColors.titleFill} fontSize="13" fontFamily={ARCH_FONT} fontWeight="700">
               {labels.svgBalcony}
             </text>
-            <text x="615" y="85" fill={themeColors.metricFill} fontSize="11" fontFamily={ARCH_FONT} fontWeight="600">
-              {plan.balconyAreaSqFt} SQ.FT • CORNER WRAP
+            <text x={leftOffset + 550} y="82" fill={themeColors.metricFill} fontSize="11" fontFamily={ARCH_FONT} fontWeight="600">
+              {plan.balconyAreaSqFt} SQ.FT • {labels.cornerDualAspect}
             </text>
-            <g transform="translate(720, 75)">
-              <rect x="0" y="0" width="145" height="50" rx="6" stroke={themeColors.furnitureStroke} strokeWidth="1.2" fill={themeColors.furnitureFill} />
-              <text x="72" y="30" fill={themeColors.furnitureText} fontSize="9" fontFamily={ARCH_FONT} fontWeight="600" textAnchor="middle">
+            <g transform={`translate(${leftOffset + 655}, 70)`}>
+              <rect x="0" y="0" width="140" height="48" rx="6" stroke={themeColors.furnitureStroke} strokeWidth="1.2" fill={themeColors.furnitureFill} />
+              <text x="70" y="28" fill={themeColors.furnitureText} fontSize="9" fontFamily={ARCH_FONT} fontWeight="600" textAnchor="middle">
                 {labels.svgLounge}
               </text>
             </g>
@@ -330,101 +323,98 @@ export default function FloorPlansExplorer({
       case "3br":
         return (
           <>
-            {/* Master Presidential Suite (Top-Left 270 x 240) */}
-            <rect x="35" y="30" width="265" height="240" stroke={themeColors.partitionStroke} strokeWidth="2" fill="none" />
-            <text x="55" y="60" fill={themeColors.titleFill} fontSize="12" fontFamily={ARCH_FONT} fontWeight="700">
+            {/* Master Suite (Top-Left) */}
+            <rect x={leftOffset} y="30" width="250" height="235" stroke={themeColors.partitionStroke} strokeWidth="2" fill="none" />
+            <text x={leftOffset + 20} y="58" fill={themeColors.titleFill} fontSize="12" fontFamily={ARCH_FONT} fontWeight="700">
               {labels.svgMasterBed}
             </text>
-            <text x="55" y="78" fill={themeColors.metricFill} fontSize="10" fontFamily={ARCH_FONT} fontWeight="600">
+            <text x={leftOffset + 20} y="76" fill={themeColors.metricFill} fontSize="10" fontFamily={ARCH_FONT} fontWeight="600">
               {Math.round(plan.internalAreaSqFt * 0.24)} SQ.FT
             </text>
-            <g transform="translate(100, 95)">
-              <rect x="0" y="0" width="120" height="115" rx="5" stroke={themeColors.furnitureStroke} strokeWidth="1.2" fill={themeColors.furnitureFill} />
-              <rect x="12" y="8" width="40" height="22" rx="4" stroke={themeColors.furnitureStroke} strokeWidth="1" fill={themeColors.furnitureAccent} />
-              <rect x="68" y="8" width="40" height="22" rx="4" stroke={themeColors.furnitureStroke} strokeWidth="1" fill={themeColors.furnitureAccent} />
+            <g transform={`translate(${leftOffset + 85}, 90)`}>
+              <rect x="0" y="0" width="115" height="110" rx="5" stroke={themeColors.furnitureStroke} strokeWidth="1.2" fill={themeColors.furnitureFill} />
+              <rect x="12" y="8" width="38" height="20" rx="4" stroke={themeColors.furnitureStroke} strokeWidth="1" fill={themeColors.furnitureAccent} />
+              <rect x="65" y="8" width="38" height="20" rx="4" stroke={themeColors.furnitureStroke} strokeWidth="1" fill={themeColors.furnitureAccent} />
             </g>
 
-            {/* Bedroom 2 (Bottom-Left 265 x 235) */}
-            <rect x="35" y="270" width="265" height="235" stroke={themeColors.partitionStroke} strokeWidth="2" fill="none" />
-            <text x="55" y="298" fill={themeColors.titleFill} fontSize="12" fontFamily={ARCH_FONT} fontWeight="700">
+            {/* Bedroom 2 (Bottom-Left) */}
+            <rect x={leftOffset} y="265" width="250" height="240" stroke={themeColors.partitionStroke} strokeWidth="2" fill="none" />
+            <text x={leftOffset + 20} y="295" fill={themeColors.titleFill} fontSize="12" fontFamily={ARCH_FONT} fontWeight="700">
               {labels.svgBed2}
             </text>
-            <text x="55" y="315" fill={themeColors.metricFill} fontSize="10" fontFamily={ARCH_FONT} fontWeight="600">
+            <text x={leftOffset + 20} y="312" fill={themeColors.metricFill} fontSize="10" fontFamily={ARCH_FONT} fontWeight="600">
               {Math.round(plan.internalAreaSqFt * 0.16)} SQ.FT
             </text>
-            <g transform="translate(100, 335)">
-              <rect x="0" y="0" width="115" height="110" rx="5" stroke={themeColors.furnitureStroke} strokeWidth="1.2" fill={themeColors.furnitureFill} />
-              <rect x="10" y="8" width="38" height="22" rx="3" stroke={themeColors.furnitureStroke} strokeWidth="1" fill={themeColors.furnitureAccent} />
-              <rect x="65" y="8" width="38" height="22" rx="3" stroke={themeColors.furnitureStroke} strokeWidth="1" fill={themeColors.furnitureAccent} />
+            <g transform={`translate(${leftOffset + 85}, 330)`}>
+              <rect x="0" y="0" width="110" height="105" rx="5" stroke={themeColors.furnitureStroke} strokeWidth="1.2" fill={themeColors.furnitureFill} />
+              <rect x="10" y="8" width="36" height="20" rx="3" stroke={themeColors.furnitureStroke} strokeWidth="1" fill={themeColors.furnitureAccent} />
+              <rect x="62" y="8" width="36" height="20" rx="3" stroke={themeColors.furnitureStroke} strokeWidth="1" fill={themeColors.furnitureAccent} />
             </g>
 
-            {/* Bedroom 3 & Maid Wing (Center-Left 230 x 475) */}
-            <rect x="300" y="30" width="220" height="240" stroke={themeColors.partitionStroke} strokeWidth="2" fill="none" />
-            <text x="320" y="60" fill={themeColors.titleFill} fontSize="12" fontFamily={ARCH_FONT} fontWeight="700">
+            {/* Bedroom 3 & Maid Wing (Center-Left) */}
+            <rect x={leftOffset + 250} y="30" width="210" height="235" stroke={themeColors.partitionStroke} strokeWidth="2" fill="none" />
+            <text x={leftOffset + 270} y="58" fill={themeColors.titleFill} fontSize="12" fontFamily={ARCH_FONT} fontWeight="700">
               {labels.svgBed3}
             </text>
-            <text x="320" y="78" fill={themeColors.metricFill} fontSize="10" fontFamily={ARCH_FONT} fontWeight="600">
+            <text x={leftOffset + 270} y="76" fill={themeColors.metricFill} fontSize="10" fontFamily={ARCH_FONT} fontWeight="600">
               {Math.round(plan.internalAreaSqFt * 0.15)} SQ.FT
             </text>
-            <g transform="translate(340, 95)">
-              <rect x="0" y="0" width="110" height="110" rx="5" stroke={themeColors.furnitureStroke} strokeWidth="1.2" fill={themeColors.furnitureFill} />
-              <rect x="10" y="8" width="36" height="22" rx="3" stroke={themeColors.furnitureStroke} strokeWidth="1" fill={themeColors.furnitureAccent} />
-              <rect x="62" y="8" width="36" height="22" rx="3" stroke={themeColors.furnitureStroke} strokeWidth="1" fill={themeColors.furnitureAccent} />
+            <g transform={`translate(${leftOffset + 290}, 90)`}>
+              <rect x="0" y="0" width="105" height="105" rx="5" stroke={themeColors.furnitureStroke} strokeWidth="1.2" fill={themeColors.furnitureFill} />
+              <rect x="10" y="8" width="34" height="20" rx="3" stroke={themeColors.furnitureStroke} strokeWidth="1" fill={themeColors.furnitureAccent} />
+              <rect x="58" y="8" width="34" height="20" rx="3" stroke={themeColors.furnitureStroke} strokeWidth="1" fill={themeColors.furnitureAccent} />
             </g>
 
-            {/* Maid's Room & Wet Kitchen (Center-Bottom) */}
-            <rect x="300" y="270" width="220" height="235" stroke={themeColors.partitionStroke} strokeWidth="2" fill="none" />
-            <text x="320" y="298" fill={themeColors.titleFill} fontSize="11" fontFamily={ARCH_FONT} fontWeight="700">
+            {/* Maid's Suite (Center-Bottom) */}
+            <rect x={leftOffset + 250} y="265" width="210" height="240" stroke={themeColors.partitionStroke} strokeWidth="2" fill="none" />
+            <text x={leftOffset + 270} y="295" fill={themeColors.titleFill} fontSize="11" fontFamily={ARCH_FONT} fontWeight="700">
               {labels.svgMaid}
             </text>
-            <rect x="320" y="315" width="110" height="60" rx="4" stroke={themeColors.furnitureStroke} strokeWidth="1" fill={themeColors.furnitureFill} />
-            <text x="375" y="350" fill={themeColors.furnitureText} fontSize="9" fontFamily={ARCH_FONT} fontWeight="600" textAnchor="middle">
-              SINGLE BED + WC
+            <rect x={leftOffset + 270} y="315" width="100" height="55" rx="4" stroke={themeColors.furnitureStroke} strokeWidth="1" fill={themeColors.furnitureFill} />
+            <text x={leftOffset + 320} y="348" fill={themeColors.furnitureText} fontSize="9" fontFamily={ARCH_FONT} fontWeight="600" textAnchor="middle">
+              {labels.svgStaffBed}
             </text>
-            <rect x="320" y="390" width="180" height="75" rx="4" stroke={themeColors.subMetricFill} strokeWidth="1.2" fill={themeColors.furnitureFill} />
-            <text x="410" y="430" fill={themeColors.subMetricFill} fontSize="10" fontFamily={ARCH_FONT} fontWeight="600" textAnchor="middle">
-              WET PREP KITCHEN
+            <rect x={leftOffset + 270} y="385" width="170" height="70" rx="4" stroke={themeColors.subMetricFill} strokeWidth="1.2" fill={themeColors.furnitureFill} />
+            <text x={leftOffset + 355} y="425" fill={themeColors.subMetricFill} fontSize="10" fontFamily={ARCH_FONT} fontWeight="600" textAnchor="middle">
+              {labels.svgWetKitchen}
             </text>
 
-            {/* Grand Living & Formal Dining Hall (Right 365px) */}
-            <rect x="520" y="160" width="365" height="345" stroke={themeColors.partitionStroke} strokeWidth="2" fill="none" />
-            <text x="545" y="195" fill={themeColors.titleFill} fontSize="14" fontFamily={ARCH_FONT} fontWeight="700" letterSpacing="0.05em">
+            {/* Grand Living & Dining Hall (Right) */}
+            <rect x={leftOffset + 460} y="150" width="360" height="355" stroke={themeColors.partitionStroke} strokeWidth="2" fill="none" />
+            <text x={leftOffset + 485} y="185" fill={themeColors.titleFill} fontSize="14" fontFamily={ARCH_FONT} fontWeight="700" letterSpacing="0.05em">
               {labels.svgLiving}
             </text>
-            <text x="545" y="215" fill={themeColors.metricFill} fontSize="12" fontFamily={ARCH_FONT} fontWeight="600">
-              {Math.round(plan.internalAreaSqFt * 0.45)} SQ.FT • GRAND SALON
+            <text x={leftOffset + 485} y="205" fill={themeColors.metricFill} fontSize="12" fontFamily={ARCH_FONT} fontWeight="600">
+              {Math.round(plan.internalAreaSqFt * 0.45)} SQ.FT • {labels.svgGrandSalon}
             </text>
-            {/* Show Kitchen Island */}
-            <g transform="translate(545, 235)">
-              <rect x="0" y="0" width="160" height="50" rx="5" stroke={themeColors.subMetricFill} strokeWidth="1.2" fill={themeColors.furnitureFill} />
-              <text x="80" y="30" fill={themeColors.subMetricFill} fontSize="10" fontFamily={ARCH_FONT} fontWeight="600" textAnchor="middle">
+            <g transform={`translate(${leftOffset + 485}, 225)`}>
+              <rect x="0" y="0" width="150" height="48" rx="5" stroke={themeColors.subMetricFill} strokeWidth="1.2" fill={themeColors.furnitureFill} />
+              <text x="75" y="28" fill={themeColors.subMetricFill} fontSize="10" fontFamily={ARCH_FONT} fontWeight="600" textAnchor="middle">
                 {labels.svgIsland}
               </text>
             </g>
-            {/* 8-Seat Dining Table */}
-            <g transform="translate(545, 310)">
-              <rect x="0" y="0" width="140" height="65" rx="6" stroke={themeColors.furnitureStroke} strokeWidth="1.2" fill={themeColors.furnitureFill} />
-              <text x="70" y="38" fill={themeColors.furnitureText} fontSize="10" fontFamily={ARCH_FONT} fontWeight="600" textAnchor="middle">
-                {labels.svgDining} (8 SEATS)
+            <g transform={`translate(${leftOffset + 485}, 295)`}>
+              <rect x="0" y="0" width="135" height="60" rx="6" stroke={themeColors.furnitureStroke} strokeWidth="1.2" fill={themeColors.furnitureFill} />
+              <text x="67" y="35" fill={themeColors.furnitureText} fontSize="10" fontFamily={ARCH_FONT} fontWeight="600" textAnchor="middle">
+                {labels.svgDining} ({labels.svgSeats(8)})
               </text>
             </g>
-            {/* Grand Sectional Lounge */}
-            <g transform="translate(710, 310)">
-              <path d="M 0 0 L 150 0 L 150 140 L 105 140 L 105 45 L 0 45 Z" stroke={themeColors.furnitureStroke} strokeWidth="1.2" fill={themeColors.furnitureFill} />
+            <g transform={`translate(${leftOffset + 645}, 295)`}>
+              <path d="M 0 0 L 140 0 L 140 130 L 100 130 L 100 42 L 0 42 Z" stroke={themeColors.furnitureStroke} strokeWidth="1.2" fill={themeColors.furnitureFill} />
             </g>
 
-            {/* Sky Horizon Terrace (Top-Right) */}
-            <rect x="520" y="30" width="365" height="130" stroke={themeColors.partitionStroke} strokeWidth="2" strokeDasharray="6 4" fill={themeColors.metricFill} fillOpacity={isDark ? "0.06" : "0.08"} />
-            <text x="545" y="62" fill={themeColors.titleFill} fontSize="13" fontFamily={ARCH_FONT} fontWeight="700">
+            {/* Sky Terrace (Top-Right) */}
+            <rect x={leftOffset + 460} y="30" width="360" height="120" stroke={themeColors.partitionStroke} strokeWidth="2" strokeDasharray="6 4" fill={themeColors.metricFill} fillOpacity={isDark ? "0.06" : "0.08"} />
+            <text x={leftOffset + 485} y="60" fill={themeColors.titleFill} fontSize="13" fontFamily={ARCH_FONT} fontWeight="700">
               {labels.svgBalcony}
             </text>
-            <text x="545" y="80" fill={themeColors.metricFill} fontSize="11" fontFamily={ARCH_FONT} fontWeight="600">
-              {plan.balconyAreaSqFt} SQ.FT • 180° SKY TERRACE
+            <text x={leftOffset + 485} y="78" fill={themeColors.metricFill} fontSize="11" fontFamily={ARCH_FONT} fontWeight="600">
+              {plan.balconyAreaSqFt} SQ.FT • 180° {labels.svgBalcony}
             </text>
-            <g transform="translate(680, 70)">
-              <rect x="0" y="0" width="180" height="50" rx="8" stroke={themeColors.furnitureStroke} strokeWidth="1.2" fill={themeColors.furnitureFill} />
-              <text x="90" y="30" fill={themeColors.furnitureText} fontSize="10" fontFamily={ARCH_FONT} fontWeight="600" textAnchor="middle">
-                AL-FRESCO SKY LOUNGE
+            <g transform={`translate(${leftOffset + 620}, 65)`}>
+              <rect x="0" y="0" width="170" height="45" rx="8" stroke={themeColors.furnitureStroke} strokeWidth="1.2" fill={themeColors.furnitureFill} />
+              <text x="85" y="28" fill={themeColors.furnitureText} fontSize="10" fontFamily={ARCH_FONT} fontWeight="600" textAnchor="middle">
+                {labels.svgLounge}
               </text>
             </g>
           </>
@@ -436,105 +426,99 @@ export default function FloorPlansExplorer({
       case "penthouse":
         return (
           <>
-            {/* VIP Private Elevator Foyer (Top-Left 260 x 140) */}
-            <rect x="35" y="30" width="260" height="140" stroke={themeColors.partitionStroke} strokeWidth="2" fill="none" />
-            <text x="55" y="60" fill={themeColors.titleFill} fontSize="12" fontFamily={ARCH_FONT} fontWeight="700">
+            {/* VIP Elevator Foyer */}
+            <rect x={leftOffset} y="30" width="240" height="140" stroke={themeColors.partitionStroke} strokeWidth="2" fill="none" />
+            <text x={leftOffset + 20} y="58" fill={themeColors.titleFill} fontSize="12" fontFamily={ARCH_FONT} fontWeight="700">
               {labels.svgFoyer}
             </text>
-            <g transform="translate(55, 75)">
-              <rect x="0" y="0" width="90" height="55" rx="4" stroke={themeColors.subMetricFill} strokeWidth="1.5" fill={themeColors.furnitureFill} />
-              <text x="45" y="32" fill={themeColors.subMetricFill} fontSize="9" fontFamily={ARCH_FONT} fontWeight="700" textAnchor="middle">
-                VIP LIFT 1
+            <g transform={`translate(${leftOffset + 20}, 72)`}>
+              <rect x="0" y="0" width="85" height="52" rx="4" stroke={themeColors.subMetricFill} strokeWidth="1.5" fill={themeColors.furnitureFill} />
+              <text x="42" y="30" fill={themeColors.subMetricFill} fontSize="9" fontFamily={ARCH_FONT} fontWeight="700" textAnchor="middle">
+                {labels.svgVipLift} 1
               </text>
-              <rect x="110" y="0" width="90" height="55" rx="4" stroke={themeColors.subMetricFill} strokeWidth="1.5" fill={themeColors.furnitureFill} />
-              <text x="155" y="32" fill={themeColors.subMetricFill} fontSize="9" fontFamily={ARCH_FONT} fontWeight="700" textAnchor="middle">
-                VIP LIFT 2
-              </text>
-            </g>
-
-            {/* Presidential Master Wing (Bottom-Left 310 x 335) */}
-            <rect x="35" y="170" width="310" height="335" stroke={themeColors.partitionStroke} strokeWidth="2" fill="none" />
-            <text x="55" y="200" fill={themeColors.titleFill} fontSize="13" fontFamily={ARCH_FONT} fontWeight="700">
-              {labels.svgMasterBed} • PRESIDENTIAL WING
-            </text>
-            <text x="55" y="220" fill={themeColors.metricFill} fontSize="11" fontFamily={ARCH_FONT} fontWeight="600">
-              HIS & HERS DRESSING • SPA SUITE
-            </text>
-            {/* Super King Bed */}
-            <g transform="translate(110, 240)">
-              <rect x="0" y="0" width="145" height="130" rx="6" stroke={themeColors.furnitureStroke} strokeWidth="1.2" fill={themeColors.furnitureFill} />
-              <rect x="15" y="10" width="48" height="26" rx="4" stroke={themeColors.furnitureStroke} strokeWidth="1" fill={themeColors.furnitureAccent} />
-              <rect x="80" y="10" width="48" height="26" rx="4" stroke={themeColors.furnitureStroke} strokeWidth="1" fill={themeColors.furnitureAccent} />
-            </g>
-            {/* Jacuzzi Spa Bath */}
-            <g transform="translate(55, 395)">
-              <circle cx="50" cy="50" r="45" stroke={themeColors.furnitureStroke} strokeWidth="1.2" fill={themeColors.furnitureFill} />
-              <circle cx="50" cy="50" r="36" stroke={themeColors.metricFill} strokeWidth="1" fill={themeColors.poolWater} fillOpacity={themeColors.poolOpacity} />
-              <text x="50" y="54" fill={themeColors.titleFill} fontSize="9" fontFamily={ARCH_FONT} fontWeight="600" textAnchor="middle">
-                JACUZZI SPA
+              <rect x="100" y="0" width="85" height="52" rx="4" stroke={themeColors.subMetricFill} strokeWidth="1.5" fill={themeColors.furnitureFill} />
+              <text x="142" y="30" fill={themeColors.subMetricFill} fontSize="9" fontFamily={ARCH_FONT} fontWeight="700" textAnchor="middle">
+                {labels.svgVipLift} 2
               </text>
             </g>
 
-            {/* Executive Office & Suite 2 (Center 270px) */}
-            <rect x="295" y="30" width="250" height="210" stroke={themeColors.partitionStroke} strokeWidth="2" fill="none" />
-            <text x="315" y="60" fill={themeColors.titleFill} fontSize="12" fontFamily={ARCH_FONT} fontWeight="700">
+            {/* Presidential Master Wing */}
+            <rect x={leftOffset} y="170" width="290" height="335" stroke={themeColors.partitionStroke} strokeWidth="2" fill="none" />
+            <text x={leftOffset + 20} y="198" fill={themeColors.titleFill} fontSize="13" fontFamily={ARCH_FONT} fontWeight="700">
+              {labels.svgMasterBed} • {labels.svgPresidentialWing}
+            </text>
+            <text x={leftOffset + 20} y="218" fill={themeColors.metricFill} fontSize="11" fontFamily={ARCH_FONT} fontWeight="600">
+              {labels.svgWardrobe} & SPA
+            </text>
+            <g transform={`translate(${leftOffset + 95}, 235)`}>
+              <rect x="0" y="0" width="135" height="125" rx="6" stroke={themeColors.furnitureStroke} strokeWidth="1.2" fill={themeColors.furnitureFill} />
+              <rect x="15" y="10" width="44" height="24" rx="4" stroke={themeColors.furnitureStroke} strokeWidth="1" fill={themeColors.furnitureAccent} />
+              <rect x="75" y="10" width="44" height="24" rx="4" stroke={themeColors.furnitureStroke} strokeWidth="1" fill={themeColors.furnitureAccent} />
+            </g>
+            {/* Jacuzzi Spa */}
+            <g transform={`translate(${leftOffset + 20}, 390)`}>
+              <circle cx="45" cy="45" r="42" stroke={themeColors.furnitureStroke} strokeWidth="1.2" fill={themeColors.furnitureFill} />
+              <circle cx="45" cy="45" r="34" stroke={themeColors.metricFill} strokeWidth="1" fill={themeColors.poolWater} fillOpacity={themeColors.poolOpacity} />
+              <text x="45" y="49" fill={themeColors.titleFill} fontSize="9" fontFamily={ARCH_FONT} fontWeight="600" textAnchor="middle">
+                {labels.svgJacuzziSpa}
+              </text>
+            </g>
+
+            {/* Executive Office & Suite 2 */}
+            <rect x={leftOffset + 240} y="30" width="240" height="205" stroke={themeColors.partitionStroke} strokeWidth="2" fill="none" />
+            <text x={leftOffset + 260} y="58" fill={themeColors.titleFill} fontSize="12" fontFamily={ARCH_FONT} fontWeight="700">
               {labels.svgOffice}
             </text>
-            <rect x="315" y="80" width="120" height="60" rx="6" stroke={themeColors.furnitureStroke} strokeWidth="1.2" fill={themeColors.furnitureFill} />
-            <text x="375" y="115" fill={themeColors.furnitureText} fontSize="10" fontFamily={ARCH_FONT} fontWeight="600" textAnchor="middle">
-              EXECUTIVE DESK
+            <rect x={leftOffset + 260} y="78" width="115" height="58" rx="6" stroke={themeColors.furnitureStroke} strokeWidth="1.2" fill={themeColors.furnitureFill} />
+            <text x={leftOffset + 317} y="112" fill={themeColors.furnitureText} fontSize="10" fontFamily={ARCH_FONT} fontWeight="600" textAnchor="middle">
+              {labels.svgExecutiveDesk}
             </text>
 
-            {/* Guest Sky Suite 2 (Center-Bottom) */}
-            <rect x="345" y="240" width="200" height="265" stroke={themeColors.partitionStroke} strokeWidth="2" fill="none" />
-            <text x="365" y="270" fill={themeColors.titleFill} fontSize="12" fontFamily={ARCH_FONT} fontWeight="700">
+            {/* Guest Sky Suite 2 */}
+            <rect x={leftOffset + 290} y="235" width="190" height="270" stroke={themeColors.partitionStroke} strokeWidth="2" fill="none" />
+            <text x={leftOffset + 310} y="265" fill={themeColors.titleFill} fontSize="12" fontFamily={ARCH_FONT} fontWeight="700">
               {labels.svgBed2}
             </text>
-            <g transform="translate(375, 310)">
-              <rect x="0" y="0" width="120" height="115" rx="5" stroke={themeColors.furnitureStroke} strokeWidth="1.2" fill={themeColors.furnitureFill} />
-              <rect x="12" y="8" width="40" height="22" rx="3" stroke={themeColors.furnitureStroke} strokeWidth="1" fill={themeColors.furnitureAccent} />
-              <rect x="68" y="8" width="40" height="22" rx="3" stroke={themeColors.furnitureStroke} strokeWidth="1" fill={themeColors.furnitureAccent} />
+            <g transform={`translate(${leftOffset + 315}, 305)`}>
+              <rect x="0" y="0" width="115" height="110" rx="5" stroke={themeColors.furnitureStroke} strokeWidth="1.2" fill={themeColors.furnitureFill} />
+              <rect x="12" y="8" width="38" height="20" rx="3" stroke={themeColors.furnitureStroke} strokeWidth="1" fill={themeColors.furnitureAccent} />
+              <rect x="65" y="8" width="38" height="20" rx="3" stroke={themeColors.furnitureStroke} strokeWidth="1" fill={themeColors.furnitureAccent} />
             </g>
 
-            {/* Palatial Double-Height Grand Salon & 12-Seat Dining (Right 340px) */}
-            <rect x="545" y="190" width="340" height="315" stroke={themeColors.partitionStroke} strokeWidth="2" fill="none" />
-            <text x="565" y="222" fill={themeColors.titleFill} fontSize="14" fontFamily={ARCH_FONT} fontWeight="700" letterSpacing="0.05em">
-              PALATIAL DOUBLE-HEIGHT SALON
+            {/* Palatial Double-Height Grand Salon & 12-Seat Dining */}
+            <rect x={leftOffset + 480} y="180" width="340" height="325" stroke={themeColors.partitionStroke} strokeWidth="2" fill="none" />
+            <text x={leftOffset + 500} y="212" fill={themeColors.titleFill} fontSize="14" fontFamily={ARCH_FONT} fontWeight="700" letterSpacing="0.05em">
+              {labels.svgGrandSalon}
             </text>
-            <text x="565" y="242" fill={themeColors.metricFill} fontSize="12" fontFamily={ARCH_FONT} fontWeight="600">
-              {Math.round(plan.internalAreaSqFt * 0.48)} SQ.FT • 7M HIGH SOARING CEILING
+            <text x={leftOffset + 500} y="232" fill={themeColors.metricFill} fontSize="12" fontFamily={ARCH_FONT} fontWeight="600">
+              {Math.round(plan.internalAreaSqFt * 0.48)} SQ.FT • 7m {labels.svgCeilingHeight}
             </text>
-            {/* 12-Seat Dining Table */}
-            <g transform="translate(565, 265)">
-              <rect x="0" y="0" width="160" height="70" rx="8" stroke={themeColors.furnitureStroke} strokeWidth="1.2" fill={themeColors.furnitureFill} />
-              <text x="80" y="40" fill={themeColors.furnitureText} fontSize="10" fontFamily={ARCH_FONT} fontWeight="600" textAnchor="middle">
-                {labels.svgDining} (12 SEATS)
+            <g transform={`translate(${leftOffset + 500}, 255)`}>
+              <rect x="0" y="0" width="155" height="65" rx="8" stroke={themeColors.furnitureStroke} strokeWidth="1.2" fill={themeColors.furnitureFill} />
+              <text x="77" y="38" fill={themeColors.furnitureText} fontSize="10" fontFamily={ARCH_FONT} fontWeight="600" textAnchor="middle">
+                {labels.svgDining} ({labels.svgSeats(12)})
               </text>
             </g>
-            {/* Grand Sofa Array */}
-            <g transform="translate(565, 360)">
-              <path d="M 0 0 L 220 0 L 220 120 L 175 120 L 175 45 L 0 45 Z" stroke={themeColors.furnitureStroke} strokeWidth="1.2" fill={themeColors.furnitureFill} />
+            <g transform={`translate(${leftOffset + 500}, 345)`}>
+              <path d="M 0 0 L 205 0 L 205 110 L 165 110 L 165 40 L 0 40 Z" stroke={themeColors.furnitureStroke} strokeWidth="1.2" fill={themeColors.furnitureFill} />
             </g>
 
-            {/* PRIVATE CANTILEVERED SKY PLUNGE POOL & SUN DECK (Top-Right 340 x 160) */}
-            <rect x="545" y="30" width="340" height="160" stroke={themeColors.envelopeStroke} strokeWidth="2" strokeDasharray="6 4" fill={themeColors.metricFill} fillOpacity={isDark ? "0.06" : "0.08"} />
-            <text x="565" y="58" fill={themeColors.subMetricFill} fontSize="12" fontFamily={ARCH_FONT} fontWeight="700">
+            {/* PRIVATE CANTILEVERED SKY PLUNGE POOL & SUN DECK */}
+            <rect x={leftOffset + 480} y="30" width="340" height="150" stroke={themeColors.envelopeStroke} strokeWidth="2" strokeDasharray="6 4" fill={themeColors.metricFill} fillOpacity={isDark ? "0.06" : "0.08"} />
+            <text x={leftOffset + 500} y="56" fill={themeColors.subMetricFill} fontSize="12" fontFamily={ARCH_FONT} fontWeight="700">
               🏊 {labels.svgPool}
             </text>
-            {/* The Pool Geometry with turquoise water fill */}
-            <g transform="translate(565, 70)">
-              <rect x="0" y="0" width="190" height="75" rx="8" stroke={themeColors.poolWater} strokeWidth="2" fill={themeColors.poolWater} fillOpacity={themeColors.poolOpacity} />
-              {/* Pool Steps */}
-              <line x1="20" y1="0" x2="20" y2="75" stroke={themeColors.poolWater} strokeWidth="1" strokeDasharray="3 2" />
-              <line x1="40" y1="0" x2="40" y2="75" stroke={themeColors.poolWater} strokeWidth="1" strokeDasharray="3 2" />
-              <text x="105" y="42" fill={themeColors.titleFill} fontSize="10" fontFamily={ARCH_FONT} fontWeight="700" letterSpacing="0.05em" textAnchor="middle">
-                INFINITY POOL • 8.5m x 3.5m
+            <g transform={`translate(${leftOffset + 500}, 66)`}>
+              <rect x="0" y="0" width="180" height="70" rx="8" stroke={themeColors.poolWater} strokeWidth="2" fill={themeColors.poolWater} fillOpacity={themeColors.poolOpacity} />
+              <line x1="20" y1="0" x2="20" y2="70" stroke={themeColors.poolWater} strokeWidth="1" strokeDasharray="3 2" />
+              <line x1="38" y1="0" x2="38" y2="70" stroke={themeColors.poolWater} strokeWidth="1" strokeDasharray="3 2" />
+              <text x="100" y="40" fill={themeColors.titleFill} fontSize="10" fontFamily={ARCH_FONT} fontWeight="700" letterSpacing="0.05em" textAnchor="middle">
+                {labels.svgInfinityPool}
               </text>
             </g>
-            {/* Sun Loungers */}
-            <g transform="translate(775, 70)">
-              <rect x="0" y="0" width="45" height="75" rx="4" stroke={themeColors.furnitureStroke} strokeWidth="1" fill={themeColors.furnitureFill} />
-              <rect x="52" y="0" width="45" height="75" rx="4" stroke={themeColors.furnitureStroke} strokeWidth="1" fill={themeColors.furnitureFill} />
+            <g transform={`translate(${leftOffset + 700}, 66)`}>
+              <rect x="0" y="0" width="40" height="70" rx="4" stroke={themeColors.furnitureStroke} strokeWidth="1" fill={themeColors.furnitureFill} />
+              <rect x="46" y="0" width="40" height="70" rx="4" stroke={themeColors.furnitureStroke} strokeWidth="1" fill={themeColors.furnitureFill} />
             </g>
           </>
         );
@@ -568,17 +552,36 @@ export default function FloorPlansExplorer({
               strokeOpacity={themeColors.gridOpacity}
             />
           </pattern>
+          {/* Concrete Shear Wall Cross-Hatch */}
+          <pattern
+            id={`concreteHatch-${isLarge ? "lg" : "sm"}-${blueprintTheme}`}
+            width="10"
+            height="10"
+            patternUnits="userSpaceOnUse"
+          >
+            <path
+              d="M 0 10 L 10 0 M 0 0 L 10 10"
+              stroke={themeColors.dimensionLine}
+              strokeWidth="0.5"
+              strokeOpacity="0.4"
+            />
+          </pattern>
         </defs>
-        <rect
-          width="920"
-          height="540"
-          fill={themeColors.bg}
-        />
-        <rect
-          width="920"
-          height="540"
-          fill={`url(#archGrid-${isLarge ? "lg" : "sm"}-${blueprintTheme}-${activePlan.blueprintType})`}
-        />
+
+        <rect width="920" height="540" fill={themeColors.bg} />
+        <rect width="920" height="540" fill={`url(#archGrid-${isLarge ? "lg" : "sm"}-${blueprintTheme}-${activePlan.blueprintType})`} />
+
+        {/* Structural Grid Bubble Markers (A, B, C / 1, 2, 3) */}
+        <g opacity="0.6">
+          <circle cx="35" cy="18" r="8" stroke={themeColors.dimensionLine} strokeWidth="1" fill={themeColors.bg} />
+          <text x="35" y="21" fill={themeColors.dimensionText} fontSize="8" fontFamily={ARCH_FONT} fontWeight="700" textAnchor="middle">1</text>
+          <circle cx="380" cy="18" r="8" stroke={themeColors.dimensionLine} strokeWidth="1" fill={themeColors.bg} />
+          <text x="380" y="21" fill={themeColors.dimensionText} fontSize="8" fontFamily={ARCH_FONT} fontWeight="700" textAnchor="middle">2</text>
+          <circle cx="630" cy="18" r="8" stroke={themeColors.dimensionLine} strokeWidth="1" fill={themeColors.bg} />
+          <text x="630" y="21" fill={themeColors.dimensionText} fontSize="8" fontFamily={ARCH_FONT} fontWeight="700" textAnchor="middle">3</text>
+          <circle cx="885" cy="18" r="8" stroke={themeColors.dimensionLine} strokeWidth="1" fill={themeColors.bg} />
+          <text x="885" y="21" fill={themeColors.dimensionText} fontSize="8" fontFamily={ARCH_FONT} fontWeight="700" textAnchor="middle">4</text>
+        </g>
 
         {/* Outer Heavy Structural Envelope Wall */}
         <rect
@@ -592,51 +595,74 @@ export default function FloorPlansExplorer({
           fill={themeColors.envelopeFill}
         />
 
+        {/* Foster + Partners Architectural Shear Buttress Fin (East/West Solar Shield) */}
+        {isFosterIndex && (
+          <g>
+            <rect
+              x="35"
+              y="30"
+              width="30"
+              height="475"
+              fill={`url(#concreteHatch-${isLarge ? "lg" : "sm"}-${blueprintTheme})`}
+              stroke={themeColors.envelopeStroke}
+              strokeWidth="2"
+            />
+            <text
+              x="50"
+              y="268"
+              fill={themeColors.subMetricFill}
+              fontSize="8"
+              fontFamily={ARCH_FONT}
+              fontWeight="700"
+              letterSpacing="0.12em"
+              textAnchor="middle"
+              transform="rotate(-90 50 268)"
+            >
+              {labels.svgFosterButtress}
+            </text>
+          </g>
+        )}
+
+        {/* Foster Aerodynamic Brise-Soleil Sunshades on South Facade */}
+        {isFosterIndex && (
+          <g transform="translate(75, 502)">
+            <line x1="0" y1="0" x2="520" y2="0" stroke={themeColors.subMetricFill} strokeWidth="2.5" strokeDasharray="8 4" />
+            <text x="260" y="11" fill={themeColors.subMetricFill} fontSize="7" fontFamily={ARCH_FONT} fontWeight="700" textAnchor="middle" letterSpacing="0.08em">
+              {labels.svgBriseSoleil}
+            </text>
+          </g>
+        )}
+
         {/* Dynamic Typology Architecture (1BR, 2BR, 3BR, PENTHOUSE) */}
         {renderTypologyContent(activePlan)}
 
-        {/* Compass Rose (Placed cleanly in dedicated bottom-right area with ZERO wall overlap) */}
-        <g transform="translate(845, 465)">
-          <circle
-            cx="0"
-            cy="0"
-            r="18"
-            stroke={themeColors.compassStroke}
-            strokeWidth="1.2"
-            fill={themeColors.compassBg}
-          />
-          <path d="M 0 -13 L 4 0 L 0 3 L -4 0 Z" fill={themeColors.compassStroke} />
-          <text
-            x="0"
-            y="-5"
-            fill={themeColors.compassText}
-            fontSize="8"
-            fontFamily={ARCH_FONT}
-            fontWeight="700"
-            textAnchor="middle"
-          >
+        {/* Compass Rose (Placed cleanly in dedicated corner with ZERO wall overlap) */}
+        <g transform="translate(850, 470)">
+          <circle cx="0" cy="0" r="16" stroke={themeColors.compassStroke} strokeWidth="1.2" fill={themeColors.compassBg} />
+          <path d="M 0 -11 L 3 0 L 0 3 L -3 0 Z" fill={themeColors.compassStroke} />
+          <text x="0" y="-4" fill={themeColors.compassText} fontSize="7" fontFamily={ARCH_FONT} fontWeight="700" textAnchor="middle">
             N
           </text>
         </g>
 
-        {/* Scale Metric Bar (Bottom-Left, High-Contrast Crisp Lines & Labels) */}
-        <g transform="translate(60, 485)">
-          <line x1="0" y1="0" x2="160" y2="0" stroke={themeColors.dimensionLine} strokeWidth="1.5" />
-          <line x1="0" y1="-5" x2="0" y2="5" stroke={themeColors.dimensionLine} strokeWidth="1.5" />
-          <line x1="80" y1="-3" x2="80" y2="3" stroke={themeColors.dimensionLine} strokeWidth="1.5" />
-          <line x1="160" y1="-5" x2="160" y2="5" stroke={themeColors.dimensionLine} strokeWidth="1.5" />
-          <text x="0" y="-7" fill={themeColors.dimensionText} fontSize="10" fontFamily={ARCH_FONT} fontWeight="600">0m</text>
-          <text x="80" y="-7" fill={themeColors.dimensionText} fontSize="10" fontFamily={ARCH_FONT} fontWeight="600" textAnchor="middle">2.5m</text>
-          <text x="160" y="-7" fill={themeColors.dimensionText} fontSize="10" fontFamily={ARCH_FONT} fontWeight="600" textAnchor="end">5.0m</text>
+        {/* Scale Metric Bar (Bottom-Left) */}
+        <g transform="translate(75, 485)">
+          <line x1="0" y1="0" x2="140" y2="0" stroke={themeColors.dimensionLine} strokeWidth="1.5" />
+          <line x1="0" y1="-4" x2="0" y2="4" stroke={themeColors.dimensionLine} strokeWidth="1.5" />
+          <line x1="70" y1="-3" x2="70" y2="3" stroke={themeColors.dimensionLine} strokeWidth="1.5" />
+          <line x1="140" y1="-4" x2="140" y2="4" stroke={themeColors.dimensionLine} strokeWidth="1.5" />
+          <text x="0" y="-6" fill={themeColors.dimensionText} fontSize="9" fontFamily={ARCH_FONT} fontWeight="600">0m</text>
+          <text x="70" y="-6" fill={themeColors.dimensionText} fontSize="9" fontFamily={ARCH_FONT} fontWeight="600" textAnchor="middle">2.5m</text>
+          <text x="140" y="-6" fill={themeColors.dimensionText} fontSize="9" fontFamily={ARCH_FONT} fontWeight="600" textAnchor="end">5.0m</text>
         </g>
 
         {/* Dimensional Ticks across bottom width */}
-        <g transform="translate(420, 485)">
+        <g transform="translate(380, 485)">
           <text
-            x="150"
-            y="-6"
+            x="120"
+            y="-5"
             fill={themeColors.dimensionText}
-            fontSize="11"
+            fontSize="10"
             fontFamily={ARCH_FONT}
             fontWeight="600"
             textAnchor="middle"
@@ -665,9 +691,14 @@ export default function FloorPlansExplorer({
             {labels.sectionSubtitle(building.name)}
           </p>
         </div>
-        <span className="text-xs font-sans font-semibold px-3 py-1.5 rounded-full bg-[#F8F9FA] text-[#64748B] border border-[#E2E8F0] self-start sm:self-auto shrink-0">
-          {labels.cadRef}: {building.legacyId || building.id}-FP
-        </span>
+        <div className="text-right self-start sm:self-auto shrink-0 font-sans text-xs">
+          <span className="inline-block px-3 py-1.5 rounded-full bg-[#F8F9FA] text-[#64748B] border border-[#E2E8F0] font-semibold">
+            {labels.cadRef}: {building.legacyId || building.id}-FP
+          </span>
+          <div className="text-[11px] text-[#8C6A48] font-bold mt-1">
+            {isFosterIndex ? labels.seriesBadge("Foster + Partners") : isBurjKhalifa ? labels.seriesBadge("SOM") : labels.officialPlanBadge(building.developer)}
+          </div>
+        </div>
       </div>
 
       {/* Typology Selector Tabs (Clean Modern Sans Typography with breathing room) */}
@@ -737,6 +768,17 @@ export default function FloorPlansExplorer({
                 ☀️ {labels.themeLight}
               </button>
             </div>
+
+            {/* Print Button */}
+            <button
+              type="button"
+              onClick={() => window.print()}
+              className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-white hover:bg-[#F1F5F9] border border-[#CBD5E1] text-[#0F172A] text-xs font-sans font-semibold transition-all shadow-2xs cursor-pointer"
+              title={labels.printBtn(activePlan.typeTag)}
+            >
+              <span>🖨️</span>
+              <span className="hidden sm:inline">{labels.printBtn(activePlan.typeTag)}</span>
+            </button>
 
             {/* Fullscreen Button */}
             <button
@@ -931,6 +973,16 @@ export default function FloorPlansExplorer({
                   ☀️ {labels.themeLight}
                 </button>
               </div>
+
+              {/* Print Button inside Modal */}
+              <button
+                type="button"
+                onClick={() => window.print()}
+                className="px-3.5 py-1.5 rounded-lg bg-white/10 hover:bg-white/20 text-white font-sans text-xs font-bold transition-colors cursor-pointer"
+                title={labels.printBtn(activePlan.typeTag)}
+              >
+                🖨️
+              </button>
 
               {/* Zoom Buttons */}
               <button
