@@ -1112,91 +1112,110 @@ export default function FloorPlansExplorer({
         </div>
       </div>
 
-      {/* 2. Two Spacious Equal Columns: Left = Horizontal Room Breakdown, Right = Engineering Highlights */}
+      {/* 2. Two Spacious Equal Columns: Left = Unified Room Breakdown, Right = Engineering Highlights */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 pt-2">
-        {/* Room Composition Details (Clean Horizontal Cards) */}
+        {/* Room Composition Details (Unified Elegant Architectural Data Sheet) */}
         <div className="p-5 sm:p-6 rounded-2xl bg-[#FAF8F5] border border-[#DDD7CA] space-y-4">
           <div className="flex items-center justify-between border-b border-[#DDD7CA] pb-3">
             <span className="font-bold text-[#1C1917] font-sans text-sm sm:text-base flex items-center gap-2">
               <span>📋</span>
               <span>{labels.roomsTitle}</span>
             </span>
-            <span className="text-xs font-sans font-bold text-[#8C6A48] uppercase bg-white px-3 py-1 rounded-full border border-[#DDD7CA]">
+            <span className="text-xs font-semibold text-[#8C6A48] bg-white px-3 py-1 rounded-lg border border-[#DDD7CA]">
               {activePlan.typeTag}
             </span>
           </div>
 
-          {/* 4 Horizontal Room Rows / Buttons */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 font-sans">
-            <div className="flex items-center justify-between p-3.5 bg-white rounded-xl border border-[#E2E8F0] hover:border-[#8C6A48]/40 transition-colors">
-              <div className="flex items-center gap-2.5">
-                <span className="text-lg">🛏️</span>
-                <span className="text-xs sm:text-sm font-semibold text-[#0F172A]">{labels.bedroomsLabel}</span>
+          {/* Unified Architectural Specification List (Full Width Rows - Never Squeezed or Broken) */}
+          <div className="divide-y divide-[#DDD7CA]/60 font-sans text-xs sm:text-sm">
+            {/* 1. Bedrooms */}
+            <div className="flex items-center justify-between py-3">
+              <div className="flex items-center gap-3">
+                <span className="w-8 h-8 rounded-lg bg-white border border-[#DDD7CA] flex items-center justify-center text-base shrink-0 shadow-2xs">
+                  🛏️
+                </span>
+                <span className="font-medium text-[#475569]">{labels.bedroomsLabel}</span>
               </div>
-              <span className="text-sm sm:text-base font-extrabold text-[#0F172A] bg-[#FAF8F5] px-3.5 py-1 rounded-lg border border-[#DDD7CA]">
+              <span className="font-bold text-[#0F172A] text-sm sm:text-base bg-white px-3.5 py-1 rounded-lg border border-[#DDD7CA] shadow-2xs">
                 {activePlan.roomsBreakdown.bedrooms}
               </span>
             </div>
 
-            <div className="flex items-center justify-between p-3.5 bg-white rounded-xl border border-[#E2E8F0] hover:border-[#8C6A48]/40 transition-colors">
-              <div className="flex items-center gap-2.5">
-                <span className="text-lg">🚿</span>
-                <span className="text-xs sm:text-sm font-semibold text-[#0F172A]">{labels.bathroomsLabel}</span>
+            {/* 2. Bathrooms */}
+            <div className="flex items-center justify-between py-3">
+              <div className="flex items-center gap-3">
+                <span className="w-8 h-8 rounded-lg bg-white border border-[#DDD7CA] flex items-center justify-center text-base shrink-0 shadow-2xs">
+                  🚿
+                </span>
+                <span className="font-medium text-[#475569]">{labels.bathroomsLabel}</span>
               </div>
-              <span className="text-sm sm:text-base font-extrabold text-[#0F172A] bg-[#FAF8F5] px-3.5 py-1 rounded-lg border border-[#DDD7CA]">
+              <span className="font-bold text-[#0F172A] text-sm sm:text-base bg-white px-3.5 py-1 rounded-lg border border-[#DDD7CA] shadow-2xs">
                 {activePlan.roomsBreakdown.bathrooms}
               </span>
             </div>
 
-            <div className="flex items-center justify-between p-3.5 bg-white rounded-xl border border-[#E2E8F0] hover:border-[#8C6A48]/40 transition-colors">
-              <div className="flex items-center gap-2.5">
-                <span className="text-lg">🧹</span>
-                <span className="text-xs sm:text-sm font-semibold text-[#0F172A]">{labels.maidRoomLabel}</span>
+            {/* 3. Maid's Quarters / Staff */}
+            <div className="flex items-center justify-between py-3">
+              <div className="flex items-center gap-3">
+                <span className="w-8 h-8 rounded-lg bg-white border border-[#DDD7CA] flex items-center justify-center text-base shrink-0 shadow-2xs">
+                  🧹
+                </span>
+                <span className="font-medium text-[#475569]">{labels.maidRoomLabel}</span>
               </div>
               <span
-                className={`text-xs sm:text-sm font-bold px-3 py-1 rounded-lg border ${
+                className={`text-xs sm:text-sm font-bold px-3 py-1 rounded-lg border shadow-2xs ${
                   activePlan.roomsBreakdown.maidRoom
                     ? "bg-emerald-50 text-emerald-800 border-emerald-300"
-                    : "bg-slate-50 text-slate-500 border-slate-200"
+                    : "bg-white text-slate-500 border-slate-200"
                 }`}
               >
                 {activePlan.roomsBreakdown.maidRoom ? labels.yes : labels.no}
               </span>
             </div>
 
-            <div className="flex items-center justify-between p-3.5 bg-white rounded-xl border border-[#E2E8F0] hover:border-[#8C6A48]/40 transition-colors">
-              <div className="flex items-center gap-2.5">
-                <span className="text-lg">🚽</span>
-                <span className="text-xs sm:text-sm font-semibold text-[#0F172A]">{labels.powderRoomLabel}</span>
+            {/* 4. Guest Powder Room */}
+            <div className="flex items-center justify-between py-3">
+              <div className="flex items-center gap-3">
+                <span className="w-8 h-8 rounded-lg bg-white border border-[#DDD7CA] flex items-center justify-center text-base shrink-0 shadow-2xs">
+                  🚽
+                </span>
+                <span className="font-medium text-[#475569]">{labels.powderRoomLabel}</span>
               </div>
               <span
-                className={`text-xs sm:text-sm font-bold px-3 py-1 rounded-lg border ${
+                className={`text-xs sm:text-sm font-bold px-3 py-1 rounded-lg border shadow-2xs ${
                   activePlan.roomsBreakdown.powderRoom
                     ? "bg-emerald-50 text-emerald-800 border-emerald-300"
-                    : "bg-slate-50 text-slate-500 border-slate-200"
+                    : "bg-white text-slate-500 border-slate-200"
                 }`}
               >
                 {activePlan.roomsBreakdown.powderRoom ? labels.yes : labels.no}
               </span>
             </div>
-          </div>
 
-          {/* Kitchen & View Horizon as clean horizontal bars */}
-          <div className="space-y-2.5 pt-2 border-t border-[#DDD7CA]">
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 p-3.5 bg-white rounded-xl border border-[#E2E8F0] text-xs sm:text-sm">
-              <span className="text-[#64748B] font-medium flex items-center gap-2 shrink-0">
-                <span>🍳</span>
-                <span>{labels.kitchenTypeLabel}:</span>
+            {/* 5. Kitchen Type */}
+            <div className="flex items-start sm:items-center justify-between py-3 gap-4">
+              <div className="flex items-center gap-3 shrink-0">
+                <span className="w-8 h-8 rounded-lg bg-white border border-[#DDD7CA] flex items-center justify-center text-base shrink-0 shadow-2xs">
+                  🍳
+                </span>
+                <span className="font-medium text-[#475569]">{labels.kitchenTypeLabel}</span>
+              </div>
+              <span className="font-bold text-[#0F172A] text-right">
+                {activePlan.roomsBreakdown.kitchenType}
               </span>
-              <span className="text-[#0F172A] font-bold sm:text-right">{activePlan.roomsBreakdown.kitchenType}</span>
             </div>
 
-            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 p-3.5 bg-white rounded-xl border border-[#E2E8F0] text-xs sm:text-sm">
-              <span className="text-[#64748B] font-medium flex items-center gap-2 shrink-0">
-                <span>📍</span>
-                <span>{labels.viewAspectLabel}:</span>
+            {/* 6. View Horizon */}
+            <div className="flex items-start sm:items-center justify-between py-3 gap-4">
+              <div className="flex items-center gap-3 shrink-0">
+                <span className="w-8 h-8 rounded-lg bg-white border border-[#DDD7CA] flex items-center justify-center text-base shrink-0 shadow-2xs">
+                  📍
+                </span>
+                <span className="font-medium text-[#475569]">{labels.viewAspectLabel}</span>
+              </div>
+              <span className="font-bold text-[#8C6A48] text-right">
+                {activePlan.viewOrientation}
               </span>
-              <span className="text-[#8C6A48] font-bold sm:text-right">{activePlan.viewOrientation}</span>
             </div>
           </div>
         </div>
@@ -1204,11 +1223,11 @@ export default function FloorPlansExplorer({
         {/* Architectural Features List */}
         <div className="p-5 sm:p-6 rounded-2xl bg-white border border-[#E2E8F0] space-y-4 font-sans">
           <div className="flex items-center justify-between border-b border-[#F1F5F9] pb-3">
-            <div className="text-xs font-bold uppercase tracking-wider text-[#64748B] flex items-center gap-2">
+            <span className="font-bold text-[#0F172A] font-sans text-sm sm:text-base flex items-center gap-2">
               <span>🏗️</span>
               <span>{labels.engineeringHighlights}</span>
-            </div>
-            <span className="text-xs font-semibold text-[#8C6A48] bg-[#FAF8F5] px-2.5 py-1 rounded-md border border-[#DDD7CA]">
+            </span>
+            <span className="text-xs font-semibold text-[#8C6A48] bg-white px-3 py-1 rounded-lg border border-[#DDD7CA]">
               {activePlan.typeTag}
             </span>
           </div>

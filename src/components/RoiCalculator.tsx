@@ -147,14 +147,14 @@ export default function RoiCalculator({
 
   const content = (
     <>
-      {/* Section Header with Currency Switcher */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 md:mb-12 gap-6">
-        <div>
-          <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full text-xs sm:text-sm font-bold bg-[#F1F5F9] text-[#0F172A] border border-[#CBD5E1] mb-3">
-            <span className="w-2 h-2 rounded-full bg-[#0F172A]" />
+      {/* Section Header with Contained Currency Switcher */}
+      <div className="space-y-4 mb-6 md:mb-8">
+        <div className="space-y-2">
+          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-[#FAF8F5] text-[#8C6A48] border border-[#DDD7CA]">
+            <span className="w-2 h-2 rounded-full bg-[#8C6A48]" />
             <span>{buildingName ? `${buildingName} • ${t.calculator.badge}` : t.calculator.badge}</span>
           </div>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#0F172A] tracking-tight leading-tight font-heading">
+          <h2 className={`${isEmbedded ? "text-2xl sm:text-3xl" : "text-2xl sm:text-3xl md:text-4xl"} font-bold text-[#0F172A] tracking-tight font-heading`}>
             {buildingName
               ? ({
                   en: `ROI & Investment Calculator: ${buildingName}`,
@@ -170,7 +170,7 @@ export default function RoiCalculator({
                 }[lang] || `ROI & Investment Calculator: ${buildingName}`)
               : t.calculator.title}
           </h2>
-          <p className="text-[#475569] text-sm sm:text-base max-w-xl mt-2 leading-relaxed">
+          <p className="text-[#57534E] text-xs sm:text-sm max-w-2xl leading-relaxed">
             {buildingName
               ? ({
                   en: `Interactive rental yield, payback period, and 5-year capital appreciation projection for apartments in ${buildingName}.`,
@@ -188,29 +188,45 @@ export default function RoiCalculator({
           </p>
         </div>
 
-        {/* Currency Switcher */}
-        <div className="flex flex-wrap items-center gap-1.5 p-1.5 rounded-2xl backdrop-blur-[16px] bg-white/85 border border-white/60 shadow-sm shrink-0">
-          {(Object.keys(CURRENCIES) as CurrencyCode[]).map((cCode) => (
-            <button
-              key={cCode}
-              type="button"
-              onClick={() => setSelectedCurrency(cCode)}
-              className={`px-3.5 py-2 rounded-xl text-xs sm:text-sm font-mono font-bold transition-all ${
-                selectedCurrency === cCode
-                  ? "bg-[#0F172A] text-white shadow-sm"
-                  : "text-[#64748B] hover:text-[#0F172A] hover:bg-white"
-              }`}
-            >
-              {cCode}
-            </button>
-          ))}
+        {/* Currency Switcher Control Bar - Always Contained Inside Card */}
+        <div className="flex flex-wrap items-center justify-between gap-3 pt-3 border-t border-[#E5DFD3]">
+          <span className="text-xs font-bold uppercase tracking-wider text-[#78716C]">
+            {({
+              ru: "Валюта расчета:",
+              en: "Display Currency:",
+              de: "Währung auswählen:",
+              fr: "Devise d'affichage :",
+              it: "Valuta:",
+              ar: "عملة الحساب:",
+              zh: "计算币种:",
+              tr: "Para Birimi:",
+              hi: "मुद्रा चुनें:",
+              ur: "کرنسی منتخب کریں:"
+            } as Record<string, string>)[lang] || "Display Currency:"}
+          </span>
+          <div className="flex flex-wrap items-center gap-1.5 p-1 rounded-xl bg-white border border-[#DDD7CA] shadow-2xs">
+            {(Object.keys(CURRENCIES) as CurrencyCode[]).map((cCode) => (
+              <button
+                key={cCode}
+                type="button"
+                onClick={() => setSelectedCurrency(cCode)}
+                className={`px-3 py-1.5 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer ${
+                  selectedCurrency === cCode
+                    ? "bg-[#0F172A] text-white shadow-xs"
+                    : "text-[#64748B] hover:text-[#0F172A] hover:bg-[#FAF8F5]"
+                }`}
+              >
+                {cCode}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
 
       {/* Two-Column Interactive Dashboard */}
-      <div className={`grid grid-cols-1 ${isEmbedded ? "xl:grid-cols-12" : "lg:grid-cols-12"} gap-8 items-start`}>
+      <div className={`grid grid-cols-1 ${isEmbedded ? "gap-6" : "lg:grid-cols-12 gap-8"} items-start`}>
         {/* Left Column: Sliders & Controls */}
-        <div className={`${isEmbedded ? "xl:col-span-7" : "lg:col-span-7"} p-6 sm:p-8 rounded-3xl bg-white border border-[#E2E8F0] space-y-7 shadow-float-card`}>
+        <div className={`${isEmbedded ? "" : "lg:col-span-7"} p-6 sm:p-7 rounded-2xl bg-white border border-[#E2E8F0] space-y-6 shadow-sm`}>
           {/* Property Price Slider */}
           <div className="space-y-3.5">
             <div className="flex justify-between items-baseline">
@@ -302,7 +318,7 @@ export default function RoiCalculator({
         </div>
 
         {/* Right Column: Floating Summary Card */}
-        <div className={`${isEmbedded ? "xl:col-span-5" : "lg:col-span-5 lg:sticky lg:top-28"} p-6 sm:p-8 rounded-3xl bg-white border border-[#E2E8F0] space-y-6 shadow-float-card overflow-hidden`}>
+        <div className={`${isEmbedded ? "" : "lg:col-span-5 lg:sticky lg:top-28"} p-6 sm:p-7 rounded-2xl bg-white border border-[#E2E8F0] space-y-6 shadow-sm overflow-hidden`}>
           <div>
             <span className="text-xs sm:text-sm font-mono font-bold uppercase tracking-wider text-[#64748B]">
               {t.calculator.annualProjections}
@@ -317,90 +333,90 @@ export default function RoiCalculator({
             </div>
           </div>
 
-          {/* Financial Metrics Breakdown with Honest Line Items */}
-          <div className="space-y-3.5 py-4 border-y border-[#F1F5F9] text-xs sm:text-sm">
-            <div className="flex justify-between items-start gap-2">
-              <span className="text-[#64748B] font-medium min-w-0 break-words">{t.calculator.estimatedGross}</span>
-              <span className="font-mono font-bold text-[#0F172A] shrink-0 text-right">
+          {/* Financial Metrics Breakdown - Guaranteed Zero Text Overlap */}
+          <div className="space-y-3 py-3 border-y border-[#F1F5F9] text-xs sm:text-sm">
+            <div className="flex items-center justify-between gap-3 py-1.5 border-b border-[#F1F5F9]/80">
+              <span className="text-[#64748B] font-medium min-w-0 flex-1 truncate">{t.calculator.estimatedGross}</span>
+              <span className="font-mono font-bold text-[#0F172A] shrink-0 text-right whitespace-nowrap pl-2">
                 +{calculations.grossIncomeConverted} {curr.symbol}
               </span>
             </div>
 
-            <div className="flex justify-between items-start gap-2 text-rose-700">
-              <span className="text-[#64748B] flex items-start gap-1.5 min-w-0 break-words">
+            <div className="flex items-center justify-between gap-3 py-1.5 border-b border-[#F1F5F9]/80 text-rose-700">
+              <span className="text-[#64748B] flex items-center gap-1.5 min-w-0 flex-1 truncate">
                 <span className="shrink-0">🏢</span>
-                <span className="break-words">{t.calculator.maintenanceCharges}</span>
+                <span className="truncate">{t.calculator.maintenanceCharges}</span>
               </span>
-              <span className="font-mono font-bold text-[#9E4732] shrink-0 text-right">
+              <span className="font-mono font-bold text-[#9E4732] shrink-0 text-right whitespace-nowrap pl-2">
                 -{calculations.serviceChargesConverted} {curr.symbol}
               </span>
             </div>
 
-            <div className="flex justify-between items-start gap-2 text-rose-700">
-              <span className="text-[#64748B] flex items-start gap-1.5 min-w-0 break-words">
+            <div className="flex items-center justify-between gap-3 py-1.5 border-b border-[#F1F5F9]/80 text-rose-700">
+              <span className="text-[#64748B] flex items-center gap-1.5 min-w-0 flex-1 truncate">
                 <span className="shrink-0">❄️</span>
-                <span>{({
-    ru: "Охлаждение Empower / Резерв",
-    ar: "تبريد إمباور / احتياطي السعة",
-    de: "Empower-Kühlung / Reserve",
-    fr: "Climatisation Empower / Réserve",
-    it: "Raffrescamento Empower / Riserva",
-    tr: "Empower Soğutma / Rezerv",
-    zh: "Empower 集中供冷及能耗储备",
-    hi: "एम्पावर कूलिंग / रिजर्व",
-    ur: "ایم پاور کولنگ / ریزرو فنڈ"
-  } as Record<string, string>)[lang] || "Empower AC & Capacity Reserve"}</span>
+                <span className="truncate">{({
+                  ru: "Охлаждение Empower / Резерв",
+                  ar: "تبريد إمباور / احتياطي السعة",
+                  de: "Empower-Kühlung / Reserve",
+                  fr: "Climatisation Empower / Réserve",
+                  it: "Raffrescamento Empower / Riserva",
+                  tr: "Empower Soğutma / Rezerv",
+                  zh: "Empower 集中供冷及能耗储备",
+                  hi: "एम्पावर कूलिंग / रिजर्व",
+                  ur: "ایم پاور کولنگ / ریزرو فنڈ"
+                } as Record<string, string>)[lang] || "Empower AC & Capacity Reserve"}</span>
               </span>
-              <span className="font-mono font-bold text-[#9E4732] shrink-0 text-right">
+              <span className="font-mono font-bold text-[#9E4732] shrink-0 text-right whitespace-nowrap pl-2">
                 -{calculations.coolingReserveConverted} {curr.symbol}
               </span>
             </div>
 
-            <div className="flex justify-between items-start gap-2 text-rose-700">
-              <span className="text-[#64748B] flex items-start gap-1.5 min-w-0 break-words">
+            <div className="flex items-center justify-between gap-3 py-1.5 text-rose-700">
+              <span className="text-[#64748B] flex items-center gap-1.5 min-w-0 flex-1 truncate">
                 <span className="shrink-0">🔑</span>
-                <span>{({
-    ru: "Управление и сдача (8%)",
-    ar: "إدارة العقار والتأجير (8%)",
-    de: "Immobilienverwaltung (8%)",
-    fr: "Gestion locative (8%)",
-    it: "Gestione immobiliare (8%)",
-    tr: "Mülk Yönetimi (%8)",
-    zh: "物业托管与租赁管理费 (8%)",
-    hi: "संपत्ति प्रबंधन और किराया (8%)",
-    ur: "پراپرٹی مینجمنٹ و کرایہ داری (8%)"
-  } as Record<string, string>)[lang] || "Property Management (8%)"}</span>
+                <span className="truncate">{({
+                  ru: "Управление и сдача (8%)",
+                  ar: "إدارة العقار والتأجير (8%)",
+                  de: "Mietverwaltung & Service (8%)",
+                  fr: "Gestion locative (8%)",
+                  it: "Gestione immobiliare (8%)",
+                  tr: "Mülk Yönetimi (%8)",
+                  zh: "物业托管与租赁管理费 (8%)",
+                  hi: "संपत्ति प्रबंधन और किराया (8%)",
+                  ur: "پراپرٹی مینجمنٹ و کرایہ داری (8%)"
+                } as Record<string, string>)[lang] || "Property Management (8%)"}</span>
               </span>
-              <span className="font-mono font-bold text-[#9E4732] shrink-0 text-right">
+              <span className="font-mono font-bold text-[#9E4732] shrink-0 text-right whitespace-nowrap pl-2">
                 -{calculations.managementFeeConverted} {curr.symbol}
               </span>
             </div>
 
-            <div className="flex justify-between items-start gap-2 pt-3 border-t border-[#F1F5F9] bg-[#F8FAFC] -mx-3 p-3 rounded-xl">
-              <div className="min-w-0">
-                <span className="font-extrabold text-[#0F172A] block break-words">{t.calculator.annualNetProfit}</span>
-                <span className="text-xs text-[#64748B] font-sans block break-words">
+            <div className="flex items-center justify-between gap-3 pt-3 border-t border-[#F1F5F9] bg-[#F8FAFC] -mx-3 p-3 rounded-xl">
+              <div className="min-w-0 flex-1">
+                <span className="font-extrabold text-[#0F172A] block truncate">{t.calculator.annualNetProfit}</span>
+                <span className="text-xs text-[#64748B] font-sans block truncate">
                   {({
-    ru: "Реальный Net Cash Flow",
-    ar: "صافي التدفق النقدي الفعلي",
-    de: "Echter Netto-Cashflow",
-    fr: "Cash-flow net réel",
-    it: "Flusso di cassa netto reale",
-    tr: "Gerçek Net Nakit Akışı",
-    zh: "真实到手纯租金净现金流",
-    hi: "वास्तविक नेट कैश फ्लो",
-    ur: "حقیقی خالص کیش فلو"
-  } as Record<string, string>)[lang] || "True Net Cash Flow"}
+                    ru: "Реальный Net Cash Flow",
+                    ar: "صافي التدفق النقدي الفعلي",
+                    de: "Echter Netto-Cashflow",
+                    fr: "Cash-flow net réel",
+                    it: "Flusso di cassa netto reale",
+                    tr: "Gerçek Net Nakit Akışı",
+                    zh: "真实到手纯租金净现金流",
+                    hi: "वास्तविक नेट कैश फ्लो",
+                    ur: "حقیقی خالص کیش فلو"
+                  } as Record<string, string>)[lang] || "True Net Cash Flow"}
                 </span>
               </div>
-              <span className="font-mono font-extrabold text-[#059669] text-base sm:text-lg shrink-0 text-right">
+              <span className="font-mono font-extrabold text-[#059669] text-base sm:text-lg shrink-0 text-right whitespace-nowrap pl-2">
                 {calculations.netIncomeConverted} {curr.symbol}
               </span>
             </div>
 
-            <div className="flex justify-between items-start gap-2 pt-1">
-              <span className="text-[#64748B] min-w-0 break-words">{t.calculator.fiveYearReturn}</span>
-              <span className="font-mono font-bold text-[#0F172A] shrink-0 text-right">
+            <div className="flex items-center justify-between gap-3 pt-1">
+              <span className="text-[#64748B] min-w-0 flex-1 truncate">{t.calculator.fiveYearReturn}</span>
+              <span className="font-mono font-bold text-[#0F172A] shrink-0 text-right whitespace-nowrap pl-2">
                 {calculations.fiveYearTotalReturnConverted} {curr.symbol}
               </span>
             </div>

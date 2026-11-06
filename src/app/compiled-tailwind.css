@@ -37,7 +37,6 @@
     --color-rose-700: oklch(51.4% 0.222 16.935);
     --color-rose-800: oklch(45.5% 0.188 13.697);
     --color-rose-950: oklch(27.1% 0.105 12.094);
-    --color-slate-50: oklch(98.4% 0.003 247.858);
     --color-slate-200: oklch(92.9% 0.013 255.508);
     --color-slate-300: oklch(86.9% 0.022 252.894);
     --color-slate-400: oklch(70.4% 0.04 256.788);
@@ -450,9 +449,6 @@
   .mb-6 {
     margin-bottom: calc(var(--spacing) * 6);
   }
-  .mb-8 {
-    margin-bottom: calc(var(--spacing) * 8);
-  }
   .mb-10 {
     margin-bottom: calc(var(--spacing) * 10);
   }
@@ -825,11 +821,6 @@
     margin-block-start: calc(calc(var(--spacing) * 6) * var(--tw-space-y-reverse));
     margin-block-end: calc(calc(var(--spacing) * 6) * calc(1 - var(--tw-space-y-reverse)));
   }
-  :where(.space-y-7 > :not(:last-child)) {
-    --tw-space-y-reverse: 0;
-    margin-block-start: calc(calc(var(--spacing) * 7) * var(--tw-space-y-reverse));
-    margin-block-end: calc(calc(var(--spacing) * 7) * calc(1 - var(--tw-space-y-reverse)));
-  }
   :where(.space-y-8 > :not(:last-child)) {
     --tw-space-y-reverse: 0;
     margin-block-start: calc(calc(var(--spacing) * 8) * var(--tw-space-y-reverse));
@@ -846,6 +837,9 @@
     border-top-style: var(--tw-border-style);
     border-top-width: calc(1px * var(--tw-divide-y-reverse));
     border-bottom-width: calc(1px * calc(1 - var(--tw-divide-y-reverse)));
+  }
+  :where(.divide-\[\#DDD7CA\]\/60 > :not(:last-child)) {
+    border-color: color-mix(in oklab, #DDD7CA 60%, transparent);
   }
   :where(.divide-\[\#EFECE4\] > :not(:last-child)) {
     border-color: #EFECE4;
@@ -966,6 +960,9 @@
   .border-\[\#F1F5F9\] {
     border-color: #F1F5F9;
   }
+  .border-\[\#F1F5F9\]\/80 {
+    border-color: color-mix(in oklab, #F1F5F9 80%, transparent);
+  }
   .border-\[\#FED7D7\] {
     border-color: #FED7D7;
   }
@@ -1060,12 +1057,6 @@
     border-color: color-mix(in srgb, #fff 30%, transparent);
     @supports (color: color-mix(in lab, red, red)) {
       border-color: color-mix(in oklab, var(--color-white) 30%, transparent);
-    }
-  }
-  .border-white\/60 {
-    border-color: color-mix(in srgb, #fff 60%, transparent);
-    @supports (color: color-mix(in lab, red, red)) {
-      border-color: color-mix(in oklab, var(--color-white) 60%, transparent);
     }
   }
   .border-zinc-700 {
@@ -1253,9 +1244,6 @@
     @supports (color: color-mix(in lab, red, red)) {
       background-color: color-mix(in oklab, var(--color-rose-950) 30%, transparent);
     }
-  }
-  .bg-slate-50 {
-    background-color: var(--color-slate-50);
   }
   .bg-transparent {
     background-color: transparent;
@@ -1465,9 +1453,6 @@
   .p-1 {
     padding: var(--spacing);
   }
-  .p-1\.5 {
-    padding: calc(var(--spacing) * 1.5);
-  }
   .p-2 {
     padding: calc(var(--spacing) * 2);
   }
@@ -1629,6 +1614,9 @@
   }
   .pb-24 {
     padding-bottom: calc(var(--spacing) * 24);
+  }
+  .pl-2 {
+    padding-left: calc(var(--spacing) * 2);
   }
   .pl-4 {
     padding-left: calc(var(--spacing) * 4);
@@ -2185,9 +2173,6 @@
     .hover\:border-\[\#8C6A48\]:hover {
       border-color: #8C6A48;
     }
-    .hover\:border-\[\#8C6A48\]\/40:hover {
-      border-color: color-mix(in oklab, #8C6A48 40%, transparent);
-    }
     .hover\:border-\[\#8C6A48\]\/50:hover {
       border-color: color-mix(in oklab, #8C6A48 50%, transparent);
     }
@@ -2500,8 +2485,8 @@
     .md\:col-span-4 {
       grid-column: span 4 / span 4;
     }
-    .md\:mb-12 {
-      margin-bottom: calc(var(--spacing) * 12);
+    .md\:mb-8 {
+      margin-bottom: calc(var(--spacing) * 8);
     }
     .md\:hidden {
       display: none;
@@ -2601,10 +2586,6 @@
     .lg\:px-8 {
       padding-inline: calc(var(--spacing) * 8);
     }
-    .lg\:text-5xl {
-      font-size: var(--text-5xl);
-      line-height: var(--tw-leading, var(--text-5xl--line-height));
-    }
     .lg\:text-6xl {
       font-size: var(--text-6xl);
       line-height: var(--tw-leading, var(--text-6xl--line-height));
@@ -2615,15 +2596,6 @@
     }
   }
   @media (width >= 80rem) {
-    .xl\:col-span-5 {
-      grid-column: span 5 / span 5;
-    }
-    .xl\:col-span-7 {
-      grid-column: span 7 / span 7;
-    }
-    .xl\:grid-cols-12 {
-      grid-template-columns: repeat(12, minmax(0, 1fr));
-    }
     .xl\:gap-6 {
       gap: calc(var(--spacing) * 6);
     }
