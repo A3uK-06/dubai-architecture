@@ -2,6 +2,7 @@
 
 import React, { useEffect, useState } from "react";
 import Script from "next/script";
+import { isOwnerExcluded, setOwnerExclusion } from "@/lib/ownerExclusion";
 
 const RAW_GA_ID = process.env.NEXT_PUBLIC_GA_ID?.trim();
 const RAW_GTM_ID = process.env.NEXT_PUBLIC_GTM_ID?.trim();
@@ -11,10 +12,9 @@ const GTM_ID = RAW_GTM_ID || (RAW_GA_ID?.startsWith("GTM-") ? RAW_GA_ID : undefi
 const GA_ID = RAW_GA_ID?.startsWith("G-") ? RAW_GA_ID : undefined;
 
 const CLARITY_ID = process.env.NEXT_PUBLIC_CLARITY_ID?.trim();
-const IGNORE_STORAGE_KEY = "ignore_analytics";
 
 export default function GoogleAnalytics() {
-  const [isExcluded, setIsExcluded] = useState(false);
+  const [excluded, setExcluded] = useState(false);
   const [notification, setNotification] = useState<string | null>(null);
 
   useEffect(() => {
@@ -23,39 +23,52 @@ export default function GoogleAnalytics() {
     try {
       const params = new URLSearchParams(window.location.search);
 
-      // Handle owner exclusion flag from query parameter
-      if (params.get("ignore_me") === "true" || params.get("admin") === "true") {
-        localStorage.setItem(IGNORE_STORAGE_KEY, "true");
-        setIsExcluded(true);
-        setNotification("Owner Mode Active: Analytics and screen recordings are DISABLED for your browser.");
+      // Check if entering via owner exclusion flags
+      if (
+        params.get("ignore_me") === "true" ||
+        params.get("admin") === "true" ||
+        params.get("ghost") === "true" ||
+        params.get("ignore_stats") === "true"
+      ) {
+        setOwnerExclusion(true);
+        setExcluded(true);
+        setNotification("🛡️ Ghost Mode: Ваш браузер скрыт от аналитики. VPN не влияет.");
         setTimeout(() => setNotification(null), 5000);
-        return;
-      }
-
-      // Handle re-enabling tracking if requested
-      if (params.get("ignore_me") === "false" || params.get("track_me") === "true") {
-        localStorage.removeItem(IGNORE_STORAGE_KEY);
-        setIsExcluded(false);
-        setNotification("Analytics tracking RE-ENABLED for this session.");
+      } else if (params.get("ignore_me") === "false" || params.get("track_me") === "true") {
+        setOwnerExclusion(false);
+        setExcluded(false);
+        setNotification("👁️ Отслеживание включено для тестирования.");
         setTimeout(() => setNotification(null), 4000);
-        return;
+      } else {
+        const isCurrentlyExcluded = isOwnerExcluded();
+        setExcluded(isCurrentlyExcluded);
       }
-
-      // Read current state from localStorage
-      const currentlyIgnored = localStorage.getItem(IGNORE_STORAGE_KEY) === "true";
-      setIsExcluded(currentlyIgnored);
     } catch (err) {
-      console.warn("Analytics exclusion check error:", err);
+      console.warn("Analytics exclusion error:", err);
     }
   }, []);
 
-  // If user is the site owner/admin, suppress tracking entirely
-  if (isExcluded) {
+  // When owner is excluded, apply Google's official engine-level killswitch
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    if (excluded) {
+      if (GA_ID) {
+        (window as unknown as Record<string, boolean>)[`ga-disable-${GA_ID}`] = true;
+      }
+      if (GTM_ID) {
+        (window as unknown as Record<string, boolean>)[`ga-disable-${GTM_ID}`] = true;
+      }
+    }
+  }, [excluded]);
+
+  // If user is the site owner/admin, suppress tracking tags completely
+  if (excluded) {
     return (
       <>
         {notification && (
-          <div className="fixed bottom-4 left-4 z-50 px-4 py-2 rounded-xl bg-amber-500 text-zinc-950 text-xs font-bold shadow-2xl animate-fade-in border border-amber-300">
-            🛡️ {notification}
+          <div className="fixed bottom-4 left-4 z-50 px-4 py-2.5 rounded-xl bg-amber-500 text-zinc-950 text-xs font-bold shadow-2xl animate-fade-in border border-amber-300 flex items-center gap-2">
+            <span>🛡️</span>
+            <span>{notification}</span>
           </div>
         )}
       </>
@@ -65,12 +78,12 @@ export default function GoogleAnalytics() {
   return (
     <>
       {notification && (
-        <div className="fixed bottom-4 left-4 z-50 px-4 py-2 rounded-xl bg-zinc-800 text-zinc-100 text-xs font-semibold shadow-2xl border border-zinc-700">
-          ℹ️ {notification}
+        <div className="fixed bottom-4 left-4 z-50 px-4 py-2.5 rounded-xl bg-zinc-800 text-zinc-100 text-xs font-semibold shadow-2xl border border-zinc-700">
+          {notification}
         </div>
       )}
 
-      {/* Google Tag (GTM-P5QVMKMB / GTM Container) */}
+      {/* Google Tag (GTM Container) */}
       {GTM_ID && (
         <>
           <Script
@@ -99,7 +112,7 @@ export default function GoogleAnalytics() {
         </>
       )}
 
-      {/* Google Analytics 4 (Direct GA4 stream if G-XXXXXX provided) */}
+      {/* Google Analytics 4 (Direct GA4 stream) */}
       {GA_ID && (
         <>
           <Script

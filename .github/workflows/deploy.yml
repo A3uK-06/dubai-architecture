@@ -39,6 +39,7 @@ jobs:
         env:
           NEXT_PUBLIC_GA_ID: ${{ vars.NEXT_PUBLIC_GA_ID || 'G-S9Q49RFJE1' }}
           NEXT_PUBLIC_GTM_ID: ${{ vars.NEXT_PUBLIC_GTM_ID || 'GTM-P5QVMKMB' }}
+          NEXT_PUBLIC_CLARITY_ID: ${{ vars.NEXT_PUBLIC_CLARITY_ID || 'z956pgqwta' }}
         run: |
           npm run build
           touch ./out/.nojekyll
