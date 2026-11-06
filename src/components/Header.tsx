@@ -14,7 +14,7 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo & Historical Archive Badge */}
-          <Link href="/" className="flex items-center gap-3.5 group focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0F172A] rounded-xl">
+          <Link href="/" className="flex items-center gap-3 group shrink-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0F172A] rounded-xl">
             <div className="w-10 h-10 rounded-xl bg-[#0F172A] p-1 flex items-center justify-center shadow-md shadow-[#0F172A]/20 group-hover:scale-105 transition-all duration-200 border border-white/10">
               <svg
                 className="w-full h-full"
@@ -58,7 +58,7 @@ export default function Header() {
           </Link>
 
           {/* Desktop Navigation */}
-          <nav className="hidden md:flex items-center gap-8 text-[15px] sm:text-base font-semibold text-[#475569]">
+          <nav className="hidden lg:flex items-center gap-3.5 xl:gap-6 text-xs xl:text-[14px] font-semibold text-[#475569] whitespace-nowrap">
             <Link
               href="/"
               className="hover:text-[#0F172A] transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-[#0F172A] after:scale-x-0 hover:after:scale-x-100 after:transition-transform"
@@ -92,7 +92,7 @@ export default function Header() {
           </nav>
 
           {/* Right Actions: Language Selector & Primary CTA Button */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2 sm:gap-3 shrink-0">
             <LanguageSelector />
 
             <Link
@@ -106,7 +106,7 @@ export default function Header() {
             <button
               type="button"
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="md:hidden w-11 h-11 flex items-center justify-center text-[#475569] hover:text-[#0F172A] hover:bg-[#F1F5F9] rounded-xl transition-colors focus:outline-none focus:ring-2 focus:ring-[#0F172A]"
+              className="lg:hidden w-10 h-10 flex items-center justify-center text-[#475569] hover:text-[#0F172A] hover:bg-[#F1F5F9] rounded-xl transition-colors focus:outline-none focus:ring-2 focus:ring-[#0F172A]"
               aria-label="Toggle navigation menu"
               aria-expanded={mobileMenuOpen}
             >

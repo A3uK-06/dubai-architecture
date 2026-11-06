@@ -296,7 +296,17 @@ export default function RoiCalculator({
             <div className="flex justify-between items-center text-rose-700">
               <span className="text-[#64748B] flex items-center gap-1.5">
                 <span>❄️</span>
-                <span>{lang === "ru" ? "Охлаждение Empower / Резерв" : "Empower AC & Capacity Reserve"}</span>
+                <span>{({
+    ru: "Охлаждение Empower / Резерв",
+    ar: "تبريد إمباور / احتياطي السعة",
+    de: "Empower-Kühlung / Reserve",
+    fr: "Climatisation Empower / Réserve",
+    it: "Raffrescamento Empower / Riserva",
+    tr: "Empower Soğutma / Rezerv",
+    zh: "Empower 集中供冷及能耗储备",
+    hi: "एम्पावर कूलिंग / रिजर्व",
+    ur: "ایم پاور کولنگ / ریزرو فنڈ"
+  } as Record<string, string>)[lang] || "Empower AC & Capacity Reserve"}</span>
               </span>
               <span className="font-mono font-bold text-[#9E4732]">
                 -{calculations.coolingReserveConverted} {curr.symbol}
@@ -306,7 +316,17 @@ export default function RoiCalculator({
             <div className="flex justify-between items-center text-rose-700">
               <span className="text-[#64748B] flex items-center gap-1.5">
                 <span>🔑</span>
-                <span>{lang === "ru" ? "Управление и сдача (8%)" : "Property Management (8%)"}</span>
+                <span>{({
+    ru: "Управление и сдача (8%)",
+    ar: "إدارة العقار والتأجير (8%)",
+    de: "Immobilienverwaltung (8%)",
+    fr: "Gestion locative (8%)",
+    it: "Gestione immobiliare (8%)",
+    tr: "Mülk Yönetimi (%8)",
+    zh: "物业托管与租赁管理费 (8%)",
+    hi: "संपत्ति प्रबंधन और किराया (8%)",
+    ur: "پراپرٹی مینجمنٹ و کرایہ داری (8%)"
+  } as Record<string, string>)[lang] || "Property Management (8%)"}</span>
               </span>
               <span className="font-mono font-bold text-[#9E4732]">
                 -{calculations.managementFeeConverted} {curr.symbol}
@@ -317,7 +337,17 @@ export default function RoiCalculator({
               <div>
                 <span className="font-extrabold text-[#0F172A] block">{t.calculator.annualNetProfit}</span>
                 <span className="text-[11px] text-[#64748B] font-mono">
-                  {lang === "ru" ? "Реальный Net Cash Flow" : "True Net Cash Flow"}
+                  {({
+    ru: "Реальный Net Cash Flow",
+    ar: "صافي التدفق النقدي الفعلي",
+    de: "Echter Netto-Cashflow",
+    fr: "Cash-flow net réel",
+    it: "Flusso di cassa netto reale",
+    tr: "Gerçek Net Nakit Akışı",
+    zh: "真实到手纯租金净现金流",
+    hi: "वास्तविक नेट कैश फ्लो",
+    ur: "حقیقی خالص کیش فلو"
+  } as Record<string, string>)[lang] || "True Net Cash Flow"}
                 </span>
               </div>
               <span className="font-mono font-extrabold text-[#059669] text-base sm:text-lg">
@@ -338,7 +368,17 @@ export default function RoiCalculator({
             <span className="text-sm">🛡️</span>
             <div>
               <strong className="text-[#8C6A48] font-bold">
-                {lang === "ru" ? "Формула независимого аудита: " : "Auditor Integrity Guarantee: "}
+                {({
+    ru: "Формула независимого аудита: ",
+    ar: "ضمان نزاهة التدقيق المستقل: ",
+    de: "Unabhängige Prüfungsgewähr: ",
+    fr: "Garantie d'audit indépendant : ",
+    it: "Garanzia di revisione indipendente: ",
+    tr: "Bağımsız Denetim Güvencesi: ",
+    zh: "独立审计诚信保障: ",
+    hi: "स्वतंत्र ऑडिट गारंटी: ",
+    ur: "آزادانہ آڈٹ دیانت کی ضمانت: "
+  } as Record<string, string>)[lang] || "Auditor Integrity Guarantee: "}
               </strong>
               {lang === "ru"
                 ? "Расчет очищен от брокерских завышений и включает реальные индексы сервисных сборов DLD, сборы Empower и расходы на управление."

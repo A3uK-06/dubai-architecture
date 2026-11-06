@@ -64,7 +64,7 @@ export default function DistrictDetailClient({
 
           <div className="flex flex-col lg:flex-row lg:items-end justify-between gap-6">
             <div className="space-y-3">
-              <div className="flex items-center gap-3">
+              <div className="flex flex-wrap items-center gap-2 sm:gap-3">
                 <span className="px-3 py-1 rounded-full text-xs font-bold bg-[#8C6A48] text-white shadow-soft-tint">
                   {dd.masterDeveloper}: {district.developer}
                 </span>
@@ -82,7 +82,7 @@ export default function DistrictDetailClient({
               </p>
             </div>
 
-            <div className="p-5 rounded-2xl bg-white border border-[#E5DFD3] shadow-soft-tint flex items-center gap-6 shrink-0">
+            <div className="w-full sm:w-auto p-4 sm:p-5 rounded-2xl bg-white border border-[#E5DFD3] shadow-soft-tint flex items-center justify-between sm:justify-start gap-4 sm:gap-6 shrink-0">
               <div>
                 <div className="text-[11px] uppercase tracking-wider text-[#78716C] font-bold">
                   {dd.avgRentalYield}
@@ -178,7 +178,7 @@ export default function DistrictDetailClient({
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {district.subZones.map((zone, idx) => (
-                <div key={idx} className="p-6 rounded-2xl bg-white border border-[#E5DFD3] shadow-soft-tint space-y-3 flex flex-col justify-between">
+                <div key={idx} className="p-5 sm:p-6 rounded-2xl bg-white border border-[#E5DFD3] shadow-soft-tint space-y-3 flex flex-col justify-between break-words min-w-0">
                   <div className="space-y-2">
                     <span className="text-xs font-mono font-bold px-2.5 py-0.5 rounded bg-[#EFECE4] text-[#8C6A48]">
                       {dd.zoneLabel} {idx + 1}
@@ -220,7 +220,7 @@ export default function DistrictDetailClient({
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs">
-              <div className="p-4 rounded-xl bg-[#FAF8F5] border border-[#EFECE4] space-y-1.5">
+              <div className="p-4 rounded-xl bg-[#FAF8F5] border border-[#EFECE4] space-y-1.5 break-words min-w-0">
                 <div className="font-bold text-sm text-[#1C1917] flex items-center gap-2">
                   <span>🛣️</span>
                   <span>{dd.highwayAccessLabel}</span>
@@ -228,7 +228,7 @@ export default function DistrictDetailClient({
                 <p className="text-[#57534E] leading-relaxed">{district.transitAnalysis.highwayAccess}</p>
               </div>
 
-              <div className="p-4 rounded-xl bg-[#FFF5F5] border border-[#FED7D7] space-y-1.5">
+              <div className="p-4 rounded-xl bg-[#FFF5F5] border border-[#FED7D7] space-y-1.5 break-words min-w-0">
                 <div className="font-bold text-sm text-[#9E4732] flex items-center gap-2">
                   <span>⚠️</span>
                   <span>{dd.bottlenecksLabel}</span>
@@ -236,7 +236,7 @@ export default function DistrictDetailClient({
                 <p className="text-[#57534E] leading-relaxed">{district.transitAnalysis.rushHourBottleneck}</p>
               </div>
 
-              <div className="p-4 rounded-xl bg-[#FAF8F5] border border-[#EFECE4] space-y-1.5">
+              <div className="p-4 rounded-xl bg-[#FAF8F5] border border-[#EFECE4] space-y-1.5 break-words min-w-0">
                 <div className="font-bold text-sm text-[#1C1917] flex items-center gap-2">
                   <span>🚇</span>
                   <span>{dd.publicTransitLabel}</span>
@@ -286,7 +286,7 @@ export default function DistrictDetailClient({
 
         {/* 5. Honest Investment Pros & Risks */}
         <section className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="p-8 rounded-3xl bg-white border border-[#E5DFD3] shadow-soft-tint space-y-4">
+          <div className="p-6 sm:p-8 rounded-3xl bg-white border border-[#E5DFD3] shadow-soft-tint space-y-4 break-words min-w-0">
             <h2 className="text-xl font-bold text-[#1C1917] flex items-center gap-2">
               <span className="text-[#2D6A4F]">✓</span>
               <span>{dd.prosTitle}</span>
@@ -303,7 +303,7 @@ export default function DistrictDetailClient({
             </ul>
           </div>
 
-          <div className="p-8 rounded-3xl bg-white border border-[#E5DFD3] shadow-soft-tint space-y-4">
+          <div className="p-6 sm:p-8 rounded-3xl bg-white border border-[#E5DFD3] shadow-soft-tint space-y-4 break-words min-w-0">
             <h2 className="text-xl font-bold text-[#9E4732] flex items-center gap-2">
               <span>⚠️</span>
               <span>{dd.risksTitle}</span>

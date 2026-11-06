@@ -365,3 +365,223 @@ export function translateBuildingSpecsRU(building: Building): Building {
 
   return b;
 }
+
+
+export const COMMON_TERMS: Record<LanguageCode, Record<string, string>> = {
+  en: {},
+  ru: {
+    "Chiller-Free (included in base service charge)": "Включено в сервисный сбор (Chiller-Free)",
+    "Consumption-Metered (Empower sub-metering)": "Оплата по счетчику (Empower)",
+    "Zero Column Intrusion (perimeter post-tensioned spans)": "Нулевое вторжение колонн (постнапряженные пролеты)",
+    "Peripheral Columns (minimal wall intrusion)": "Периметральные колонны (минимальное влияние)",
+    "Internal Column Intrusion": "Внутренние колонны",
+    "High (deep wind-shielded recessed cantilever balconies)": "Высокая (глубокие ветрозащитные консольные терراсы)",
+    "Medium (narrow aerodynamic balconies)": "Средняя (узкие аэродинамические балконы)",
+    "None (fully sealed climate-controlled facade)": "Отсутствуют (сплошной климатический фасад)",
+    "High (panoramic open-air glass terraces)": "Высокая (панорамные открытые стеклянные террасы)",
+    "Direct air-conditioned pedestrian bridge to Dubai Mall & Burj Khalifa Metro": "Прямой кондиционированный мост в Dubai Mall и метро Burj Khalifa",
+    "Direct walking connection to DIFC Gate Avenue concourse": "Прямой пешеходный переход в галерею Gate Avenue (DIFC)",
+    "Integrated marina promenade access with private mooring berths": "Прямой выход на променад марины с приватными причалами для яхт",
+    "Direct covered footbridge connecting to Sheikh Zayed Road metro line": "Крытый надземный переход к красной линии метро на Sheikh Zayed Road"
+  },
+  de: {
+    "Chiller-Free (included in base service charge)": "Im Grundservice enthalten (Chiller-Free)",
+    "Consumption-Metered (Empower sub-metering)": "Verbrauchsabhängig (Empower-Zähler)",
+    "Zero Column Intrusion (perimeter post-tensioned spans)": "Keine störenden Säulen (vorgespannte Decken)",
+    "Peripheral Columns (minimal wall intrusion)": "Periphere Stützen (minimale Raumbeeinträchtigung)",
+    "Internal Column Intrusion": "Innenstützen",
+    "High (deep wind-shielded recessed cantilever balconies)": "Hoch (windgeschützte, tiefe Kragarmbalkone)",
+    "Medium (narrow aerodynamic balconies)": "Mittel (schmale aerodynamische Balkone)",
+    "None (fully sealed climate-controlled facade)": "Keine (vollständig versiegelte Klimafassade)",
+    "High (panoramic open-air glass terraces)": "Hoch (panoramische Freiluft-Glasterrassen)",
+    "Direct air-conditioned pedestrian bridge to Dubai Mall & Burj Khalifa Metro": "Direkte klimatisierte Fußgängerbrücke zur Dubai Mall & Metro Burj Khalifa",
+    "Direct walking connection to DIFC Gate Avenue concourse": "Direkte Fußgängerverbindung zur DIFC Gate Avenue",
+    "Integrated marina promenade access with private mooring berths": "Integrierter Zugang zur Marina-Promenade mit privaten Liegeplätzen",
+    "Direct covered footbridge connecting to Sheikh Zayed Road metro line": "Direkte überdachte Fußgängerbrücke zur Metro Sheikh Zayed Road"
+  },
+  fr: {
+    "Chiller-Free (included in base service charge)": "Inclus dans les charges (Chiller-Free)",
+    "Consumption-Metered (Empower sub-metering)": "Facturé à la consommation (Compteur Empower)",
+    "Zero Column Intrusion (perimeter post-tensioned spans)": "Aucun poteau encombrant (dalles précontraintes)",
+    "Peripheral Columns (minimal wall intrusion)": "Poteaux périphériques (impact minimal)",
+    "Internal Column Intrusion": "Poteaux intérieurs",
+    "High (deep wind-shielded recessed cantilever balconies)": "Élevée (balcons en porte-à-faux abrités du vent)",
+    "Medium (narrow aerodynamic balconies)": "Moyenne (balcons aérodynamiques étroits)",
+    "None (fully sealed climate-controlled facade)": "Aucun (façade entièrement étanche et climatisée)",
+    "High (panoramic open-air glass terraces)": "Élevée (terrasses panoramiques vitrées en plein air)",
+    "Direct air-conditioned pedestrian bridge to Dubai Mall & Burj Khalifa Metro": "Passerelle piétonne climatisée directe vers le Dubai Mall & métro Burj Khalifa",
+    "Direct walking connection to DIFC Gate Avenue concourse": "Liaison piétonne directe avec l'esplanade Gate Avenue du DIFC",
+    "Integrated marina promenade access with private mooring berths": "Accès direct à la promenade de la marina avec anneaux d'amarrage privés",
+    "Direct covered footbridge connecting to Sheikh Zayed Road metro line": "Passerelle couverte directe vers la ligne de métro Sheikh Zayed Road"
+  },
+  ar: {
+    "Chiller-Free (included in base service charge)": "مشمول في رسوم الصيانة (خالٍ من رسوم التبريد)",
+    "Consumption-Metered (Empower sub-metering)": "حسب الاستهلاك الفعلي (عداد إمباور)",
+    "Zero Column Intrusion (perimeter post-tensioned spans)": "انعدام الأعمدة الداخلية (امتدادات مسبقة الإجهاد)",
+    "Peripheral Columns (minimal wall intrusion)": "أعمدة محيطية (تأثير جداري طفيف)",
+    "Internal Column Intrusion": "أعمدة داخلية",
+    "High (deep wind-shielded recessed cantilever balconies)": "عالية (شرفات كابولية غائرة ومحمية من الرياح)",
+    "Medium (narrow aerodynamic balconies)": "متوسطة (شرفات انسيابية ضيقة)",
+    "None (fully sealed climate-controlled facade)": "لا توجد (واجهة زجاجية معزولة ومكيفة بالكامل)",
+    "High (panoramic open-air glass terraces)": "عالية (شرفات زجاجية بانورامية مفتوحة)",
+    "Direct air-conditioned pedestrian bridge to Dubai Mall & Burj Khalifa Metro": "جسر مشاة مكيف ومباشر إلى دبي مول ومترو برج خليفة",
+    "Direct walking connection to DIFC Gate Avenue concourse": "ممشى مباشر إلى ممشى جيت أفينيو في مركز دبي المالي",
+    "Integrated marina promenade access with private mooring berths": "اتصال مباشر بممشى المارينا مع مراسٍ خاصة لليخوت",
+    "Direct covered footbridge connecting to Sheikh Zayed Road metro line": "جسر مشاة مغطى ومباشر إلى محطة مترو شارع الشيخ زايد"
+  },
+  it: {
+    "Chiller-Free (included in base service charge)": "Incluso nelle spese condominiali (Chiller-Free)",
+    "Consumption-Metered (Empower sub-metering)": "A consumo effettivo (Contatore Empower)",
+    "Zero Column Intrusion (perimeter post-tensioned spans)": "Zero colonne interne (campate post-tese)",
+    "Peripheral Columns (minimal wall intrusion)": "Colonne perimetrali (impatto minimo)",
+    "Internal Column Intrusion": "Colonne interne",
+    "High (deep wind-shielded recessed cantilever balconies)": "Alta (balconi a sbalzo incassati e riparati dal vento)",
+    "Medium (narrow aerodynamic balconies)": "Media (balconi aerodinamici stretti)",
+    "None (fully sealed climate-controlled facade)": "Nessuno (facciata interamente sigillata e climatizzata)",
+    "High (panoramic open-air glass terraces)": "Alta (terrazze panoramiche in cristallo all'aperto)",
+    "Direct air-conditioned pedestrian bridge to Dubai Mall & Burj Khalifa Metro": "Ponte pedonale climatizzato diretto per Dubai Mall e Metro Burj Khalifa",
+    "Direct walking connection to DIFC Gate Avenue concourse": "Collegamento pedonale diretto con la galleria Gate Avenue del DIFC",
+    "Integrated marina promenade access with private mooring berths": "Accesso diretto alla passeggiata della marina con ormeggi privati",
+    "Direct covered footbridge connecting to Sheikh Zayed Road metro line": "Passerella coperta diretta alla linea metropolitana di Sheikh Zayed Road"
+  },
+  tr: {
+    "Chiller-Free (included in base service charge)": "Aidat dahili (Chiller-Free)",
+    "Consumption-Metered (Empower sub-metering)": "Tüketime göre sayaçlı (Empower)",
+    "Zero Column Intrusion (perimeter post-tensioned spans)": "Sıfır kolon engeli (ardgermeli açıklıklar)",
+    "Peripheral Columns (minimal wall intrusion)": "Çevresel kolonlar (minimum alan kaybı)",
+    "Internal Column Intrusion": "İç kolonlar",
+    "High (deep wind-shielded recessed cantilever balconies)": "Yüksek (rüzgar korumalı derin konsol balkonlar)",
+    "Medium (narrow aerodynamic balconies)": "Orta (dar aerodinamik balkonlar)",
+    "None (fully sealed climate-controlled facade)": "Yok (tamamen yalıtımlı iklim kontrollü cephe)",
+    "High (panoramic open-air glass terraces)": "Yüksek (panoramik açık hava cam teraslar)",
+    "Direct air-conditioned pedestrian bridge to Dubai Mall & Burj Khalifa Metro": "Dubai Mall ve Burj Khalifa Metrosu'na klimalı doğrudan yaya köprüsü",
+    "Direct walking connection to DIFC Gate Avenue concourse": "DIFC Gate Avenue kordonuna doğrudan yürüyüş bağlantısı",
+    "Integrated marina promenade access with private mooring berths": "Özel yat bağlama iskeleli marina kordonuna doğrudan çıkış",
+    "Direct covered footbridge connecting to Sheikh Zayed Road metro line": "Sheikh Zayed Road metro hattına kapalı doğrudan yaya köprüsü"
+  },
+  zh: {
+    "Chiller-Free (included in base service charge)": "包含在基础物管费中 (Chiller-Free)",
+    "Consumption-Metered (Empower sub-metering)": "按实际用量分户计费 (Empower)",
+    "Zero Column Intrusion (perimeter post-tensioned spans)": "无柱通透大平层 (后张拉预应力跨度)",
+    "Peripheral Columns (minimal wall intrusion)": "外围立柱 (极少侵占室内有效空间)",
+    "Internal Column Intrusion": "内部承重柱",
+    "High (deep wind-shielded recessed cantilever balconies)": "极高 (深凹嵌入式防风外挑景观阳台)",
+    "Medium (narrow aerodynamic balconies)": "中等 (狭长流线型防风阳台)",
+    "None (fully sealed climate-controlled facade)": "无阳台 (全封闭恒温恒湿幕墙体系)",
+    "High (panoramic open-air glass terraces)": "极高 (全景观露天玻璃露台)",
+    "Direct air-conditioned pedestrian bridge to Dubai Mall & Burj Khalifa Metro": "直通迪拜商场 (Dubai Mall) 与哈利法塔地铁站的全封闭冷气连桥",
+    "Direct walking connection to DIFC Gate Avenue concourse": "直达迪拜国际金融中心 (DIFC) Gate Avenue 商业长廊步行通道",
+    "Integrated marina promenade access with private mooring berths": "直通游艇码头滨水长廊并配有私属游艇泊位",
+    "Direct covered footbridge connecting to Sheikh Zayed Road metro line": "直通谢赫扎耶德路地铁站的全遮阳有顶天桥"
+  },
+  hi: {
+    "Chiller-Free (included in base service charge)": "सेवा शुल्क में शामिल (Chiller-Free)",
+    "Consumption-Metered (Empower sub-metering)": "मीटर खपत अनुसार (Empower)",
+    "Zero Column Intrusion (perimeter post-tensioned spans)": "बिना किसी आंतरिक खंभे के (पोस्ट-टेंशन स्पैन)",
+    "Peripheral Columns (minimal wall intrusion)": "परिधीय खंभे (न्यूनतम प्रभाव)",
+    "Internal Column Intrusion": "आंतरिक खंभे",
+    "High (deep wind-shielded recessed cantilever balconies)": "उच्च (गहरी हवा-सुरक्षित बालकनी)",
+    "Medium (narrow aerodynamic balconies)": "मध्यम (संकीर्ण एरोडायनामिक बालकनी)",
+    "None (fully sealed climate-controlled facade)": "कोई नहीं (पूरी तरह से सीलबंद मुखौटा)",
+    "High (panoramic open-air glass terraces)": "उच्च (पैन प्राचीन ओपन-एयर ग्लास छत)",
+    "Direct air-conditioned pedestrian bridge to Dubai Mall & Burj Khalifa Metro": "दुबई मॉल और बुर्ज खलीफा मेट्रो के लिए सीधा वातानुकूलित पैदल पुल",
+    "Direct walking connection to DIFC Gate Avenue concourse": "डीआईएफसी गेट एवेन्यू से सीधा पैदल संपर्क",
+    "Integrated marina promenade access with private mooring berths": "निजी नौका बर्थ के साथ मरीना प्रोमेनेड तक सीधी पहुंच",
+    "Direct covered footbridge connecting to Sheikh Zayed Road metro line": "शेख जायद रोड मेट्रो लाइन से सीधा कवर्ड फुटब्रिज"
+  },
+  ur: {
+    "Chiller-Free (included in base service charge)": "سروس چارجز میں شامل (چلر فری)",
+    "Consumption-Metered (Empower sub-metering)": "میٹر ریڈنگ کے مطابق (ایم پاور)",
+    "Zero Column Intrusion (perimeter post-tensioned spans)": "کالموں سے پاک کشادہ فرش (پوسٹ ٹینشن فلیٹ سلیب)",
+    "Peripheral Columns (minimal wall intrusion)": "بیرونی کالم (کم از کم رکاوٹ)",
+    "Internal Column Intrusion": "اندرونی کالم",
+    "High (deep wind-shielded recessed cantilever balconies)": "اعلیٰ (ہوا سے محفوظ کشادہ گہری بالکونیاں)",
+    "Medium (narrow aerodynamic balconies)": "درمیانی (پتلی ایروڈائنامک بالکونیاں)",
+    "None (fully sealed climate-controlled facade)": "کوئی نہیں (مکمل طور پر سیل شدہ انڈور کلائمیٹ فساڈ)",
+    "High (panoramic open-air glass terraces)": "اعلیٰ (پینورامک اوپن ایئر گلاس ٹیرسز)",
+    "Direct air-conditioned pedestrian bridge to Dubai Mall & Burj Khalifa Metro": "دبئی مال اور برج خلیفہ میٹرو کے لیے براہ راست ایئر کنڈیشنڈ پیدل پل",
+    "Direct walking connection to DIFC Gate Avenue concourse": "ڈی آئی ایف سی گیٹ ایونیو کونکورس سے براہ راست پیدل رابطہ",
+    "Integrated marina promenade access with private mooring berths": "نجی یاٹ برتھوں کے ساتھ مرینا پرومینیڈ تک براہ راست رسائی",
+    "Direct covered footbridge connecting to Sheikh Zayed Road metro line": "شیخ زاید روڈ میٹرو لائن سے براہ راست کورڈ پیدل پل"
+  }
+};
+
+/**
+ * Universal translator for building specifications across all supported languages
+ */
+export function translateBuildingSpecs(building: Building, lang: LanguageCode): Building {
+  if (lang === "en") return building;
+  if (lang === "ru") return translateBuildingSpecsRU(building);
+
+  const dict = COMMON_TERMS[lang];
+  if (!dict) return building;
+
+  const b = { ...building };
+
+  if (b.operatingSpecs) {
+    b.operatingSpecs = {
+      ...b.operatingSpecs,
+      chillerBilling: (dict[b.operatingSpecs.chillerBilling] || b.operatingSpecs.chillerBilling) as any,
+    };
+  }
+
+  if (b.layoutEfficiency) {
+    b.layoutEfficiency = {
+      ...b.layoutEfficiency,
+      columnImpact: (dict[b.layoutEfficiency.columnImpact] || b.layoutEfficiency.columnImpact) as any,
+      balconyUsability: dict[b.layoutEfficiency.balconyUsability] || b.layoutEfficiency.balconyUsability,
+    };
+  }
+
+  if (b.urbanIntegration && dict[b.urbanIntegration]) {
+    b.urbanIntegration = dict[b.urbanIntegration];
+  }
+
+  // Localize cleaning cycle days text
+  if (b.facade && b.facade.cleaningCycleDays) {
+    let cycle = b.facade.cleaningCycleDays;
+    if (lang === "de") {
+      cycle = cycle.replace("days for a full exterior wash cycle", "Tage für einen vollen Waschzyklus").replace("days continuous", "Tage (kontinuierlich)").replace("days", "Tage");
+    } else if (lang === "fr") {
+      cycle = cycle.replace("days for a full exterior wash cycle", "jours pour un cycle de lavage complet").replace("days continuous", "jours (en continu)").replace("days", "jours");
+    } else if (lang === "ar") {
+      cycle = cycle.replace("days for a full exterior wash cycle", "يوماً لدورة غسيل كاملة للواجهة").replace("days continuous", "يوماً (بشكل مستمر)").replace("days", "يوماً");
+    } else if (lang === "it") {
+      cycle = cycle.replace("days for a full exterior wash cycle", "giorni per un ciclo di lavaggio completo").replace("days continuous", "giorni (continuo)").replace("days", "giorni");
+    } else if (lang === "tr") {
+      cycle = cycle.replace("days for a full exterior wash cycle", "gün (tam dış cephe yıkama döngüsü)").replace("days continuous", "gün (kesintisiz)").replace("days", "gün");
+    } else if (lang === "zh") {
+      cycle = cycle.replace("days for a full exterior wash cycle", "天完成一次完整外立面清洗周期").replace("days continuous", "天 (持续作业)").replace("days", "天");
+    } else if (lang === "hi") {
+      cycle = cycle.replace("days for a full exterior wash cycle", "दिन (पूर्ण बाहरी धुलाई चक्र)").replace("days continuous", "दिन (लगातार)").replace("days", "दिन");
+    } else if (lang === "ur") {
+      cycle = cycle.replace("days for a full exterior wash cycle", "دن (مکمل بیرونی واش سائیکل)").replace("days continuous", "دن (مسلسل)").replace("days", "دن");
+    }
+    b.facade = { ...b.facade, cleaningCycleDays: cycle };
+  }
+
+  // Localize peak waiting seconds text
+  if (b.verticalTransport && b.verticalTransport.peakWaitingSeconds) {
+    let wait = b.verticalTransport.peakWaitingSeconds;
+    if (lang === "de") {
+      wait = wait.replace("seconds average", "Sekunden im Durchschnitt").replace("seconds", "Sekunden");
+    } else if (lang === "fr") {
+      wait = wait.replace("seconds average", "secondes en moyenne").replace("seconds", "secondes");
+    } else if (lang === "ar") {
+      wait = wait.replace("seconds average", "ثانية في المتوسط").replace("seconds", "ثانية");
+    } else if (lang === "it") {
+      wait = wait.replace("seconds average", "secondi in media").replace("seconds", "secondi");
+    } else if (lang === "tr") {
+      wait = wait.replace("seconds average", "saniye ortalama").replace("seconds", "saniye");
+    } else if (lang === "zh") {
+      wait = wait.replace("seconds average", "秒 (高峰期平均候梯时间)").replace("seconds", "秒");
+    } else if (lang === "hi") {
+      wait = wait.replace("seconds average", "सेकंड औसत").replace("seconds", "सेकंड");
+    } else if (lang === "ur") {
+      wait = wait.replace("seconds average", "سیکنڈ اوسطاً").replace("seconds", "سیکنڈ");
+    }
+    b.verticalTransport = { ...b.verticalTransport, peakWaitingSeconds: wait };
+  }
+
+  return b;
+}

@@ -133,7 +133,7 @@ export default function BuildingDetailClient({
             </div>
 
             {/* Quick Investment Metric Pill */}
-            <div className="p-5 rounded-2xl bg-white border border-[#E5DFD3] shadow-soft-tint flex items-center gap-6">
+            <div className="w-full sm:w-auto p-4 sm:p-5 rounded-2xl bg-white border border-[#E5DFD3] shadow-soft-tint flex flex-wrap sm:flex-nowrap items-center gap-4 sm:gap-6 shrink-0">
               <div>
                 <div className="text-xs uppercase tracking-wider text-[#78716C] font-bold">
                   {bd.estRentalYield}
@@ -378,7 +378,7 @@ export default function BuildingDetailClient({
             {/* HARD TTX: Full Structural & Geotechnical Passport */}
             {building.foundation && (
               <section className="space-y-6 pt-4">
-                <div className="flex items-center justify-between border-b-2 border-[#8C6A48] pb-3">
+                <div className="flex flex-wrap items-center justify-between gap-2 border-b-2 border-[#8C6A48] pb-3">
                   <div>
                     <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#8C6A48]">
                       {t.ttxLabels.specMatrix}
@@ -401,25 +401,25 @@ export default function BuildingDetailClient({
                     </div>
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
                       {building.mainContractor && (
-                        <div className="p-3.5 rounded-xl bg-[#FAF8F5] border border-[#EFECE4]">
+                        <div className="p-3.5 rounded-xl bg-[#FAF8F5] border border-[#EFECE4] break-words min-w-0">
                           <div className="text-[#78716C] font-medium">{t.ttxLabels.contractorLabel}</div>
                           <div className="text-sm font-bold text-[#1C1917] mt-1">{building.mainContractor}</div>
                         </div>
                       )}
                       {building.structuralEngineer && (
-                        <div className="p-3.5 rounded-xl bg-[#FAF8F5] border border-[#EFECE4]">
+                        <div className="p-3.5 rounded-xl bg-[#FAF8F5] border border-[#EFECE4] break-words min-w-0">
                           <div className="text-[#78716C] font-medium">{t.ttxLabels.structuralEngineerLabel}</div>
                           <div className="text-sm font-bold text-[#1C1917] mt-1">{building.structuralEngineer}</div>
                         </div>
                       )}
                       {building.mepEngineer && (
-                        <div className="p-3.5 rounded-xl bg-[#FAF8F5] border border-[#EFECE4]">
+                        <div className="p-3.5 rounded-xl bg-[#FAF8F5] border border-[#EFECE4] break-words min-w-0">
                           <div className="text-[#78716C] font-medium">{t.ttxLabels.mepEngineerLabel}</div>
                           <div className="text-xs font-semibold text-[#1C1917] mt-1">{building.mepEngineer}</div>
                         </div>
                       )}
                       {building.urbanIntegration && (
-                        <div className="p-3.5 rounded-xl bg-[#FAF8F5] border border-[#EFECE4]">
+                        <div className="p-3.5 rounded-xl bg-[#FAF8F5] border border-[#EFECE4] break-words min-w-0">
                           <div className="text-[#78716C] font-medium">{t.ttxLabels.transitIntegration}</div>
                           <div className="text-xs font-semibold text-[#8C6A48] mt-1">{building.urbanIntegration}</div>
                         </div>
@@ -435,15 +435,15 @@ export default function BuildingDetailClient({
                     <span>{t.ttxLabels.geotechnical}</span>
                   </div>
                   <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 text-xs">
-                    <div className="p-3 rounded-xl bg-[#FAF8F5] border border-[#EFECE4]">
+                    <div className="p-3 rounded-xl bg-[#FAF8F5] border border-[#EFECE4] break-words min-w-0">
                       <div className="text-[#78716C] font-medium">{t.ttxLabels.pilesCount}</div>
                       <div className="text-base font-bold text-[#1C1917] font-mono mt-1">{building.foundation.pilesCount} {t.ttxLabels.units}</div>
                     </div>
-                    <div className="p-3 rounded-xl bg-[#FAF8F5] border border-[#EFECE4]">
+                    <div className="p-3 rounded-xl bg-[#FAF8F5] border border-[#EFECE4] break-words min-w-0">
                       <div className="text-[#78716C] font-medium">{t.ttxLabels.pileDepth}</div>
                       <div className="text-base font-bold text-[#1C1917] font-mono mt-1">{building.foundation.pileDepthMeters} {t.ttxLabels.meters}</div>
                     </div>
-                    <div className="p-3 rounded-xl bg-[#FAF8F5] border border-[#EFECE4]">
+                    <div className="p-3 rounded-xl bg-[#FAF8F5] border border-[#EFECE4] break-words min-w-0">
                       <div className="text-[#78716C] font-medium">{t.ttxLabels.pileDiameter}</div>
                       <div className="text-base font-bold text-[#1C1917] font-mono mt-1">{building.foundation.pileDiameterMeters}</div>
                     </div>
@@ -465,19 +465,19 @@ export default function BuildingDetailClient({
                     <span>{t.ttxLabels.windStructural}</span>
                   </div>
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
-                    <div className="p-3.5 rounded-xl bg-[#FAF8F5] border border-[#EFECE4]">
+                    <div className="p-3.5 rounded-xl bg-[#FAF8F5] border border-[#EFECE4] break-words min-w-0">
                       <div className="text-[#78716C] font-medium">{t.ttxLabels.lateralSystem}</div>
                       <div className="text-xs font-semibold text-[#1C1917] mt-1 leading-relaxed">{building.windStructural.lateralSystem}</div>
                     </div>
-                    <div className="p-3.5 rounded-xl bg-[#FAF8F5] border border-[#EFECE4]">
+                    <div className="p-3.5 rounded-xl bg-[#FAF8F5] border border-[#EFECE4] break-words min-w-0">
                       <div className="text-[#78716C] font-medium">{t.ttxLabels.vortexDamping}</div>
                       <div className="text-xs font-semibold text-[#1C1917] mt-1 leading-relaxed">{building.windStructural.dampingMechanism}</div>
                     </div>
-                    <div className="p-3.5 rounded-xl bg-[#FAF8F5] border border-[#EFECE4]">
+                    <div className="p-3.5 rounded-xl bg-[#FAF8F5] border border-[#EFECE4] break-words min-w-0">
                       <div className="text-[#78716C] font-medium">{t.ttxLabels.maxApexSway}</div>
                       <div className="text-sm font-bold text-[#8C6A48] font-mono mt-1">{building.windStructural.maxApexSwayMeters}</div>
                     </div>
-                    <div className="p-3.5 rounded-xl bg-[#FAF8F5] border border-[#EFECE4]">
+                    <div className="p-3.5 rounded-xl bg-[#FAF8F5] border border-[#EFECE4] break-words min-w-0">
                       <div className="text-[#78716C] font-medium">{t.ttxLabels.concreteStrength}</div>
                       <div className="text-sm font-bold text-[#1C1917] font-mono mt-1">{building.windStructural.concreteStrengthGrade}</div>
                     </div>
@@ -495,15 +495,15 @@ export default function BuildingDetailClient({
                       <div className="text-[#78716C] font-medium">{t.ttxLabels.glazingSpec}</div>
                       <div className="text-xs font-semibold text-[#1C1917] mt-1 leading-relaxed">{building.facade.glazingType}</div>
                     </div>
-                    <div className="p-3 rounded-xl bg-[#FAF8F5] border border-[#EFECE4]">
+                    <div className="p-3 rounded-xl bg-[#FAF8F5] border border-[#EFECE4] break-words min-w-0">
                       <div className="text-[#78716C] font-medium">{t.ttxLabels.shgc}</div>
                       <div className="text-sm font-bold text-[#1C1917] font-mono mt-1">{building.facade.shgcSolarCoefficient}</div>
                     </div>
-                    <div className="p-3 rounded-xl bg-[#FAF8F5] border border-[#EFECE4]">
+                    <div className="p-3 rounded-xl bg-[#FAF8F5] border border-[#EFECE4] break-words min-w-0">
                       <div className="text-[#78716C] font-medium">{t.ttxLabels.uValue}</div>
                       <div className="text-sm font-bold text-[#1C1917] font-mono mt-1">{building.facade.uValueWPerM2K}</div>
                     </div>
-                    <div className="p-3 rounded-xl bg-[#FAF8F5] border border-[#EFECE4]">
+                    <div className="p-3 rounded-xl bg-[#FAF8F5] border border-[#EFECE4] break-words min-w-0">
                       <div className="text-[#78716C] font-medium">{t.ttxLabels.cleaningCycle}</div>
                       <div className="text-sm font-bold text-[#1C1917] font-mono mt-1">{building.facade.cleaningCycleDays}</div>
                     </div>
@@ -521,19 +521,19 @@ export default function BuildingDetailClient({
                     <span>{t.ttxLabels.verticalTransport}</span>
                   </div>
                   <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 text-xs">
-                    <div className="p-3 rounded-xl bg-[#FAF8F5] border border-[#EFECE4]">
+                    <div className="p-3 rounded-xl bg-[#FAF8F5] border border-[#EFECE4] break-words min-w-0">
                       <div className="text-[#78716C] font-medium">{t.ttxLabels.elevatorMfg}</div>
                       <div className="text-base font-bold text-[#1C1917] mt-1">{building.verticalTransport.elevatorManufacturer}</div>
                     </div>
-                    <div className="p-3 rounded-xl bg-[#FAF8F5] border border-[#EFECE4]">
+                    <div className="p-3 rounded-xl bg-[#FAF8F5] border border-[#EFECE4] break-words min-w-0">
                       <div className="text-[#78716C] font-medium">{t.ttxLabels.elevatorsTotal}</div>
                       <div className="text-base font-bold text-[#1C1917] font-mono mt-1">{building.verticalTransport.totalElevators} {t.ttxLabels.units}</div>
                     </div>
-                    <div className="p-3 rounded-xl bg-[#FAF8F5] border border-[#EFECE4]">
+                    <div className="p-3 rounded-xl bg-[#FAF8F5] border border-[#EFECE4] break-words min-w-0">
                       <div className="text-[#78716C] font-medium">{t.ttxLabels.maxSpeed}</div>
                       <div className="text-base font-bold text-[#8C6A48] font-mono mt-1">{building.verticalTransport.maxSpeedMs} {t.ttxLabels.speedUnit}</div>
                     </div>
-                    <div className="p-3 rounded-xl bg-[#FAF8F5] border border-[#EFECE4]">
+                    <div className="p-3 rounded-xl bg-[#FAF8F5] border border-[#EFECE4] break-words min-w-0">
                       <div className="text-[#78716C] font-medium">{t.ttxLabels.peakWait}</div>
                       <div className="text-base font-bold text-[#1C1917] font-mono mt-1">{building.verticalTransport.peakWaitingSeconds}</div>
                     </div>
@@ -557,7 +557,7 @@ export default function BuildingDetailClient({
                     <div className="p-4 rounded-xl bg-[#EFECE4]/60 border border-[#DDD7CA]">
                       <div className="text-[#78716C] font-medium uppercase">{t.ttxLabels.serviceCharge}</div>
                       <div className="text-xl font-extrabold text-[#1C1917] font-mono mt-1">
-                        {building.operatingSpecs.annualServiceChargeAedSqFt} <span className="text-xs font-normal">{lang === "ru" ? "AED / кв. фут" : "AED/sq.ft"}</span>
+                        {building.operatingSpecs.annualServiceChargeAedSqFt} <span className="text-xs font-normal">{lang === "ru" ? "AED / кв. фут" : lang === "ar" ? "درهم / قدم²" : lang === "ur" ? "درہم / مربع فٹ" : lang === "hi" ? "AED/वर्ग फुट" : lang === "zh" ? "AED/平方英尺" : "AED/sq.ft"}</span>
                       </div>
                       <p className="text-xs text-[#64748B] mt-1">{t.ttxLabels.reraNotice}</p>
                     </div>
@@ -565,7 +565,7 @@ export default function BuildingDetailClient({
                       <div className="text-[#78716C] font-medium uppercase">{t.ttxLabels.coolingProvider}</div>
                       <div className="text-base font-bold text-[#1C1917] mt-1">{building.operatingSpecs.coolingProvider}</div>
                       <span className={`inline-block mt-1 px-2.5 py-0.5 rounded text-xs font-bold ${
-                        building.operatingSpecs.chillerBilling.includes('Chiller-Free') 
+                        building.operatingSpecs.chillerBilling.includes('Chiller-Free') || building.operatingSpecs.chillerBilling.includes('Включено') || building.operatingSpecs.chillerBilling.includes('مشمول') || building.operatingSpecs.chillerBilling.includes('Incluso') || building.operatingSpecs.chillerBilling.includes('dahili') || building.operatingSpecs.chillerBilling.includes('包含') 
                           ? 'bg-[#2D6A4F]/10 text-[#2D6A4F]' 
                           : 'bg-[#9E4732]/10 text-[#9E4732]'
                       }`}>
@@ -577,15 +577,15 @@ export default function BuildingDetailClient({
                       <div className="text-xl font-extrabold text-[#1C1917] font-mono mt-1">{building.operatingSpecs.acousticRatingDb}</div>
                       <p className="text-xs text-[#64748B] mt-1">{t.ttxLabels.acousticDesc}</p>
                     </div>
-                    <div className="p-3.5 rounded-xl bg-[#FAF8F5] border border-[#EFECE4]">
+                    <div className="p-3.5 rounded-xl bg-[#FAF8F5] border border-[#EFECE4] break-words min-w-0">
                       <div className="text-[#78716C] font-medium">{t.ttxLabels.ceilingHeight}</div>
                       <div className="text-sm font-bold text-[#1C1917] font-mono mt-1">{building.operatingSpecs.clearCeilingHeightMeters} {t.ttxLabels.meters}</div>
                     </div>
-                    <div className="p-3.5 rounded-xl bg-[#FAF8F5] border border-[#EFECE4]">
+                    <div className="p-3.5 rounded-xl bg-[#FAF8F5] border border-[#EFECE4] break-words min-w-0">
                       <div className="text-[#78716C] font-medium">{t.ttxLabels.columnImpact}</div>
                       <div className="text-xs font-bold text-[#1C1917] mt-1">{building.layoutEfficiency.columnImpact}</div>
                     </div>
-                    <div className="p-3.5 rounded-xl bg-[#FAF8F5] border border-[#EFECE4]">
+                    <div className="p-3.5 rounded-xl bg-[#FAF8F5] border border-[#EFECE4] break-words min-w-0">
                       <div className="text-[#78716C] font-medium">{t.ttxLabels.netGross}</div>
                       <div className="text-sm font-bold text-[#2D6A4F] font-mono mt-1">{building.layoutEfficiency.netToGrossRatio}</div>
                     </div>

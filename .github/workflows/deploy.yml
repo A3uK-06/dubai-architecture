@@ -44,6 +44,11 @@ jobs:
           npm run build
           touch ./out/.nojekyll
 
+      - name: Notify Google Indexing API
+        env:
+          GOOGLE_INDEXING_KEY: ${{ secrets.GOOGLE_INDEXING_KEY }}
+        run: npm run index:google
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:

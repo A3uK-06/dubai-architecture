@@ -1,0 +1,9 @@
+export { LOCALIZED_DISTRICTS_RU } from "./ru";
+export { LOCALIZED_DISTRICTS_AR } from "./ar";
+export { LOCALIZED_DISTRICTS_ZH } from "./zh";
+export { LOCALIZED_DISTRICTS_DE } from "./de";
+export { LOCALIZED_DISTRICTS_FR } from "./fr";
+export { LOCALIZED_DISTRICTS_IT } from "./it";
+export { LOCALIZED_DISTRICTS_TR } from "./tr";
+export { LOCALIZED_DISTRICTS_HI } from "./hi";
+export { LOCALIZED_DISTRICTS_UR } from "./ur";

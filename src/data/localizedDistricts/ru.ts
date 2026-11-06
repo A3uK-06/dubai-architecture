@@ -1,4 +1,4 @@
-import { LocalizedDistrictData } from "../localizedContent";
+import type { LocalizedDistrictData } from "../localizedTypes";
 
 export const LOCALIZED_DISTRICTS_RU: Record<string, LocalizedDistrictData> = {
   "downtown-dubai": {
