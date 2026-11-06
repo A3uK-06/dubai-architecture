@@ -371,9 +371,9 @@ export default function CatalogSection() {
                   </div>
 
                   {/* Overlapping Badge: Net Yield overlapping bottom border of photo */}
-                  <div className="absolute -bottom-4 right-4 z-20">
-                    <span className="inline-flex items-center gap-1 px-3.5 py-1.5 rounded-full bg-[#0F172A] text-white text-xs sm:text-sm font-bold font-mono border-2 border-white shadow-md">
-                      <span>ROI</span>
+                  <div className="absolute bottom-4 right-3.5 z-10">
+                    <span className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-black/80 text-white text-xs sm:text-sm font-bold font-mono border border-white/25 backdrop-blur-md shadow-sm">
+                      <span className="text-[#94A3B8] text-[11px] font-sans font-semibold">ROI</span>
                       <span className="text-[#34D399] font-extrabold">{building.investmentYield}</span>
                     </span>
                   </div>

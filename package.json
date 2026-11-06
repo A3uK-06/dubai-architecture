@@ -8,6 +8,8 @@
     "build": "next build",
     "postbuild": "node scripts/postbuild.mjs",
     "index:google": "node scripts/push-indexing-api.mjs",
+    "index:bing": "node scripts/push-indexnow.mjs",
+    "index:all": "node scripts/push-indexing-api.mjs && node scripts/push-indexnow.mjs",
     "start": "next start",
     "lint": "eslint"
   },

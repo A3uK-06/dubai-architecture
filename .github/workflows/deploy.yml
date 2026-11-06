@@ -49,6 +49,9 @@ jobs:
           GOOGLE_INDEXING_KEY: ${{ secrets.GOOGLE_INDEXING_KEY }}
         run: npm run index:google
 
+      - name: Notify Microsoft Bing & Copilot (IndexNow)
+        run: npm run index:bing
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
