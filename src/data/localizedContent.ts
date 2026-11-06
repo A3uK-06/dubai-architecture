@@ -3859,9 +3859,7 @@ export function getLocalizedBuilding(building: Building, lang: LanguageCode): Bu
     };
   }
 
-  if (lang === "ru") {
-    b = translateBuildingSpecsRU(b);
-  }
+  b = translateBuildingSpecs(b, lang);
 
   return b;
 }

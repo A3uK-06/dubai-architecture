@@ -32,17 +32,27 @@ export default function DistrictDetailClient({
 
   const getWalkabilityDisplay = (score?: string) => {
     if (!score) return "";
-    if (lang === "ru") {
-      if (score.includes("High") || score.includes("Превосходная") || score.includes("Высокая")) {
-        return "Высокая (Пешеходные бульвары)";
-      }
-      if (score.includes("Moderate") || score.includes("Средняя") || score.includes("Умеренная")) {
-        return "Умеренная (Внутри кластеров)";
-      }
-      if (score.includes("Car-Dependent") || score.includes("Автомобильная")) {
-        return "Автомобильная зависимость";
-      }
-    }
+    const isHigh = score.includes("High") || score.includes("Превосходная") || score.includes("Высокая") || score.includes("عالية") || score.includes("极高") || score.includes("Hoch") || score.includes("Élevée") || score.includes("Alta") || score.includes("Yüksek") || score.includes("उच्च") || score.includes("بہترین");
+    const isModerate = score.includes("Moderate") || score.includes("Средняя") || score.includes("Умеренная") || score.includes("متوسطة") || score.includes("中等") || score.includes("Moderat") || score.includes("Modérée") || score.includes("Moderata") || score.includes("Orta") || score.includes("मध्यम") || score.includes("درمیانی");
+    const isCar = score.includes("Car-Dependent") || score.includes("Автомобильная") || score.includes("تعتمد على السيارات") || score.includes("依赖汽车") || score.includes("Auto-abhängig") || score.includes("Dépendant") || score.includes("Dipendente") || score.includes("Araç Bağımlı") || score.includes("कार पर निर्भर") || score.includes("گاڑی پر منحصر");
+
+    const map: Record<string, { high: string; mod: string; car: string }> = {
+      en: { high: "High (Pedestrian Boulevards)", mod: "Moderate (Within Clusters)", car: "Car-Dependent" },
+      ru: { high: "Высокая (Пешеходные бульвары)", mod: "Умеренная (Внутри кластеров)", car: "Автомобильная зависимость" },
+      ar: { high: "عالية (بوليفارد مشاة متكامل)", mod: "متوسطة (داخل المجمعات)", car: "تعتمد على السيارات" },
+      zh: { high: "极高（人车分流林荫步道）", mod: "中等（区域组团内部步行）", car: "高度依赖汽车出行" },
+      de: { high: "Hoch (Fußgänger-Boulevards)", mod: "Moderat (Innerhalb der Cluster)", car: "Auto-abhängig" },
+      fr: { high: "Élevée (Boulevards piétons)", mod: "Modérée (Au sein des îlots)", car: "Dépendant de l'automobile" },
+      it: { high: "Alta (Boulevard pedonali)", mod: "Moderata (All'interno dei cluster)", car: "Dipendente dall'auto" },
+      tr: { high: "Yüksek (Yaya Bulvarları)", mod: "Orta (Kümeler İçi)", car: "Araç Bağımlı" },
+      hi: { high: "उच्च (पैदल यात्री बुलेवार्ड)", mod: "मध्यम (क्लस्टर के भीतर)", car: "कार पर निर्भर" },
+      ur: { high: "بہترین (پیدل راہداریاں اور بلیوارڈ)", mod: "درمیانی (کلسٹرز کے اندر)", car: "گاڑی پر منحصر" }
+    };
+
+    const dict = map[lang] || map.en;
+    if (isHigh) return dict.high;
+    if (isModerate) return dict.mod;
+    if (isCar) return dict.car;
     return score;
   };
 

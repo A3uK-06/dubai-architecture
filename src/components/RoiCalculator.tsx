@@ -99,8 +99,21 @@ export default function RoiCalculator({
     const list: { label: string; val: number }[] = [];
     if (buildingName && initialPriceAed) {
       const formattedEntry = new Intl.NumberFormat("en-US").format(initialPriceAed);
+      const entryMap: Record<string, string> = {
+        en: "Entry",
+        ru: "Старт",
+        ar: "البداية من",
+        zh: "起售价",
+        de: "Einstieg",
+        fr: "À partir de",
+        it: "A partire da",
+        tr: "Başlangıç",
+        hi: "प्रारंभिक",
+        ur: "ابتدائی قیمت"
+      };
+      const entryLabel = entryMap[lang] || entryMap.en;
       list.push({
-        label: `${formattedEntry} AED (${lang === "ru" ? "Старт" : "Entry"} ${buildingName})`,
+        label: `${formattedEntry} AED (${entryLabel} ${buildingName})`,
         val: initialPriceAed,
       });
     }
@@ -116,9 +129,21 @@ export default function RoiCalculator({
     );
   }, [buildingName, initialPriceAed, lang]);
 
-  const whatsappMessage = encodeURIComponent(
-    `Hello, I used the ROI Calculator on Dubai-Architecture.info. Property budget: ${calculations.priceConverted} ${curr.symbol}. Projected Net ROI: ${calculations.netRoiFormatted}%. Please send matching verified units${buildingName ? ` in ${buildingName}` : ""}.`
-  );
+  const whatsappMessage = useMemo(() => {
+    const waMap: Record<string, string> = {
+      en: `Hello, I used the ROI Calculator on Dubai-Architecture.info. Property budget: ${calculations.priceConverted} ${curr.symbol}. Projected Net ROI: ${calculations.netRoiFormatted}%. Please send matching verified units${buildingName ? ` in ${buildingName}` : ""}.`,
+      ru: `Здравствуйте! Я воспользовался калькулятором доходности на Dubai-Architecture.info. Бюджет: ${calculations.priceConverted} ${curr.symbol}. Прогнозируемый чистый ROI: ${calculations.netRoiFormatted}%. Пожалуйста, отправьте проверенные лоты${buildingName ? ` в ${buildingName}` : ""}.`,
+      ar: `مرحباً، استخدمت حاسبة العائد على Dubai-Architecture.info. الميزانية: ${calculations.priceConverted} ${curr.symbol}. صافي العائد المتوقع: ${calculations.netRoiFormatted}%. يرجى إرسال الوحدات المتاحة${buildingName ? ` في ${buildingName}` : ""}.`,
+      zh: `您好，我在 Dubai-Architecture.info 使用了收益测算器。置业预算：${calculations.priceConverted} ${curr.symbol}，预计净回报率：${calculations.netRoiFormatted}%。请发送匹配房源${buildingName ? `（${buildingName}）` : ""}。`,
+      de: `Guten Tag, ich habe den Renditerechner auf Dubai-Architecture.info genutzt. Budget: ${calculations.priceConverted} ${curr.symbol}. Prognostizierte Netto-Rendite: ${calculations.netRoiFormatted}%. Bitte senden Sie passende Angebote${buildingName ? ` im ${buildingName}` : ""}.`,
+      fr: `Bonjour, j'ai utilisé le calculateur sur Dubai-Architecture.info. Budget : ${calculations.priceConverted} ${curr.symbol}. Rendement net prévu : ${calculations.netRoiFormatted}%. Merci d'envoyer les biens correspondants${buildingName ? ` à ${buildingName}` : ""}.`,
+      it: `Buongiorno, ho utilizzato il calcolatore su Dubai-Architecture.info. Budget: ${calculations.priceConverted} ${curr.symbol}. ROI netto previsto: ${calculations.netRoiFormatted}%. Vi prego di inviare unità corrispondenti${buildingName ? ` presso ${buildingName}` : ""}.`,
+      tr: `Merhaba, Dubai-Architecture.info üzerinden getiri hesaplayıcıyı kullandım. Bütçe: ${calculations.priceConverted} ${curr.symbol}. Tahmini net getiri: %${calculations.netRoiFormatted}. Lütfen uygun ilanları gönderin${buildingName ? ` (${buildingName})` : ""}.`,
+      hi: `नमस्ते, मैंने Dubai-Architecture.info पर आरओआई कैलकुलेटर का उपयोग किया। बजट: ${calculations.priceConverted} ${curr.symbol}। शुद्ध आरओआई: ${calculations.netRoiFormatted}%। कृपया उपयुक्त संपत्तियां भेजें${buildingName ? ` ${buildingName} में` : ""}।`,
+      ur: `ہیلو، میں نے Dubai-Architecture.info پر منافع کا کیلکولیٹر استعمال کیا۔ بجٹ: ${calculations.priceConverted} ${curr.symbol}۔ متوقع خالص منافع: ${calculations.netRoiFormatted}%۔ برائے مہربانی دستیاب یونٹس بھیجیں${buildingName ? ` ${buildingName} میں` : ""}۔`
+    };
+    return encodeURIComponent(waMap[lang] || waMap.en);
+  }, [calculations.priceConverted, curr.symbol, calculations.netRoiFormatted, buildingName, lang]);
 
   const content = (
     <>
@@ -131,16 +156,34 @@ export default function RoiCalculator({
           </div>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#0F172A] tracking-tight leading-tight font-heading">
             {buildingName
-              ? lang === "ru"
-                ? `Калькулятор доходности: ${buildingName}`
-                : `ROI & Investment Calculator: ${buildingName}`
+              ? ({
+                  en: `ROI & Investment Calculator: ${buildingName}`,
+                  ru: `Калькулятор доходности: ${buildingName}`,
+                  ar: `حاسبة العائد الاستثماري: ${buildingName}`,
+                  zh: `投资收益回报测算器: ${buildingName}`,
+                  de: `Rendite- & Investitionsrechner: ${buildingName}`,
+                  fr: `Calculateur de rentabilité : ${buildingName}`,
+                  it: `Calcolatore di rendimento ROI: ${buildingName}`,
+                  tr: `Yatırım Getirisi (ROI) Hesaplayıcı: ${buildingName}`,
+                  hi: `रिटर्न एवं निवेश कैलकुलेटर: ${buildingName}`,
+                  ur: `سرمایہ کاری منافع کیلکولیٹر: ${buildingName}`
+                }[lang] || `ROI & Investment Calculator: ${buildingName}`)
               : t.calculator.title}
           </h2>
           <p className="text-[#475569] text-sm sm:text-base max-w-xl mt-2 leading-relaxed">
             {buildingName
-              ? lang === "ru"
-                ? `Интерактивный расчет окупаемости, чистой арендной доходности и прироста капитала для апартаментов в ${buildingName}.`
-                : `Interactive rental yield, payback period, and 5-year capital appreciation projection for apartments in ${buildingName}.`
+              ? ({
+                  en: `Interactive rental yield, payback period, and 5-year capital appreciation projection for apartments in ${buildingName}.`,
+                  ru: `Интерактивный расчет окупаемости, чистой арендной доходности и прироста капитала для апартаментов в ${buildingName}.`,
+                  ar: `حساب تفاعلي لفترة استرداد رأس المال، والعائد الإيجاري الصافي، وتوقعات نمو القيمة لـ 5 سنوات في ${buildingName}.`,
+                  zh: `对 ${buildingName} 公寓的租金净回报率、静态投资回收期及未来5年资本增值进行全景测算。`,
+                  de: `Interaktive Berechnung von Mietrendite, Amortisationszeit und 5-Jahres-Wertsteigerung für Wohnungen im ${buildingName}.`,
+                  fr: `Simulation interactive du rendement locatif net, du délai de retour sur investissement et de la plus-value à 5 ans pour ${buildingName}.`,
+                  it: `Calcolo interattivo di rendita da locazione, periodo di ammortamento e rivalutazione a 5 anni per ${buildingName}.`,
+                  tr: `${buildingName} projesindeki daireler için interaktif net kira getirisi, amortisman süresi ve 5 yıllık sermaye artışı projeksiyonu.`,
+                  hi: `${buildingName} में अपार्टमेंट के लिए किराये की शुद्ध उपज, पेबैक अवधि और 5-वर्षीय पूंजी वृद्धि का इंटरैक्टिव अनुमान।`,
+                  ur: `${buildingName} میں اپارٹمنٹس کے لیے خالص کرائے کے منافع، واپسی کی مدت اور 5 سالہ کیپٹل گروتھ کا تفصیلی تخمینہ۔`
+                }[lang] || `Interactive rental yield, payback period, and 5-year capital appreciation projection for apartments in ${buildingName}.`)
               : t.calculator.subtitle}
           </p>
         </div>
@@ -380,9 +423,18 @@ export default function RoiCalculator({
     ur: "آزادانہ آڈٹ دیانت کی ضمانت: "
   } as Record<string, string>)[lang] || "Auditor Integrity Guarantee: "}
               </strong>
-              {lang === "ru"
-                ? "Расчет очищен от брокерских завышений и включает реальные индексы сервисных сборов DLD, сборы Empower и расходы на управление."
-                : "Calculations reflect official DLD service indexes, actual district cooling tariffs, and real property management reserves."}
+              {({
+                en: "Calculations reflect official DLD service indexes, actual district cooling tariffs, and real property management reserves.",
+                ru: "Расчет очищен от брокерских завышений и включает реальные индексы сервисных сборов DLD, сборы Empower и расходы на управление.",
+                ar: "الحسابات مجردة من مبالغات الوسطاء وتعتمد مؤشرات رسوم أراضي دبي الرسمية، وتعرفات تبريد إمباور الفعلية، ومصاريف الإدارة.",
+                zh: "测算已剔除中介销售滤镜与虚高估算，严格纳入迪拜土地局（DLD）官方物业费指数、Empower 供冷实支及托管支出。",
+                de: "Berechnungen bereinigt um Makleraufschläge; basieren auf offiziellen DLD-Gebührenindizes, Empower-Tarifen und Verwaltungskosten.",
+                fr: "Calculs affranchis de toute surenchère commerciale ; basés sur les indices officiels du DLD, les tarifs réels Empower et la gestion.",
+                it: "Calcoli depurati da stime ottimistiche; basati sugli indici ufficiali del DLD, sulle tariffe reali Empower e sui costi di gestione.",
+                tr: "Hesaplamalar abartılardan arındırılmış olup resmi DLD aidat endeksleri, Empower soğutma tarifeleri ve yönetim giderlerini içerir.",
+                hi: "गणना ब्रोकर की अतिशयोक्ति से मुक्त है और इसमें आधिकारिक डीएलडी सेवा सूचकांक, एम्पावर कूलिंग टैरिफ और प्रबंधन लागत शामिल हैं।",
+                ur: "تخمینوں کو بروکرز کے مبالغے سے پاک رکھا گیا ہے اور ان میں سرکاری DLD سروس انڈیکس، ایم پاور ٹیرف اور مینجمنٹ فیس شامل ہے۔"
+              }[lang] || "Calculations reflect official DLD service indexes, actual district cooling tariffs, and real property management reserves.")}
             </div>
           </div>
 

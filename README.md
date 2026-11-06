@@ -119,3 +119,31 @@
 - [x] Выкатка репозитория на GitHub и деплой на GitHub Pages.
 - [x] Настройка DNS у регистратора `dubai-architecture.info` (4 A-записи GitHub Pages + CNAME).
 - [x] Подключение Google Search Console и загрузка `sitemap.xml`.
+
+---
+
+### ЭТАП 9. SEO, AIO / GEO и микроразметка (Завершено)
+- [x] **Google Analytics 4 & Tag Manager**: боевой ID `G-S9Q49RFJE1` + `GTM-P5QVMKMB`, настроен трекинг лидов.
+- [x] **Microsoft Clarity**: проект `z956pgqwta`, тепловые карты и видеозаписи сессий связаны с GA4.
+- [x] **Ghost Mode (Режим Невидимки)**: страница `/ghost` и 10-летний физический cookie-файл на устройстве владельца для защиты статистики от искажений через любые VPN.
+- [x] **Google Indexing API**: скрипт `scripts/push-indexing-api.mjs` интегрирован в GitHub Actions автодеплой (`npm run index:google`).
+- [x] **Microsoft Bing & Copilot (IndexNow)**: протокол мгновенной отправки URL `scripts/push-indexnow.mjs` (`npm run index:bing`), robots.txt открыт для Bingbot и ChatGPT-User.
+- [x] **Семантическая микроразметка (Schema.org / JSON-LD)**:
+  * Главная: `WebSite`, `Organization` (основан в 2006 г.).
+  * Башни (32 шт): `LandmarksOrHistoricalBuildings`, характеристики ТТХ, архитектор, девелопер, доходность.
+  * Районы (14 шт): `Place`, `AdministrativeArea`, привязка к Дубаю, список ключевых башен.
+  * Калькулятор: `WebApplication` (`FinanceApplication`).
+  * Golden Visa: `FAQPage` (4 ключевых ответа для расширенных сниппетов Google и AI Overviews).
+  * На всех страницах: `BreadcrumbList` (хлебные крошки).
+
+#### ⚠️ Правило добавления принципиально новых разделов:
+При создании новых типов страниц (блог `/blog`, каталог девелоперов `/developers`, статьи) **всегда** подключать `<SchemaOrg />` в корень страницы:
+```tsx
+<SchemaOrg
+  type="breadcrumbs"
+  breadcrumbs={[
+    { name: "Home", url: "https://dubai-architecture.info/" },
+    { name: "Название раздела", url: "https://dubai-architecture.info/section-url/" }
+  ]}
+/>
+```

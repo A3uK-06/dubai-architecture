@@ -3,8 +3,10 @@
 import React, { useMemo, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
-import { Building, BUILDINGS, getBuildingAuditReview } from "@/data/buildings";
+import { Building, BUILDINGS } from "@/data/buildings";
+import { getLocalizedBuildingAuditReview, AUDIT_UI_LABELS } from "@/data/localizedAuditReview";
 import { useLang } from "@/context/LangContext";
+import { LanguageCode } from "@/i18n/languages";
 import { getLocalizedBuilding } from "@/data/localizedContent";
 import SchemaOrg from "@/components/SchemaOrg";
 import RoiCalculator from "@/components/RoiCalculator";
@@ -28,8 +30,12 @@ export default function BuildingDetailClient({
   }, [initialBuilding, lang]);
 
   const audit = useMemo(() => {
-    return getBuildingAuditReview(building);
-  }, [building]);
+    return getLocalizedBuildingAuditReview(building, lang);
+  }, [building, lang]);
+
+  const tAudit = useMemo(() => {
+    return AUDIT_UI_LABELS[lang] || AUDIT_UI_LABELS.en;
+  }, [lang]);
 
   const relatedBuildings = useMemo(() => {
     return BUILDINGS.filter(
@@ -53,11 +59,21 @@ export default function BuildingDetailClient({
     return match ? parseFloat(match[1]) : 8.0;
   }, [building.investmentYield]);
 
-  const whatsappMessage = encodeURIComponent(
-    lang === "ru"
-      ? `Здравствуйте! Я обращаюсь через Dubai-Architecture.info по поводу доступных резиденций в ${building.name}.`
-      : `Hello, I am inquiring through Dubai-Architecture.info regarding available luxury units in ${building.name}.`
-  );
+  const whatsappMessage = useMemo(() => {
+    const messages: Record<LanguageCode, string> = {
+      en: `Hello, I am inquiring through Dubai-Architecture.info regarding available luxury units in ${building.name}.`,
+      ru: `Здравствуйте! Я обращаюсь через Dubai-Architecture.info по поводу доступных резиденций в ${building.name}.`,
+      ar: `مرحباً، أود الاستفسار عبر Dubai-Architecture.info بخصوص الوحدات المتاحة في ${building.name}.`,
+      zh: `您好，我通过 Dubai-Architecture.info 咨询关于 ${building.name} 的在售房源。`,
+      de: `Guten Tag, ich interessiere mich über Dubai-Architecture.info für verfügbare Einheiten im ${building.name}.`,
+      fr: `Bonjour, je vous contacte via Dubai-Architecture.info au sujet des biens disponibles à ${building.name}.`,
+      it: `Buongiorno, vorrei informazioni tramite Dubai-Architecture.info sulle unità disponibili presso ${building.name}.`,
+      tr: `Merhaba, Dubai-Architecture.info üzerinden ${building.name} projesindeki uygun daireler hakkında bilgi almak istiyorum.`,
+      hi: `नमस्ते, मैं ${building.name} में उपलब्ध इकाइयों के संबंध में Dubai-Architecture.info के माध्यम से पूछताछ कर रहा हूं।`,
+      ur: `ہیلو، میں Dubai-Architecture.info کے توسط سے ${building.name} میں دستیاب رہائشی یونٹس کے بارے میں معلومات حاصل کرنا چاہتا ہوں۔`
+    };
+    return encodeURIComponent(messages[lang] || messages.en);
+  }, [building.name, lang]);
 
   return (
     <article className="min-h-screen bg-transparent text-[#0F172A] pb-24 transition-colors">
@@ -258,10 +274,10 @@ export default function BuildingDetailClient({
                   <div>
                     <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#8C6A48]/30 border border-[#8C6A48]/50 text-[#CBB292] text-xs font-mono font-bold uppercase tracking-wider mb-2">
                       <span className="w-2 h-2 rounded-full bg-[#10B981] animate-pulse" />
-                      {lang === "ru" ? "Независимый технический аудит • Без риелторского глянца" : "Independent Technical Audit • No Broker Bias"}
+                      {tAudit.auditBadge}
                     </div>
                     <h2 className="text-2xl font-bold tracking-tight text-white font-heading">
-                      {lang === "ru" ? "Реальность резидента и операционная правда" : "Resident Reality Check & Operational Truth"}
+                      {tAudit.auditTitle}
                     </h2>
                   </div>
                   <span className="text-xs font-mono text-white/50">{bd.archiveId}: {building.legacyId || building.id}</span>
@@ -271,7 +287,7 @@ export default function BuildingDetailClient({
                 <div className="p-5 rounded-2xl bg-white/5 border border-white/10 space-y-2">
                   <div className="text-xs font-bold uppercase tracking-wider text-[#CBB292] flex items-center gap-2">
                     <span>⚖️</span>
-                    <span>{lang === "ru" ? "Независимый инженерный и инвестиционный вердикт" : "Independent Engineering & Investment Verdict"}</span>
+                    <span>{tAudit.verdictBadge}</span>
                   </div>
                   <p className="text-sm sm:text-base text-slate-200 leading-relaxed font-normal">
                     {audit.honestVerdict}
@@ -284,7 +300,7 @@ export default function BuildingDetailClient({
                   <div className="p-5 rounded-2xl bg-emerald-950/30 border border-emerald-500/20 space-y-3">
                     <div className="flex items-center gap-2 text-emerald-400 font-bold text-sm uppercase tracking-wide">
                       <span className="w-5 h-5 rounded-full bg-emerald-500/20 flex items-center justify-center text-xs">✓</span>
-                      <span>{lang === "ru" ? "Подтвержденные инженерные плюсы" : "Verified Engineering & Asset Strengths"}</span>
+                      <span>{tAudit.strengthsTitle}</span>
                     </div>
                     <ul className="space-y-2.5">
                       {audit.strengths.map((item, idx) => (
@@ -300,7 +316,7 @@ export default function BuildingDetailClient({
                   <div className="p-5 rounded-2xl bg-rose-950/30 border border-rose-500/20 space-y-3">
                     <div className="flex items-center gap-2 text-rose-400 font-bold text-sm uppercase tracking-wide">
                       <span className="w-5 h-5 rounded-full bg-rose-500/20 flex items-center justify-center text-xs">⚠</span>
-                      <span>{lang === "ru" ? "Скрытые минусы (О чем молчат брокеры)" : "Hidden Pitfalls & Operational Flaws"}</span>
+                      <span>{tAudit.pitfallsTitle}</span>
                     </div>
                     <ul className="space-y-2.5">
                       {audit.pitfallsAndWeaknesses.map((item, idx) => (
@@ -316,19 +332,19 @@ export default function BuildingDetailClient({
                 {/* 4 Practical Resident Metrics */}
                 <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">
                   <div className="p-3.5 rounded-xl bg-white/5 border border-white/10 space-y-1">
-                    <div className="text-[11px] text-slate-400 font-medium">🛗 {lang === "ru" ? "Лифты в час пик" : "Rush Hour Lift Wait"}</div>
+                    <div className="text-[11px] text-slate-400 font-medium">🛗 {tAudit.liftWait}</div>
                     <div className="text-xs font-bold text-white">{audit.elevatorPeakWaitReality}</div>
                   </div>
                   <div className="p-3.5 rounded-xl bg-white/5 border border-white/10 space-y-1">
-                    <div className="text-[11px] text-slate-400 font-medium">🚗 {lang === "ru" ? "Гостевая парковка" : "Guest Parking"}</div>
+                    <div className="text-[11px] text-slate-400 font-medium">🚗 {tAudit.guestParking}</div>
                     <div className="text-xs font-bold text-white">{audit.guestParkingReality}</div>
                   </div>
                   <div className="p-3.5 rounded-xl bg-white/5 border border-white/10 space-y-1">
-                    <div className="text-[11px] text-slate-400 font-medium">🔇 {lang === "ru" ? "Шумоизоляция" : "Acoustic Isolation"}</div>
+                    <div className="text-[11px] text-slate-400 font-medium">🔇 {tAudit.soundproofing}</div>
                     <div className="text-xs font-bold text-white">{audit.soundproofingRating}</div>
                   </div>
                   <div className="p-3.5 rounded-xl bg-white/5 border border-white/10 space-y-1">
-                    <div className="text-[11px] text-slate-400 font-medium">🏖️ {lang === "ru" ? "Политика Airbnb" : "Holiday Homes / Airbnb"}</div>
+                    <div className="text-[11px] text-slate-400 font-medium">🏖️ {tAudit.airbnbPolicy}</div>
                     <div className="text-xs font-bold text-white">{audit.airbnbHolidayHomesPolicy}</div>
                   </div>
                 </div>
@@ -337,7 +353,7 @@ export default function BuildingDetailClient({
                 <div className="p-4 rounded-xl bg-amber-950/30 border border-amber-500/30 flex items-start gap-3">
                   <span className="text-lg text-amber-400">💡</span>
                   <div className="text-xs text-amber-200 leading-relaxed">
-                    <strong className="font-bold text-amber-300">{lang === "ru" ? "Предостережение ревизора о расходах: " : "Auditor Notice on Hidden Costs: "}</strong>
+                    <strong className="font-bold text-amber-300">{tAudit.hiddenCostsNotice}</strong>
                     {audit.hiddenOperatingCosts}
                   </div>
                 </div>
@@ -557,7 +573,7 @@ export default function BuildingDetailClient({
                     <div className="p-4 rounded-xl bg-[#EFECE4]/60 border border-[#DDD7CA]">
                       <div className="text-[#78716C] font-medium uppercase">{t.ttxLabels.serviceCharge}</div>
                       <div className="text-xl font-extrabold text-[#1C1917] font-mono mt-1">
-                        {building.operatingSpecs.annualServiceChargeAedSqFt} <span className="text-xs font-normal">{lang === "ru" ? "AED / кв. фут" : lang === "ar" ? "درهم / قدم²" : lang === "ur" ? "درہم / مربع فٹ" : lang === "hi" ? "AED/वर्ग फुट" : lang === "zh" ? "AED/平方英尺" : "AED/sq.ft"}</span>
+                        {building.operatingSpecs.annualServiceChargeAedSqFt} <span className="text-xs font-normal">{tAudit.serviceChargeUnit}</span>
                       </div>
                       <p className="text-xs text-[#64748B] mt-1">{t.ttxLabels.reraNotice}</p>
                     </div>
@@ -628,7 +644,7 @@ export default function BuildingDetailClient({
                 <div className="flex justify-between items-center">
                   <span className="text-[#78716C]">{t.ttxLabels.serviceCharge}</span>
                   <span className="font-mono font-bold text-[#8C6A48] text-right">
-                    {building.operatingSpecs ? `${building.operatingSpecs.annualServiceChargeAedSqFt} ${lang === "ru" ? "AED / кв. фут" : "AED/sq.ft"}` : "—"}
+                    {building.operatingSpecs ? `${building.operatingSpecs.annualServiceChargeAedSqFt} ${tAudit.serviceChargeUnit}` : "—"}
                   </span>
                 </div>
                 <div className="flex justify-between items-center">
@@ -642,15 +658,15 @@ export default function BuildingDetailClient({
                 type="button"
                 onClick={() => {
                   setModalAction({
-                    title: lang === "ru" ? `Запрос технического аудита: ${building.name}` : `Pre-Purchase Technical Audit: ${building.name}`,
-                    subtitle: lang === "ru" ? "Получите независимое заключение инженера по качеству отделки, шумоизоляции и ведомости расходов до внесения депозита." : "Obtain an independent engineering assessment on finishes, acoustics, and service charge records before signing Form F.",
+                    title: tAudit.prePurchaseAuditTitle(building.name),
+                    subtitle: tAudit.prePurchaseAuditSubtitle,
                   });
                   setIsLeadModalOpen(true);
                 }}
                 className="w-full flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-[#0F172A] hover:bg-[#1E293B] text-white font-bold text-xs sm:text-sm uppercase tracking-wider shadow-md active:scale-98 transition-all"
               >
                 <span>📋</span>
-                <span>{lang === "ru" ? "Запросить независимый тех-аудит" : "Request Technical Due Diligence"}</span>
+                <span>{tAudit.requestAuditBtn}</span>
               </button>
 
               {/* Secondary Action: Download Full Dossier */}
@@ -658,14 +674,14 @@ export default function BuildingDetailClient({
                 type="button"
                 onClick={() => {
                   setModalAction({
-                    title: lang === "ru" ? `Скачать инженерный паспорт: ${building.name}` : `Download Engineering Dossier: ${building.name}`,
-                    subtitle: lang === "ru" ? "Полный файл: геотехнический паспорт, история сервисных сборов DLD и поэтажные планы." : "Comprehensive dossier: geotechnical passport, DLD service fee history, and floorplan catalog.",
+                    title: tAudit.downloadDossierTitle(building.name),
+                    subtitle: tAudit.downloadDossierSubtitle,
                   });
                   setIsLeadModalOpen(true);
                 }}
                 className="w-full block text-center px-4 py-2.5 rounded-xl border border-[#DDD7CA] hover:bg-[#FAF8F5] text-xs text-[#57534E] font-semibold transition-colors"
               >
-                📥 {lang === "ru" ? "Скачать паспорт башни и расходы (PDF)" : "Download Engineering & Cost Dossier (PDF)"}
+                📥 {tAudit.downloadDossierBtn}
               </button>
 
               {/* Direct WhatsApp Concierge */}
@@ -677,11 +693,11 @@ export default function BuildingDetailClient({
                 className="w-full flex items-center justify-center gap-2 px-5 py-3 rounded-xl bg-[#2D6A4F] hover:bg-[#1E4D38] text-white font-bold text-xs shadow-soft-tint active:scale-98 transition-all"
               >
                 <span>💬</span>
-                <span>{lang === "ru" ? "Консультация с архитектором" : "Consult Architectural Advisor"}</span>
+                <span>{tAudit.consultArchitectBtn}</span>
               </a>
 
               <div className="p-3 rounded-xl bg-[#FAF8F5] border border-[#DDD7CA] text-[11px] text-[#78716C] text-center leading-normal">
-                <strong className="text-[#8C6A48]">{lang === "ru" ? "Принцип нейтралитета:" : "Neutrality Guarantee:"}</strong> {lang === "ru" ? "Мы не аффилированы с конкретными девелоперами. Каждое заключение опирается на объективные ТТХ и опыт резидентов." : "We are not affiliated with specific developers. Every appraisal is based on objective structural TTX and resident data."}
+                <strong className="text-[#8C6A48]">{tAudit.neutralityLabel}</strong> {tAudit.neutralityText}
               </div>
             </div>
           </div>

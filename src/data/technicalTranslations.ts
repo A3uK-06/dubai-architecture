@@ -1,5 +1,6 @@
 import { Building } from "./buildings";
 import { LanguageCode } from "../i18n/languages";
+import { LATERAL_SYSTEMS_I18N } from "./localizedLateralSystems";
 
 // Complete Russian technical translations dictionary for building passports
 export const TECH_TERMS_RU: Record<string, string> = {
@@ -535,6 +536,16 @@ export function translateBuildingSpecs(building: Building, lang: LanguageCode): 
 
   if (b.urbanIntegration && dict[b.urbanIntegration]) {
     b.urbanIntegration = dict[b.urbanIntegration];
+  }
+
+  if (b.windStructural && b.windStructural.lateralSystem) {
+    const latI18n = LATERAL_SYSTEMS_I18N[b.windStructural.lateralSystem];
+    if (latI18n && latI18n[lang]) {
+      b.windStructural = {
+        ...b.windStructural,
+        lateralSystem: latI18n[lang]!,
+      };
+    }
   }
 
   // Localize cleaning cycle days text
