@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { BUILDINGS } from "@/data/buildings";
 import { DISTRICTS } from "@/data/districts";
+import { DEVELOPERS } from "@/data/developers";
 import { LANGUAGES } from "@/i18n/languages";
 
 const BASE_URL = "https://dubai-architecture.info";
@@ -83,6 +84,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
       alternates: getAlternates("/affiliate-disclosure/"),
     },
     {
+      url: `${BASE_URL}/developers/`,
+      lastModified: new Date(),
+      changeFrequency: "weekly",
+      priority: 0.8,
+      alternates: getAlternates("/developers/"),
+    },
+    {
       url: `${BASE_URL}/contact/`,
       lastModified: new Date(),
       changeFrequency: "monthly",
@@ -107,5 +115,13 @@ export default function sitemap(): MetadataRoute.Sitemap {
     alternates: getAlternates(`/districts/${district.slug}/`),
   }));
 
-  return [...staticPages, ...buildingPages, ...districtPages];
+  const developerPages: MetadataRoute.Sitemap = DEVELOPERS.map((dev) => ({
+    url: `${BASE_URL}/developers/${dev.slug}/`,
+    lastModified: new Date(),
+    changeFrequency: "weekly",
+    priority: 0.8,
+    alternates: getAlternates(`/developers/${dev.slug}/`),
+  }));
+
+  return [...staticPages, ...buildingPages, ...districtPages, ...developerPages];
 }

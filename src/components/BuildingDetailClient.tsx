@@ -4,6 +4,7 @@ import React, { useMemo, useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { Building, BUILDINGS } from "@/data/buildings";
+import { getDeveloperForBuilding } from "@/data/developers";
 import { getLocalizedBuildingAuditReview, AUDIT_UI_LABELS } from "@/data/localizedAuditReview";
 import { useLang } from "@/context/LangContext";
 import { LanguageCode } from "@/i18n/languages";
@@ -141,7 +142,19 @@ export default function BuildingDetailClient({
                 <div className="text-[#DDD7CA]">•</div>
                 <div>
                   <span className="text-[#78716C]">{bd.developerLabel}: </span>
-                  <span className="text-[#1C1917] font-bold">{building.developer}</span>
+                  {(() => {
+                    const dev = getDeveloperForBuilding(building.developer);
+                    return dev ? (
+                      <Link
+                        href={`/developers/${dev.slug}/`}
+                        className="text-[#8C6A48] hover:text-[#6D5135] underline font-bold"
+                      >
+                        {building.developer} ↗
+                      </Link>
+                    ) : (
+                      <span className="text-[#1C1917] font-bold">{building.developer}</span>
+                    );
+                  })()}
                 </div>
                 <div className="text-[#DDD7CA]">•</div>
                 <div>

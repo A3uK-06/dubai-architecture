@@ -87,6 +87,11 @@ export default function Footer() {
                   </Link>
                 </li>
                 <li>
+                  <Link href="/developers/" className="hover:text-amber-400 transition-colors">
+                    {isRu ? "Застройщики" : "Developers"}
+                  </Link>
+                </li>
+                <li>
                   <Link href="/#calculator" className="hover:text-amber-400 transition-colors">
                     {t.nav.calculator}
                   </Link>

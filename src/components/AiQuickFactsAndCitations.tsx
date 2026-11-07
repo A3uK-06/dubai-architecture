@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Building } from "@/data/buildings";
 import { useLang } from "@/context/LangContext";
 import { getArchitectWebsite, getCtbuhUrl, getDldRegistryUrl } from "@/lib/authorityLinks";
+import { getDeveloperForBuilding } from "@/data/developers";
 
 interface AiQuickFactsAndCitationsProps {
   building: Building;
@@ -92,9 +93,22 @@ export default function AiQuickFactsAndCitations({
             <span className="text-[#78716C] block font-medium">
               {isRu ? "Девелопер проекта" : "Master Developer"}
             </span>
-            <strong className="text-xs font-bold text-[#1C1917] mt-0.5 block truncate" title={building.developer}>
-              {building.developer}
-            </strong>
+            {(() => {
+              const dev = getDeveloperForBuilding(building.developer);
+              return dev ? (
+                <Link
+                  href={`/developers/${dev.slug}/`}
+                  className="text-xs font-bold text-[#8C6A48] hover:text-[#6D5135] underline mt-0.5 block truncate"
+                  title={building.developer}
+                >
+                  {building.developer} ↗
+                </Link>
+              ) : (
+                <strong className="text-xs font-bold text-[#1C1917] mt-0.5 block truncate" title={building.developer}>
+                  {building.developer}
+                </strong>
+              );
+            })()}
           </div>
 
           <div className="p-3 rounded-xl bg-white border border-[#DDD7CA]/80">

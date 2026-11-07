@@ -6,7 +6,7 @@ import { useLang } from "../context/LangContext";
 import LanguageSelector from "./LanguageSelector";
 
 export default function Header() {
-  const { t } = useLang();
+  const { t, lang } = useLang();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
@@ -89,6 +89,12 @@ export default function Header() {
             >
               {t.nav.goldenVisa}
             </Link>
+            <Link
+              href="/developers/"
+              className="hover:text-[#0F172A] transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-[#0F172A] after:scale-x-0 hover:after:scale-x-100 after:transition-transform"
+            >
+              {lang === "ru" ? "Застройщики" : "Developers"}
+            </Link>
           </nav>
 
           {/* Right Actions: Language Selector & Primary CTA Button */}
@@ -166,6 +172,13 @@ export default function Header() {
             className="block px-3 py-2 text-base font-semibold text-[#0F172A] rounded-lg hover:bg-[#F1F5F9]"
           >
             {t.nav.goldenVisa}
+          </Link>
+          <Link
+            href="/developers/"
+            onClick={() => setMobileMenuOpen(false)}
+            className="block px-3 py-2 text-base font-semibold text-[#0F172A] rounded-lg hover:bg-[#F1F5F9]"
+          >
+            {lang === "ru" ? "Застройщики" : "Developers"}
           </Link>
           <div className="pt-2">
             <Link

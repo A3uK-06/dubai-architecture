@@ -318,6 +318,9 @@
   .top-24 {
     top: calc(var(--spacing) * 24);
   }
+  .top-28 {
+    top: calc(var(--spacing) * 28);
+  }
   .right-0 {
     right: 0px;
   }
@@ -563,6 +566,9 @@
   }
   .h-44 {
     height: calc(var(--spacing) * 44);
+  }
+  .h-48 {
+    height: calc(var(--spacing) * 48);
   }
   .h-56 {
     height: calc(var(--spacing) * 56);
@@ -901,6 +907,9 @@
   }
   :where(.divide-\[\#F1F5F9\] > :not(:last-child)) {
     border-color: #F1F5F9;
+  }
+  .self-center {
+    align-self: center;
   }
   .self-start {
     align-self: flex-start;
@@ -2234,6 +2243,9 @@
       --tw-scale-y: 105%;
       --tw-scale-z: 105%;
       scale: var(--tw-scale-x) var(--tw-scale-y);
+    }
+    :is(:where(.group):hover .group-hover\:text-\[\#6D5135\]) {
+      color: #6D5135;
     }
     :is(:where(.group):hover .group-hover\:text-\[\#8C6A48\]) {
       color: #8C6A48;

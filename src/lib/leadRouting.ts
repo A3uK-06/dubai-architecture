@@ -23,6 +23,7 @@ export interface LeadRoutingResult {
 
 const TELEGRAM_BOT_TOKEN = process.env.NEXT_PUBLIC_TELEGRAM_BOT_TOKEN;
 const TELEGRAM_CHAT_ID = process.env.NEXT_PUBLIC_TELEGRAM_CHAT_ID;
+const LEAD_WORKER_URL = process.env.NEXT_PUBLIC_LEAD_WORKER_URL;
 
 // Fallback USDT (TRC-20) payment wallet identifier for owner commission logs
 const USDT_TRC20_WALLET_TAG = "USDT (TRC-20) Payout Network";
@@ -101,8 +102,24 @@ export async function dispatchLead(lead: LeadData): Promise<LeadRoutingResult> {
   const leadId = `LEAD-${Date.now()}-${Math.random().toString(36).substring(2, 6)}`;
   let telegramDelivered = false;
 
-  // 1. Format and send to Telegram if credentials are provided
-  if (TELEGRAM_BOT_TOKEN && TELEGRAM_CHAT_ID) {
+  // 1. Send via Secure Cloudflare Worker proxy (Recommended - Zero token exposure)
+  if (LEAD_WORKER_URL) {
+    try {
+      const response = await fetch(LEAD_WORKER_URL, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(lead),
+      });
+      if (response.ok) {
+        telegramDelivered = true;
+      }
+    } catch (err) {
+      console.warn("Cloudflare Worker proxy failed, attempting fallback:", err);
+    }
+  }
+
+  // 2. Direct Telegram API fallback if Worker is not configured
+  if (!telegramDelivered && TELEGRAM_BOT_TOKEN && TELEGRAM_CHAT_ID) {
     try {
       const text = formatTelegramMessage(lead, routing);
       const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
@@ -128,14 +145,14 @@ export async function dispatchLead(lead: LeadData): Promise<LeadRoutingResult> {
     } catch (err) {
       console.error("Failed to send Telegram notification:", err);
     }
-  } else {
+  } else if (!LEAD_WORKER_URL) {
     console.info(
       "Telegram credentials not configured in environment variables. Lead logged locally:",
       lead
     );
   }
 
-  // 2. Local storage retention (fail-safe)
+  // 3. Local storage retention (fail-safe)
   if (typeof window !== "undefined") {
     try {
       const existing = JSON.parse(localStorage.getItem("dubai_arch_leads") || "[]");
