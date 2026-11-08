@@ -1,27 +1,37 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useState, useSyncExternalStore } from "react";
 import Link from "next/link";
 import { isOwnerExcluded, setOwnerExclusion } from "@/lib/ownerExclusion";
 
-export default function GhostClient() {
-  const [isGhost, setIsGhost] = useState<boolean | null>(null);
-  const [message, setMessage] = useState<string | null>(null);
+function subscribeGhost(callback: () => void) {
+  if (typeof window === "undefined") return () => {};
+  window.addEventListener("storage", callback);
+  window.addEventListener("dubai-ghost-change", callback);
+  return () => {
+    window.removeEventListener("storage", callback);
+    window.removeEventListener("dubai-ghost-change", callback);
+  };
+}
 
-  useEffect(() => {
-    setIsGhost(isOwnerExcluded());
-  }, []);
+export default function GhostClient() {
+  const isGhost = useSyncExternalStore(
+    subscribeGhost,
+    () => isOwnerExcluded(),
+    () => null
+  );
+  const [message, setMessage] = useState<string | null>(null);
 
   const handleEnableGhost = () => {
     setOwnerExclusion(true);
-    setIsGhost(true);
+    window.dispatchEvent(new Event("dubai-ghost-change"));
     setMessage("✅ Режим невидимки успешно активирован на 10 лет! Записан физический cookie-файл + LocalStorage.");
     setTimeout(() => setMessage(null), 6000);
   };
 
   const handleDisableGhost = () => {
     setOwnerExclusion(false);
-    setIsGhost(false);
+    window.dispatchEvent(new Event("dubai-ghost-change"));
     setMessage("⚠️ Режим невидимки выключен. Теперь ваши визиты будут фиксироваться счетчиком.");
     setTimeout(() => setMessage(null), 6000);
   };
@@ -97,7 +107,7 @@ export default function GhostClient() {
           <button
             type="button"
             onClick={handleEnableGhost}
-            className="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 text-zinc-950 font-bold text-sm shadow-lg shadow-emerald-500/20 active:scale-98 transition-all flex items-center justify-center gap-2"
+            className="w-full py-3.5 px-4 rounded-xl bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-400 hover:to-emerald-500 text-zinc-950 font-bold text-sm shadow-lg shadow-emerald-500/20 active:scale-98 transition-all flex items-center justify-center gap-2 cursor-pointer"
           >
             <span>🛡️</span>
             <span>Включить невидимку на этом устройстве (Скрыть меня)</span>
@@ -106,7 +116,7 @@ export default function GhostClient() {
           <button
             type="button"
             onClick={handleDisableGhost}
-            className="w-full py-3 px-4 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-zinc-300 font-semibold text-xs active:scale-98 transition-all flex items-center justify-center gap-2 border border-zinc-700"
+            className="w-full py-3 px-4 rounded-xl bg-zinc-800 hover:bg-zinc-700 text-zinc-300 font-semibold text-xs active:scale-98 transition-all flex items-center justify-center gap-2 border border-zinc-700 cursor-pointer"
           >
             <span>👁️</span>
             <span>Выключить (Включить отслеживание для теста)</span>
@@ -116,7 +126,7 @@ export default function GhostClient() {
             href="/"
             className="w-full mt-2 py-3 px-4 rounded-xl bg-transparent hover:bg-zinc-800/50 text-zinc-400 hover:text-white font-medium text-xs transition-colors flex items-center justify-center gap-2 text-center"
           >
-            ← Вернуться на главную страницу Dubai Architecture
+            &larr; Вернуться на главную страницу Dubai Architecture
           </Link>
         </div>
       </div>

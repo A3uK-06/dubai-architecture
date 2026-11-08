@@ -346,7 +346,7 @@ export function translateBuildingSpecsRU(building: Building): Building {
     b.operatingSpecs = {
       ...b.operatingSpecs,
       coolingProvider: TECH_TERMS_RU[b.operatingSpecs.coolingProvider] || b.operatingSpecs.coolingProvider,
-      chillerBilling: (TECH_TERMS_RU[b.operatingSpecs.chillerBilling] as any) || b.operatingSpecs.chillerBilling,
+      chillerBilling: (TECH_TERMS_RU[b.operatingSpecs.chillerBilling] as NonNullable<Building["operatingSpecs"]>["chillerBilling"]) || b.operatingSpecs.chillerBilling,
       acousticRatingDb: TECH_TERMS_RU[b.operatingSpecs.acousticRatingDb] || b.operatingSpecs.acousticRatingDb
         .replace("dual decoupled acoustic walls between residences", "двойные акустически развязанные стены между квартирами"),
     };
@@ -355,7 +355,7 @@ export function translateBuildingSpecsRU(building: Building): Building {
   if (b.layoutEfficiency) {
     b.layoutEfficiency = {
       ...b.layoutEfficiency,
-      columnImpact: (TECH_TERMS_RU[b.layoutEfficiency.columnImpact] as any) || b.layoutEfficiency.columnImpact,
+      columnImpact: (TECH_TERMS_RU[b.layoutEfficiency.columnImpact] as NonNullable<Building["layoutEfficiency"]>["columnImpact"]) || b.layoutEfficiency.columnImpact,
       balconyUsability: TECH_TERMS_RU[b.layoutEfficiency.balconyUsability] || b.layoutEfficiency.balconyUsability,
     };
   }
@@ -522,14 +522,14 @@ export function translateBuildingSpecs(building: Building, lang: LanguageCode): 
   if (b.operatingSpecs) {
     b.operatingSpecs = {
       ...b.operatingSpecs,
-      chillerBilling: (dict[b.operatingSpecs.chillerBilling] || b.operatingSpecs.chillerBilling) as any,
+      chillerBilling: (dict[b.operatingSpecs.chillerBilling] || b.operatingSpecs.chillerBilling) as NonNullable<Building["operatingSpecs"]>["chillerBilling"],
     };
   }
 
   if (b.layoutEfficiency) {
     b.layoutEfficiency = {
       ...b.layoutEfficiency,
-      columnImpact: (dict[b.layoutEfficiency.columnImpact] || b.layoutEfficiency.columnImpact) as any,
+      columnImpact: (dict[b.layoutEfficiency.columnImpact] || b.layoutEfficiency.columnImpact) as NonNullable<Building["layoutEfficiency"]>["columnImpact"],
       balconyUsability: dict[b.layoutEfficiency.balconyUsability] || b.layoutEfficiency.balconyUsability,
     };
   }

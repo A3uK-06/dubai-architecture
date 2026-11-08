@@ -5,11 +5,11 @@ import { useLang } from "@/context/LangContext";
 import { getAttributionData } from "@/lib/attribution";
 import { dispatchLead, LeadRoutingResult } from "@/lib/leadRouting";
 
-interface GoldenVisaWidgetProps {
+export interface GoldenVisaWidgetProps {
   onOpenInquire?: (details: string) => void;
 }
 
-export default function GoldenVisaWidget({ onOpenInquire }: GoldenVisaWidgetProps) {
+export default function GoldenVisaWidget({ onOpenInquire }: GoldenVisaWidgetProps = {}) {
   const { t, lang } = useLang();
 
   const [step, setStep] = useState<1 | 2 | 3 | 4>(1);
@@ -26,7 +26,7 @@ export default function GoldenVisaWidget({ onOpenInquire }: GoldenVisaWidgetProp
 
   const handleNext = () => {
     if (step < 3) {
-      setStep((step + 1) as any);
+      setStep((step + 1) as 1 | 2 | 3 | 4);
     } else {
       setStep(4);
     }
@@ -53,7 +53,7 @@ export default function GoldenVisaWidget({ onOpenInquire }: GoldenVisaWidgetProp
 
     setRoutingResult(result);
     setIsSubmitting(false);
-    setIsSubmitted(true);
+    setIsSubmitted(true); onOpenInquire?.(`Golden Visa: ${budget}, ${propertyType}`);
   };
 
   const gw = t.goldenVisaWidget;

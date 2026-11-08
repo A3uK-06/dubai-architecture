@@ -9,12 +9,21 @@ export default function Header() {
   const { t, lang } = useLang();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
+  const langPrefix = lang === "en" ? "" : `/${lang}`;
+  const homeUrl = langPrefix || "/";
+  const catalogUrl = `${homeUrl}#catalog`;
+  const districtsUrl = `${homeUrl}#districts`;
+  const calculatorUrl = `${homeUrl}#calculator`;
+  const goldenVisaUrl = `${homeUrl}#golden-visa`;
+  const developersUrl = `${langPrefix}/developers/`;
+  const contactUrl = `${homeUrl}#contact`;
+
   return (
     <header className="sticky top-0 z-40 w-full border-b border-white/30 bg-white/85 backdrop-blur-[16px] shadow-soft-tint transition-all duration-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo & Historical Archive Badge */}
-          <Link href="/" className="flex items-center gap-3 group shrink-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0F172A] rounded-xl">
+          <Link href={homeUrl} className="flex items-center gap-3 group shrink-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#0F172A] rounded-xl">
             <div className="w-10 h-10 rounded-xl bg-[#0F172A] p-1 flex items-center justify-center shadow-md shadow-[#0F172A]/20 group-hover:scale-105 transition-all duration-200 border border-white/10">
               <svg
                 className="w-full h-full"
@@ -26,7 +35,7 @@ export default function Header() {
                 {/* Baseline */}
                 <line x1="9" y1="54" x2="55" y2="54" stroke="#F59E0B" strokeWidth="2" strokeLinecap="round" opacity="0.9" />
                 
-                {/* Burj Al Arab (Парус) */}
+                {/* Burj Al Arab */}
                 <line x1="9.5" y1="24.5" x2="18.5" y2="24.5" stroke="#F59E0B" strokeWidth="2.2" strokeLinecap="round" />
                 <path d="M 16.5,19 C 27,24 30.5,38 23.5,53.5 L 16.5,53.5 Z" fill="#FFFFFF" />
                 <path d="M 16.5,29 C 23.5,33 25.5,43 20.5,53.5" stroke="#94A3B8" strokeWidth="1" opacity="0.6" />
@@ -60,37 +69,37 @@ export default function Header() {
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-3.5 xl:gap-6 text-xs xl:text-[14px] font-semibold text-[#475569] whitespace-nowrap">
             <Link
-              href="/"
+              href={homeUrl}
               className="hover:text-[#0F172A] transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-[#0F172A] after:scale-x-0 hover:after:scale-x-100 after:transition-transform"
             >
               {t.nav.home}
             </Link>
             <Link
-              href="/#catalog"
+              href={catalogUrl}
               className="hover:text-[#0F172A] transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-[#0F172A] after:scale-x-0 hover:after:scale-x-100 after:transition-transform"
             >
               {t.nav.catalog}
             </Link>
             <Link
-              href="/#districts"
+              href={districtsUrl}
               className="hover:text-[#0F172A] transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-[#0F172A] after:scale-x-0 hover:after:scale-x-100 after:transition-transform"
             >
               {t.nav.districts}
             </Link>
             <Link
-              href="/#calculator"
+              href={calculatorUrl}
               className="hover:text-[#0F172A] transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-[#0F172A] after:scale-x-0 hover:after:scale-x-100 after:transition-transform"
             >
               {t.nav.calculator}
             </Link>
             <Link
-              href="/#golden-visa"
+              href={goldenVisaUrl}
               className="hover:text-[#0F172A] transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-[#0F172A] after:scale-x-0 hover:after:scale-x-100 after:transition-transform"
             >
               {t.nav.goldenVisa}
             </Link>
             <Link
-              href="/developers/"
+              href={developersUrl}
               className="hover:text-[#0F172A] transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-[#0F172A] after:scale-x-0 hover:after:scale-x-100 after:transition-transform"
             >
               {lang === "ru" ? "Застройщики" : "Developers"}
@@ -102,7 +111,7 @@ export default function Header() {
             <LanguageSelector />
 
             <Link
-              href="#contact"
+              href={contactUrl}
               className="hidden lg:inline-flex items-center justify-center px-5 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider text-white bg-[#0F172A] hover:bg-[#1E293B] transition-all shadow-soft-tint active:scale-95 focus:outline-none focus:ring-2 focus:ring-[#0F172A] focus:ring-offset-2"
             >
               {t.nav.contactBroker}
@@ -137,44 +146,44 @@ export default function Header() {
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-t border-[#E2E8F0] bg-white/95 backdrop-blur-[16px] px-4 pt-4 pb-6 space-y-3 shadow-lg">
+        <div className="lg:hidden border-t border-[#E2E8F0] bg-white/95 backdrop-blur-[16px] px-4 pt-4 pb-6 space-y-3 shadow-lg">
           <Link
-            href="/"
+            href={homeUrl}
             onClick={() => setMobileMenuOpen(false)}
             className="block px-3 py-2 text-base font-semibold text-[#0F172A] rounded-lg hover:bg-[#F1F5F9]"
           >
             {t.nav.home}
           </Link>
           <Link
-            href="/#catalog"
+            href={catalogUrl}
             onClick={() => setMobileMenuOpen(false)}
             className="block px-3 py-2 text-base font-semibold text-[#0F172A] rounded-lg hover:bg-[#F1F5F9]"
           >
             {t.nav.catalog}
           </Link>
           <Link
-            href="/#districts"
+            href={districtsUrl}
             onClick={() => setMobileMenuOpen(false)}
             className="block px-3 py-2 text-base font-semibold text-[#0F172A] rounded-lg hover:bg-[#F1F5F9]"
           >
             {t.nav.districts}
           </Link>
           <Link
-            href="/#calculator"
+            href={calculatorUrl}
             onClick={() => setMobileMenuOpen(false)}
             className="block px-3 py-2 text-base font-semibold text-[#0F172A] rounded-lg hover:bg-[#F1F5F9]"
           >
             {t.nav.calculator}
           </Link>
           <Link
-            href="/#golden-visa"
+            href={goldenVisaUrl}
             onClick={() => setMobileMenuOpen(false)}
             className="block px-3 py-2 text-base font-semibold text-[#0F172A] rounded-lg hover:bg-[#F1F5F9]"
           >
             {t.nav.goldenVisa}
           </Link>
           <Link
-            href="/developers/"
+            href={developersUrl}
             onClick={() => setMobileMenuOpen(false)}
             className="block px-3 py-2 text-base font-semibold text-[#0F172A] rounded-lg hover:bg-[#F1F5F9]"
           >
@@ -182,7 +191,7 @@ export default function Header() {
           </Link>
           <div className="pt-2">
             <Link
-              href="#contact"
+              href={contactUrl}
               onClick={() => setMobileMenuOpen(false)}
               className="block w-full text-center px-4 py-3 text-xs font-bold uppercase tracking-wider text-white bg-[#0F172A] hover:bg-[#1E293B] rounded-xl shadow-soft-tint"
             >

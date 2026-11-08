@@ -1,7 +1,7 @@
-import { translateBuildingSpecs, translateBuildingSpecsRU } from "./technicalTranslations";
+import { translateBuildingSpecs } from "./technicalTranslations";
 export * from "./localizedTypes";
 import { Building } from "./buildings";
-import { District, DistrictSubZone, DistrictTransitAnalysis, DistrictInfrastructureAudit } from "./districts";
+import { District, DistrictTransitAnalysis, DistrictInfrastructureAudit } from "./districts";
 import { LanguageCode } from "../i18n/languages";
 
 export interface LocalizedBuildingData {
@@ -3846,7 +3846,7 @@ export function getLocalizedBuilding(building: Building, lang: LanguageCode): Bu
       architect: loc.architect || building.architect,
       developer: loc.developer || building.developer,
       district: districtNameOverride || loc.district || building.district,
-      type: (loc.type as any) || building.type,
+      type: (loc.type as Building["type"]) || building.type,
       description: loc.description || building.description,
       architecturalHighlights: loc.architecturalHighlights || building.architecturalHighlights,
       historicalNote: loc.historicalNote || building.historicalNote,
@@ -3892,7 +3892,7 @@ export function getLocalizedDistrict(district: District, lang: LanguageCode): Di
       highwayAccess: loc.transitAnalysis?.highwayAccess || district.transitAnalysis.highwayAccess,
       rushHourBottleneck: loc.transitAnalysis?.rushHourBottleneck || district.transitAnalysis.rushHourBottleneck,
       publicTransit: loc.transitAnalysis?.publicTransit || district.transitAnalysis.publicTransit,
-      walkabilityScore: (loc.transitAnalysis?.walkabilityScore as any) || district.transitAnalysis.walkabilityScore,
+      walkabilityScore: (loc.transitAnalysis?.walkabilityScore as DistrictTransitAnalysis["walkabilityScore"]) || district.transitAnalysis.walkabilityScore,
     };
 
     const infrastructureAudit: DistrictInfrastructureAudit = {

@@ -26,7 +26,7 @@ const TELEGRAM_CHAT_ID = process.env.NEXT_PUBLIC_TELEGRAM_CHAT_ID;
 const LEAD_WORKER_URL = process.env.NEXT_PUBLIC_LEAD_WORKER_URL;
 
 // Fallback USDT (TRC-20) payment wallet identifier for owner commission logs
-const USDT_TRC20_WALLET_TAG = "USDT (TRC-20) Payout Network";
+export const USDT_TRC20_WALLET_TAG = "USDT (TRC-20) Payout Network";
 
 /**
  * Determines whether a phone number or language belongs to Russia/CIS or International.

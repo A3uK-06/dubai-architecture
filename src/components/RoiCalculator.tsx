@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useMemo, useEffect } from "react";
+import React, { useState, useMemo } from "react";
 import { useLang } from "@/context/LangContext";
 import MethodologyModal from "@/components/MethodologyModal";
 
@@ -47,10 +47,17 @@ export default function RoiCalculator({
   const [serviceChargePercent, setServiceChargePercent] = useState<number>(1.2);
   const [selectedCurrency, setSelectedCurrency] = useState<CurrencyCode>("AED");
 
-  useEffect(() => {
+  const [prevInitialPrice, setPrevInitialPrice] = useState(initialPriceAed);
+  if (initialPriceAed !== prevInitialPrice) {
+    setPrevInitialPrice(initialPriceAed);
     if (initialPriceAed > 0) setPriceAed(initialPriceAed);
+  }
+
+  const [prevInitialYield, setPrevInitialYield] = useState(initialYieldPercent);
+  if (initialYieldPercent !== prevInitialYield) {
+    setPrevInitialYield(initialYieldPercent);
     if (initialYieldPercent > 0) setGrossYield(initialYieldPercent);
-  }, [initialPriceAed, initialYieldPercent]);
+  }
 
   const curr = CURRENCIES[selectedCurrency];
 
@@ -58,7 +65,7 @@ export default function RoiCalculator({
   const maxPrice = Math.max(30000000, Math.ceil((initialPriceAed * 2) / 1000000) * 1000000);
 
   // State for detailed line-item breakdown
-  const [showDetailedBreakdown, setShowDetailedBreakdown] = useState<boolean>(true);
+  // detailed breakdown
 
   // Calculations with Honest Operational Audit Deductions
   const calculations = useMemo(() => {

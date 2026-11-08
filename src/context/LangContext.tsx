@@ -3,9 +3,9 @@
 import React, {
   createContext,
   useContext,
-  useState,
   useEffect,
   useCallback,
+  useSyncExternalStore,
   ReactNode,
 } from "react";
 import {
@@ -29,45 +29,84 @@ const LangContext = createContext<LangContextType | undefined>(undefined);
 
 const STORAGE_KEY = "dubai_arch_lang";
 
+function applyDocumentAttributes(targetLang: LanguageCode) {
+  if (typeof document !== "undefined") {
+    const info = LANGUAGES[targetLang] || LANGUAGES[DEFAULT_LANGUAGE];
+    document.documentElement.lang = targetLang;
+    document.documentElement.dir = info.dir;
+  }
+}
+
+function subscribe(callback: () => void) {
+  if (typeof window === "undefined") return () => {};
+  window.addEventListener("storage", callback);
+  window.addEventListener("dubai-lang-change", callback);
+  return () => {
+    window.removeEventListener("storage", callback);
+    window.removeEventListener("dubai-lang-change", callback);
+  };
+}
+
+function getClientLanguageSnapshot(): LanguageCode {
+  if (typeof window === "undefined") return DEFAULT_LANGUAGE;
+
+  // 1. Check URL path prefix (e.g. /ru/, /ar/)
+  try {
+    const segments = window.location.pathname.split("/").filter(Boolean);
+    if (segments.length > 0 && segments[0] in LANGUAGES) {
+      return segments[0] as LanguageCode;
+    }
+  } catch {
+    // Ignore URL errors
+  }
+
+  // 2. Check localStorage
+  try {
+    const savedLang = localStorage.getItem(STORAGE_KEY) as LanguageCode | null;
+    if (savedLang && savedLang in LANGUAGES) {
+      return savedLang;
+    }
+  } catch {
+    // Ignore localStorage errors
+  }
+
+  // 3. Check browser language
+  try {
+    const detected = getSystemLanguage();
+    if (detected && detected in LANGUAGES) {
+      return detected;
+    }
+  } catch {
+    // Ignore detection errors
+  }
+
+  return DEFAULT_LANGUAGE;
+}
+
+function getServerLanguageSnapshot(): LanguageCode {
+  return DEFAULT_LANGUAGE;
+}
+
 export function LangProvider({ children }: { children: ReactNode }) {
-  const [lang, setLangState] = useState<LanguageCode>(DEFAULT_LANGUAGE);
-  const [isMounted, setIsMounted] = useState(false);
+  const lang = useSyncExternalStore(
+    subscribe,
+    getClientLanguageSnapshot,
+    getServerLanguageSnapshot
+  );
 
   useEffect(() => {
-    setIsMounted(true);
-    try {
-      const savedLang = localStorage.getItem(STORAGE_KEY) as LanguageCode | null;
-      if (savedLang && savedLang in LANGUAGES) {
-        setLangState(savedLang);
-        applyDocumentAttributes(savedLang);
-      } else {
-        const detected = getSystemLanguage();
-        setLangState(detected);
-        applyDocumentAttributes(detected);
-      }
-    } catch {
-      // Fallback in case localStorage is restricted
-      applyDocumentAttributes(DEFAULT_LANGUAGE);
-    }
-  }, []);
-
-  const applyDocumentAttributes = (targetLang: LanguageCode) => {
-    if (typeof document !== "undefined") {
-      const info = LANGUAGES[targetLang] || LANGUAGES[DEFAULT_LANGUAGE];
-      document.documentElement.lang = targetLang;
-      document.documentElement.dir = info.dir;
-    }
-  };
+    applyDocumentAttributes(lang);
+  }, [lang]);
 
   const setLang = useCallback((newLang: LanguageCode) => {
     if (!(newLang in LANGUAGES)) return;
-    setLangState(newLang);
     try {
       localStorage.setItem(STORAGE_KEY, newLang);
+      applyDocumentAttributes(newLang);
+      window.dispatchEvent(new Event("dubai-lang-change"));
     } catch {
-      // Ignore localStorage errors
+      // Ignore
     }
-    applyDocumentAttributes(newLang);
   }, []);
 
   const langInfo = LANGUAGES[lang] || LANGUAGES[DEFAULT_LANGUAGE];

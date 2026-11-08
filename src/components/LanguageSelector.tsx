@@ -25,6 +25,29 @@ export default function LanguageSelector() {
   const handleSelect = (code: LanguageCode) => {
     setLang(code);
     setIsOpen(false);
+
+    if (typeof window !== "undefined") {
+      const currentPath = window.location.pathname;
+      const segments = currentPath.split("/").filter(Boolean);
+
+      // Check if current URL starts with an existing language code
+      const currentLangPrefix = segments.length > 0 && segments[0] in LANGUAGES ? segments[0] : null;
+
+      // Determine base route path without language prefix
+      let subPath = currentLangPrefix ? "/" + segments.slice(1).join("/") : currentPath;
+      if (!subPath.startsWith("/")) subPath = "/" + subPath;
+      if (subPath !== "/" && !subPath.endsWith("/")) subPath = subPath + "/";
+
+      // If target is English, remove prefix; otherwise prepend code
+      let targetUrl = code === "en" ? subPath : `/${code}${subPath === "/" ? "/" : subPath}`;
+      if (window.location.hash) {
+        targetUrl += window.location.hash;
+      }
+
+      if (targetUrl !== currentPath) {
+        window.location.assign(targetUrl);
+      }
+    }
   };
 
   const languageList = Object.values(LANGUAGES);
@@ -36,7 +59,7 @@ export default function LanguageSelector() {
         onClick={() => setIsOpen(!isOpen)}
         aria-expanded={isOpen}
         aria-label="Select language"
-        className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#DDD7CA] bg-[#EFECE4] hover:bg-[#E5DFD3] text-[#1C1917] hover:border-[#8C6A48] transition-all text-sm font-medium shadow-soft-tint backdrop-blur-md"
+        className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#DDD7CA] bg-[#EFECE4] hover:bg-[#E5DFD3] text-[#1C1917] hover:border-[#8C6A48] transition-all text-sm font-medium shadow-soft-tint backdrop-blur-md cursor-pointer"
       >
         <span className="text-base leading-none" role="img" aria-hidden="true">
           {langInfo.flag}
@@ -79,7 +102,7 @@ export default function LanguageSelector() {
                   key={item.code}
                   type="button"
                   onClick={() => handleSelect(item.code)}
-                  className={`w-full flex items-center justify-between px-3.5 py-2.5 text-xs text-left transition-colors ${
+                  className={`w-full flex items-center justify-between px-3.5 py-2.5 text-xs text-left transition-colors cursor-pointer ${
                     isSelected
                       ? "bg-[#EFECE4] text-[#8C6A48] font-bold"
                       : "text-[#1C1917] hover:bg-[#FAF8F5]"
@@ -99,15 +122,13 @@ export default function LanguageSelector() {
                   {isSelected && (
                     <svg
                       className="w-4 h-4 text-[#8C6A48]"
-                      fill="none"
-                      stroke="currentColor"
-                      viewBox="0 0 24 24"
+                      fill="currentColor"
+                      viewBox="0 0 20 20"
                     >
                       <path
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        strokeWidth="2.5"
-                        d="M5 13l4 4L19 7"
+                        fillRule="evenodd"
+                        d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                        clipRule="evenodd"
                       />
                     </svg>
                   )}

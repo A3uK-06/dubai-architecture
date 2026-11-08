@@ -55,11 +55,47 @@ async function main() {
     "affiliate-disclosure",
   ];
 
+  const STATIC_ROUTE_SEO = {
+    ru: {
+      "": {
+        title: "Архитектура Дубая | Энциклопедия небоскребов и инвестиций с 2006 года",
+        description: "Исторический архитектурный архив небоскребов Дубая с 2006 года. Инженерные шедевры, ТТХ башен и инвестиции в недвижимость ОАЭ.",
+      },
+      about: {
+        title: "Об архитектурном архиве Дубая | Осн. в 2006 году — Dubai Architecture",
+        description: "История создания, редакционная миссия и методология независимого инженерного аудита небоскребов Дубая с 2006 года.",
+      },
+      developers: {
+        title: "Застройщики Дубая | Реестр девелоперов, эскроу-рейтинги DLD и проекты",
+        description: "Полный справочник ведущих девелоперов Дубая (Emaar, Sobha, Nakheel, Omniyat, Binghatti). Проверка сдачи в срок и эскроу-счетов DLD.",
+      },
+      contact: {
+        title: "Контакты редакции и исследовательского бюро | Dubai Architecture",
+        description: "Контакты редакции архива Dubai Architecture, передача CAD-документации и служба подбора аккредитованной недвижимости.",
+      },
+      "editorial-policy": {
+        title: "Редакционная политика и стандарты независимого аудита | Dubai Architecture",
+        description: "Стандарты фактчекинга, защита от коммерческого влияния застройщиков и методология независимого технического аудита башен.",
+      },
+      "affiliate-disclosure": {
+        title: "Официальное раскрытие партнерства и брокерской аккредитации RERA",
+        description: "Официальное уведомление об аккредитованных брокерах (Metropolitan & Whitewill), соответствии Закону №85 от 2006 г. и гарантиях эскроу-счетов.",
+      },
+      calculator: {
+        title: "Мультивалютный калькулятор доходности недвижимости Дубая (ROI & Yield)",
+        description: "Расчет чистой арендной доходности с учетом сборов за охлаждение (чиллеры) и эксплуатационных платежей Mollak в AED, USD, EUR, RUB.",
+      },
+      "golden-visa": {
+        title: "Золотая виза ОАЭ (Golden Visa на 10 лет) при покупке недвижимости в Дубае",
+        description: "Условия получения 10-летней резидентской визы инвестора в ОАЭ при покупке недвижимости от 2 000 000 AED.",
+      },
+    },
+  };
+
   let generatedPagesCount = 0;
 
   for (const lang of TARGET_LANGS) {
     const langCode = lang.code;
-    const isRtl = lang.dir === "rtl";
 
     // 1. Process Static Pages
     for (const route of staticRoutes) {
@@ -81,6 +117,15 @@ async function main() {
       // Update canonical
       const targetCanonical = `https://dubai-architecture.info/${langCode}/${route ? route + "/" : ""}`;
       html = html.replace(/<link rel="canonical"[^>]*>/, `<link rel="canonical" href="${targetCanonical}">`);
+
+      // Localized title & description if available
+      const staticSeo = STATIC_ROUTE_SEO[langCode]?.[route];
+      if (staticSeo?.title) {
+        html = html.replace(/<title>.*?<\/title>/, `<title>${staticSeo.title}</title>`);
+      }
+      if (staticSeo?.description) {
+        html = html.replace(/<meta name="description" content=".*?"\/>/, `<meta name="description" content="${staticSeo.description.replace(/"/g, '&quot;')}" />`);
+      }
 
       // Write destination
       const destDir = route === "" 
@@ -168,6 +213,11 @@ async function main() {
 
       const targetCanonical = `https://dubai-architecture.info/${langCode}/developers/${dev.slug}/`;
       html = html.replace(/<link rel="canonical"[^>]*>/, `<link rel="canonical" href="${targetCanonical}">`);
+
+      if (langCode === "ru") {
+        const titleRu = `${dev.name} — Проекты в Дубае, надежность сдачи и портфолио небоскребов`;
+        html = html.replace(/<title>.*?<\/title>/, `<title>${titleRu}</title>`);
+      }
 
       const destDir = path.join(outDir, langCode, "developers", dev.slug);
       fs.mkdirSync(destDir, { recursive: true });

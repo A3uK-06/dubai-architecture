@@ -1,5 +1,5 @@
 import { LanguageCode } from "@/i18n/languages";
-import { FloorPlan, DldTransaction } from "./buildings";
+import { FloorPlan } from "./buildings";
 
 export interface FloorPlanLabels {
   sectionBadge: string;

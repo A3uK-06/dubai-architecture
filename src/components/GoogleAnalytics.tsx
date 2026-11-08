@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useSyncExternalStore } from "react";
 import Script from "next/script";
 import { isOwnerExcluded, setOwnerExclusion } from "@/lib/ownerExclusion";
 
@@ -13,8 +13,22 @@ const GA_ID = RAW_GA_ID?.startsWith("G-") ? RAW_GA_ID : undefined;
 
 const CLARITY_ID = process.env.NEXT_PUBLIC_CLARITY_ID?.trim();
 
+function subscribeAnalytics(callback: () => void) {
+  if (typeof window === "undefined") return () => {};
+  window.addEventListener("storage", callback);
+  window.addEventListener("dubai-ghost-change", callback);
+  return () => {
+    window.removeEventListener("storage", callback);
+    window.removeEventListener("dubai-ghost-change", callback);
+  };
+}
+
 export default function GoogleAnalytics() {
-  const [excluded, setExcluded] = useState(false);
+  const excluded = useSyncExternalStore(
+    subscribeAnalytics,
+    () => isOwnerExcluded(),
+    () => false
+  );
   const [notification, setNotification] = useState<string | null>(null);
 
   useEffect(() => {
@@ -31,17 +45,14 @@ export default function GoogleAnalytics() {
         params.get("ignore_stats") === "true"
       ) {
         setOwnerExclusion(true);
-        setExcluded(true);
-        setNotification("🛡️ Ghost Mode: Ваш браузер скрыт от аналитики. VPN не влияет.");
+        window.dispatchEvent(new Event("dubai-ghost-change"));
+        setTimeout(() => setNotification("🛡️ Ghost Mode: Ваш браузер скрыт от аналитики. VPN не влияет."), 0);
         setTimeout(() => setNotification(null), 5000);
       } else if (params.get("ignore_me") === "false" || params.get("track_me") === "true") {
         setOwnerExclusion(false);
-        setExcluded(false);
-        setNotification("👁️ Отслеживание включено для тестирования.");
+        window.dispatchEvent(new Event("dubai-ghost-change"));
+        setTimeout(() => setNotification("👁️ Отслеживание включено для тестирования."), 0);
         setTimeout(() => setNotification(null), 4000);
-      } else {
-        const isCurrentlyExcluded = isOwnerExcluded();
-        setExcluded(isCurrentlyExcluded);
       }
     } catch (err) {
       console.warn("Analytics exclusion error:", err);
@@ -58,17 +69,17 @@ export default function GoogleAnalytics() {
       if (GTM_ID) {
         (window as unknown as Record<string, boolean>)[`ga-disable-${GTM_ID}`] = true;
       }
+      console.info("🛡️ [Dubai Architecture] Ghost mode active: Analytics disabled.");
     }
   }, [excluded]);
 
-  // If user is the site owner/admin, suppress tracking tags completely
+  // If excluded, render nothing — complete blackout
   if (excluded) {
     return (
       <>
         {notification && (
-          <div className="fixed bottom-4 left-4 z-50 px-4 py-2.5 rounded-xl bg-amber-500 text-zinc-950 text-xs font-bold shadow-2xl animate-fade-in border border-amber-300 flex items-center gap-2">
-            <span>🛡️</span>
-            <span>{notification}</span>
+          <div className="fixed bottom-4 right-4 z-50 p-4 rounded-xl bg-amber-500 text-zinc-950 text-xs font-bold shadow-2xl border border-amber-600 animate-bounce">
+            {notification}
           </div>
         )}
       </>
@@ -78,27 +89,23 @@ export default function GoogleAnalytics() {
   return (
     <>
       {notification && (
-        <div className="fixed bottom-4 left-4 z-50 px-4 py-2.5 rounded-xl bg-zinc-800 text-zinc-100 text-xs font-semibold shadow-2xl border border-zinc-700">
+        <div className="fixed bottom-4 right-4 z-50 p-4 rounded-xl bg-amber-500 text-zinc-950 text-xs font-bold shadow-2xl border border-amber-600 animate-bounce">
           {notification}
         </div>
       )}
 
-      {/* Google Tag (GTM Container) */}
+      {/* 1. Google Tag Manager (GTM) */}
       {GTM_ID && (
         <>
           <Script
-            strategy="afterInteractive"
-            src={`https://www.googletagmanager.com/gtm.js?id=${GTM_ID}`}
-          />
-          <Script
-            id="google-tag"
+            id="gtm-script"
             strategy="afterInteractive"
             dangerouslySetInnerHTML={{
-              __html: `
-                window.dataLayer = window.dataLayer || [];
-                function gtag(){dataLayer.push(arguments);}
-                gtag('js', new Date());
-              `,
+              __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'dataLayer','${GTM_ID}');`,
             }}
           />
           <noscript>
@@ -107,20 +114,21 @@ export default function GoogleAnalytics() {
               height="0"
               width="0"
               style={{ display: "none", visibility: "hidden" }}
+              title="gtm-noscript"
             />
           </noscript>
         </>
       )}
 
-      {/* Google Analytics 4 (Direct GA4 stream) */}
-      {GA_ID && (
+      {/* 2. Direct GA4 (Fallback if direct G-ID is used without GTM) */}
+      {!GTM_ID && GA_ID && (
         <>
           <Script
-            strategy="afterInteractive"
             src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
+            strategy="afterInteractive"
           />
           <Script
-            id="google-analytics"
+            id="ga4-init"
             strategy="afterInteractive"
             dangerouslySetInnerHTML={{
               __html: `
@@ -129,7 +137,6 @@ export default function GoogleAnalytics() {
                 gtag('js', new Date());
                 gtag('config', '${GA_ID}', {
                   page_path: window.location.pathname,
-                  anonymize_ip: true
                 });
               `,
             }}
@@ -137,19 +144,17 @@ export default function GoogleAnalytics() {
         </>
       )}
 
-      {/* Microsoft Clarity (only loads if NEXT_PUBLIC_CLARITY_ID is provided by owner) */}
+      {/* 3. Microsoft Clarity */}
       {CLARITY_ID && (
         <Script
-          id="microsoft-clarity"
+          id="clarity-script"
           strategy="afterInteractive"
           dangerouslySetInnerHTML={{
-            __html: `
-              (function(c,l,a,r,i,t,y){
-                c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-                t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-                y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-              })(window, document, "clarity", "script", "${CLARITY_ID}");
-            `,
+            __html: `(function(c,l,a,r,i,t,y){
+              c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+              t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+              y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+            })(window, document, "clarity", "script", "${CLARITY_ID}");`,
           }}
         />
       )}

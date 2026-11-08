@@ -154,8 +154,10 @@ export default function NotFoundClient() {
         path.includes(building.slug) ||
         path.includes(building.id)
       ) {
-        setRedirectingTo(`/buildings/${building.slug}/`);
-        setRedirectName(building.name);
+        setTimeout(() => {
+          setRedirectingTo(`/buildings/${building.slug}/`);
+          setRedirectName(building.name);
+        }, 0);
         window.location.replace(`/buildings/${building.slug}/`);
         return;
       }
@@ -163,20 +165,26 @@ export default function NotFoundClient() {
 
     // Additional historical keyword matches
     if (path.includes("khalifa") || path.includes("burj-dubai")) {
-      setRedirectingTo("/buildings/burj-khalifa/");
-      setRedirectName("Burj Khalifa");
+      setTimeout(() => {
+        setRedirectingTo("/buildings/burj-khalifa/");
+        setRedirectName("Burj Khalifa");
+      }, 0);
       window.location.replace("/buildings/burj-khalifa/");
       return;
     }
     if (path.includes("emirates")) {
-      setRedirectingTo("/buildings/emirates-towers/");
-      setRedirectName("Emirates Towers");
+      setTimeout(() => {
+        setRedirectingTo("/buildings/emirates-towers/");
+        setRedirectName("Emirates Towers");
+      }, 0);
       window.location.replace("/buildings/emirates-towers/");
       return;
     }
     if (path.includes("arab") || path.includes("jumeirah-hotel")) {
-      setRedirectingTo("/buildings/burj-al-arab/");
-      setRedirectName("Burj Al Arab");
+      setTimeout(() => {
+        setRedirectingTo("/buildings/burj-al-arab/");
+        setRedirectName("Burj Al Arab");
+      }, 0);
       window.location.replace("/buildings/burj-al-arab/");
       return;
     }

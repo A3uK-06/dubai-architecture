@@ -242,7 +242,7 @@ export default function CatalogSection() {
               <div className="relative">
                 <select
                   value={sortBy}
-                  onChange={(e) => setSortBy(e.target.value as any)}
+                  onChange={(e) => setSortBy(e.target.value as "height" | "year" | "rating" | "yield")}
                   className="w-full h-[52px] px-4 rounded-xl bg-[#F8F9FA] border border-[#E2E8F0] text-[#0F172A] text-sm sm:text-base font-medium focus:outline-none focus:ring-2 focus:ring-[#0F172A] focus:bg-white transition-all cursor-pointer appearance-none pr-10"
                 >
                   <option value="height">{t.filters.heightDesc}</option>

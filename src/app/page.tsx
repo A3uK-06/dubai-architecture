@@ -1,7 +1,6 @@
 "use client";
 
 import React, { useState } from "react";
-import Link from "next/link";
 import Image from "next/image";
 import { useLang } from "@/context/LangContext";
 import CatalogSection from "@/components/CatalogSection";
@@ -165,7 +164,7 @@ export default function Home() {
       <RoiCalculator onOpenInquire={(tower) => openLeadModal(tower)} />
 
       {/* Golden Visa Eligibility Checker */}
-      <GoldenVisaWidget onOpenInquire={(details) => openLeadModal(details)} />
+      <GoldenVisaWidget onOpenInquire={(details: string) => openLeadModal(details)} />
 
       {/* Global Lead Capture Modal */}
       {leadModalOpen && (
