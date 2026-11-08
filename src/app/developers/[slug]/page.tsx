@@ -5,6 +5,7 @@ import { DEVELOPERS, getDeveloperBySlug } from "@/data/developers";
 import { BUILDINGS } from "@/data/buildings";
 import SchemaOrg from "@/components/SchemaOrg";
 import DeveloperDetailClient from "@/components/DeveloperDetailClient";
+import { getSeoAlternates } from "@/lib/seoAlternates";
 
 interface PageProps {
   params: Promise<{
@@ -30,19 +31,32 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   const title = `${developer.name} — Dubai Projects, Delivery Track Record & Portfolio`;
   const description = `Official due diligence dossier for ${developer.name}. DLD escrow account reliability, on-time delivery rate (${developer.onTimeDeliveryRate}), architectural skyscraper portfolio, and investment returns.`;
+  const imageUrl = "https://dubai-architecture.info/images/hero-dubai-skyline.jpg";
 
   return {
     title,
     description,
-    alternates: {
-      canonical: `https://dubai-architecture.info/developers/${developer.slug}/`,
-    },
+    alternates: getSeoAlternates(`/developers/${developer.slug}/`),
     openGraph: {
       title,
       description,
       url: `https://dubai-architecture.info/developers/${developer.slug}/`,
       siteName: "Dubai Architecture",
       type: "article",
+      images: [
+        {
+          url: imageUrl,
+          width: 1200,
+          height: 630,
+          alt: developer.name,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [imageUrl],
     },
   };
 }
@@ -59,14 +73,7 @@ export default async function DeveloperDetailPage({ params }: PageProps) {
 
   return (
     <>
-      <SchemaOrg
-        type="breadcrumbs"
-        breadcrumbs={[
-          { name: "Home", url: "https://dubai-architecture.info/" },
-          { name: "Developers", url: "https://dubai-architecture.info/developers/" },
-          { name: developer.name, url: `https://dubai-architecture.info/developers/${developer.slug}/` },
-        ]}
-      />
+      <SchemaOrg type="developer" developer={developer} />
       <DeveloperDetailClient initialDeveloper={developer} buildings={BUILDINGS} />
     </>
   );

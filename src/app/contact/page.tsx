@@ -2,13 +2,33 @@ import React from "react";
 import type { Metadata } from "next";
 import SchemaOrg from "@/components/SchemaOrg";
 import ContactClient from "@/components/ContactClient";
+import { getSeoAlternates } from "@/lib/seoAlternates";
 
 export const metadata: Metadata = {
   title: "Contact Editorial & Research Office | Dubai Architecture",
   description:
     "Contact the Dubai Architecture editorial board, structural research desk, and press office. Submit architectural documentation or inquire about verified tower allocations.",
-  alternates: {
-    canonical: "https://dubai-architecture.info/contact/",
+  alternates: getSeoAlternates("/contact/"),
+  openGraph: {
+    title: "Contact Editorial & Research Office | Dubai Architecture",
+    description: "Contact the Dubai Architecture editorial board and structural research desk.",
+    url: "https://dubai-architecture.info/contact/",
+    siteName: "Dubai Architecture",
+    type: "website",
+    images: [
+      {
+        url: "https://dubai-architecture.info/images/hero-dubai-skyline.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Contact Dubai Architecture Editorial Office",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Contact Dubai Architecture Office",
+    description: "Editorial board and structural research desk.",
+    images: ["https://dubai-architecture.info/images/hero-dubai-skyline.jpg"],
   },
 };
 

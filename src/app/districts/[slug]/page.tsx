@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import { DISTRICTS } from "@/data/districts";
 import DistrictDetailClient from "@/components/DistrictDetailClient";
+import { getSeoAlternates } from "@/lib/seoAlternates";
 
 interface PageProps {
   params: Promise<{
@@ -28,19 +29,34 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   const title = `${district.name} — Architecture & Real Estate Guide, Dubai`;
   const description = `Explore ${district.name} architecture, landmark skyscraper towers, master plan overview, and rental yields (${district.averageRoi}).`;
+  const imageUrl = district.image.startsWith("http")
+    ? district.image
+    : `https://dubai-architecture.info${district.image}`;
 
   return {
     title,
     description,
-    alternates: {
-      canonical: `https://dubai-architecture.info/districts/${district.slug}/`,
-    },
+    alternates: getSeoAlternates(`/districts/${district.slug}/`),
     openGraph: {
       title,
       description,
       url: `https://dubai-architecture.info/districts/${district.slug}/`,
       siteName: "Dubai Architecture",
       type: "website",
+      images: [
+        {
+          url: imageUrl,
+          width: 1200,
+          height: 630,
+          alt: district.name,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description,
+      images: [imageUrl],
     },
   };
 }

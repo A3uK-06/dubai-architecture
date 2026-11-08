@@ -2,20 +2,15 @@ import type { MetadataRoute } from "next";
 import { BUILDINGS } from "@/data/buildings";
 import { DISTRICTS } from "@/data/districts";
 import { DEVELOPERS } from "@/data/developers";
-import { LANGUAGES } from "@/i18n/languages";
+import { getSeoAlternates } from "@/lib/seoAlternates";
 
 const BASE_URL = "https://dubai-architecture.info";
 
 export const dynamic = "force-static";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const langCodes = Object.keys(LANGUAGES);
-
-  const getAlternates = (path: string) => {
-    const languages: Record<string, string> = {};
-    for (const code of langCodes) {
-      languages[code] = `${BASE_URL}${path}?lang=${code}`;
-    }
+  const getAlternates = (subpath: string) => {
+    const { languages } = getSeoAlternates(subpath);
     return { languages };
   };
 

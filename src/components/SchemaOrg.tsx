@@ -1,6 +1,7 @@
 import React from "react";
 import { Building } from "@/data/buildings";
 import { District } from "@/data/districts";
+import { Developer } from "@/data/developers";
 
 export interface BreadcrumbItem {
   name: string;
@@ -13,9 +14,10 @@ export interface FAQItem {
 }
 
 interface SchemaOrgProps {
-  type?: "website" | "building" | "district" | "calculator" | "golden-visa" | "breadcrumbs" | "about" | "contact" | "policy";
+  type?: "website" | "building" | "district" | "developer" | "calculator" | "golden-visa" | "breadcrumbs" | "about" | "contact" | "policy";
   building?: Building;
   district?: District;
+  developer?: Developer;
   breadcrumbs?: BreadcrumbItem[];
   faq?: FAQItem[];
 }
@@ -26,6 +28,7 @@ export default function SchemaOrg({
   type = "website",
   building,
   district,
+  developer,
   breadcrumbs,
   faq,
 }: SchemaOrgProps) {
@@ -236,6 +239,83 @@ export default function SchemaOrg({
     };
   };
 
+  // 3.5 Developer Schema + Breadcrumbs
+  const getDeveloperSchema = () => {
+    if (!developer) return null;
+    return {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": ["Organization", "RealEstateAgent"],
+          "@id": `${BASE_URL}/developers/${developer.slug}/#organization`,
+          name: developer.name,
+          alternateName: developer.shortName,
+          description: developer.description,
+          url: `${BASE_URL}/developers/${developer.slug}/`,
+          sameAs: [developer.website],
+          foundingDate: developer.foundingYear.toString(),
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: "Dubai",
+            addressCountry: "AE",
+            streetAddress: developer.headquarters,
+          },
+          additionalProperty: [
+            {
+              "@type": "PropertyValue",
+              name: "DLD Escrow Rating",
+              value: developer.dldEscrowRating,
+            },
+            {
+              "@type": "PropertyValue",
+              name: "Tier",
+              value: developer.tier,
+            },
+            {
+              "@type": "PropertyValue",
+              name: "On-Time Delivery Rate",
+              value: developer.onTimeDeliveryRate,
+            },
+            {
+              "@type": "PropertyValue",
+              name: "Average Net ROI",
+              value: developer.averageNetRoi,
+            },
+            {
+              "@type": "PropertyValue",
+              name: "Total Projects in Dubai",
+              value: developer.totalProjectsDubai,
+            },
+          ],
+        },
+        {
+          "@type": "BreadcrumbList",
+          "@id": `${BASE_URL}/developers/${developer.slug}/#breadcrumbs`,
+          itemListElement: [
+            {
+              "@type": "ListItem",
+              position: 1,
+              name: "Home",
+              item: `${BASE_URL}/`,
+            },
+            {
+              "@type": "ListItem",
+              position: 2,
+              name: "Master Developers",
+              item: `${BASE_URL}/developers/`,
+            },
+            {
+              "@type": "ListItem",
+              position: 3,
+              name: developer.name,
+              item: `${BASE_URL}/developers/${developer.slug}/`,
+            },
+          ],
+        },
+      ],
+    };
+  };
+
   // 4. ROI Calculator Schema
   const getCalculatorSchema = () => {
     return {
@@ -365,6 +445,8 @@ export default function SchemaOrg({
     schemaToRender = getBuildingSchema() || websiteSchema;
   } else if (type === "district") {
     schemaToRender = getDistrictSchema() || websiteSchema;
+  } else if (type === "developer") {
+    schemaToRender = getDeveloperSchema() || websiteSchema;
   } else if (type === "calculator") {
     schemaToRender = getCalculatorSchema();
   } else if (type === "golden-visa") {

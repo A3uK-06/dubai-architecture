@@ -7,6 +7,7 @@ import SchemaOrg from "@/components/SchemaOrg";
 import GoogleAnalytics from "@/components/GoogleAnalytics";
 import Tracker from "@/components/Tracker";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
+import { getSeoAlternates } from "@/lib/seoAlternates";
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://dubai-architecture.info"),
@@ -26,9 +27,7 @@ export const metadata: Metadata = {
     "UAE Golden Visa Real Estate",
     "Skyscrapers Catalog",
   ],
-  alternates: {
-    canonical: "https://dubai-architecture.info/",
-  },
+  alternates: getSeoAlternates("/"),
   openGraph: {
     title: "Dubai Architecture | Historical Skyscrapers Encyclopedia",
     description:
@@ -37,11 +36,20 @@ export const metadata: Metadata = {
     siteName: "Dubai Architecture",
     locale: "en_US",
     type: "website",
+    images: [
+      {
+        url: "https://dubai-architecture.info/images/hero-dubai-skyline.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Dubai Architecture Skyline Encyclopedia",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Dubai Architecture | Skyscrapers Encyclopedia",
     description: "Documenting Dubai's skyline since 2006.",
+    images: ["https://dubai-architecture.info/images/hero-dubai-skyline.jpg"],
   },
   robots: {
     index: true,

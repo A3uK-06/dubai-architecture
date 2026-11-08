@@ -6,24 +6,32 @@
  * Automatically sends URL notifications to Googlebot via Google Cloud Indexing API
  * for all URLs in out/sitemap.xml.
  * 
- * Credentials can be provided as:
- * - Environment variable: GOOGLE_INDEXING_KEY (raw JSON or base64 JSON)
- * - Local file: service_account.json or google-indexing-credentials.json
+ * Implements intelligent priority-based sorting to maximize indexing value within
+ * Google's daily quota (200 requests/day per service account).
+ * 
+ * Priority order:
+ * 1. Root & all 9 language entry roots (/ru/, /ar/, /hi/, /zh/, /de/, /fr/, /ur/, /it/, /tr/)
+ * 2. High-converting hubs (/calculator/, /golden-visa/, /buildings/, /districts/, /developers/)
+ * 3. Iconic global landmark towers (Burj Khalifa, Emirates Towers, Burj Al Arab, etc.)
+ * 4. Prime investment districts (Downtown Dubai, Dubai Marina, Palm Jumeirah, etc.)
+ * 5. Tier-1 master developers (Emaar, Sobha, Nakheel, etc.)
+ * 6. Remaining towers and districts across all languages
+ * 7. Institutional policy pages (/about/, /editorial-policy/, etc.)
  */
 
 import fs from "node:fs";
 import path from "node:path";
 import crypto from "node:crypto";
 
+const DAILY_QUOTA_LIMIT = 195; // Google limit is 200/day. 195 leaves a safe margin.
+
 function loadCredentials() {
-  // 1. Check environment variable
   if (process.env.GOOGLE_INDEXING_KEY) {
     const raw = process.env.GOOGLE_INDEXING_KEY.trim();
     try {
       if (raw.startsWith("{")) {
         return JSON.parse(raw);
       }
-      // Try base64
       const decoded = Buffer.from(raw, "base64").toString("utf8");
       return JSON.parse(decoded);
     } catch (e) {
@@ -31,7 +39,6 @@ function loadCredentials() {
     }
   }
 
-  // 2. Check local files
   const candidateFiles = [
     "service_account.json",
     "google-indexing-credentials.json",
@@ -95,6 +102,67 @@ async function getAccessToken(clientEmail, privateKey) {
   return data.access_token;
 }
 
+function computeUrlPriorityScore(url) {
+  const clean = url.replace("https://dubai-architecture.info", "");
+
+  // Tier 1: Canonical root and all 10 language roots
+  if (clean === "/" || clean === "") return 1000;
+  if (/^\/(ru|ar|hi|zh|de|fr|ur|it|tr)\/?$/.test(clean)) return 950;
+
+  // Tier 2: Core functional & conversion hubs across all languages
+  if (clean.includes("/calculator")) return 900;
+  if (clean.includes("/golden-visa")) return 890;
+  if (clean.includes("/developers") && !clean.match(/\/developers\/[^/]+/)) return 880;
+  if (clean.includes("/buildings") && !clean.match(/\/buildings\/[^/]+/)) return 870;
+  if (clean.includes("/districts") && !clean.match(/\/districts\/[^/]+/)) return 860;
+
+  // Tier 3: Iconic global towers
+  const iconicTowers = [
+    "burj-khalifa",
+    "emirates-towers",
+    "burj-al-arab",
+    "cayan-tower",
+    "marina-101",
+    "princess-tower",
+    "address-downtown",
+    "al-hikma-tower",
+    "al-yaqoub-tower",
+    "damac-heights",
+    "the-torch",
+    "d1-tower",
+    "rose-rayhaan",
+  ];
+  for (const tower of iconicTowers) {
+    if (clean.includes(`/buildings/${tower}`)) return 700;
+  }
+
+  // Tier 4: Prime districts
+  const primeDistricts = ["downtown-dubai", "dubai-marina", "palm-jumeirah", "business-bay", "difc"];
+  for (const dist of primeDistricts) {
+    if (clean.includes(`/districts/${dist}`)) return 600;
+  }
+
+  // Tier 5: Top developers
+  const topDevs = ["emaar", "sobha", "nakheel", "omniyat", "binghatti", "meraas"];
+  for (const dev of topDevs) {
+    if (clean.includes(`/developers/${dev}`)) return 500;
+  }
+
+  // Tier 6: Remaining towers & districts
+  if (clean.includes("/buildings/")) return 400;
+  if (clean.includes("/districts/")) return 350;
+  if (clean.includes("/developers/")) return 300;
+
+  // Tier 7: Policy & institutional pages
+  if (clean.includes("/about")) return 200;
+  if (clean.includes("/contact")) return 190;
+  if (clean.includes("/editorial-policy")) return 180;
+  if (clean.includes("/affiliate-disclosure")) return 170;
+  if (clean.includes("/methodology")) return 160;
+
+  return 100;
+}
+
 function extractUrlsFromSitemap() {
   const candidates = [
     path.resolve(process.cwd(), "out/sitemap.xml"),
@@ -117,7 +185,12 @@ function extractUrlsFromSitemap() {
     .filter((u) => u.startsWith("http"));
 
   // De-duplicate
-  return Array.from(new Set(urls));
+  const uniqueUrls = Array.from(new Set(urls));
+
+  // Sort by priority score descending
+  uniqueUrls.sort((a, b) => computeUrlPriorityScore(b) - computeUrlPriorityScore(a));
+
+  return uniqueUrls;
 }
 
 async function publishUrl(url, accessToken) {
@@ -150,11 +223,14 @@ async function main() {
     return;
   }
 
-  const urls = extractUrlsFromSitemap();
-  if (urls.length === 0) {
+  const allUrls = extractUrlsFromSitemap();
+  if (allUrls.length === 0) {
     console.warn("⚠️ No URLs found in sitemap.xml. Ensure 'npm run build' has generated out/sitemap.xml.");
     return;
   }
+
+  // Cap at DAILY_QUOTA_LIMIT
+  const urlsToPush = allUrls.slice(0, DAILY_QUOTA_LIMIT);
 
   console.log(`🔑 Authenticating as: ${credentials.client_email}...`);
   let accessToken;
@@ -166,31 +242,34 @@ async function main() {
     return;
   }
 
-  console.log(`🚀 Dispatching ${urls.length} URLs to Google Indexing API...`);
+  console.log(`🚀 Total sitemap URLs: ${allUrls.length}. Dispatching highest-priority ${urlsToPush.length} URLs (daily safe quota: ${DAILY_QUOTA_LIMIT})...`);
   let successCount = 0;
   let failCount = 0;
 
-  for (let i = 0; i < urls.length; i++) {
-    const url = urls[i];
+  for (let i = 0; i < urlsToPush.length; i++) {
+    const url = urlsToPush[i];
     try {
       const result = await publishUrl(url, accessToken);
       if (result.ok) {
         successCount++;
-        console.log(`   [${i + 1}/${urls.length}] ✅ 200 OK: ${url}`);
+        console.log(`   [${i + 1}/${urlsToPush.length}] ✅ 200 OK: ${url}`);
       } else {
         failCount++;
-        console.warn(`   [${i + 1}/${urls.length}] ⚠️ Status ${result.status}: ${url}`);
+        console.warn(`   [${i + 1}/${urlsToPush.length}] ⚠️ Status ${result.status}: ${url}`);
       }
     } catch (err) {
       failCount++;
-      console.warn(`   [${i + 1}/${urls.length}] ❌ Error: ${err.message}`);
+      console.warn(`   [${i + 1}/${urlsToPush.length}] ❌ Error: ${err.message}`);
     }
 
-    // Gentle 100ms throttle between requests
-    await new Promise((r) => setTimeout(r, 500));
+    // 400ms throttle between requests
+    await new Promise((r) => setTimeout(r, 400));
   }
 
-  console.log(`\n🎉 Google Indexing API finished: ${successCount} published, ${failCount} failed.`);
+  console.log(`\n🎉 Google Indexing API run completed: ${successCount} published, ${failCount} failed.`);
+  if (allUrls.length > urlsToPush.length) {
+    console.log(`ℹ️ Note: ${allUrls.length - urlsToPush.length} lower-priority URLs queued for subsequent daily indexer cycles.`);
+  }
 }
 
 main().catch((err) => {

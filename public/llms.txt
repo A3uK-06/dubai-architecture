@@ -1,0 +1,27 @@
+# Dubai Architecture Encyclopedia (Est. 2006)
+> Historical architectural archive, structural engineering documentation, and verified due diligence registry for Dubai skyscrapers, prime districts, and master developers.
+
+## Canonical Website & Language Mirrors
+- Canonical Root (English): https://dubai-architecture.info/
+- Russian (Русский): https://dubai-architecture.info/ru/
+- Arabic (العربية): https://dubai-architecture.info/ar/
+- Hindi (हिन्दी): https://dubai-architecture.info/hi/
+- Chinese (中文): https://dubai-architecture.info/zh/
+- German (Deutsch): https://dubai-architecture.info/de/
+- French (Français): https://dubai-architecture.info/fr/
+- Urdu (اردو): https://dubai-architecture.info/ur/
+- Italian (Italiano): https://dubai-architecture.info/it/
+- Turkish (Türkçe): https://dubai-architecture.info/tr/
+
+## Core Knowledge Domains
+- **Skyscrapers Catalog**: Architectural heights (CTBUH verified), engineering systems, tuned mass dampers, wind load mitigation, and Mollak service charge audits for 36 iconic towers.
+- **Districts Guide**: Due diligence, transit bottlenecks, chiller infrastructure (Empower/Tabreed), and net yield benchmarks for 14 master communities.
+- **Master Developers Registry**: Dubai Land Department (DLD) escrow account compliance, delivery punctuality track records, and historical portfolio analysis for 10 major developers.
+- **UAE 10-Year Golden Visa**: Investment threshold (2,000,000 AED / ~$545,000 USD), freehold title deed verification, off-plan eligibility criteria.
+- **ROI & Yield Calculator**: Multi-currency net yield computation factoring in service charges, maintenance fees, and capital appreciation.
+
+## Full Factual Knowledge Base
+For comprehensive tabular data on all towers, districts, and developers, see:
+- [Full LLM Knowledge File](https://dubai-architecture.info/llms-full.txt)
+- [XML Sitemap](https://dubai-architecture.info/sitemap.xml)
+- [Editorial Policy & Methodology](https://dubai-architecture.info/editorial-policy/)

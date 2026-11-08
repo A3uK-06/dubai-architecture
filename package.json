@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "prebuild": "node scripts/precreate-out.mjs && node scripts/build-tailwind.mjs && node scripts/generate-legacy-traps.mjs",
+    "prebuild": "node scripts/precreate-out.mjs && node scripts/build-tailwind.mjs && node scripts/generate-legacy-traps.mjs && npx tsx scripts/generate-llms-txt.mjs",
     "build": "next build",
     "postbuild": "node scripts/postbuild.mjs",
     "index:google": "node scripts/push-indexing-api.mjs",

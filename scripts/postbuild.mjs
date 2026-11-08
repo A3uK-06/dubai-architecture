@@ -15,7 +15,7 @@ if (fs.existsSync(outDir)) {
 
   // Generate Multilingual Static Pages for Google/Yandex indexation
   try {
-    console.log("Generating static multilingual subdirectories (/ru/, /ar/, /zh/, /de/, /fr/)...");
+    console.log("Generating static multilingual subdirectories (ru, ar, hi, zh, de, fr, ur, it, tr)...");
     execSync("npx tsx scripts/generate-multilingual-static-pages.mjs", {
       cwd: rootDir,
       stdio: "inherit",
