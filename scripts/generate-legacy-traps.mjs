@@ -110,6 +110,19 @@ for (let i = 1; i <= 50; i++) {
   fs.writeFileSync(path.join(publicDir, `${code}.html`), html, "utf-8");
 }
 
+// Generate Historical Photo Galleries (DUB-GAL1.htm ... DUB-GAL10.htm and .html)
+for (let i = 1; i <= 10; i++) {
+  const code = `DUB-GAL${i}`;
+  const html = generateTrapHtml("buildings", `Dubai Architecture Photo Gallery ${i}`);
+  // Point canonical and redirect directly to /buildings/
+  const galleryHtml = html
+    .replace(/\/buildings\/buildings\//g, "/buildings/")
+    .replace(/\/buildings\//g, "/buildings/");
+
+  fs.writeFileSync(path.join(publicDir, `${code}.htm`), galleryHtml, "utf-8");
+  fs.writeFileSync(path.join(publicDir, `${code}.html`), galleryHtml, "utf-8");
+}
+
 // Named legacy URLs from early 2000s web archive
 const namedTraps = {
   "index.htm": { slug: "", name: "Dubai Architecture Home" },
@@ -119,6 +132,12 @@ const namedTraps = {
   "dubai-skyscrapers.htm": { slug: "", name: "Dubai Skyscrapers Directory" },
   "dubai-towers.htm": { slug: "", name: "Dubai Towers Directory" },
   "architecture-dubai.htm": { slug: "", name: "Dubai Architecture Encyclopedia" },
+  "gallery.htm": { slug: "", name: "Dubai Architecture Gallery" },
+  "gallery.html": { slug: "", name: "Dubai Architecture Gallery" },
+  "photos.htm": { slug: "", name: "Dubai Skyscrapers Photos" },
+  "photos.html": { slug: "", name: "Dubai Skyscrapers Photos" },
+  "dubai-gallery.htm": { slug: "", name: "Dubai Architecture Gallery" },
+  "dubai-gallery.html": { slug: "", name: "Dubai Architecture Gallery" },
 };
 
 for (const [filename, info] of Object.entries(namedTraps)) {
