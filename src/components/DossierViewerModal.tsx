@@ -7,6 +7,7 @@ import { getLocalizedFloorPlan, TYPOLOGY_NAMES } from "@/data/floorPlanI18n";
 import { getBuildingInvestorReality } from "@/data/investorRealityCheck";
 import { getLocalizedBuildingAuditReview } from "@/data/localizedAuditReview";
 import { DOSSIER_I18N } from "@/data/localizedDossier";
+import { getBuildingExplosiveAudit } from "@/data/explosiveAudits";
 
 interface DossierViewerModalProps {
   isOpen: boolean;
@@ -27,6 +28,9 @@ export default function DossierViewerModal({
   const ledger = useMemo(() => getBuildingDldLedger(building), [building]);
   const { viewRadar, solarExposure, walkability, labels } = useMemo(() => {
     return getBuildingInvestorReality(building, lang);
+  }, [building, lang]);
+  const { audit: explosive, labels: expLabels } = useMemo(() => {
+    return getBuildingExplosiveAudit(building, lang);
   }, [building, lang]);
 
   const plans = useMemo(() => {
@@ -236,6 +240,90 @@ export default function DossierViewerModal({
               <div className="p-3 rounded-xl border border-[#E2E8F0] bg-[#F8FAFC]">
                 <span className="text-[#64748B] block">🛒 {labels.dailyEssentialsLabel}:</span>
                 <span className="text-slate-700 block mt-0.5">{walkability.dailyEssentialsOnFoot}</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Section 4.5: 5 Deep Critical Realities & Two-Tier Buyer Verdict */}
+          <div className="space-y-4">
+            <h2 className="text-lg font-bold text-[#0F172A] uppercase tracking-wider font-mono border-b border-[#E2E8F0] pb-1.5 flex items-center justify-between">
+              <span className="flex items-center gap-2">
+                <span>⚖️</span>
+                <span>{expLabels.mainTitle}</span>
+              </span>
+              <span className="text-xs px-2.5 py-1 rounded-md bg-[#8C6A48]/15 text-[#8C6A48] font-bold">
+                5 Deep Factors
+              </span>
+            </h2>
+
+            {/* 5 Deep Metric Cards */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+              <div className="p-3 rounded-xl border border-sky-200 bg-sky-50/60 space-y-1">
+                <span className="font-bold text-sky-900 flex items-center gap-1.5">
+                  <span>🌧️</span>
+                  <span>{expLabels.floodTitle}:</span>
+                </span>
+                <p className="text-slate-800 leading-relaxed text-[11px]">{explosive.floodResilience.humanVerdict}</p>
+                <div className="text-[10px] text-sky-800 font-semibold mt-1">
+                  ⚡ {explosive.floodResilience.substationLevel} • Score: {explosive.floodResilience.score}/100
+                </div>
+              </div>
+
+              <div className="p-3 rounded-xl border border-amber-200 bg-amber-50/60 space-y-1">
+                <span className="font-bold text-amber-900 flex items-center gap-1.5">
+                  <span>🏛️</span>
+                  <span>{expLabels.starchitectTitle}:</span>
+                </span>
+                <p className="text-slate-800 leading-relaxed text-[11px]">{explosive.starchitect.humanVerdict}</p>
+                <div className="text-[10px] text-amber-800 font-semibold mt-1">
+                  ✨ {explosive.starchitect.tier} (+{explosive.starchitect.architectBrandPremiumPercent}% Brand Equity)
+                </div>
+              </div>
+
+              <div className="p-3 rounded-xl border border-teal-200 bg-teal-50/60 space-y-1">
+                <span className="font-bold text-teal-900 flex items-center gap-1.5">
+                  <span>🌪️</span>
+                  <span>{expLabels.windSwayTitle}:</span>
+                </span>
+                <p className="text-slate-800 leading-relaxed text-[11px]">{explosive.windSway.humanVerdict}</p>
+                <div className="text-[10px] text-teal-800 font-semibold mt-1">
+                  🎯 {explosive.windSway.goldenFloors} • Max Sway: ~{explosive.windSway.swayDeflectionMm} mm
+                </div>
+              </div>
+
+              <div className="p-3 rounded-xl border border-purple-200 bg-purple-50/60 space-y-1">
+                <span className="font-bold text-purple-900 flex items-center gap-1.5">
+                  <span>🛡️</span>
+                  <span>{expLabels.socialTitle}:</span>
+                </span>
+                <p className="text-slate-800 leading-relaxed text-[11px]">{explosive.socialFilter.humanVerdict}</p>
+                <div className="text-[10px] text-purple-800 font-semibold mt-1">
+                  👥 {explosive.socialFilter.ownerOccupierPercent}% Owners • {explosive.socialFilter.holidayHomesPolicy}
+                </div>
+              </div>
+            </div>
+
+            {/* Contractor Autopsy & Acoustic Isolation */}
+            <div className="p-3 rounded-xl border border-indigo-200 bg-indigo-50/60 text-xs space-y-1">
+              <span className="font-bold text-indigo-900 flex items-center gap-1.5">
+                <span>🔬</span>
+                <span>{expLabels.contractorTitle}: {explosive.contractorAutopsy.mainContractor} ({explosive.contractorAutopsy.soundproofingRatingDb} dB STC)</span>
+              </span>
+              <p className="text-slate-800 leading-relaxed text-[11px]">{explosive.contractorAutopsy.humanVerdict}</p>
+              <div className="text-[10px] text-indigo-800 font-semibold">
+                🚰 {explosive.contractorAutopsy.pipelineQuality}
+              </div>
+            </div>
+
+            {/* Target Audience Profile */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs pt-1">
+              <div className="p-3 rounded-xl bg-emerald-50 border border-emerald-200">
+                <strong className="text-emerald-900 block mb-1">🎯 {expLabels.idealForLabel}</strong>
+                <p className="text-emerald-950 text-[11px] leading-relaxed">{explosive.livingVerdict.idealFor}</p>
+              </div>
+              <div className="p-3 rounded-xl bg-rose-50 border border-rose-200">
+                <strong className="text-rose-900 block mb-1">⚠️ {expLabels.notRecommendedForLabel}</strong>
+                <p className="text-rose-950 text-[11px] leading-relaxed">{explosive.livingVerdict.notRecommendedFor}</p>
               </div>
             </div>
           </div>

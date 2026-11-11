@@ -17,6 +17,7 @@ import DldTransactionLedger from "@/components/DldTransactionLedger";
 import DossierViewerModal from "@/components/DossierViewerModal";
 import AiQuickFactsAndCitations from "@/components/AiQuickFactsAndCitations";
 import InvestorRealityAudit from "@/components/InvestorRealityAudit";
+import ExplosiveInvestorAudit from "@/components/ExplosiveInvestorAudit";
 import { trackEvent } from "@/lib/analytics";
 
 interface BuildingDetailClientProps {
@@ -384,6 +385,9 @@ export default function BuildingDetailClient({
 
             {/* UNBIASED MICRO-CLIMATE, HORIZON & WALKABILITY REALITY AUDIT */}
             <InvestorRealityAudit building={building} />
+
+            {/* 5 DEEP CRITICAL REALITIES & TWO-TIER BUYER VERDICT */}
+            <ExplosiveInvestorAudit building={building} />
 
             {/* INTERACTIVE ARCHITECTURAL FLOOR PLANS EXPLORER */}
             <FloorPlansExplorer
