@@ -15,7 +15,7 @@ export default function AboutClient() {
         <div className="border-b border-[#E2E8F0] bg-[#F1F5F9]/60 pt-12 pb-16">
           <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4">
             <nav className="flex items-center gap-2 text-xs text-[#78716C] font-semibold">
-              <Link href="/ru/" className="hover:text-[#8C6A48] transition-colors">
+              <Link href="/" className="hover:text-[#8C6A48] transition-colors">
                 Главная
               </Link>
               <span className="text-[#DDD7CA]">/</span>

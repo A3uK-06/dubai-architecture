@@ -7,7 +7,7 @@ import { useLang } from "@/context/LangContext";
 export default function AffiliateDisclosureClient() {
   const { lang } = useLang();
   const isRu = lang === "ru";
-  const homeUrl = isRu ? "/ru/" : "/";
+  const homeUrl = "/";
 
   if (isRu) {
     return (
