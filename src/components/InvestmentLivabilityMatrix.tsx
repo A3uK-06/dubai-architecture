@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Building } from "@/data/buildings";
 import { useLang } from "@/context/LangContext";
 import LeadModal from "@/components/LeadModal";
+import { MATRIX_I18N } from "@/data/localizedMatrix";
 
 interface InvestmentLivabilityMatrixProps {
   buildings: Building[];
@@ -22,7 +23,7 @@ export default function InvestmentLivabilityMatrix({
 
   if (!buildings || buildings.length === 0) return null;
 
-  const isRu = lang === "ru";
+  const tM = MATRIX_I18N[lang] || MATRIX_I18N.en;
 
   // Helper to extract numeric or formatted values
   const getNetYieldEstimate = (grossYieldStr?: string, serviceChargeAed?: number) => {
@@ -38,12 +39,12 @@ export default function InvestmentLivabilityMatrix({
 
   const getLivabilityHighlights = (b: Building) => {
     if (b.auditReview?.soundproofingRating?.includes("55") || b.auditReview?.soundproofingRating?.includes("56")) {
-      return isRu ? "Высокая акустическая защита (STC 55+)" : "Superior Acoustic Attenuation (STC 55+)";
+      return tM.acousticTag;
     }
     if (b.operatingSpecs?.chillerBilling?.includes("Free")) {
-      return isRu ? "Бесплатное кондиционирование (Chiller-Free)" : "Chiller-Free OPEX Advantage";
+      return tM.chillerTag;
     }
-    return isRu ? "Премиальная инфраструктура и лобби" : "Prime Lobby & Resident Amenities";
+    return tM.amenitiesTag;
   };
 
   return (
@@ -52,22 +53,18 @@ export default function InvestmentLivabilityMatrix({
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-[#E5DFD3] pb-4">
           <div>
             <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#8C6A48]">
-              {isRu ? "Сравнительный анализ привлекательности" : "Investment & Livability Matrix"}
+              {tM.badge}
             </span>
             <h2 className="text-2xl font-bold text-[#1C1917] mt-0.5">
-              {isRu
-                ? `Инвестиционная привлекательность и комфорт проживания${districtName ? `: ${districtName}` : ""}`
-                : `Investment Yields & Livability Audit${districtName ? `: ${districtName}` : ""}`}
+              {tM.title(districtName)}
             </h2>
             <p className="text-xs text-[#57534E] mt-1 max-w-2xl leading-relaxed">
-              {isRu
-                ? "Сравнение ключевых факторов владения: чистая доходность с учетом сервисных сборов (Service Charges), эксплуатационные расходы, пешая доступность и стратегия сдачи (Airbnb vs долгосрочная аренда)."
-                : "Audited comparative matrix evaluating net rental returns, HOA service charges, walkability metrics, and tenant investment strategy (Short-Term holiday lets vs Long-Term residence)."}
+              {tM.subtitle}
             </p>
           </div>
           <div className="flex items-center gap-2 text-xs font-mono text-[#8C6A48] bg-white px-3 py-1.5 rounded-xl border border-[#DDD7CA] shrink-0">
             <span>📊</span>
-            <span>{isRu ? "DLD Open Data Verification" : "Verified by DLD Indices"}</span>
+            <span>{tM.dldVerified}</span>
           </div>
         </div>
 
@@ -76,13 +73,13 @@ export default function InvestmentLivabilityMatrix({
           <table className="w-full text-left border-collapse text-xs">
             <thead>
               <tr className="bg-[#F4EFEA] text-[#1C1917] font-bold border-b border-[#E5DFD3] text-[11px] uppercase tracking-wider">
-                <th className="p-4 whitespace-nowrap">{isRu ? "Проект / Башня" : "Tower / Project"}</th>
-                <th className="p-4 whitespace-nowrap">{isRu ? "Девелопер" : "Developer"}</th>
-                <th className="p-4 whitespace-nowrap">{isRu ? "Доходность (Gross / Net)" : "Yield (Gross / Net)"}</th>
-                <th className="p-4 whitespace-nowrap">{isRu ? "Сервисный сбор (AED/кв.фут)" : "Service Charge (AED/sq.ft)"}</th>
-                <th className="p-4 whitespace-nowrap">{isRu ? "Комфорт и логистика" : "Livability & Transit"}</th>
-                <th className="p-4 whitespace-nowrap">{isRu ? "Целевая стратегия" : "Target Strategy"}</th>
-                <th className="p-4 text-right whitespace-nowrap">{isRu ? "Досье и расчет" : "Project Dossier"}</th>
+                <th className="p-4 whitespace-nowrap">{tM.colTower}</th>
+                <th className="p-4 whitespace-nowrap">{tM.colDeveloper}</th>
+                <th className="p-4 whitespace-nowrap">{tM.colYield}</th>
+                <th className="p-4 whitespace-nowrap">{tM.colService}</th>
+                <th className="p-4 whitespace-nowrap">{tM.colTransit}</th>
+                <th className="p-4 whitespace-nowrap">{tM.colStrategy}</th>
+                <th className="p-4 text-right whitespace-nowrap">{tM.colAction}</th>
               </tr>
             </thead>
             <tbody className="divide-y divide-[#EFECE4] text-[#44403C]">
@@ -156,8 +153,8 @@ export default function InvestmentLivabilityMatrix({
                     <td className="p-4 min-w-[170px]">
                       <span className="text-[11px] font-semibold text-[#8C6A48] bg-[#F4EFEA] px-2 py-1 rounded-md inline-block">
                         {b.auditReview?.airbnbHolidayHomesPolicy?.includes("Permitted") || b.auditReview?.airbnbHolidayHomesPolicy?.includes("разрешен")
-                          ? isRu ? "🏖️ Airbnb / Высокий Cash-flow" : "🏖️ Short-Term / High Cash-flow"
-                          : isRu ? "👑 Капитал и долгосрок" : "👑 Capital Preservation / Long-Term"}
+                          ? tM.strategyShortTerm
+                          : tM.strategyLongTerm}
                       </span>
                     </td>
 
@@ -172,10 +169,10 @@ export default function InvestmentLivabilityMatrix({
                             setSelectedTowerForLead(b.name);
                           }
                         }}
-                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#1C1917] hover:bg-[#8C6A48] text-white font-bold text-xs transition-colors shadow-sm"
+                        className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-[#1C1917] hover:bg-[#8C6A48] text-white font-bold text-xs transition-colors shadow-sm cursor-pointer"
                       >
                         <span>📄</span>
-                        <span>{isRu ? "Досье и цены" : "Request Dossier"}</span>
+                        <span>{tM.requestDossierBtn}</span>
                       </button>
                     </td>
                   </tr>
@@ -189,17 +186,13 @@ export default function InvestmentLivabilityMatrix({
         <div className="pt-2 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-[#78716C] border-t border-[#E5DFD3]">
           <div className="flex items-center gap-2">
             <span>🛡️</span>
-            <span>
-              {isRu
-                ? "Данные сверены с официальным реестром сделок DLD. Сопровождение сделок и бронирование планировок осуществляется через аккредитованных брокеров-партнеров (Whitewill, Metropolitan)."
-                : "Audited against official DLD transaction registers. Deal facilitation & unit reservations are executed via accredited brokerage partners (Whitewill, Metropolitan) under RERA licensing."}
-            </span>
+            <span>{tM.footerNote}</span>
           </div>
           <Link
             href="/#calculator"
             className="text-[#8C6A48] hover:underline font-bold shrink-0"
           >
-            {isRu ? "Перейти в интерактивный калькулятор ROI →" : "Explore Interactive ROI Calculator →"}
+            {tM.calculatorLink}
           </Link>
         </div>
       </section>
@@ -210,12 +203,8 @@ export default function InvestmentLivabilityMatrix({
           isOpen={true}
           onClose={() => setSelectedTowerForLead(null)}
           towerName={selectedTowerForLead}
-          title={isRu ? `Запрос досье: ${selectedTowerForLead}` : `Request Official Dossier: ${selectedTowerForLead}`}
-          subtitle={
-            isRu
-              ? "Получите официальный PDF-буклет девелопера, актуальную шахматку доступных планировок и график рассрочки платежей."
-              : "Receive the official developer architectural dossier, current available unit inventory, and approved payment schedule."
-          }
+          title={tM.modalTitle(selectedTowerForLead)}
+          subtitle={tM.modalSubtitle}
         />
       )}
     </>

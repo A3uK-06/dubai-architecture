@@ -277,6 +277,7 @@ export const AUDIT_UI_LABELS: Record<LanguageCode, {
   downloadDossierTitle: (name: string) => string;
   downloadDossierSubtitle: string;
   downloadDossierBtn: string;
+  openDossierModal: string;
   consultArchitectBtn: string;
   neutralityLabel: string;
   neutralityText: string;
@@ -299,6 +300,7 @@ export const AUDIT_UI_LABELS: Record<LanguageCode, {
     downloadDossierTitle: (n) => `Download Engineering Dossier: ${n}`,
     downloadDossierSubtitle: "Comprehensive dossier: geotechnical passport, DLD service fee history, and floorplan catalog.",
     downloadDossierBtn: "Download Engineering & Cost Dossier (PDF)",
+    openDossierModal: "Open Executive Dossier Modal",
     consultArchitectBtn: "Consult Architectural Advisor",
     neutralityLabel: "Neutrality Guarantee:",
     neutralityText: "We are not affiliated with specific developers. Every appraisal is based on objective structural TTX and resident data.",
@@ -321,6 +323,7 @@ export const AUDIT_UI_LABELS: Record<LanguageCode, {
     downloadDossierTitle: (n) => `Скачать инженерный паспорт: ${n}`,
     downloadDossierSubtitle: "Полный файл: геотехнический паспорт, история сервисных сборов DLD и поэтажные планы.",
     downloadDossierBtn: "Скачать паспорт башни и расходы (PDF)",
+    openDossierModal: "Открыть паспорт в компактном окне",
     consultArchitectBtn: "Консультация с архитектором",
     neutralityLabel: "Принцип нейтралитета:",
     neutralityText: "Мы не аффилированы с конкретными девелоперами. Каждое заключение опирается на объективные ТТХ и опыт резидентов.",
@@ -343,6 +346,7 @@ export const AUDIT_UI_LABELS: Record<LanguageCode, {
     downloadDossierTitle: (n) => `تحميل الملف الهندسي الشامل: ${n}`,
     downloadDossierSubtitle: "ملف كامل: الجواز الجيوتقني، وسجل رسوم أراضي دبي (DLD)، ومخططات الطوابق التفصيلية.",
     downloadDossierBtn: "تحميل الجواز الهندسي والمالي (PDF)",
+    openDossierModal: "فتح ملف الجواز الهندسي في نافذة منبثقة",
     consultArchitectBtn: "استشارة مع مهندس معماري",
     neutralityLabel: "ضمان الحياد والاستقلالية:",
     neutralityText: "نحن غير تابعين لأي مطور عقاري. كل تقييم يستند حصراً إلى المواصفات الهندسية وبيانات السكان الميدانية.",
@@ -365,6 +369,7 @@ export const AUDIT_UI_LABELS: Record<LanguageCode, {
     downloadDossierTitle: (n) => `下载完整工程档案白皮书: ${n}`,
     downloadDossierSubtitle: "综合工程全景文件：包含地基岩土参数、迪拜土地局（DLD）历史物业费账册与楼层户型图册。",
     downloadDossierBtn: "下载大厦工程与运营成本白皮书 (PDF)",
+    openDossierModal: "在弹出窗口中查看完整工程底册",
     consultArchitectBtn: "预约注册建筑师顾问咨询",
     neutralityLabel: "独立中立准则保证:",
     neutralityText: "我们与任何具体开发商均无利益绑定。所有评估结论均建立在客观工程技术指标与真实住户运营数据之上。",
@@ -387,6 +392,7 @@ export const AUDIT_UI_LABELS: Record<LanguageCode, {
     downloadDossierTitle: (n) => `Ingenieurs-Dossier herunterladen: ${n}`,
     downloadDossierSubtitle: "Umfassendes Dossier: geotechnischer Pass, DLD-Gebührenhistorie und Grundrisskatalog.",
     downloadDossierBtn: "Technisches Dossier & Kostenplan (PDF) laden",
+    openDossierModal: "Technisches Dossier im Vorschaufenster öffnen",
     consultArchitectBtn: "Architektur-Fachberater konsultieren",
     neutralityLabel: "Neutralitätsgarantie:",
     neutralityText: "Wir sind nicht an bestimmte Bauträger gebunden. Jede Bewertung basiert auf objektiven Daten und realen Bewohnererfahrungen.",
@@ -409,6 +415,7 @@ export const AUDIT_UI_LABELS: Record<LanguageCode, {
     downloadDossierTitle: (n) => `Télécharger le dossier technique : ${n}`,
     downloadDossierSubtitle: "Dossier exhaustif : passeport géotechnique, historique des charges DLD et catalogue des plans.",
     downloadDossierBtn: "Télécharger le passeport technique et financier (PDF)",
+    openDossierModal: "Ouvrir le dossier technique dans une fenêtre",
     consultArchitectBtn: "Consulter un conseiller architecte",
     neutralityLabel: "Garantie de neutralité :",
     neutralityText: "Nous ne sommes affiliés à aucun promoteur. Chaque évaluation repose sur des données techniques objectives et l'expérience des résidents.",
@@ -431,6 +438,7 @@ export const AUDIT_UI_LABELS: Record<LanguageCode, {
     downloadDossierTitle: (n) => `Scarica fascicolo ingegneristico: ${n}`,
     downloadDossierSubtitle: "Dossier completo: passaporto geotecnico, storico tariffe DLD e planimetrie.",
     downloadDossierBtn: "Scarica fascicolo tecnico e costi (PDF)",
+    openDossierModal: "Apri il dossier tecnico nella finestra modale",
     consultArchitectBtn: "Consulta un architetto qualificato",
     neutralityLabel: "Garanzia di neutralità:",
     neutralityText: "Non siamo affiliati con specifici sviluppatori. Ogni perizia si basa su parametri tecnici oggettivi e riscontri dei residenti.",
@@ -453,6 +461,7 @@ export const AUDIT_UI_LABELS: Record<LanguageCode, {
     downloadDossierTitle: (n) => `Mühendislik Dosyasını İndir: ${n}`,
     downloadDossierSubtitle: "Kapsamlı teknik dosya: geoteknik pasaport, DLD aidat geçmişi ve kat planları kataloğu.",
     downloadDossierBtn: "Bina Pasaportu ve Gider Raporunu İndir (PDF)",
+    openDossierModal: "Teknik pasaportu açılır pencerede görüntüle",
     consultArchitectBtn: "Mimar Danışman ile Görüşün",
     neutralityLabel: "Tarafsızlık Güvencesi:",
     neutralityText: "Belirli geliştiricilere bağlı değiliz. Her değerlendirme nesnel teknik verilere ve sakinlerin gerçek deneyimlerine dayanır.",
@@ -475,6 +484,7 @@ export const AUDIT_UI_LABELS: Record<LanguageCode, {
     downloadDossierTitle: (n) => `इंजीनियरिंग डोजियर डाउनलोड करें: ${n}`,
     downloadDossierSubtitle: "व्यापक डोजियर: भू-तकनीकी पासपोर्ट, डीएलडी सेवा शुल्क इतिहास और फ्लोरप्लान कैटलॉग।",
     downloadDossierBtn: "इंजीनियरिंग और लागत डोजियर (पीडीएफ) डाउनलोड करें",
+    openDossierModal: "कार्यकारी डोजियर को पॉपअप विंडो में खोलें",
     consultArchitectBtn: "वास्तु सलाहकार से परामर्श करें",
     neutralityLabel: "तटस्थता गारंटी:",
     neutralityText: "हम विशिष्ट डेवलपर्स से संबद्ध नहीं हैं। प्रत्येक मूल्यांकन वस्तुनिष्ठ संरचनात्मक विनिर्देशों और निवासियों के डेटा पर आधारित है।",
@@ -497,6 +507,7 @@ export const AUDIT_UI_LABELS: Record<LanguageCode, {
     downloadDossierTitle: (n) => `انجینئرنگ ڈوزیئر ڈاؤن لوڈ کریں: ${n}`,
     downloadDossierSubtitle: "جامع فائل: جیو ٹیکنیکل پاسپورٹ، DLD سروس فیس کی تاریخ اور فلور پلان کیٹلاگ۔",
     downloadDossierBtn: "انجینئرنگ و اخراجات ڈوزیئر (PDF) ڈاؤن لوڈ کریں",
+    openDossierModal: "ایگزیکٹو ڈوزیئر پاپ اپ ونڈو میں کھولیں",
     consultArchitectBtn: "آرکیٹیکچرل ایڈوائزر سے مشورہ کریں",
     neutralityLabel: "غیر جانبداری کی ضمانت:",
     neutralityText: "ہم کسی خاص ڈویلپر سے وابستہ نہیں ہیں۔ ہر تجزیہ مکمل طور پر معروضی ساختی حقائق اور رہائشیوں کے تجربات پر مبنی ہے۔",

@@ -217,13 +217,21 @@ export default function DldTransactionLedger({ building }: DldTransactionLedgerP
         <div className="flex items-center gap-2">
           <span>🛡️</span>
           <span>
-            {lang === "ru"
-              ? "Данные верифицированы с открытым реестром Dubai Land Department и сервисом Mollak. Цены включают реальные зарегистрированные договоры купли-продажи."
-              : lang === "ar"
-              ? "البيانات معتمدة من السجلات الرسمية لدائرة الأراضي والأملاك في دبي ومنظومة ملاك. تمثل القيم العقود المسجلة قانونياً."
-              : lang === "zh"
-              ? "数据已通过迪拜土地局(DLD)官方公开数据平台及Mollak信托系统核实，所列金额均为真实完成产权交割的正式合同数据。"
-              : "Data verified against Dubai Land Department open registers and Mollak escrow portal. Values represent actual legal deeds."}
+            {(() => {
+              const notes: Record<string, string> = {
+                ru: "Данные верифицированы с открытым реестром Dubai Land Department и сервисом Mollak. Цены включают реальные зарегистрированные договоры купли-продажи.",
+                ar: "البيانات معتمدة من السجلات الرسمية لدائرة الأراضي والأملاك في دبي ومنظومة ملاك. تمثل القيم العقود المسجلة قانونياً.",
+                zh: "数据已通过迪拜土地局(DLD)官方公开数据平台及Mollak信托系统核实，所列金额均为真实完成产权交割的正式合同数据。",
+                de: "Daten abgeglichen mit den offenen Registern des Dubai Land Department und dem Mollak-Portal. Werte entsprechen echten notariellen Verträgen.",
+                fr: "Données vérifiées auprès des registres du Dubai Land Department et du portail Mollak. Les valeurs représentent des actes authentiques enregistrés.",
+                it: "Dati verificati con i registri aperti del Dubai Land Department e il portale Mollak. I valori corrispondono a reali atti notarili registrati.",
+                tr: "Veriler, Dubai Tapu Departmanı açık sicilleri ve Mollak portalı ile doğrulanmıştır. Değerler tescilli resmi satış sözleşmelerini yansıtır.",
+                hi: "दुबई भूमि विभाग के खुले रजिस्टरों और मोल्लाक पोर्टल से सत्यापित डेटा। मान वास्तविक कानूनी विलेखों का प्रतिनिधित्व करते हैं।",
+                ur: "اعداد و شمار دبئی لینڈ ڈیپارٹمنٹ کے اوپن رجسٹرز اور مولک پورٹل سے تصدیق شدہ ہیں۔ تمام اقدار رجسٹرڈ قانونی سودوں کی عکاس ہیں۔",
+                en: "Data verified against Dubai Land Department open registers and Mollak escrow portal. Values represent actual legal deeds."
+              };
+              return notes[lang] || notes.en;
+            })()}
           </span>
         </div>
         <span className="font-semibold text-[#8C6A48] tracking-wider uppercase text-xs">SOURCE: DLD / MOLLAK</span>

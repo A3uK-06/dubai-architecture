@@ -11,8 +11,6 @@ export default function FloatingWhatsApp() {
   const [isHovered, setIsHovered] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const isRu = lang === "ru";
-
   // Use configured WhatsApp number or fallback to modal concierge if none is set
   const envNumber = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER;
   const hasRealWhatsApp = Boolean(envNumber && envNumber !== "971500000000");
@@ -40,6 +38,71 @@ export default function FloatingWhatsApp() {
     }
   };
 
+  const tooltipHeadline = ({
+    en: "Private Advisory Desk (Metropolitan & Whitewill)",
+    ru: "Консьерж-сервис (Metropolitan & Whitewill)",
+    ar: "مكتب الاستشارات العقارية الخاصة (متروبوليتان ووايت ويل)",
+    zh: "专属置业顾问中心（Metropolitan 与 Whitewill 授权）",
+    de: "Private Kundenberatung (Metropolitan & Whitewill)",
+    fr: "Bureau de Conseil Privé (Metropolitan & Whitewill)",
+    it: "Desk di Consulenza Privata (Metropolitan & Whitewill)",
+    tr: "Özel Danışmanlık Masası (Metropolitan & Whitewill)",
+    hi: "निजी सलाहकार डेस्क (मेट्रोपॉलिटन और व्हाइटविल)",
+    ur: "پرائیویٹ ایڈوائزری ڈیسک (Metropolitan اور Whitewill)",
+  }[lang] || "Private Advisory Desk (Metropolitan & Whitewill)");
+
+  const tooltipText = ({
+    en: "Request official developer dossiers, floor plans & payment plans",
+    ru: "Запрос проектных досье, планировок и доступных квот у девелоперов",
+    ar: "طلب الملفات الرسمية للمشاريع، والمخططات، وخطط السداد المعتمدة",
+    zh: "获取开发商官方项目档案、高清户型图及分期付款方案",
+    de: "Offizielle Bauträger-Dossiers, Grundrisse & Zahlungspläne anfordern",
+    fr: "Demandez les dossiers promoteurs, plans d'étages et échéanciers",
+    it: "Richiedi dossier ufficiali, planimetrie e piani di pagamento",
+    tr: "Resmi geliştirici dosyaları, kat planları ve ödeme planlarını talep edin",
+    hi: "आधिकारिक डेवलपर डोजियर, फ्लोर प्लान और भुगतान योजनाओं का अनुरोध करें",
+    ur: "سرکاری ڈویلپر ڈوزیئرز، فلور پلانز اور ادائیگی کے شیڈول کی درخواست کریں",
+  }[lang] || "Request official developer dossiers, floor plans & payment plans");
+
+  const conciergeBtnLabel = ({
+    en: "Private Concierge",
+    ru: "Консьерж-сервис",
+    ar: "خدمة الكونسيرج",
+    zh: "置业礼宾服务",
+    de: "Privater Concierge",
+    fr: "Conciergerie Privée",
+    it: "Concierge Privato",
+    tr: "Özel Danışman",
+    hi: "निजी कंसीयज",
+    ur: "پرائیویٹ دربان سروس",
+  }[lang] || "Private Concierge");
+
+  const modalTitle = ({
+    en: "Private Advisory: Project Dossiers & Unit Access",
+    ru: "Консьерж-сервис: Досье и планировки",
+    ar: "خدمة الاستشارات الخاصة: ملفات المشاريع والوحدات المتاحة",
+    zh: "专属置业礼宾服务：官方项目档案与房源锁定",
+    de: "Private Beratung: Projektdossiers & Einheiten-Zugang",
+    fr: "Conseil Privé : Dossiers de Projet et Disponibilités",
+    it: "Consulenza Privata: Dossier di Progetto e Accesso alle Unità",
+    tr: "Özel Danışmanlık: Proje Dosyaları ve Daire Tahsisleri",
+    hi: "निजी सलाह: परियोजना डोजियर एवं संपत्ति पहुंच",
+    ur: "نجی مشاورتی سروس: پروجیکٹ ڈوزیئرز اور یونٹس تک رسائی",
+  }[lang] || "Private Advisory: Project Dossiers & Unit Access");
+
+  const modalSubtitle = ({
+    en: "Request official developer floor plans, project brochures and verified payment schedules via licensed UAE brokerage partners.",
+    ru: "Запросите официальные презентации застройщиков, планы этажей и расчет доходности от аккредитованных брокеров-партнеров (Whitewill, Metropolitan).",
+    ar: "اطلب المخططات الرسمية، وكتيبات المشاريع، وجداول السداد المعتمدة عبر شركاء الوساطة المرخصين في الإمارات.",
+    zh: "通过阿联酋官方持牌经纪机构（Whitewill 与 Metropolitan），获取开发商一手户型图册、楼盘说明书与官方核准分期方案。",
+    de: "Fordern Sie offizielle Grundrisse, Projektbroschüren und geprüfte Zahlungspläne über lizenzierte Maklerpartner der VAE an.",
+    fr: "Recevez les plans officiels, brochures de projet et échéanciers validés auprès de nos courtiers partenaires agréés aux Émirats.",
+    it: "Richiedi planimetrie ufficiali, brochure di progetto e piani di pagamento verificati tramite i broker partner autorizzati negli Emirati.",
+    tr: "Lisanslı BAE broker ortakları aracılığıyla resmi geliştirici kat planları, proje broşürleri ve onaylı ödeme planlarını talep edin.",
+    hi: "यूएई के लाइसेंस प्राप्त ब्रोकरेज भागीदारों के माध्यम से आधिकारिक डेवलपर फ्लोर प्लान, प्रोजेक्ट ब्रोशर और सत्यापित भुगतान योजनाओं का अनुरोध करें।",
+    ur: "متحدہ عرب امارات کے لائسنس یافتہ بروکر پارٹنرز کے ذریعے ڈویلپرز کے تصدیق شدہ فلور پلانز، معلوماتی کتابچے اور ادائیگی کے شیڈول حاصل کریں۔",
+  }[lang] || "Request official developer floor plans, project brochures and verified payment schedules via licensed UAE brokerage partners.");
+
   return (
     <>
       <div
@@ -59,13 +122,11 @@ export default function FloatingWhatsApp() {
             <div className="flex items-center gap-2">
               <span className="w-2 h-2 rounded-full bg-[#8C6A48] animate-pulse" />
               <span className="font-bold text-[#8C6A48]">
-                {isRu ? "Консьерж-сервис (Metropolitan & Whitewill)" : "Private Advisory Desk (Metropolitan & Whitewill)"}
+                {tooltipHeadline}
               </span>
             </div>
             <p className="text-[11px] text-[#78716C] mt-0.5">
-              {isRu
-                ? "Запрос проектных досье, планировок и доступных квот у девелоперов"
-                : "Request official developer dossiers, floor plans & payment plans"}
+              {tooltipText}
             </p>
           </div>
         )}
@@ -81,7 +142,7 @@ export default function FloatingWhatsApp() {
         >
           <span className="text-base text-amber-400">🏛️</span>
           <span className="hidden sm:inline font-mono tracking-wide text-stone-200">
-            {isRu ? "Консьерж-сервис" : "Private Concierge"}
+            {conciergeBtnLabel}
           </span>
         </a>
       </div>
@@ -90,12 +151,8 @@ export default function FloatingWhatsApp() {
       <LeadModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
-        title={isRu ? "Консьерж-сервис: Досье и планировки" : "Private Advisory: Project Dossiers & Unit Access"}
-        subtitle={
-          isRu
-            ? "Запросите официальные презентации застройщиков, планы этажей и расчет доходности от аккредитованных брокеров-партнеров (Whitewill, Metropolitan)."
-            : "Request official developer floor plans, project brochures and verified payment schedules via licensed UAE brokerage partners."
-        }
+        title={modalTitle}
+        subtitle={modalSubtitle}
       />
     </>
   );

@@ -540,8 +540,8 @@ export default function CatalogSection() {
                       <div className="text-lg sm:text-xl font-extrabold text-[#059669] font-mono leading-none">
                         {building.investmentYield}
                       </div>
-                      <div className="text-xs font-semibold text-[#64748B] uppercase tracking-wider mt-1.5">
-                        Net Yield
+                      <div className="text-xs font-semibold text-[#64748B] uppercase tracking-wider mt-1.5 truncate">
+                        {t.catalog.estRentalYield}
                       </div>
                     </div>
                     <div className="border-x border-[#E2E8F0] px-1 min-w-0">
@@ -573,19 +573,19 @@ export default function CatalogSection() {
                     {isChillerFree(orig) && (
                       <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[11px] font-bold bg-sky-50 text-sky-800 border border-sky-200">
                         <span>❄️</span>
-                        <span>Chiller-Free</span>
+                        <span>{lifestyleI18n.chillerFree.replace("❄️ ", "")}</span>
                       </span>
                     )}
                     {isWalkToMetro(orig) && (
                       <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[11px] font-bold bg-amber-50 text-amber-900 border border-amber-200">
                         <span>🚶</span>
-                        <span>Metro</span>
+                        <span>{lifestyleI18n.walkToMetro.replace("🚶 ", "")}</span>
                       </span>
                     )}
                     {isGoldenVisaReady(orig) && (
                       <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[11px] font-bold bg-purple-50 text-purple-800 border border-purple-200">
                         <span>🏛️</span>
-                        <span>Golden Visa</span>
+                        <span>{lifestyleI18n.goldenVisa.replace("🏛️ ", "")}</span>
                       </span>
                     )}
                   </div>

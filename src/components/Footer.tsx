@@ -4,11 +4,12 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { useLang } from "@/context/LangContext";
 import MethodologyModal from "@/components/MethodologyModal";
+import { FOOTER_I18N } from "@/data/localizedFooter";
 
 export default function Footer() {
   const { t, lang } = useLang();
   const [isMethodologyOpen, setIsMethodologyOpen] = useState(false);
-  const isRu = lang === "ru";
+  const tF = FOOTER_I18N[lang] || FOOTER_I18N.en;
 
   return (
     <>
@@ -57,10 +58,10 @@ export default function Footer() {
                 <button
                   type="button"
                   onClick={() => setIsMethodologyOpen(true)}
-                  className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono bg-amber-400/10 hover:bg-amber-400/20 border border-amber-400/30 text-amber-300 transition-colors"
+                  className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-mono bg-amber-400/10 hover:bg-amber-400/20 border border-amber-400/30 text-amber-300 transition-colors cursor-pointer"
                 >
                   <span>📋</span>
-                  <span>{isRu ? "Методология и аудит DLD" : "Methodology & DLD Verification"}</span>
+                  <span>{tF.methodologyDldBtn}</span>
                 </button>
               </div>
             </div>
@@ -88,7 +89,7 @@ export default function Footer() {
                 </li>
                 <li>
                   <Link href="/developers/" className="hover:text-amber-400 transition-colors">
-                    {isRu ? "Застройщики" : "Developers"}
+                    {tF.developersLink}
                   </Link>
                 </li>
                 <li>
@@ -103,27 +104,27 @@ export default function Footer() {
                 </li>
                 <li>
                   <Link href="/methodology/" className="hover:text-amber-400 transition-colors">
-                    {isRu ? "Методология и DLD" : "Methodology & DLD"}
+                    {tF.methodologyLink}
                   </Link>
                 </li>
                 <li>
                   <Link href="/about/" className="hover:text-amber-400 transition-colors">
-                    {isRu ? "О проекте (Архив с 2006)" : "About Archive (Est. 2006)"}
+                    {tF.aboutLink}
                   </Link>
                 </li>
                 <li>
                   <Link href="/editorial-policy/" className="hover:text-amber-400 transition-colors">
-                    {isRu ? "Редакционная политика" : "Editorial Policy"}
+                    {tF.editorialPolicyLink}
                   </Link>
                 </li>
                 <li>
                   <Link href="/affiliate-disclosure/" className="hover:text-amber-400 transition-colors">
-                    {isRu ? "Раскрытие партнерства RERA" : "Affiliate & RERA Disclosure"}
+                    {tF.affiliateDisclosureLink}
                   </Link>
                 </li>
                 <li>
                   <Link href="/contact/" className="hover:text-amber-400 transition-colors">
-                    {isRu ? "Контакты редакции" : "Contact & Press"}
+                    {tF.contactLink}
                   </Link>
                 </li>
               </ul>
@@ -139,29 +140,25 @@ export default function Footer() {
               </p>
               <div className="pt-2 text-xs text-slate-400 space-y-1.5">
                 <div className="text-amber-400/90 font-mono font-semibold">
-                  {isRu
-                    ? "Брокерские партнеры: Metropolitan Premium Properties & Whitewill"
-                    : "Accredited Broker Partners: Metropolitan Premium Properties & Whitewill"}
+                  {tF.brokerPartnersTitle}
                 </div>
                 <div className="text-slate-400 text-[11px] leading-relaxed">
-                  {isRu
-                    ? "Все сделки, бронирование и эскроу-платежи проводятся в строгом соответствии с лицензиями RERA и регламентами Dubai Land Department."
-                    : "Client transactions, escrow processing, and official unit reservations are conducted via accredited RERA-licensed brokerage partners."}
+                  {tF.brokerPartnersDesc}
                 </div>
                 <div className="pt-1 flex items-center gap-2">
                   <button
                     type="button"
                     onClick={() => setIsMethodologyOpen(true)}
-                    className="text-xs text-amber-400 hover:text-amber-300 underline font-sans font-medium"
+                    className="text-xs text-amber-400 hover:text-amber-300 underline font-sans font-medium cursor-pointer"
                   >
-                    {isRu ? "Быстрый просмотр" : "Quick View"}
+                    {tF.quickViewBtn}
                   </button>
                   <span className="text-slate-600">•</span>
                   <Link
                     href="/methodology/"
                     className="text-xs text-amber-400 hover:text-amber-300 underline font-sans font-medium"
                   >
-                    {isRu ? "Полная страница регламента →" : "Official Methodology Page →"}
+                    {tF.fullMethodologyPageLink}
                   </Link>
                 </div>
               </div>

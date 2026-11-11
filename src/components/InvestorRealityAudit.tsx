@@ -5,6 +5,7 @@ import { Building } from "@/data/buildings";
 import { LanguageCode } from "@/i18n/languages";
 import { useLang } from "@/context/LangContext";
 import { getBuildingInvestorReality } from "@/data/investorRealityCheck";
+import { ZERO_THREAT_LABELS_I18N } from "@/data/localizedInvestorAudits";
 
 interface InvestorRealityAuditProps {
   building: Building;
@@ -134,9 +135,7 @@ export default function InvestorRealityAudit({ building }: InvestorRealityAuditP
                 </ul>
               ) : (
                 <div className="text-xs text-slate-400 italic">
-                  {lang === "ru"
-                    ? "Угрозы застройки горизонта отсутствуют (первая береговая линия / открытый залив)."
-                    : "Zero horizon obstruction threats (unobstructable open sea/coastal frontline)."}
+                  {ZERO_THREAT_LABELS_I18N[lang] || ZERO_THREAT_LABELS_I18N.en}
                 </div>
               )}
             </div>

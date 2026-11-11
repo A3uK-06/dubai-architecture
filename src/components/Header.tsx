@@ -102,7 +102,18 @@ export default function Header() {
               href={developersUrl}
               className="hover:text-[#0F172A] transition-colors py-1 relative after:absolute after:bottom-0 after:left-0 after:right-0 after:h-0.5 after:bg-[#0F172A] after:scale-x-0 hover:after:scale-x-100 after:transition-transform"
             >
-              {lang === "ru" ? "Застройщики" : "Developers"}
+              {({
+                en: "Developers",
+                ru: "Застройщики",
+                ar: "المطورون",
+                zh: "开发商",
+                de: "Entwickler",
+                fr: "Promoteurs",
+                it: "Sviluppatori",
+                tr: "Geliştiriciler",
+                hi: "डेवलपर्स",
+                ur: "تعمیر کنندگان",
+              }[lang] || "Developers")}
             </Link>
           </nav>
 
@@ -187,7 +198,18 @@ export default function Header() {
             onClick={() => setMobileMenuOpen(false)}
             className="block px-3 py-2 text-base font-semibold text-[#0F172A] rounded-lg hover:bg-[#F1F5F9]"
           >
-            {lang === "ru" ? "Застройщики" : "Developers"}
+            {({
+              en: "Developers",
+              ru: "Застройщики",
+              ar: "المطورون",
+              zh: "开发商",
+              de: "Entwickler",
+              fr: "Promoteurs",
+              it: "Sviluppatori",
+              tr: "Geliştiriciler",
+              hi: "डेवलपर्स",
+              ur: "تعمیر کنندگان",
+            }[lang] || "Developers")}
           </Link>
           <div className="pt-2">
             <Link

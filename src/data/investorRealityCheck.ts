@@ -1,5 +1,11 @@
 import { Building, ViewBlockerRadar, SunHeatExposure, WalkabilityIndex } from "./buildings";
 import { LanguageCode } from "@/i18n/languages";
+import {
+  BESPOKE_INVESTOR_AUDITS_I18N,
+  getLocalizedDistrictViewFallback,
+  getLocalizedSolarExposureFallback,
+  getLocalizedWalkabilityFallback,
+} from "./localizedInvestorAudits";
 
 export interface InvestorAuditLabels {
   sectionTitle: string;
@@ -527,8 +533,22 @@ export function getBuildingInvestorReality(
 } {
   const labels = INVESTOR_AUDIT_LABELS[lang] || INVESTOR_AUDIT_LABELS.en;
 
-  // 1. Check if building has bespoke handcrafted data
-  if (BESPOKE_INVESTOR_AUDITS[building.id]) {
+  // 1. Check if building has bespoke handcrafted data for this language
+  const towerBespoke = BESPOKE_INVESTOR_AUDITS_I18N[building.id] || (building.slug ? BESPOKE_INVESTOR_AUDITS_I18N[building.slug] : undefined);
+  if (towerBespoke) {
+    const bespoke = towerBespoke[lang] || towerBespoke.en;
+    if (bespoke) {
+      return {
+        viewRadar: bespoke.viewRadar,
+        solarExposure: bespoke.solarExposure,
+        walkability: bespoke.walkability,
+        labels
+      };
+    }
+  }
+
+  // Also check legacy BESPOKE_INVESTOR_AUDITS
+  if (BESPOKE_INVESTOR_AUDITS[building.id] && lang === "en") {
     const bespoke = BESPOKE_INVESTOR_AUDITS[building.id];
     return {
       viewRadar: bespoke.viewRadar,
@@ -538,200 +558,10 @@ export function getBuildingInvestorReality(
     };
   }
 
-  // 2. Compute dynamic realistic fallback based on building attributes
-  const isMegatall = building.heightMeters >= 450;
-  const isSupertall = building.heightMeters >= 300 && building.heightMeters < 450;
-  const isHighrise = building.heightMeters < 300;
-
-  let riskLevel: "protected" | "low" | "moderate" | "high" = "low";
-  let status = labels.riskLow;
-  let assessment = "";
-  let protectedOrientations: string[] = [];
-  let threatOrientations: string[] = [];
-
-  // District-specific view zoning rules
-  if (building.districtSlug === "downtown-dubai") {
-    if (isMegatall || building.heightMeters > 350) {
-      riskLevel = "protected";
-      status = labels.riskProtected;
-      assessment = lang === "ru"
-        ? `Благодаря высоте ${building.heightMeters} м верхние уровни башни возвышаются над плотным массивом Даунтауна, обеспечивая защищенный 360-градусный обзор на Бурдж-Халифу и Персидский залив.`
-        : `Standing at an official height of ${building.heightMeters} m, the upper tiers soar clear above Downtown's mid-rise canopy, preserving sovereign views over Burj Khalifa and the Gulf horizon.`;
-      protectedOrientations = [
-        lang === "ru" ? "Запад / Северо-Запад (Панорама Бурдж-Халифы и залива)" : "West / North-West (Burj Khalifa & Sea Horizon)",
-        lang === "ru" ? "Юг (Дубайский канал и заповедник Рас-аль-Хор)" : "South (Dubai Canal & Ras Al Khor Sanctuary)"
-      ];
-      threatOrientations = [
-        lang === "ru" ? "Восток (Внутренние кварталы Даунтауна ниже 30 этажа)" : "East (Internal Downtown mid-rise cluster below level 30)"
-      ];
-    } else {
-      riskLevel = "moderate";
-      status = labels.riskModerate;
-      assessment = lang === "ru"
-        ? `В окружении плотной застройки бульвара Даунтауна. Ракурсы в сторону открытых площадей защищены, однако боковые виды на соседние участки зависят от высоты выбранного этажа.`
-        : `Situated within Downtown's dense urban fabric. Horizon facing open boulevards is protected, but lateral sightlines depend heavily on unit tier selection.`;
-      protectedOrientations = [
-        lang === "ru" ? "Фасад на центральный бульвар" : "Boulevard Frontage Aspect"
-      ];
-      threatOrientations = [
-        lang === "ru" ? "Боковые ракурсы (соседние высотки на расстоянии 60-90 м)" : "Lateral views (Adjacent towers at 60-90m proximity)"
-      ];
-    }
-  } else if (building.districtSlug === "dubai-marina") {
-    if (building.name.toLowerCase().includes("beach") || building.name.toLowerCase().includes("gate") || isSupertall) {
-      riskLevel = "low";
-      status = labels.riskLow;
-      assessment = lang === "ru"
-        ? `Расположение в первой или второй линии Дубай Марина обеспечивает устойчивый вид на гавань для яхт и остров Пальма Джумейра.`
-        : `Strategic positioning within Dubai Marina guarantees resilient sightlines toward the yacht channel and Palm Jumeirah.`;
-      protectedOrientations = [
-        lang === "ru" ? "Северо-Запад (Пальма Джумейра и вход в Марину)" : "North-West (Palm Jumeirah & Marina Entrance)",
-        lang === "ru" ? "Юго-Запад (Водная гладь яхтенного бассейна)" : "South-West (Yacht basin waterway)"
-      ];
-      threatOrientations = [
-        lang === "ru" ? "Восток (Плотная линия башен вдоль Sheikh Zayed Road)" : "East (Dense cluster along Sheikh Zayed Road)"
-      ];
-    } else {
-      riskLevel = "moderate";
-      status = labels.riskModerate;
-      assessment = lang === "ru"
-        ? `Внутри плотного кластера Марины. Рекомендуются апартаменты выше 25 этажа для гарантированного выхода на водный горизонт.`
-        : `Located within Marina's high-density cluster. Units above level 25 are recommended to clear adjacent podiums and maximize water views.`;
-      protectedOrientations = [
-        lang === "ru" ? "Вид на набережную Марина Променад" : "Marina Promenade Waterfront Aspect"
-      ];
-      threatOrientations = [
-        lang === "ru" ? "Восточные и тыловые фасады на соседние башни" : "East/rear facades facing neighboring residential towers"
-      ];
-    }
-  } else if (building.districtSlug === "palm-jumeirah") {
-    riskLevel = "protected";
-    status = labels.riskProtected;
-    assessment = lang === "ru"
-      ? `Островное расположение на Пальме гарантирует 100% неперекрываемый вид на Персидский залив или внутреннюю лагуну. Строительство новых высоток в море перед фасадом исключено.`
-      : `Prime island topography guarantees permanently unblockable panoramic views of the Arabian Gulf or inner frond lagoon. Offshore high-rise construction is strictly prohibited.`;
-    protectedOrientations = [
-      lang === "ru" ? "Морской горизонт (Персидский залив - навсегда защищен)" : "Open Arabian Gulf (100% Permanently Protected)",
-      lang === "ru" ? "Панорама на материковый скайлайн Дубая" : "Dubai Mainland Skyline Silhouette"
-    ];
-    threatOrientations = [];
-  } else {
-    // Default district fallback
-    riskLevel = isSupertall ? "low" : "moderate";
-    status = isSupertall ? labels.riskLow : labels.riskModerate;
-    assessment = lang === "ru"
-      ? `Объект высотой ${building.heightMeters} м в районе ${building.district}. Фасадные ракурсы на главные магистрали и водоемы защищены мастер-планом района.`
-      : `Engineered asset of ${building.heightMeters} m in ${building.district}. Street-front orientations along master arterial roads remain protected by municipal zoning bylaws.`;
-    protectedOrientations = [
-      lang === "ru" ? "Фронтальный обзор вдоль главной артерии района" : "Master Boulevard Frontline Aspect"
-    ];
-    threatOrientations = [
-      lang === "ru" ? "Внутренние межквартальные участки будущей застройки" : "Internal secondary plots under district phased development"
-    ];
-  }
-
-  // 3. Sun and Thermal Exposure
-  const isChillerFree = building.operatingSpecs?.chillerBilling === "Chiller-Free";
-  const coolingImpact = isChillerFree
-    ? (lang === "ru" ? "Низкое (Chiller-Free: кондиционирование включено в сбор)" : "Low (Chiller-Free: AC cooling included in service charge)")
-    : (lang === "ru" ? "Стандартное (Абонентская плата Empower/DEWA)" : "Standard (Consumption & capacity tariff applies)");
-
-  const solarExposure: SunHeatExposure = {
-    optimalAspect: lang === "ru"
-      ? "Северо-Восток (Мягкое утреннее солнце, минимальный нагрев стен)"
-      : "North-East (Gentle morning sunrise, minimal thermal wall soak)",
-    harshAspect: lang === "ru"
-      ? "Юго-Запад (Беспощадное пустынное солнце с 14:00 до 18:00)"
-      : "South-West (Intense desert afternoon solar radiation 14:00–18:00)",
-    coolingEnergyImpact: coolingImpact,
-    solarHeatGainRating: building.facade?.shgcSolarCoefficient
-      ? `${building.facade.glazingType} (SHGC ${building.facade.shgcSolarCoefficient})`
-      : (lang === "ru" ? "Высокий (Двойной стеклопакет с Low-E напылением)" : "High (Double Acoustic Low-E Glazing)"),
-    residentTip: lang === "ru"
-      ? "Квартиры с ориентацией на восток требуют на 25–30% меньше мощности охлаждения летом. Для западных окон рекомендуется установка плотных термоштор."
-      : "East-facing residences reduce AC power draw by 25–30% in peak summer. West-facing units benefit greatly from automated thermal blackout shading."
-  };
-
-  // 4. Walkability Index
-  let walkScore = 75;
-  let metroStation = "Dubai Metro Red Line";
-  let metroMinutes = 7;
-  let metroAccessType: WalkabilityIndex["metroAccessType"] = "Shaded Boulevard Walk";
-  let dailyEssentials = lang === "ru"
-    ? "Супермаркет, аптека и рестораны в пределах 3–5 минут пешком."
-    : "Supermarket, pharmacy, and cafes located within 3–5 min walk.";
-
-  if (building.districtSlug === "downtown-dubai") {
-    walkScore = 92;
-    metroStation = "Burj Khalifa / Dubai Mall Metro Station";
-    metroMinutes = 5;
-    metroAccessType = "Direct Air-Conditioned Travellator Tunnel";
-    dailyEssentials = lang === "ru"
-      ? "Прямой доступ в Dubai Mall, супермаркет Waitrose и бульвар Downtown без необходимости выходить на жару."
-      : "Direct indoor connection to Dubai Mall, Waitrose, and boulevard dining without facing summer heat.";
-  } else if (building.districtSlug === "dubai-marina") {
-    walkScore = 85;
-    metroStation = "Sobha Realty / DMCC Metro & Marina Tram";
-    metroMinutes = 4;
-    metroAccessType = "Shaded Boulevard Walk";
-    dailyEssentials = lang === "ru"
-      ? "Набережная Marina Walk, круглосуточные супермаркеты Carrefour/Spinneys и пляж JBR в пешей доступности."
-      : "Direct access to Marina Walk promenade, 24/7 Carrefour/Spinneys, and JBR beach within easy walking distance.";
-  } else if (building.districtSlug === "difc") {
-    walkScore = 90;
-    metroStation = "Financial Centre / Emirates Towers Metro Station";
-    metroMinutes = 4;
-    metroAccessType = "Direct Covered Walkway";
-    dailyEssentials = lang === "ru"
-      ? "Крытая арт-галерея Gate Avenue, рестораны гида Michelin и коворкинги в 2–3 минутах пешком."
-      : "Covered Gate Avenue pedestrian spine, Michelin-starred dining, and corporate amenities within 2–3 min walk.";
-  } else if (building.districtSlug === "palm-jumeirah") {
-    walkScore = 50;
-    metroStation = "Palm Jumeirah Monorail Station (Connects to Tram)";
-    metroMinutes = 6;
-    metroAccessType = "Direct Covered Walkway";
-    dailyEssentials = lang === "ru"
-      ? "Частный пляж, клубный ресторан и мини-маркет в стилобате; для поездок в город рекомендуется авто или такси."
-      : "Private beach, resident dining, and gourmet deli in podium; personal vehicle or taxi recommended for mainland trips.";
-  } else if (building.districtSlug === "business-bay") {
-    walkScore = 74;
-    metroStation = "Business Bay Metro Station";
-    metroMinutes = 8;
-    metroAccessType = "Shaded Boulevard Walk";
-    dailyEssentials = lang === "ru"
-      ? "Набережная Dubai Canal, сетевые супермаркеты и фитнес-центры в шаговой доступности."
-      : "Dubai Canal promenade, supermarkets, and waterfront wellness clubs within walking reach.";
-  } else {
-    walkScore = 65;
-    metroMinutes = 10;
-    metroAccessType = "Open Street Walk";
-  }
-
-  const walkCategory: WalkabilityIndex["category"] =
-    walkScore >= 90
-      ? "Walker's Paradise"
-      : walkScore >= 70
-      ? "Very Walkable"
-      : walkScore >= 50
-      ? "Somewhat Walkable"
-      : "Car-Dependent";
-
-  const walkability: WalkabilityIndex = {
-    score: walkScore,
-    category: walkCategory,
-    metroStation,
-    metroDistanceMinutes: metroMinutes,
-    metroAccessType,
-    dailyEssentialsOnFoot: dailyEssentials
-  };
-
-  const viewRadar: ViewBlockerRadar = {
-    riskLevel,
-    status,
-    assessment,
-    protectedOrientations,
-    threatOrientations
-  };
+  // 2. Compute dynamic realistic fallback fully localized for all 10 languages
+  const viewRadar = getLocalizedDistrictViewFallback(building, lang, labels);
+  const solarExposure = getLocalizedSolarExposureFallback(building, lang);
+  const walkability = getLocalizedWalkabilityFallback(building, lang);
 
   return {
     viewRadar,

@@ -6,6 +6,7 @@ import { Building } from "@/data/buildings";
 import { useLang } from "@/context/LangContext";
 import { getArchitectWebsite, getCtbuhUrl, getDldRegistryUrl } from "@/lib/authorityLinks";
 import { getDeveloperForBuilding } from "@/data/developers";
+import { AI_QUICK_FACTS_I18N } from "@/data/localizedAiFacts";
 
 interface AiQuickFactsAndCitationsProps {
   building: Building;
@@ -15,7 +16,7 @@ export default function AiQuickFactsAndCitations({
   building,
 }: AiQuickFactsAndCitationsProps) {
   const { lang } = useLang();
-  const isRu = lang === "ru";
+  const tFacts = AI_QUICK_FACTS_I18N[lang] || AI_QUICK_FACTS_I18N.en;
 
   const architectUrl = getArchitectWebsite(building.architect);
   const ctbuhUrl = getCtbuhUrl(building.name);
@@ -32,9 +33,7 @@ export default function AiQuickFactsAndCitations({
           <div className="flex items-center gap-2.5">
             <span className="w-2.5 h-2.5 rounded-full bg-[#8C6A48] animate-pulse" />
             <h3 className="text-xs sm:text-sm font-mono font-bold uppercase tracking-wider text-[#8C6A48]">
-              {isRu
-                ? "Сводный паспорт объекта • AI Overview & Quick Facts"
-                : "Executive Factsheet • AI Overview & Quick Facts"}
+              {tFacts.factsheetBadge}
             </h3>
           </div>
           <span className="text-xs font-mono font-semibold px-2.5 py-1 rounded-full bg-white border border-[#DDD7CA] text-[#78716C]">
@@ -46,7 +45,7 @@ export default function AiQuickFactsAndCitations({
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs">
           <div className="p-3 rounded-xl bg-white border border-[#DDD7CA]/80">
             <span className="text-[#78716C] block font-medium">
-              {isRu ? "Архитектурная высота" : "Structural Height"}
+              {tFacts.structuralHeight}
             </span>
             <strong className="text-sm font-bold text-[#1C1917] font-mono mt-0.5 block">
               {building.heightMeters} m ({building.heightFeet} ft)
@@ -55,16 +54,16 @@ export default function AiQuickFactsAndCitations({
 
           <div className="p-3 rounded-xl bg-white border border-[#DDD7CA]/80">
             <span className="text-[#78716C] block font-medium">
-              {isRu ? "Этажность" : "Floors / Storeys"}
+              {tFacts.floorsLabel}
             </span>
             <strong className="text-sm font-bold text-[#1C1917] font-mono mt-0.5 block">
-              {building.floors} {isRu ? "этажей" : "levels"}
+              {building.floors} {tFacts.floorsSuffix}
             </strong>
           </div>
 
           <div className="p-3 rounded-xl bg-white border border-[#DDD7CA]/80">
             <span className="text-[#78716C] block font-medium">
-              {isRu ? "Год ввода в эксплуатацию" : "Year of Completion"}
+              {tFacts.yearBuilt}
             </span>
             <strong className="text-sm font-bold text-[#1C1917] font-mono mt-0.5 block">
               {building.yearBuilt}
@@ -73,7 +72,7 @@ export default function AiQuickFactsAndCitations({
 
           <div className="p-3 rounded-xl bg-white border border-[#DDD7CA]/80">
             <span className="text-[#78716C] block font-medium">
-              {isRu ? "Чистая доходность (ROI)" : "Projected Net Yield"}
+              {tFacts.projectedYield}
             </span>
             <strong className="text-sm font-bold text-[#2D6A4F] font-mono mt-0.5 block">
               {building.investmentYield}
@@ -82,7 +81,7 @@ export default function AiQuickFactsAndCitations({
 
           <div className="p-3 rounded-xl bg-white border border-[#DDD7CA]/80">
             <span className="text-[#78716C] block font-medium">
-              {isRu ? "Архитектурное бюро" : "Master Architect"}
+              {tFacts.masterArchitect}
             </span>
             <strong className="text-xs font-bold text-[#1C1917] mt-0.5 block truncate" title={building.architect}>
               {building.architect}
@@ -91,7 +90,7 @@ export default function AiQuickFactsAndCitations({
 
           <div className="p-3 rounded-xl bg-white border border-[#DDD7CA]/80">
             <span className="text-[#78716C] block font-medium">
-              {isRu ? "Девелопер проекта" : "Master Developer"}
+              {tFacts.masterDeveloper}
             </span>
             {(() => {
               const dev = getDeveloperForBuilding(building.developer);
@@ -113,16 +112,16 @@ export default function AiQuickFactsAndCitations({
 
           <div className="p-3 rounded-xl bg-white border border-[#DDD7CA]/80">
             <span className="text-[#78716C] block font-medium">
-              {isRu ? "Кадастровый статус" : "Cadastral Tenure"}
+              {tFacts.cadastralTenure}
             </span>
             <strong className="text-xs font-bold text-[#8C6A48] mt-0.5 block">
-              100% Freehold (DLD Registered)
+              {tFacts.cadastralValue}
             </strong>
           </div>
 
           <div className="p-3 rounded-xl bg-white border border-[#DDD7CA]/80">
             <span className="text-[#78716C] block font-medium">
-              {isRu ? "Район локации" : "Urban District"}
+              {tFacts.urbanDistrict}
             </span>
             <strong className="text-xs font-bold text-[#1C1917] mt-0.5 block truncate">
               {building.district}
@@ -132,15 +131,7 @@ export default function AiQuickFactsAndCitations({
 
         {/* Natural Language GEO Paragraph (Engineered for AI Summary Extractors) */}
         <p className="text-xs sm:text-sm text-[#44403C] leading-relaxed bg-white/70 p-3.5 rounded-xl border border-[#DDD7CA]/60 font-sans">
-          {isRu ? (
-            <>
-              <strong>Краткая архитектурная справка:</strong> {building.name} — знаковый объект высотного строительства высотой {building.heightMeters} м в районе {building.district}, спроектированный бюро {building.architect} для девелопера {building.developer} ({building.yearBuilt} г.). Объект внесен в кадастровый реестр Земельного департамента Дубая (DLD) с правом 100% частной собственности (Freehold).
-            </>
-          ) : (
-            <>
-              <strong>Executive Summary:</strong> {building.name} is a premier high-rise landmark standing {building.heightMeters} m ({building.floors} storeys) in {building.district}, designed by {building.architect} and developed by {building.developer} (completed {building.yearBuilt}). The property holds 100% foreign freehold ownership registration with the Dubai Land Department (DLD).
-            </>
-          )}
+          <strong>{tFacts.summaryLabel}</strong> {tFacts.getExecutiveSummary(building)}
         </p>
       </section>
 
@@ -152,13 +143,13 @@ export default function AiQuickFactsAndCitations({
         <div className="flex items-center justify-between">
           <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#78716C] flex items-center gap-1.5">
             <span>🌐</span>
-            <span>{isRu ? "Официальные реестры и первоисточники" : "Institutional Registries & Primary Sources"}</span>
+            <span>{tFacts.registriesTitle}</span>
           </span>
           <Link
             href="/methodology/"
             className="text-xs font-semibold text-[#8C6A48] hover:text-[#6D5135] underline"
           >
-            {isRu ? "Регламент верификации →" : "Verification Protocol →"}
+            {tFacts.verificationLink}
           </Link>
         </div>
 
@@ -175,7 +166,7 @@ export default function AiQuickFactsAndCitations({
                 <span>↗</span>
               </div>
               <p className="text-[#78716C] text-[11px] mt-1">
-                {isRu ? "Международная сертификация высоты и классификации" : "Council on Tall Buildings height & engineering profile"}
+                {tFacts.ctbuhDesc}
               </p>
             </div>
           </a>
@@ -192,7 +183,7 @@ export default function AiQuickFactsAndCitations({
                 <span>↗</span>
               </div>
               <p className="text-[#78716C] text-[11px] mt-1">
-                {isRu ? "Официальный кадастр и реестр сделок купли-продажи" : "Official title deed registrations & transaction ledger"}
+                {tFacts.dldDesc}
               </p>
             </div>
           </a>
@@ -209,7 +200,7 @@ export default function AiQuickFactsAndCitations({
                 <span>↗</span>
               </div>
               <p className="text-[#78716C] text-[11px] mt-1">
-                {isRu ? "Официальное портфолио мастер-архитектора" : "Master architectural studio monograph & drawings"}
+                {tFacts.architectDesc}
               </p>
             </div>
           </a>

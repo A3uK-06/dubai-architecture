@@ -1,0 +1,148 @@
+import { LanguageCode } from "@/i18n/languages";
+
+export interface FooterI18nLabels {
+  methodologyDldBtn: string;
+  developersLink: string;
+  methodologyLink: string;
+  aboutLink: string;
+  editorialPolicyLink: string;
+  affiliateDisclosureLink: string;
+  contactLink: string;
+  brokerPartnersTitle: string;
+  brokerPartnersDesc: string;
+  quickViewBtn: string;
+  fullMethodologyPageLink: string;
+}
+
+export const FOOTER_I18N: Record<LanguageCode, FooterI18nLabels> = {
+  en: {
+    methodologyDldBtn: "Methodology & DLD Verification",
+    developersLink: "Developers",
+    methodologyLink: "Methodology & DLD",
+    aboutLink: "About Archive (Est. 2006)",
+    editorialPolicyLink: "Editorial Policy",
+    affiliateDisclosureLink: "Affiliate & RERA Disclosure",
+    contactLink: "Contact & Press",
+    brokerPartnersTitle: "Accredited Broker Partners: Metropolitan Premium Properties & Whitewill",
+    brokerPartnersDesc: "Client transactions, escrow processing, and official unit reservations are conducted via accredited RERA-licensed brokerage partners.",
+    quickViewBtn: "Quick View",
+    fullMethodologyPageLink: "Official Methodology Page →",
+  },
+  ru: {
+    methodologyDldBtn: "Методология и аудит DLD",
+    developersLink: "Застройщики",
+    methodologyLink: "Методология и DLD",
+    aboutLink: "О проекте (Архив с 2006)",
+    editorialPolicyLink: "Редакционная политика",
+    affiliateDisclosureLink: "Раскрытие партнерства RERA",
+    contactLink: "Контакты редакции",
+    brokerPartnersTitle: "Брокерские партнеры: Metropolitan Premium Properties & Whitewill",
+    brokerPartnersDesc: "Все сделки, бронирование и эскроу-платежи проводятся в строгом соответствии с лицензиями RERA и регламентами Dubai Land Department.",
+    quickViewBtn: "Быстрый просмотр",
+    fullMethodologyPageLink: "Полная страница регламента →",
+  },
+  ar: {
+    methodologyDldBtn: "منهجية التحليل وتدقيق DLD",
+    developersLink: "المطورون العقاريون",
+    methodologyLink: "المنهجية وأراضي دبي",
+    aboutLink: "عن الأرشيف (تأسس 2006)",
+    editorialPolicyLink: "السياسة التحريرية",
+    affiliateDisclosureLink: "إفصاح الشراكة وتراخيص RERA",
+    contactLink: "التواصل وهيئة التحرير",
+    brokerPartnersTitle: "شركاء الوساطة المعتمدون: Metropolitan Premium Properties و Whitewill",
+    brokerPartnersDesc: "تتم كافة المعاملات والحجوزات ودفعات الضمان وفقاً لتراخيص مؤسسة التنظيم العقاري RERA ولوائح دائرة الأراضي والأملاك.",
+    quickViewBtn: "نظرة سريعة",
+    fullMethodologyPageLink: "صفحة المنهجية الرسمية ←",
+  },
+  zh: {
+    methodologyDldBtn: "测算方法学与 DLD 官方核验",
+    developersLink: "品牌开发商名录",
+    methodologyLink: "方法学与土地局监管",
+    aboutLink: "关于档案库（创于2006）",
+    editorialPolicyLink: "编辑出版政策",
+    affiliateDisclosureLink: "合规说明与 RERA 牌照披露",
+    contactLink: "媒体联络与编辑部",
+    brokerPartnersTitle: "官方授权经纪机构：Metropolitan Premium Properties 与 Whitewill",
+    brokerPartnersDesc: "所有客户房产交易、开发商正式认购及资金信托划转均严格依照 RERA 牌照准则及迪拜土地局法规执行。",
+    quickViewBtn: "快速查看",
+    fullMethodologyPageLink: "查看官方方法学完整说明 →",
+  },
+  de: {
+    methodologyDldBtn: "Methodik & DLD-Verifikation",
+    developersLink: "Entwickler",
+    methodologyLink: "Methodik & DLD",
+    aboutLink: "Über das Archiv (Gegr. 2006)",
+    editorialPolicyLink: "Redaktionsrichtlinien",
+    affiliateDisclosureLink: "RERA- & Partner-Offenlegung",
+    contactLink: "Kontakt & Presse",
+    brokerPartnersTitle: "Akkreditierte Maklerpartner: Metropolitan Premium Properties & Whitewill",
+    brokerPartnersDesc: "Transaktionsbegleitung, Einheitenreservierungen und Treuhandzahlungen erfolgen über RERA-lizenzierte Maklerhäuser gemäß DLD-Recht.",
+    quickViewBtn: "Schnellansicht",
+    fullMethodologyPageLink: "Vollständige Methodik-Seite →",
+  },
+  fr: {
+    methodologyDldBtn: "Méthodologie & Vérification DLD",
+    developersLink: "Promoteurs",
+    methodologyLink: "Méthodologie & DLD",
+    aboutLink: "À propos de l'archive (Depuis 2006)",
+    editorialPolicyLink: "Politique éditoriale",
+    affiliateDisclosureLink: "Divulgation des partenariats RERA",
+    contactLink: "Contact & Rédaction",
+    brokerPartnersTitle: "Courtiers partenaires agréés : Metropolitan Premium Properties & Whitewill",
+    brokerPartnersDesc: "Les transactions, réservations et paiements sécurisés sur séquestre sont encadrés par des courtiers détenteurs d'une licence RERA en règle.",
+    quickViewBtn: "Aperçu rapide",
+    fullMethodologyPageLink: "Page officielle de méthodologie →",
+  },
+  it: {
+    methodologyDldBtn: "Metodologia e verifica DLD",
+    developersLink: "Sviluppatori",
+    methodologyLink: "Metodologia e DLD",
+    aboutLink: "Chi siamo (Archivio dal 2006)",
+    editorialPolicyLink: "Linea editoriale",
+    affiliateDisclosureLink: "Trasparenza RERA e affiliazioni",
+    contactLink: "Contatti e Redazione",
+    brokerPartnersTitle: "Partner di intermediazione autorizzati: Metropolitan Premium Properties & Whitewill",
+    brokerPartnersDesc: "Transazioni, prenotazioni di lotti e depositi escrow sono gestiti da broker con regolare licenza RERA e Dubai Land Department.",
+    quickViewBtn: "Visualizzazione rapida",
+    fullMethodologyPageLink: "Pagina ufficiale della metodologia →",
+  },
+  tr: {
+    methodologyDldBtn: "Metodoloji ve DLD Doğrulaması",
+    developersLink: "Geliştiriciler",
+    methodologyLink: "Metodoloji ve DLD",
+    aboutLink: "Arşiv Hakkında (2006'dan beri)",
+    editorialPolicyLink: "Yayın İlkeleri",
+    affiliateDisclosureLink: "RERA Ortaklık Açıklaması",
+    contactLink: "İletişim ve Basın",
+    brokerPartnersTitle: "Akredite Broker Ortakları: Metropolitan Premium Properties & Whitewill",
+    brokerPartnersDesc: "Tüm işlemler, rezervasyonlar ve emanet hesap ödemeleri RERA lisanslı yetkili acenteler ve DLD mevzuatı altında yürütülür.",
+    quickViewBtn: "Hızlı İnceleme",
+    fullMethodologyPageLink: "Resmi Metodoloji Sayfası →",
+  },
+  hi: {
+    methodologyDldBtn: "पद्धति एवं डीएलडी सत्यापन",
+    developersLink: "डेवलपर्स",
+    methodologyLink: "पद्धति और डीएलडी",
+    aboutLink: "संग्रह के बारे में (स्थापना 2006)",
+    editorialPolicyLink: "संपादकीय नीति",
+    affiliateDisclosureLink: "रेरा संबद्धता प्रकटीकरण",
+    contactLink: "संपर्क और प्रेस",
+    brokerPartnersTitle: "मान्यता प्राप्त ब्रोकरेज भागीदार: मेट्रोपॉलिटन प्रीमियम प्रॉपर्टीज और व्हाइटविल",
+    brokerPartnersDesc: "सभी लेनदेन, बुकिंग और एस्क्रो भुगतान रेरा लाइसेंस और दुबई भूमि विभाग के नियमों के अनुसार निष्पादित किए जाते हैं।",
+    quickViewBtn: "त्वरित दृश्य",
+    fullMethodologyPageLink: "आधिकारिक पद्धति पृष्ठ →",
+  },
+  ur: {
+    methodologyDldBtn: "طریقہ کار اور ڈی ایل ڈی توثیق",
+    developersLink: "تعمیر کنندگان (ڈویلپرز)",
+    methodologyLink: "طریقہ کار اور ڈی ایل ڈی",
+    aboutLink: "آرکائیو کا تعارف (قیام 2006)",
+    editorialPolicyLink: "ادارتی حکمت عملی",
+    affiliateDisclosureLink: "ریرا پارٹنرشپ کا قانونی اعلان",
+    contactLink: "رابطہ اور ادارت",
+    brokerPartnersTitle: "منظور شدہ بروکریج پارٹنرز: Metropolitan Premium Properties اور Whitewill",
+    brokerPartnersDesc: "تمام سودے، یونٹس کی بکنگ اور ایسکرو ادائیگیوں کے عمل کو ریرا لائسنس یافتہ بروکرز اور ڈی ایل ڈی قوانین کے مطابق انجام دیا جاتا ہے۔",
+    quickViewBtn: "مختصر جائزہ",
+    fullMethodologyPageLink: "طریقہ کار کا مکمل صفحہ ←",
+  },
+};

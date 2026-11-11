@@ -732,7 +732,7 @@ export default function BuildingDetailClient({
                 }}
                 className="w-full block text-center px-4 py-1 text-[11px] text-[#78716C] hover:text-[#0F172A] font-semibold underline underline-offset-2 transition-colors cursor-pointer"
               >
-                📑 {lang === "ru" ? "Открыть паспорт в компактном окне" : "Open Executive Dossier Modal"}
+                📑 {tAudit.openDossierModal}
               </button>
 
               {/* Direct WhatsApp Concierge */}

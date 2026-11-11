@@ -40,7 +40,6 @@ export default function RoiCalculator({
 }: RoiCalculatorProps) {
   const { t, lang } = useLang();
   const [isMethodologyOpen, setIsMethodologyOpen] = useState(false);
-  const isRu = lang === "ru";
 
   const [priceAed, setPriceAed] = useState<number>(initialPriceAed);
   const [grossYield, setGrossYield] = useState<number>(initialYieldPercent);
@@ -502,16 +501,36 @@ export default function RoiCalculator({
           {/* Statutory YMYL Disclaimer & Methodology */}
           <div className="pb-2 text-center space-y-1">
             <p className="text-[11px] text-[#78716C] leading-snug">
-              {isRu
-                ? "Расчеты носят ориентировочный характер на основе открытых индексов DLD и тарифов DEWA. Не является публичной офертой или гарантией дохода."
-                : "Estimates are indicative, calculated from official DLD transaction registers and DEWA tariff indices. Does not constitute a guaranteed financial offer."}
+              {({
+                en: "Estimates are indicative, calculated from official DLD transaction registers and DEWA tariff indices. Does not constitute a guaranteed financial offer.",
+                ru: "Расчеты носят ориентировочный характер на основе открытых индексов DLD и тарифов DEWA. Не является публичной офертой или гарантией дохода.",
+                ar: "التقديرات استرشادية، ومحسوبة استناداً إلى سجلات معاملات DLD الرسمية ومؤشرات تعرفة ديوا. لا تشكل عرضاً مالياً ملزماً أو ضماناً للعائد.",
+                zh: "测算结果仅供参考，均基于迪拜土地局（DLD）官方成交登记与 DEWA 基础能耗费率模型，不构成任何公开要约或投资收益保底承诺。",
+                de: "Schätzungen sind indikativ und basieren auf offiziellen DLD-Transaktionsregistern sowie DEWA-Tarifindizes. Keine Garantie auf Rendite oder öffentliches Angebot.",
+                fr: "Estimations indicatives établies d'après les registres officiels du DLD et les barèmes DEWA. Ne constitue pas une offre publique ni une garantie de rendement.",
+                it: "Stime puramente indicative calcolate sui registri ufficiali DLD e sugli indici tariffari DEWA. Non costituiscono offerta pubblica né garanzia di rendita.",
+                tr: "Tahminler gösterge niteliğinde olup resmi DLD işlem sicili ve DEWA tarife endekslerine dayanır. Yatırım tavsiyesi veya getiri garantisi teşkil etmez.",
+                hi: "अनुमान सांकेतिक हैं, जिनकी गणना आधिकारिक डीएलडी लेनदेन रजिस्टरों और डीईडब्ल्यूए टैरिफ सूचकांकों से की गई है। यह कोई सार्वजनिक प्रस्ताव या गारंटीकृत रिटर्न नहीं है।",
+                ur: "تخمینہ جات رہنمائی کے لیے ہیں جو سرکاری ڈی ایل ڈی ٹرانزیکشن ریکارڈ اور ڈیوا ٹیرف پر مبنی ہیں۔ یہ کسی منافع کی ضمانت یا مالی پیشکش نہیں ہے۔"
+              }[lang] || "Estimates are indicative, calculated from official DLD transaction registers and DEWA tariff indices. Does not constitute a guaranteed financial offer.")}
             </p>
             <button
               type="button"
               onClick={() => setIsMethodologyOpen(true)}
-              className="text-[11px] text-[#8C6A48] hover:text-[#1C1917] underline font-medium transition-colors"
+              className="text-[11px] text-[#8C6A48] hover:text-[#1C1917] underline font-medium transition-colors cursor-pointer"
             >
-              {isRu ? "📋 Методология расчетов и открытые данные DLD →" : "📋 Calculation Methodology & DLD Open Data →"}
+              {({
+                en: "📋 Calculation Methodology & DLD Open Data →",
+                ru: "📋 Методология расчетов и открытые данные DLD →",
+                ar: "📋 منهجية الحساب والبيانات المفتوحة لدائرة الأراضي DLD ←",
+                zh: "📋 测算方法学与迪拜土地局 DLD 官方开放数据 →",
+                de: "📋 Berechnungsmethodik & DLD Open Data →",
+                fr: "📋 Méthodologie de calcul & Données ouvertes DLD →",
+                it: "📋 Metodologia di calcolo e Open Data DLD →",
+                tr: "📋 Hesaplama Metodolojisi ve DLD Açık Veri Sicili →",
+                hi: "📋 गणना पद्धति और डीएलडी ओपन डेटा →",
+                ur: "📋 حساب کا طریقہ کار اور ڈی ایل ڈی اوپن ڈیٹا ←"
+              }[lang] || "📋 Calculation Methodology & DLD Open Data →")}
             </button>
           </div>
           {/* Action Buttons */}

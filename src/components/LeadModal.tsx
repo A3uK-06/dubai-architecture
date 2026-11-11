@@ -4,6 +4,7 @@ import React, { useState } from "react";
 import { useLang } from "@/context/LangContext";
 import { getAttributionData } from "@/lib/attribution";
 import { dispatchLead, LeadRoutingResult } from "@/lib/leadRouting";
+import { LEAD_MODAL_I18N } from "@/data/localizedLeadModal";
 
 interface LeadModalProps {
   isOpen?: boolean;
@@ -34,6 +35,7 @@ export default function LeadModal({
 
   if (isOpen === false) return null;
 
+  const tLead = LEAD_MODAL_I18N[lang] || LEAD_MODAL_I18N.en;
   const targetBuildingName = towerName || initialTower || "General Dubai Top-10 Catalog";
   const modalTitle = title || t.leadModal.defaultTitle;
   const modalSubtitle = subtitle || t.leadModal.defaultSubtitle;
@@ -63,7 +65,7 @@ export default function LeadModal({
   };
 
   const whatsappMessage = encodeURIComponent(
-    `Hello! My name is ${name}. I requested the Architecture & Investment Dossier on Dubai-Architecture.info for ${targetBuildingName}. Please share current availability.`
+    tLead.getWhatsAppMessage(name, targetBuildingName)
   );
 
   return (
@@ -113,7 +115,7 @@ export default function LeadModal({
                   required
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  placeholder="e.g. Alexander Smith"
+                  placeholder={tLead.namePlaceholder}
                   className="w-full px-4 py-3 rounded-xl bg-[#F8F9FA] border border-[#E2E8F0] text-sm text-[#0F172A] placeholder-[#64748B] focus:outline-none focus:ring-2 focus:ring-[#0F172A] focus:bg-white transition-all"
                 />
               </div>
@@ -127,7 +129,7 @@ export default function LeadModal({
                   required
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
-                  placeholder="+971 50 ... / +7 999 ... / +44 ..."
+                  placeholder={tLead.phonePlaceholder}
                   className="w-full px-4 py-3 rounded-xl bg-[#F8F9FA] border border-[#E2E8F0] text-sm text-[#0F172A] placeholder-[#64748B] focus:outline-none focus:ring-2 focus:ring-[#0F172A] focus:bg-white transition-all"
                 />
               </div>
@@ -140,7 +142,7 @@ export default function LeadModal({
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="name@example.com"
+                  placeholder={tLead.emailPlaceholder}
                   className="w-full px-4 py-3 rounded-xl bg-[#F8F9FA] border border-[#E2E8F0] text-sm text-[#0F172A] placeholder-[#64748B] focus:outline-none focus:ring-2 focus:ring-[#0F172A] focus:bg-white transition-all"
                 />
               </div>
@@ -154,10 +156,10 @@ export default function LeadModal({
                   onChange={(e) => setBudget(e.target.value)}
                   className="w-full px-4 py-3 rounded-xl bg-[#F8F9FA] border border-[#E2E8F0] text-sm text-[#0F172A] focus:outline-none focus:ring-2 focus:ring-[#0F172A] focus:bg-white transition-all"
                 >
-                  <option value="under-2m">Under 2,000,000 AED (&lt; $545,000 USD)</option>
-                  <option value="2m-5m">2,000,000 – 5,000,000 AED (Golden Visa 10-Yr)</option>
-                  <option value="5m-10m">5,000,000 – 10,000,000 AED ($1.36M - $2.7M)</option>
-                  <option value="10m+">Over 10,000,000 AED (Ultra-Luxury Penthouse)</option>
+                  <option value="under-2m">{tLead.budgetOptions.under2m}</option>
+                  <option value="2m-5m">{tLead.budgetOptions.from2mTo5m}</option>
+                  <option value="5m-10m">{tLead.budgetOptions.from5mTo10m}</option>
+                  <option value="10m+">{tLead.budgetOptions.over10m}</option>
                 </select>
               </div>
 

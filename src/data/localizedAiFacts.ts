@@ -1,0 +1,236 @@
+import { LanguageCode } from "@/i18n/languages";
+import { Building } from "./buildings";
+
+export interface AiQuickFactsLabels {
+  factsheetBadge: string;
+  structuralHeight: string;
+  floorsLabel: string;
+  floorsSuffix: string;
+  yearBuilt: string;
+  projectedYield: string;
+  masterArchitect: string;
+  masterDeveloper: string;
+  cadastralTenure: string;
+  cadastralValue: string;
+  urbanDistrict: string;
+  summaryLabel: string;
+  registriesTitle: string;
+  verificationLink: string;
+  ctbuhDesc: string;
+  dldDesc: string;
+  architectDesc: string;
+  getExecutiveSummary: (building: Building) => string;
+}
+
+export const AI_QUICK_FACTS_I18N: Record<LanguageCode, AiQuickFactsLabels> = {
+  en: {
+    factsheetBadge: "Executive Factsheet • AI Overview & Quick Facts",
+    structuralHeight: "Structural Height",
+    floorsLabel: "Floors / Storeys",
+    floorsSuffix: "levels",
+    yearBuilt: "Year of Completion",
+    projectedYield: "Projected Net Yield",
+    masterArchitect: "Master Architect",
+    masterDeveloper: "Master Developer",
+    cadastralTenure: "Cadastral Tenure",
+    cadastralValue: "100% Freehold (DLD Registered)",
+    urbanDistrict: "Urban District",
+    summaryLabel: "Executive Summary:",
+    registriesTitle: "Institutional Registries & Primary Sources",
+    verificationLink: "Verification Protocol →",
+    ctbuhDesc: "Council on Tall Buildings height & engineering profile",
+    dldDesc: "Official title deed registrations & transaction ledger",
+    architectDesc: "Master architectural studio monograph & drawings",
+    getExecutiveSummary: (b) =>
+      `${b.name} is a premier high-rise landmark standing ${b.heightMeters} m (${b.floors} storeys) in ${b.district}, designed by ${b.architect} and developed by ${b.developer} (completed ${b.yearBuilt}). The property holds 100% foreign freehold ownership registration with the Dubai Land Department (DLD).`,
+  },
+  ru: {
+    factsheetBadge: "Сводный паспорт объекта • AI Overview & Quick Facts",
+    structuralHeight: "Архитектурная высота",
+    floorsLabel: "Этажность",
+    floorsSuffix: "этажей",
+    yearBuilt: "Год ввода в эксплуатацию",
+    projectedYield: "Чистая доходность (ROI)",
+    masterArchitect: "Архитектурное бюро",
+    masterDeveloper: "Девелопер проекта",
+    cadastralTenure: "Кадастровый статус",
+    cadastralValue: "100% Freehold (Реестр DLD)",
+    urbanDistrict: "Район локации",
+    summaryLabel: "Краткая архитектурная справка:",
+    registriesTitle: "Официальные реестры и первоисточники",
+    verificationLink: "Регламент верификации →",
+    ctbuhDesc: "Международная сертификация высоты и классификации",
+    dldDesc: "Официальный кадастр и реестр сделок купли-продажи",
+    architectDesc: "Официальное портфолио мастер-архитектора",
+    getExecutiveSummary: (b) =>
+      `${b.name} — знаковый объект высотного строительства высотой ${b.heightMeters} м в районе ${b.district}, спроектированный бюро ${b.architect} для девелопера ${b.developer} (${b.yearBuilt} г.). Объект внесен в кадастровый реестр Земельного департамента Дубая (DLD) с правом 100% частной собственности (Freehold).`,
+  },
+  ar: {
+    factsheetBadge: "بطاقة البيانات التنفيذية • نظرة عامة وحقائق سريعة",
+    structuralHeight: "الارتفاع المعماري الهيكلي",
+    floorsLabel: "عدد الطوابق",
+    floorsSuffix: "طابقاً",
+    yearBuilt: "سنة الإنجاز والتشغيل",
+    projectedYield: "صافي العائد المتوقع (ROI)",
+    masterArchitect: "المكتب المعماري الرئيسي",
+    masterDeveloper: "المطور العقاري الرئيسي",
+    cadastralTenure: "الوضع العقاري المساحي",
+    cadastralValue: "تملك حر بنسبة 100% (مسجل لدى DLD)",
+    urbanDistrict: "المنطقة الحضرية",
+    summaryLabel: "الملخص التنفيذي:",
+    registriesTitle: "السجلات الرسمية والمصادر الأساسية",
+    verificationLink: "بروتوكول التحقق والاعتماد ←",
+    ctbuhDesc: "الملف الهندسي وشهادة الارتفاع لمجلس المباني الشاهقة (CTBUH)",
+    dldDesc: "سجلات سند الملكية الرسمية ودفتر المعاملات العقارية",
+    architectDesc: "دراسات ومخططات المكتب المعماري الرئيسي",
+    getExecutiveSummary: (b) =>
+      `يعد ${b.name} معلماً بارزاً من معالم ناطحات السحاب بارتفاع ${b.heightMeters} متراً (${b.floors} طابقاً) في منطقة ${b.district}، من تصميم المكتب المعماري ${b.architect} وتطوير شركة ${b.developer} (أُنجز عام ${b.yearBuilt}). العقار مسجل بنظام التملك الحر بنسبة 100% لدى دائرة الأراضي والأملاك بدبي (DLD).`,
+  },
+  zh: {
+    factsheetBadge: "核心资产事实清单 • AI 智能总览与关键参数",
+    structuralHeight: "建筑结构高度",
+    floorsLabel: "地上总层数",
+    floorsSuffix: "层",
+    yearBuilt: "竣工交付年份",
+    projectedYield: "预期净投资回报率 (Net ROI)",
+    masterArchitect: "主创建筑设计事务所",
+    masterDeveloper: "核心品牌开发商",
+    cadastralTenure: "产权性质与地籍登记",
+    cadastralValue: "100% 永久产权（迪拜土地局 DLD 认证）",
+    urbanDistrict: "所在城市核心片区",
+    summaryLabel: "核心摘要：",
+    registriesTitle: "权威官方注册机构与一手信源",
+    verificationLink: "数据审核验证规范 →",
+    ctbuhDesc: "世界高层建筑与都市人居学会（CTBUH）认证工程档案",
+    dldDesc: "迪拜土地局官方地契产权登记与真实成交账簿",
+    architectDesc: "主创大师建筑工作室官方作品集与设计图纸",
+    getExecutiveSummary: (b) =>
+      `${b.name} 是坐落于 ${b.district} 核心板块的卓越高层地标，建筑高度达 ${b.heightMeters} 米（地上 ${b.floors} 层），由知名设计事务所 ${b.architect} 倾力打造、顶级品牌开发商 ${b.developer} 投资建设（于 ${b.yearBuilt} 年竣工）。该物业在迪拜土地局（DLD）正式核准登记为面向全球投资者的 100% 永久产权（Freehold）资产。`,
+  },
+  de: {
+    factsheetBadge: "Exekutives Objektdatenblatt • KI-Übersicht & Fakten",
+    structuralHeight: "Architektonische Höhe",
+    floorsLabel: "Etagen / Geschosse",
+    floorsSuffix: "Geschosse",
+    yearBuilt: "Fertigstellungsjahr",
+    projectedYield: "Prognostizierte Netto-Rendite",
+    masterArchitect: "Chefarchitekturbüro",
+    masterDeveloper: "Projektentwickler",
+    cadastralTenure: "Grundbuch- & Eigentumsstatus",
+    cadastralValue: "100% Freehold (Im DLD registriert)",
+    urbanDistrict: "Stadtviertel / Distrikt",
+    summaryLabel: "Exekutive Zusammenfassung:",
+    registriesTitle: "Institutionelle Register & Primärquellen",
+    verificationLink: "Prüfprotokoll →",
+    ctbuhDesc: "Internationale Höhenzertifizierung & CTBUH-Ingenieurprofil",
+    dldDesc: "Amtliche Grundbucheinträge & Transaktionsregister",
+    architectDesc: "Offizielle Projektmonografie des Architekturbüros",
+    getExecutiveSummary: (b) =>
+      `${b.name} ist ein herausragendes Hochhaus-Wahrzeichen mit einer Höhe von ${b.heightMeters} m (${b.floors} Etagen) im Viertel ${b.district}, entworfen von ${b.architect} und entwickelt von ${b.developer} (Fertigstellung ${b.yearBuilt}). Die Immobilie ist beim Dubai Land Department (DLD) mit 100% ausländischem uneingeschränktem Eigentum (Freehold) eingetragen.`,
+  },
+  fr: {
+    factsheetBadge: "Fiche Technique Exécutive • Vue d'ensemble IA & Chiffres clés",
+    structuralHeight: "Hauteur architecturale",
+    floorsLabel: "Nombre d'étages",
+    floorsSuffix: "niveaux",
+    yearBuilt: "Année de livraison",
+    projectedYield: "Rendement net prévisionnel",
+    masterArchitect: "Cabinet d'architecture",
+    masterDeveloper: "Promoteur principal",
+    cadastralTenure: "Statut cadastral",
+    cadastralValue: "100% Pleine propriété (Enregistré DLD)",
+    urbanDistrict: "District urbain",
+    summaryLabel: "Synthèse exécutive :",
+    registriesTitle: "Registres institutionnels et sources primaires",
+    verificationLink: "Protocole de vérification →",
+    ctbuhDesc: "Certification internationale de hauteur et profil CTBUH",
+    dldDesc: "Titres de propriété officiels et registre des transactions",
+    architectDesc: "Monographie officielle et plans du studio d'architecture",
+    getExecutiveSummary: (b) =>
+      `${b.name} est un gratte-ciel emblématique culminant à ${b.heightMeters} m (${b.floors} étages) dans le quartier ${b.district}, conçu par ${b.architect} pour le promoteur ${b.developer} (livré en ${b.yearBuilt}). L'actif bénéficie d'une inscription à 100% en pleine propriété (Freehold) auprès du Dubai Land Department (DLD).`,
+  },
+  it: {
+    factsheetBadge: "Scheda Informativa Esecutiva • Panoramica AI & Dati chiave",
+    structuralHeight: "Altezza strutturale",
+    floorsLabel: "Piani / Livelli",
+    floorsSuffix: "livelli",
+    yearBuilt: "Anno di completamento",
+    projectedYield: "Rendimento netto previsto",
+    masterArchitect: "Studio di architettura",
+    masterDeveloper: "Sviluppatore principale",
+    cadastralTenure: "Regime catastale",
+    cadastralValue: "100% Proprietà esclusiva (Registrato DLD)",
+    urbanDistrict: "Distretto urbano",
+    summaryLabel: "Sintesi esecutiva:",
+    registriesTitle: "Registri istituzionali e fonti primarie",
+    verificationLink: "Protocollo di verifica →",
+    ctbuhDesc: "Certificazione internazionale di altezza e profilo CTBUH",
+    dldDesc: "Atti di proprietà ufficiali e registro delle compravendite",
+    architectDesc: "Monografia ufficiale e disegni dello studio di architettura",
+    getExecutiveSummary: (b) =>
+      `${b.name} è un prestigioso grattacielo di riferimento alto ${b.heightMeters} m (${b.floors} piani) nel quartiere ${b.district}, progettato dallo studio ${b.architect} e sviluppato da ${b.developer} (completato nel ${b.yearBuilt}). L'immobile è registrato al 100% in piena proprietà (Freehold) presso il Dubai Land Department (DLD).`,
+  },
+  tr: {
+    factsheetBadge: "Yönetici Bilgi Formu • Yapay Zekâ Özeti ve Temel Veriler",
+    structuralHeight: "Mimari Yükseklik",
+    floorsLabel: "Kat Adedi",
+    floorsSuffix: "kat",
+    yearBuilt: "Tamamlanma Yılı",
+    projectedYield: "Tahmini Net Getiri (ROI)",
+    masterArchitect: "Baş Mimarlık Ofisi",
+    masterDeveloper: "Proje Geliştiricisi",
+    cadastralTenure: "Kadastro ve Mülkiyet Durumu",
+    cadastralValue: "%100 Tam Mülkiyet (DLD Kayıtlı Freehold)",
+    urbanDistrict: "Kentsel Bölge",
+    summaryLabel: "Yönetici Özeti:",
+    registriesTitle: "Resmi Siciller ve Birincil Kaynaklar",
+    verificationLink: "Doğrulama Protokolü →",
+    ctbuhDesc: "CTBUH uluslararası yükseklik sertifikası ve mühendislik profili",
+    dldDesc: "Resmi tapu kayıtları ve alım-satım işlem sicili",
+    architectDesc: "Baş mimarlık ofisi resmi portföyü ve proje çizimleri",
+    getExecutiveSummary: (b) =>
+      `${b.name}, ${b.district} bölgesinde ${b.heightMeters} metre yüksekliğinde (${b.floors} katlı) simgesel bir gökdelendir. ${b.architect} tarafından tasarlanmış ve ${b.developer} tarafından inşa edilmiştir (${b.yearBuilt} yılında tamamlanmıştır). Mülk, Dubai Arazi Departmanı'nda (DLD) %100 yabancı tam mülkiyetli (Freehold) olarak tescillidir.`,
+  },
+  hi: {
+    factsheetBadge: "कार्यकारी तथ्य-पत्रक • एआई अवलोकन एवं मुख्य तथ्य",
+    structuralHeight: "वास्तुशिल्प ऊंचाई",
+    floorsLabel: "मंजिलों की संख्या",
+    floorsSuffix: "मंजिलें",
+    yearBuilt: "समापन वर्ष",
+    projectedYield: "अनुमानित शुद्ध रिटर्न (ROI)",
+    masterArchitect: "मुख्य वास्तुकार",
+    masterDeveloper: "मास्टर डेवलपर",
+    cadastralTenure: "कैडस्ट्रल स्थिति",
+    cadastralValue: "100% फ्रीहोल्ड (डीएलडी पंजीकृत)",
+    urbanDistrict: "शहरी क्षेत्र",
+    summaryLabel: "कार्यकारी सारांश:",
+    registriesTitle: "संस्थागत रजिस्ट्रियां एवं प्राथमिक स्रोत",
+    verificationLink: "सत्यापन प्रोटोकॉल →",
+    ctbuhDesc: "सीटीबीयूएच अंतरराष्ट्रीय ऊंचाई प्रमाणन और इंजीनियरिंग प्रोफाइल",
+    dldDesc: "आधिकारिक टाइटल डीड पंजीकरण और लेनदेन लेज़र",
+    architectDesc: "मास्टर वास्तुकार स्टूडियो का आधिकारिक मोनोग्राफ एवं आरेख",
+    getExecutiveSummary: (b) =>
+      `${b.name} ${b.district} क्षेत्र में ${b.heightMeters} मीटर (${b.floors} मंजिलें) ऊंचा एक प्रमुख ऐतिहासिक लैंडमार्क है, जिसे ${b.architect} द्वारा डिजाइन और ${b.developer} द्वारा विकसित किया गया है (${b.yearBuilt} में पूरा हुआ)। यह संपत्ति दुबई भूमि विभाग (DLD) के साथ 100% विदेशी फ्रीहोल्ड स्वामित्व के रूप में पंजीकृत है।`,
+  },
+  ur: {
+    factsheetBadge: "ایگزیکٹو فیکٹ شیٹ • اے آئی جائزہ اور اہم حقائق",
+    structuralHeight: "تعمیراتی اونچائی",
+    floorsLabel: "منزلوں کی تعداد",
+    floorsSuffix: "منزلیں",
+    yearBuilt: "تکمیل کا سال",
+    projectedYield: "متوقع خالص منافع (ROI)",
+    masterArchitect: "چیف آرکیٹیکٹ فرم",
+    masterDeveloper: "ماسٹر ڈویلپر",
+    cadastralTenure: "اراضی و مالکانہ حیثیت",
+    cadastralValue: "100% فری ہولڈ (ڈی ایل ڈی رجسٹرڈ)",
+    urbanDistrict: "شہری ڈسٹرکٹ",
+    summaryLabel: "ایگزیکٹو خلاصہ:",
+    registriesTitle: "سرکاری ریکارڈ اور بنیادی ذرائع",
+    verificationLink: "توثیق کا طریقہ کار ←",
+    ctbuhDesc: "کونسل آن ٹال بلڈنگز کا تصدیق شدہ انجینئرنگ ریکارڈ (CTBUH)",
+    dldDesc: "سرکاری ٹائٹل ڈیڈ رجسٹریشن اور خرید و فروخت کا لیجر",
+    architectDesc: "چیف آرکیٹیکٹ اسٹوڈیو کا آفیشل مونوگراف اور ڈرائنگز",
+    getExecutiveSummary: (b) =>
+      `${b.name} علاقہ ${b.district} میں واقع ایک شاندار فلک بوس عمارت ہے جس کی اونچائی ${b.heightMeters} میٹر (${b.floors} منزلیں) ہے۔ اسے ${b.architect} نے ڈیزائن کیا اور ${b.developer} نے تیار کیا (${b.yearBuilt} میں مکمل ہوئی)۔ یہ پراپرٹی دبئی لینڈ ڈیپارٹمنٹ (DLD) میں 100% غیر ملکی فری ہولڈ ملکیت کے تحت باقاعدہ رجسٹرڈ ہے۔`,
+  },
+};
