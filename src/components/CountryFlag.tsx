@@ -56,7 +56,7 @@ export default function CountryFlag({
       );
 
     case "ar":
-      // United Arab Emirates
+      // United Arab Emirates (Official Federal Flag: 1/4 red vertical hoist bar, green top, white middle, black bottom)
       return (
         <svg
           viewBox="0 0 640 480"
@@ -67,7 +67,7 @@ export default function CountryFlag({
           <rect width="640" height="160" fill="#00732F" />
           <rect width="640" height="160" y="160" fill="#FFFFFF" />
           <rect width="640" height="160" y="320" fill="#000000" />
-          <rect width="180" height="480" fill="#E30613" />
+          <rect width="160" height="480" fill="#FF0000" />
         </svg>
       );
 
