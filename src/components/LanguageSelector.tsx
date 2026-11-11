@@ -3,6 +3,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import { useLang } from "../context/LangContext";
 import { LANGUAGES, LanguageCode } from "../i18n/languages";
+import CountryFlag from "./CountryFlag";
 
 export default function LanguageSelector() {
   const { lang, setLang, langInfo } = useLang();
@@ -61,9 +62,11 @@ export default function LanguageSelector() {
         aria-label="Select language"
         className="flex items-center gap-2 px-3 py-1.5 rounded-full border border-[#DDD7CA] bg-[#EFECE4] hover:bg-[#E5DFD3] text-[#1C1917] hover:border-[#8C6A48] transition-all text-sm font-medium shadow-soft-tint backdrop-blur-md cursor-pointer"
       >
-        <span className="text-base leading-none" role="img" aria-hidden="true">
-          {langInfo.flag}
-        </span>
+        <CountryFlag
+          code={langInfo.code}
+          className="w-5 h-3.5"
+          title={langInfo.name}
+        />
         <span className="font-semibold tracking-wider uppercase text-xs text-[#8C6A48]">
           {langInfo.code}
         </span>
@@ -88,11 +91,12 @@ export default function LanguageSelector() {
       </button>
 
       {isOpen && (
-        <div className="absolute right-0 mt-2 w-64 max-w-[calc(100vw-2rem)] origin-top-right rounded-2xl bg-white border border-[#E5DFD3] shadow-strong-tint z-50 overflow-hidden divide-y divide-[#EFECE4]">
-          <div className="px-3 py-2 bg-[#FAF8F5]">
+        <div className="absolute right-0 mt-2 w-72 max-w-[calc(100vw-2rem)] origin-top-right rounded-2xl bg-white border border-[#E5DFD3] shadow-strong-tint z-50 overflow-hidden divide-y divide-[#EFECE4]">
+          <div className="px-3.5 py-2.5 bg-[#FAF8F5] flex items-center justify-between">
             <p className="text-xs font-semibold text-[#78716C] uppercase tracking-wider">
               Select Language
             </p>
+            <span className="text-[11px] text-[#A8A29E] font-medium">10 languages</span>
           </div>
           <div className="py-1 max-h-80 overflow-y-auto">
             {languageList.map((item) => {
@@ -108,20 +112,27 @@ export default function LanguageSelector() {
                       : "text-[#1C1917] hover:bg-[#FAF8F5]"
                   }`}
                 >
-                  <div className="flex items-center gap-2.5">
-                    <span className="text-base" role="img" aria-hidden="true">
-                      {item.flag}
-                    </span>
+                  <div className="flex items-center gap-3">
+                    <CountryFlag
+                      code={item.code}
+                      className="w-5 h-3.5"
+                      title={item.name}
+                    />
                     <div>
-                      <div className="font-medium text-[#1C1917]">{item.name}</div>
-                      <div className="text-[11px] text-[#78716C]">
-                        {item.nativeName}
+                      <div className="font-medium text-[#1C1917] flex items-center gap-1.5">
+                        <span>{item.name}</span>
+                        <span className="text-[11px] text-[#78716C]">
+                          ({item.nativeName})
+                        </span>
+                      </div>
+                      <div className="text-[10px] text-[#A8A29E]">
+                        {item.country}
                       </div>
                     </div>
                   </div>
                   {isSelected && (
                     <svg
-                      className="w-4 h-4 text-[#8C6A48]"
+                      className="w-4 h-4 text-[#8C6A48] shrink-0"
                       fill="currentColor"
                       viewBox="0 0 20 20"
                     >
