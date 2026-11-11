@@ -62,7 +62,6 @@ export default function FloorPlansExplorer({
   onOpenConsultation,
 }: FloorPlansExplorerProps) {
   const { lang } = useLang();
-  const isRu = lang === "ru";
   const rawPlans = useMemo(() => getBuildingFloorPlans(building), [building]);
   const [activePlanId, setActivePlanId] = useState<string>(rawPlans[0]?.id || "");
   const [isFullscreen, setIsFullscreen] = useState(false);
@@ -1106,7 +1105,18 @@ export default function FloorPlansExplorer({
               className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-amber-500/10 hover:bg-amber-500/20 border border-amber-500/30 text-amber-900 text-xs font-sans font-bold transition-all shadow-2xs cursor-pointer"
             >
               <span>📥</span>
-              <span className="hidden md:inline">{isRu ? "PDF-буклет с ценами" : "Floor Plans PDF & Pricing"}</span>
+              <span className="hidden md:inline">{({
+                en: "Floor Plans PDF & Pricing",
+                ru: "PDF-буклет с ценами",
+                ar: "كتيب المخططات والأسعار PDF",
+                zh: "高清户型图册与价格单 PDF",
+                de: "Grundriss-PDF & Preise",
+                fr: "Brochure PDF & Prix",
+                it: "Planimetrie PDF e Prezzi",
+                tr: "Kat Planları PDF ve Fiyatlar",
+                hi: "फ्लोर प्लान पीडीएफ एवं दरें",
+                ur: "فلور پلانز اور قیمتوں کی پی ڈی ایف",
+              }[lang] || "Floor Plans PDF & Pricing")}</span>
               <span className="md:hidden">PDF</span>
             </button>
 
@@ -1468,9 +1478,31 @@ export default function FloorPlansExplorer({
 
             {/* Floating Navigation & Drag Helper Pill */}
             <div className="absolute bottom-4 left-1/2 -translate-x-1/2 px-4 py-1.5 rounded-full bg-slate-900/85 backdrop-blur-md border border-white/15 text-white/85 text-xs font-sans font-medium pointer-events-none shadow-xl flex items-center gap-3">
-              <span>✋ {isRu ? "Зажмите левую кнопку мыши для перемещения (Drag)" : "Click & drag to pan"}</span>
+              <span>✋ {({
+                en: "Click & drag to pan",
+                ru: "Зажмите левую кнопку мыши для перемещения (Drag)",
+                ar: "انقر واسحب للتحريك",
+                zh: "按住鼠标左键拖拽平移图纸",
+                de: "Klicken & ziehen zum Bewegen",
+                fr: "Cliquer et glisser pour déplacer",
+                it: "Clicca e trascina per spostare",
+                tr: "Kaydırmak için tıkla ve sürükle",
+                hi: "घुमाने के लिए क्लिक करें और खींचें",
+                ur: "حرکت دینے کے لیے کلک کر کے گھسیٹیں",
+              }[lang] || "Click & drag to pan")}</span>
               <span className="text-white/30">•</span>
-              <span>🔍 {isRu ? "Колёсико мыши: масштаб" : "Mouse wheel: zoom"}</span>
+              <span>🔍 {({
+                en: "Mouse wheel: zoom",
+                ru: "Колёсико мыши: масштаб",
+                ar: "عجلة الفأرة: التكبير والتصغير",
+                zh: "滚轮缩放",
+                de: "Mausrad: Zoom",
+                fr: "Molette souris : Zoom",
+                it: "Rotellina del mouse: Zoom",
+                tr: "Fare tekerleği: Yakınlaştır",
+                hi: "माउस व्हील: ज़ूम",
+                ur: "ماؤس وہیل: زوم",
+              }[lang] || "Mouse wheel: zoom")}</span>
               <span className="text-white/30">•</span>
               <span className="font-mono text-sky-400 font-bold">{Math.round(zoomLevel * 100)}%</span>
             </div>

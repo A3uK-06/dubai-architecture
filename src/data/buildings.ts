@@ -76,10 +76,10 @@ export interface SunHeatExposure {
 
 export interface WalkabilityIndex {
   score: number;
-  category: "Walker's Paradise" | "Very Walkable" | "Somewhat Walkable" | "Car-Dependent";
+  category: "Walker's Paradise" | "Very Walkable" | "Somewhat Walkable" | "Car-Dependent" | string;
   metroStation: string;
   metroDistanceMinutes: number;
-  metroAccessType: "Direct Air-Conditioned Travellator Tunnel" | "Shaded Boulevard Walk" | "Direct Covered Walkway" | "Open Street Walk" | "Car / Taxi Required";
+  metroAccessType: "Direct Air-Conditioned Travellator Tunnel" | "Shaded Boulevard Walk" | "Direct Covered Walkway" | "Open Street Walk" | "Car / Taxi Required" | string;
   dailyEssentialsOnFoot: string;
 }
 
