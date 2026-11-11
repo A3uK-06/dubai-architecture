@@ -1,5 +1,6 @@
 import { Building } from "./buildings";
 import { LanguageCode } from "@/i18n/languages";
+import { buildLocalizedProceduralAudit } from "./localizedProceduralAudits";
 
 export interface FloodResilienceAudit {
   score: number; // 0-100
@@ -1073,153 +1074,20 @@ export function generateProceduralExplosiveAudit(building: Building, lang: Langu
   // 5. Soundproofing & Contractor
   const soundDb = building.rating >= 4.8 ? 55 : (building.yearBuilt >= 2018 ? 52 : 48);
 
-  const t = EXPLOSIVE_AUDIT_LABELS[lang] || EXPLOSIVE_AUDIT_LABELS.en;
-
-  // Localized narrative building
-  if (lang === "ru") {
-    return {
-      floodResilience: {
-        score: floodScore,
-        elevationMeters: elevation,
-        status: elevation >= 4.0 ? "Подиумная защита от затопления (Высокий уровень)" : "Береговой дренажный контур",
-        humanVerdict: elevation >= 4.0 
-          ? `Паркинг расположен в стилобате на отметке +${elevation} м над уровнем моря. Автомобили на верхних ярусах подиума полностью защищены от подтоплений.`
-          : `Въезд в паркинг находится на отметке +${elevation} м. Для владельцев спорткаров с низким клиренсом рекомендуется выбирать парковочные места не ниже 2-го уровня.`,
-        substationLevel: elevation >= 4.0 ? "Подиумные технические этажи (Безопасно)" : "Цокольный ярус с гидрозатворами",
-        stormProtection: "Автоматические откачивающие насосы и обратные клапаны ливневой канализации",
-        engineeringBasis: `Топографическая привязка участка: +${elevation} м MSL.`
-      },
-      starchitect: {
-        tier: isStarchitect ? "Signature Starchitect Asset (Именная архитектура)" : "Prime Architectural Asset (Качественный фонд)",
-        architectBrandPremiumPercent: starchitectPremium,
-        humanVerdict: isStarchitect 
-          ? `Проект от признанного бюро (${building.architectFirm || building.architect}). Силуэт здания узнаваем на открытках Дубая, что сохраняет высокую ликвидность при перепродаже через 15–20 лет.`
-          : `Качественная коммерческая архитектура. Стоимость формируется локацией (${building.district}) и качеством отделки, без завышенной переплаты за имя архитектора.`,
-        collectorClassification: isStarchitect ? "Высокая архитектурная капитализация" : "Функциональный инвестиционный класс",
-        engineeringBasis: `Автор проекта: ${building.architect}. Инженерный надзор международного уровня.`
-      },
-      windSway: {
-        swayDeflectionMm: apexSway,
-        dampingSystem: isSupertall ? "Аутригерные пояса и массивное монолитное ядро" : "Монолитная рамно-связевая система",
-        humanVerdict: isSupertall
-          ? `На этажах выше 60-го при зимних штормовых ветрах возможно едва заметное движение подвесных светильников. Для людей с чувствительным вестибулярным аппаратом рекомендуются этажи до ${goldenTopFloor}-го.`
-          : `Здание обладает высокой жесткостью каркаса. Колебания от ветра находятся ниже порога человеческой чувствительности на всех жилых этажах.`,
-        goldenFloors: `Этажи с 10 по ${goldenTopFloor} (Зона максимального акустического и статического комфорта)`,
-        engineeringBasis: `Расчетный прогиб вершины каркаса: ~${apexSway} мм при нормативном ветре 45 м/с.`
-      },
-      socialFilter: {
-        privacyScore: socialScore,
-        ownerOccupierPercent: ownerRatio,
-        holidayHomesPolicy: isHotelOrMixed 
-          ? "Разрешена краткосрочная аренда (Высокий трафик гостей)"
-          : "Регулируется ТСЖ (Преимущественно долгосрочные резиденты)",
-        humanVerdict: isHotelOrMixed
-          ? "В лобби и у бассейна регулярный поток туристов с чемоданами. Идеально для инвестора с посуточной сдачей под высокий доход, но шумно для семей с детьми."
-          : `Более ${ownerRatio}% жильцов — постоянные собственники. Спокойная приватная атмосфера, вежливые постоянные соседи и отсутствие шумных туристических вечеринок.`,
-        securityLevel: "Электронный доступ по картам резидента и консьерж-контроль 24/7",
-        engineeringBasis: `Статус зонирования DET и внутренний регламент ТСЖ башни.`
-      },
-      contractorAutopsy: {
-        mainContractor: building.mainContractor || "Крупный сертифицированный генподрядчик ОАЭ",
-        soundproofingRatingDb: soundDb,
-        humanVerdict: soundDb >= 54 
-          ? "Отличная звукоизоляция: межквартирные стены обеспечивают тишину, звуки шагов и сантехники соседей не проникают в жилые комнаты."
-          : "Стандартная межквартирная звукоизоляция. В тихие ночные часы возможна частичная слышимость мощного напора воды в стояках соседей.",
-        pipelineQuality: "Многослойные шумопоглощающие полипропиленовые стояки с виброкомпенсаторами",
-        engineeringBasis: `Расчетный индекс изоляции воздушного шума: ~${soundDb} дБ (ASTM E90).`
-      },
-      livingVerdict: {
-        independentVerdictSummary: `Сбалансированный объект в ${building.district} с подтвержденной доходностью ${building.investmentYield} и надежными конструктивными показателями.`,
-        strengths: [
-          `Престижная локация в ${building.district} с развитой инфраструктурой`,
-          `Надежный конструктив (${building.structuralSystem}) с расчетной устойчивостью`,
-          isStarchitect ? `Узнаваемый авторский силуэт от ${building.architect}` : `Высокая функциональная ликвидность планировок`
-        ],
-        pitfalls: [
-          isHotelOrMixed ? "Высокая сменяемость гостей из-за популярности краткосрочной аренды" : "Ежегодные сервисные сборы требуют предварительного учета в доходности",
-          isSupertall ? `На самых верхних этажах в шторм лифты могут кратковременно снижать скорость` : "В часы пик возможна загрузка районных выездов"
-        ],
-        idealFor: isHotelOrMixed 
-          ? "Инвесторам под посуточную аренду (Holiday Homes) с целью максимизации арендного потока (ROI 8%+)."
-          : "Семьям и постоянным резидентам, ценящим стабильность, приватность и комфорт повседневной жизни.",
-        notRecommendedFor: isHotelOrMixed
-          ? "Покупателям, ищущим тихий уединенный закрытый клуб без посторонних людей."
-          : "Инвесторам, рассчитывающим на бесконтрольную агрессивную субаренду туристам."
-      }
-    };
-  }
-
-  // Default English (and fallback for other languages with translated core fields)
-  return {
-    floodResilience: {
-      score: floodScore,
-      elevationMeters: elevation,
-      status: elevation >= 4.0 ? "Elevated Podium Defense (Flood-Resistant)" : "Coastal Perimeter Drainage",
-      humanVerdict: elevation >= 4.0
-        ? `Parking is located within an elevated podium at +${elevation}m above sea level. Vehicles on podium decks are fully protected from flash flooding.`
-        : `Vehicle entrance datum is at +${elevation}m MSL. For exotic supercars with low ground clearance, parking on Level 2 or higher is recommended.`,
-      substationLevel: elevation >= 4.0 ? "Podium Plant Levels (Safe)" : "Mezzanine with flood barriers",
-      stormProtection: "Heavy-duty automatic sump pumps and backflow preventers",
-      engineeringBasis: `Topographical ground datum: +${elevation}m MSL.`
-    },
-    starchitect: {
-      tier: isStarchitect ? "Signature Starchitect Asset" : "Prime Architectural Asset",
-      architectBrandPremiumPercent: starchitectPremium,
-      humanVerdict: isStarchitect
-        ? `Authored by world-renowned firm ${building.architectFirm || building.architect}. Recognizable skyline profile preserving liquidity and resale demand 15–20 years out.`
-        : `High-quality commercial architecture. Pricing reflects prime location (${building.district}) and spatial layout rather than starchitect branding surcharges.`,
-      collectorClassification: isStarchitect ? "High Architectural Brand Equity" : "Functional Prime Investment Tier",
-      engineeringBasis: `Designed by ${building.architect} with international structural verification.`
-    },
-    windSway: {
-      swayDeflectionMm: apexSway,
-      dampingSystem: isSupertall ? "Outrigger Truss System & Reinforced Concrete Core" : "Monolithic Shear Wall Frame",
-      humanVerdict: isSupertall
-        ? `On levels above 60, subtle chandelier movement may occur during severe winter gales. Residents sensitive to motion are advised to target levels below ${goldenTopFloor}.`
-        : `Stiff lateral structural frame. Wind-induced deflection remains well below human perception thresholds across all residential floors.`,
-      goldenFloors: `Floors 10 to ${goldenTopFloor} (Optimal vibration-free living zone)`,
-      engineeringBasis: `Peak apex lateral deflection: ~${apexSway} mm under design wind loads (45 m/s).`
-    },
-    socialFilter: {
-      privacyScore: socialScore,
-      ownerOccupierPercent: ownerRatio,
-      holidayHomesPolicy: isHotelOrMixed
-        ? "Holiday Homes Permitted (High Guest Traffic)"
-        : "Regulated HOA Bylaws (Predominantly Long-Term Residents)",
-      humanVerdict: isHotelOrMixed
-        ? "Lobby and pool areas experience steady tourist and suitcase turnover. Ideal for high-yielding short-term rental investors, but less quiet for permanent family living."
-        : `Over ${ownerRatio}% of units are occupied by long-term owners and executives. Calm, residential ambiance with polite permanent neighbors.`,
-      securityLevel: "Electronic keycard access with 24/7 lobby concierge supervision",
-      engineeringBasis: `Regulated under Dubai DET holiday homes zoning and registered building HOA bylaws.`
-    },
-    contractorAutopsy: {
-      mainContractor: building.mainContractor || "Grade-A Certified UAE Contractor",
-      soundproofingRatingDb: soundDb,
-      humanVerdict: soundDb >= 54
-        ? "Excellent acoustic isolation: Party walls dampen airborne sound thoroughly; neighboring plumbing and footsteps do not disturb living areas."
-        : "Standard inter-unit soundproofing. In quiet night hours, high-pressure water flow through plumbing shafts may be slightly audible.",
-      pipelineQuality: "Multi-layer acoustic polypropylene pipework with vibration decouplers",
-      engineeringBasis: `Acoustic partition sound transmission class: ~${soundDb} dB (ASTM E90).`
-    },
-    livingVerdict: {
-      independentVerdictSummary: `A verified asset in ${building.district} delivering an estimated ${building.investmentYield} yield with solid structural fundamentals.`,
-      strengths: [
-        `Prime address within ${building.district} with direct access to amenities`,
-        `Solid lateral engineering (${building.structuralSystem}) ensuring longevity`,
-        isStarchitect ? `Distinguished architectural silhouette by ${building.architect}` : `High net-to-gross layout efficiency`
-      ],
-      pitfalls: [
-        isHotelOrMixed ? "Higher lobby turnover due to holiday home guest activity" : "Annual service charges should be carefully calculated into net ROI",
-        isSupertall ? "High-speed lifts may temporarily throttle speeds during peak gale conditions" : "District access bottlenecks may occur during peak rush hours"
-      ],
-      idealFor: isHotelOrMixed
-        ? "Investors seeking maximum rental cash flow (ROI 8%+) via managed short-term holiday homes."
-        : "Families and long-term owners looking for privacy, stable community, and day-to-day comfort.",
-      notRecommendedFor: isHotelOrMixed
-        ? "Buyers looking for a secluded, quiet private enclave with zero tourist presence."
-        : "Investors intending to operate high-intensity tourist turnover in an owner-dominated tower."
-    }
-  };
+  // Delegate to comprehensive 10-language localized generator
+  return buildLocalizedProceduralAudit(building, lang, {
+    elevation,
+    floodScore,
+    isStarchitect,
+    starchitectPremium,
+    apexSway,
+    goldenTopFloor,
+    isSupertall,
+    ownerRatio,
+    socialScore,
+    isHotelOrMixed,
+    soundDb
+  });
 }
 
 /**
