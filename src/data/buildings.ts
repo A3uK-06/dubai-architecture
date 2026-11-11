@@ -56,6 +56,33 @@ export interface BuildingAuditReview {
   hiddenOperatingCosts: string;
 }
 
+export type ViewObstructionRisk = "protected" | "low" | "moderate" | "high";
+
+export interface ViewBlockerRadar {
+  riskLevel: ViewObstructionRisk;
+  status: string;
+  assessment: string;
+  protectedOrientations: string[];
+  threatOrientations: string[];
+}
+
+export interface SunHeatExposure {
+  optimalAspect: string;
+  harshAspect: string;
+  coolingEnergyImpact: string;
+  solarHeatGainRating: string;
+  residentTip: string;
+}
+
+export interface WalkabilityIndex {
+  score: number;
+  category: "Walker's Paradise" | "Very Walkable" | "Somewhat Walkable" | "Car-Dependent";
+  metroStation: string;
+  metroDistanceMinutes: number;
+  metroAccessType: "Direct Air-Conditioned Travellator Tunnel" | "Shaded Boulevard Walk" | "Direct Covered Walkway" | "Open Street Walk" | "Car / Taxi Required";
+  dailyEssentialsOnFoot: string;
+}
+
 export interface FloorPlan {
   id: string;
   name: string;
@@ -152,6 +179,11 @@ export interface Building {
 
   // Verified DLD Transaction Ledger & Mollak Service Charges
   dldLedger?: BuildingDldLedger;
+
+  // Investor & Resident Reality Check Metrics
+  viewRadar?: ViewBlockerRadar;
+  solarExposure?: SunHeatExposure;
+  walkability?: WalkabilityIndex;
 }
 
 export const BUILDINGS: Building[] = [

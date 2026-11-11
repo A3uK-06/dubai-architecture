@@ -16,6 +16,7 @@ import FloorPlansExplorer from "@/components/FloorPlansExplorer";
 import DldTransactionLedger from "@/components/DldTransactionLedger";
 import DossierViewerModal from "@/components/DossierViewerModal";
 import AiQuickFactsAndCitations from "@/components/AiQuickFactsAndCitations";
+import InvestorRealityAudit from "@/components/InvestorRealityAudit";
 import { trackEvent } from "@/lib/analytics";
 
 interface BuildingDetailClientProps {
@@ -380,6 +381,9 @@ export default function BuildingDetailClient({
                 </div>
               </section>
             )}
+
+            {/* UNBIASED MICRO-CLIMATE, HORIZON & WALKABILITY REALITY AUDIT */}
+            <InvestorRealityAudit building={building} />
 
             {/* INTERACTIVE ARCHITECTURAL FLOOR PLANS EXPLORER */}
             <FloorPlansExplorer

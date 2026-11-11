@@ -69,21 +69,32 @@ export default function LeadModal({
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-md animate-in fade-in duration-200">
       <div className="relative w-full max-w-lg rounded-3xl bg-white border border-[#E2E8F0] p-6 sm:p-8 shadow-float-card-hover space-y-6 text-[#0F172A]">
-        {/* Close Button */}
-        <button
-          onClick={onClose}
-          className="absolute top-5 right-5 w-9 h-9 flex items-center justify-center text-[#64748B] hover:text-[#0F172A] hover:bg-[#F1F5F9] rounded-xl transition-colors text-lg font-bold"
-          aria-label="Close modal"
-        >
-          ✕
-        </button>
-
         {!isSuccess ? (
           <>
-            <div className="space-y-2">
-              <span className="inline-block px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-[#F1F5F9] text-[#0F172A] border border-[#CBD5E1]">
-                {t.leadModal.modalBadge}
-              </span>
+            <div className="space-y-3">
+              <div className="flex items-start justify-between gap-3">
+                <span className="inline-block px-3 py-1.5 rounded-full text-[11px] sm:text-xs font-bold uppercase tracking-wider bg-[#F1F5F9] text-[#0F172A] border border-[#CBD5E1] leading-snug">
+                  {t.leadModal.modalBadge}
+                </span>
+                <button
+                  type="button"
+                  onClick={onClose}
+                  className="shrink-0 -mr-1 -mt-1 w-9 h-9 flex items-center justify-center rounded-xl bg-[#F8FAFC] hover:bg-[#F1F5F9] border border-[#E2E8F0] text-[#64748B] hover:text-[#0F172A] transition-colors cursor-pointer"
+                  aria-label="Close modal"
+                >
+                  <svg
+                    className="w-4 h-4"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    strokeWidth="2.2"
+                    aria-hidden="true"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </button>
+              </div>
+
               <h3 className="text-2xl font-bold text-[#0F172A] tracking-tight font-heading">
                 {modalTitle}
               </h3>
@@ -164,7 +175,24 @@ export default function LeadModal({
             </form>
           </>
         ) : (
-          <div className="text-center py-6 space-y-4">
+          <div className="relative text-center py-6 space-y-4">
+            <button
+              type="button"
+              onClick={onClose}
+              className="absolute -top-3 -right-3 w-9 h-9 flex items-center justify-center rounded-xl bg-[#F8FAFC] hover:bg-[#F1F5F9] border border-[#E2E8F0] text-[#64748B] hover:text-[#0F172A] transition-colors cursor-pointer"
+              aria-label="Close modal"
+            >
+              <svg
+                className="w-4 h-4"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+                strokeWidth="2.2"
+                aria-hidden="true"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+              </svg>
+            </button>
             <div className="w-16 h-16 rounded-full bg-emerald-50 text-[#059669] flex items-center justify-center text-3xl mx-auto border border-emerald-200">
               ✓
             </div>

@@ -7,6 +7,13 @@ import { BUILDINGS } from "@/data/buildings";
 import { DISTRICTS } from "@/data/districts";
 import { useLang } from "@/context/LangContext";
 import { getLocalizedBuilding, getLocalizedDistrict } from "@/data/localizedContent";
+import {
+  isProtectedView,
+  isChillerFree,
+  isWalkToMetro,
+  isGoldenVisaReady,
+  LIFESTYLE_FILTERS_I18N
+} from "@/data/investorRealityCheck";
 
 export default function CatalogSection() {
   const { t, lang } = useLang();
@@ -16,6 +23,12 @@ export default function CatalogSection() {
   const [selectedHeight, setSelectedHeight] = useState("all");
   const [selectedType, setSelectedType] = useState("all");
   const [sortBy, setSortBy] = useState<"height" | "year" | "rating" | "yield">("height");
+
+  // Investor & Reality Due Diligence Filters
+  const [filterProtectedView, setFilterProtectedView] = useState(false);
+  const [filterChillerFree, setFilterChillerFree] = useState(false);
+  const [filterWalkToMetro, setFilterWalkToMetro] = useState(false);
+  const [filterGoldenVisa, setFilterGoldenVisa] = useState(false);
 
   const searchInputRef = useRef<HTMLInputElement>(null);
 
@@ -85,11 +98,23 @@ export default function CatalogSection() {
       if (selectedHeight === "highrise" && b.heightMeters >= 300) return false;
 
       // Type
-      if (selectedType !== "all") {
-        const origBuilding = BUILDINGS.find((orig) => orig.id === b.id);
-        if (origBuilding && origBuilding.type !== selectedType) {
-          return false;
-        }
+      const origBuilding = BUILDINGS.find((orig) => orig.id === b.id) || b;
+      if (selectedType !== "all" && origBuilding.type !== selectedType) {
+        return false;
+      }
+
+      // Investor Reality & Micro-climate Filters
+      if (filterProtectedView && !isProtectedView(origBuilding)) {
+        return false;
+      }
+      if (filterChillerFree && !isChillerFree(origBuilding)) {
+        return false;
+      }
+      if (filterWalkToMetro && !isWalkToMetro(origBuilding)) {
+        return false;
+      }
+      if (filterGoldenVisa && !isGoldenVisaReady(origBuilding)) {
+        return false;
       }
 
       return true;
@@ -104,7 +129,18 @@ export default function CatalogSection() {
       }
       return 0;
     });
-  }, [search, selectedDistrict, selectedHeight, selectedType, sortBy, localizedBuildings]);
+  }, [
+    search,
+    selectedDistrict,
+    selectedHeight,
+    selectedType,
+    sortBy,
+    filterProtectedView,
+    filterChillerFree,
+    filterWalkToMetro,
+    filterGoldenVisa,
+    localizedBuildings
+  ]);
 
   const typeMap: Record<string, string> = {
     all: t.catalog.types.all,
@@ -115,11 +151,22 @@ export default function CatalogSection() {
     Cultural: t.catalog.types.cultural,
   };
 
+  const lifestyleI18n = useMemo(() => {
+    return LIFESTYLE_FILTERS_I18N[lang] || LIFESTYLE_FILTERS_I18N.en;
+  }, [lang]);
+
+  const hasActiveLifestyleFilters =
+    filterProtectedView || filterChillerFree || filterWalkToMetro || filterGoldenVisa;
+
   const handleResetFilters = () => {
     setSearch("");
     setSelectedDistrict("all");
     setSelectedHeight("all");
     setSelectedType("all");
+    setFilterProtectedView(false);
+    setFilterChillerFree(false);
+    setFilterWalkToMetro(false);
+    setFilterGoldenVisa(false);
   };
 
   return (
@@ -279,7 +326,11 @@ export default function CatalogSection() {
               );
             })}
 
-            {(search || selectedDistrict !== "all" || selectedHeight !== "all" || selectedType !== "all") && (
+            {(search ||
+              selectedDistrict !== "all" ||
+              selectedHeight !== "all" ||
+              selectedType !== "all" ||
+              hasActiveLifestyleFilters) && (
               <button
                 type="button"
                 onClick={handleResetFilters}
@@ -288,6 +339,74 @@ export default function CatalogSection() {
                 {t.catalog.resetFilters}
               </button>
             )}
+          </div>
+
+          {/* Investor Reality & Due Diligence Quick Filters */}
+          <div className="pt-4 border-t border-[#E2E8F0] space-y-2.5">
+            <div className="flex items-center justify-between">
+              <span className="text-xs font-bold text-[#8C6A48] uppercase tracking-wider flex items-center gap-1.5">
+                <span>⚡</span>
+                <span>{lifestyleI18n.title}</span>
+              </span>
+            </div>
+
+            <div className="flex flex-wrap items-center gap-2">
+              {/* 1. Protected View */}
+              <button
+                type="button"
+                onClick={() => setFilterProtectedView(!filterProtectedView)}
+                className={`px-3.5 py-1.5 rounded-xl text-xs font-bold tracking-wide transition-all border flex items-center gap-1.5 ${
+                  filterProtectedView
+                    ? "bg-emerald-700 text-white border-emerald-800 shadow-sm ring-2 ring-emerald-500/30"
+                    : "bg-white text-[#334155] border-[#CBD5E1] hover:border-emerald-500/60 shadow-2xs"
+                }`}
+              >
+                <span>{lifestyleI18n.protectedView}</span>
+                {filterProtectedView && <span className="text-emerald-200 text-xs">✕</span>}
+              </button>
+
+              {/* 2. Chiller-Free */}
+              <button
+                type="button"
+                onClick={() => setFilterChillerFree(!filterChillerFree)}
+                className={`px-3.5 py-1.5 rounded-xl text-xs font-bold tracking-wide transition-all border flex items-center gap-1.5 ${
+                  filterChillerFree
+                    ? "bg-sky-700 text-white border-sky-800 shadow-sm ring-2 ring-sky-500/30"
+                    : "bg-white text-[#334155] border-[#CBD5E1] hover:border-sky-500/60 shadow-2xs"
+                }`}
+              >
+                <span>{lifestyleI18n.chillerFree}</span>
+                {filterChillerFree && <span className="text-sky-200 text-xs">✕</span>}
+              </button>
+
+              {/* 3. Walk to Metro */}
+              <button
+                type="button"
+                onClick={() => setFilterWalkToMetro(!filterWalkToMetro)}
+                className={`px-3.5 py-1.5 rounded-xl text-xs font-bold tracking-wide transition-all border flex items-center gap-1.5 ${
+                  filterWalkToMetro
+                    ? "bg-amber-700 text-white border-amber-800 shadow-sm ring-2 ring-amber-500/30"
+                    : "bg-white text-[#334155] border-[#CBD5E1] hover:border-amber-500/60 shadow-2xs"
+                }`}
+              >
+                <span>{lifestyleI18n.walkToMetro}</span>
+                {filterWalkToMetro && <span className="text-amber-200 text-xs">✕</span>}
+              </button>
+
+              {/* 4. Golden Visa Ready */}
+              <button
+                type="button"
+                onClick={() => setFilterGoldenVisa(!filterGoldenVisa)}
+                className={`px-3.5 py-1.5 rounded-xl text-xs font-bold tracking-wide transition-all border flex items-center gap-1.5 ${
+                  filterGoldenVisa
+                    ? "bg-purple-700 text-white border-purple-800 shadow-sm ring-2 ring-purple-500/30"
+                    : "bg-white text-[#334155] border-[#CBD5E1] hover:border-purple-500/60 shadow-2xs"
+                }`}
+              >
+                <span>{lifestyleI18n.goldenVisa}</span>
+                {filterGoldenVisa && <span className="text-purple-200 text-xs">✕</span>}
+              </button>
+            </div>
           </div>
         </div>
 
@@ -326,7 +445,9 @@ export default function CatalogSection() {
           </div>
         ) : (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
-            {filteredBuildings.map((building) => (
+            {filteredBuildings.map((building) => {
+              const orig = BUILDINGS.find((b) => b.id === building.id) || building;
+              return (
               <div
                 key={building.id}
                 className="rounded-2xl border border-[#E2E8F0] bg-white overflow-hidden hover:border-[#0F172A]/40 transition-all duration-300 shadow-float-card hover:shadow-float-card-hover flex flex-col h-full group"
@@ -441,6 +562,34 @@ export default function CatalogSection() {
                     </div>
                   </div>
 
+                  {/* 3.5 Investor Reality & Due Diligence Badges */}
+                  <div className="mt-3 flex flex-wrap items-center gap-1.5">
+                    {isProtectedView(orig) && (
+                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[11px] font-bold bg-emerald-50 text-emerald-800 border border-emerald-200">
+                        <span>🛡️</span>
+                        <span>{lifestyleI18n.protectedView.replace("🛡️ ", "")}</span>
+                      </span>
+                    )}
+                    {isChillerFree(orig) && (
+                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[11px] font-bold bg-sky-50 text-sky-800 border border-sky-200">
+                        <span>❄️</span>
+                        <span>Chiller-Free</span>
+                      </span>
+                    )}
+                    {isWalkToMetro(orig) && (
+                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[11px] font-bold bg-amber-50 text-amber-900 border border-amber-200">
+                        <span>🚶</span>
+                        <span>Metro</span>
+                      </span>
+                    )}
+                    {isGoldenVisaReady(orig) && (
+                      <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-md text-[11px] font-bold bg-purple-50 text-purple-800 border border-purple-200">
+                        <span>🏛️</span>
+                        <span>Golden Visa</span>
+                      </span>
+                    )}
+                  </div>
+
                   {/* 4. Выравнивание CTA по нижнему краю (margin-top: auto) */}
                   <div className="mt-auto pt-5 grid grid-cols-2 gap-2.5">
                     <Link
@@ -460,7 +609,8 @@ export default function CatalogSection() {
                   </div>
                 </div>
               </div>
-            ))}
+            );
+          })}
           </div>
         )}
       </div>

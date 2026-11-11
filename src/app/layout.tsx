@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import "./compiled-tailwind.css";
 import Providers from "@/components/Providers";
 import Header from "@/components/Header";
@@ -9,8 +9,23 @@ import Tracker from "@/components/Tracker";
 import FloatingWhatsApp from "@/components/FloatingWhatsApp";
 import { getSeoAlternates } from "@/lib/seoAlternates";
 
+export const viewport: Viewport = {
+  themeColor: [
+    { media: "(prefers-color-scheme: light)", color: "#0F172A" },
+    { media: "(prefers-color-scheme: dark)", color: "#0F172A" },
+  ],
+  width: "device-width",
+  initialScale: 1,
+};
+
 export const metadata: Metadata = {
   metadataBase: new URL("https://dubai-architecture.info"),
+  manifest: "/site.webmanifest",
+  appleWebApp: {
+    capable: true,
+    statusBarStyle: "black-translucent",
+    title: "Dubai Architecture",
+  },
   title: {
     default: "Dubai Architecture | Skyscrapers & Luxury Real Estate Encyclopedia",
     template: "%s | Dubai Architecture (Since 2006)",
@@ -75,6 +90,11 @@ export default function RootLayout({
       className="h-full antialiased"
     >
       <head>
+        <meta name="theme-color" content="#0F172A" />
+        <meta name="msapplication-TileColor" content="#0F172A" />
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+        <link rel="manifest" href="/site.webmanifest" />
         <link rel="icon" href="/favicon.ico" sizes="48x48" />
         <link rel="icon" href="/icon-48.png" type="image/png" sizes="48x48" />
         <link rel="icon" href="/icon-96.png" type="image/png" sizes="96x96" />

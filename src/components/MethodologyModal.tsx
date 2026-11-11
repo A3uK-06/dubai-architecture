@@ -27,9 +27,18 @@ export default function MethodologyModal({ isOpen, onClose }: MethodologyModalPr
           onClick={onClose}
           type="button"
           aria-label="Close"
-          className="absolute top-6 right-6 w-9 h-9 rounded-full bg-[#FAF8F5] border border-[#E5DFD3] text-[#78716C] hover:text-[#1C1917] flex items-center justify-center transition-colors text-lg"
+          className="absolute top-6 right-6 w-9 h-9 rounded-full bg-[#FAF8F5] border border-[#E5DFD3] text-[#78716C] hover:text-[#1C1917] flex items-center justify-center transition-colors cursor-pointer"
         >
-          ✕
+          <svg
+            className="w-4 h-4"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+            strokeWidth="2.2"
+            aria-hidden="true"
+          >
+            <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
         </button>
 
         {/* Modal Header */}
