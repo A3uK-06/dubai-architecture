@@ -170,3 +170,58 @@ a, button, input, select {
 [dir="rtl"] {
   text-align: right;
 }
+
+/* Print / Save to PDF Optimizations */
+@media print {
+  @page {
+    margin: 1.2cm;
+    size: auto;
+  }
+
+  /* Hide navigation, footers, floating widgets, lead modals */
+  header,
+  footer,
+  #inquire,
+  .print\:hidden,
+  .print-hidden,
+  button,
+  .floating-contact,
+  #lead-modal,
+  a[href^="https://wa.me"],
+  nav {
+    display: none !important;
+  }
+
+  /* Reset body and remove fixed background monogram */
+  body {
+    background: #FFFFFF !important;
+    background-image: none !important;
+    color: #0F172A !important;
+    font-size: 10pt !important;
+    line-height: 1.5 !important;
+  }
+
+  /* Full width container */
+  article,
+  .max-w-7xl {
+    max-width: 100% !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* High contrast colors */
+  * {
+    -webkit-print-color-adjust: exact !important;
+    print-color-adjust: exact !important;
+  }
+
+  /* Ensure cards and tables don't split awkwardly across page breaks */
+  section,
+  .rounded-3xl,
+  .rounded-2xl,
+  tr {
+    break-inside: avoid !important;
+    page-break-inside: avoid !important;
+  }
+}

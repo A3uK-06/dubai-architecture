@@ -223,9 +223,9 @@ export default function BuildingDetailClient({
           </div>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 print:block">
           {/* Left 2 Columns: Full Engineering Passport & Architectural Analysis */}
-          <div className="lg:col-span-2 space-y-16">
+          <div className="lg:col-span-2 space-y-16 print:w-full print:space-y-8">
             
             {/* AI Overview & Quick Facts (GEO & Search Authority) */}
             <AiQuickFactsAndCitations building={building} />
@@ -654,7 +654,7 @@ export default function BuildingDetailClient({
           </div>
 
           {/* Right Column: Lead Capture & Investment Widget */}
-          <div className="space-y-6">
+          <div className="space-y-6 print:hidden">
             <div id="inquire" className="sticky top-24 p-6 rounded-3xl border border-[#E5DFD3] bg-white shadow-medium-tint space-y-6">
               <div className="space-y-1.5">
                 <div className="inline-block px-2.5 py-1 rounded-md text-xs font-bold uppercase tracking-wider bg-[#8C6A48] text-white">
@@ -703,22 +703,36 @@ export default function BuildingDetailClient({
                   });
                   setIsLeadModalOpen(true);
                 }}
-                className="w-full flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-[#0F172A] hover:bg-[#1E293B] text-white font-bold text-xs sm:text-sm uppercase tracking-wider shadow-md active:scale-98 transition-all"
+                className="w-full flex items-center justify-center gap-2 px-5 py-3.5 rounded-xl bg-[#0F172A] hover:bg-[#1E293B] text-white font-bold text-xs sm:text-sm uppercase tracking-wider shadow-md active:scale-98 transition-all cursor-pointer"
               >
                 <span>📋</span>
                 <span>{tAudit.requestAuditBtn}</span>
               </button>
 
-              {/* Secondary Action: Instant Download / Print Full Dossier (ZERO CONTACT GATE!) */}
+              {/* Instant Full-Page PDF Download */}
+              <button
+                type="button"
+                onClick={() => {
+                  trackEvent("download_full_page_pdf", { building: building.id, building_name: building.name });
+                  if (typeof window !== "undefined") {
+                    window.print();
+                  }
+                }}
+                className="w-full block text-center px-4 py-3 rounded-xl border-2 border-[#8C6A48] bg-[#FAF8F5] hover:bg-[#8C6A48] text-[#8C6A48] hover:text-white font-bold text-xs tracking-wide transition-all shadow-xs cursor-pointer"
+              >
+                📥 {tAudit.downloadDossierBtn}
+              </button>
+
+              {/* Secondary Option: Concise Technical Dossier View */}
               <button
                 type="button"
                 onClick={() => {
                   trackEvent("open_dossier_modal", { building: building.id, building_name: building.name });
                   setIsDossierOpen(true);
                 }}
-                className="w-full block text-center px-4 py-2.5 rounded-xl border border-[#DDD7CA] hover:bg-[#FAF8F5] text-xs text-[#57534E] font-semibold transition-colors shadow-2xs hover:border-[#8C6A48]"
+                className="w-full block text-center px-4 py-1 text-[11px] text-[#78716C] hover:text-[#0F172A] font-semibold underline underline-offset-2 transition-colors cursor-pointer"
               >
-                📥 {tAudit.downloadDossierBtn}
+                📑 {lang === "ru" ? "Открыть паспорт в компактном окне" : "Open Executive Dossier Modal"}
               </button>
 
               {/* Direct WhatsApp Concierge */}

@@ -3,6 +3,9 @@ name: Deploy Next.js to GitHub Pages
 on:
   push:
     branches: ["main"]
+  schedule:
+    # Auto-rebuild on the 1st of every month at 03:00 UTC (quarterly & rolling DLD sync)
+    - cron: '0 3 1 * *'
   workflow_dispatch:
 
 permissions:

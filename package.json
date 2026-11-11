@@ -10,6 +10,7 @@
     "index:google": "node scripts/push-indexing-api.mjs",
     "index:bing": "node scripts/push-indexnow.mjs",
     "index:all": "node scripts/push-indexing-api.mjs && node scripts/push-indexnow.mjs",
+    "sync:dld": "node scripts/sync-dld-data.mjs",
     "start": "next start",
     "lint": "eslint"
   },

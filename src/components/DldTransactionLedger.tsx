@@ -1,17 +1,19 @@
 "use client";
 
 import React, { useState, useMemo } from "react";
-import { Building, getBuildingDldLedger } from "@/data/buildings";
+import { Building } from "@/data/buildings";
 import { useLang } from "@/context/LangContext";
 import { DLD_PROCEDURES, TYPOLOGY_NAMES, localizeFloorZone } from "@/data/floorPlanI18n";
+import { DLD_LEDGER_I18N, getFreshBuildingDldLedger } from "@/data/dldSync";
 
 interface DldTransactionLedgerProps {
   building: Building;
 }
 
 export default function DldTransactionLedger({ building }: DldTransactionLedgerProps) {
-  const { lang } = useLang();
-  const ledger = useMemo(() => getBuildingDldLedger(building), [building]);
+  const { lang, isRtl } = useLang();
+  const tDld = useMemo(() => DLD_LEDGER_I18N[lang] || DLD_LEDGER_I18N.en, [lang]);
+  const ledger = useMemo(() => getFreshBuildingDldLedger(building, lang), [building, lang]);
   const [filterType, setFilterType] = useState<string>("all");
 
   const filteredTransactions = useMemo(() => {
@@ -47,18 +49,16 @@ export default function DldTransactionLedger({ building }: DldTransactionLedgerP
         <div className="space-y-1.5">
           <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-emerald-800 text-xs font-sans font-bold uppercase tracking-wider">
             <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-            <span>{lang === "ru" ? "Официальные данные DLD Open Data" : "Verified DLD Open Data Stream"}</span>
+            <span>{tDld.verifiedBadge}</span>
           </div>
           <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-[#0F172A] font-heading">
-            {lang === "ru" ? "Реестр зарегистрированных сделок (DLD)" : "Dubai Land Department Transaction Ledger"}
+            {tDld.title}
           </h2>
           <p className="text-xs sm:text-sm text-[#64748B] font-sans leading-relaxed max-w-3xl">
-            {lang === "ru"
-              ? `Фактические сделки купли-продажи и ипотеки в ${building.name}, зарегистрированные Земельным департаментом Дубая.`
-              : `Actual title-deed sales and mortgage transactions in ${building.name} officially registered with DLD.`}
+            {tDld.subtitle(building.name)}
           </p>
         </div>
-        <div className="text-right self-start sm:self-auto font-sans text-xs shrink-0">
+        <div className={`${isRtl ? "text-left" : "text-right"} self-start sm:self-auto font-sans text-xs shrink-0`}>
           <div className="text-[#64748B] font-medium">{ledger.metrics.lastUpdatedDld}</div>
           <div className="font-bold text-[#8C6A48] text-sm mt-0.5">{building.district}</div>
         </div>
@@ -69,52 +69,56 @@ export default function DldTransactionLedger({ building }: DldTransactionLedgerP
         {/* Median Price Per Sq.Ft */}
         <div className="p-5 rounded-2xl bg-[#F8FAFC] border border-[#E2E8F0] space-y-1.5">
           <div className="text-xs text-[#64748B] font-sans font-bold uppercase tracking-wider">
-            {lang === "ru" ? "Медиана за кв. фут" : "Median Price / sq.ft"}
+            {tDld.medianPriceLabel}
           </div>
           <div className="text-xl sm:text-2xl font-extrabold font-sans tabular-nums text-[#0F172A]">
-            {formatNumber(ledger.metrics.medianPricePerSqFtAed)} <span className="text-xs font-normal text-[#64748B]">AED</span>
+            {formatNumber(ledger.metrics.medianPricePerSqFtAed)}{" "}
+            <span className="text-xs font-normal text-[#64748B]">AED/{tDld.unitSqFt}</span>
           </div>
           <div className="text-xs font-sans text-[#059669] font-bold">
-            +{ledger.metrics.annualAppreciationPercent}% {lang === "ru" ? "за 12 мес." : "12M trend"}
+            +{ledger.metrics.annualAppreciationPercent}% {tDld.trend12m}
           </div>
         </div>
 
         {/* 90-Day Transaction Volume */}
         <div className="p-5 rounded-2xl bg-[#F8FAFC] border border-[#E2E8F0] space-y-1.5">
           <div className="text-xs text-[#64748B] font-sans font-bold uppercase tracking-wider">
-            {lang === "ru" ? "Сделок за 90 дней" : "90-Day Volume"}
+            {tDld.volume90d}
           </div>
           <div className="text-xl sm:text-2xl font-extrabold font-sans tabular-nums text-[#8C6A48]">
-            {ledger.metrics.totalTransactions90Days} <span className="text-xs font-normal text-[#64748B]">{lang === "ru" ? "договоров" : "deeds"}</span>
+            {ledger.metrics.totalTransactions90Days}{" "}
+            <span className="text-xs font-normal text-[#64748B]">{tDld.deedsCount}</span>
           </div>
           <div className="text-xs font-sans text-[#64748B] font-medium">
-            {lang === "ru" ? "Высокая ликвидность" : "Active liquidity"}
+            {tDld.liquidityActive}
           </div>
         </div>
 
         {/* Official Mollak Service Charge */}
         <div className="p-5 rounded-2xl bg-[#F8FAFC] border border-[#E2E8F0] space-y-1.5">
           <div className="text-xs text-[#64748B] font-sans font-bold uppercase tracking-wider">
-            {lang === "ru" ? "Тариф Mollak (DLD)" : "Mollak Service Charge"}
+            {tDld.mollakLabel}
           </div>
           <div className="text-xl sm:text-2xl font-extrabold font-sans tabular-nums text-[#0F172A]">
-            {ledger.metrics.serviceChargeMollakAed} <span className="text-xs font-normal text-[#64748B]">AED/sq.ft</span>
+            {ledger.metrics.serviceChargeMollakAed}{" "}
+            <span className="text-xs font-normal text-[#64748B]">AED/{tDld.unitSqFt}</span>
           </div>
           <div className="text-xs font-sans text-[#64748B] font-medium">
-            {lang === "ru" ? "Утверждено RERA" : "RERA Approved"}
+            {tDld.reraApproved}
           </div>
         </div>
 
         {/* Median Annual Lease (Ejari) */}
         <div className="p-5 rounded-2xl bg-[#F8FAFC] border border-[#E2E8F0] space-y-1.5">
           <div className="text-xs text-[#64748B] font-sans font-bold uppercase tracking-wider">
-            {lang === "ru" ? "Аренда 1-Bed (Ejari)" : "1-Bed Rent (Ejari)"}
+            {tDld.rent1bed}
           </div>
           <div className="text-xl sm:text-2xl font-extrabold font-sans tabular-nums text-[#059669]">
-            {formatNumber(ledger.metrics.rentalMedian1BrAed)} <span className="text-xs font-normal text-[#64748B]">AED/yr</span>
+            {formatNumber(ledger.metrics.rentalMedian1BrAed)}{" "}
+            <span className="text-xs font-normal text-[#64748B]">AED{tDld.unitYear}</span>
           </div>
           <div className="text-xs font-sans text-[#64748B] font-medium">
-            2-Bed: ~{formatNumber(ledger.metrics.rentalMedian2BrAed)} AED
+            {tDld.rent2bedPrefix}{formatNumber(ledger.metrics.rentalMedian2BrAed)} AED
           </div>
         </div>
       </div>
@@ -123,7 +127,7 @@ export default function DldTransactionLedger({ building }: DldTransactionLedgerP
       <div className="flex flex-wrap items-center justify-between gap-3 pt-1">
         <div className="flex flex-wrap gap-2 text-xs font-sans">
           {[
-            { id: "all", label: lang === "ru" ? "Все сделки" : "All Deeds" },
+            { id: "all", label: tDld.allDeedsTab },
             { id: "1bed", label: TYPOLOGY_NAMES["1-Bedroom Suite"]?.[lang] || "1-Bedroom" },
             { id: "2bed", label: TYPOLOGY_NAMES["2-Bedroom Executive"]?.[lang] || "2-Bedroom" },
             { id: "3bed", label: TYPOLOGY_NAMES["3-Bedroom Residence"]?.[lang] || "3-Bedroom" },
@@ -143,7 +147,7 @@ export default function DldTransactionLedger({ building }: DldTransactionLedgerP
           ))}
         </div>
         <div className="text-xs font-sans text-[#64748B]">
-          {lang === "ru" ? "Записей в реестре:" : "Showing:"} <strong className="text-[#0F172A]">{filteredTransactions.length}</strong>
+          {tDld.showingRecords} <strong className="text-[#0F172A]">{filteredTransactions.length}</strong>
         </div>
       </div>
 
@@ -152,12 +156,12 @@ export default function DldTransactionLedger({ building }: DldTransactionLedgerP
         <table className="w-full text-left border-collapse text-xs sm:text-sm">
           <thead>
             <tr className="bg-[#F8FAFC] border-b border-[#E2E8F0] font-sans font-bold text-[#64748B] uppercase tracking-wider text-xs">
-              <th className="py-4 px-5">{lang === "ru" ? "ID транзакции / Дата" : "Tx ID & Date"}</th>
-              <th className="py-4 px-5">{lang === "ru" ? "Тип процедуры" : "Procedure"}</th>
-              <th className="py-4 px-5">{lang === "ru" ? "Типология & Зона" : "Unit & Tier"}</th>
-              <th className="py-4 px-5">{lang === "ru" ? "Площадь" : "Area"}</th>
-              <th className="py-4 px-5">{lang === "ru" ? "Цена / кв. фут" : "Rate / sq.ft"}</th>
-              <th className="py-4 px-5 text-right">{lang === "ru" ? "Сумма сделки" : "Total Amount"}</th>
+              <th className="py-4 px-5">{tDld.thTxDate}</th>
+              <th className="py-4 px-5">{tDld.thProcedure}</th>
+              <th className="py-4 px-5">{tDld.thUnitTier}</th>
+              <th className="py-4 px-5">{tDld.thArea}</th>
+              <th className="py-4 px-5">{tDld.thRate}</th>
+              <th className="py-4 px-5 text-right">{tDld.thTotal}</th>
             </tr>
           </thead>
           <tbody className="divide-y divide-[#F1F5F9] text-[#334155] font-sans">
@@ -181,11 +185,15 @@ export default function DldTransactionLedger({ building }: DldTransactionLedgerP
                   </span>
                 </td>
                 <td className="py-4 px-5">
-                  <div className="font-bold text-[#0F172A] font-sans text-xs sm:text-sm">{getLocalizedUnitType(tx.unitType)}</div>
-                  <div className="text-xs text-[#64748B] font-sans mt-0.5">{localizeFloorZone(tx.floorZone, lang)}</div>
+                  <div className="font-bold text-[#0F172A] font-sans text-xs sm:text-sm">
+                    {getLocalizedUnitType(tx.unitType)}
+                  </div>
+                  <div className="text-xs text-[#64748B] font-sans mt-0.5">
+                    {localizeFloorZone(tx.floorZone, lang)}
+                  </div>
                 </td>
                 <td className="py-4 px-5 font-sans font-semibold tabular-nums text-xs sm:text-sm">
-                  {formatNumber(tx.areaSqFt)} sq.ft
+                  {formatNumber(tx.areaSqFt)} {tDld.unitSqFt}
                 </td>
                 <td className="py-4 px-5 font-sans font-bold tabular-nums text-[#8C6A48] text-xs sm:text-sm">
                   {formatNumber(tx.pricePerSqFtAed)} AED
@@ -211,6 +219,10 @@ export default function DldTransactionLedger({ building }: DldTransactionLedgerP
           <span>
             {lang === "ru"
               ? "Данные верифицированы с открытым реестром Dubai Land Department и сервисом Mollak. Цены включают реальные зарегистрированные договоры купли-продажи."
+              : lang === "ar"
+              ? "البيانات معتمدة من السجلات الرسمية لدائرة الأراضي والأملاك في دبي ومنظومة ملاك. تمثل القيم العقود المسجلة قانونياً."
+              : lang === "zh"
+              ? "数据已通过迪拜土地局(DLD)官方公开数据平台及Mollak信托系统核实，所列金额均为真实完成产权交割的正式合同数据。"
               : "Data verified against Dubai Land Department open registers and Mollak escrow portal. Values represent actual legal deeds."}
           </span>
         </div>

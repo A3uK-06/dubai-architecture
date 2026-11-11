@@ -45,7 +45,7 @@ export default function FloatingWhatsApp() {
       <div
         className={`fixed bottom-6 ${
           isRtl ? "left-6" : "right-6"
-        } z-40 flex items-center group`}
+        } z-40 flex items-center group print:hidden`}
         onMouseEnter={() => setIsHovered(true)}
         onMouseLeave={() => setIsHovered(false)}
       >

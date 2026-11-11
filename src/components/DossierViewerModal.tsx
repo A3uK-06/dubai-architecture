@@ -4,6 +4,7 @@ import React, { useMemo } from "react";
 import { Building, getBuildingAuditReview, getBuildingFloorPlans, getBuildingDldLedger } from "@/data/buildings";
 import { useLang } from "@/context/LangContext";
 import { getLocalizedFloorPlan, TYPOLOGY_NAMES } from "@/data/floorPlanI18n";
+import { getBuildingInvestorReality } from "@/data/investorRealityCheck";
 
 interface DossierViewerModalProps {
   isOpen: boolean;
@@ -21,6 +22,9 @@ export default function DossierViewerModal({
   const audit = useMemo(() => getBuildingAuditReview(building), [building]);
   const rawPlans = useMemo(() => getBuildingFloorPlans(building), [building]);
   const ledger = useMemo(() => getBuildingDldLedger(building), [building]);
+  const { viewRadar, solarExposure, walkability, labels } = useMemo(() => {
+    return getBuildingInvestorReality(building, lang);
+  }, [building, lang]);
 
   const plans = useMemo(() => {
     return rawPlans.map((p) => getLocalizedFloorPlan(p, lang, building.name));
@@ -150,11 +154,94 @@ export default function DossierViewerModal({
             </div>
           </div>
 
-          {/* Section 2: Complete Structural & Geotechnical Passport */}
+          {/* Section 2: View Blocker Radar & Horizon Integrity */}
+          <div className="space-y-3">
+            <h2 className="text-lg font-bold text-[#0F172A] uppercase tracking-wider font-mono border-b border-[#E2E8F0] pb-1.5 flex items-center justify-between">
+              <span className="flex items-center gap-2">
+                <span>🛡️</span>
+                <span>{lang === "ru" ? "2. Радар перекрытия вида (View Blocker)" : "2. View Blocker Radar & Horizon Security"}</span>
+              </span>
+              <span className="text-xs px-2.5 py-1 rounded-md bg-emerald-100 text-emerald-800 font-bold">
+                {viewRadar.status}
+              </span>
+            </h2>
+            <p className="text-xs text-[#334155] leading-relaxed">
+              {viewRadar.assessment}
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs">
+              <div className="p-3 rounded-xl bg-emerald-50/70 border border-emerald-200">
+                <strong className="text-emerald-900 block mb-1">✓ {labels.protectedOrientations}:</strong>
+                <ul className="space-y-1 text-emerald-950">
+                  {viewRadar.protectedOrientations.map((item, idx) => (
+                    <li key={idx}>• {item}</li>
+                  ))}
+                </ul>
+              </div>
+              <div className="p-3 rounded-xl bg-amber-50/70 border border-amber-200">
+                <strong className="text-amber-900 block mb-1">⚠ {labels.threatOrientations}:</strong>
+                {viewRadar.threatOrientations.length > 0 ? (
+                  <ul className="space-y-1 text-amber-950">
+                    {viewRadar.threatOrientations.map((item, idx) => (
+                      <li key={idx}>• {item}</li>
+                    ))}
+                  </ul>
+                ) : (
+                  <span className="text-[#64748B] italic">100% Permanently Protected Frontline</span>
+                )}
+              </div>
+            </div>
+          </div>
+
+          {/* Section 3: Sun & Thermal Exposure */}
+          <div className="space-y-3">
+            <h2 className="text-lg font-bold text-[#0F172A] uppercase tracking-wider font-mono border-b border-[#E2E8F0] pb-1.5 flex items-center gap-2">
+              <span>☀️</span>
+              <span>{lang === "ru" ? "3. Инсоляция и тепловая нагрузка фасада" : "3. Sun & Thermal Exposure Analysis"}</span>
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+              <div className="p-3 rounded-xl bg-sky-50 border border-sky-200">
+                <strong className="text-sky-900 block mb-0.5">❄️ {labels.optimalAspect}:</strong>
+                <span className="text-slate-700">{solarExposure.optimalAspect}</span>
+              </div>
+              <div className="p-3 rounded-xl bg-orange-50 border border-orange-200">
+                <strong className="text-orange-900 block mb-0.5">🔥 {labels.harshAspect}:</strong>
+                <span className="text-slate-700">{solarExposure.harshAspect}</span>
+              </div>
+            </div>
+            <div className="p-3 rounded-xl bg-[#FAF8F5] border border-[#DDD7CA] text-xs text-[#57534E]">
+              <strong>💡 {labels.residentTip}:</strong> {solarExposure.residentTip}
+            </div>
+          </div>
+
+          {/* Section 4: Walkability & Transit Reality */}
+          <div className="space-y-3">
+            <h2 className="text-lg font-bold text-[#0F172A] uppercase tracking-wider font-mono border-b border-[#E2E8F0] pb-1.5 flex items-center justify-between">
+              <span className="flex items-center gap-2">
+                <span>🚶</span>
+                <span>{lang === "ru" ? "4. Пешеходность и доступность метро" : "4. Walkability & Transit Reality"}</span>
+              </span>
+              <span className="text-xs px-2.5 py-1 rounded-md bg-slate-900 text-white font-mono font-bold">
+                {walkability.score}/100 • {walkability.category}
+              </span>
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+              <div className="p-3 rounded-xl border border-[#E2E8F0] bg-[#F8FAFC]">
+                <span className="text-[#64748B] block">🚇 {labels.metroStationLabel}:</span>
+                <strong className="text-[#0F172A] block mt-0.5">{walkability.metroStation}</strong>
+                <span className="text-emerald-700 font-bold block mt-0.5">{walkability.metroDistanceMinutes} {labels.metroMinutesLabel} ({walkability.metroAccessType})</span>
+              </div>
+              <div className="p-3 rounded-xl border border-[#E2E8F0] bg-[#F8FAFC]">
+                <span className="text-[#64748B] block">🛒 {labels.dailyEssentialsLabel}:</span>
+                <span className="text-slate-700 block mt-0.5">{walkability.dailyEssentialsOnFoot}</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Section 5: Complete Structural & Geotechnical Passport */}
           <div className="space-y-3">
             <h2 className="text-lg font-bold text-[#0F172A] uppercase tracking-wider font-mono border-b border-[#E2E8F0] pb-1.5 flex items-center gap-2">
               <span>🏗️</span>
-              <span>{lang === "ru" ? "2. Геотехнический и конструктивный паспорт" : "2. Geotechnical & Structural Passport"}</span>
+              <span>{lang === "ru" ? "5. Геотехнический и конструктивный паспорт" : "5. Geotechnical & Structural Passport"}</span>
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
               <div className="p-3 rounded-xl border border-[#E2E8F0] bg-white">
@@ -177,11 +264,11 @@ export default function DossierViewerModal({
             </div>
           </div>
 
-          {/* Section 3: Official Mollak DLD Service Charges & Operating Reality */}
+          {/* Section 6: Official Mollak DLD Service Charges & Operating Reality */}
           <div className="space-y-3">
             <h2 className="text-lg font-bold text-[#0F172A] uppercase tracking-wider font-mono border-b border-[#E2E8F0] pb-1.5 flex items-center gap-2">
               <span>📊</span>
-              <span>{lang === "ru" ? "3. Эксплуатационные расходы и правила кондоминиума" : "3. Operating Economics & Condominium Rules"}</span>
+              <span>{lang === "ru" ? "6. Эксплуатационные расходы и правила кондоминиума" : "6. Operating Economics & Condominium Rules"}</span>
             </h2>
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs bg-[#F8FAFC] border border-[#E2E8F0] p-4 rounded-xl">
               <div>
@@ -206,11 +293,11 @@ export default function DossierViewerModal({
             </div>
           </div>
 
-          {/* Section 4: Architectural Floor Plans Summary */}
+          {/* Section 7: Architectural Floor Plans Summary */}
           <div className="space-y-3">
             <h2 className="text-lg font-bold text-[#0F172A] uppercase tracking-wider font-mono border-b border-[#E2E8F0] pb-1.5 flex items-center gap-2">
               <span>📐</span>
-              <span>{lang === "ru" ? "4. Типоразмеры и планировочный состав" : "4. Unit Typology & Living Areas"}</span>
+              <span>{lang === "ru" ? "7. Типоразмеры и планировочный состав" : "7. Unit Typology & Living Areas"}</span>
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
               {plans.map((p) => (
@@ -229,11 +316,11 @@ export default function DossierViewerModal({
             </div>
           </div>
 
-          {/* Section 5: Recent Verified DLD Transaction Ledger */}
+          {/* Section 8: Recent Verified DLD Transaction Ledger */}
           <div className="space-y-3">
             <h2 className="text-lg font-bold text-[#0F172A] uppercase tracking-wider font-mono border-b border-[#E2E8F0] pb-1.5 flex items-center gap-2">
               <span>🏛️</span>
-              <span>{lang === "ru" ? "5. Официальные зарегистрированные сделки DLD" : "5. Official Registered DLD Transaction Record"}</span>
+              <span>{lang === "ru" ? "8. Официальные зарегистрированные сделки DLD" : "8. Official Registered DLD Transaction Record"}</span>
             </h2>
             <table className="w-full text-left text-xs border border-[#E2E8F0] rounded-xl overflow-hidden">
               <thead className="bg-[#F8FAFC] font-mono text-[#64748B] text-[10px] uppercase">
