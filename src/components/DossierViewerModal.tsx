@@ -256,7 +256,7 @@ export default function DossierViewerModal({
               <div className="p-3 rounded-xl border border-[#E2E8F0] bg-white">
                 <div className="text-[#64748B] font-mono">{tDossier.windEng}:</div>
                 <div className="font-bold mt-1 text-[#0F172A]">{building.windStructural.lateralSystem}</div>
-                <div className="text-[11px] text-[#64748B] mt-0.5">Sway: {building.windStructural.maxApexSwayMeters} • {building.windStructural.concreteStrengthGrade}</div>
+                <div className="text-[11px] text-[#64748B] mt-0.5">{tDossier.swayLabel || "Sway"}: {building.windStructural.maxApexSwayMeters} • {building.windStructural.concreteStrengthGrade}</div>
               </div>
 
               <div className="p-3 rounded-xl border border-[#E2E8F0] bg-white">
@@ -276,7 +276,7 @@ export default function DossierViewerModal({
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs bg-[#F8FAFC] border border-[#E2E8F0] p-4 rounded-xl">
               <div>
                 <span className="text-[#64748B] block">{tDossier.serviceCharge}:</span>
-                <strong className="text-sm font-bold text-[#8C6A48] font-mono">{ledger.metrics.serviceChargeMollakAed} AED/sq.ft</strong>
+                <strong className="text-sm font-bold text-[#8C6A48] font-mono">{ledger.metrics.serviceChargeMollakAed} AED/{tDossier.sqftUnit || "sq.ft"}</strong>
               </div>
               <div>
                 <span className="text-[#64748B] block">{tDossier.cooling}:</span>
@@ -307,10 +307,10 @@ export default function DossierViewerModal({
                 <div key={p.id} className="p-3.5 rounded-xl border border-[#E2E8F0] bg-white space-y-1.5">
                   <div className="flex justify-between items-baseline font-bold text-[#0F172A]">
                     <span className="text-sm font-heading">{p.typeTag}</span>
-                    <span className="font-mono text-[#8C6A48] font-bold">{p.totalAreaSqFt} sq.ft ({p.totalAreaSqM} m²)</span>
+                    <span className="font-mono text-[#8C6A48] font-bold">{p.totalAreaSqFt} {tDossier.sqftUnit || "sq.ft"} ({p.totalAreaSqM} m²)</span>
                   </div>
                   <div className="text-[#64748B] text-[11px] leading-relaxed">
-                    {tDossier.internalArea}: {p.internalAreaSqFt} sq.ft • {tDossier.balconyArea}: {p.balconyAreaSqFt} sq.ft • {p.roomsBreakdown.bedrooms} {tDossier.bedrooms}, {p.roomsBreakdown.bathrooms} {tDossier.bathrooms}
+                    {tDossier.internalArea}: {p.internalAreaSqFt} {tDossier.sqftUnit || "sq.ft"} • {tDossier.balconyArea}: {p.balconyAreaSqFt} {tDossier.sqftUnit || "sq.ft"} • {p.roomsBreakdown.bedrooms} {tDossier.bedrooms}, {p.roomsBreakdown.bathrooms} {tDossier.bathrooms}
                   </div>
                 </div>
               ))}
@@ -338,7 +338,7 @@ export default function DossierViewerModal({
                   <tr key={tx.id}>
                     <td className="p-2.5 text-[#64748B]">{tx.date} ({tx.id})</td>
                     <td className="p-2.5 font-bold text-[#0F172A]">{TYPOLOGY_NAMES[tx.unitType]?.[lang] || tx.unitType}</td>
-                    <td className="p-2.5">{tx.areaSqFt} sq.ft</td>
+                    <td className="p-2.5">{tx.areaSqFt} {tDossier.sqftUnit || "sq.ft"}</td>
                     <td className="p-2.5 text-[#8C6A48] font-bold">{tx.pricePerSqFtAed} AED</td>
                     <td className="p-2.5 text-right font-bold text-[#0F172A]">{new Intl.NumberFormat("en-US").format(tx.amountAed)} AED</td>
                   </tr>

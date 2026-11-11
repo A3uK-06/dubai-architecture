@@ -40,10 +40,14 @@ export interface DossierLabels {
   certText: string;
   confidentialTitle: string;
   confidentialText: string;
+  swayLabel?: string;
+  sqftUnit?: string;
 }
 
 export const DOSSIER_I18N: Record<LanguageCode, DossierLabels> = {
   en: {
+    swayLabel: "Apex Sway",
+    sqftUnit: "sq.ft",
     badge: "Official Technical Passport (PDF / Print Ready)",
     savePdf: "Save as PDF / Print Document",
     height: "Official Height",
@@ -85,6 +89,8 @@ export const DOSSIER_I18N: Record<LanguageCode, DossierLabels> = {
     confidentialText: "For independent physical engineering inspections or RERA escrow verification, contact senior audit desk: info@dubai-architecture.info"
   },
   ru: {
+    swayLabel: "Отклонение вершины",
+    sqftUnit: "кв.фут",
     badge: "Официальный инженерный паспорт (PDF/Печать)",
     savePdf: "Сохранить как PDF / Печать",
     height: "Высота",
@@ -126,6 +132,8 @@ export const DOSSIER_I18N: Record<LanguageCode, DossierLabels> = {
     confidentialText: "Для независимой выездной инженерной проверки объекта или верификации эскроу-счетов RERA свяжитесь с аудиторским отделом: info@dubai-architecture.info"
   },
   ar: {
+    swayLabel: "انحراف القمة",
+    sqftUnit: "قدم²",
     badge: "الجواز الهندسي الفني الرسمي (جاهز للطباعة / PDF)",
     savePdf: "حفظ كملف PDF / طباعة الوثيقة",
     height: "الارتفاع الرسمي",
@@ -167,6 +175,8 @@ export const DOSSIER_I18N: Record<LanguageCode, DossierLabels> = {
     confidentialText: "لإجراء فحص هندسي ميداني مستقل أو التحقق من حسابات الضمان (إسكرو) تواصل مع فريق التدقيق: info@dubai-architecture.info"
   },
   zh: {
+    swayLabel: "顶点位移",
+    sqftUnit: "平方英尺",
     badge: "大厦官方工程技术白皮书 (PDF / 打印归档)",
     savePdf: "保存为 PDF / 打印文档",
     height: "官方建筑高度",
@@ -208,6 +218,8 @@ export const DOSSIER_I18N: Record<LanguageCode, DossierLabels> = {
     confidentialText: "如需针对具体房源申请独立入户实测工程鉴定或核查RERA监管信托账户，请联系高级总监邮箱: info@dubai-architecture.info"
   },
   de: {
+    swayLabel: "Spitzenauslenkung",
+    sqftUnit: "sq.ft",
     badge: "Offizieller technischer Pass (PDF / Druckbereit)",
     savePdf: "Als PDF speichern / Dokument drucken",
     height: "Offizielle Höhe",
@@ -249,6 +261,8 @@ export const DOSSIER_I18N: Record<LanguageCode, DossierLabels> = {
     confidentialText: "Für unabhängige technische Vor-Ort-Prüfungen oder RERA-Treuhandkonto-Verifikationen kontaktieren Sie: info@dubai-architecture.info"
   },
   fr: {
+    swayLabel: "Déflexion sommitale",
+    sqftUnit: "sq.ft",
     badge: "Passeport technique officiel (PDF / Prêt à imprimer)",
     savePdf: "Enregistrer en PDF / Imprimer",
     height: "Hauteur officielle",
@@ -290,6 +304,8 @@ export const DOSSIER_I18N: Record<LanguageCode, DossierLabels> = {
     confidentialText: "Pour un audit physique indépendant sur site ou un contrôle de compte séquestre RERA : info@dubai-architecture.info"
   },
   it: {
+    swayLabel: "Flessione sommitale",
+    sqftUnit: "sq.ft",
     badge: "Passaporto tecnico ufficiale (PDF / Pronto per la stampa)",
     savePdf: "Salva come PDF / Stampa documento",
     height: "Altezza ufficiale",
@@ -331,6 +347,8 @@ export const DOSSIER_I18N: Record<LanguageCode, DossierLabels> = {
     confidentialText: "Per ispezioni tecniche indipendenti in loco o verifica conti fiduciari RERA: info@dubai-architecture.info"
   },
   tr: {
+    swayLabel: "Tepe Salınımı",
+    sqftUnit: "sq.ft",
     badge: "Resmi Teknik Pasaport (PDF / Yazdırmaya Hazır)",
     savePdf: "PDF Olarak Kaydet / Yazdır",
     height: "Resmi Yükseklik",
@@ -372,6 +390,8 @@ export const DOSSIER_I18N: Record<LanguageCode, DossierLabels> = {
     confidentialText: "Bağımsız fiziksel teknik denetim veya RERA emanet hesap doğrulaması için: info@dubai-architecture.info"
   },
   hi: {
+    swayLabel: "शीर्ष दोलन",
+    sqftUnit: "वर्ग फुट",
     badge: "आधिकारिक तकनीकी पासपोर्ट (पीडीएफ / प्रिंट तैयार)",
     savePdf: "पीडीएफ के रूप में सहेजें / प्रिंट करें",
     height: "आधिकारिक ऊंचाई",
@@ -413,6 +433,8 @@ export const DOSSIER_I18N: Record<LanguageCode, DossierLabels> = {
     confidentialText: "स्वतंत्र भौतिक निरीक्षण या रेरा एस्क्रो सत्यापन के लिए ऑडिट डेस्क से संपर्क करें: info@dubai-architecture.info"
   },
   ur: {
+    swayLabel: "چوٹی کا جھکاؤ",
+    sqftUnit: "مربع فٹ",
     badge: "سرکاری تکنیکی پاسپورٹ (PDF / پرنٹ کے لیے تیار)",
     savePdf: "PDF محفوظ کریں / پرنٹ دستاویز",
     height: "سرکاری اونچائی",

@@ -621,7 +621,15 @@ export default function BuildingDetailClient({
                       <div className="text-[#78716C] font-medium uppercase">{t.ttxLabels.coolingProvider}</div>
                       <div className="text-base font-bold text-[#1C1917] mt-1">{building.operatingSpecs.coolingProvider}</div>
                       <span className={`inline-block mt-1 px-2.5 py-0.5 rounded text-xs font-bold ${
-                        building.operatingSpecs.chillerBilling.includes('Chiller-Free') || building.operatingSpecs.chillerBilling.includes('Включено') || building.operatingSpecs.chillerBilling.includes('مشمول') || building.operatingSpecs.chillerBilling.includes('Incluso') || building.operatingSpecs.chillerBilling.includes('dahili') || building.operatingSpecs.chillerBilling.includes('包含') 
+                        building.operatingSpecs.chillerBilling.includes('Free') ||
+                        building.operatingSpecs.chillerBilling.includes('Включено') ||
+                        building.operatingSpecs.chillerBilling.includes('مشمول') ||
+                        building.operatingSpecs.chillerBilling.includes('مستثنیٰ') ||
+                        building.operatingSpecs.chillerBilling.includes('Incluso') ||
+                        building.operatingSpecs.chillerBilling.includes('dahili') ||
+                        building.operatingSpecs.chillerBilling.includes('包含') ||
+                        building.operatingSpecs.chillerBilling.includes('फ्री') ||
+                        building.operatingSpecs.chillerBilling.includes('enthalten')
                           ? 'bg-[#2D6A4F]/10 text-[#2D6A4F]' 
                           : 'bg-[#9E4732]/10 text-[#9E4732]'
                       }`}>

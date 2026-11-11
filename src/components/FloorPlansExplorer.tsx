@@ -3,6 +3,7 @@
 import React, { useState, useMemo, useEffect, useRef } from "react";
 import { Building, FloorPlan, getBuildingFloorPlans } from "@/data/buildings";
 import { useLang } from "@/context/LangContext";
+import { LanguageCode } from "@/i18n/languages";
 import { FLOOR_PLAN_LABELS, getLocalizedFloorPlan } from "@/data/floorPlanI18n";
 
 interface FloorPlansExplorerProps {
@@ -980,22 +981,92 @@ export default function FloorPlansExplorer({
     );
   };
 
+  const SERIES_NAMES: Record<string, Partial<Record<LanguageCode, string>>> = {
+    "Foster + Partners": {
+      ru: "Foster + Partners",
+      ar: "فوستر وشركاه",
+      zh: "福斯特建筑事务所",
+      hi: "फोस्टर + पार्टनर्स",
+      ur: "فوسٹر اینڈ پارٹنرز",
+    },
+    "Skidmore, Owings & Merrill (SOM)": {
+      ru: "Skidmore, Owings & Merrill (SOM)",
+      ar: "سكيدمور، أوينغز وميريل (SOM)",
+      zh: "SOM建筑设计事务所",
+      hi: "स्किडमोर, ओविंग्स एंड मेरिल (SOM)",
+      ur: "اسکِڈمور، اوونگز اینڈ میرل (SOM)",
+    },
+    "SOM Helical Series": {
+      ru: "Спиральная серия SOM",
+      ar: "سلسلة SOM الحلزونية",
+      zh: "SOM螺旋建筑系列",
+      de: "SOM Helical Serie",
+      fr: "Série hélicoïdale SOM",
+      it: "Serie elicoidale SOM",
+      tr: "SOM Helisel Serisi",
+      hi: "एसओएम हेलिकल श्रृंखला",
+      ur: "ایس او ایم ہیلیکل سیریز",
+    },
+    "Zaha Hadid Architects": {
+      ru: "Zaha Hadid Architects",
+      ar: "زها حديد للهندسة المعمارية",
+      zh: "扎哈·哈迪德建筑事务所",
+      hi: "ज़ाहा हदीद आर्किटेक्ट्स",
+      ur: "زہا حدید آرکیٹیکٹس",
+    },
+    "High Horology & Automotive": {
+      ru: "Автомобильная и часовая серия",
+      ar: "سلسلة الساعات الفاخرة والسيارات",
+      zh: "名表与超跑联名系列",
+      de: "Haute Horlogerie & Automobil-Serie",
+      fr: "Haute Horlogerie & Automobile",
+      it: "Alta Orologeria & Serie Automobilistica",
+      tr: "Yüksek Saatçilik ve Otomotiv Serisi",
+      hi: "उच्च घड़ी विज्ञान और ऑटोमोटिव श्रृंखला",
+      ur: "اعلیٰ گھڑی سازی اور آٹوموٹو سیریز",
+    },
+    "Iconic Waterfront": {
+      ru: "Курортная коллекция у воды",
+      ar: "سلسلة الواجهات البحرية الأيقونية",
+      zh: "标志性水岸滨海典藏系列",
+      de: "Ikonische Waterfront-Kollektion",
+      fr: "Collection emblématique front de mer",
+      it: "Collezione iconica lungomare",
+      tr: "İkonik Sahil Koleksiyonu",
+      hi: "प्रतिष्ठित वाटरफ़्रंट संग्रह",
+      ur: "شاندار واٹر فرنٹ مجموعہ",
+    },
+    "Emaar Luxury Living Collection": {
+      ru: "Коллекция роскошных резиденций Emaar",
+      ar: "مجموعة إعمار للمعيشة الفاخرة",
+      zh: "伊玛尔奢华居住典藏系列",
+      de: "Emaar Luxury Living Kollektion",
+      fr: "Collection résidentielle de luxe Emaar",
+      it: "Collezione Emaar Luxury Living",
+      tr: "Emaar Lüks Yaşam Koleksiyonu",
+      hi: "एमार लक्जरी लिविंग संग्रह",
+      ur: "اعمار لگژری لیونگ مجموعہ",
+    },
+  };
+
+  const locSeries = (raw: string) => SERIES_NAMES[raw]?.[lang] || raw;
+
   const getSeriesBadgeText = () => {
     switch (archStyle) {
       case "foster":
-        return labels.seriesBadge("Foster + Partners");
+        return labels.seriesBadge(locSeries("Foster + Partners"));
       case "som-tripartite":
-        return labels.seriesBadge("Skidmore, Owings & Merrill (SOM)");
+        return labels.seriesBadge(locSeries("Skidmore, Owings & Merrill (SOM)"));
       case "som-twisted":
-        return labels.seriesBadge("SOM Helical Series");
+        return labels.seriesBadge(locSeries("SOM Helical Series"));
       case "zaha-hadid":
-        return labels.seriesBadge("Zaha Hadid Architects");
+        return labels.seriesBadge(locSeries("Zaha Hadid Architects"));
       case "automotive":
-        return labels.seriesBadge(building.architectFirm ? building.architectFirm.split("/")[0].trim() : "High Horology & Automotive");
+        return labels.seriesBadge(building.architectFirm ? building.architectFirm.split("/")[0].trim() : locSeries("High Horology & Automotive"));
       case "coastal-resort":
-        return labels.seriesBadge(building.architectFirm ? building.architectFirm.split("/")[0].trim() : "Iconic Waterfront");
+        return labels.seriesBadge(building.architectFirm ? building.architectFirm.split("/")[0].trim() : locSeries("Iconic Waterfront"));
       case "emaar-grand":
-        return labels.seriesBadge("Emaar Luxury Living Collection");
+        return labels.seriesBadge(locSeries("Emaar Luxury Living Collection"));
       case "highrise-core":
       default:
         return labels.officialPlanBadge(building.developer);

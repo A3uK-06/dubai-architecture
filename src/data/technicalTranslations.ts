@@ -1,6 +1,19 @@
 import { Building } from "./buildings";
 import { LanguageCode } from "../i18n/languages";
 import { LATERAL_SYSTEMS_I18N } from "./localizedLateralSystems";
+import { BEDROCK_I18N, RAFT_I18N } from "./localizedFoundationSpecs";
+import { DAMPING_I18N, CONCRETE_GRADE_I18N, LATERAL_EXTRA_I18N } from "./localizedWindStructuralSpecs";
+import { GLAZING_I18N, BMU_I18N } from "./localizedFacadeSpecs";
+import { ZONING_I18N } from "./localizedVerticalTransportSpecs";
+import {
+  COOLING_I18N,
+  BILLING_I18N,
+  ACOUSTIC_I18N,
+  COLUMN_I18N,
+  BALCONY_I18N,
+  URBAN_I18N,
+  STATUS_I18N
+} from "./localizedOperatingSpecs";
 
 // Complete Russian technical translations dictionary for building passports
 export const TECH_TERMS_RU: Record<string, string> = {
@@ -297,74 +310,7 @@ export const TECH_TERMS_RU: Record<string, string> = {
  * Automatically translates building technical specifications into Russian
  */
 export function translateBuildingSpecsRU(building: Building): Building {
-  const b = { ...building };
-
-  if (b.foundation) {
-    b.foundation = {
-      ...b.foundation,
-      bedrockType: TECH_TERMS_RU[b.foundation.bedrockType] || b.foundation.bedrockType,
-      raftThicknessMeters: TECH_TERMS_RU[b.foundation.raftThicknessMeters] || b.foundation.raftThicknessMeters
-        .replace("solid reinforced concrete", "монолитный железобетон")
-        .replace("raft", "ростверк")
-        .replace("reinforced concrete slab", "монолитная железобетонная плита")
-        .replace("reinforced concrete mat", "монолитная фундаментная плита"),
-    };
-  }
-
-  if (b.windStructural) {
-    b.windStructural = {
-      ...b.windStructural,
-      lateralSystem: TECH_TERMS_RU[b.windStructural.lateralSystem] || b.windStructural.lateralSystem,
-      dampingMechanism: TECH_TERMS_RU[b.windStructural.dampingMechanism] || b.windStructural.dampingMechanism,
-      concreteStrengthGrade: TECH_TERMS_RU[b.windStructural.concreteStrengthGrade] || b.windStructural.concreteStrengthGrade,
-    };
-  }
-
-  if (b.facade) {
-    b.facade = {
-      ...b.facade,
-      glazingType: TECH_TERMS_RU[b.facade.glazingType] || b.facade.glazingType,
-      bmuCleaningSystem: TECH_TERMS_RU[b.facade.bmuCleaningSystem] || b.facade.bmuCleaningSystem,
-      cleaningCycleDays: TECH_TERMS_RU[b.facade.cleaningCycleDays] || b.facade.cleaningCycleDays
-        .replace("days for a full exterior wash cycle", "дней на полный цикл мойки")
-        .replace("days continuous", "дней (непрерывно)")
-        .replace("days", "дней"),
-    };
-  }
-
-  if (b.verticalTransport) {
-    b.verticalTransport = {
-      ...b.verticalTransport,
-      zoningStrategy: TECH_TERMS_RU[b.verticalTransport.zoningStrategy] || b.verticalTransport.zoningStrategy,
-      peakWaitingSeconds: TECH_TERMS_RU[b.verticalTransport.peakWaitingSeconds] || b.verticalTransport.peakWaitingSeconds
-        .replace("seconds average", "секунд в среднем")
-        .replace("seconds", "секунд"),
-    };
-  }
-
-  if (b.operatingSpecs) {
-    b.operatingSpecs = {
-      ...b.operatingSpecs,
-      coolingProvider: TECH_TERMS_RU[b.operatingSpecs.coolingProvider] || b.operatingSpecs.coolingProvider,
-      chillerBilling: (TECH_TERMS_RU[b.operatingSpecs.chillerBilling] as NonNullable<Building["operatingSpecs"]>["chillerBilling"]) || b.operatingSpecs.chillerBilling,
-      acousticRatingDb: TECH_TERMS_RU[b.operatingSpecs.acousticRatingDb] || b.operatingSpecs.acousticRatingDb
-        .replace("dual decoupled acoustic walls between residences", "двойные акустически развязанные стены между квартирами"),
-    };
-  }
-
-  if (b.layoutEfficiency) {
-    b.layoutEfficiency = {
-      ...b.layoutEfficiency,
-      columnImpact: (TECH_TERMS_RU[b.layoutEfficiency.columnImpact] as NonNullable<Building["layoutEfficiency"]>["columnImpact"]) || b.layoutEfficiency.columnImpact,
-      balconyUsability: TECH_TERMS_RU[b.layoutEfficiency.balconyUsability] || b.layoutEfficiency.balconyUsability,
-    };
-  }
-
-  if (b.urbanIntegration && TECH_TERMS_RU[b.urbanIntegration]) {
-    b.urbanIntegration = TECH_TERMS_RU[b.urbanIntegration];
-  }
-
-  return b;
+  return translateBuildingSpecs(building, "ru");
 }
 
 
@@ -512,86 +458,314 @@ export const COMMON_TERMS: Record<LanguageCode, Record<string, string>> = {
  */
 export function translateBuildingSpecs(building: Building, lang: LanguageCode): Building {
   if (lang === "en") return building;
-  if (lang === "ru") return translateBuildingSpecsRU(building);
-
-  const dict = COMMON_TERMS[lang];
-  if (!dict) return building;
 
   const b = { ...building };
 
+  // Status
+  if (b.status && STATUS_I18N[b.status]?.[lang]) {
+    b.status = STATUS_I18N[b.status][lang] as Building["status"];
+  }
+
+  // Foundation
+  if (b.foundation) {
+    const rawBedrock = b.foundation.bedrockType;
+    const localizedBedrock =
+      BEDROCK_I18N[rawBedrock]?.[lang] ||
+      (lang === "ru" ? TECH_TERMS_RU[rawBedrock] : undefined) ||
+      rawBedrock;
+
+    let localizedRaft =
+      RAFT_I18N[b.foundation.raftThicknessMeters]?.[lang] ||
+      (lang === "ru" ? TECH_TERMS_RU[b.foundation.raftThicknessMeters] : undefined) ||
+      b.foundation.raftThicknessMeters;
+
+    if (lang === "ru") {
+      localizedRaft = localizedRaft
+        .replace("solid reinforced concrete", "монолитный железобетон")
+        .replace("raft", "ростверк")
+        .replace("reinforced concrete slab", "монолитная железобетонная плита")
+        .replace("reinforced concrete mat", "монолитная фундаментная плита");
+    } else if (lang === "ar") {
+      localizedRaft = localizedRaft
+        .replace("solid reinforced concrete", "خرسانة مسلحة مصمتة")
+        .replace("raft", "حصيرة")
+        .replace("reinforced concrete slab", "بلاطة خرسانية مسلحة")
+        .replace("reinforced concrete mat", "حصيرة خرسانية مسلحة");
+    } else if (lang === "zh") {
+      localizedRaft = localizedRaft
+        .replace("solid reinforced concrete", "实心现浇钢筋混凝土")
+        .replace("raft", "基础筏板")
+        .replace("reinforced concrete slab", "钢筋混凝土楼板")
+        .replace("reinforced concrete mat", "钢筋混凝土大筏板");
+    } else if (lang === "hi") {
+      localizedRaft = localizedRaft
+        .replace("solid reinforced concrete", "ठोस प्रबलित कंक्रीट")
+        .replace("raft", "राफ्ट")
+        .replace("reinforced concrete slab", "प्रबलित कंक्रीट स्लैब")
+        .replace("reinforced concrete mat", "प्रबलित कंक्रीट मैट");
+    } else if (lang === "ur") {
+      localizedRaft = localizedRaft
+        .replace("solid reinforced concrete", "ٹھوس مضبوط کنکریٹ")
+        .replace("raft", "رافٹ")
+        .replace("reinforced concrete slab", "مضبوط کنکریٹ سلیب")
+        .replace("reinforced concrete mat", "مضبوط کنکریٹ میٹ");
+    } else if (lang === "de") {
+      localizedRaft = localizedRaft
+        .replace("solid reinforced concrete", "massiver Stahlbeton")
+        .replace("raft", "Fundamentplatte")
+        .replace("reinforced concrete slab", "Stahlbetonplatte")
+        .replace("reinforced concrete mat", "Stahlbeton-Bodenplatte");
+    } else if (lang === "fr") {
+      localizedRaft = localizedRaft
+        .replace("solid reinforced concrete", "béton armé massif")
+        .replace("raft", "radier")
+        .replace("reinforced concrete slab", "dalle en béton armé")
+        .replace("reinforced concrete mat", "radier en béton armé");
+    } else if (lang === "it") {
+      localizedRaft = localizedRaft
+        .replace("solid reinforced concrete", "cemento armato massiccio")
+        .replace("raft", "platea")
+        .replace("reinforced concrete slab", "soletta in cemento armato")
+        .replace("reinforced concrete mat", "platea in calcestruzzo armato");
+    } else if (lang === "tr") {
+      localizedRaft = localizedRaft
+        .replace("solid reinforced concrete", "masif betonarme")
+        .replace("raft", "radye temel")
+        .replace("reinforced concrete slab", "betonarme döşeme")
+        .replace("reinforced concrete mat", "betonarme radye temel plakası");
+    }
+
+    b.foundation = {
+      ...b.foundation,
+      bedrockType: localizedBedrock,
+      raftThicknessMeters: localizedRaft,
+    };
+  }
+
+  // Wind and Structural
+  if (b.windStructural) {
+    const rawLat = b.windStructural.lateralSystem;
+    const localizedLat =
+      LATERAL_SYSTEMS_I18N[rawLat]?.[lang] ||
+      LATERAL_EXTRA_I18N[rawLat]?.[lang] ||
+      (lang === "ru" ? TECH_TERMS_RU[rawLat] : undefined) ||
+      rawLat;
+
+    const rawDamp = b.windStructural.dampingMechanism;
+    const localizedDamp =
+      DAMPING_I18N[rawDamp]?.[lang] ||
+      (lang === "ru" ? TECH_TERMS_RU[rawDamp] : undefined) ||
+      rawDamp;
+
+    const rawConc = b.windStructural.concreteStrengthGrade;
+    const localizedConc =
+      CONCRETE_GRADE_I18N[rawConc]?.[lang] ||
+      (lang === "ru" ? TECH_TERMS_RU[rawConc] : undefined) ||
+      rawConc;
+
+    b.windStructural = {
+      ...b.windStructural,
+      lateralSystem: localizedLat,
+      dampingMechanism: localizedDamp,
+      concreteStrengthGrade: localizedConc,
+    };
+  }
+
+  // Facade
+  if (b.facade) {
+    const rawGlaze = b.facade.glazingType;
+    const localizedGlaze =
+      GLAZING_I18N[rawGlaze]?.[lang] ||
+      (lang === "ru" ? TECH_TERMS_RU[rawGlaze] : undefined) ||
+      rawGlaze;
+
+    const rawBmu = b.facade.bmuCleaningSystem;
+    const localizedBmu =
+      BMU_I18N[rawBmu]?.[lang] ||
+      (lang === "ru" ? TECH_TERMS_RU[rawBmu] : undefined) ||
+      rawBmu;
+
+    let cycle = b.facade.cleaningCycleDays;
+    if (lang === "ru") {
+      cycle = cycle
+        .replace("days for a full exterior wash cycle", "дней на полный цикл мойки")
+        .replace("days continuous", "дней (непрерывно)")
+        .replace("days", "дней");
+    } else if (lang === "de") {
+      cycle = cycle
+        .replace("days for a full exterior wash cycle", "Tage für einen vollen Waschzyklus")
+        .replace("days continuous", "Tage (kontinuierlich)")
+        .replace("days", "Tage");
+    } else if (lang === "fr") {
+      cycle = cycle
+        .replace("days for a full exterior wash cycle", "jours pour un cycle de lavage complet")
+        .replace("days continuous", "jours (en continu)")
+        .replace("days", "jours");
+    } else if (lang === "ar") {
+      cycle = cycle
+        .replace("days for a full exterior wash cycle", "يوماً لدورة غسيل كاملة للواجهة")
+        .replace("days continuous", "يوماً (بشكل مستمر)")
+        .replace("days", "يوماً");
+    } else if (lang === "it") {
+      cycle = cycle
+        .replace("days for a full exterior wash cycle", "giorni per un ciclo di lavaggio completo")
+        .replace("days continuous", "giorni (continuo)")
+        .replace("days", "giorni");
+    } else if (lang === "tr") {
+      cycle = cycle
+        .replace("days for a full exterior wash cycle", "gün (tam dış cephe yıkama döngüsü)")
+        .replace("days continuous", "gün (kesintisiz)")
+        .replace("days", "gün");
+    } else if (lang === "zh") {
+      cycle = cycle
+        .replace("days for a full exterior wash cycle", "天完成一次完整外立面清洗周期")
+        .replace("days continuous", "天 (持续作业)")
+        .replace("days", "天");
+    } else if (lang === "hi") {
+      cycle = cycle
+        .replace("days for a full exterior wash cycle", "दिन (पूर्ण बाहरी धुलाई चक्र)")
+        .replace("days continuous", "दिन (लगातार)")
+        .replace("days", "दिन");
+    } else if (lang === "ur") {
+      cycle = cycle
+        .replace("days for a full exterior wash cycle", "دن (مکمل بیرونی واش سائیکل)")
+        .replace("days continuous", "دن (مسلسل)")
+        .replace("days", "دن");
+    }
+
+    b.facade = {
+      ...b.facade,
+      glazingType: localizedGlaze,
+      bmuCleaningSystem: localizedBmu,
+      cleaningCycleDays: cycle,
+    };
+  }
+
+  // Vertical Transport
+  if (b.verticalTransport) {
+    const rawZone = b.verticalTransport.zoningStrategy;
+    const localizedZone =
+      ZONING_I18N[rawZone]?.[lang] ||
+      (lang === "ru" ? TECH_TERMS_RU[rawZone] : undefined) ||
+      rawZone;
+
+    let wait = b.verticalTransport.peakWaitingSeconds;
+    if (lang === "ru") {
+      wait = wait
+        .replace("seconds average", "секунд в среднем")
+        .replace("seconds (virtually zero waiting)", "секунд (практически мгновенно)")
+        .replace("seconds", "секунд");
+    } else if (lang === "de") {
+      wait = wait
+        .replace("seconds average", "Sekunden im Durchschnitt")
+        .replace("seconds (virtually zero waiting)", "Sekunden (nahezu verzögerungsfrei)")
+        .replace("seconds", "Sekunden");
+    } else if (lang === "fr") {
+      wait = wait
+        .replace("seconds average", "secondes en moyenne")
+        .replace("seconds (virtually zero waiting)", "secondes (attente quasi nulle)")
+        .replace("seconds", "secondes");
+    } else if (lang === "ar") {
+      wait = wait
+        .replace("seconds average", "ثانية في المتوسط")
+        .replace("seconds (virtually zero waiting)", "ثانية (استجابة فورية بدون انتظار)")
+        .replace("seconds", "ثانية");
+    } else if (lang === "it") {
+      wait = wait
+        .replace("seconds average", "secondi in media")
+        .replace("seconds (virtually zero waiting)", "secondi (praticamente zero attesa)")
+        .replace("seconds", "secondi");
+    } else if (lang === "tr") {
+      wait = wait
+        .replace("seconds average", "saniye ortalama")
+        .replace("seconds (virtually zero waiting)", "saniye (neredeyse sıfır bekleme)")
+        .replace("seconds", "saniye");
+    } else if (lang === "zh") {
+      wait = wait
+        .replace("seconds average", "秒 (高峰期平均候梯时间)")
+        .replace("seconds (virtually zero waiting)", "秒 (近乎即到零等待)")
+        .replace("seconds", "秒");
+    } else if (lang === "hi") {
+      wait = wait
+        .replace("seconds average", "सेकंड औसत")
+        .replace("seconds (virtually zero waiting)", "सेकंड (वस्तुतः शून्य प्रतीक्षा)")
+        .replace("seconds", "सेकंड");
+    } else if (lang === "ur") {
+      wait = wait
+        .replace("seconds average", "سیکنڈ اوسطاً")
+        .replace("seconds (virtually zero waiting)", "سیکنڈ (تقریباً صفر انتظار)")
+        .replace("seconds", "سیکنڈ");
+    }
+
+    b.verticalTransport = {
+      ...b.verticalTransport,
+      zoningStrategy: localizedZone,
+      peakWaitingSeconds: wait,
+    };
+  }
+
+  // Operating Specs
   if (b.operatingSpecs) {
+    const rawCooling = b.operatingSpecs.coolingProvider;
+    const localizedCooling =
+      COOLING_I18N[rawCooling]?.[lang] ||
+      (lang === "ru" ? TECH_TERMS_RU[rawCooling] : undefined) ||
+      rawCooling;
+
+    const rawBilling = b.operatingSpecs.chillerBilling;
+    const localizedBilling =
+      BILLING_I18N[rawBilling]?.[lang] ||
+      (COMMON_TERMS[lang]?.[rawBilling] as NonNullable<Building["operatingSpecs"]>["chillerBilling"]) ||
+      (lang === "ru" ? (TECH_TERMS_RU[rawBilling] as NonNullable<Building["operatingSpecs"]>["chillerBilling"]) : undefined) ||
+      rawBilling;
+
+    const rawAcoustic = b.operatingSpecs.acousticRatingDb;
+    const localizedAcoustic =
+      ACOUSTIC_I18N[rawAcoustic]?.[lang] ||
+      (lang === "ru" ? TECH_TERMS_RU[rawAcoustic] : undefined) ||
+      rawAcoustic;
+
     b.operatingSpecs = {
       ...b.operatingSpecs,
-      chillerBilling: (dict[b.operatingSpecs.chillerBilling] || b.operatingSpecs.chillerBilling) as NonNullable<Building["operatingSpecs"]>["chillerBilling"],
+      coolingProvider: localizedCooling,
+      chillerBilling: localizedBilling as NonNullable<Building["operatingSpecs"]>["chillerBilling"],
+      acousticRatingDb: localizedAcoustic,
     };
   }
 
+  // Layout Efficiency
   if (b.layoutEfficiency) {
+    const rawColumn = b.layoutEfficiency.columnImpact;
+    const localizedColumn =
+      COLUMN_I18N[rawColumn]?.[lang] ||
+      (COMMON_TERMS[lang]?.[rawColumn] as NonNullable<Building["layoutEfficiency"]>["columnImpact"]) ||
+      (lang === "ru" ? (TECH_TERMS_RU[rawColumn] as NonNullable<Building["layoutEfficiency"]>["columnImpact"]) : undefined) ||
+      rawColumn;
+
+    const rawBalcony = b.layoutEfficiency.balconyUsability;
+    const localizedBalcony =
+      BALCONY_I18N[rawBalcony]?.[lang] ||
+      COMMON_TERMS[lang]?.[rawBalcony] ||
+      (lang === "ru" ? TECH_TERMS_RU[rawBalcony] : undefined) ||
+      rawBalcony;
+
     b.layoutEfficiency = {
       ...b.layoutEfficiency,
-      columnImpact: (dict[b.layoutEfficiency.columnImpact] || b.layoutEfficiency.columnImpact) as NonNullable<Building["layoutEfficiency"]>["columnImpact"],
-      balconyUsability: dict[b.layoutEfficiency.balconyUsability] || b.layoutEfficiency.balconyUsability,
+      columnImpact: localizedColumn as NonNullable<Building["layoutEfficiency"]>["columnImpact"],
+      balconyUsability: localizedBalcony,
     };
   }
 
-  if (b.urbanIntegration && dict[b.urbanIntegration]) {
-    b.urbanIntegration = dict[b.urbanIntegration];
-  }
+  // Urban Integration
+  if (b.urbanIntegration) {
+    const rawUrban = b.urbanIntegration;
+    const localizedUrban =
+      URBAN_I18N[rawUrban]?.[lang] ||
+      COMMON_TERMS[lang]?.[rawUrban] ||
+      (lang === "ru" ? TECH_TERMS_RU[rawUrban] : undefined) ||
+      rawUrban;
 
-  if (b.windStructural && b.windStructural.lateralSystem) {
-    const latI18n = LATERAL_SYSTEMS_I18N[b.windStructural.lateralSystem];
-    if (latI18n && latI18n[lang]) {
-      b.windStructural = {
-        ...b.windStructural,
-        lateralSystem: latI18n[lang]!,
-      };
-    }
-  }
-
-  // Localize cleaning cycle days text
-  if (b.facade && b.facade.cleaningCycleDays) {
-    let cycle = b.facade.cleaningCycleDays;
-    if (lang === "de") {
-      cycle = cycle.replace("days for a full exterior wash cycle", "Tage für einen vollen Waschzyklus").replace("days continuous", "Tage (kontinuierlich)").replace("days", "Tage");
-    } else if (lang === "fr") {
-      cycle = cycle.replace("days for a full exterior wash cycle", "jours pour un cycle de lavage complet").replace("days continuous", "jours (en continu)").replace("days", "jours");
-    } else if (lang === "ar") {
-      cycle = cycle.replace("days for a full exterior wash cycle", "يوماً لدورة غسيل كاملة للواجهة").replace("days continuous", "يوماً (بشكل مستمر)").replace("days", "يوماً");
-    } else if (lang === "it") {
-      cycle = cycle.replace("days for a full exterior wash cycle", "giorni per un ciclo di lavaggio completo").replace("days continuous", "giorni (continuo)").replace("days", "giorni");
-    } else if (lang === "tr") {
-      cycle = cycle.replace("days for a full exterior wash cycle", "gün (tam dış cephe yıkama döngüsü)").replace("days continuous", "gün (kesintisiz)").replace("days", "gün");
-    } else if (lang === "zh") {
-      cycle = cycle.replace("days for a full exterior wash cycle", "天完成一次完整外立面清洗周期").replace("days continuous", "天 (持续作业)").replace("days", "天");
-    } else if (lang === "hi") {
-      cycle = cycle.replace("days for a full exterior wash cycle", "दिन (पूर्ण बाहरी धुलाई चक्र)").replace("days continuous", "दिन (लगातार)").replace("days", "दिन");
-    } else if (lang === "ur") {
-      cycle = cycle.replace("days for a full exterior wash cycle", "دن (مکمل بیرونی واش سائیکل)").replace("days continuous", "دن (مسلسل)").replace("days", "دن");
-    }
-    b.facade = { ...b.facade, cleaningCycleDays: cycle };
-  }
-
-  // Localize peak waiting seconds text
-  if (b.verticalTransport && b.verticalTransport.peakWaitingSeconds) {
-    let wait = b.verticalTransport.peakWaitingSeconds;
-    if (lang === "de") {
-      wait = wait.replace("seconds average", "Sekunden im Durchschnitt").replace("seconds", "Sekunden");
-    } else if (lang === "fr") {
-      wait = wait.replace("seconds average", "secondes en moyenne").replace("seconds", "secondes");
-    } else if (lang === "ar") {
-      wait = wait.replace("seconds average", "ثانية في المتوسط").replace("seconds", "ثانية");
-    } else if (lang === "it") {
-      wait = wait.replace("seconds average", "secondi in media").replace("seconds", "secondi");
-    } else if (lang === "tr") {
-      wait = wait.replace("seconds average", "saniye ortalama").replace("seconds", "saniye");
-    } else if (lang === "zh") {
-      wait = wait.replace("seconds average", "秒 (高峰期平均候梯时间)").replace("seconds", "秒");
-    } else if (lang === "hi") {
-      wait = wait.replace("seconds average", "सेकंड औसत").replace("seconds", "सेकंड");
-    } else if (lang === "ur") {
-      wait = wait.replace("seconds average", "سیکنڈ اوسطاً").replace("seconds", "سیکنڈ");
-    }
-    b.verticalTransport = { ...b.verticalTransport, peakWaitingSeconds: wait };
+    b.urbanIntegration = localizedUrban;
   }
 
   return b;
