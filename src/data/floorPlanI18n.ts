@@ -74,6 +74,15 @@ export interface FloorPlanLabels {
   svgCarLift: string;
   svgOceanFront: string;
   svgServiceCore: string;
+  unitMetric: string;
+  unitImperial: string;
+  unitMetricShort: string;
+  unitImperialShort: string;
+  unitSqM: string;
+  unitSqFt: string;
+  unitM: string;
+  unitFt: string;
+  tepMetrics: string;
 }
 
 export const FLOOR_PLAN_LABELS: Record<LanguageCode, FloorPlanLabels> = {
@@ -149,6 +158,15 @@ export const FLOOR_PLAN_LABELS: Record<LanguageCode, FloorPlanLabels> = {
     svgCarLift: "ПРИВАТНЫЙ АВТОМОБИЛЬНЫЙ ЛИФТ В АПАРТАМЕНТЫ",
     svgOceanFront: "ПАНОРАМНЫЙ МОРСКОЙ ФАСАД (ПЕРВАЯ ЛИНИЯ)",
     svgServiceCore: "ЦЕНТРАЛЬНОЕ ЛИФТОВОЕ ЯДРО ВЫСОТКИ",
+    unitMetric: "Метрическая (м² / м)",
+    unitImperial: "Имперская (sq.ft / ft)",
+    unitMetricShort: "м² / м",
+    unitImperialShort: "sq.ft / ft",
+    unitSqM: "м²",
+    unitSqFt: "sq.ft",
+    unitM: "м",
+    unitFt: "ft",
+    tepMetrics: "Основные ТЭП помещения",
   },
   en: {
     sectionBadge: "Architectural Typologies & Floor Plans",
@@ -222,6 +240,15 @@ export const FLOOR_PLAN_LABELS: Record<LanguageCode, FloorPlanLabels> = {
     svgCarLift: "PRIVATE VEHICULAR SKY LIFT & DISPLAY",
     svgOceanFront: "PRIME WATERFRONT OCEAN GLAZING",
     svgServiceCore: "HIGH-SPEED PASSENGER & SERVICE CORE",
+    unitMetric: "Metric (m² / m)",
+    unitImperial: "Imperial (sq.ft / ft)",
+    unitMetricShort: "m² / m",
+    unitImperialShort: "sq.ft / ft",
+    unitSqM: "sq.m",
+    unitSqFt: "sq.ft",
+    unitM: "m",
+    unitFt: "ft",
+    tepMetrics: "Key Architectural Metrics",
   },
   ar: {
     sectionBadge: "المخططات الهندسية والمساحات",
@@ -295,6 +322,15 @@ export const FLOOR_PLAN_LABELS: Record<LanguageCode, FloorPlanLabels> = {
     svgCarLift: "مصعد سيارات خاص للشقق الفاخرة",
     svgOceanFront: "واجهة بحرية بانورامية مفتوحة",
     svgServiceCore: "نواة المصاعد والخدمات المركزية",
+    unitMetric: "متري (م² / م)",
+    unitImperial: "إمبراطوري (قدم² / قدم)",
+    unitMetricShort: "م² / م",
+    unitImperialShort: "قدم² / قدم",
+    unitSqM: "م²",
+    unitSqFt: "قدم²",
+    unitM: "م",
+    unitFt: "قدم",
+    tepMetrics: "المؤشرات المساحية والمعمارية",
   },
   zh: {
     sectionBadge: "建筑户型与技术参数",
@@ -368,6 +404,15 @@ export const FLOOR_PLAN_LABELS: Record<LanguageCode, FloorPlanLabels> = {
     svgCarLift: "私人汽车入户专属电梯及展示廊",
     svgOceanFront: "一线正南向无遮挡海景幕墙",
     svgServiceCore: "高速客梯与机电综合核心筒",
+    unitMetric: "公制 (m² / m)",
+    unitImperial: "英制 (sq.ft / ft)",
+    unitMetricShort: "m² / m",
+    unitImperialShort: "sq.ft / ft",
+    unitSqM: "m²",
+    unitSqFt: "sq.ft",
+    unitM: "m",
+    unitFt: "ft",
+    tepMetrics: "建筑技术经济指标与面积",
   },
   de: {
     sectionBadge: "Architektonische Grundrisse & Flächen",
@@ -441,6 +486,15 @@ export const FLOOR_PLAN_LABELS: Record<LanguageCode, FloorPlanLabels> = {
     svgCarLift: "PRIVATER PKW-SKY-AUFZUG",
     svgOceanFront: "PRIME-MEERESFRONT-VERGLASUNG",
     svgServiceCore: "HOCHGESCHWINDIGKEITS-KERN",
+    unitMetric: "Metrisch (m² / m)",
+    unitImperial: "Imperial (sq.ft / ft)",
+    unitMetricShort: "m² / m",
+    unitImperialShort: "sq.ft / ft",
+    unitSqM: "m²",
+    unitSqFt: "sq.ft",
+    unitM: "m",
+    unitFt: "ft",
+    tepMetrics: "Flächen- & Kennzahlen (T&E)",
   },
   fr: {
     sectionBadge: "Typologies Architecturales & Plans",
@@ -514,6 +568,15 @@ export const FLOOR_PLAN_LABELS: Record<LanguageCode, FloorPlanLabels> = {
     svgCarLift: "ASCENSEUR À VOITURE PRIVATIF",
     svgOceanFront: "FAÇADE PANORAMIQUE SUR MER",
     svgServiceCore: "NOYAU CENTRAL ASCENSEURS & GAINES",
+    unitMetric: "Métrique (m² / m)",
+    unitImperial: "Impérial (sq.ft / ft)",
+    unitMetricShort: "m² / m",
+    unitImperialShort: "sq.ft / ft",
+    unitSqM: "m²",
+    unitSqFt: "sq.ft",
+    unitM: "m",
+    unitFt: "ft",
+    tepMetrics: "Surfaces & Métriques Architecturales",
   },
   it: {
     sectionBadge: "Tipologie Architettoniche & Planimetrie",
@@ -587,6 +650,15 @@ export const FLOOR_PLAN_LABELS: Record<LanguageCode, FloorPlanLabels> = {
     svgCarLift: "ASCENSORE PER AUTO PRIVATO",
     svgOceanFront: "FACCIATA PANORAMICA SUL MARE",
     svgServiceCore: "NUCLEO ASCENSORI AD ALTA VELOCITÀ",
+    unitMetric: "Metrico (m² / m)",
+    unitImperial: "Imperiale (sq.ft / ft)",
+    unitMetricShort: "m² / m",
+    unitImperialShort: "sq.ft / ft",
+    unitSqM: "m²",
+    unitSqFt: "sq.ft",
+    unitM: "m",
+    unitFt: "ft",
+    tepMetrics: "Superfici e Metriche Architettoniche",
   },
   tr: {
     sectionBadge: "Mimari Kat Planları ve Alanlar",
@@ -660,6 +732,15 @@ export const FLOOR_PLAN_LABELS: Record<LanguageCode, FloorPlanLabels> = {
     svgCarLift: "ÖZEL ARAÇ ASANSÖRÜ",
     svgOceanFront: "DENİZE SIFIR PANORAMİK CAM CEPHE",
     svgServiceCore: "YÜKSEK HIZLI ASANSÖR VE SERVİS ÇEKİRDEĞİ",
+    unitMetric: "Metrik (m² / m)",
+    unitImperial: "İngiliz (sq.ft / ft)",
+    unitMetricShort: "m² / m",
+    unitImperialShort: "sq.ft / ft",
+    unitSqM: "m²",
+    unitSqFt: "sq.ft",
+    unitM: "m",
+    unitFt: "ft",
+    tepMetrics: "Mimari Alan ve Teknik Değerler",
   },
   hi: {
     sectionBadge: "आर्किटेक्चरल फ्लोर प्लान और विनिर्देश",
@@ -733,6 +814,15 @@ export const FLOOR_PLAN_LABELS: Record<LanguageCode, FloorPlanLabels> = {
     svgCarLift: "प्राइवेट कार स्काई लिफ्ट",
     svgOceanFront: "प्राइम वॉटरफ्रंट महासागर ग्लेज़िंग",
     svgServiceCore: "हाई-स्पीड लिफ्ट व सर्विस कोर",
+    unitMetric: "मीट्रिक (m² / m)",
+    unitImperial: "इंपीरियल (sq.ft / ft)",
+    unitMetricShort: "m² / m",
+    unitImperialShort: "sq.ft / ft",
+    unitSqM: "m²",
+    unitSqFt: "sq.ft",
+    unitM: "m",
+    unitFt: "ft",
+    tepMetrics: "वास्तुशिल्प मीट्रिक और क्षेत्रफल",
   },
   ur: {
     sectionBadge: "معماری فلور پلان اور رقبہ",
@@ -806,6 +896,15 @@ export const FLOOR_PLAN_LABELS: Record<LanguageCode, FloorPlanLabels> = {
     svgCarLift: "نجی کار اسکائی لفٹ",
     svgOceanFront: "پہلی قطار سمندری گلیزنگ",
     svgServiceCore: "ہائی اسپیڈ لفٹ اور سروس کور",
+    unitMetric: "میٹرک (m² / م)",
+    unitImperial: "امپیریل (sq.ft / ft)",
+    unitMetricShort: "m² / m",
+    unitImperialShort: "sq.ft / ft",
+    unitSqM: "م²",
+    unitSqFt: "sq.ft",
+    unitM: "m",
+    unitFt: "ft",
+    tepMetrics: "تعمیراتی پیمائش اور رقبہ",
   },
 };
 

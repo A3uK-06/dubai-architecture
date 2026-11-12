@@ -72,6 +72,24 @@ export default function FloorPlansExplorer({
   const dragStartRef = useRef<{ x: number; y: number }>({ x: 0, y: 0 });
   const dragStartPanRef = useRef<{ x: number; y: number }>({ x: 0, y: 0 });
   const [blueprintTheme, setBlueprintTheme] = useState<"dark" | "light">("dark");
+  const [unitSystem, setUnitSystem] = useState<"metric" | "imperial">(() => {
+    if (typeof window !== "undefined") {
+      const saved = localStorage.getItem("dubai_unit_system");
+      if (saved === "metric" || saved === "imperial") return saved;
+    }
+    return (lang === "ru" || lang === "de" || lang === "fr" || lang === "it" || lang === "tr") ? "metric" : "imperial";
+  });
+
+  const handleUnitChange = (unit: "metric" | "imperial") => {
+    setUnitSystem(unit);
+    if (typeof window !== "undefined") {
+      try {
+        localStorage.setItem("dubai_unit_system", unit);
+      } catch {
+        // ignore storage errors
+      }
+    }
+  };
 
   const labels = FLOOR_PLAN_LABELS[lang] || FLOOR_PLAN_LABELS.en;
 
@@ -172,6 +190,31 @@ export default function FloorPlansExplorer({
   }, [isFullscreen]);
 
   if (!activePlan) return null;
+
+  const isMetric = unitSystem === "metric";
+  const internalAreaSqM = Math.round(activePlan.internalAreaSqFt * 0.09290304);
+  const balconyAreaSqM = Math.round(activePlan.balconyAreaSqFt * 0.09290304);
+  const ceilingHeightFt = (activePlan.ceilingHeightMeters * 3.28084).toFixed(1);
+  const balconyPercent =
+    activePlan.totalAreaSqFt > 0
+      ? Math.round((activePlan.balconyAreaSqFt / activePlan.totalAreaSqFt) * 100)
+      : 0;
+
+  const formatRoomArea = (sqFt: number) => {
+    const m2 = Math.round(sqFt * 0.09290304);
+    if (isMetric) {
+      return `${m2} M² • ${sqFt} SQ.FT`;
+    }
+    return `${sqFt} SQ.FT • ${m2} M²`;
+  };
+
+  const formatCeiling = (meters: number) => {
+    const ft = (meters * 3.28084).toFixed(1);
+    if (isMetric) {
+      return `${meters}m ${labels.svgCeilingHeight}`;
+    }
+    return `${ft}ft ${labels.svgCeilingHeight}`;
+  };
 
   const isDark = blueprintTheme === "dark";
 
@@ -433,7 +476,7 @@ export default function FloorPlansExplorer({
               {labels.svgMasterBed}
             </text>
             <text x={leftOffset + 20} y="88" fill={themeColors.metricFill} fontSize="12" fontFamily={ARCH_FONT} fontWeight="600">
-              {Math.round(plan.internalAreaSqFt * 0.38)} SQ.FT • {Math.round(plan.internalAreaSqFt * 0.38 * 0.0929)} M²
+              {formatRoomArea(Math.round(plan.internalAreaSqFt * 0.38))}
             </text>
 
             {/* King Bed */}
@@ -463,7 +506,7 @@ export default function FloorPlansExplorer({
               {labels.svgBath}
             </text>
             <text x={leftOffset + 20} y="348" fill={themeColors.metricFill} fontSize="11" fontFamily={ARCH_FONT} fontWeight="600">
-              {Math.round(plan.internalAreaSqFt * 0.12)} SQ.FT • {Math.round(plan.internalAreaSqFt * 0.12 * 0.0929)} M²
+              {formatRoomArea(Math.round(plan.internalAreaSqFt * 0.12))}
             </text>
             <g transform={`translate(${leftOffset + 20}, 365)`}>
               <rect x="0" y="0" width="110" height="55" rx="14" stroke={themeColors.furnitureStroke} strokeWidth="1.2" fill={themeColors.furnitureFill} />
@@ -486,7 +529,7 @@ export default function FloorPlansExplorer({
               {labels.svgKitchen}
             </text>
             <text x={leftOffset + 360} y="88" fill={themeColors.metricFill} fontSize="11" fontFamily={ARCH_FONT} fontWeight="600">
-              {Math.round(plan.internalAreaSqFt * 0.14)} SQ.FT • {Math.round(plan.internalAreaSqFt * 0.14 * 0.0929)} M²
+              {formatRoomArea(Math.round(plan.internalAreaSqFt * 0.14))}
             </text>
             <g transform={`translate(${leftOffset + 360}, 105)`}>
               <rect x="0" y="0" width="165" height="55" rx="5" stroke={themeColors.subMetricFill} strokeWidth="1.4" fill={themeColors.furnitureFill} />
@@ -507,7 +550,7 @@ export default function FloorPlansExplorer({
               {labels.svgBalcony}
             </text>
             <text x={leftOffset + 580} y="88" fill={themeColors.metricFill} fontSize="11" fontFamily={ARCH_FONT} fontWeight="600">
-              {plan.balconyAreaSqFt} SQ.FT • {Math.round(plan.balconyAreaSqFt * 0.0929)} M²
+              {formatRoomArea(plan.balconyAreaSqFt)}
             </text>
             <g transform={`translate(${leftOffset + 590}, 110)`}>
               <rect x="0" y="0" width="160" height="60" rx="8" stroke={themeColors.furnitureStroke} strokeWidth="1.2" fill={themeColors.furnitureFill} />
@@ -522,7 +565,9 @@ export default function FloorPlansExplorer({
               {labels.svgLiving}
             </text>
             <text x={leftOffset + 365} y="290" fill={themeColors.metricFill} fontSize="12" fontFamily={ARCH_FONT} fontWeight="600">
-              {Math.round(plan.internalAreaSqFt * 0.50)} SQ.FT • {plan.ceilingHeightMeters}m {labels.svgCeilingHeight}
+              {isMetric
+                ? `${Math.round(plan.internalAreaSqFt * 0.50 * 0.09290304)} M²`
+                : `${Math.round(plan.internalAreaSqFt * 0.50)} SQ.FT`} • {formatCeiling(plan.ceilingHeightMeters)}
             </text>
             <g transform={`translate(${leftOffset + 365}, 320)`}>
               <rect x="15" y="15" width="120" height="60" rx="8" stroke={themeColors.furnitureStroke} strokeWidth="1.2" fill={themeColors.furnitureFill} />
@@ -553,7 +598,9 @@ export default function FloorPlansExplorer({
               {labels.svgMasterBed}
             </text>
             <text x={leftOffset + 15} y="80" fill={themeColors.metricFill} fontSize="11" fontFamily={ARCH_FONT} fontWeight="600">
-              {Math.round(plan.internalAreaSqFt * 0.28)} SQ.FT • {labels.enSuiteBadge}
+              {isMetric
+                ? `${Math.round(plan.internalAreaSqFt * 0.28 * 0.09290304)} M²`
+                : `${Math.round(plan.internalAreaSqFt * 0.28)} SQ.FT`} • {labels.enSuiteBadge}
             </text>
             <g transform={`translate(${leftOffset + 105}, 100)`}>
               <rect x="0" y="0" width="125" height="115" rx="5" stroke={themeColors.furnitureStroke} strokeWidth="1.2" fill={themeColors.furnitureFill} />
@@ -601,7 +648,9 @@ export default function FloorPlansExplorer({
               {labels.svgBed2}
             </text>
             <text x={leftOffset + 300} y="80" fill={themeColors.metricFill} fontSize="11" fontFamily={ARCH_FONT} fontWeight="600">
-              {Math.round(plan.internalAreaSqFt * 0.22)} SQ.FT
+              {isMetric
+                ? `${Math.round(plan.internalAreaSqFt * 0.22 * 0.09290304)} M²`
+                : `${Math.round(plan.internalAreaSqFt * 0.22)} SQ.FT`}
             </text>
             <g transform={`translate(${leftOffset + 315}, 115)`}>
               <rect x="0" y="0" width="115" height="115" rx="5" stroke={themeColors.furnitureStroke} strokeWidth="1.2" fill={themeColors.furnitureFill} />
@@ -619,7 +668,9 @@ export default function FloorPlansExplorer({
               {labels.svgLiving}
             </text>
             <text x={leftOffset + 540} y="215" fill={themeColors.metricFill} fontSize="12" fontFamily={ARCH_FONT} fontWeight="600">
-              {Math.round(plan.internalAreaSqFt * 0.42)} SQ.FT • {labels.cornerDualAspect}
+              {isMetric
+                ? `${Math.round(plan.internalAreaSqFt * 0.42 * 0.09290304)} M²`
+                : `${Math.round(plan.internalAreaSqFt * 0.42)} SQ.FT`} • {labels.cornerDualAspect}
             </text>
             <g transform={`translate(${leftOffset + 540}, 235)`}>
               <rect x="0" y="0" width="135" height="42" rx="4" stroke={themeColors.subMetricFill} strokeWidth="1.2" fill={themeColors.furnitureFill} />
@@ -643,7 +694,9 @@ export default function FloorPlansExplorer({
               {labels.svgBalcony}
             </text>
             <text x={leftOffset + 540} y="82" fill={themeColors.metricFill} fontSize="11" fontFamily={ARCH_FONT} fontWeight="600">
-              {plan.balconyAreaSqFt} SQ.FT • {labels.cornerDualAspect}
+              {isMetric
+                ? `${Math.round(plan.balconyAreaSqFt * 0.09290304)} M²`
+                : `${plan.balconyAreaSqFt} SQ.FT`} • {labels.cornerDualAspect}
             </text>
             <g transform={`translate(${leftOffset + 645}, 70)`}>
               <rect x="0" y="0" width="140" height="48" rx="6" stroke={themeColors.furnitureStroke} strokeWidth="1.2" fill={themeColors.furnitureFill} />
@@ -666,7 +719,9 @@ export default function FloorPlansExplorer({
               {labels.svgMasterBed}
             </text>
             <text x={leftOffset + 15} y="76" fill={themeColors.metricFill} fontSize="10" fontFamily={ARCH_FONT} fontWeight="600">
-              {Math.round(plan.internalAreaSqFt * 0.24)} SQ.FT
+              {isMetric
+                ? `${Math.round(plan.internalAreaSqFt * 0.24 * 0.09290304)} M²`
+                : `${Math.round(plan.internalAreaSqFt * 0.24)} SQ.FT`}
             </text>
             <g transform={`translate(${leftOffset + 80}, 90)`}>
               <rect x="0" y="0" width="115" height="110" rx="5" stroke={themeColors.furnitureStroke} strokeWidth="1.2" fill={themeColors.furnitureFill} />
@@ -680,7 +735,9 @@ export default function FloorPlansExplorer({
               {labels.svgBed2}
             </text>
             <text x={leftOffset + 15} y="312" fill={themeColors.metricFill} fontSize="10" fontFamily={ARCH_FONT} fontWeight="600">
-              {Math.round(plan.internalAreaSqFt * 0.16)} SQ.FT
+              {isMetric
+                ? `${Math.round(plan.internalAreaSqFt * 0.16 * 0.09290304)} M²`
+                : `${Math.round(plan.internalAreaSqFt * 0.16)} SQ.FT`}
             </text>
             <g transform={`translate(${leftOffset + 80}, 330)`}>
               <rect x="0" y="0" width="110" height="105" rx="5" stroke={themeColors.furnitureStroke} strokeWidth="1.2" fill={themeColors.furnitureFill} />
@@ -694,7 +751,9 @@ export default function FloorPlansExplorer({
               {labels.svgBed3}
             </text>
             <text x={leftOffset + 260} y="76" fill={themeColors.metricFill} fontSize="10" fontFamily={ARCH_FONT} fontWeight="600">
-              {Math.round(plan.internalAreaSqFt * 0.15)} SQ.FT
+              {isMetric
+                ? `${Math.round(plan.internalAreaSqFt * 0.15 * 0.09290304)} M²`
+                : `${Math.round(plan.internalAreaSqFt * 0.15)} SQ.FT`}
             </text>
             <g transform={`translate(${leftOffset + 280}, 90)`}>
               <rect x="0" y="0" width="105" height="105" rx="5" stroke={themeColors.furnitureStroke} strokeWidth="1.2" fill={themeColors.furnitureFill} />
@@ -722,7 +781,9 @@ export default function FloorPlansExplorer({
               {labels.svgLiving}
             </text>
             <text x={leftOffset + 475} y="205" fill={themeColors.metricFill} fontSize="12" fontFamily={ARCH_FONT} fontWeight="600">
-              {Math.round(plan.internalAreaSqFt * 0.45)} SQ.FT • {labels.svgGrandSalon}
+              {isMetric
+                ? `${Math.round(plan.internalAreaSqFt * 0.45 * 0.09290304)} M²`
+                : `${Math.round(plan.internalAreaSqFt * 0.45)} SQ.FT`} • {labels.svgGrandSalon}
             </text>
             <g transform={`translate(${leftOffset + 475}, 225)`}>
               <rect x="0" y="0" width="150" height="48" rx="5" stroke={themeColors.subMetricFill} strokeWidth="1.2" fill={themeColors.furnitureFill} />
@@ -746,7 +807,9 @@ export default function FloorPlansExplorer({
               {labels.svgBalcony}
             </text>
             <text x={leftOffset + 475} y="78" fill={themeColors.metricFill} fontSize="11" fontFamily={ARCH_FONT} fontWeight="600">
-              {plan.balconyAreaSqFt} SQ.FT • 180° {labels.svgBalcony}
+              {isMetric
+                ? `${Math.round(plan.balconyAreaSqFt * 0.09290304)} M²`
+                : `${plan.balconyAreaSqFt} SQ.FT`} • 180° {labels.svgBalcony}
             </text>
             <g transform={`translate(${leftOffset + 610}, 65)`}>
               <rect x="0" y="0" width="170" height="45" rx="8" stroke={themeColors.furnitureStroke} strokeWidth="1.2" fill={themeColors.furnitureFill} />
@@ -851,7 +914,9 @@ export default function FloorPlansExplorer({
               {labels.svgGrandSalon}
             </text>
             <text x={leftOffset + 505} y="232" fill={themeColors.metricFill} fontSize="11" fontFamily={ARCH_FONT} fontWeight="600">
-              {Math.round(plan.internalAreaSqFt * 0.48)} SQ.FT • 7m {labels.svgCeilingHeight}
+              {isMetric
+                ? `${Math.round(plan.internalAreaSqFt * 0.48 * 0.09290304)} M² • 7m ${labels.svgCeilingHeight}`
+                : `${Math.round(plan.internalAreaSqFt * 0.48)} SQ.FT • 23ft ${labels.svgCeilingHeight}`}
             </text>
             <g transform={`translate(${leftOffset + 505}, 255)`}>
               <rect x="0" y="0" width="155" height="60" rx="8" stroke={themeColors.furnitureStroke} strokeWidth="1.2" fill={themeColors.furnitureFill} />
@@ -974,7 +1039,11 @@ export default function FloorPlansExplorer({
             textAnchor="middle"
             letterSpacing="0.04em"
           >
-            {labels.svgDimensions}: {Math.round(Math.sqrt(activePlan.totalAreaSqM) * 1.35 * 10) / 10} m × {Math.round(Math.sqrt(activePlan.totalAreaSqM) * 0.75 * 10) / 10} m
+            {labels.svgDimensions}: {
+              isMetric
+                ? `${Math.round(Math.sqrt(activePlan.totalAreaSqM) * 1.35 * 10) / 10} m × ${Math.round(Math.sqrt(activePlan.totalAreaSqM) * 0.75 * 10) / 10} m`
+                : `${(Math.round(Math.sqrt(activePlan.totalAreaSqM) * 1.35 * 10) / 10 * 3.28084).toFixed(1)} ft × ${(Math.round(Math.sqrt(activePlan.totalAreaSqM) * 0.75 * 10) / 10 * 3.28084).toFixed(1)} ft`
+            }
           </text>
         </g>
       </svg>
@@ -1122,7 +1191,9 @@ export default function FloorPlansExplorer({
                     : "bg-white text-[#8C6A48] border border-[#DDD7CA]"
                 }`}
               >
-                {plan.totalAreaSqFt.toLocaleString()} sq.ft
+                {isMetric
+                  ? `${plan.totalAreaSqM} ${labels.unitSqM}`
+                  : `${plan.totalAreaSqFt.toLocaleString()} ${labels.unitSqFt}`}
               </span>
             </button>
           );
@@ -1141,6 +1212,36 @@ export default function FloorPlansExplorer({
           </div>
 
           <div className="flex items-center gap-2.5">
+            {/* Unit Switcher: Metric vs Imperial */}
+            <div className="flex rounded-xl bg-white border border-[#CBD5E1] p-0.5 text-xs font-sans font-semibold">
+              <button
+                type="button"
+                onClick={() => handleUnitChange("metric")}
+                className={`px-2.5 sm:px-3 py-1.5 rounded-lg transition-colors cursor-pointer flex items-center gap-1 ${
+                  isMetric
+                    ? "bg-[#0F172A] text-white shadow-xs font-bold"
+                    : "text-[#64748B] hover:text-[#0F172A]"
+                }`}
+                title={labels.unitMetric}
+              >
+                <span>📏</span>
+                <span>{labels.unitMetricShort}</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => handleUnitChange("imperial")}
+                className={`px-2.5 sm:px-3 py-1.5 rounded-lg transition-colors cursor-pointer flex items-center gap-1 ${
+                  !isMetric
+                    ? "bg-[#0F172A] text-white shadow-xs font-bold"
+                    : "text-[#64748B] hover:text-[#0F172A]"
+                }`}
+                title={labels.unitImperial}
+              >
+                <span>📐</span>
+                <span>{labels.unitImperialShort}</span>
+              </button>
+            </div>
+
             {/* Theme Switcher: Dark CAD vs White Architectural Paper */}
             <div className="flex rounded-xl bg-white border border-[#CBD5E1] p-0.5 text-xs font-sans font-semibold">
               <button
@@ -1233,57 +1334,136 @@ export default function FloorPlansExplorer({
         </div>
       </div>
 
-      {/* 1. Full-Width 4 Metric Cards (Spacious, Horizontal & Breathing) */}
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 pt-1">
+      {/* 1. Metric Cards Header with Unit Switcher & 4 Metric Cards */}
+      <div className="flex flex-wrap items-center justify-between gap-3 pt-3 pb-1">
+        <div className="text-xs sm:text-sm font-bold text-[#1C1917] font-sans flex items-center gap-2">
+          <span className="text-base">📐</span>
+          <span>{labels.tepMetrics}</span>
+        </div>
+
+        {/* Unit Toggle Pill */}
+        <div className="inline-flex items-center p-1 rounded-xl bg-[#FAF8F5] border border-[#DDD7CA] text-xs font-sans font-semibold shadow-2xs">
+          <button
+            type="button"
+            onClick={() => handleUnitChange("metric")}
+            className={`px-3 py-1.5 rounded-lg transition-all flex items-center gap-1.5 cursor-pointer ${
+              isMetric
+                ? "bg-[#0F172A] text-white shadow-xs font-bold"
+                : "text-[#78716C] hover:text-[#1C1917]"
+            }`}
+          >
+            <span>📏</span>
+            <span>{labels.unitMetricShort}</span>
+          </button>
+          <button
+            type="button"
+            onClick={() => handleUnitChange("imperial")}
+            className={`px-3 py-1.5 rounded-lg transition-all flex items-center gap-1.5 cursor-pointer ${
+              !isMetric
+                ? "bg-[#0F172A] text-white shadow-xs font-bold"
+                : "text-[#78716C] hover:text-[#1C1917]"
+            }`}
+          >
+            <span>📐</span>
+            <span>{labels.unitImperialShort}</span>
+          </button>
+        </div>
+      </div>
+
+      <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        {/* Card 1: Total Area */}
         <div className="p-4 sm:p-5 rounded-2xl bg-[#FAF8F5] border border-[#DDD7CA] space-y-1.5 hover:border-[#8C6A48]/50 transition-colors">
           <div className="text-xs font-sans font-bold uppercase tracking-wider text-[#78716C] flex items-center justify-between">
             <span>{labels.totalArea}</span>
             <span className="text-sm">📐</span>
           </div>
           <div className="text-xl sm:text-2xl font-extrabold font-sans text-[#1C1917]">
-            {activePlan.totalAreaSqFt.toLocaleString()} <span className="text-xs font-semibold text-[#78716C]">sq.ft</span>
+            {isMetric ? (
+              <>
+                {activePlan.totalAreaSqM} <span className="text-xs font-semibold text-[#78716C]">{labels.unitSqM}</span>
+              </>
+            ) : (
+              <>
+                {activePlan.totalAreaSqFt.toLocaleString()} <span className="text-xs font-semibold text-[#78716C]">{labels.unitSqFt}</span>
+              </>
+            )}
           </div>
           <div className="text-xs text-[#78716C] font-sans">
-            {activePlan.totalAreaSqM} m²
+            {isMetric
+              ? `${activePlan.totalAreaSqFt.toLocaleString()} ${labels.unitSqFt}`
+              : `${activePlan.totalAreaSqM} ${labels.unitSqM}`}
           </div>
         </div>
 
+        {/* Card 2: Living Area (Net) */}
         <div className="p-4 sm:p-5 rounded-2xl bg-[#FAF8F5] border border-[#DDD7CA] space-y-1.5 hover:border-[#8C6A48]/50 transition-colors">
           <div className="text-xs font-sans font-bold uppercase tracking-wider text-[#78716C] flex items-center justify-between">
             <span>{labels.livingArea}</span>
             <span className="text-sm">🛋️</span>
           </div>
           <div className="text-xl sm:text-2xl font-extrabold font-sans text-[#059669]">
-            {activePlan.internalAreaSqFt.toLocaleString()} <span className="text-xs font-semibold text-[#059669]/70">sq.ft</span>
+            {isMetric ? (
+              <>
+                {internalAreaSqM} <span className="text-xs font-semibold text-[#059669]/70">{labels.unitSqM}</span>
+              </>
+            ) : (
+              <>
+                {activePlan.internalAreaSqFt.toLocaleString()} <span className="text-xs font-semibold text-[#059669]/70">{labels.unitSqFt}</span>
+              </>
+            )}
           </div>
           <div className="text-xs text-[#78716C] font-sans">
-            {activePlan.efficiencyRatio}
+            {isMetric
+              ? `${activePlan.internalAreaSqFt.toLocaleString()} ${labels.unitSqFt} • ${activePlan.efficiencyRatio}`
+              : `${internalAreaSqM} ${labels.unitSqM} • ${activePlan.efficiencyRatio}`}
           </div>
         </div>
 
+        {/* Card 3: Balcony Area */}
         <div className="p-4 sm:p-5 rounded-2xl bg-[#FAF8F5] border border-[#DDD7CA] space-y-1.5 hover:border-[#8C6A48]/50 transition-colors">
           <div className="text-xs font-sans font-bold uppercase tracking-wider text-[#78716C] flex items-center justify-between">
             <span>{labels.balconyArea}</span>
             <span className="text-sm">🌅</span>
           </div>
           <div className="text-xl sm:text-2xl font-extrabold font-sans text-[#1C1917]">
-            {activePlan.balconyAreaSqFt.toLocaleString()} <span className="text-xs font-semibold text-[#78716C]">sq.ft</span>
+            {isMetric ? (
+              <>
+                {balconyAreaSqM} <span className="text-xs font-semibold text-[#78716C]">{labels.unitSqM}</span>
+              </>
+            ) : (
+              <>
+                {activePlan.balconyAreaSqFt.toLocaleString()} <span className="text-xs font-semibold text-[#78716C]">{labels.unitSqFt}</span>
+              </>
+            )}
           </div>
           <div className="text-xs text-[#78716C] font-sans">
-            {Math.round((activePlan.balconyAreaSqFt / activePlan.totalAreaSqFt) * 100)}% {labels.ofTotal}
+            {isMetric
+              ? `${activePlan.balconyAreaSqFt.toLocaleString()} ${labels.unitSqFt} • ${balconyPercent}% ${labels.ofTotal}`
+              : `${balconyAreaSqM} ${labels.unitSqM} • ${balconyPercent}% ${labels.ofTotal}`}
           </div>
         </div>
 
+        {/* Card 4: Ceiling Height */}
         <div className="p-4 sm:p-5 rounded-2xl bg-[#FAF8F5] border border-[#DDD7CA] space-y-1.5 hover:border-[#8C6A48]/50 transition-colors">
           <div className="text-xs font-sans font-bold uppercase tracking-wider text-[#78716C] flex items-center justify-between">
             <span>{labels.clearCeiling}</span>
             <span className="text-sm">📏</span>
           </div>
           <div className="text-xl sm:text-2xl font-extrabold font-sans text-[#8C6A48]">
-            {activePlan.ceilingHeightMeters} <span className="text-xs font-semibold text-[#8C6A48]/70">m</span>
+            {isMetric ? (
+              <>
+                {activePlan.ceilingHeightMeters} <span className="text-xs font-semibold text-[#8C6A48]/70">{labels.unitM}</span>
+              </>
+            ) : (
+              <>
+                {ceilingHeightFt} <span className="text-xs font-semibold text-[#8C6A48]/70">{labels.unitFt}</span>
+              </>
+            )}
           </div>
           <div className="text-xs text-[#78716C] font-sans">
-            {labels.floorToCeiling}
+            {isMetric
+              ? `${ceilingHeightFt} ${labels.unitFt} • ${labels.floorToCeiling}`
+              : `${activePlan.ceilingHeightMeters} ${labels.unitM} • ${labels.floorToCeiling}`}
           </div>
         </div>
       </div>
@@ -1432,13 +1612,45 @@ export default function FloorPlansExplorer({
                   {activePlan.name}
                 </h3>
                 <div className="text-xs sm:text-sm font-sans text-cyan-300 font-medium">
-                  {activePlan.totalAreaSqFt} SQ.FT ({activePlan.totalAreaSqM} M²) • {labels.scaleLabel}
+                  {isMetric
+                    ? `${activePlan.totalAreaSqM} M² (${activePlan.totalAreaSqFt.toLocaleString()} SQ.FT) • ${labels.scaleLabel}`
+                    : `${activePlan.totalAreaSqFt.toLocaleString()} SQ.FT (${activePlan.totalAreaSqM} M²) • ${labels.scaleLabel}`}
                 </div>
               </div>
             </div>
 
-            {/* Lightbox Controls: Theme + Zoom + Close */}
+            {/* Lightbox Controls: Unit + Theme + Zoom + Close */}
             <div className="flex items-center gap-2">
+              {/* Unit Switcher inside Modal */}
+              <div className="flex rounded-lg bg-white/10 p-0.5 text-xs font-sans font-semibold">
+                <button
+                  type="button"
+                  onClick={() => handleUnitChange("metric")}
+                  className={`px-2.5 py-1.5 rounded-md transition-colors cursor-pointer flex items-center gap-1 ${
+                    isMetric
+                      ? "bg-white text-slate-950 shadow-xs font-bold"
+                      : "text-white/70 hover:text-white"
+                  }`}
+                  title={labels.unitMetric}
+                >
+                  <span>📏</span>
+                  <span>{labels.unitMetricShort}</span>
+                </button>
+                <button
+                  type="button"
+                  onClick={() => handleUnitChange("imperial")}
+                  className={`px-2.5 py-1.5 rounded-md transition-colors cursor-pointer flex items-center gap-1 ${
+                    !isMetric
+                      ? "bg-white text-slate-950 shadow-xs font-bold"
+                      : "text-white/70 hover:text-white"
+                  }`}
+                  title={labels.unitImperial}
+                >
+                  <span>📐</span>
+                  <span>{labels.unitImperialShort}</span>
+                </button>
+              </div>
+
               {/* Theme Toggle inside Modal */}
               <div className="flex rounded-lg bg-white/10 p-0.5 text-xs font-sans font-semibold">
                 <button
