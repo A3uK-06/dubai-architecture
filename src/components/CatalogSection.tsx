@@ -14,9 +14,11 @@ import {
   isGoldenVisaReady,
   LIFESTYLE_FILTERS_I18N
 } from "@/data/investorRealityCheck";
+import { useCurrency, CURRENCY_CODES } from "@/context/CurrencyContext";
 
 export default function CatalogSection() {
   const { t, lang } = useLang();
+  const { currency, setCurrency, formatPriceString } = useCurrency();
 
   const [search, setSearch] = useState("");
   const [selectedDistrict, setSelectedDistrict] = useState("all");
@@ -343,11 +345,32 @@ export default function CatalogSection() {
 
           {/* Investor Reality & Due Diligence Quick Filters */}
           <div className="pt-4 border-t border-[#E2E8F0] space-y-2.5">
-            <div className="flex items-center justify-between">
+            <div className="flex flex-wrap items-center justify-between gap-2">
               <span className="text-xs font-bold text-[#8C6A48] uppercase tracking-wider flex items-center gap-1.5">
                 <span>⚡</span>
                 <span>{lifestyleI18n.title}</span>
               </span>
+
+              {/* Currency Selector Pills */}
+              <div className="inline-flex items-center gap-1 bg-[#F1F5F9] p-1 rounded-xl border border-[#CBD5E1]">
+                <span className="text-[11px] font-bold text-[#64748B] px-1.5 hidden sm:inline">
+                  {t.calculator?.currency || "Валюта"}:
+                </span>
+                {CURRENCY_CODES.map((cCode) => (
+                  <button
+                    key={cCode}
+                    type="button"
+                    onClick={() => setCurrency(cCode)}
+                    className={`px-2 py-0.5 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer ${
+                      currency === cCode
+                        ? "bg-[#0F172A] text-white shadow-2xs scale-105"
+                        : "text-[#475569] hover:text-[#0F172A]"
+                    }`}
+                  >
+                    {cCode}
+                  </button>
+                ))}
+              </div>
             </div>
 
             <div className="flex flex-wrap items-center gap-2">
@@ -546,10 +569,10 @@ export default function CatalogSection() {
                     </div>
                     <div className="border-x border-[#E2E8F0] px-1 min-w-0">
                       <div className="text-sm sm:text-base font-bold text-[#0F172A] font-mono leading-none tracking-tight" title={building.startingPriceAed}>
-                        {building.startingPriceAed.replace(" AED", "")}
+                        {formatPriceString(building.startingPriceAed)}
                       </div>
                       <div className="text-[10px] sm:text-xs font-semibold text-[#64748B] uppercase tracking-wider mt-1.5 truncate">
-                        {t.catalog.startingPriceLabel} (AED)
+                        {t.catalog.startingPriceLabel} ({currency})
                       </div>
                     </div>
                     <div>

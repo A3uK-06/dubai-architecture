@@ -6,6 +6,7 @@ import Image from "next/image";
 import { Developer, getLocalizedDeveloper } from "@/data/developers";
 import { Building } from "@/data/buildings";
 import { useLang } from "@/context/LangContext";
+import { useCurrency } from "@/context/CurrencyContext";
 import { getLocalizedBuilding } from "@/data/localizedContent";
 import { DEVELOPERS_PAGE_I18N } from "@/data/localizedDevelopersPage";
 
@@ -19,6 +20,7 @@ export default function DeveloperDetailClient({
   buildings,
 }: DeveloperDetailClientProps) {
   const { lang } = useLang();
+  const { formatPriceString } = useCurrency();
   const tD = DEVELOPERS_PAGE_I18N[lang] || DEVELOPERS_PAGE_I18N.en;
 
   const homeUrl = "/";
@@ -214,7 +216,7 @@ export default function DeveloperDetailClient({
                 </div>
                 <div className="flex justify-between py-1">
                   <span className="text-[#78716C]">{tD.startingThresholdLabel}</span>
-                  <span className="font-bold text-[#8C6A48]">{developer.startingPriceAed}</span>
+                  <span className="font-bold text-[#8C6A48]">{formatPriceString(developer.startingPriceAed)}</span>
                 </div>
                 <div className="flex justify-between py-1">
                   <span className="text-[#78716C]">{tD.buyerMarkupLabel}</span>

@@ -5,10 +5,12 @@ import Link from "next/link";
 import { DEVELOPERS, getLocalizedDeveloper } from "@/data/developers";
 import { BUILDINGS } from "@/data/buildings";
 import { useLang } from "@/context/LangContext";
+import { useCurrency } from "@/context/CurrencyContext";
 import { DEVELOPERS_PAGE_I18N } from "@/data/localizedDevelopersPage";
 
 export default function DevelopersClient() {
   const { lang } = useLang();
+  const { formatPriceString } = useCurrency();
   const tD = DEVELOPERS_PAGE_I18N[lang] || DEVELOPERS_PAGE_I18N.en;
 
   const homeUrl = "/";
@@ -127,7 +129,7 @@ export default function DevelopersClient() {
 
                 <div className="pt-6 mt-6 border-t border-[#E5DFD3] flex items-center justify-between">
                   <span className="text-xs font-mono text-[#78716C]">
-                    {tD.fromPricePrefix}{dev.startingPriceAed}
+                    {tD.fromPricePrefix}{formatPriceString(dev.startingPriceAed)}
                   </span>
                   <Link
                     href={`${devBaseUrl}/${dev.slug}/`}

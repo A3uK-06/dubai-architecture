@@ -3,24 +3,7 @@
 import React, { useState, useMemo } from "react";
 import { useLang } from "@/context/LangContext";
 import MethodologyModal from "@/components/MethodologyModal";
-
-type CurrencyCode = "AED" | "USD" | "EUR" | "GBP" | "RUB" | "CNY";
-
-interface CurrencyInfo {
-  code: CurrencyCode;
-  symbol: string;
-  name: string;
-  rateFromAed: number;
-}
-
-const CURRENCIES: Record<CurrencyCode, CurrencyInfo> = {
-  AED: { code: "AED", symbol: "AED", name: "UAE Dirham", rateFromAed: 1 },
-  USD: { code: "USD", symbol: "$", name: "US Dollar", rateFromAed: 0.27229 },
-  EUR: { code: "EUR", symbol: "€", name: "Euro", rateFromAed: 0.252 },
-  GBP: { code: "GBP", symbol: "£", name: "British Pound", rateFromAed: 0.216 },
-  RUB: { code: "RUB", symbol: "₽", name: "Russian Ruble", rateFromAed: 26.8 },
-  CNY: { code: "CNY", symbol: "¥", name: "Chinese Yuan", rateFromAed: 1.97 },
-};
+import { useCurrency, CURRENCIES, CurrencyCode, CurrencyInfo } from "@/context/CurrencyContext";
 
 interface RoiCalculatorProps {
   initialPriceAed?: number;
@@ -44,7 +27,7 @@ export default function RoiCalculator({
   const [priceAed, setPriceAed] = useState<number>(initialPriceAed);
   const [grossYield, setGrossYield] = useState<number>(initialYieldPercent);
   const [serviceChargePercent, setServiceChargePercent] = useState<number>(1.2);
-  const [selectedCurrency, setSelectedCurrency] = useState<CurrencyCode>("AED");
+  const { currency: selectedCurrency, setCurrency: setSelectedCurrency } = useCurrency();
 
   const [prevInitialPrice, setPrevInitialPrice] = useState(initialPriceAed);
   if (initialPriceAed !== prevInitialPrice) {

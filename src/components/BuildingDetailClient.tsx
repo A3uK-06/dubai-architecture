@@ -19,6 +19,7 @@ import AiQuickFactsAndCitations from "@/components/AiQuickFactsAndCitations";
 import InvestorRealityAudit from "@/components/InvestorRealityAudit";
 import ExplosiveInvestorAudit from "@/components/ExplosiveInvestorAudit";
 import { trackEvent } from "@/lib/analytics";
+import { useCurrency, CURRENCY_CODES } from "@/context/CurrencyContext";
 
 interface BuildingDetailClientProps {
   initialBuilding: Building;
@@ -66,6 +67,32 @@ export default function BuildingDetailClient({
     const match = building.investmentYield.match(/(\d+(\.\d+)?)/);
     return match ? parseFloat(match[1]) : 8.0;
   }, [building.investmentYield]);
+
+  const { currency, setCurrency, currencyInfo, formatAed } = useCurrency();
+
+  const formattedPrice = useMemo(() => {
+    if (!initialPrice) return building.startingPriceAed;
+    return formatAed(initialPrice);
+  }, [initialPrice, formatAed, building.startingPriceAed]);
+
+  const estAnnualNetReturn = useMemo(() => {
+    if (!initialPrice || !initialYield) return null;
+    const annualAed = Math.round(initialPrice * (initialYield / 100));
+    return {
+      aed: annualAed,
+      formatted: formatAed(annualAed),
+    };
+  }, [initialPrice, initialYield, formatAed]);
+
+  const formattedServiceCharge = useMemo(() => {
+    if (!building.operatingSpecs?.annualServiceChargeAedSqFt) return null;
+    const rateAed = building.operatingSpecs.annualServiceChargeAedSqFt;
+    if (currency === "AED") {
+      return `${rateAed} ${tAudit.serviceChargeUnit || "AED / кв. фут"}`;
+    }
+    const convertedRate = (rateAed * currencyInfo.rateFromAed).toFixed(1);
+    return `~${convertedRate} ${currencyInfo.code} / sq.ft`;
+  }, [building.operatingSpecs, currency, currencyInfo, tAudit.serviceChargeUnit]);
 
   const whatsappMessage = useMemo(() => {
     const messages: Record<LanguageCode, string> = {
@@ -168,7 +195,7 @@ export default function BuildingDetailClient({
               </div>
             </div>
 
-            {/* Quick Investment Metric Pill */}
+            {/* Quick Investment Metric Pill with Currency Switcher */}
             <div className="w-full sm:w-auto p-4 sm:p-5 rounded-2xl bg-white border border-[#E5DFD3] shadow-soft-tint flex flex-wrap sm:flex-nowrap items-center gap-4 sm:gap-6 shrink-0">
               <div>
                 <div className="text-xs uppercase tracking-wider text-[#78716C] font-bold">
@@ -177,14 +204,44 @@ export default function BuildingDetailClient({
                 <div className="text-2xl font-extrabold text-[#2D6A4F] font-mono mt-0.5">
                   {building.investmentYield}
                 </div>
+                {estAnnualNetReturn && (
+                  <div className="text-[11px] font-mono text-[#2D6A4F]/85 font-semibold mt-0.5">
+                    ~{estAnnualNetReturn.formatted} / {lang === "ru" ? "год" : "yr"}
+                  </div>
+                )}
               </div>
-              <div className="border-l border-[#E5DFD3] pl-6">
-                <div className="text-xs uppercase tracking-wider text-[#78716C] font-bold">
-                  {bd.unitsFrom}
+              <div className="border-l border-[#E5DFD3] pl-5 sm:pl-6 space-y-1">
+                <div className="flex items-center justify-between gap-3">
+                  <div className="text-xs uppercase tracking-wider text-[#78716C] font-bold">
+                    {bd.unitsFrom}
+                  </div>
+                  {/* Currency Selector Mini-Pills */}
+                  <div className="inline-flex items-center gap-0.5 bg-[#FAF8F5] p-0.5 rounded-lg border border-[#E5DFD3]">
+                    {CURRENCY_CODES.map((cCode) => (
+                      <button
+                        key={cCode}
+                        type="button"
+                        onClick={() => setCurrency(cCode)}
+                        className={`px-1.5 py-0.5 rounded text-[10px] font-mono font-bold transition-all cursor-pointer ${
+                          currency === cCode
+                            ? "bg-[#0F172A] text-white shadow-2xs scale-105"
+                            : "text-[#78716C] hover:text-[#0F172A]"
+                        }`}
+                        title={cCode}
+                      >
+                        {cCode}
+                      </button>
+                    ))}
+                  </div>
                 </div>
-                <div className="text-lg font-bold text-[#8C6A48] font-mono mt-0.5">
-                  {building.startingPriceAed}
+                <div className="text-xl font-extrabold text-[#8C6A48] font-mono">
+                  {formattedPrice}
                 </div>
+                {currency !== "AED" && building.startingPriceAed && (
+                  <div className="text-[11px] font-mono text-[#78716C]">
+                    {building.startingPriceAed}
+                  </div>
+                )}
               </div>
             </div>
           </div>
@@ -218,7 +275,7 @@ export default function BuildingDetailClient({
                 ROI: {building.investmentYield}
               </span>
               <span className="px-4 py-2 rounded-full text-xs sm:text-sm font-mono font-bold bg-[#0F172A] text-white border border-white/25 shadow-md">
-                {building.startingPriceAed}
+                {formattedPrice}
               </span>
             </div>
           </div>
@@ -680,25 +737,96 @@ export default function BuildingDetailClient({
                 </p>
               </div>
 
-              <div className="space-y-3 py-3 border-y border-[#EFECE4] text-xs">
-                <div className="flex justify-between items-start gap-2">
-                  <span className="text-[#78716C] min-w-0 break-words">{bd.entryPriceAed}</span>
-                  <span className="font-mono font-bold text-[#1C1917] text-right shrink-0">{building.startingPriceAed}</span>
-                </div>
-                <div className="flex justify-between items-start gap-2">
-                  <span className="text-[#78716C] min-w-0 break-words">{bd.entryPriceUsd}</span>
-                  <span className="font-mono font-bold text-[#1C1917] text-right shrink-0">{building.startingPriceUsd}</span>
-                </div>
-                <div className="flex justify-between items-start gap-2">
-                  <span className="text-[#78716C] min-w-0 break-words">{bd.projectedYield}</span>
-                  <span className="font-mono font-bold text-[#2D6A4F] text-right shrink-0">{building.investmentYield}</span>
-                </div>
-                <div className="flex justify-between items-start gap-2">
-                  <span className="text-[#78716C] min-w-0 break-words">{t.ttxLabels.serviceCharge}</span>
-                  <span className="font-mono font-bold text-[#8C6A48] text-right shrink-0">
-                    {building.operatingSpecs ? `${building.operatingSpecs.annualServiceChargeAedSqFt} ${tAudit.serviceChargeUnit}` : "—"}
+              {/* Multicurrency Control Bar */}
+              <div className="p-3 rounded-2xl bg-[#FAF8F5] border border-[#EFECE4] space-y-2">
+                <div className="flex items-center justify-between text-[11px] font-bold text-[#78716C] uppercase tracking-wider px-0.5">
+                  <span className="flex items-center gap-1.5">
+                    <span>💱</span>
+                    <span>{t.calculator?.selectCurrency || "Валюта расчета:"}</span>
+                  </span>
+                  <span className="text-[10px] font-mono text-[#8C6A48]">
+                    1 AED = {currencyInfo.rateFromAed} {currencyInfo.code}
                   </span>
                 </div>
+                <div className="grid grid-cols-6 gap-1">
+                  {CURRENCY_CODES.map((cCode) => {
+                    const isSelected = currency === cCode;
+                    return (
+                      <button
+                        key={cCode}
+                        type="button"
+                        onClick={() => setCurrency(cCode)}
+                        className={`py-1.5 rounded-lg text-xs font-mono font-bold transition-all cursor-pointer text-center ${
+                          isSelected
+                            ? "bg-[#0F172A] text-white shadow-xs scale-[1.02]"
+                            : "bg-white text-[#57534E] hover:bg-[#EFECE4] hover:text-[#1C1917] border border-[#DDD7CA]"
+                        }`}
+                        title={cCode}
+                      >
+                        {cCode}
+                      </button>
+                    );
+                  })}
+                </div>
+              </div>
+
+              <div className="space-y-3 py-3 border-y border-[#EFECE4] text-xs">
+                {/* 1. Стоимость покупки / Начальная цена */}
+                <div className="flex justify-between items-start gap-2">
+                  <span className="text-[#78716C] min-w-0 break-words">{bd.entryPriceAed}</span>
+                  <div className="text-right shrink-0">
+                    <div className="font-mono font-bold text-[#1C1917] text-sm">
+                      {formattedPrice}
+                    </div>
+                    {currency !== "AED" && building.startingPriceAed && (
+                      <div className="text-[10px] font-mono text-[#78716C]">
+                        {building.startingPriceAed}
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                {/* 2. Если выбрана не USD и не AED, показываем USD */}
+                {currency !== "USD" && building.startingPriceUsd && (
+                  <div className="flex justify-between items-start gap-2">
+                    <span className="text-[#78716C] min-w-0 break-words">{bd.entryPriceUsd}</span>
+                    <span className="font-mono font-semibold text-[#57534E] text-right shrink-0">
+                      {building.startingPriceUsd}
+                    </span>
+                  </div>
+                )}
+
+                {/* 3. Прогноз чистой доходности */}
+                <div className="flex justify-between items-start gap-2">
+                  <span className="text-[#78716C] min-w-0 break-words">{bd.projectedYield}</span>
+                  <div className="text-right shrink-0">
+                    <div className="font-mono font-bold text-[#2D6A4F] text-sm">
+                      {building.investmentYield}
+                    </div>
+                    {estAnnualNetReturn && (
+                      <div className="text-[10px] font-mono text-[#2D6A4F]/85 font-semibold">
+                        ~{estAnnualNetReturn.formatted} / {lang === "ru" ? "год (Net)" : "yr (Net)"}
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                {/* 4. Service Charge */}
+                <div className="flex justify-between items-start gap-2">
+                  <span className="text-[#78716C] min-w-0 break-words">{t.ttxLabels.serviceCharge}</span>
+                  <div className="text-right shrink-0">
+                    <div className="font-mono font-bold text-[#8C6A48]">
+                      {formattedServiceCharge || "—"}
+                    </div>
+                    {building.operatingSpecs && currency !== "AED" && (
+                      <div className="text-[10px] font-mono text-[#78716C]">
+                        {building.operatingSpecs.annualServiceChargeAedSqFt} AED / sq.ft
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                {/* 5. Golden Visa */}
                 <div className="flex justify-between items-start gap-2">
                   <span className="text-[#78716C] min-w-0 break-words">{bd.goldenVisaEligible}</span>
                   <span className="font-semibold text-[#8C6A48] text-right shrink-0 max-w-[55%] break-words">{bd.goldenVisaEligibleValue}</span>
