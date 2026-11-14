@@ -202,6 +202,7 @@ export interface TranslationDictionary {
     budgetLabel: string;
     submitBtn: string;
     instantDelivery: string;
+    dataConsentNotice: string;
     successTitle: string;
     successDesc: string;
     openWhatsApp: string;
@@ -373,7 +374,7 @@ export const TRANSLATIONS: Record<LanguageCode, TranslationDictionary> = {
     "contactBroker": "Inquire Units"
   },
   "hero": {
-    "badge": "Historical Trust Domain • Since 2006",
+    "badge": "🏛️ Est. 2006 • 3,000+ Backlinks • Cited by Springer, Lund University & Wikipedia",
     "title": "Dubai Architectural Marvels &",
     "titleHighlight": "Iconic Skyscrapers",
     "subtitle": "Independent architectural archive since 2006: structural engineering passports, foundation geotechnics, vortex damping, DLD municipal tariffs, and prime investment audits.",
@@ -561,6 +562,7 @@ export const TRANSLATIONS: Record<LanguageCode, TranslationDictionary> = {
     "budgetLabel": "Investment Range",
     "submitBtn": "Get Architectural Guide & Unit Inventory",
     "instantDelivery": "Instant PDF delivery to WhatsApp and email. No spam, strict NDA guaranteed.",
+    "dataConsentNotice": "By submitting, you agree to share inquiry details with accredited RERA brokerage partners for unit availability and official pricing.",
     "successTitle": "Dossier Request Sent Successfully!",
     "successDesc": "Your engineering guide and curated availability list are being prepared. An accredited specialist will reach out via WhatsApp.",
     "openWhatsApp": "Open Instant WhatsApp Chat",
@@ -730,7 +732,7 @@ export const TRANSLATIONS: Record<LanguageCode, TranslationDictionary> = {
     "contactBroker": "Запросить объекты"
   },
   "hero": {
-    "badge": "Исторический трастовый домен • С 2006 года",
+    "badge": "🏛️ Основан в 2006 г. • 3 000+ ссылок • Цитируется в Springer, Lund University и Wikipedia",
     "title": "Архитектурные шедевры и",
     "titleHighlight": "культовые небоскребы Дубая",
     "subtitle": "Независимый архитектурный архив с 2006 года: инженерные паспорта небоскребов, геотехника фундаментов, аэродинамическое гашение вихрей, тарифы DLD и инвестиционный аудит.",
@@ -918,6 +920,7 @@ export const TRANSLATIONS: Record<LanguageCode, TranslationDictionary> = {
     "budgetLabel": "Инвестиционный диапазон",
     "submitBtn": "Получить инженерный гид и каталог лотов",
     "instantDelivery": "Моментальная доставка PDF в WhatsApp и на почту. Без спама, строгий NDA.",
+    "dataConsentNotice": "Нажимая кнопку, вы подтверждаете согласие на передачу запроса аккредитованным брокерам RERA для подбора планировок и расчета цен.",
     "successTitle": "Запрос досье успешно отправлен!",
     "successDesc": "Ваш инженерный гид и подборка доступных апартаментов формируются. Аккредитованный эксперт свяжется с вами через WhatsApp.",
     "openWhatsApp": "Открыть диалог в WhatsApp",
@@ -1087,7 +1090,7 @@ export const TRANSLATIONS: Record<LanguageCode, TranslationDictionary> = {
     "contactBroker": "طلب الوحدات"
   },
   "hero": {
-    "badge": "نطاق تاريخي موثوق • منذ عام 2006",
+    "badge": "🏛️ تأسس عام 2006 • أكثر من 3000 رابط عالمي • موثق في Springer وLund University وWikipedia",
     "title": "روائع دبي المعمارية و",
     "titleHighlight": "أيقونات ناطحات السحاب",
     "subtitle": "أرشيف معماري مستقل منذ 2006: جوازات الهندسة الإنشائية، ميكانيكا التربة والأساسات العميقة، تخميد الرياح، رسوم خدمات دائرة الأراضي والأملاك والتدقيق الاستثماري.",
@@ -1275,6 +1278,7 @@ export const TRANSLATIONS: Record<LanguageCode, TranslationDictionary> = {
     "budgetLabel": "النطاق الاستثماري المستهدف",
     "submitBtn": "الحصول على الدليل الهندسي وقائمة الوحدات",
     "instantDelivery": "تسليم فوري لملف PDF عبر الواتساب والبريد. بدون إزعاج ومع ضمان اتفاقية عدم إفشاء (NDA).",
+    "dataConsentNotice": "بإرسال الطلب، فإنك توافق على تحويل تفاصيل الاستفسار إلى شركاء الوساطة المعتمدين من RERA لتوفير الوحدات وجداول السداد.",
     "successTitle": "تم إرسال طلب الملف بنجاح!",
     "successDesc": "جاري إعداد الدليل الهندسي وقائمة الشقق المتاحة. سيتواصل معك مستشار معتمد عبر الواتساب.",
     "openWhatsApp": "بدء محادثة فورية عبر الواتساب",
@@ -1444,7 +1448,7 @@ export const TRANSLATIONS: Record<LanguageCode, TranslationDictionary> = {
     "contactBroker": "咨询可售房源"
   },
   "hero": {
-    "badge": "权威历史域名 • 始于2006年",
+    "badge": "🏛️ 始于2006年 • 3,000+条权威外链 • 获Springer、隆德大学及维基百科文献引用",
     "title": "探索迪拜建筑奇迹与",
     "titleHighlight": "标志性摩天大楼",
     "subtitle": "始于2006年的独立建筑历史档案：摩天大楼结构工程指标、深基坑地质力学、涡激振动阻尼、迪拜土地局 (DLD) 市政规费及高端地产投资审计。",
@@ -1632,6 +1636,7 @@ export const TRANSLATIONS: Record<LanguageCode, TranslationDictionary> = {
     "budgetLabel": "计划投资区间",
     "submitBtn": "立即索取建筑工程指南与房源清单",
     "instantDelivery": "PDF指南将秒级发送至您的WhatsApp和电子邮箱。绝无骚扰，严格遵守保密协议 (NDA)。",
+    "dataConsentNotice": "提交申请即代表您同意将咨询信息发送给 RERA 官方持牌经纪机构，用于获取一手房源与官方付款方案。",
     "successTitle": "技术档案索取申请已发送！",
     "successDesc": "大楼工程参数与在售稀缺房源表正在生成中，官方持牌顾问将很快通过WhatsApp与您对接。",
     "openWhatsApp": "立即发起 WhatsApp 对话",
@@ -1801,7 +1806,7 @@ export const TRANSLATIONS: Record<LanguageCode, TranslationDictionary> = {
     "contactBroker": "Objekte anfragen"
   },
   "hero": {
-    "badge": "Historische Vertrauens-Domain • Seit 2006",
+    "badge": "🏛️ Seit 2006 • 3.000+ Backlinks • Zitiert von Springer, Lund University & Wikipedia",
     "title": "Dubais Architekturwunder und",
     "titleHighlight": "ikonische Wolkenkratzer",
     "subtitle": "Unabhängiges Architekturarchiv seit 2006: bautechnische Pässe, geotechnische Tiefgründungen, Wirbeldämpfung, offizielle DLD-Kommunalgebühren und Renditeprüfungen.",
@@ -1989,6 +1994,7 @@ export const TRANSLATIONS: Record<LanguageCode, TranslationDictionary> = {
     "budgetLabel": "Investitionsbereich",
     "submitBtn": "Leitfaden & Einheitenkatalog anfordern",
     "instantDelivery": "Sofortige PDF-Zustellung per WhatsApp und E-Mail. Kein Spam, garantierte Vertraulichkeit (NDA).",
+    "dataConsentNotice": "Mit dem Absenden erklären Sie sich mit der Weiterleitung an akkreditierte RERA-Maklerpartner zur Verfügbarkeits- und Preisprüfung einverstanden.",
     "successTitle": "Dossier-Anfrage erfolgreich versendet!",
     "successDesc": "Ihr Ingenieurleitfaden und die Liste verfügbarer Einheiten werden vorbereitet. Ein akkreditierter Berater meldet sich via WhatsApp.",
     "openWhatsApp": "Direkten WhatsApp-Chat öffnen",
@@ -2158,7 +2164,7 @@ export const TRANSLATIONS: Record<LanguageCode, TranslationDictionary> = {
     "contactBroker": "Demander des unités"
   },
   "hero": {
-    "badge": "Domaine de confiance historique • Depuis 2006",
+    "badge": "🏛️ Fondé en 2006 • 3 000+ rétroliens • Cité par Springer, Lund University & Wikipédia",
     "title": "Merveilles architecturales et",
     "titleHighlight": "gratte-ciel emblématiques de Dubaï",
     "subtitle": "Archives architecturales indépendantes depuis 2006 : passeports d'ingénierie structurelle, géotechnique des fondations, atténuation des tourbillons de vent, charges DLD et audits d'investissement.",
@@ -2346,6 +2352,7 @@ export const TRANSLATIONS: Record<LanguageCode, TranslationDictionary> = {
     "budgetLabel": "Fourchette d'investissement",
     "submitBtn": "Recevoir le guide technique et les disponibilités",
     "instantDelivery": "Envoi immédiat du fichier PDF par WhatsApp et e-mail. Aucun spam, accord de confidentialité (NDA) garanti.",
+    "dataConsentNotice": "En soumettant ce formulaire, vous acceptez la transmission de votre demande aux courtiers agréés RERA pour le suivi des disponibilités et prix.",
     "successTitle": "Demande de dossier envoyée avec succès !",
     "successDesc": "Votre guide d'ingénierie et la sélection d'appartements disponibles sont en cours de préparation. Un conseiller agréé vous contactera via WhatsApp.",
     "openWhatsApp": "Ouvrir une discussion WhatsApp",
@@ -2515,7 +2522,7 @@ export const TRANSLATIONS: Record<LanguageCode, TranslationDictionary> = {
     "contactBroker": "उपलब्ध संपत्तियां"
   },
   "hero": {
-    "badge": "ऐतिहासिक ट्रस्ट डोमेन • 2006 से",
+    "badge": "🏛️ 2006 से स्थापित • 3,000+ बैकलिंक्स • Springer, Lund University और Wikipedia द्वारा उद्धृत",
     "title": "दुबई के स्थापत्य चमत्कार और",
     "titleHighlight": "प्रतिष्ठित गगनचुंबी इमारतें",
     "subtitle": "2006 से स्वतंत्र वास्तुशिल्प संग्रह: संरचनात्मक इंजीनियरिंग पासपोर्ट, नींव भू-तकनीक, भंवर अवमंदन (vortex damping), डीएलडी नगरपालिका शुल्क और निवेश ऑडिट।",
@@ -2703,6 +2710,7 @@ export const TRANSLATIONS: Record<LanguageCode, TranslationDictionary> = {
     "budgetLabel": "निवेश सीमा",
     "submitBtn": "इंजीनियरिंग गाइड और इन्वेंटरी प्राप्त करें",
     "instantDelivery": "व्हाट्सएप और ईमेल पर तुरंत पीडीएफ डिलीवरी। कोई स्पैम नहीं, सख्त गोपनीयता (NDA) गारंटीकृत।",
+    "dataConsentNotice": "जमा करके, आप यूनिट की उपलब्धता और मूल्य निर्धारण के लिए रेरा मान्यता प्राप्त अधिकृत ब्रोकरेज भागीदारों के साथ पूछताछ साझा करने के लिए सहमति देते हैं।",
     "successTitle": "अनुरोध सफलतापूर्वक भेजा गया!",
     "successDesc": "आपकी इंजीनियरिंग गाइड और उपलब्ध इकाइयों की सूची तैयार की जा रही है। एक विशेषज्ञ व्हाट्सएप पर संपर्क करेगा।",
     "openWhatsApp": "व्हाट्सएप चैट शुरू करें",
@@ -2872,7 +2880,7 @@ export const TRANSLATIONS: Record<LanguageCode, TranslationDictionary> = {
     "contactBroker": "دستیاب یونٹس"
   },
   "hero": {
-    "badge": "تاریخی ٹرسٹ ڈومین • 2006 سے",
+    "badge": "🏛️ 2006 میں قائم شدہ • 3,000+ روابط • Springer، Lund University اور Wikipedia میں حوالہ جات",
     "title": "دبئی کے تعمیراتی شاہکار اور",
     "titleHighlight": "فلک بوس عمارتیں",
     "subtitle": "2006 سے خود مختار تعمیراتی آرکائیو: ساختی انجینئرنگ پاسپورٹ، بنیادوں کی جیوٹیکنیکل جانچ، ہوائی دباؤ میں کمی (vortex damping)، ڈی ایل ڈی بلدیاتی فیس اور سرمایہ کاری آڈٹ۔",
@@ -3060,6 +3068,7 @@ export const TRANSLATIONS: Record<LanguageCode, TranslationDictionary> = {
     "budgetLabel": "سرمایہ کاری کا تخمینہ",
     "submitBtn": "تکنیکی گائیڈ اور یونٹس کی فہرست حاصل کریں",
     "instantDelivery": "واٹس ایپ اور ای میل پر فوری پی ڈی ایف ترسیل۔ کوئی فضول پیغامات نہیں، مکمل رازداری (NDA)۔",
+    "dataConsentNotice": "فارم جمع کرانے سے آپ یونٹس کی دستیابی اور ادائیگی کی شرائط کے لیے ریرا منظور شدہ بروکریج پارٹنرز کو معلومات منتقل کرنے کی منظوری دیتے ہیں۔",
     "successTitle": "درخواست کامیابی سے موصول ہوگئی!",
     "successDesc": "آپ کی انجینئرنگ گائیڈ اور دستیاب یونٹس کی لسٹ تیار کی جا رہی ہے۔ لائسنس یافتہ مشیر واٹس ایپ پر رابطہ کرے گا۔",
     "openWhatsApp": "فوری واٹس ایپ بات چیت شروع کریں",
@@ -3229,7 +3238,7 @@ export const TRANSLATIONS: Record<LanguageCode, TranslationDictionary> = {
     "contactBroker": "Richiedi Unità"
   },
   "hero": {
-    "badge": "Dominio Storico di Riferimento • Dal 2006",
+    "badge": "🏛️ Fondato nel 2006 • 3.000+ backlink • Citato da Springer, Lund University e Wikipedia",
     "title": "I capolavori architettonici e i",
     "titleHighlight": "grattacieli iconici di Dubai",
     "subtitle": "Archivio architettonico indipendente dal 2006: passaporti di ingegneria strutturale, geotecnica delle fondazioni profonde, smorzamento aerodinamico, tariffe DLD e audit degli investimenti.",
@@ -3417,6 +3426,7 @@ export const TRANSLATIONS: Record<LanguageCode, TranslationDictionary> = {
     "budgetLabel": "Fascia di investimento",
     "submitBtn": "Ottieni Guida Tecnica & Disponibilità",
     "instantDelivery": "Consegna immediata del PDF su WhatsApp ed email. Nessun messaggio indesiderato, accordo di riservatezza (NDA) garantito.",
+    "dataConsentNotice": "Inviando la richiesta, acconsenti alla trasmissione dei dati ai broker autorizzati RERA per la verifica delle disponibilità e dei prezzi.",
     "successTitle": "Richiesta dossier inviata con successo!",
     "successDesc": "La documentazione tecnica e l'elenco degli alloggi disponibili sono in preparazione. Un consulente autorizzato ti contatterà via WhatsApp.",
     "openWhatsApp": "Avvia chat su WhatsApp",
@@ -3586,7 +3596,7 @@ export const TRANSLATIONS: Record<LanguageCode, TranslationDictionary> = {
     "contactBroker": "Uygun Daireler"
   },
   "hero": {
-    "badge": "Tarihi Güvenilir Alan Adı • 2006'dan Beri",
+    "badge": "🏛️ 2006'da Kuruldu • 3.000+ Bağlantı • Springer, Lund University ve Wikipedia Tarafından Alıntılandı",
     "title": "Dubai'nin Mimari Harikaları ve",
     "titleHighlight": "İkonik Gökdelenleri",
     "subtitle": "2006'dan beri bağımsız mimari arşiv: yapı mühendisliği teknik pasaportları, temel geotekniği, rüzgar girdap sönümlemesi, DLD belediye giderleri ve yatırım denetimi.",
@@ -3774,6 +3784,7 @@ export const TRANSLATIONS: Record<LanguageCode, TranslationDictionary> = {
     "budgetLabel": "Yatırım Aralığı",
     "submitBtn": "Mimari Rehberi ve Daire Listesini Alın",
     "instantDelivery": "WhatsApp ve e-posta ile anında PDF teslimatı. Spam yok, gizlilik sözleşmesi (NDA) garantilidir.",
+    "dataConsentNotice": "Göndererek, daire müsaitliği ve ödeme planı teklifleri için talep detaylarınızın akredite RERA broker ortaklarına iletilmesini onaylamış olursunuz.",
     "successTitle": "Dosya Talebiniz Başarıyla Gönderildi!",
     "successDesc": "Mühendislik rehberiniz ve uygun daire seçenekleri hazırlanıyor. Uzman danışmanımız WhatsApp üzerinden sizinle iletişime geçecektir.",
     "openWhatsApp": "Hemen WhatsApp Sohbeti Başlatın",

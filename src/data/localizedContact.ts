@@ -41,7 +41,7 @@ export const CONTACT_PAGE_I18N: Record<LanguageCode, ContactPageI18nLabels> = {
     card2Desc: "For private investors, family offices, and residents seeking off-market penthouses, high-floor residential allocations, or Golden Visa eligible investments:",
     whatsAppConciergeBtn: "Direct WhatsApp Concierge",
     calculatorBtn: "Open Multi-Currency ROI Calculator",
-    brokerComplianceNote: "Client allocations handled exclusively by accredited RERA brokerage partners: Metropolitan Premium Properties & Whitewill.",
+    brokerComplianceNote: "Client allocations handled exclusively by accredited RERA-licensed brokerage partners and authorized institutional desks.",
     getWhatsAppMessage: () => "Hello, I am inquiring through Dubai-Architecture.info regarding property allocations and project dossiers in Dubai.",
   },
   ru: {
@@ -62,7 +62,7 @@ export const CONTACT_PAGE_I18N: Record<LanguageCode, ContactPageI18nLabels> = {
     card2Desc: "Для частных инвесторов и покупателей, подбирающих пентхаусы, видовые этажи в знаковых башнях или объекты под резидентскую визу Golden Visa (от 2 млн AED):",
     whatsAppConciergeBtn: "Консьерж в WhatsApp (Русский / English)",
     calculatorBtn: "Мультивалютный калькулятор ROI",
-    brokerComplianceNote: "Заявки клиентов передаются лицензированным партнерам RERA: Whitewill (для РФ и СНГ) и Metropolitan Premium Properties (международный отдел).",
+    brokerComplianceNote: "Заявки клиентов передаются исключительно аккредитованным лицензированным брокерам партнерской сети RERA / Dubai Land Department.",
     getWhatsAppMessage: () => "Здравствуйте, пишу вам с портала Dubai-Architecture.info по подбору апартаментов и инвестиционных досье в Дубае.",
   },
   ar: {
@@ -83,7 +83,7 @@ export const CONTACT_PAGE_I18N: Record<LanguageCode, ContactPageI18nLabels> = {
     card2Desc: "للمستثمرين والمشترين الباحثين عن شقق بنتهاوس استثنائية، أو طوابق مرتفعة بإطلالات بانورامية، أو عقارات مؤهلة للإقامة الذهبية (من 2 مليون درهم):",
     whatsAppConciergeBtn: "الكونسيرج المباشر عبر واتساب",
     calculatorBtn: "حاسبة العائد الاستثماري متعددة العملات",
-    brokerComplianceNote: "تتم إدارة معاملات العملاء حصرياً عبر شركاء الوساطة المرخصين من مؤسسة التنظيم العقاري RERA: Metropolitan Premium Properties وWhitewill.",
+    brokerComplianceNote: "تتم إدارة معاملات العملاء حصرياً عبر شبكة شركاء الوساطة المرخصين والمعتمدين رسمياً من مؤسسة التنظيم العقاري RERA.",
     getWhatsAppMessage: () => "مرحباً، أتواصل معكم عبر Dubai-Architecture.info للاستفسار عن حجز الوحدات والملفات الاستثمارية في دبي.",
   },
   zh: {
@@ -104,7 +104,7 @@ export const CONTACT_PAGE_I18N: Record<LanguageCode, ContactPageI18nLabels> = {
     card2Desc: "面向私人高净值投资者、家族办公室及阿联酋居民：咨询核心地标绝版顶层豪宅 Penthouse、高区精选房源或 10 年黄金签证资产配置（200 万 AED 起）：",
     whatsAppConciergeBtn: "WhatsApp 官方置业礼宾通道",
     calculatorBtn: "开启多币种投资回报率（ROI）测算器",
-    brokerComplianceNote: "所有买家咨询均由迪拜土地局 RERA 持牌经纪机构专人跟进执行：Metropolitan Premium Properties 及 Whitewill。",
+    brokerComplianceNote: "所有买家咨询均由迪拜土地局 RERA 官方持牌合规经纪合作网络专人跟进执行。",
     getWhatsAppMessage: () => "您好，我在 Dubai-Architecture.info 查阅了迪拜地标档案，希望咨询关于优质房源配置与投资档案的更多信息。",
   },
   de: {
@@ -125,7 +125,7 @@ export const CONTACT_PAGE_I18N: Record<LanguageCode, ContactPageI18nLabels> = {
     card2Desc: "Für Privatinvestoren, Family Offices und Einwohner auf der Suche nach Penthouses, hohen Etagen oder Golden-Visa-Immobilien (ab 2 Mio. AED):",
     whatsAppConciergeBtn: "Direkter WhatsApp-Concierge",
     calculatorBtn: "Multi-Währungs-Renditerechner öffnen",
-    brokerComplianceNote: "Kundenanfragen werden exklusiv von RERA-akkreditierten Partnern betreut: Metropolitan Premium Properties & Whitewill.",
+    brokerComplianceNote: "Kundenanfragen werden exklusiv von akkreditierten, RERA-lizenzierten Maklerpartnern betreut.",
     getWhatsAppMessage: () => "Guten Tag, ich erkundige mich über Dubai-Architecture.info bezüglich Immobilienangeboten und Projektdossiers in Dubai.",
   },
   fr: {
@@ -146,7 +146,7 @@ export const CONTACT_PAGE_I18N: Record<LanguageCode, ContactPageI18nLabels> = {
     card2Desc: "Pour investisseurs privés, family offices et résidents recherchant des penthouses, étages élevés ou actifs éligibles au Golden Visa (dès 2M AED) :",
     whatsAppConciergeBtn: "Conciergerie directe WhatsApp",
     calculatorBtn: "Ouvrir le calculateur ROI multi-devises",
-    brokerComplianceNote: "Les demandes acquéreurs sont confiées exclusivement à nos partenaires agréés RERA : Metropolitan Premium Properties & Whitewill.",
+    brokerComplianceNote: "Les demandes acquéreurs sont confiées exclusivement à nos courtiers partenaires agréés titulaires d'une licence RERA.",
     getWhatsAppMessage: () => "Bonjour, je vous contacte via Dubai-Architecture.info pour des renseignements sur les acquisitions immobilières et dossiers de projets à Dubaï.",
   },
   it: {
@@ -167,7 +167,7 @@ export const CONTACT_PAGE_I18N: Record<LanguageCode, ContactPageI18nLabels> = {
     card2Desc: "Per investitori privati, family office e residenti alla ricerca di attici, piani alti panoramici o immobili idonei alla Golden Visa (da 2M AED):",
     whatsAppConciergeBtn: "Concierge diretto WhatsApp",
     calculatorBtn: "Apri il calcolatore ROI multivaluta",
-    brokerComplianceNote: "Le richieste dei clienti sono gestite esclusivamente da broker con regolare licenza RERA: Metropolitan Premium Properties & Whitewill.",
+    brokerComplianceNote: "Le richieste dei clienti sono gestite esclusivamente da broker della rete autorizzata con regolare licenza RERA.",
     getWhatsAppMessage: () => "Buongiorno, vi contatto tramite Dubai-Architecture.info per informazioni sulle opportunità immobiliari e dossier a Dubai.",
   },
   tr: {
@@ -188,7 +188,7 @@ export const CONTACT_PAGE_I18N: Record<LanguageCode, ContactPageI18nLabels> = {
     card2Desc: "Özel yatırımcılar, aile ofisleri ve Golden Visa'ya uygun (2M AED üzeri) lüks çatı katları ya da yüksek katlı daire arayan alıcılar için:",
     whatsAppConciergeBtn: "Doğrudan WhatsApp Danışmanı",
     calculatorBtn: "Çoklu Para Birimli Getiri Hesaplayıcıyı Aç",
-    brokerComplianceNote: "Müşteri tahsisleri münhasıran akredite RERA lisanslı ortaklarımızca yürütülür: Metropolitan Premium Properties ve Whitewill.",
+    brokerComplianceNote: "Müşteri tahsisleri münhasıran akredite RERA lisanslı emlak broker ağı aracılığıyla yürütülür.",
     getWhatsAppMessage: () => "Merhaba, Dubai-Architecture.info üzerinden Dubai'deki mülk tahsisleri ve proje dosyaları hakkında bilgi almak için ulaşıyorum.",
   },
   hi: {
@@ -209,7 +209,7 @@ export const CONTACT_PAGE_I18N: Record<LanguageCode, ContactPageI18nLabels> = {
     card2Desc: "पेंटहाउस, उच्च मंजिलों या गोल्डन वीजा योग्य निवेश (2 मिलियन एईडी से) की तलाश कर रहे निजी निवेशकों और खरीदारों के लिए:",
     whatsAppConciergeBtn: "व्हाट्सएप कंसीयज",
     calculatorBtn: "मल्टी-करेंसी आरओआई कैलकुलेटर खोलें",
-    brokerComplianceNote: "ग्राहक आवंटन विशेष रूप से रेरा मान्यता प्राप्त ब्रोकरेज भागीदारों द्वारा संभाला जाता है: मेट्रोपॉलिटन प्रीमियम प्रॉपर्टीज और व्हाइटविल।",
+    brokerComplianceNote: "ग्राहक आवंटन विशेष रूप से आधिकारिक रेरा (RERA) लाइसेंस प्राप्त ब्रोकरेज पार्टनर नेटवर्क द्वारा संभाला जाता है।",
     getWhatsAppMessage: () => "नमस्ते, मैं दुबई में संपत्ति आवंटन और परियोजना डोजियर के संबंध में Dubai-Architecture.info के माध्यम से संपर्क कर रहा हूं।",
   },
   ur: {
@@ -230,7 +230,7 @@ export const CONTACT_PAGE_I18N: Record<LanguageCode, ContactPageI18nLabels> = {
     card2Desc: "نجی سرمایہ کاروں، فیملی دفاتر اور گولڈن ویزا کے اہل اثاثوں (2 ملین درہم سے زائد) کے متلاشی خریداروں کے لیے:",
     whatsAppConciergeBtn: "براہ راست واٹس ایپ دربان",
     calculatorBtn: "ملٹی کرنسی منافع کیلکولیٹر کھولیں",
-    brokerComplianceNote: "صارفین کی تمام درخواستیں ریرا کے لائسنس یافتہ پارٹنرز کے ذریعے نمٹائی جاتی ہیں: Metropolitan Premium Properties اور Whitewill۔",
+    brokerComplianceNote: "صارفین کی تمام درخواستیں ریرا کے مجاز اور لائسنس یافتہ بروکریج پارٹنر نیٹ ورک کے ذریعے نمٹائی جاتی ہیں۔",
     getWhatsAppMessage: () => "ہیلو، میں Dubai-Architecture.info کے توسط سے دبئی میں پراپرٹیز اور پروجیکٹ ڈوزیئرز کے متعلق معلومات کے لیے رابطہ کر رہا ہوں۔",
   },
 };

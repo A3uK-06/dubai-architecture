@@ -77,21 +77,21 @@ export default function AffiliateDisclosureClient() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
               <div className="p-6 rounded-2xl bg-[#FAF8F5] border border-[#DDD7CA] space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="text-sm font-bold text-[#1C1917]">Whitewill Dubai</span>
+                  <span className="text-sm font-bold text-[#1C1917]">Лицензированные брокеры RERA</span>
                   <span className="text-xs font-mono bg-[#8C6A48]/10 text-[#8C6A48] px-2 py-0.5 rounded font-bold">Лицензия RERA</span>
                 </div>
                 <p className="text-xs text-[#57534E] leading-relaxed">
-                  Ведущее премиальное агентство для русскоязычных инвесторов из РФ и стран СНГ. Прямой доступ к закрытым пулам квартир, эскроу-счетам и рассрочкам от застройщиков.
+                  Аккредитованные брокерские агентства высшей категории для русскоязычных и региональных инвесторов. Прямой доступ к закрытым пулам квартир от ведущих девелоперов, эскроу-счетам и беспроцентным рассрочкам.
                 </p>
               </div>
 
               <div className="p-6 rounded-2xl bg-[#FAF8F5] border border-[#DDD7CA] space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="text-sm font-bold text-[#1C1917]">Metropolitan Premium Properties</span>
-                  <span className="text-xs font-mono bg-[#8C6A48]/10 text-[#8C6A48] px-2 py-0.5 rounded font-bold">Лицензия RERA</span>
+                  <span className="text-sm font-bold text-[#1C1917]">Международный партнерский пул</span>
+                  <span className="text-xs font-mono bg-[#8C6A48]/10 text-[#8C6A48] px-2 py-0.5 rounded font-bold">Лицензии DLD</span>
                 </div>
                 <p className="text-xs text-[#57534E] leading-relaxed">
-                  Флагманский международный брокер ОАЭ, обслуживающий глобальных инвесторов (Европа, США, Азия, страны Залива) на 15+ языках мира.
+                  Авторизованные международные брокерские департаменты ОАЭ, обслуживающие зарубежных инвесторов (Европа, США, Азия, страны Залива) на 15+ языках мира.
                 </p>
               </div>
             </div>
@@ -110,6 +110,26 @@ export default function AffiliateDisclosureClient() {
 
             <p className="text-sm sm:text-base text-[#44403C] leading-relaxed">
               Все платежи при покупке строящейся недвижимости (off-plan) в Дубае по закону переводятся исключительно на специальный эскроу-счет застройщика, открытый в аккредитованном банке ОАЭ и контролируемый Земельным департаментом Дубая (DLD).
+            </p>
+          </section>
+
+          {/* Article 4: Data Transfer Consent */}
+          <section className="p-8 rounded-3xl bg-white border border-[#E5DFD3] shadow-soft-tint space-y-5">
+            <div className="border-b border-[#E5DFD3] pb-3">
+              <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#8C6A48]">
+                Статья 04 • Конфиденциальность данных
+              </span>
+              <h2 className="text-2xl font-bold text-[#1C1917] mt-1">
+                4. Согласие на передачу данных брокерам (Закон ОАЭ о PDPL №45 от 2021 г.)
+              </h2>
+            </div>
+
+            <p className="text-sm sm:text-base text-[#44403C] leading-relaxed">
+              Отправляя заявку на архитектурно-инвестиционное досье, подбор планировок или расчет окупаемости, пользователь дает прямое согласие на передачу указанных контактных данных (имя, телефон, WhatsApp, инвестиционные предпочтения) аккредитованным лицензированным брокерским агентствам партнерской сети RERA исключительно в целях предоставления актуальной информации о наличии лотов, ценах и графиках платежей от застройщиков.
+            </p>
+
+            <p className="text-xs text-[#78716C] leading-relaxed">
+              Данные никогда не передаются нелицензированным третьим лицам и защищены соглашениями о конфиденциальности (NDA) и Федеральным декретом-законом ОАЭ №45 от 2021 года «О защите персональных данных» (PDPL).
             </p>
           </section>
         </div>
@@ -179,24 +199,60 @@ export default function AffiliateDisclosureClient() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
             <div className="p-6 rounded-2xl bg-[#FAF8F5] border border-[#DDD7CA] space-y-3">
               <div className="flex items-center justify-between">
-                <span className="text-sm font-bold text-[#1C1917]">Metropolitan Premium Properties</span>
+                <span className="text-sm font-bold text-[#1C1917]">Licensed RERA Brokerages</span>
                 <span className="text-xs font-mono bg-[#8C6A48]/10 text-[#8C6A48] px-2 py-0.5 rounded font-bold">RERA Licensed</span>
               </div>
               <p className="text-xs text-[#57534E] leading-relaxed">
-                One of the UAE&apos;s foremost institutional real estate brokerages, handling our global, English, European, and Asian client allocations.
+                Accredited premier real estate brokerage advisory desks managing discerning regional and international buyer allocations with direct developer inventory access.
               </p>
             </div>
 
             <div className="p-6 rounded-2xl bg-[#FAF8F5] border border-[#DDD7CA] space-y-3">
               <div className="flex items-center justify-between">
-                <span className="text-sm font-bold text-[#1C1917]">Whitewill Dubai</span>
-                <span className="text-xs font-mono bg-[#8C6A48]/10 text-[#8C6A48] px-2 py-0.5 rounded font-bold">RERA Licensed</span>
+                <span className="text-sm font-bold text-[#1C1917]">Accredited Global Brokerage Network</span>
+                <span className="text-xs font-mono bg-[#8C6A48]/10 text-[#8C6A48] px-2 py-0.5 rounded font-bold">DLD Certified</span>
               </div>
               <p className="text-xs text-[#57534E] leading-relaxed">
-                Prime residential luxury advisory firm managing Russian and CIS client requirements with dedicated private banking desks.
+                Licensed UAE brokerage desks facilitating global transactions, international wire protocols, and developer allocations across 15+ spoken languages.
               </p>
             </div>
           </div>
+        </section>
+
+        {/* Article 3: Escrow */}
+        <section className="p-8 rounded-3xl bg-[#FAF8F5] border border-[#E5DFD3] shadow-soft-tint space-y-5">
+          <div className="border-b border-[#E5DFD3] pb-3">
+            <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#8C6A48]">
+              Article 03 • Fund Security
+            </span>
+            <h2 className="text-2xl font-bold text-[#1C1917] mt-1">
+              3. Government Escrow Account Guarantees (Law No. 8 of 2007)
+            </h2>
+          </div>
+
+          <p className="text-sm sm:text-base text-[#44403C] leading-relaxed">
+            All off-plan real estate payments in Dubai are mandatorily disbursed into regulated project-specific escrow accounts maintained at Central Bank-approved financial institutions, supervised by the Dubai Land Department (DLD).
+          </p>
+        </section>
+
+        {/* Article 4: Data Transfer Consent */}
+        <section className="p-8 rounded-3xl bg-white border border-[#E5DFD3] shadow-soft-tint space-y-5">
+          <div className="border-b border-[#E5DFD3] pb-3">
+            <span className="text-xs font-mono font-bold uppercase tracking-wider text-[#8C6A48]">
+              Article 04 • Privacy & Data Transfer
+            </span>
+            <h2 className="text-2xl font-bold text-[#1C1917] mt-1">
+              4. Consent to Data Transmission (UAE Federal Decree-Law No. 45 of 2021 / PDPL)
+            </h2>
+          </div>
+
+          <p className="text-sm sm:text-base text-[#44403C] leading-relaxed">
+            By submitting an inquiry for an architectural dossier, floor plan schedule, or financial return assessment, the user explicitly consents to the transmission of submitted contact details (name, phone, WhatsApp, investment parameters) to our accredited RERA brokerage partner network exclusively to facilitate developer unit verification and pricing schedules.
+          </p>
+
+          <p className="text-xs text-[#78716C] leading-relaxed">
+            Your data is never distributed to unlicensed parties or third-party marketers and is safeguarded under strict non-disclosure obligations (NDA) and the UAE Personal Data Protection Law (PDPL).
+          </p>
         </section>
       </div>
     </article>

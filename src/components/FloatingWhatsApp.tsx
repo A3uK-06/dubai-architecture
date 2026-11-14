@@ -39,17 +39,17 @@ export default function FloatingWhatsApp() {
   };
 
   const tooltipHeadline = ({
-    en: "Private Advisory Desk (Metropolitan & Whitewill)",
-    ru: "Консьерж-сервис (Metropolitan & Whitewill)",
-    ar: "مكتب الاستشارات العقارية الخاصة (متروبوليتان ووايت ويل)",
-    zh: "专属置业顾问中心（Metropolitan 与 Whitewill 授权）",
-    de: "Private Kundenberatung (Metropolitan & Whitewill)",
-    fr: "Bureau de Conseil Privé (Metropolitan & Whitewill)",
-    it: "Desk di Consulenza Privata (Metropolitan & Whitewill)",
-    tr: "Özel Danışmanlık Masası (Metropolitan & Whitewill)",
-    hi: "निजी सलाहकार डेस्क (मेट्रोपॉलिटन और व्हाइटविल)",
-    ur: "پرائیویٹ ایڈوائزری ڈیسک (Metropolitan اور Whitewill)",
-  }[lang] || "Private Advisory Desk (Metropolitan & Whitewill)");
+    en: "Private Advisory Desk (Licensed RERA Brokers)",
+    ru: "Консьерж-сервис (Лицензированные брокеры RERA)",
+    ar: "مكتب الاستشارات العقارية الخاصة (وسطاء معتمدون من RERA)",
+    zh: "专属置业顾问中心（RERA 官方持牌经纪网络）",
+    de: "Private Kundenberatung (Lizenzierte RERA-Makler)",
+    fr: "Bureau de Conseil Privé (Courtiers Agréés RERA)",
+    it: "Desk di Consulenza Privata (Broker Autorizzati RERA)",
+    tr: "Özel Danışmanlık Masası (Lisanslı RERA Brokerları)",
+    hi: "निजी सलाहकार डेस्क (लाइसेंस प्राप्त रेरा ब्रोकर)",
+    ur: "پرائیویٹ ایڈوائزری ڈیسک (ریرا لائسنس یافتہ بروکرز)",
+  }[lang] || "Private Advisory Desk (Licensed RERA Brokers)");
 
   const tooltipText = ({
     en: "Request official developer dossiers, floor plans & payment plans",
@@ -91,10 +91,10 @@ export default function FloatingWhatsApp() {
   }[lang] || "Private Advisory: Project Dossiers & Unit Access");
 
   const modalSubtitle = ({
-    en: "Request official developer floor plans, project brochures and verified payment schedules via licensed UAE brokerage partners.",
-    ru: "Запросите официальные презентации застройщиков, планы этажей и расчет доходности от аккредитованных брокеров-партнеров (Whitewill, Metropolitan).",
-    ar: "اطلب المخططات الرسمية، وكتيبات المشاريع، وجداول السداد المعتمدة عبر شركاء الوساطة المرخصين في الإمارات.",
-    zh: "通过阿联酋官方持牌经纪机构（Whitewill 与 Metropolitan），获取开发商一手户型图册、楼盘说明书与官方核准分期方案。",
+    en: "Request official developer floor plans, project brochures and verified payment schedules via licensed UAE brokerage partners (accredited RERA network).",
+    ru: "Запросите официальные презентации застройщиков, планы этажей и расчет доходности от аккредитованной партнерской сети брокеров RERA.",
+    ar: "اطلب المخططات الرسمية، وكتيبات المشاريع، وجداول السداد المعتمدة عبر شبكة وسطاء RERA المرخصين في الإمارات.",
+    zh: "通过阿联酋官方持牌经纪合作网络（RERA 官方监管），获取开发商一手户型图册、楼盘说明书与官方核准分期方案。",
     de: "Fordern Sie offizielle Grundrisse, Projektbroschüren und geprüfte Zahlungspläne über lizenzierte Maklerpartner der VAE an.",
     fr: "Recevez les plans officiels, brochures de projet et échéanciers validés auprès de nos courtiers partenaires agréés aux Émirats.",
     it: "Richiedi planimetrie ufficiali, brochure di progetto e piani di pagamento verificati tramite i broker partner autorizzati negli Emirati.",

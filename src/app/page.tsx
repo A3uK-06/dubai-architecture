@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import Image from "next/image";
+import Link from "next/link";
 import { useLang } from "@/context/LangContext";
 import CatalogSection from "@/components/CatalogSection";
 import DistrictsSection from "@/components/DistrictsSection";
@@ -10,7 +11,7 @@ import GoldenVisaWidget from "@/components/GoldenVisaWidget";
 import LeadModal from "@/components/LeadModal";
 
 export default function Home() {
-  const { t, langInfo, isRtl } = useLang();
+  const { t, lang, langInfo, isRtl } = useLang();
   const [searchQuery, setSearchQuery] = useState("");
   const [leadModalOpen, setLeadModalOpen] = useState(false);
   const [leadModalTower, setLeadModalTower] = useState("");
@@ -40,10 +41,15 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="flex flex-col items-center text-center max-w-4xl mx-auto space-y-6">
             {/* Heritage Trust Badge */}
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#CBD5E1] bg-white text-[#0F172A] text-xs sm:text-sm font-bold tracking-wide shadow-sm">
+            <Link
+              href="/about/"
+              className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-[#CBD5E1] bg-white text-[#0F172A] hover:border-[#8C6A48] hover:text-[#8C6A48] text-xs sm:text-sm font-bold tracking-wide shadow-sm transition-all"
+              title={lang === "ru" ? "Узнать подробнее об архивном наследии и цитированиях" : "Learn more about archive heritage & citations"}
+            >
               <span className="w-2.5 h-2.5 rounded-full bg-[#0F172A] animate-pulse" />
               <span>{t.hero.badge}</span>
-            </div>
+              <span className="text-[10px] opacity-60">↗</span>
+            </Link>
 
             {/* Main Headline */}
             <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold tracking-tight text-[#0F172A] font-heading leading-[1.12]">
@@ -144,6 +150,38 @@ export default function Home() {
                 <div className="text-4xl sm:text-5xl font-extrabold text-[#0F172A] font-mono">14</div>
                 <div className="text-xs sm:text-sm text-[#64748B] font-semibold mt-1.5">{t.hero.statsDistricts}</div>
               </div>
+            </div>
+
+            {/* Academic & Authority Social Proof Bar */}
+            <div className="w-full max-w-4xl p-4 sm:p-5 rounded-2xl bg-white/95 backdrop-blur-sm border border-[#CBD5E1] shadow-float-card flex flex-col sm:flex-row items-center justify-between gap-3 text-left">
+              <div className="flex items-center gap-3.5">
+                <div className="w-10 h-10 rounded-xl bg-[#8C6A48]/10 text-[#8C6A48] flex items-center justify-center shrink-0 text-xl border border-[#8C6A48]/20">
+                  🏛️
+                </div>
+                <div>
+                  <div className="text-xs sm:text-sm font-bold text-[#0F172A] flex items-center gap-2">
+                    <span>
+                      {lang === "ru"
+                        ? "Институциональный авторитет и признание"
+                        : "Institutional Heritage & Global Research Citations"}
+                    </span>
+                    <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#F1F5F9] text-[#475569] border border-[#CBD5E1]">
+                      EST. 2006
+                    </span>
+                  </div>
+                  <div className="text-xs text-[#64748B] mt-0.5 leading-snug">
+                    {lang === "ru"
+                      ? "Около 3 000 внешних ссылок • Цитируется в трудах исследователей Springer Nature, Lund University, Memorial University и статьях Википедии"
+                      : "Over 3,000 backlink references • Cited by researchers in Springer Nature, Lund University, Memorial University & Wikipedia"}
+                  </div>
+                </div>
+              </div>
+              <Link
+                href="/about/"
+                className="shrink-0 text-xs font-bold text-[#8C6A48] hover:text-[#6D5135] underline decoration-dotted underline-offset-4 hover:decoration-solid whitespace-nowrap self-end sm:self-center"
+              >
+                {lang === "ru" ? "Смотреть научные ссылки →" : "View Research Citations →"}
+              </Link>
             </div>
 
             {/* Language & DLD status info */}

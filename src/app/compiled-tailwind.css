@@ -988,6 +988,9 @@
   .self-center {
     align-self: center;
   }
+  .self-end {
+    align-self: flex-end;
+  }
   .self-start {
     align-self: flex-start;
   }
@@ -1073,6 +1076,9 @@
   }
   .border-\[\#8C6A48\] {
     border-color: #8C6A48;
+  }
+  .border-\[\#8C6A48\]\/20 {
+    border-color: color-mix(in oklab, #8C6A48 20%, transparent);
   }
   .border-\[\#8C6A48\]\/30 {
     border-color: color-mix(in oklab, #8C6A48 30%, transparent);
@@ -2605,6 +2611,9 @@
   .underline {
     text-decoration-line: underline;
   }
+  .decoration-dotted {
+    text-decoration-style: dotted;
+  }
   .underline-offset-2 {
     text-underline-offset: 2px;
   }
@@ -2626,6 +2635,9 @@
   }
   .opacity-10 {
     opacity: 10%;
+  }
+  .opacity-60 {
+    opacity: 60%;
   }
   .opacity-80 {
     opacity: 80%;
@@ -3051,6 +3063,9 @@
     .hover\:underline:hover {
       text-decoration-line: underline;
     }
+    .hover\:decoration-solid:hover {
+      text-decoration-style: solid;
+    }
     .hover\:after\:scale-x-100:hover::after {
       content: var(--tw-content);
       --tw-scale-x: 100%;
@@ -3175,6 +3190,9 @@
     }
     .sm\:self-auto {
       align-self: auto;
+    }
+    .sm\:self-center {
+      align-self: center;
     }
     .sm\:p-4 {
       padding: calc(var(--spacing) * 4);

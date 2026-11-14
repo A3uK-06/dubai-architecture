@@ -171,9 +171,14 @@ export default function LeadModal({
                 {isSubmitting ? t.leadModal.submitting : t.leadModal.submitBtn}
               </button>
 
-              <p className="text-xs text-[#64748B] text-center leading-normal">
-                🔒 {t.leadModal.instantDelivery}
-              </p>
+              <div className="space-y-1 text-center">
+                <p className="text-xs text-[#64748B] leading-normal">
+                  🔒 {t.leadModal.instantDelivery}
+                </p>
+                <p className="text-[11px] text-[#94A3B8] leading-tight px-1">
+                  {t.leadModal.dataConsentNotice}
+                </p>
+              </div>
             </form>
           </>
         ) : (

@@ -7,7 +7,7 @@ import { getSeoAlternates } from "@/lib/seoAlternates";
 export const metadata: Metadata = {
   title: "Affiliate & RERA Brokerage Disclosure | Dubai Architecture",
   description:
-    "Official disclosure of our accredited brokerage network (Metropolitan Premium Properties & Whitewill), RERA compliance, DLD escrow protocols, and user terms.",
+    "Official disclosure of our accredited RERA brokerage network, statutory compliance, DLD escrow protocols, and user terms.",
   alternates: getSeoAlternates("/affiliate-disclosure/"),
   openGraph: {
     title: "Affiliate & RERA Brokerage Disclosure | Dubai Architecture",

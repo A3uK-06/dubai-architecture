@@ -14,7 +14,7 @@ export interface LeadData {
 }
 
 export interface LeadRoutingResult {
-  agency: "Whitewill" | "Metropolitan Premium Properties";
+  agency: "Whitewill" | "Premier Partner Network";
   agencyDesk: string;
   payoutTerms: string;
   telegramDelivered: boolean;
@@ -32,7 +32,7 @@ export const USDT_TRC20_WALLET_TAG = "USDT (TRC-20) Payout Network";
  * Determines whether a phone number or language belongs to Russia/CIS or International.
  */
 export function determineAgencyDestination(phone: string, language: string): {
-  agency: "Whitewill" | "Metropolitan Premium Properties";
+  agency: "Whitewill" | "Premier Partner Network";
   agencyDesk: string;
 } {
   const cleanPhone = phone.replace(/[^\d+]/g, "");
@@ -53,8 +53,8 @@ export function determineAgencyDestination(phone: string, language: string): {
   }
 
   return {
-    agency: "Metropolitan Premium Properties",
-    agencyDesk: "Metropolitan International Department (Native Brokers)",
+    agency: "Whitewill",
+    agencyDesk: "Whitewill Dubai (International Department / Native English & Global)",
   };
 }
 

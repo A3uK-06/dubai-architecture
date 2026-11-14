@@ -6,7 +6,7 @@ import SchemaOrg from "@/components/SchemaOrg";
 export const metadata: Metadata = {
   title: "Investment & Engineering Methodology | Dubai Architecture Index",
   description:
-    "Official calculation methodology, Dubai Land Department (DLD) open data validation, HOA service charge auditing, and RERA brokerage partnership compliance (Metropolitan Premium Properties & Whitewill).",
+    "Official calculation methodology, Dubai Land Department (DLD) open data validation, HOA service charge auditing, and RERA licensed brokerage partnership compliance.",
   alternates: {
     canonical: "https://dubai-architecture.info/methodology/",
   },
@@ -163,7 +163,7 @@ export default function MethodologyPage() {
               In full compliance with <em>Law No. (7) of 2006 concerning Real Property Registration in the Emirate of Dubai</em>, all real estate advisory, client consultations, unit reservations, and contract signings (MOU / Form F / SPA) are executed through accredited, licensed UAE brokerage partners.
             </p>
             <p>
-              Our premier brokerage execution partners include <strong>Metropolitan Premium Properties</strong> and <strong>Whitewill</strong>, both possessing active brokerage registrations, corporate ORN licenses, and verified escrow accounting facilities approved by the Dubai Real Estate Regulatory Agency (RERA).
+              All property advisory, unit allocations, and contract executions are facilitated exclusively through our accredited network of premier RERA-licensed brokerage partners, possessing active brokerage registrations, corporate ORN licenses, and verified escrow accounting facilities approved by the Dubai Real Estate Regulatory Agency (RERA).
             </p>
           </div>
         </section>
