@@ -3127,7 +3127,102 @@ export const BUILDINGS: Building[] = [
       hiddenOperatingCosts: "Very modest operating costs (13.5 AED/sq.ft) keeping net profits high."
     }
   },
-
+  {
+    id: "burj-azizi",
+    legacyId: "DUB-037",
+    slug: "burj-azizi",
+    image: "/images/buildings/burj-azizi.jpg",
+    name: "Burj Azizi",
+    heightMeters: 725,
+    heightFeet: 2379,
+    floors: 131,
+    yearBuilt: 2028,
+    architect: "AE7",
+    architectFirm: "AE7 Architects and Engineers",
+    developer: "Azizi Developments",
+    district: "Sheikh Zayed Road",
+    districtSlug: "difc",
+    type: "Mixed-Use",
+    status: "Under Construction",
+    rating: 5.0,
+    featured: true,
+    investmentYield: "8.2% - 9.5%",
+    startingPriceAed: "3,800,000 AED",
+    startingPriceUsd: "$1,035,000",
+    description:
+      "Rising 725 meters directly on prime Sheikh Zayed Road, Burj Azizi is the second-tallest skyscraper in the world. This monumental 131-storey architectural icon features a 7-star ultra-luxury hotel, an elite vertical shopping mall, trophy residences, and the highest observation deck and nightclub on Earth. Engineered with an advanced reinforced concrete mega-core and aerodynamic vortex-shedding setbacks, Burj Azizi redefines the skyline of Dubai for the next century.",
+    architecturalHighlights: [
+      "Second-tallest skyscraper in the world at 725 meters (2,379 ft) across 131 storeys",
+      "World's highest observation deck, highest restaurant, and highest sky nightclub",
+      "Vertical luxury shopping mall spanning multiple podium and mid-tower levels",
+      "Prime Sheikh Zayed Road frontage opposite Dubai World Trade Centre with direct Metro connectivity",
+    ],
+    historicalNote: "Officially unveiled in September 2024 by Azizi Developments as Dubai's second megatall tower exceeding 700 meters.",
+    structuralSystem: "Reinforced concrete core with mega-outrigger trusses and composite perimeter columns",
+    mainContractor: "Azizi Contracting / International Tier-1 Joint Venture",
+    structuralEngineer: "AE7 & Thornton Tomasetti",
+    mepEngineer: "AE7 Engineering Consultants",
+    urbanIntegration: "Direct frontage on Sheikh Zayed Road with direct pedestrian access to Financial Centre Metro",
+    foundation: {
+      pilesCount: 380,
+      pileDepthMeters: 55,
+      pileDiameterMeters: "2.4 m",
+      raftThicknessMeters: "4.2 m solid reinforced concrete mat",
+      bedrockType: "Dense calcarenite and gypsiferous sandstone with cathodic corrosion protection",
+    },
+    windStructural: {
+      lateralSystem: "Mega-core with belt trusses and 4 mechanical outrigger levels",
+      dampingMechanism: "Dual tuned mass dampers (TMD) installed at level 101",
+      maxApexSwayMeters: "± 0.55 m at 725m apex",
+      concreteStrengthGrade: "C80 Self-Compacting Concrete (up to floor 127), C60 up to floor 156",
+    },
+    facade: {
+      glazingType: "Double-glazed Low-E with silver coating, textured stainless steel spandrels",
+      shgcSolarCoefficient: "SHGC 0.20",
+      uValueWPerM2K: "1.2 W/m²K",
+      bmuCleaningSystem: "Rooftop gantry cranes with telescoping booms",
+      cleaningCycleDays: "90 days",
+    },
+    verticalTransport: {
+      elevatorManufacturer: "Schindler",
+      totalElevators: 32,
+      maxSpeedMs: 10.0,
+      doubleDeckCars: true,
+      zoningStrategy: "Express shuttles to sky lobbies at Levels 43, 76, and 123 serving local zones",
+      peakWaitingSeconds: "< 35 seconds",
+    },
+    operatingSpecs: {
+      coolingProvider: "Empower District Cooling",
+      chillerBilling: "Consumption-Billed (Empower)",
+      annualServiceChargeAedSqFt: 28.0,
+      acousticRatingDb: "STC 58 dB (extreme presidential suite sound insulation)",
+      slabToSlabHeightMeters: 3.8,
+      clearCeilingHeightMeters: 3.2,
+    },
+    layoutEfficiency: {
+      columnImpact: "Minimal (Open Spans)",
+      netToGrossRatio: "86% - 89%",
+      balconyUsability: "Enclosed sunroom loggias on mid-floors; high-altitude observation decks",
+    },
+    auditReview: {
+      honestVerdict: "At 725 meters, Burj Azizi is the world's second-tallest skyscraper, securing a permanent place in global architectural history. Positioned directly on prime Sheikh Zayed Road, the tower combines an ultra-luxury 7-star hotel, vertical shopping mall, and private residences with the highest observation deck and nightclub on Earth. For investors, the global trophy status and prime DIFC/SZR corridor promise massive sovereign liquidity and capital appreciation. However, buyers must account for supertall service charges (~28 AED/sq.ft) and multi-tier sky lobby elevator transfers for upper residences.",
+      strengths: [
+        "World's second-tallest building (725m), offering unmatched global landmark status and international resale liquidity.",
+        "Prime Sheikh Zayed Road location adjacent to DIFC and World Trade Centre with direct Metro connectivity.",
+        "Unrivaled luxury amenities: world's highest observation deck, 7-star vertical mall, and private cantilevered sky pools."
+      ],
+      pitfallsAndWeaknesses: [
+        "Multi-year construction horizon with anticipated completion in 2028, requiring off-plan capital commitment.",
+        "High-altitude wind forces require sky lobby transfers for residences located above level 70.",
+        "Sheikh Zayed Road ingress ramps experience peak traffic during major exhibitions at Dubai World Trade Centre."
+      ],
+      airbnbHolidayHomesPolicy: "Permitted through approved 7-star luxury operator program; massive global tourist demand anticipated for observation and trophy residences.",
+      guestParkingReality: "Dedicated multi-level subterranean and podium parking with automated VIP valet services.",
+      soundproofingRating: "STC 58 dB (Triple-glazed acoustic laminate; zero Sheikh Zayed Road highway intrusion).",
+      elevatorPeakWaitReality: "30-45 seconds via ultra-high-speed double-deck destination-controlled lifts (10 m/s).",
+      hiddenOperatingCosts: "Empower district cooling capacity charges apply; premium service fees (~28 AED/sq.ft) reflect supertall facade maintenance."
+    },
+  },
 ];
 
 /**

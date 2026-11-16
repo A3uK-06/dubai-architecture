@@ -1898,6 +1898,308 @@ export const BESPOKE_INVESTOR_AUDITS_I18N: Record<string, Partial<Record<Languag
         dailyEssentialsOnFoot: "پرائیویٹ بیچ، 17 عالمی شہرت یافتہ شیف ریسٹورنٹس، سپا اور بوتیک اندر ہی موجود ہیں؛ شہر جانے کے لیے کار تجویز کی جاتی ہے۔"
       }
     }
+  },
+  "burj-azizi": {
+    en: {
+      viewRadar: {
+        riskLevel: "protected",
+        status: "Permanent Protected 360° Horizon Dominance",
+        assessment: "Standing at an extraordinary 725 meters directly on Sheikh Zayed Road, Burj Azizi completely clears all surrounding high-rises. Lower tiers overlook the World Trade Centre and DIFC skyline, while levels 50+ command permanent, unblockable 360-degree panoramic vistas extending across Downtown Dubai, Burj Khalifa, the Arabian Gulf, and the wider desert horizon.",
+        protectedOrientations: [
+          "North-West (Arabian Gulf coastline & sunset horizon - 100% Unobstructable)",
+          "South / South-East (Burj Khalifa & Downtown skyline panorama)",
+          "North-East (Historic Dubai Creek, Deira, & Port Rashid harbor)"
+        ],
+        threatOrientations: [
+          "South-West (Lower floors below level 25 face adjacent Sheikh Zayed Road commercial corridor towers)"
+        ]
+      },
+      solarExposure: {
+        optimalAspect: "North-West (Sea breezes, soft diffused light, spectacular sunset)",
+        harshAspect: "South-West (Intense high-altitude afternoon heat gain 14:00–18:30)",
+        coolingEnergyImpact: "Moderate (+12% on SW tiers, optimized via Empower District Cooling)",
+        solarHeatGainRating: "Superior (Acoustic triple-glazed Low-E with solar control, SHGC 0.20)",
+        residentTip: "Residences facing North-West enjoy continuous maritime natural daylight without glare; South-facing suites benefit from motorized automated thermal blinds during midday."
+      },
+      walkability: {
+        score: 94,
+        category: "Walker's Paradise",
+        metroStation: "World Trade Centre Metro Station (Red Line)",
+        metroDistanceMinutes: 2,
+        metroAccessType: "Direct Covered Walkway",
+        dailyEssentialsOnFoot: "Direct footbridge connectivity to World Trade Centre, DIFC Gate Avenue fine dining, luxury supermarkets, pharmacies, and 24/7 financial district amenities."
+      }
+    },
+    ru: {
+      viewRadar: {
+        riskLevel: "protected",
+        status: "Пожизненно защищенный панорамный обзор 360°",
+        assessment: "При колоссальной высоте 725 метров на первой линии Sheikh Zayed Road Бурдж Азизи возвышается над всеми окружающими зданиями района. Нижние этажи ориентированы на Всемирный торговый центр и скайлайн DIFC, а с 50 этажа открывается абсолютная 360-градусная панорама на Персидский залив, Бурдж-Халифу, Даунтаун и бескрайний горизонт.",
+        protectedOrientations: [
+          "Северо-Запад (Побережье Персидского залива и морской закат — 100% защита)",
+          "Юг / Юго-Восток (Панорама Даунтауна и Бурдж-Халифы)",
+          "Северо-Восток (Исторический Дубайский залив Крик и гавань Порт-Рашид)"
+        ],
+        threatOrientations: [
+          "Юго-Запад (Ниже 25 этажа — соседние офисные башни коридора шоссе Шейха Заеда)"
+        ]
+      },
+      solarExposure: {
+        optimalAspect: "Северо-Запад (Морской бриз, мягкий рассеянный свет и закаты)",
+        harshAspect: "Юго-Запад (Интенсивное солнце пустыни с 14:00 до 18:30)",
+        coolingEnergyImpact: "Умеренное (+12% на ЮЗ фасадах, оптимизировано системой Empower)",
+        solarHeatGainRating: "Превосходный (Тройной энергосберегающий Low-E с солнцезащитным слоем, SHGC 0.20)",
+        residentTip: "Северо-западные резиденции освещены мягким естественным светом без перегрева; для юго-западных окон рекомендуются автоматические термошторы в полдень."
+      },
+      walkability: {
+        score: 94,
+        category: "Рай для пешехода (Вся инфраструктура рядом)",
+        metroStation: "Станция метро World Trade Centre (Красная линия)",
+        metroDistanceMinutes: 2,
+        metroAccessType: "Прямой крытый кондиционированный переход",
+        dailyEssentialsOnFoot: "Прямой переход к выставочному центру DWTC, ресторанам DIFC Gate Avenue, премиальным супермаркетам, аптекам и сервисам финансового центра."
+      }
+    },
+    ar: {
+      viewRadar: {
+        riskLevel: "protected",
+        status: "إطلالة بانورامية سيادية محمية 360 درجة",
+        assessment: "بارتفاعه الاستثنائي البالغ 725 متراً على شارع الشيخ زايد، يعلو برج عزيزي فوق جميع ناطحات السحاب المجاورة. تطل المستويات المنخفضة على مركز التجارة العالمي وأبراج مركز دبي المالي، بينما تحظى الطوابق فوق 50 بإطلالات بانورامية مفتوحة بنطاق 360 درجة تشمل أفق الخليج العربي وبرج خليفة وداون تاون دبي.",
+        protectedOrientations: [
+          "الشمال الغربي (ساحل الخليج العربي وغروب الشمس - غير قابل للحجب 100%)",
+          "الجنوب / الجنوب الشرقي (بانوراما برج خليفة وأفق داون تاون)",
+          "الشمال الشرقي (خور دبي التاريخي وميناء راشد)"
+        ],
+        threatOrientations: [
+          "الجنوب الغربي (الطوابق أدنى من 25 تواجه أبراج المكاتب المحاذية لشارع الشيخ زايد)"
+        ]
+      },
+      solarExposure: {
+        optimalAspect: "الشمال الغربي (نسيم بحري عليل، إضاءة نهارية ناعمة وغروب رائع)",
+        harshAspect: "الجنوب الغربي (حرارة شمس بعد الظهر من 14:00 إلى 18:30)",
+        coolingEnergyImpact: "معتدل (+12% على الواجهات الجنوبية الغربية، مدعوم بنظام إمباور)",
+        solarHeatGainRating: "فائق الامتياز (زجاج ثلاثي عازل Low-E مع معامل اكتساب حراري SHGC 0.20)",
+        residentTip: "تتميز الوحدات المطلة على الشمال الغربي بضوء طبيعي هادئ دون وهج؛ وتستفيد أجنحة الجنوب من الستائر الحرارية التلقائية بعد الظهر."
+      },
+      walkability: {
+        score: 94,
+        category: "جنة للمشاة (كافة الخدمات سيراً على الأقدام)",
+        metroStation: "محطة مترو المركز التجاري العالمي (الخط الأحمر)",
+        metroDistanceMinutes: 2,
+        metroAccessType: "ممر مشاة مغطى ومكيف مباشرة",
+        dailyEssentialsOnFoot: "جسر مشاة مباشر يربط بمركز التجارة العالمي ومطاعم جيت أفينيو في مركز دبي المالي وسوبرماركت ومرافق متكاملة على مدار الساعة."
+      }
+    },
+    zh: {
+      viewRadar: {
+        riskLevel: "protected",
+        status: "360度永久无遮挡全球至尊视野",
+        assessment: "阿齐兹塔（Burj Azizi）以725米的绝世高度傲然矗立于谢赫扎耶德路，彻底超越周边所有建筑。中低层俯瞰世贸中心与DIFC天际线，50层以上更享有全方位360度终极全景，将阿拉伯湾海平线、哈利法塔及市中心繁华景致尽收眼底，视野受法定规划绝对保护。",
+        protectedOrientations: [
+          "西北向（阿拉伯湾一线海岸与夕阳海平线 - 100%永久法定保护）",
+          "南向/东南向（哈利法塔与市中心巅峰天际线全景）",
+          "东北向（历史悠久的迪拜云溪与拉希德港游艇码头）"
+        ],
+        threatOrientations: [
+          "西南向（25层以下低楼层朝向谢赫扎耶德路紧邻的商务写字楼组团）"
+        ]
+      },
+      solarExposure: {
+        optimalAspect: "西北向（持续享受清凉海风、柔和漫射光与壮丽落日晚霞）",
+        harshAspect: "西南向（14:00–18:30 高空强烈西晒辐射与积热）",
+        coolingEnergyImpact: "中等适度（西南朝向能耗上浮约12%，由Empower集中供冷高效平衡）",
+        solarHeatGainRating: "卓越级（三玻两腔声学夹胶Low-E反射幕墙，SHGC 0.20）",
+        residentTip: "西北向户型全天漫射采光极佳且无刺目光煞；西南朝向奢华套房建议在午后启动智能遮阳保温卷帘。"
+      },
+      walkability: {
+        score: 94,
+        category: "步行者天堂（生活全配套步行即达）",
+        metroStation: "世界贸易中心地铁站（红线）",
+        metroDistanceMinutes: 2,
+        metroAccessType: "全封闭室内恒温空调连廊",
+        dailyEssentialsOnFoot: "专属天桥直通迪拜世贸中心（DWTC）、DIFC Gate Avenue高品质国际餐饮街区、精品超市及24小时全业态生活配套。"
+      }
+    },
+    de: {
+      viewRadar: {
+        riskLevel: "protected",
+        status: "Dauerhaft unverbaubare 360°-Horizontdominanz",
+        assessment: "Mit 725 Metern an der Sheikh Zayed Road überragt der Burj Azizi alle umgebenden Hochhäuser spielend. Untere Etagen blicken auf das World Trade Centre und DIFC, während ab Etage 50 ein unverbaubarer 360-Grad-Panoramablick auf den Arabischen Golf, den Burj Khalifa und Downtown Dubai gesichert ist.",
+        protectedOrientations: [
+          "Nordwest (Küste des Arabischen Golfs & Sonnenuntergang - 100% unverbaubar)",
+          "Süd / Südost (Skyline-Panorama mit Burj Khalifa und Downtown)",
+          "Nordost (Historischer Dubai Creek und Hafen Port Rashid)"
+        ],
+        threatOrientations: [
+          "Südwest (Etagen unter Ebene 25 blicken auf angrenzende Bürogebäude der SZR)"
+        ]
+      },
+      solarExposure: {
+        optimalAspect: "Nordwest (Angenehme Meeresbrisen, weiches Streulicht und Abendsonne)",
+        harshAspect: "Südwest (Intensive Nachmittagshitze von 14:00 bis 18:30 Uhr)",
+        coolingEnergyImpact: "Moderat (+12% auf SW-Seiten, effizient gepuffert über Empower)",
+        solarHeatGainRating: "Hervorragend (Dreifach verglastes Akustik-Low-E, SHGC 0.20)",
+        residentTip: "Nach Nordwesten ausgerichtete Einheiten genießen maritimes Tageslicht ohne Blendung; Südwest-Residenzen nutzen automatisierte Thermorollos."
+      },
+      walkability: {
+        score: 94,
+        category: "Fußgänger-Paradies (Alles zu Fuß erreichbar)",
+        metroStation: "World Trade Centre Metro Station (Rote Linie)",
+        metroDistanceMinutes: 2,
+        metroAccessType: "Direkter überdachter klimatisierter Fußgängerweg",
+        dailyEssentialsOnFoot: "Direkte Brückenverbindung zum World Trade Centre, Gourmet-Restaurants der DIFC Gate Avenue, Supermärkten und Apotheken."
+      }
+    },
+    fr: {
+      viewRadar: {
+        riskLevel: "protected",
+        status: "Dominance visuelle 360° protégée à perpétuité",
+        assessment: "S'élevant à 725 mètres sur Sheikh Zayed Road, Burj Azizi dépasse largement toutes les tours avoisinantes. Les étages inférieurs profitent de l'animation du World Trade Centre et du DIFC, tandis que les niveaux 50+ jouissent d'une vue circulaire à 360° totalement imprenable sur le Golfe, Burj Khalifa et Downtown.",
+        protectedOrientations: [
+          "Nord-Ouest (Littoral du golfe Persique & coucher de soleil - 100% garanti)",
+          "Sud / Sud-Est (Panorama imprenable sur Burj Khalifa et Downtown)",
+          "Nord-Est (Dubai Creek historique et port de Port Rashid)"
+        ],
+        threatOrientations: [
+          "Sud-Ouest (Niveaux inférieurs sous l'étage 25 face aux immeubles tertiaires voisins)"
+        ]
+      },
+      solarExposure: {
+        optimalAspect: "Nord-Ouest (Brises marines, lumière douce sans éblouissement et crépuscule)",
+        harshAspect: "Sud-Ouest (Chaleur solaire directe de 14h00 à 18h30)",
+        coolingEnergyImpact: "Modéré (+12% côté SO, optimisé par le réseau Empower)",
+        solarHeatGainRating: "Supérieur (Triple vitrage acoustique Low-E à contrôle solaire, SHGC 0.20)",
+        residentTip: "Les résidences exposées Nord-Ouest bénéficient d'une clarté douce et constante ; les façades Sud-Ouest disposent de stores thermiques programmables."
+      },
+      walkability: {
+        score: 94,
+        category: "Paradis pour piétons (Tout à pied)",
+        metroStation: "Station de métro World Trade Centre (Ligne Rouge)",
+        metroDistanceMinutes: 2,
+        metroAccessType: "Passerelle couverte et climatisée",
+        dailyEssentialsOnFoot: "Accès direct par passerelle au World Trade Centre, aux tables étoilées de DIFC Gate Avenue, supermarchés et services financiers 24/7."
+      }
+    },
+    it: {
+      viewRadar: {
+        riskLevel: "protected",
+        status: "Dominanza panoramica a 360° per sempre protetta",
+        assessment: "Con un'altezza straordinaria di 725 metri su Sheikh Zayed Road, Burj Azizi supera ampiamente qualsiasi grattacielo circostante. Oltre il 50° piano regala un panorama a 360 gradi del tutto incontaminato che abbraccia il Golfo Arabico, il Burj Khalifa e Downtown Dubai.",
+        protectedOrientations: [
+          "Nord-Ovest (Costa del Golfo Arabico e tramonto sul mare - 100% protetto)",
+          "Sud / Sud-Est (Skyline con Burj Khalifa e Downtown Dubai)",
+          "Nord-Est (Dubai Creek storico e bacino di Port Rashid)"
+        ],
+        threatOrientations: [
+          "Sud-Ovest (Piani bassi sotto il 25° livello orientati verso torri commerciali adiacenti)"
+        ]
+      },
+      solarExposure: {
+        optimalAspect: "Nord-Ovest (Brezze marine, luce naturale diffusa e tramonti spettacolari)",
+        harshAspect: "Sud-Ovest (Radiazione solare pomeridiana intensa 14:00–18:30)",
+        coolingEnergyImpact: "Moderato (+12% sui fronti SO, gestito con efficienza da Empower)",
+        solarHeatGainRating: "Superiore (Triplo vetro acustico Low-E a controllo solare, SHGC 0.20)",
+        residentTip: "Gli appartamenti a Nord-Ovest offrono luce costante senza surriscaldamento; i versanti Sud beneficiano di schermature termiche automatizzate."
+      },
+      walkability: {
+        score: 94,
+        category: "Paradiso dei pedoni (Tutto a piedi)",
+        metroStation: "Stazione Metro World Trade Centre (Linea Rossa)",
+        metroDistanceMinutes: 2,
+        metroAccessType: "Passerella coperta e climatizzata",
+        dailyEssentialsOnFoot: "Collegamento pedonale diretto con World Trade Centre, ristoranti esclusivi di DIFC Gate Avenue, negozi di alimentari e farmacie."
+      }
+    },
+    tr: {
+      viewRadar: {
+        riskLevel: "protected",
+        status: "360° Kalıcı Olarak Korumalı Ufuk Hakimiyeti",
+        assessment: "Şeyh Zayed Yolu üzerindeki 725 metrelik benzersiz yüksekliğiyle Burj Azizi, etrafındaki tüm yapıların üzerine çıkar. 50. katın üzerindeki tüm konutlar Basra Körfezi, Burj Khalifa ve Downtown silüetini kapsayan 360 derecelik kesintisiz panoramaya sahiptir.",
+        protectedOrientations: [
+          "Kuzeybatı (Basra Körfezi kıyısı ve gün batımı - %100 kapanmaz)",
+          "Güney / Güneydoğu (Burj Khalifa ve Downtown kuleleri panoraması)",
+          "Kuzeydoğu (Tarihi Dubai Creek ve Port Rashid limanı)"
+        ],
+        threatOrientations: [
+          "Güneybatı (25. katın altındaki düşük seviyeler komşu ofis binalarına bakar)"
+        ]
+      },
+      solarExposure: {
+        optimalAspect: "Kuzeybatı (Deniz esintileri, parlamasız yumuşak gün ışığı ve gün batımı)",
+        harshAspect: "Güneybatı (14:00–18:30 saatleri arasında yoğun çöl öğleden sonra sıcağı)",
+        coolingEnergyImpact: "Orta düzey (GB cephelerinde +%12, Empower bölge soğutması ile optimize)",
+        solarHeatGainRating: "Üstün (Güneş kontrollü üç katmanlı akustik Low-E cam, SHGC 0.20)",
+        residentTip: "Kuzeybatı cepheli daireler gün boyu parlamasız ışık sunar; güney cepheler ise öğle saatlerinde otomatik termal perdelerden yararlanır."
+      },
+      walkability: {
+        score: 94,
+        category: "Yürüyüşçü Cenneti (Her Şey Yürüme Mesafesinde)",
+        metroStation: "World Trade Centre Metro İstasyonu (Kırmızı Hat)",
+        metroDistanceMinutes: 2,
+        metroAccessType: "Doğrudan Klimalı Kapalı Yaya Köprüsü",
+        dailyEssentialsOnFoot: "World Trade Centre, DIFC Gate Avenue gurme restoranları, süpermarketler ve 24 saat açık finans merkezi olanaklarına doğrudan köprü bağlantısı."
+      }
+    },
+    hi: {
+      viewRadar: {
+        riskLevel: "protected",
+        status: "स्थायी सुरक्षित 360° क्षितिज प्रभुत्व",
+        assessment: "शेख जायद रोड पर 725 मीटर की असाधारण ऊंचाई पर, बुर्ज अज़ीज़ी आसपास के सभी गगनचुंबी भवनों को पीछे छोड़ देता है। 50वें स्तर से ऊपर अरब की खाड़ी, बुर्ज खलीफा और डाउनटाउन दुबई में स्थायी, निर्बाध 360-डिग्री पैनोरमा दृश्य प्राप्त होता है।",
+        protectedOrientations: [
+          "उत्तर-पश्चिम (अरब की खाड़ी का समुद्र तट और सूर्यास्त - 100% स्थायी सुरक्षित)",
+          "दक्षिण / दक्षिण-पूर्व (बुर्ज खलीफा और डाउनटाउन क्षितिज पैनोरमा)",
+          "उत्तर-पूर्व (ऐतिहासिक दुबई क्रीक और पोर्ट राशिद बंदरगाह)"
+        ],
+        threatOrientations: [
+          "दक्षिण-पश्चिम (स्तर 25 से नीचे की मंजिलें निकटवर्ती वाणिज्यिक टावरों का सामना करती हैं)"
+        ]
+      },
+      solarExposure: {
+        optimalAspect: "उत्तर-पश्चिम (समुद्री हवाएं, कोमल विसरित प्रकाश और शानदार सूर्यास्त)",
+        harshAspect: "दक्षिण-पश्चिम (14:00–18:30 तीव्र दोपहर की धूप)",
+        coolingEnergyImpact: "मध्यम (+12% दक्षिण-पश्चिम स्तरों पर, एम्पावर कूलिंग द्वारा अनुकूलित)",
+        solarHeatGainRating: "बेहतरीन (सौर नियंत्रण के साथ ध्वनिक ट्रिपल-ग्लेज़्ड लो-ई, SHGC 0.20)",
+        residentTip: "उत्तर-पश्चिम की ओर वाले आवास चकाचौंध के बिना प्राकृतिक दिन के उजाले का आनंद लेते हैं; दक्षिण की ओर वाले सुइट्स में स्वचालित थर्मल ब्लाइंड्स उपयोगी हैं।"
+      },
+      walkability: {
+        score: 94,
+        category: "पैदल चलने वालों का स्वर्ग (सब कुछ पैदल दूरी पर)",
+        metroStation: "वर्ल्ड ट्रेड सेंटर मेट्रो स्टेशन (रेड लाइन)",
+        metroDistanceMinutes: 2,
+        metroAccessType: "प्रत्यक्ष वातानुकूलित कवर्ड वॉकवे",
+        dailyEssentialsOnFoot: "वर्ल्ड ट्रेड सेंटर, डीआईएफसी गेट एवेन्यू रेस्तरां, लक्जरी सुपरमार्केट और 24/7 वित्तीय जिला सुविधाओं से सीधे फुटब्रिज कनेक्टिविटी।"
+      }
+    },
+    ur: {
+      viewRadar: {
+        riskLevel: "protected",
+        status: "مستقل محفوظ 360 ڈگری افق کی حکمرانی",
+        assessment: "شیخ زاید روڈ پر 725 میٹر کی بے مثال بلندی کے باعث برج عزیزی اردگرد کی تمام عمارتوں سے کہیں بلند ہو جاتا ہے۔ منزل 50 سے اوپر خلیج عرب، برج خلیفہ اور ڈاؤن ٹاؤن دبئی کا 360 ڈگری دلکش نظارہ مکمل طور پر مستقل محفوظ ہے۔",
+        protectedOrientations: [
+          "شمال مغرب (خلیج عرب کا ساحل اور غروب آفتاب - 100% مکمل محفوظ)",
+          "جنوب / جنوب مشرق (برج خلیفہ اور ڈاؤن ٹاؤن اسکائی لائن پینوراما)",
+          "شمال مشرق (تاریخی دبئی کریک اور پورٹ راشد ہاربر)"
+        ],
+        threatOrientations: [
+          "جنوب مغرب (25 ویں منزل سے نیچے کے رخ قریبی دفاتر والے ٹاورز کی طرف ہیں)"
+        ]
+      },
+      solarExposure: {
+        optimalAspect: "شمال مغرب (سمندری ہوائیں، پرسکون روشنی اور شاندار غروب آفتاب)",
+        harshAspect: "جنوب مغرب (دوپہر 2 سے شام 6:30 بجے تک تیز صحرائی دھوپ)",
+        coolingEnergyImpact: "معتدل (جنوب مغربی رخ پر +12%، ایم پاور سے کنٹرول شدہ)",
+        solarHeatGainRating: "اعلیٰ ترین (ٹرپل گلیزڈ لو ای گلاس، SHGC 0.20)",
+        residentTip: "شمال مغربی اپارٹمنٹس میں خوشگوار دن کی روشنی رہتی ہے؛ جبکہ جنوبی سائیڈ کے لیے دوپہر میں آٹومیٹک تھرمل پردے کارآمد ہیں۔"
+      },
+      walkability: {
+        score: 94,
+        category: "پیدل چلنے والوں کی جنت (تمام سہولیات قدموں پر)",
+        metroStation: "ورلڈ ٹریڈ سینٹر میٹرو اسٹیشن (ریڈ لائن)",
+        metroDistanceMinutes: 2,
+        metroAccessType: "براہ راست کورڈ ایئر کنڈیشنڈ راستہ",
+        dailyEssentialsOnFoot: "ورلڈ ٹریڈ سینٹر، ڈی آئی ایف سی گیٹ ایونیو کے ریسٹورنٹس، سپر مارکیٹس اور فنانشل ڈسٹرکٹ کی تمام سہولیات تک فوری رسائی۔"
+      }
+    }
   }
 };
 

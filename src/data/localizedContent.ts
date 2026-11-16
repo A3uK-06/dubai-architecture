@@ -529,6 +529,22 @@ export const LOCALIZED_BUILDINGS_RU: Record<string, LocalizedBuildingData> = {
     ],
     "historicalNote": "Пионер интеграции автомобильного премиум-дизайна в супервысотное строительство Дубая.",
     "structuralSystem": "Монолитный железобетонный каркас сложной криволинейной геометрии"
+  },
+  "burj-azizi": {
+    "name": "Бурдж Азизи (Burj Azizi)",
+    "architect": "AE7 Architects and Engineers",
+    "developer": "Azizi Developments",
+    "district": "Шоссе Шейха Заеда",
+    "type": "Многофункциональный комплекс",
+    "description": "Монументальный 131-этажный небоскреб высотой 725 метров на первой линии Sheikh Zayed Road — 2-й по высоте небоскреб в мире после Бурдж-Халифа. Включает 7-звездочный отель ультра-роскоши, вертикальный торговый центр, трофейные резиденции и самую высокую смотровую площадку и ночной клуб на планете. Передовое монолитное ядро с аутригерами и аэродинамическими ступенями обеспечивает абсолютную устойчивость к ветровым нагрузкам.",
+    "architecturalHighlights": [
+      "2-й по высоте небоскреб в мире (725 м, 131 этаж), уступающий только Бурдж-Халифа",
+      "Мировые рекорды: самая высокая смотровая площадка, ресторан и ночной клуб в мире",
+      "Уникальный вертикальный люксовый молл на нескольких уровнях подиума и башни",
+      "Первая линия Sheikh Zayed Road напротив Всемирного торгового центра (DWTC) с прямым выходом к метро"
+    ],
+    "historicalNote": "Официальный запуск продаж состоялся в сентябре 2024 года девелопером Azizi Developments.",
+    "structuralSystem": "Монолитное ядро из высокопрочного бетона с аутригерными поясами и мегаколоннами"
   }
 };
 
@@ -840,6 +856,22 @@ export const LOCALIZED_BUILDINGS_AR: Record<string, LocalizedBuildingData> = {
       "تصميم ديناميكي انسيابي مستوحى من سيارات مرسيدس الفارهة",
       "واجهة كهروضوئية شمسية مدمجة بمساحة 75,000 قدم مربع"
     ]
+  },
+  "burj-azizi": {
+    "name": "برج عزيزي (Burj Azizi)",
+    "architect": "AE7 للهندسة المعمارية",
+    "developer": "عزيزي للتطوير العقاري (Azizi Developments)",
+    "district": "شارع الشيخ زايد",
+    "type": "متعدد الاستخدامات",
+    "description": "بارتفاع شاهق يبلغ 725 متراً على الواجهة الرئيسية لشارع الشيخ زايد، يعد برج عزيزي ثاني أطول ناطحة سحاب في العالم بعد برج خليفة. يضم هذا المعلم المعماري المكون من 131 طابقاً فندقاً فائق الفخامة من فئة 7 نجوم، ومركز تسوق عمودي، ومساكن استثنائية، وأعلى منصة مراقبة وأعلى نادٍ ليلي على وجه الأرض.",
+    "architecturalHighlights": [
+      "ثاني أطول برج في العالم بارتفاع 725 متراً عبر 131 طابقاً",
+      "أعلى منصة مشاهدة ومراقبة وأعلى مطعم ونادٍ ليلي في العالم",
+      "مركز تسوق فاخر عمودي يمتد عبر مستويات متعددة في البوديوم والبرج",
+      "موقع استراتيجي على شارع الشيخ زايد مقابل مركز دبي التجاري العالمي مع اتصال مباشر بالمترو"
+    ],
+    "historicalNote": "أُعلن عنه رسمياً في سبتمبر 2024 ليكون ثاني أطول ناطحة سحاب عملاقة تتجاوز 700 متر في دبي.",
+    "structuralSystem": "نواة خرسانية مسلحة فائقة القوة مع أحزمة دعامات فولاذية وأعمدة عملاقة مركبة"
   }
 };
 
@@ -1235,6 +1267,22 @@ export const LOCALIZED_BUILDINGS_ZH: Record<string, LocalizedBuildingData> = {
     ],
     "historicalNote": "国际顶级汽车工业巨头跨界迪拜超高层住宅的划时代里程碑。",
     "structuralSystem": "高强度圆弧现浇混凝土外筒配核心筒抗风支撑系统"
+  },
+  "burj-azizi": {
+    "name": "阿齐兹塔 (Burj Azizi)",
+    "architect": "AE7建筑工程设计事务所",
+    "developer": "Azizi Developments (阿齐兹地产)",
+    "district": "谢赫扎耶德路",
+    "type": "超高层综合体",
+    "description": "阿齐兹塔（Burj Azizi）坐落于谢赫扎耶德路黄金地段，建筑总高度达725米（共131层），是仅次于哈利法塔的全球第二高摩天大楼。大楼集七星级奢华全套房酒店、垂直多层奢华购物中心、传世顶奢私人住宅以及全球最高云端观景台与高空夜总会于一体，配备超高强混凝土巨型核心筒与气动台阶消减风阻体系。",
+    "architecturalHighlights": [
+      "全球第二高摩天大楼，总高725米，垂直分布达131层",
+      "包揽全球最高观景台、最高云端餐厅及最高空中夜总会等多项世界纪录",
+      "独创跨越多层裙楼与塔身的室内垂直高奢购物中心",
+      "傲踞谢赫扎耶德路门户核心，正对迪拜世界贸易中心（DWTC），直驳地铁站"
+    ],
+    "historicalNote": "由Azizi Developments于2024年9月全球正式启幕发售，为迪拜第二座突破700米大关的超级工程。",
+    "structuralSystem": "超高强自密实混凝土核心筒配四道巨型机械桁架外伸伸臂与组合巨柱体系"
   }
 };
 
@@ -1630,6 +1678,22 @@ export const LOCALIZED_BUILDINGS_DE: Record<string, LocalizedBuildingData> = {
     ],
     "historicalNote": "Historischer Meilenstein für die Partnerschaft von Weltklasse-Automobildesign und Wolkenkratzerbau.",
     "structuralSystem": "Schubsteifer aero-optimierter Ortbeton-Außenring mit zentralem Windkern"
+  },
+  "burj-azizi": {
+    "name": "Burj Azizi",
+    "architect": "AE7 Architects and Engineers",
+    "developer": "Azizi Developments",
+    "district": "Sheikh Zayed Road",
+    "type": "Mischnutzungs-Wolkenkratzer",
+    "description": "Mit einer Höhe von 725 Metern an der prestigeträchtigen Sheikh Zayed Road ist der Burj Azizi der zweithöchste Wolkenkratzer der Welt. Die 131 Stockwerke umfassende Architektur-Ikone vereint ein 7-Sterne-Luxushotel, ein vertikales Einkaufszentrum, exklusive Residenzen sowie die weltweit höchste Aussichtsplattform und den höchsten Nachtclub der Erde.",
+    "architecturalHighlights": [
+      "Zweithöchstes Gebäude der Welt mit 725 Metern Höhe über 131 Stockwerke",
+      "Höchste Aussichtsplattform, höchstes Restaurant und höchster Nachtclub der Welt",
+      "Vertikales Luxus-Einkaufszentrum über mehrere Ebenen im Podium und Turm",
+      "Direkte Frontlage an der Sheikh Zayed Road gegenüber dem Dubai World Trade Centre mit U-Bahn-Anbindung"
+    ],
+    "historicalNote": "Im September 2024 von Azizi Developments als Dubais zweiter Megatall-Turm über 700 Meter offiziell gestartet.",
+    "structuralSystem": "Hochfester Stahlbeton-Megakern mit Mehrebenen-Auslegern und Verbundstützen"
   }
 };
 
@@ -2025,6 +2089,22 @@ export const LOCALIZED_BUILDINGS_FR: Record<string, LocalizedBuildingData> = {
     ],
     "historicalNote": "Jalon historique unissant le géant de l'automobile allemande à l'immobilier dubaïote.",
     "structuralSystem": "Exosquelette circulaire en béton armé coulé en place et noyau central paravents"
+  },
+  "burj-azizi": {
+    "name": "Burj Azizi",
+    "architect": "AE7 Architects and Engineers",
+    "developer": "Azizi Developments",
+    "district": "Sheikh Zayed Road",
+    "type": "Tour polyvalente ultra-luxe",
+    "description": "Culminant à 725 mètres sur la prestigieuse Sheikh Zayed Road, Burj Azizi est le deuxième plus haut gratte-ciel du monde. Cet édifice monumental de 131 étages abrite un hôtel 7 étoiles d'ultra-luxe, un centre commercial vertical, des résidences d'exception ainsi que la plus haute terrasse panoramique et le plus haut club de nuit de la planète.",
+    "architecturalHighlights": [
+      "Deuxième plus haut gratte-ciel du monde à 725 mètres de hauteur sur 131 étages",
+      "Plus haute plateforme d'observation, plus haut restaurant et discothèque du monde",
+      "Centre commercial vertical de grand luxe intégré sur plusieurs niveaux",
+      "Façade directe sur Sheikh Zayed Road face au Dubai World Trade Centre avec accès métro"
+    ],
+    "historicalNote": "Lancé officiellement en septembre 2024 par Azizi Developments comme second super-gratte-ciel de Dubaï de plus de 700 mètres.",
+    "structuralSystem": "Noyau central mégastructurel en béton armé à haute performance et stabilisateurs outriggers"
   }
 };
 
@@ -2420,6 +2500,22 @@ export const LOCALIZED_BUILDINGS_IT: Record<string, LocalizedBuildingData> = {
     ],
     "historicalNote": "Unione storica tra il colosso tedesco dell'automobile e l'architettura dei grattacieli di Dubai.",
     "structuralSystem": "Anello esterno circolare in calcestruzzo gettato in opera e nucleo centrale di controvento"
+  },
+  "burj-azizi": {
+    "name": "Burj Azizi",
+    "architect": "AE7 Architects and Engineers",
+    "developer": "Azizi Developments",
+    "district": "Sheikh Zayed Road",
+    "type": "Complesso polifunzionale",
+    "description": "Con un'altezza monumentale di 725 metri direttamente sulla Sheikh Zayed Road, Burj Azizi è il secondo grattacielo più alto del mondo. Questa icona di 131 piani integra un hotel 7 stelle ultra-lusso, uno shopping mall verticale, residenze d'élite e la piattaforma d'osservazione e il nightclub più alti del pianeta.",
+    "architecturalHighlights": [
+      "Secondo grattacielo più alto del mondo con 725 metri di altezza e 131 piani",
+      "Record mondiali per la terrazza panoramica, il ristorante e il nightclub più alti della Terra",
+      "Esclusivo centro commerciale verticale distribuito su più livelli",
+      "Fronte primario su Sheikh Zayed Road di fronte al Dubai World Trade Centre con collegamento diretto alla metropolitana"
+    ],
+    "historicalNote": "Annunciato ufficialmente a settembre 2024 da Azizi Developments come seconda megatorre di Dubai oltre i 700 metri.",
+    "structuralSystem": "Mega-nucleo in cemento armato ad altissima resistenza con travature stabilizzatrici outrigger"
   }
 };
 
@@ -2815,6 +2911,22 @@ export const LOCALIZED_BUILDINGS_TR: Record<string, LocalizedBuildingData> = {
     ],
     "historicalNote": "Alman otomotiv devi ile Dubai konut sektörünün tarihi iş birliği simgesi.",
     "structuralSystem": "Monolitik dairesel betonarme dış çerçeve ve rüzgar dirençli çekirdek"
+  },
+  "burj-azizi": {
+    "name": "Burj Azizi",
+    "architect": "AE7 Architects and Engineers",
+    "developer": "Azizi Developments",
+    "district": "Şeyh Zayed Yolu",
+    "type": "Karma Kullanım (Lüks Rezidans & Otel)",
+    "description": "Prestijli Şeyh Zayed Yolu üzerinde 725 metre yüksekliğe ulaşan Burj Azizi, Burj Khalifa'dan sonra dünyanın en yüksek 2. gökdelenidir. 131 katlı bu devasa mimari şaheser; 7 yıldızlı ultra lüks bir otel, dikey alışveriş merkezi, lüks rezidanslar ve dünyanın en yüksek seyir terası ile gece kulübüne ev sahipliği yapmaktadır.",
+    "architecturalHighlights": [
+      "725 metre yüksekliği ve 131 katıyla dünyanın en yüksek 2. gökdeleni",
+      "Dünyanın en yüksek seyir terası, en yüksek restoranı ve en yüksek gece kulübü",
+      "Podyum ve kule seviyelerine yayılan dikey lüks alışveriş merkezi",
+      "Dubai World Trade Centre karşısında Şeyh Zayed Yolu üzerinde doğrudan metro bağlantılı konum"
+    ],
+    "historicalNote": "Eylül 2024'te Azizi Developments tarafından resmi olarak satışa sunulan Dubai'nin 700 metreyi aşan ikinci megatall projesi.",
+    "structuralSystem": "Çok kademeli outrigger kafesleri ve kompozit kolonlarla desteklenen yüksek dayanımlı betonarme mega çekirdek"
   }
 };
 
@@ -3210,6 +3322,22 @@ export const LOCALIZED_BUILDINGS_HI: Record<string, LocalizedBuildingData> = {
     ],
     "historicalNote": "जर्मन ऑटोमोबाइल दिग्गज और दुबई रियल एस्टेट का ऐतिहासिक साझेदारी लैंडमार्क।",
     "structuralSystem": "मोनोलिथिक कंक्रीट बाहरी फ्रेम और पवन प्रतिरोधी केंद्रीय कोर"
+  },
+  "burj-azizi": {
+    "name": "बुर्ज अज़ीज़ी (Burj Azizi)",
+    "architect": "AE7 आर्किटेक्ट्स एंड इंजीनियर्स",
+    "developer": "Azizi Developments (अज़ीज़ी डेवलपमेंट्स)",
+    "district": "शेख जायद रोड",
+    "type": "मिश्रित-उपयोग गगनचुंबी इमारत",
+    "description": "शेख जायद रोड पर 725 मीटर की ऊंचाई के साथ बुर्ज अज़ीज़ी बुर्ज खलीफा के बाद दुनिया की दूसरी सबसे ऊंची गगनचुंबी इमारत है। इस 131 मंजिला प्रतिष्ठित टॉवर में 7-सितारा अल्ट्रा-लक्जरी होटल, वर्टिकल शॉपिंग मॉल, विशिष्ट आवास और पृथ्वी पर सबसे ऊंचा अवलोकन डेक और नाइटक्लब शामिल हैं।",
+    "architecturalHighlights": [
+      "131 मंजिलों में 725 मीटर (2,379 फीट) की ऊंचाई के साथ दुनिया की दूसरी सबसे ऊंची इमारत",
+      "दुनिया का सबसे ऊंचा ऑब्जर्वेशन डेक, सबसे ऊंचा रेस्तरां और सबसे ऊंचा नाइटक्लब",
+      "पोडियम और मध्य-टॉवर स्तरों में फैला वर्टिकल लक्जरी शॉपिंग मॉल",
+      "दुबई वर्ल्ड ट्रेड सेंटर के सामने शेख जायद रोड पर सीधे मेट्रो कनेक्टिविटी के साथ प्रमुख स्थान"
+    ],
+    "historicalNote": "सितंबर 2024 में अज़ीज़ी डेवलपमेंट्स द्वारा 700 मीटर से अधिक ऊंचाई वाले दुबई के दूसरे मेगाटॉल टॉवर के रूप में आधिकारिक तौर पर बिक्री शुरू की गई।",
+    "structuralSystem": "मल्टी-टियर आउटरिगर्स और कम्पोजिट कॉलम के साथ उच्च-शक्ति प्रबलित कंक्रीट कोर"
   }
 };
 
@@ -3605,6 +3733,22 @@ export const LOCALIZED_BUILDINGS_UR: Record<string, LocalizedBuildingData> = {
     ],
     "historicalNote": "جرمن آٹوموبائل انڈسٹری اور دبئی ریئل اسٹیٹ کے عظیم اشتراک کا تاریخی نشان۔",
     "structuralSystem": "گول بیرونی کنکریٹ فریم اور تیز ہواؤں کو روکنے والا مرکزی کور"
+  },
+  "burj-azizi": {
+    "name": "برج عزیزی (Burj Azizi)",
+    "architect": "AE7 آرکیٹیکٹس اینڈ انجینئرز",
+    "developer": "عزیزی ڈویلپمنٹس (Azizi Developments)",
+    "district": "شیخ زاید روڈ",
+    "type": "کثیر المقاصد فلک بوس عمارت",
+    "description": "شیخ زاید روڈ پر 725 میٹر کی تاریخی بلندی کے ساتھ، برج عزیزی برج خلیفہ کے بعد دنیا کا دوسرا سب سے بلند فلک بوس شاہکار ہے۔ 131 منزلہ یہ یادگار عمارت 7 ستارہ پرتعیش ہوٹل، عمودی شاپنگ مال، شاہی رہائش گاہوں اور روئے زمین کے بلند ترین آبزرویشن ڈیک اور نائٹ کلب پر مشتمل ہے۔",
+    "architecturalHighlights": [
+      "131 منزلوں پر مشتمل 725 میٹر (2,379 فٹ) بلندی کے ساتھ دنیا کا دوسرا سب سے اونچا ٹاور",
+      "دنیا کا سب سے اونچا ویونگ ڈیک، بلند ترین ریستوران اور آسمانی نائٹ کلب",
+      "پوڈیم اور ٹاور کی منزلوں پر پھیلا ہوا عمودی پرتعیش شاپنگ مال",
+      "دبئی ورلڈ ٹریڈ سینٹر کے بالمقابل شیخ زاید روڈ پر براہ راست میٹرو کنکشن کے ساتھ ممتاز مقام"
+    ],
+    "historicalNote": "ستمبر 2024 میں عزیزی ڈویلپمنٹس کی جانب سے 700 میٹر سے زائد بلند دبئی کے دوسرے میگا ٹال ٹاور کے طور پر باضابطہ آغاز۔",
+    "structuralSystem": "ہائی پرفارمنس کنکریٹ کور، آؤٹ رگر ٹرسز اور کمپوزٹ کالمز پر مبنی مضبوط ساختی نظام"
   }
 };
 

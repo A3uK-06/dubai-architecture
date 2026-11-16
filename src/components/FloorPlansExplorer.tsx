@@ -34,7 +34,7 @@ export function getBuildingArchStyle(building: Building): ArchitecturalStyle {
   if (bid.includes("cayan")) {
     return "som-twisted";
   }
-  if (bid.includes("burj-khalifa") || bid.includes("sky-view")) {
+  if (bid.includes("burj-khalifa") || bid.includes("sky-view") || bid.includes("azizi")) {
     return "som-tripartite";
   }
   if (bid.includes("opus") || arch.includes("zaha hadid")) {

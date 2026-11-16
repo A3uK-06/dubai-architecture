@@ -119,6 +119,7 @@ function computeUrlPriorityScore(url) {
   // Tier 3: Iconic global towers
   const iconicTowers = [
     "burj-khalifa",
+    "burj-azizi",
     "emirates-towers",
     "burj-al-arab",
     "cayan-tower",
@@ -143,7 +144,7 @@ function computeUrlPriorityScore(url) {
   }
 
   // Tier 5: Top developers
-  const topDevs = ["emaar", "sobha", "nakheel", "omniyat", "binghatti", "meraas"];
+  const topDevs = ["emaar", "sobha", "nakheel", "omniyat", "binghatti", "meraas", "azizi"];
   for (const dev of topDevs) {
     if (clean.includes(`/developers/${dev}`)) return 500;
   }

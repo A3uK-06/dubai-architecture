@@ -247,6 +247,29 @@ export const DEVELOPERS: Developer[] = [
     startingPriceAed: "2,800,000 AED",
     website: "https://dubaiholding.com/",
   },
+  {
+    id: "DEV-AZIZI",
+    slug: "azizi",
+    name: "Azizi Developments",
+    shortName: "Azizi",
+    foundingYear: 2007,
+    headquarters: "Conrad Dubai, Sheikh Zayed Road, Dubai, UAE",
+    tier: "Tier-1 Master Developer",
+    dldEscrowRating: "AAA (Prime Track Record)",
+    onTimeDeliveryRate: "96.4%",
+    description:
+      "Leading private master developer in the UAE founded by Mirwais Azizi. Renowned for large-scale European-style master communities (Azizi Riviera in MBR City, Azizi Venice in Dubai South) and constructing the world's second-tallest skyscraper, Burj Azizi (725m), on Sheikh Zayed Road.",
+    highlights: [
+      "Developer of Burj Azizi (725m) — the second-tallest skyscraper in the world",
+      "Master developer of iconic waterfront communities Azizi Riviera and Azizi Venice",
+      "Over 30,000 delivered and under-construction residential units across prime Dubai",
+      "100% compliant with Dubai Land Department (DLD) escrow account frameworks",
+    ],
+    totalProjectsDubai: 42,
+    averageNetRoi: "7.8%",
+    startingPriceAed: "1,150,000 AED",
+    website: "https://www.azizidevelopments.com/",
+  },
 ];
 
 export function getDeveloperBySlug(slug: string): Developer | undefined {
@@ -264,6 +287,7 @@ export function getDeveloperForBuilding(developerName: string): Developer | unde
   if (lower.includes("icd") || lower.includes("investment corporation of dubai")) return getDeveloperBySlug("icd");
   if (lower.includes("dmcc")) return getDeveloperBySlug("dmcc");
   if (lower.includes("habtoor")) return getDeveloperBySlug("al-habtoor");
+  if (lower.includes("azizi")) return getDeveloperBySlug("azizi");
   if (lower.includes("jumeirah") || lower.includes("dubai holding")) return getDeveloperBySlug("dubai-holding");
   return undefined;
 }
@@ -357,6 +381,15 @@ const DEVELOPERS_RU: Record<string, Partial<Developer>> = {
       "Девелопер Emirates Towers — башен-близнецов, открывших эру Sheikh Zayed Road",
       "Девелопер элитного анклава Madinat Jumeirah Living с видом на Бурдж Аль Араб",
       "Материнская суверенная структура компаний Nakheel и Meraas",
+    ],
+  },
+  azizi: {
+    description: "Ведущий частный мастер-девелопер ОАЭ, основанный Мирваисом Азизи. Известен масштабными комьюнити европейского типа (Azizi Riviera в MBR City, Azizi Venice в Dubai South) и строительством второго по высоте небоскреба планеты — Бурдж Азизи (725 м) на Sheikh Zayed Road.",
+    highlights: [
+      "Девелопер Бурдж Азизи (725 м) — 2-го по высоте небоскреба в мире",
+      "Создатель масштабных водных мастер-сообществ Riviera (MBR City) и Venice (Dubai South)",
+      "Портфель свыше 30 000 сданных и строящихся жилых резиденций в ключевых локациях Дубая",
+      "Полное соответствие нормативам эскроу-счетов Земельного департамента Дубая (DLD)",
     ],
   },
 };

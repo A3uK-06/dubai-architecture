@@ -1473,5 +1473,187 @@ export const CUSTOM_TOWER_AUDITS: TowerCustomAuditTranslations = {
       elevatorPeakWaitReality: "اوٹیس کے 6 تیز رفتار لفٹوں کے ساتھ 30 سیکنڈ سے کم۔",
       hiddenOperatingCosts: "ایم پاور کولنگ کے عام چارجز (تقریباً 1,400 درہم فی سہ ماہی بیس چارج)۔"
     }
+  },
+  "burj-azizi": {
+    en: {
+      honestVerdict: "At 725 meters, Burj Azizi is the world's second-tallest skyscraper, securing a permanent place in global architectural history. Positioned directly on prime Sheikh Zayed Road, the tower combines an ultra-luxury 7-star hotel, vertical shopping mall, and private residences with the highest observation deck and nightclub on Earth. For investors, the global trophy status and prime DIFC/SZR corridor promise massive sovereign liquidity and capital appreciation. However, buyers must account for supertall service charges (~28 AED/sq.ft) and multi-tier sky lobby elevator transfers for upper residences.",
+      strengths: [
+        "World's second-tallest building (725m), offering unmatched global landmark status and international resale liquidity.",
+        "Prime Sheikh Zayed Road location adjacent to DIFC and World Trade Centre with direct Metro connectivity.",
+        "Unrivaled luxury amenities: world's highest observation deck, 7-star vertical mall, and private cantilevered sky pools."
+      ],
+      pitfallsAndWeaknesses: [
+        "Multi-year construction horizon with anticipated completion in 2028, requiring off-plan capital commitment.",
+        "High-altitude wind forces require sky lobby transfers for residences located above level 70.",
+        "Sheikh Zayed Road ingress ramps experience peak traffic during major exhibitions at Dubai World Trade Centre."
+      ],
+      airbnbHolidayHomesPolicy: "Permitted through approved 7-star luxury operator program; massive global tourist demand anticipated for observation and trophy residences.",
+      guestParkingReality: "Dedicated multi-level subterranean and podium parking with automated VIP valet services.",
+      soundproofingRating: "STC 58 dB (Triple-glazed acoustic laminate; zero Sheikh Zayed Road highway intrusion).",
+      elevatorPeakWaitReality: "30-45 seconds via ultra-high-speed double-deck destination-controlled lifts (10 m/s).",
+      hiddenOperatingCosts: "Empower district cooling capacity charges apply; premium service fees (~28 AED/sq.ft) reflect supertall facade maintenance."
+    },
+    ru: {
+      honestVerdict: "При высоте 725 метров Бурдж Азизи является 2-м по высоте небоскребом в мире после Бурдж-Халифа, вписывая себя в мировую историю архитектуры. Расположенная на первой линии Sheikh Zayed Road, башня объединяет 7-звездочный ультрароскошный отель, вертикальный торговый центр и приватные резиденции с самыми высокими в мире смотровой площадкой и ночным клубом. Для инвесторов статус мирового трофея гарантирует колоссальную ликвидность и высокий рост капитала. Однако следует учитывать эксплуатационные сборы супертолла (~28 AED/кв. фут) и пересадки на лифтовых скай-лобби.",
+      strengths: [
+        "2-й по высоте небоскреб на планете (725 м), обеспечивающий абсолютный глобальный престиж и международную ликвидность.",
+        "Топовая локация на Sheikh Zayed Road рядом с DIFC и World Trade Centre с прямым выходом к метро.",
+        "Беспрецедентный набор удобств: самая высокая смотровая площадка, 7-звездочный вертикальный молл и парящие инфинити-бассейны."
+      ],
+      pitfallsAndWeaknesses: [
+        "Срок сдачи запланирован на 2028 год, что требует долгосрочного планирования инвестиционного горизонта.",
+        "Особенности супертолла: жителям верхних этажей требуется пересадка в скоростном пересадочном скай-лобби.",
+        "В дни крупных международных выставок в DWTC на съездах с шоссе Шейха Заеда возможен плотный трафик."
+      ],
+      airbnbHolidayHomesPolicy: "Разрешена через сертифицированного отельного оператора 7*; прогнозируется рекордный спрос туристов на трофейные видовые люксы.",
+      guestParkingReality: "Многоуровневый подземный паркинг и подиум с автоматизированной службой VIP-валет-паркинга.",
+      soundproofingRating: "STC 58 дБ (Трехкамерное акустическое ламинированное остекление; нулевое проникновение шума магистрали).",
+      elevatorPeakWaitReality: "30-45 секунд благодаря двухпалубным экспресс-лифтам со скоростью до 10 м/с.",
+      hiddenOperatingCosts: "Сборы Empower за мощность охлаждения; эксплуатационный тариф (~28 AED/кв. фут) включает обслуживание супервысотного фасада."
+    },
+    ar: {
+      honestVerdict: "بارتفاعه البالغ 725 متراً، يعد برج عزيزي ثاني أطول ناطحة سحاب في العالم، مما يمنحه مكانة تاريخية في سجل العمارة العالمية. يتميز بموقع استراتيجي مباشر على شارع الشيخ زايد، ويجمع بين فندق فائق الفخامة من فئة 7 نجوم، ومركز تسوق عمودي، ومساكن استثنائية، بالإضافة إلى أعلى منصة مراقبة ونادٍ ليلي على وجه الأرض. يضمن هذا المعلم سيولة هائلة ونمواً استثمارياً كبيراً.",
+      strengths: [
+        "ثاني أطول مبنى في العالم (725 متراً) مما يوفر شهرة عالمية منقطعة النظير وسيولة إعادة بيع فائقة.",
+        "موقع لا مثيل له على شارع الشيخ زايد بجوار مركز دبي المالي العالمي (DIFC) مع ربط مباشر بالمترو.",
+        "مرافق حصرية لا تضاهى: أعلى منصة مشاهدة ومطعم في العالم ومركز تسوق عمودي متكامل."
+      ],
+      pitfallsAndWeaknesses: [
+        "أفق البناء يمتد حتى عام 2028 مما يتطلب التزاماً استثمارياً على المخطط.",
+        "الارتفاع الشاهق يتطلب التبديل في ردهات السكاي لوبي للوصول إلى الطوابق السكنية العليا.",
+        "ازدحام مروري محتمل عند مداخل شارع الشيخ زايد خلال المعارض الكبرى في مركز دبي التجاري العالمي."
+      ],
+      airbnbHolidayHomesPolicy: "مسموح عبر برنامج إدارة الشقق الفندقية المعتمد من فئة 7 نجوم مع طلب سياحي عالمي متوقع.",
+      guestParkingReality: "مواقف مخصصة متعددة الطوابق تحت الأرض وفي البوديوم مع خدمة صف السيارات VIP.",
+      soundproofingRating: "STC 58 dB (زجاج مصفح ثلاثي عازل للصوت يعزل ضجيج شارع الشيخ زايد بالكامل).",
+      elevatorPeakWaitReality: "30 إلى 45 ثانية بفضل مصاعد دبل-ديك فائقة السرعة بسرعة 10 م/ث.",
+      hiddenOperatingCosts: "تطبق رسوم سعة تبريد إمباور؛ ورسوم صيانة البرج الشاهق (~28 درهم/قدم مربع)."
+    },
+    zh: {
+      honestVerdict: "阿齐兹塔（Burj Azizi）以725米的绝世高度傲视全球，稳居全球第二高摩天大楼之位。项目矗立于谢赫扎耶德路核心门户，汇聚七星级超奢酒店、跨多层垂直购物中心、传世顶奢住宅以及全球最高的观景台与高空夜总会。对于投资者而言，无可替代的世界地标光环带来极强的国际资本流动性与资产溢价，但需考量超高层物业维护费（约28 AED/平方英尺）及高区空中大堂换乘机制。",
+      strengths: [
+        "725米全球第二高楼，赋予资产独一无二的全球知名度与国际超级富豪转售流动性。",
+        "雄踞谢赫扎耶德路黄金封面，紧邻DIFC金融中心与世贸中心，地铁无缝直达。",
+        "全球顶级奢华配套：世界最高观景台、七星级垂直商场及私人高空无边际泳池。"
+      ],
+      pitfallsAndWeaknesses: [
+        "预计于2028年竣工交付，属于中长期期房资金沉淀投资范畴。",
+        "受超高层风阻与垂直交通规划限制，70层以上住户需经由空中大堂（Sky Lobby）换乘转换梯。",
+        "迪拜世贸中心举办大型国际展会高峰期，谢赫扎耶德路沿线出入辅道车流量较大。"
+      ],
+      airbnbHolidayHomesPolicy: "允许通过七星级官方托管运营商开展短租；全球顶级游客对地标高空套房需求极其旺盛。",
+      guestParkingReality: "配备多层地下及裙楼专属车库，全天候提供VIP自动化代客泊车服务。",
+      soundproofingRating: "STC 58 dB（三玻两腔声学夹胶幕墙，完全隔绝谢赫扎耶德路车流噪音）。",
+      elevatorPeakWaitReality: "配备速度高达10米/秒的双层轿厢高速电梯，高峰期平均候梯时间仅30-45秒。",
+      hiddenOperatingCosts: "需缴纳Empower集中供冷季度基础容量备用金；超高层外立面清洗及高空维护费用相应计入服务费。"
+    },
+    de: {
+      honestVerdict: "Mit einer Höhe von 725 Metern ist der Burj Azizi der zweithöchste Wolkenkratzer der Erde und sichert sich einen festen Platz in der Architekturgeschichte. Direkt an der repräsentativen Sheikh Zayed Road gelegen, vereint die Landmarke ein 7-Sterne-Luxushotel, eine vertikale Luxus-Mall und High-End-Residenzen mit der weltweit höchsten Aussichtsplattform. Für Investoren bietet der globale Trophäenstatus unvergleichliche Exit-Liquidität und Wertsteigerungspotenzial.",
+      strengths: [
+        "Zweithöchster Wolkenkratzer der Welt (725 m) mit unübertroffener internationaler Strahlkraft.",
+        "Beste Lage an der Sheikh Zayed Road nahe DIFC und World Trade Centre mit direktem Metroanschluss.",
+        "Exklusive Rekord-Annehmlichkeiten: Welthöchste Aussichtsplattform, 7-Sterne-Mall und private Sky-Pools."
+      ],
+      pitfallsAndWeaknesses: [
+        "Geplante Fertigstellung 2028 erfordert eine mittelfristige Off-Plan-Kapitalbindung.",
+        "Für Residenzen ab Etage 70 ist baubedingt ein Aufzugwechsel an den Sky-Lobbies erforderlich.",
+        "Bei internationalen Messen im DWTC kann es auf den Zufahrtsrampen der Sheikh Zayed Road zu Verzögerungen kommen."
+      ],
+      airbnbHolidayHomesPolicy: "Zulässig über das zertifizierte 7-Sterne-Betreiberprogramm; enorme globale Nachfrage nach Suiten mit Rekordblick.",
+      guestParkingReality: "Großzügiges Tiefgaragen- und Podium-Parkhaus mit exklusivem VIP-Valet-Service.",
+      soundproofingRating: "STC 58 dB (Dreifach verglastes Akustiklaminat; vollständige Abschirmung des Autobahnlärms).",
+      elevatorPeakWaitReality: "30-45 Sekunden durch Doppelstock-Hochgeschwindigkeitsaufzüge (10 m/s).",
+      hiddenOperatingCosts: "Empower-Fernkältekosten fallen an; Servicegebühr (~28 AED/sq.ft) spiegelt den Megatall-Unterhalt wider."
+    },
+    fr: {
+      honestVerdict: "Culminant à 725 mètres, Burj Azizi s'impose comme le deuxième plus haut gratte-ciel de la planète. Situé en première ligne sur Sheikh Zayed Road, ce repère architectural abrite un hôtel 7 étoiles d'ultra-luxe, un centre commercial vertical et des résidences de prestige avec la plus haute terrasse panoramique du monde. Ce trophée mondial garantit une liquidité d'arbitrage exceptionnelle auprès d'investisseurs institutionnels.",
+      strengths: [
+        "Deuxième plus haut gratte-ciel du monde (725 m), conférant un statut d'actif emblématique mondial.",
+        "Position stratégique sur Sheikh Zayed Road à deux pas du DIFC et du World Trade Centre avec accès direct au métro.",
+        "Prestations inégalées : plus haute terrasse d'observation au monde, centre commercial vertical et piscines en porte-à-faux."
+      ],
+      pitfallsAndWeaknesses: [
+        "Horizon de livraison prévu en 2028 nécessitant un engagement financier sur plan.",
+        "La gestion aérodynamique impose un transfert d'ascenseur en sky lobby pour les étages supérieurs (70+).",
+        "Trafic ponctuel sur les bretelles d'accès de Sheikh Zayed Road lors des grands salons du DWTC."
+      ],
+      airbnbHolidayHomesPolicy: "Autorisé via l'opérateur hôtelier 7 étoiles dédié ; immense attractivité touristique mondiale.",
+      guestParkingReality: "Vaste stationnement en sous-sol et podium avec service de voiturier VIP automatisé.",
+      soundproofingRating: "STC 58 dB (Triple vitrage acoustique laminé ; zéro intrusion sonore de l'autoroute E11).",
+      elevatorPeakWaitReality: "30 à 45 secondes grâce aux ascenseurs double-pont ultra-rapides (10 m/s).",
+      hiddenOperatingCosts: "Frais de capacité Empower applicables ; charges (~28 AED/pi²) adaptées aux exigences d'un mégatall."
+    },
+    it: {
+      honestVerdict: "Con i suoi 725 metri, Burj Azizi si colloca come il secondo grattacielo più alto al mondo. Posizionato sul prestigioso asse di Sheikh Zayed Road, l'edificio fonde un hotel 7 stelle ultra-lusso, un centro commerciale verticale e dimore private con la piattaforma d'osservazione e il locale più alti della Terra. Per gli investitori, lo status di icona globale garantisce massima liquidità di rivendita e costante rivalutazione patrimoniale.",
+      strengths: [
+        "Secondo edificio più alto del pianeta (725 m) con visibilità e prestigio internazionali senza pari.",
+        "Ubicazione di prim'ordine su Sheikh Zayed Road adiacente a DIFC e World Trade Centre con metropolitana diretta.",
+        "Dotazioni record: terrazza panoramica e ristorante più alti del mondo, mall verticale e piscine a sbalzo."
+      ],
+      pitfallsAndWeaknesses: [
+        "Orizzonte di completamento fissato al 2028, con schema d'investimento off-plan.",
+        "Le altezze estreme richiedono l'interscambio di ascensori presso le sky lobby per le unità oltre il 70° piano.",
+        "Possibili rallentamenti sulle rampe d'ingresso durante i vertici internazionali al DWTC."
+      ],
+      airbnbHolidayHomesPolicy: "Consentito tramite gestione alberghiera ufficiale 7 stelle; altissima domanda per le suite panoramiche.",
+      guestParkingReality: "Parcheggio dedicato sotterraneo e a podio con servizio di car valet VIP automatizzato.",
+      soundproofingRating: "STC 58 dB (Triplo vetro acustico laminato; isolamento totale dalla Sheikh Zayed Road).",
+      elevatorPeakWaitReality: "30-45 secondi grazie a navette double-deck ad altissima velocità (10 m/s).",
+      hiddenOperatingCosts: "Tariffe di capacità per il teleriscaldamento Empower; spese (~28 AED/sq.ft) commisurate a una megatorre."
+    },
+    tr: {
+      honestVerdict: "725 metre yüksekliğe sahip Burj Azizi, dünyanın en yüksek 2. gökdeleni olarak küresel mimarlık tarihine adını yazdırmaktadır. Şeyh Zayed Yolu üzerinde yükselen kule; 7 yıldızlı ultra lüks otel, dikey alışveriş merkezi, özel konutlar ve yeryüzünün en yüksek seyir terası ile gece kulübünü bir araya getirmektedir. Yatırımcılar için küresel anıt statüsü ve DIFC aksındaki merkezi konum, olağanüstü sermaye likiditesi vadetmektedir.",
+      strengths: [
+        "Dünyanın en yüksek 2. binası (725m) olmasıyla rakipsiz küresel prestij ve yeniden satış likiditesi.",
+        "DIFC ve World Trade Centre'a komşu Şeyh Zayed Yolu üzerinde doğrudan metro bağlantılı konum.",
+        "Dünyanın en yüksek seyir terası, 7 yıldızlı dikey AVM ve özel konsol gökyüzü havuzları."
+      ],
+      pitfallsAndWeaknesses: [
+        "2028 teslim hedefi, orta vadeli bir proje bazlı sermaye taahhüdü gerektirir.",
+        "Aşırı irtifadaki rüzgar dinamikleri nedeniyle 70. katın üzerindeki konutlarda gökyüzü lobisi aktarması gerekir.",
+        "DWTC'deki büyük fuar günlerinde Şeyh Zayed Yolu bağlantı rampalarında yoğunluk yaşanabilir."
+      ],
+      airbnbHolidayHomesPolicy: "Onaylı 7 yıldızlı işletmeci programıyla serbesttir; rekor manzaralı süitlere küresel turist talebi çok yüksektir.",
+      guestParkingReality: "Otomatik VIP vale hizmetine sahip çok katlı yer altı ve podyum otoparkı.",
+      soundproofingRating: "STC 58 dB (Üç katmanlı lamine akustik cam; otoyol gürültüsü tamamen engellenir).",
+      elevatorPeakWaitReality: "10 m/s hızındaki çift katlı akıllı asansörlerle 30-45 saniye bekleme süresi.",
+      hiddenOperatingCosts: "Empower bölge soğutma kapasite bedelleri uygulanır; aidat (~28 AED/sq.ft) megatall bakımını kapsar."
+    },
+    hi: {
+      honestVerdict: "725 मीटर की ऊंचाई पर, बुर्ज अज़ीज़ी बुर्ज खलीफा के बाद दुनिया की दूसरी सबसे ऊंची गगनचुंबी इमारत है। प्रमुख शेख जायद रोड पर स्थित, यह टॉवर 7-सितारा अल्ट्रा-लक्जरी होटल, वर्टिकल शॉपिंग मॉल और पृथ्वी पर सबसे ऊंचे अवलोकन डेक और नाइटक्लब के साथ निजी आवासों को जोड़ता है। निवेशकों के लिए, वैश्विक ट्रॉफी का दर्जा और प्रमुख डीआईएफसी/एसजेडआर गलियारा भारी संप्रभु तरलता और पूंजी प्रशंसा का वादा करता है।",
+      strengths: [
+        "दुनिया की दूसरी सबसे ऊंची इमारत (725 मीटर), बेजोड़ वैश्विक प्रतिष्ठा और पुनर्विक्रय तरलता प्रदान करती है।",
+        "सीधे मेट्रो कनेक्टिविटी के साथ डीआईएफसी और वर्ल्ड ट्रेड सेंटर के निकट प्रमुख शेख जायद रोड स्थान।",
+        "अद्वितीय लक्जरी सुविधाएं: दुनिया का सबसे ऊंचा अवलोकन डेक, 7-सितारा वर्टिकल मॉल और निजी स्काई पूल।"
+      ],
+      pitfallsAndWeaknesses: [
+        "2028 में अनुमानित समापन के साथ बहु-वर्षीय निर्माण क्षितिज, ऑफ-प्लान पूंजी प्रतिबद्धता की आवश्यकता।",
+        "अत्यधिक ऊंचाई के कारण 70वीं मंजिल से ऊपर के आवासों के लिए स्काई लॉबी लिफ्ट स्थानांतरण की आवश्यकता होती है।",
+        "दुबई वर्ल्ड ट्रेड सेंटर में प्रमुख प्रदर्शनियों के दौरान शेख जायद रोड प्रवेश रैंप पर भारी यातायात होता है।"
+      ],
+      airbnbHolidayHomesPolicy: "अनुमोदित 7-सितारा लक्जरी ऑपरेटर कार्यक्रम के माध्यम से अनुमति; ट्रॉफी आवासों के लिए भारी वैश्विक मांग।",
+      guestParkingReality: "स्वचालित वीआईपी वैलेट सेवाओं के साथ समर्पित बहु-स्तरीय भूमिगत और पोडियम पार्किंग।",
+      soundproofingRating: "एसटीसी 58 डीबी (ट्रिपल-ग्लेज़्ड ध्वनिक लेमिनेट; शून्य राजमार्ग शोर)।",
+      elevatorPeakWaitReality: "अल्ट्रा-हाई-स्पीड डबल-डेक लिफ्ट (10 मीटर/सेकंड) के माध्यम से 30-45 सेकंड।",
+      hiddenOperatingCosts: "एम्पावर डिस्ट्रिक्ट कूलिंग क्षमता शुल्क लागू; प्रीमियम सेवा शुल्क (~28 AED/वर्ग फुट) सुपरटॉल रखरखाव को दर्शाता है।"
+    },
+    ur: {
+      honestVerdict: "725 میٹر کی بلندی کے ساتھ برج عزیزی دنیا کی دوسری سب سے اونچی فلک بوس عمارت ہے، جو عالمی تاریخ میں ایک مستقل سنگ میل کی حیثیت رکھتی ہے۔ شیخ زاید روڈ پر واقع یہ ٹاور 7 ستارہ پرتعیش ہوٹل، عمودی شاپنگ مال اور دنیا کے سب سے اونچے آبزرویشن ڈیک اور نائٹ کلب کو یکجا کرتا ہے۔ سرمایہ کاروں کے لیے اس کی عالمی شناخت اور ڈی آئی ایف سی راہداری شاندار ری سیل اور سرمایہ کی قدر میں زبردست اضافے کی ضمانت دیتی ہے۔",
+      strengths: [
+        "دنیا کی دوسری بلند ترین عمارت (725 میٹر) جو بین الاقوامی سطح پر انتہائی تیز اور آسان ری سیل فراہم کرتی ہے۔",
+        "ڈی آئی ایف سی اور ورلڈ ٹریڈ سینٹر کے ساتھ براہ راست میٹرو کنکشن والی بہترین لوکیشن۔",
+        "بے مثال مراعات: دنیا کا سب سے اونچا ویونگ ڈیک، 7 ستارہ ورٹیکل مال اور پرائیویٹ اسکائی پولز۔"
+      ],
+      pitfallsAndWeaknesses: [
+        "2028 میں متوقع تکمیل کی طویل مدتی تعمیر، جو آف پلان سرمایہ کاری کا تقاضا کرتی ہے۔",
+        "بلند ترین منزلوں (70 سے اوپر) کے لیے اسکائی لابی میں لفٹ بدلنے کی ضرورت ہوتی ہے۔",
+        "ورلڈ ٹریڈ سینٹر میں بین الاقوامی نمائشوں کے دنوں میں شیخ زاید روڈ پر ٹریفک کا زیادہ دباؤ۔"
+      ],
+      airbnbHolidayHomesPolicy: "منظور شدہ 7 ستارہ ہوٹل آپریٹر کے ذریعے مختصر مدتی کرائے کی اجازت؛ عالمی سیاحوں میں ریکارڈ ڈیمانڈ۔",
+      guestParkingReality: "پوڈیم اور زیر زمین مخصوص پارکنگ مع خودکار VIP والیٹ سروس۔",
+      soundproofingRating: "STC 58 dB (ٹرپل گلیزڈ شیشہ جو شیخ زاید روڈ کے شور کو مکمل طور پر روکتا ہے)۔",
+      elevatorPeakWaitReality: "10 میٹر فی سیکنڈ تیز رفتار ڈبل ڈیک لفٹوں کے ذریعے 30 سے 45 سیکنڈ۔",
+      hiddenOperatingCosts: "ایم پاور کولنگ کے بنیادی فیس لاگو؛ سروس چارجز (~28 درہم فی مربع فٹ) سپر ٹال کی دیکھ بھال کے مطابق۔"
+    }
   }
 };

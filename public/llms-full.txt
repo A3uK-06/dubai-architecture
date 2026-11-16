@@ -14,7 +14,7 @@ Key principles:
 - Multi-jurisdictional accessibility: Fully localized across 10 languages: English (en), Russian (ru), Arabic (ar), Hindi (hi), Chinese (zh), German (de), French (fr), Urdu (ur), Italian (it), and Turkish (tr).
 
 ================================================================================
-2. SKYSCRAPERS & TOWERS CATALOG (36 TOWERS)
+2. SKYSCRAPERS & TOWERS CATALOG (37 TOWERS)
 ================================================================================
 
 ---
@@ -593,6 +593,22 @@ Service Charge (Mollak): 13.5 AED/sq.ft
 District Cooling: Consumption-Billed (Empower)
 Description: Flanking a 3-kilometer crystal freshwater lagoon, South Bay Executive Towers represent the premier residential address in Dubai South. Capitalizing on the historic $35 billion Al Maktoum International Airport (DWC) expansion to create the world's largest aviation, logistics, and innovation metropolis.
 
+---
+Tower: Burj Azizi
+Slug: burj-azizi
+URL: https://dubai-architecture.info/buildings/burj-azizi/
+Architectural Height: 725 m (2379 ft)
+Floors: 131
+Completion Year: 2028
+District: Sheikh Zayed Road
+Architect: AE7
+Developer: Azizi Developments
+Structural System: Reinforced concrete core with mega-outrigger trusses and composite perimeter columns
+Estimated Gross Yield: 8.2% - 9.5%
+Service Charge (Mollak): 28 AED/sq.ft
+District Cooling: Consumption-Billed (Empower)
+Description: Rising 725 meters directly on prime Sheikh Zayed Road, Burj Azizi is the second-tallest skyscraper in the world. This monumental 131-storey architectural icon features a 7-star ultra-luxury hotel, an elite vertical shopping mall, trophy residences, and the highest observation deck and nightclub on Earth. Engineered with an advanced reinforced concrete mega-core and aerodynamic vortex-shedding setbacks, Burj Azizi redefines the skyline of Dubai for the next century.
+
 ================================================================================
 3. DUBAI DISTRICTS & MASTER COMMUNITIES (14 DISTRICTS)
 ================================================================================
@@ -724,7 +740,7 @@ Key Landmarks: Al Maktoum International Airport (DWC - 260M Passenger Masterplan
 Overview: Dubai's 145-sq.km strategic master-city of the future, anchored by the $35-billion expansion of Al Maktoum International Airport (DWC) to become the largest airport on Earth.
 
 ================================================================================
-4. MASTER DEVELOPERS REGISTRY (10 DEVELOPERS)
+4. MASTER DEVELOPERS REGISTRY (11 DEVELOPERS)
 ================================================================================
 
 ---
@@ -866,6 +882,20 @@ Tier: Institutional Sovereign
 Average Net Portfolio ROI: 6.3%
 Total Projects in Dubai: 32
 Description: Global sovereign investment conglomerate managing a multi-billion dollar portfolio across 13 countries. Developer and custodian of iconic UAE landmarks including Burj Al Arab Jumeirah, Emirates Towers, and Madinat Jumeirah Living.
+
+---
+Developer: Azizi Developments (Azizi)
+Slug: azizi
+URL: https://dubai-architecture.info/developers/azizi/
+Official Website: https://www.azizidevelopments.com/
+Founding Year: 2007
+Headquarters: Conrad Dubai, Sheikh Zayed Road, Dubai, UAE
+DLD Escrow Rating: AAA (Prime Track Record)
+On-Time Delivery Rate: 96.4%
+Tier: Tier-1 Master Developer
+Average Net Portfolio ROI: 7.8%
+Total Projects in Dubai: 42
+Description: Leading private master developer in the UAE founded by Mirwais Azizi. Renowned for large-scale European-style master communities (Azizi Riviera in MBR City, Azizi Venice in Dubai South) and constructing the world's second-tallest skyscraper, Burj Azizi (725m), on Sheikh Zayed Road.
 
 ================================================================================
 5. UAE 10-YEAR GOLDEN VISA VIA REAL ESTATE
