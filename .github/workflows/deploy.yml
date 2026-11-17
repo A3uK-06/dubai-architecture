@@ -4,8 +4,8 @@ on:
   push:
     branches: ["main"]
   schedule:
-    # Daily indexing dispatch at 04:00 UTC & rolling DLD sync
-    - cron: '0 4 * * *'
+    # Daily indexing dispatch at 08:30 UTC (11:30 MSK, right after Google resets daily PT quota) & rolling DLD sync
+    - cron: '30 8 * * *'
   workflow_dispatch:
 
 permissions:
