@@ -23,5 +23,16 @@ if (fs.existsSync(outDir)) {
   } catch (err) {
     console.error("Warning: Failed to generate multilingual static pages:", err.message);
   }
+
+  // Generate Partitioned Sitemap Index and sub-sitemaps
+  try {
+    console.log("Generating partitioned sitemap index and sub-sitemaps...");
+    execSync("npx tsx scripts/generate-sitemaps.mjs", {
+      cwd: rootDir,
+      stdio: "inherit",
+    });
+  } catch (err) {
+    console.error("Warning: Failed to generate sitemaps:", err.message);
+  }
 }
 

@@ -375,50 +375,6 @@ async function main() {
     }
   }
 
-  // 5. Append all localized URLs to out/sitemap.xml if exists and not already present
-  const sitemapPath = path.join(outDir, "sitemap.xml");
-  if (fs.existsSync(sitemapPath)) {
-    console.log("🗺️ Checking multilingual URLs in out/sitemap.xml...");
-    let sitemapXml = fs.readFileSync(sitemapPath, "utf-8");
-    const today = new Date().toISOString().split("T")[0];
-    const extraUrlsXml = [];
-
-    for (const lang of TARGET_LANGS) {
-      for (const route of staticRoutes) {
-        const locUrl = `https://dubai-architecture.info/${lang.code}/${route ? route + "/" : ""}`;
-        if (!sitemapXml.includes(`<loc>${locUrl}</loc>`)) {
-          extraUrlsXml.push(`  <url>\n    <loc>${locUrl}</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>0.8</priority>\n  </url>`);
-        }
-      }
-      for (const b of BUILDINGS) {
-        const locUrl = `https://dubai-architecture.info/${lang.code}/buildings/${b.slug}/`;
-        if (!sitemapXml.includes(`<loc>${locUrl}</loc>`)) {
-          extraUrlsXml.push(`  <url>\n    <loc>${locUrl}</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>0.8</priority>\n  </url>`);
-        }
-      }
-      for (const d of DISTRICTS) {
-        const locUrl = `https://dubai-architecture.info/${lang.code}/districts/${d.slug}/`;
-        if (!sitemapXml.includes(`<loc>${locUrl}</loc>`)) {
-          extraUrlsXml.push(`  <url>\n    <loc>${locUrl}</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>0.7</priority>\n  </url>`);
-        }
-      }
-      for (const dev of DEVELOPERS) {
-        const locUrl = `https://dubai-architecture.info/${lang.code}/developers/${dev.slug}/`;
-        if (!sitemapXml.includes(`<loc>${locUrl}</loc>`)) {
-          extraUrlsXml.push(`  <url>\n    <loc>${locUrl}</loc>\n    <lastmod>${today}</lastmod>\n    <changefreq>weekly</changefreq>\n    <priority>0.7</priority>\n  </url>`);
-        }
-      }
-    }
-
-    if (extraUrlsXml.length > 0) {
-      sitemapXml = sitemapXml.replace("</urlset>", extraUrlsXml.join("\n") + "\n</urlset>");
-      fs.writeFileSync(sitemapPath, sitemapXml, "utf-8");
-      console.log(`🗺️ Added ${extraUrlsXml.length} localized URLs into out/sitemap.xml!`);
-    } else {
-      console.log("🗺️ All localized URLs already indexed in out/sitemap.xml.");
-    }
-  }
-
   console.log(`✅ Successfully generated ${generatedPagesCount} static multilingual HTML pages across ${TARGET_LANGS.length} languages!`);
 }
 

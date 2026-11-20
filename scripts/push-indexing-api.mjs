@@ -165,25 +165,34 @@ function computeUrlPriorityScore(url) {
 }
 
 function extractUrlsFromSitemap() {
-  const candidates = [
-    path.resolve(process.cwd(), "out/sitemap.xml"),
-    path.resolve(process.cwd(), "public/sitemap.xml"),
+  const dirs = [
+    path.resolve(process.cwd(), "out"),
+    path.resolve(process.cwd(), "public"),
   ];
 
-  let xml = null;
-  for (const p of candidates) {
-    if (fs.existsSync(p)) {
-      xml = fs.readFileSync(p, "utf8");
+  let targetDir = null;
+  for (const d of dirs) {
+    if (fs.existsSync(d) && fs.existsSync(path.join(d, "sitemap.xml"))) {
+      targetDir = d;
       break;
     }
   }
 
-  if (!xml) return [];
+  if (!targetDir) return [];
 
-  const locMatches = xml.match(/<loc>(.*?)<\/loc>/g) || [];
-  const urls = locMatches
-    .map((m) => m.replace(/<\/?loc>/g, "").trim())
-    .filter((u) => u.startsWith("http"));
+  const urls = [];
+  const files = fs.readdirSync(targetDir).filter((f) => f.startsWith("sitemap") && f.endsWith(".xml"));
+
+  for (const f of files) {
+    const content = fs.readFileSync(path.join(targetDir, f), "utf8");
+    const locMatches = content.match(/<loc>(.*?)<\/loc>/g) || [];
+    for (const m of locMatches) {
+      const u = m.replace(/<\/?loc>/g, "").trim();
+      if (u.startsWith("http") && !u.endsWith(".xml")) {
+        urls.push(u);
+      }
+    }
+  }
 
   // De-duplicate
   const uniqueUrls = Array.from(new Set(urls));

@@ -28,7 +28,13 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ["/ghost", "/ghost/"],
       },
     ],
-    sitemap: "https://dubai-architecture.info/sitemap.xml",
+    sitemap: [
+      "https://dubai-architecture.info/sitemap.xml",
+      "https://dubai-architecture.info/sitemap-core.xml",
+      "https://dubai-architecture.info/sitemap-buildings.xml",
+      "https://dubai-architecture.info/sitemap-districts.xml",
+      "https://dubai-architecture.info/sitemap-developers.xml",
+    ],
     host: "https://dubai-architecture.info",
   };
 }
