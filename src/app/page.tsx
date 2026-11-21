@@ -28,7 +28,7 @@ export default function Home() {
         {/* Real Architectural Skyline Background */}
         <div className="absolute inset-0 z-0 pointer-events-none">
           <Image
-            src="/images/hero-dubai-skyline.jpg"
+            src="/images/hero-dubai-skyline.webp"
             alt="Dubai Architectural Skyline"
             fill
             priority

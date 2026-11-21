@@ -43,7 +43,7 @@ export const DISTRICTS: District[] = [
   {
     id: "downtown-dubai",
     slug: "downtown-dubai",
-    image: "/images/districts/downtown-dubai.jpg",
+    image: "/images/districts/downtown-dubai.webp",
     name: "Downtown Dubai",
     developer: "Emaar Properties",
     overview:
@@ -107,7 +107,7 @@ export const DISTRICTS: District[] = [
   {
     id: "dubai-marina",
     slug: "dubai-marina",
-    image: "/images/districts/dubai-marina.jpg",
+    image: "/images/districts/dubai-marina.webp",
     name: "Dubai Marina",
     developer: "Emaar Properties / Multiple Private Developers",
     overview:
@@ -171,7 +171,7 @@ export const DISTRICTS: District[] = [
   {
     id: "difc",
     slug: "difc",
-    image: "/images/districts/difc.jpg",
+    image: "/images/districts/difc.webp",
     name: "DIFC & Sheikh Zayed Road",
     developer: "DIFC Authority / Dubai Holding",
     overview:
@@ -235,7 +235,7 @@ export const DISTRICTS: District[] = [
   {
     id: "palm-jumeirah",
     slug: "palm-jumeirah",
-    image: "/images/districts/palm-jumeirah.jpg",
+    image: "/images/districts/palm-jumeirah.webp",
     name: "Palm Jumeirah",
     developer: "Nakheel",
     overview:
@@ -299,7 +299,7 @@ export const DISTRICTS: District[] = [
   {
     id: "business-bay",
     slug: "business-bay",
-    image: "/images/districts/business-bay.jpg",
+    image: "/images/districts/business-bay.webp",
     name: "Business Bay",
     developer: "Dubai Properties / Multiple Independent Developers",
     overview:
@@ -363,7 +363,7 @@ export const DISTRICTS: District[] = [
   {
     id: "creek-harbour",
     slug: "creek-harbour",
-    image: "/images/districts/dubai-creek-harbour.jpg",
+    image: "/images/districts/dubai-creek-harbour.webp",
     name: "Dubai Creek Harbour",
     developer: "Emaar Properties",
     overview:
@@ -427,7 +427,7 @@ export const DISTRICTS: District[] = [
   {
     id: "jlt",
     slug: "jlt",
-    image: "/images/districts/jumeirah-lakes-towers.jpg",
+    image: "/images/districts/jumeirah-lakes-towers.webp",
     name: "Jumeirah Lakes Towers (JLT)",
     developer: "DMCC / Nakheel",
     overview:
@@ -490,7 +490,7 @@ export const DISTRICTS: District[] = [
   {
     id: "jvc",
     slug: "jvc",
-    image: "/images/districts/jvc.jpg",
+    image: "/images/districts/jvc.webp",
     name: "Jumeirah Village Circle (JVC)",
     developer: "Nakheel / Multiple Independent Developers",
     overview:
@@ -553,7 +553,7 @@ export const DISTRICTS: District[] = [
   {
     id: "dubai-hills",
     slug: "dubai-hills",
-    image: "/images/districts/dubai-hills.jpg",
+    image: "/images/districts/dubai-hills.webp",
     name: "Dubai Hills Estate",
     developer: "Emaar Properties / Meraas",
     overview:
@@ -616,7 +616,7 @@ export const DISTRICTS: District[] = [
   {
     id: "dubai-harbour",
     slug: "dubai-harbour",
-    image: "/images/districts/dubai-harbour.jpg",
+    image: "/images/districts/dubai-harbour.webp",
     name: "Dubai Harbour & Emaar Beachfront",
     developer: "Shamash Holdings / Emaar Properties",
     overview:
@@ -674,7 +674,7 @@ export const DISTRICTS: District[] = [
   {
     id: "sobha-hartland",
     slug: "sobha-hartland",
-    image: "/images/districts/sobha-hartland.jpg",
+    image: "/images/districts/sobha-hartland.webp",
     name: "Sobha Hartland & MBR City",
     developer: "Sobha Realty",
     overview:
@@ -731,7 +731,7 @@ export const DISTRICTS: District[] = [
   {
     id: "city-walk",
     slug: "city-walk",
-    image: "/images/districts/city-walk.jpg",
+    image: "/images/districts/city-walk.webp",
     name: "City Walk & Jumeirah",
     developer: "Meraas (Dubai Holding)",
     overview:
@@ -788,7 +788,7 @@ export const DISTRICTS: District[] = [
   {
     id: "palm-jebel-ali",
     slug: "palm-jebel-ali",
-    image: "/images/districts/palm-jebel-ali.jpg",
+    image: "/images/districts/palm-jebel-ali.webp",
     name: "Palm Jebel Ali",
     developer: "Nakheel",
     overview:
@@ -845,7 +845,7 @@ export const DISTRICTS: District[] = [
   {
     id: "dubai-south",
     slug: "dubai-south",
-    image: "/images/districts/dubai-south.jpg",
+    image: "/images/districts/dubai-south.webp",
     name: "Dubai South & Expo City",
     developer: "Dubai South Master Developer / Government of Dubai",
     overview:

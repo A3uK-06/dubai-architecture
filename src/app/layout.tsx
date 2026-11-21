@@ -1,4 +1,5 @@
 import type { Metadata, Viewport } from "next";
+import { Manrope, Montserrat } from "next/font/google";
 import "./compiled-tailwind.css";
 import Providers from "@/components/Providers";
 import Header from "@/components/Header";
@@ -79,6 +80,20 @@ export const metadata: Metadata = {
   },
 };
 
+const manrope = Manrope({
+  subsets: ["latin", "cyrillic"],
+  weight: ["300", "400", "500", "600", "700", "800"],
+  variable: "--font-manrope",
+  display: "swap",
+});
+
+const montserrat = Montserrat({
+  subsets: ["latin", "cyrillic"],
+  weight: ["500", "600", "700", "800"],
+  variable: "--font-montserrat",
+  display: "swap",
+});
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -87,7 +102,7 @@ export default function RootLayout({
   return (
     <html
       lang="en"
-      className="h-full antialiased"
+      className={`h-full antialiased ${manrope.variable} ${montserrat.variable}`}
     >
       <head>
         <meta name="theme-color" content="#0F172A" />
@@ -101,12 +116,6 @@ export default function RootLayout({
         <link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192" />
         <link rel="icon" href="/icon.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&family=Montserrat:wght@500;600;700;800&display=swap"
-          rel="stylesheet"
-        />
       </head>
       <body className="min-h-full flex flex-col bg-white text-[#0F172A] selection:bg-[#8C6A48]/20 selection:text-[#0F172A] font-sans antialiased">
         <Providers>
