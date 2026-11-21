@@ -23,9 +23,8 @@ export interface LeadData {
 }
 
 export interface LeadRoutingResult {
-  agency: "Whitewill" | "Premier Partner Network";
+  agency: string;
   agencyDesk: string;
-  payoutTerms: string;
   telegramDelivered: boolean;
   leadId: string;
 }
@@ -34,43 +33,32 @@ const TELEGRAM_BOT_TOKEN = process.env.NEXT_PUBLIC_TELEGRAM_BOT_TOKEN;
 const TELEGRAM_CHAT_ID = process.env.NEXT_PUBLIC_TELEGRAM_CHAT_ID;
 const LEAD_WORKER_URL = process.env.NEXT_PUBLIC_LEAD_WORKER_URL;
 
-// Fallback USDT (TRC-20) payment wallet identifier for owner commission logs
-export const USDT_TRC20_WALLET_TAG = "USDT (TRC-20) Payout Network";
-
 /**
- * Determines whether a phone number or language belongs to Russia/CIS or International.
+ * Determines appropriate advisory desk based on client language.
  */
 export function determineAgencyDestination(phone: string, language: string): {
-  agency: "Whitewill" | "Premier Partner Network";
+  agency: string;
   agencyDesk: string;
 } {
-  const cleanPhone = phone.replace(/[^\d+]/g, "");
-
-  // Russian/CIS phone detection (+7, 7, 89...)
-  const isRussianPhone =
-    cleanPhone.startsWith("+7") ||
-    (cleanPhone.startsWith("7") && cleanPhone.length === 11) ||
-    (cleanPhone.startsWith("8") && cleanPhone.length === 11);
-
   const isRussianLang = language.toLowerCase() === "ru";
 
-  if (isRussianPhone || (isRussianLang && !cleanPhone.startsWith("+971"))) {
+  if (isRussianLang) {
     return {
-      agency: "Whitewill",
-      agencyDesk: "Whitewill (Russian & CIS Investors Desk)",
+      agency: "Dubai Architecture",
+      agencyDesk: "Dubai Architecture Desk (CIS & Eastern Europe)",
     };
   }
 
   return {
-    agency: "Whitewill",
-    agencyDesk: "Whitewill Dubai (International Department / Native English & Global)",
+    agency: "Dubai Architecture",
+    agencyDesk: "Dubai Architecture Global Desk (International)",
   };
 }
 
 /**
  * Formats lead details into an HTML message for Telegram.
  */
-function formatTelegramMessage(lead: LeadData, routing: { agency: string; agencyDesk: string }): string {
+function formatTelegramMessage(lead: LeadData, leadId: string): string {
   const dateStr = new Date().toLocaleString("ru-RU", { timeZone: "Asia/Dubai" });
   const attr = lead.attribution || {};
   const fullName = [lead.name, lead.lastName].filter(Boolean).join(" ");
@@ -79,11 +67,11 @@ function formatTelegramMessage(lead: LeadData, routing: { agency: string; agency
     : "Связываться напрямую";
 
   return `
-🏛 <b>НОВАЯ ЗАЯВКА (КВИЗ-ПОДБОР) DUBAI-ARCHITECTURE.INFO</b>
+🏛 <b>НОВАЯ ЗАЯВКА С САЙТА DUBAI-ARCHITECTURE.INFO</b>
 ━━━━━━━━━━━━━━━━━━━━
 👤 <b>Клиент:</b> ${fullName || "Не указано"}
 🌍 <b>Страна клиента:</b> ${lead.clientCountry || "Не указана"}
-🌐 <b>Язык общения:</b> ${lead.language.toUpperCase()}
+🌐 <b>Язык сайта:</b> ${lead.language.toUpperCase()}
 📞 <b>Телефон / WhatsApp:</b> <code>${lead.phone}</code>
 📧 <b>Email:</b> ${lead.email || "Не указан"}
 🤝 <b>Формат связи:</b> ${contactPref}
@@ -95,16 +83,10 @@ ${lead.handoverTimeline ? `📅 <b>Срок сдачи:</b> ${lead.handoverTimel
 
 💰 <b>БЮДЖЕТ:</b>
 • <b>${lead.budget || "Не указан"} ${lead.currency || "USD"}</b>
-${lead.communicationPreferences ? `⏰ <b>Пожелания по времени/связи:</b> ${lead.communicationPreferences}` : ""}
+${lead.communicationPreferences ? `⏰ <b>Пожелания по связи:</b> ${lead.communicationPreferences}` : ""}
 ${lead.targetTower ? `🏢 <b>Объект интереса:</b> ${lead.targetTower}` : ""}
-${lead.comment ? `💬 <b>Комментарий клиента:</b>\n<i>${lead.comment}</i>` : ""}
+${lead.comment ? `💬 <b>Комментарий:</b>\n<i>${lead.comment}</i>` : ""}
 ⏰ <b>Время (Dubai):</b> ${dateStr}
-
-🎯 <b>МАРШРУТИЗАЦИЯ ЛИДА:</b>
-🏢 <b>Партнер:</b> <b>${routing.agency}</b>
-📌 <b>Отдел:</b> ${routing.agencyDesk}
-💵 <b>Условия комиссии:</b> 30–50% от комиссии сделки
-🪙 <b>Выплата владельцу:</b> <b>USDT (TRC-20)</b>
 
 📊 <b>МАРКЕТИНГОВАЯ АТРИБУЦИЯ (UTM):</b>
 • <b>Источник (Source):</b> ${attr.utm_source || "Прямой органический трафик"}
@@ -113,25 +95,25 @@ ${lead.comment ? `💬 <b>Комментарий клиента:</b>\n<i>${lead.
 • <b>Посадочная страница:</b> ${attr.landing_page || "Главная"}
 • <b>Устройство:</b> ${attr.device || "Не определено"}
 ━━━━━━━━━━━━━━━━━━━━
-<i>Зафиксировано в реестре dubai-architecture.info</i>
+<i>ID заявки: ${leadId}</i>
 `.trim();
 }
 
 /**
- * Dispatches lead to Telegram bot and returns routing outcome.
+ * Dispatches lead to Telegram bot and saves to local storage.
  */
 export async function dispatchLead(lead: LeadData): Promise<LeadRoutingResult> {
   const routing = determineAgencyDestination(lead.phone, lead.language);
   const leadId = `LEAD-${Date.now()}-${Math.random().toString(36).substring(2, 6)}`;
   let telegramDelivered = false;
 
-  // 1. Send via Secure Cloudflare Worker proxy (Recommended - Zero token exposure)
+  // 1. Send via Secure Cloudflare Worker proxy if configured
   if (LEAD_WORKER_URL) {
     try {
       const response = await fetch(LEAD_WORKER_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(lead),
+        body: JSON.stringify({ ...lead, leadId }),
       });
       if (response.ok) {
         telegramDelivered = true;
@@ -144,7 +126,7 @@ export async function dispatchLead(lead: LeadData): Promise<LeadRoutingResult> {
   // 2. Direct Telegram API fallback if Worker is not configured
   if (!telegramDelivered && TELEGRAM_BOT_TOKEN && TELEGRAM_CHAT_ID) {
     try {
-      const text = formatTelegramMessage(lead, routing);
+      const text = formatTelegramMessage(lead, leadId);
       const url = `https://api.telegram.org/bot${TELEGRAM_BOT_TOKEN}/sendMessage`;
 
       const response = await fetch(url, {
@@ -183,7 +165,6 @@ export async function dispatchLead(lead: LeadData): Promise<LeadRoutingResult> {
         ...lead,
         leadId,
         routing,
-        payoutCurrency: "USDT_TRC20",
         telegramDelivered,
         timestamp: lead.timestamp || new Date().toISOString(),
       });
@@ -196,7 +177,6 @@ export async function dispatchLead(lead: LeadData): Promise<LeadRoutingResult> {
   return {
     agency: routing.agency,
     agencyDesk: routing.agencyDesk,
-    payoutTerms: "30-50% Broker Commission Split • Direct USDT (TRC-20) Settlement",
     telegramDelivered,
     leadId,
   };
