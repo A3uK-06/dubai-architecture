@@ -104,6 +104,7 @@ async function main() {
     { path: "/districts/", priority: 0.8, freq: "weekly" },
     { path: "/developers/", priority: 0.8, freq: "weekly" },
     { path: "/calculator/", priority: 0.8, freq: "weekly" },
+    { path: "/quiz/", priority: 0.9, freq: "weekly" },
     { path: "/golden-visa/", priority: 0.8, freq: "weekly" },
     { path: "/methodology/", priority: 0.7, freq: "monthly" },
     { path: "/about/", priority: 0.8, freq: "monthly" },

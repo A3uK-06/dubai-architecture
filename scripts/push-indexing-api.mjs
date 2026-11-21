@@ -110,6 +110,7 @@ function computeUrlPriorityScore(url) {
   if (/^\/(ru|ar|hi|zh|de|fr|ur|it|tr)\/?$/.test(clean)) return 950;
 
   // Tier 2: Core functional & conversion hubs across all languages
+  if (clean.includes("/quiz")) return 920;
   if (clean.includes("/calculator")) return 900;
   if (clean.includes("/golden-visa")) return 890;
   if (clean.includes("/developers") && !clean.match(/\/developers\/[^/]+/)) return 880;

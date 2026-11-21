@@ -2,9 +2,18 @@ import { LeadAttribution } from "./attribution";
 
 export interface LeadData {
   name: string;
+  lastName?: string;
   phone: string;
   email?: string;
+  propertyType?: string;
+  area?: string;
+  handoverTimeline?: string;
   budget?: string;
+  currency?: string;
+  clientCountry?: string;
+  contactPreference?: "direct" | "representative" | string;
+  communicationPreferences?: string;
+  comment?: string;
   targetTower?: string;
   district?: string;
   language: string;
@@ -64,16 +73,31 @@ export function determineAgencyDestination(phone: string, language: string): {
 function formatTelegramMessage(lead: LeadData, routing: { agency: string; agencyDesk: string }): string {
   const dateStr = new Date().toLocaleString("ru-RU", { timeZone: "Asia/Dubai" });
   const attr = lead.attribution || {};
+  const fullName = [lead.name, lead.lastName].filter(Boolean).join(" ");
+  const contactPref = lead.contactPreference === "representative" 
+    ? "Через представителя клиента" 
+    : "Связываться напрямую";
 
   return `
-🏛 <b>НОВАЯ ЗАЯВКА С САЙТА DUBAI-ARCHITECTURE.INFO</b>
+🏛 <b>НОВАЯ ЗАЯВКА (КВИЗ-ПОДБОР) DUBAI-ARCHITECTURE.INFO</b>
 ━━━━━━━━━━━━━━━━━━━━
-👤 <b>Имя:</b> ${lead.name || "Не указано"}
+👤 <b>Клиент:</b> ${fullName || "Не указано"}
+🌍 <b>Страна клиента:</b> ${lead.clientCountry || "Не указана"}
+🌐 <b>Язык общения:</b> ${lead.language.toUpperCase()}
 📞 <b>Телефон / WhatsApp:</b> <code>${lead.phone}</code>
 📧 <b>Email:</b> ${lead.email || "Не указан"}
-💰 <b>Бюджет:</b> ${lead.budget || "Не указан"}
-🏢 <b>Объект интереса:</b> ${lead.targetTower || lead.district || "Общий каталог ТОП-10"}
-🌐 <b>Язык посетителя:</b> ${lead.language.toUpperCase()}
+🤝 <b>Формат связи:</b> ${contactPref}
+
+🏢 <b>ТИП НЕДВИЖИМОСТИ:</b>
+• ${lead.propertyType || "Не указан"}
+${lead.area ? `📐 <b>Интересующая площадь:</b> ${lead.area}` : ""}
+${lead.handoverTimeline ? `📅 <b>Срок сдачи:</b> ${lead.handoverTimeline}` : ""}
+
+💰 <b>БЮДЖЕТ:</b>
+• <b>${lead.budget || "Не указан"} ${lead.currency || "USD"}</b>
+${lead.communicationPreferences ? `⏰ <b>Пожелания по времени/связи:</b> ${lead.communicationPreferences}` : ""}
+${lead.targetTower ? `🏢 <b>Объект интереса:</b> ${lead.targetTower}` : ""}
+${lead.comment ? `💬 <b>Комментарий клиента:</b>\n<i>${lead.comment}</i>` : ""}
 ⏰ <b>Время (Dubai):</b> ${dateStr}
 
 🎯 <b>МАРШРУТИЗАЦИЯ ЛИДА:</b>
@@ -86,7 +110,6 @@ function formatTelegramMessage(lead: LeadData, routing: { agency: string; agency
 • <b>Источник (Source):</b> ${attr.utm_source || "Прямой органический трафик"}
 • <b>Кампания (Campaign):</b> ${attr.utm_campaign || "—"}
 • <b>Тип (Medium):</b> ${attr.utm_medium || "—"}
-• <b>Содержание (Content):</b> ${attr.utm_content || "—"}
 • <b>Посадочная страница:</b> ${attr.landing_page || "Главная"}
 • <b>Устройство:</b> ${attr.device || "Не определено"}
 ━━━━━━━━━━━━━━━━━━━━

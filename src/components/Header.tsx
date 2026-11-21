@@ -4,10 +4,12 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { useLang } from "../context/LangContext";
 import LanguageSelector from "./LanguageSelector";
+import PropertyQuizModal from "./PropertyQuizModal";
 
 export default function Header() {
   const { t, lang } = useLang();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isQuizOpen, setIsQuizOpen] = useState(false);
 
   const langPrefix = lang === "en" ? "" : `/${lang}`;
   const homeUrl = langPrefix || "/";
@@ -121,12 +123,13 @@ export default function Header() {
           <div className="flex items-center gap-2 sm:gap-3 shrink-0">
             <LanguageSelector />
 
-            <Link
-              href={contactUrl}
-              className="hidden lg:inline-flex items-center justify-center px-5 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider text-white bg-[#0F172A] hover:bg-[#1E293B] transition-all shadow-soft-tint active:scale-95 focus:outline-none focus:ring-2 focus:ring-[#0F172A] focus:ring-offset-2"
+            <button
+              type="button"
+              onClick={() => setIsQuizOpen(true)}
+              className="hidden lg:inline-flex items-center justify-center px-5 py-2.5 rounded-xl text-xs font-bold uppercase tracking-wider text-white bg-[#0F172A] hover:bg-[#1E293B] transition-all shadow-soft-tint active:scale-95 focus:outline-none focus:ring-2 focus:ring-[#0F172A] focus:ring-offset-2 cursor-pointer"
             >
               {t.nav.contactBroker}
-            </Link>
+            </button>
 
             {/* Mobile menu toggle */}
             <button
@@ -212,16 +215,25 @@ export default function Header() {
             }[lang] || "Developers")}
           </Link>
           <div className="pt-2">
-            <Link
-              href={contactUrl}
-              onClick={() => setMobileMenuOpen(false)}
-              className="block w-full text-center px-4 py-3 text-xs font-bold uppercase tracking-wider text-white bg-[#0F172A] hover:bg-[#1E293B] rounded-xl shadow-soft-tint"
+            <button
+              type="button"
+              onClick={() => {
+                setMobileMenuOpen(false);
+                setIsQuizOpen(true);
+              }}
+              className="block w-full text-center px-4 py-3 text-xs font-bold uppercase tracking-wider text-white bg-[#0F172A] hover:bg-[#1E293B] rounded-xl shadow-soft-tint cursor-pointer"
             >
               {t.nav.contactBroker}
-            </Link>
+            </button>
           </div>
         </div>
       )}
+
+      {/* Property Quiz Modal */}
+      <PropertyQuizModal
+        isOpen={isQuizOpen}
+        onClose={() => setIsQuizOpen(false)}
+      />
     </header>
   );
 }
