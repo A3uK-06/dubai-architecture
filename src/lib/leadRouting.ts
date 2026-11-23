@@ -20,6 +20,7 @@ export interface LeadData {
   attribution?: LeadAttribution;
   notes?: string;
   timestamp?: string;
+  preferredMessenger?: "whatsapp" | "telegram" | string;
 }
 
 export interface LeadRoutingResult {
@@ -65,6 +66,9 @@ function formatTelegramMessage(lead: LeadData, leadId: string): string {
   const contactPref = lead.contactPreference === "representative" 
     ? "Через представителя клиента" 
     : "Связываться напрямую";
+  const messengerLabel = lead.preferredMessenger === "telegram"
+    ? "✈️ Telegram"
+    : "🟢 WhatsApp (Основной)";
 
   return `
 🏛 <b>НОВАЯ ЗАЯВКА С САЙТА DUBAI-ARCHITECTURE.INFO</b>
@@ -72,9 +76,10 @@ function formatTelegramMessage(lead: LeadData, leadId: string): string {
 👤 <b>Клиент:</b> ${fullName || "Не указано"}
 🌍 <b>Страна клиента:</b> ${lead.clientCountry || "Не указана"}
 🌐 <b>Язык сайта:</b> ${lead.language.toUpperCase()}
-📞 <b>Телефон / WhatsApp:</b> <code>${lead.phone}</code>
+📞 <b>Телефон:</b> <code>${lead.phone}</code>
 📧 <b>Email:</b> ${lead.email || "Не указан"}
 🤝 <b>Формат связи:</b> ${contactPref}
+📲 <b>Куда отправить досье:</b> ${messengerLabel}
 
 🏢 <b>ТИП НЕДВИЖИМОСТИ:</b>
 • ${lead.propertyType || "Не указан"}

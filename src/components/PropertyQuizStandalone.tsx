@@ -78,6 +78,9 @@ export default function PropertyQuizStandalone() {
   const [contactPreference, setContactPreference] = useState<"direct" | "representative">("direct");
   const [commPreferences, setCommPreferences] = useState("");
   const [comment, setComment] = useState("");
+  const [selectedMessenger, setSelectedMessenger] = useState<"whatsapp" | "telegram">("whatsapp");
+  const [submittedMessenger, setSubmittedMessenger] = useState<"whatsapp" | "telegram">("whatsapp");
+  const [messengerStatusMsg, setMessengerStatusMsg] = useState("");
 
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isCompleted, setIsCompleted] = useState(false);
@@ -141,9 +144,11 @@ export default function PropertyQuizStandalone() {
     }
   };
 
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleSubmit = async (e?: React.FormEvent, messengerOverride?: "whatsapp" | "telegram") => {
+    if (e) e.preventDefault();
     setErrorMsg("");
+
+    const targetMessenger = messengerOverride || selectedMessenger;
 
     if (!name.trim()) {
       setErrorMsg("Пожалуйста, введите ваше имя");
@@ -155,6 +160,7 @@ export default function PropertyQuizStandalone() {
     }
 
     setIsSubmitting(true);
+    setSubmittedMessenger(targetMessenger);
 
     const finalCountry = clientCountry === "Другая страна" ? customCountry.trim() : clientCountry;
     const finalPropertyTypeObj = propertyTypeItems.find((p) => p.id === propertyType);
@@ -180,6 +186,7 @@ export default function PropertyQuizStandalone() {
         language: selectedLanguage,
         attribution,
         timestamp: new Date().toISOString(),
+        preferredMessenger: targetMessenger,
       });
 
       trackEvent("quiz_complete", {
@@ -190,6 +197,7 @@ export default function PropertyQuizStandalone() {
         country: finalCountry,
         language: selectedLanguage,
         contactPreference,
+        preferredMessenger: targetMessenger,
       });
 
       setIsCompleted(true);
@@ -203,7 +211,24 @@ export default function PropertyQuizStandalone() {
 
   const handleMessengerClick = (channel: "whatsapp" | "telegram") => {
     trackEvent("quiz_messenger_click", { channel });
-    alert(`Номер для ${channel === "whatsapp" ? "WhatsApp" : "Telegram"} будет подключен в ближайшее время. Ваша заявка уже зафиксирована в системе!`);
+    const envWhatsApp = process.env.NEXT_PUBLIC_WHATSAPP_NUMBER;
+    const envTelegram = process.env.NEXT_PUBLIC_TELEGRAM_USERNAME;
+
+    const summaryText = encodeURIComponent(
+      `Здравствуйте! Я оставил заявку на подбор недвижимости на сайте Dubai Architecture.\nБюджет: ${budget} ${currency}\nТип: ${propertyType}\nИмя: ${name}`
+    );
+
+    if (channel === "whatsapp" && envWhatsApp && envWhatsApp !== "971500000000") {
+      window.open(`https://wa.me/${envWhatsApp}?text=${summaryText}`, "_blank");
+    } else if (channel === "telegram" && envTelegram && envTelegram !== "sample") {
+      window.open(`https://t.me/${envTelegram}`, "_blank");
+    } else {
+      setMessengerStatusMsg(
+        channel === "whatsapp"
+          ? (siteLang === "ru" ? "✅ Заявка зафиксирована! Консультант свяжется с вами в WhatsApp по указанному номеру." : "✅ Request recorded! An advisor will reach you via WhatsApp at your number.")
+          : (siteLang === "ru" ? "✅ Заявка зафиксирована! Консультант свяжется с вами в Telegram по указанному номеру." : "✅ Request recorded! An advisor will reach you via Telegram at your number.")
+      );
+    }
   };
 
   return (
@@ -709,21 +734,136 @@ export default function PropertyQuizStandalone() {
               />
             </div>
 
-            <div className="pt-4 flex items-center justify-between">
+            {/* Messenger Destination for Dossier & Consultation */}
+            <div className="space-y-2 pt-2">
+              <label className="text-xs font-bold text-[#475569] uppercase tracking-wider block">
+                {tq.messengerChoiceLabel} <span className="text-rose-500">*</span>
+              </label>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {/* WhatsApp Option (Primary) */}
+                <button
+                  type="button"
+                  onClick={() => setSelectedMessenger("whatsapp")}
+                  className={`p-4 rounded-2xl border text-left transition-all cursor-pointer flex items-center justify-between ${
+                    selectedMessenger === "whatsapp"
+                      ? "border-[#25D366] bg-[#25D366]/10 ring-2 ring-[#25D366]"
+                      : "border-[#E2E8F0] bg-white hover:bg-[#F8FAFC]"
+                  }`}
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full bg-[#25D366] text-white flex items-center justify-center shrink-0 shadow-md">
+                      <svg className="w-5 h-5 fill-white" viewBox="0 0 24 24">
+                        <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.15c-1.49 0-2.95-.4-4.22-1.16l-.3-.18-3.13.82.84-3.05-.2-.31a8.17 8.17 0 0 1-1.26-4.36c0-4.52 3.68-8.2 8.2-8.2 2.19 0 4.25.85 5.8 2.4 1.55 1.55 2.4 3.61 2.4 5.8 0 4.52-3.68 8.2-8.2 8.24zm4.49-6.15c-.25-.12-1.46-.72-1.68-.81-.23-.08-.39-.12-.56.12-.17.25-.65.81-.8 1-.15.19-.3.21-.55.08-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.39-1.72-.15-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.15.17-.25.25-.42.08-.17.04-.31-.02-.44s-.56-1.35-.77-1.85c-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.12.17 1.78 2.71 4.3 3.8 2.53 1.09 2.53.73 2.98.68.46-.05 1.46-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.11-.23-.18-.48-.3z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <div className="flex items-center gap-2">
+                        <span className="font-bold text-sm sm:text-base text-[#0F172A]">WhatsApp</span>
+                        <span className="px-2 py-0.5 rounded-full text-[10px] font-extrabold bg-[#25D366] text-white uppercase tracking-wider">
+                          {siteLang === "ru" ? "Основной" : "Primary"}
+                        </span>
+                      </div>
+                      <p className="text-xs text-[#64748B]">
+                        {siteLang === "ru" ? "Мгновенное досье и расчет в чат" : "Instant dossier & ROI in chat"}
+                      </p>
+                    </div>
+                  </div>
+                  <div className={`w-5 h-5 rounded-full border flex items-center justify-center text-xs font-bold ${
+                    selectedMessenger === "whatsapp"
+                      ? "border-[#25D366] bg-[#25D366] text-white"
+                      : "border-[#CBD5E1] bg-white text-transparent"
+                  }`}>
+                    ✓
+                  </div>
+                </button>
+
+                {/* Telegram Option */}
+                <button
+                  type="button"
+                  onClick={() => setSelectedMessenger("telegram")}
+                  className={`p-4 rounded-2xl border text-left transition-all cursor-pointer flex items-center justify-between ${
+                    selectedMessenger === "telegram"
+                      ? "border-[#229ED9] bg-[#229ED9]/10 ring-2 ring-[#229ED9]"
+                      : "border-[#E2E8F0] bg-white hover:bg-[#F8FAFC]"
+                  }`}
+                >
+                  <div className="flex items-center gap-3">
+                    <div className="w-10 h-10 rounded-full bg-[#229ED9] text-white flex items-center justify-center shrink-0 shadow-md">
+                      <svg className="w-5 h-5 fill-white -ml-0.5" viewBox="0 0 24 24">
+                        <path d="M20.665 3.717l-17.73 6.837c-1.21.486-1.203 1.161-.222 1.462l4.552 1.42 10.532-6.645c.498-.303.953-.14.579.192l-8.533 7.701v.001l-.316 4.692c.46 0 .663-.211.921-.46l2.211-2.15 4.599 3.397c.848.467 1.457.227 1.668-.785l3.019-14.228c.309-1.239-.473-1.8-1.282-1.432z" />
+                      </svg>
+                    </div>
+                    <div>
+                      <span className="font-bold text-sm sm:text-base text-[#0F172A]">Telegram</span>
+                      <p className="text-xs text-[#64748B]">
+                        {siteLang === "ru" ? "Консультация брокера в мессенджере" : "Direct broker message"}
+                      </p>
+                    </div>
+                  </div>
+                  <div className={`w-5 h-5 rounded-full border flex items-center justify-center text-xs font-bold ${
+                    selectedMessenger === "telegram"
+                      ? "border-[#229ED9] bg-[#229ED9] text-white"
+                      : "border-[#CBD5E1] bg-white text-transparent"
+                  }`}>
+                    ✓
+                  </div>
+                </button>
+              </div>
+            </div>
+
+            {/* Action Buttons */}
+            <div className="pt-4 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4">
               <button
                 type="button"
                 onClick={() => setStep(4)}
-                className="px-6 py-3 rounded-xl border border-[#CBD5E1] text-[#475569] font-bold text-sm hover:bg-[#F8FAFC] transition-all cursor-pointer"
+                className="px-6 py-3 rounded-xl border border-[#CBD5E1] text-[#475569] font-bold text-sm hover:bg-[#F8FAFC] transition-all cursor-pointer text-center"
               >
                 {tq.backBtn}
               </button>
-              <button
-                type="submit"
-                disabled={isSubmitting || !name.trim() || !phone.trim()}
-                className="px-8 py-3.5 rounded-xl bg-[#8C6A48] hover:bg-[#78593A] disabled:opacity-40 text-white font-bold text-base tracking-wide shadow-lg transition-all cursor-pointer flex items-center gap-2"
-              >
-                {isSubmitting ? tq.submittingBtn : tq.submitBtn}
-              </button>
+
+              <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3">
+                {/* Primary WhatsApp Submit */}
+                <button
+                  type="button"
+                  onClick={() => handleSubmit(undefined, "whatsapp")}
+                  disabled={isSubmitting || !name.trim() || !phone.trim()}
+                  className={`px-6 py-3.5 rounded-xl font-bold text-sm sm:text-base tracking-wide shadow-md transition-all cursor-pointer flex items-center justify-center gap-2.5 ${
+                    selectedMessenger === "whatsapp"
+                      ? "bg-[#25D366] hover:bg-[#20bd5a] text-white ring-2 ring-[#25D366]/40 shadow-lg"
+                      : "bg-[#25D366] hover:bg-[#20bd5a] text-white opacity-90"
+                  } disabled:opacity-40`}
+                >
+                  <svg className="w-5 h-5 fill-white shrink-0" viewBox="0 0 24 24">
+                    <path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.82 9.82 0 0 0 12.04 2zm0 18.15c-1.49 0-2.95-.4-4.22-1.16l-.3-.18-3.13.82.84-3.05-.2-.31a8.17 8.17 0 0 1-1.26-4.36c0-4.52 3.68-8.2 8.2-8.2 2.19 0 4.25.85 5.8 2.4 1.55 1.55 2.4 3.61 2.4 5.8 0 4.52-3.68 8.2-8.2 8.24zm4.49-6.15c-.25-.12-1.46-.72-1.68-.81-.23-.08-.39-.12-.56.12-.17.25-.65.81-.8 1-.15.19-.3.21-.55.08-.25-.12-1.05-.39-2-1.23-.74-.66-1.24-1.47-1.39-1.72-.15-.25-.02-.38.11-.5.11-.11.25-.29.37-.43.12-.15.17-.25.25-.42.08-.17.04-.31-.02-.44s-.56-1.35-.77-1.85c-.2-.48-.41-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.12.17 1.78 2.71 4.3 3.8 2.53 1.09 2.53.73 2.98.68.46-.05 1.46-.6 1.67-1.18.21-.58.21-1.07.15-1.18-.06-.11-.23-.18-.48-.3z" />
+                  </svg>
+                  <span>
+                    {isSubmitting && submittedMessenger === "whatsapp"
+                      ? tq.submittingBtn
+                      : tq.whatsappBtn}
+                  </span>
+                </button>
+
+                {/* Secondary Telegram Submit */}
+                <button
+                  type="button"
+                  onClick={() => handleSubmit(undefined, "telegram")}
+                  disabled={isSubmitting || !name.trim() || !phone.trim()}
+                  className={`px-5 py-3.5 rounded-xl font-bold text-sm sm:text-base tracking-wide transition-all cursor-pointer flex items-center justify-center gap-2 ${
+                    selectedMessenger === "telegram"
+                      ? "bg-[#229ED9] hover:bg-[#1e8ec3] text-white ring-2 ring-[#229ED9]/40 shadow-lg"
+                      : "bg-[#229ED9] hover:bg-[#1e8ec3] text-white opacity-90"
+                  } disabled:opacity-40`}
+                >
+                  <svg className="w-5 h-5 fill-white -ml-0.5 shrink-0" viewBox="0 0 24 24">
+                    <path d="M20.665 3.717l-17.73 6.837c-1.21.486-1.203 1.161-.222 1.462l4.552 1.42 10.532-6.645c.498-.303.953-.14.579.192l-8.533 7.701v.001l-.316 4.692c.46 0 .663-.211.921-.46l2.211-2.15 4.599 3.397c.848.467 1.457.227 1.668-.785l3.019-14.228c.309-1.239-.473-1.8-1.282-1.432z" />
+                  </svg>
+                  <span>
+                    {isSubmitting && submittedMessenger === "telegram"
+                      ? tq.submittingBtn
+                      : tq.telegramBtn}
+                  </span>
+                </button>
+              </div>
             </div>
           </form>
         )}
@@ -749,8 +889,14 @@ export default function PropertyQuizStandalone() {
               <div>• <span className="font-bold">{tq.summaryCategory}:</span> {propertyTypeItems.find((p) => p.id === propertyType)?.label}</div>
               <div>• <span className="font-bold">{tq.summaryArea}:</span> {areaItems.find((a) => a.id === area)?.label}</div>
               <div>• <span className="font-bold">{tq.summaryBudget}:</span> {budget} {currency}</div>
-              <div>• <span className="font-bold">{tq.summaryContact}:</span> {contactPreference === "representative" ? tq.contactRep : tq.contactDirect}</div>
+              <div>• <span className="font-bold">{tq.summaryContact}:</span> {contactPreference === "representative" ? tq.contactRep : tq.contactDirect} ({submittedMessenger === "telegram" ? "Telegram" : "WhatsApp"})</div>
             </div>
+
+            {messengerStatusMsg && (
+              <div className="p-4 rounded-2xl bg-emerald-50 border border-emerald-200 text-emerald-800 text-sm font-semibold max-w-lg mx-auto">
+                {messengerStatusMsg}
+              </div>
+            )}
 
             {/* Action Buttons: WhatsApp (Primary) & Telegram (Secondary) */}
             <div className="pt-2 space-y-4 max-w-lg mx-auto">
