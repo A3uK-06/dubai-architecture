@@ -94,6 +94,9 @@ const montserrat = Montserrat({
   display: "swap",
 });
 
+const GA_ID = process.env.NEXT_PUBLIC_GA_ID || "G-S9Q49RFJE1";
+const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID || "GTM-P5QVMKMB";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -116,8 +119,51 @@ export default function RootLayout({
         <link rel="icon" href="/icon-192.png" type="image/png" sizes="192x192" />
         <link rel="icon" href="/icon.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+
+        {/* Google tag (gtag.js) for GA4 */}
+        {GA_ID && (
+          <>
+            <script async src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`} />
+            <script
+              id="google-tag-init"
+              dangerouslySetInnerHTML={{
+                __html: `
+                  window.dataLayer = window.dataLayer || [];
+                  function gtag(){dataLayer.push(arguments);}
+                  gtag('js', new Date());
+                  gtag('config', '${GA_ID}');
+                `,
+              }}
+            />
+          </>
+        )}
+
+        {/* Google Tag Manager (GTM) */}
+        {GTM_ID && (
+          <script
+            id="gtm-init"
+            dangerouslySetInnerHTML={{
+              __html: `(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'dataLayer','${GTM_ID}');`,
+            }}
+          />
+        )}
       </head>
       <body className="min-h-full flex flex-col bg-white text-[#0F172A] selection:bg-[#8C6A48]/20 selection:text-[#0F172A] font-sans antialiased">
+        {GTM_ID && (
+          <noscript>
+            <iframe
+              src={`https://www.googletagmanager.com/ns.html?id=${GTM_ID}`}
+              height="0"
+              width="0"
+              style={{ display: "none", visibility: "hidden" }}
+              title="gtm-noscript"
+            />
+          </noscript>
+        )}
         <Providers>
           <GoogleAnalytics />
           <Tracker />
