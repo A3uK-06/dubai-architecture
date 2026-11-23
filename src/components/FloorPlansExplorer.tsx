@@ -31,7 +31,7 @@ export function getBuildingArchStyle(building: Building): ArchitecturalStyle {
   if (bid.includes("index") || bid.includes("vela") || bid.includes("creek-waters") || arch.includes("foster")) {
     return "foster";
   }
-  if (bid.includes("cayan")) {
+  if (bid.includes("cayan") || bid.includes("tiger")) {
     return "som-twisted";
   }
   if (bid.includes("burj-khalifa") || bid.includes("sky-view") || bid.includes("azizi")) {

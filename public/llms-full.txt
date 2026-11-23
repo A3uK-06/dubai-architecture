@@ -14,7 +14,7 @@ Key principles:
 - Multi-jurisdictional accessibility: Fully localized across 10 languages: English (en), Russian (ru), Arabic (ar), Hindi (hi), Chinese (zh), German (de), French (fr), Urdu (ur), Italian (it), and Turkish (tr).
 
 ================================================================================
-2. SKYSCRAPERS & TOWERS CATALOG (37 TOWERS)
+2. SKYSCRAPERS & TOWERS CATALOG (38 TOWERS)
 ================================================================================
 
 ---
@@ -609,6 +609,22 @@ Service Charge (Mollak): 28 AED/sq.ft
 District Cooling: Consumption-Billed (Empower)
 Description: Rising 725 meters directly on prime Sheikh Zayed Road, Burj Azizi is the second-tallest skyscraper in the world. This monumental 131-storey architectural icon features a 7-star ultra-luxury hotel, an elite vertical shopping mall, trophy residences, and the highest observation deck and nightclub on Earth. Engineered with an advanced reinforced concrete mega-core and aerodynamic vortex-shedding setbacks, Burj Azizi redefines the skyline of Dubai for the next century.
 
+---
+Tower: Tiger Sky Tower
+Slug: tiger-sky-tower
+URL: https://dubai-architecture.info/buildings/tiger-sky-tower/
+Architectural Height: 532 m (1745 ft)
+Floors: 122
+Completion Year: 2029
+District: Business Bay
+Architect: Archgroup Consultants
+Developer: Tiger Properties
+Structural System: High-performance reinforced concrete mega-core with composite steel-concrete perimeter columns and spiral outriggers
+Estimated Gross Yield: 8.1% - 9.4%
+Service Charge (Mollak): 24 AED/sq.ft
+District Cooling: Consumption-Billed (Empower)
+Description: Soaring 532 meters (122 storeys) into the Business Bay skyline above Dubai Canal, Tiger Sky Tower is a $1 billion supertall architectural marvel by Tiger Properties. Breaking five Guinness World Records, the monumental golden-spiral tower hosts the world's highest residential tropical rainforest and adventure rollglider at 447 meters, the highest residential infinity pool at 431 meters, and the highest fine-dining restaurant at 439 meters. Engineered with high-strength composite columns, dual tuned liquid mass dampers, and expansive wrap-around balconies, Tiger Sky Tower sets a peerless global benchmark for biophilic high-altitude living.
+
 ================================================================================
 3. DUBAI DISTRICTS & MASTER COMMUNITIES (14 DISTRICTS)
 ================================================================================
@@ -740,7 +756,7 @@ Key Landmarks: Al Maktoum International Airport (DWC - 260M Passenger Masterplan
 Overview: Dubai's 145-sq.km strategic master-city of the future, anchored by the $35-billion expansion of Al Maktoum International Airport (DWC) to become the largest airport on Earth.
 
 ================================================================================
-4. MASTER DEVELOPERS REGISTRY (11 DEVELOPERS)
+4. MASTER DEVELOPERS REGISTRY (12 DEVELOPERS)
 ================================================================================
 
 ---
@@ -896,6 +912,20 @@ Tier: Tier-1 Master Developer
 Average Net Portfolio ROI: 7.8%
 Total Projects in Dubai: 42
 Description: Leading private master developer in the UAE founded by Mirwais Azizi. Renowned for large-scale European-style master communities (Azizi Riviera in MBR City, Azizi Venice in Dubai South) and constructing the world's second-tallest skyscraper, Burj Azizi (725m), on Sheikh Zayed Road.
+
+---
+Developer: Tiger Properties (Tiger)
+Slug: tiger-properties
+URL: https://dubai-architecture.info/developers/tiger-properties/
+Official Website: https://tigerproperties.ae/
+Founding Year: 1976
+Headquarters: Business Bay, Dubai, UAE
+DLD Escrow Rating: AAA (Prime Track Record)
+On-Time Delivery Rate: 97.1%
+Tier: Tier-1 Master Developer
+Average Net Portfolio ROI: 7.9%
+Total Projects in Dubai: 45
+Description: Established in 1976, Tiger Group is one of the UAE's longest-standing development and construction conglomerates. Renowned for fully self-funded delivery across 270+ projects, Tiger is pioneering vertical megatall architecture with the 532-meter Tiger Sky Tower in Business Bay, holding five Guinness World Records including the world's highest residential rainforest.
 
 ================================================================================
 5. UAE 10-YEAR GOLDEN VISA VIA REAL ESTATE

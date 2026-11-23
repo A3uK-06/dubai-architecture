@@ -1655,5 +1655,43 @@ export const CUSTOM_TOWER_AUDITS: TowerCustomAuditTranslations = {
       elevatorPeakWaitReality: "10 میٹر فی سیکنڈ تیز رفتار ڈبل ڈیک لفٹوں کے ذریعے 30 سے 45 سیکنڈ۔",
       hiddenOperatingCosts: "ایم پاور کولنگ کے بنیادی فیس لاگو؛ سروس چارجز (~28 درہم فی مربع فٹ) سپر ٹال کی دیکھ بھال کے مطابق۔"
     }
+  },
+  "tiger-sky-tower": {
+    en: {
+      honestVerdict: "At 532 meters, Tiger Sky Tower is not just another supertall—it is a vertical biome and lifestyle destination that breaks multiple Guinness World Records with its 447m rainforest and 431m infinity pool. Located in prime Business Bay overlooking the Canal, the project offers unprecedented investor appeal, particularly for short-term luxury rental yields and international capital appreciation. The entry ticket from 2.2M AED ($599K) is remarkably competitive for a record-breaking supertall. Investors should note the 2029 handover timeline and factor in supertall service fees (~24 AED/sq.ft).",
+      strengths: [
+        "Iconic 532-meter supertall holding world records for highest rainforest, infinity pool, and sky restaurant.",
+        "Highly attractive pricing (from 2.2M AED) and flexible 7-year payment plans directly from Tier-1 developer Tiger Group.",
+        "Prime Dubai Canal frontage in Business Bay with panoramic Downtown and Burj Khalifa views."
+      ],
+      pitfallsAndWeaknesses: [
+        "Long-term construction cycle with anticipated handover in Q4 2029.",
+        "Business Bay arterial traffic during evening peak hours along Financial Centre Road exits.",
+        "High-altitude living requires multi-stage elevator transfers to reach upper residential penthouses."
+      ],
+      airbnbHolidayHomesPolicy: "Full holiday home permissions with dedicated concierge services; anticipated high premium ADR for world-record amenities.",
+      guestParkingReality: "Multi-level podium parking with automated valet parking systems for residents and visitors.",
+      soundproofingRating: "STC 56 dB (Advanced acoustic glazing dampening urban Business Bay sound).",
+      elevatorPeakWaitReality: "< 30 seconds via high-speed double-deck destination dispatch system.",
+      hiddenOperatingCosts: "District cooling capacity charges (Empower); premium service fee of 24 AED/sq.ft to sustain the vertical rainforest biome."
+    },
+    ru: {
+      honestVerdict: "При высоте 532 метра Tiger Sky Tower — это не просто супертолл, а уникальный вертикальный эко-биом, бьющий мировые рекорды Гиннесса благодаря тропическому лесу на высоте 447 м и инфинити-бассейну на 431 м. Расположенный на первой линии Дубайского канала в Business Bay, проект обладает высочайшей инвестиционной привлекательностью для краткосрочной аренды и капитализации. Входной порог от 2,2 млн AED ($599K) крайне конкурентен для здания такого масштаба. Следует учитывать горизонт сдачи в 2029 году и эксплуатационные сборы супертолла (~24 AED/кв. фут).",
+      strengths: [
+        "Знаковый 532-метровый супертолл с мировыми рекордами высоты тропического сада, бассейна и панорамного ресторана.",
+        "Привлекательная цена входа (от 2,2 млн AED) и гибкие планы рассрочки от опытного девелопера Tiger Group.",
+        "Престижная локация на набережной Дубайского канала с прямым панорамным видом на Бурдж-Халифа."
+      ],
+      pitfallsAndWeaknesses: [
+        "Длительный цикл строительства со сдачей объекта в 4 квартале 2029 года.",
+        "Плотный вечерний трафик на съездах из Business Bay на Financial Centre Road и Al Khail.",
+        "Проживание на верхних этажах требует двухступенчатой пересадки через скай-лобби."
+      ],
+      airbnbHolidayHomesPolicy: "Полное разрешение на посуточную аренду (Holiday Homes); ожидается высокий ADR за счет уникальных мировых рекордов здания.",
+      guestParkingReality: "Многоуровневый паркинг в стилобате с автоматизированным сервисом valet-парковки.",
+      soundproofingRating: "STC 56 dB (двойной контур шумоизоляции и премиальные стеклопакеты, отсекающие городской шум).",
+      elevatorPeakWaitReality: "< 30 секунд благодаря скоростным двухэтажным лифтам с интеллектуальным распределением.",
+      hiddenOperatingCosts: "Базовая плата за мощность охлаждения Empower; сервисный сбор 24 AED/кв. фут на обслуживание высотного биома."
+    }
   }
 };

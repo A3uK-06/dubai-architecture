@@ -270,6 +270,29 @@ export const DEVELOPERS: Developer[] = [
     startingPriceAed: "1,150,000 AED",
     website: "https://www.azizidevelopments.com/",
   },
+  {
+    id: "DEV-TIGER",
+    slug: "tiger-properties",
+    name: "Tiger Properties",
+    shortName: "Tiger",
+    foundingYear: 1976,
+    headquarters: "Business Bay, Dubai, UAE",
+    tier: "Tier-1 Master Developer",
+    dldEscrowRating: "AAA (Prime Track Record)",
+    onTimeDeliveryRate: "97.1%",
+    description:
+      "Established in 1976, Tiger Group is one of the UAE's longest-standing development and construction conglomerates. Renowned for fully self-funded delivery across 270+ projects, Tiger is pioneering vertical megatall architecture with the 532-meter Tiger Sky Tower in Business Bay, holding five Guinness World Records including the world's highest residential rainforest.",
+    highlights: [
+      "Over 45 years of continuous engineering and construction excellence in the UAE since 1976",
+      "Delivered over 270 landmark projects spanning 100,000,000+ sq.ft of built-up real estate",
+      "Developer of the record-shattering 532m Tiger Sky Tower featuring the world's highest sky rainforest & pool",
+      "Fully integrated in-house construction, MEP engineering, and facility management ecosystem",
+    ],
+    totalProjectsDubai: 45,
+    averageNetRoi: "7.9%",
+    startingPriceAed: "2,200,000 AED",
+    website: "https://tigerproperties.ae/",
+  },
 ];
 
 export function getDeveloperBySlug(slug: string): Developer | undefined {
@@ -289,6 +312,7 @@ export function getDeveloperForBuilding(developerName: string): Developer | unde
   if (lower.includes("habtoor")) return getDeveloperBySlug("al-habtoor");
   if (lower.includes("azizi")) return getDeveloperBySlug("azizi");
   if (lower.includes("jumeirah") || lower.includes("dubai holding")) return getDeveloperBySlug("dubai-holding");
+  if (lower.includes("tiger")) return getDeveloperBySlug("tiger-properties");
   return undefined;
 }
 
@@ -390,6 +414,15 @@ const DEVELOPERS_RU: Record<string, Partial<Developer>> = {
       "Создатель масштабных водных мастер-сообществ Riviera (MBR City) и Venice (Dubai South)",
       "Портфель свыше 30 000 сданных и строящихся жилых резиденций в ключевых локациях Дубая",
       "Полное соответствие нормативам эскроу-счетов Земельного департамента Дубая (DLD)",
+    ],
+  },
+  "tiger-properties": {
+    description: "Ведущий частный строительный конгломерат ОАЭ, основанный в 1976 году. Известен полным отсутствием долговой нагрузки, собственным парком строительной техники и реализацией свыше 270 проектов. В настоящее время возводит мегапроект Tiger Sky Tower (532 м) в Business Bay — самый высокий жилой небоскреб с тропическим лесом и инфинити-бассейном на высоте более 430 метров.",
+    highlights: [
+      "Свыше 45 лет непрерывной строительной истории в ОАЭ (основан в 1976 году)",
+      "Более 270 сданных жилых и коммерческих проектов общей площадью свыше 100 млн кв. футов",
+      "Девелопер супертолла Tiger Sky Tower (532 м) с 5 мировыми рекордами Гиннесса",
+      "Собственный генеральный подрядчик (Tiger Contracting) и производство стройматериалов",
     ],
   },
 };

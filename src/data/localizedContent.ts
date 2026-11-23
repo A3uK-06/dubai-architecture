@@ -545,6 +545,22 @@ export const LOCALIZED_BUILDINGS_RU: Record<string, LocalizedBuildingData> = {
     ],
     "historicalNote": "Официальный запуск продаж состоялся в сентябре 2024 года девелопером Azizi Developments.",
     "structuralSystem": "Монолитное ядро из высокопрочного бетона с аутригерными поясами и мегаколоннами"
+  },
+  "tiger-sky-tower": {
+    "name": "Тайгер Скай Тауэр (Tiger Sky Tower)",
+    "architect": "Archgroup Consultants & International Associates",
+    "developer": "Tiger Properties (Тайгер Пропертиз)",
+    "district": "Бизнес Бэй",
+    "type": "Жилой супертолл ультра-роскоши",
+    "description": "Грандиозный 122-этажный жилой небоскреб высотой 532 метра в самом сердце Business Bay. Проект стоимостью $1 млрд от девелопера Tiger Properties бьет пять мировых рекордов Гиннесса: самый высокий в мире тропический дождевой лес на высоте 447 метров с аттракционом Rollglider, высочайший жилой инфинити-бассейн (431 м) и панорамный ресторан (439 м). Скульптурный золотистый силуэт с двойными скоростными лифтами и биофильным дизайном открывает панорамы Дубайского канала и Бурдж-Халифа.",
+    "architecturalHighlights": [
+      "Самый высокий в мире тропический лес и роллглайдер в жилом доме на высоте 447 метров",
+      "Высочайший в мире жилой инфинити-бассейн (431 м) и ресторан высокой кухни (439 м)",
+      "Скульптурный 532-метровый аэродинамический силуэт, снижающий ветровые завихрения",
+      "Прямой выход на набережную Дубайского канала в Business Bay с видом на Бурдж-Халифа"
+    ],
+    "historicalNote": "Официально анонсирован в мае 2024 года как флагманский супертолл Tiger Group стоимостью 3,6 млрд дирхамов ($1 млрд).",
+    "structuralSystem": "Высокопрочное монолитное ядро с композитными колоннами и спиральными балконами"
   }
 };
 
@@ -872,6 +888,22 @@ export const LOCALIZED_BUILDINGS_AR: Record<string, LocalizedBuildingData> = {
     ],
     "historicalNote": "أُعلن عنه رسمياً في سبتمبر 2024 ليكون ثاني أطول ناطحة سحاب عملاقة تتجاوز 700 متر في دبي.",
     "structuralSystem": "نواة خرسانية مسلحة فائقة القوة مع أحزمة دعامات فولاذية وأعمدة عملاقة مركبة"
+  },
+  "tiger-sky-tower": {
+    "name": "برج تايجر سكاي (Tiger Sky Tower)",
+    "architect": "آرش جروب للاستشارات الهندسية (Archgroup Consultants)",
+    "developer": "تايجر العقارية (Tiger Properties)",
+    "district": "الخليج التجاري (Business Bay)",
+    "type": "برج سكني فائق الارتفاع وضيافة فاخرة",
+    "description": "بارتفاع مهيب يبلغ 532 متراً (122 طابقاً) في قلب الخليج التجاري فوق قناة دبي المائية، يمثل برج تايجر سكاي أيقونة معمارية عالمية بقيمة مليار دولار. يحطم البرج خمسة أرقام قياسية في موسوعة غينيس، تشمل أعلى غابة استوائية مطيرة سكنية مع مسار تزلج معلق على ارتفاع 447 متراً، وأعلى حوض سباحة لا متناهي على ارتفاع 431 متراً، وأعلى مطعم فاخر على ارتفاع 439 متراً بإطلالات بانورامية على برج خليفة.",
+    "architecturalHighlights": [
+      "أعلى غابة استوائية سكنية ومسار مغامرات معلق في العالم على ارتفاع 447 متراً",
+      "أعلى مسبح إنفينيتي سكني (431 م) وأعلى مطعم سماوي (439 م) في العالم",
+      "تصميم حلزوني ديناميكي بارتفاع 532 متراً مصمم لتقليل اهتزازات الرياح الجوية",
+      "واجهة مباشرة على ممشى قناة دبي المائية في الخليج التجاري مع إطلالات ساحرة على برج خليفة"
+    ],
+    "historicalNote": "تم إطلاقه رسمياً في مايو 2024 كأحد أضخم المشاريع السكنية لشركة تايجر باستثمار يتجاوز 3.6 مليار درهم.",
+    "structuralSystem": "نواة خرسانية مسلحة فائقة القوة مع أعمدة محيطية مركبة وتصميم حلزوني متقدم"
   }
 };
 
@@ -1283,6 +1315,22 @@ export const LOCALIZED_BUILDINGS_ZH: Record<string, LocalizedBuildingData> = {
     ],
     "historicalNote": "由Azizi Developments于2024年9月全球正式启幕发售，为迪拜第二座突破700米大关的超级工程。",
     "structuralSystem": "超高强自密实混凝土核心筒配四道巨型机械桁架外伸伸臂与组合巨柱体系"
+  },
+  "tiger-sky-tower": {
+    "name": "虎牌天空塔 (Tiger Sky Tower)",
+    "architect": "Archgroup建筑设计事务所与国际联合团队",
+    "developer": "Tiger Properties (虎牌地产)",
+    "district": "商业湾 (Business Bay)",
+    "type": "超高层奢华住宅与云端地标",
+    "description": "虎牌天空塔（Tiger Sky Tower）矗立于迪拜商业湾核心区，高耸入云达532米（共122层），总投资超10亿美元。该项目一举打破五项吉尼斯世界纪录：包括海拔447米的世界最高住宅室内热带雨林及高空滑翔索道、海拔431米的世界最高住宅无边泳池以及海拔439米的世界最高餐厅。流线型金色螺旋建筑外观与仿生生态景观完美交融，坐拥迪拜运河与哈利法塔无与伦比的天际线全景。",
+    "architecturalHighlights": [
+      "海拔447米世界最高住宅室内热带雨林及空中滑翔探险索道",
+      "世界最高住宅无边际泳池（431米）与最高云端顶级餐厅（439米）",
+      "532米（122层）气动螺旋立面设计，显著降低高空气流涡流共振",
+      "迪拜运河一线水岸黄金区位，俯瞰哈利法塔与市中心全景"
+    ],
+    "historicalNote": "于2024年5月由阿联酋老牌实力财团Tiger Group正式发布，耗资约36亿迪拉姆（10亿美元）。",
+    "structuralSystem": "超高强钢筋混凝土核心筒结构配合外围复合巨型钢骨混凝土柱体系"
   }
 };
 
@@ -1694,6 +1742,22 @@ export const LOCALIZED_BUILDINGS_DE: Record<string, LocalizedBuildingData> = {
     ],
     "historicalNote": "Im September 2024 von Azizi Developments als Dubais zweiter Megatall-Turm über 700 Meter offiziell gestartet.",
     "structuralSystem": "Hochfester Stahlbeton-Megakern mit Mehrebenen-Auslegern und Verbundstützen"
+  },
+  "tiger-sky-tower": {
+    "name": "Tiger Sky Tower",
+    "architect": "Archgroup Consultants & International Associates",
+    "developer": "Tiger Properties",
+    "district": "Business Bay",
+    "type": "Super-Tall Ultra-Luxus-Wohnturm",
+    "description": "Mit einer Höhe von 532 Metern (122 Stockwerke) über dem Dubai Canal in Business Bay ist der Tiger Sky Tower ein 1-Milliarde-Dollar-Meisterwerk von Tiger Properties. Der Megaturm bricht fünf Guinness-Weltrekorde, darunter der höchste tropische Regenwald der Welt in einem Wohngebäude mit Rollglider auf 447 Metern, der höchste Infinity-Pool auf 431 Metern und das höchste Fine-Dining-Restaurant auf 439 Metern mit Panoramablick auf den Burj Khalifa.",
+    "architecturalHighlights": [
+      "Höchster tropischer Regenwald der Welt in einem Wohnturm auf 447 Metern Höhe",
+      "Höchster Wohn-Infinity-Pool (431 m) und höchstes Sky-Restaurant (439 m) weltweit",
+      "Aerodynamisch gedrehte 532-Meter-Silhouette zur Minimierung von Windlasten",
+      "Erstklassige Wasserfrontlage am Dubai Canal in Business Bay mit freiem Burj-Khalifa-Blick"
+    ],
+    "historicalNote": "Offiziell im Mai 2024 von der Tiger Group als 3,6-Milliarden-AED-Megaprojekt vorgestellt.",
+    "structuralSystem": "Hochleistungs-Betonkern mit Verbund-Perimetersäulen und aerodynamischen Spiralbalkonen"
   }
 };
 
@@ -2105,6 +2169,22 @@ export const LOCALIZED_BUILDINGS_FR: Record<string, LocalizedBuildingData> = {
     ],
     "historicalNote": "Lancé officiellement en septembre 2024 par Azizi Developments comme second super-gratte-ciel de Dubaï de plus de 700 mètres.",
     "structuralSystem": "Noyau central mégastructurel en béton armé à haute performance et stabilisateurs outriggers"
+  },
+  "tiger-sky-tower": {
+    "name": "Tiger Sky Tower",
+    "architect": "Archgroup Consultants & International Associates",
+    "developer": "Tiger Properties",
+    "district": "Business Bay",
+    "type": "Tour résidentielle super-haute d'ultra-luxe",
+    "description": "Culminant à 532 mètres (122 étages) au-dessus du canal de Dubaï à Business Bay, la Tiger Sky Tower est un chef-d'œuvre de plus d'un milliard de dollars développé par Tiger Properties. Établissant cinq records du monde Guinness, la tour abrite la plus haute forêt tropicale résidentielle au monde avec tyrolienne à 447 mètres, la plus haute piscine à débordement à 431 mètres et le plus haut restaurant gastronomique à 439 mètres avec vue sur le Burj Khalifa.",
+    "architecturalHighlights": [
+      "Plus haute forêt tropicale résidentielle et parcours d'aventure au monde à 447 mètres d'altitude",
+      "Plus haute piscine à débordement (431 m) et plus haut restaurant panoramique (439 m)",
+      "Profil sculptural aérodynamique de 532 mètres conçu pour neutraliser les tourbillons de vent",
+      "Emplacement d'élite en bordure du canal de Dubaï à Business Bay avec vue panoramique"
+    ],
+    "historicalNote": "Dévoilé officiellement en mai 2024 par le groupe Tiger avec un investissement de 3,6 milliards d'AED.",
+    "structuralSystem": "Noyau en béton haute performance avec mégacolonnes composites et balcons hélicoïdaux"
   }
 };
 
@@ -2516,6 +2596,22 @@ export const LOCALIZED_BUILDINGS_IT: Record<string, LocalizedBuildingData> = {
     ],
     "historicalNote": "Annunciato ufficialmente a settembre 2024 da Azizi Developments come seconda megatorre di Dubai oltre i 700 metri.",
     "structuralSystem": "Mega-nucleo in cemento armato ad altissima resistenza con travature stabilizzatrici outrigger"
+  },
+  "tiger-sky-tower": {
+    "name": "Tiger Sky Tower",
+    "architect": "Archgroup Consultants & International Associates",
+    "developer": "Tiger Properties",
+    "district": "Business Bay",
+    "type": "Grattacielo residenziale supertall di lusso",
+    "description": "Con un'altezza maestosa di 532 metri (122 piani) sopra il Dubai Canal a Business Bay, Tiger Sky Tower è una meraviglia architettonica da 1 miliardo di dollari firmata Tiger Properties. Il grattacielo detiene cinque Guinness World Record, tra cui la foresta pluviale residenziale più alta al mondo a 447 metri, la piscina a sfioro più alta a 431 metri e il ristorante panoramico più alto a 439 metri.",
+    "architecturalHighlights": [
+      "Foresta pluviale residenziale e percorso rollglider più alti al mondo a 447 metri",
+      "Piscina a sfioro residenziale più alta al mondo (431 m) e sky restaurant (439 m)",
+      "Silhouette aerodinamica a spirale di 532 metri studiata contro i vortici del vento",
+      "Posizione privilegiata sul lungocanale di Business Bay con viste spettacolari sul Burj Khalifa"
+    ],
+    "historicalNote": "Presentato ufficialmente nel maggio 2024 da Tiger Group per un investimento di 3,6 miliardi di AED.",
+    "structuralSystem": "Nucleo in cemento armato ad altissima resistenza con megacolonne perimetrali composite"
   }
 };
 
@@ -2927,6 +3023,22 @@ export const LOCALIZED_BUILDINGS_TR: Record<string, LocalizedBuildingData> = {
     ],
     "historicalNote": "Eylül 2024'te Azizi Developments tarafından resmi olarak satışa sunulan Dubai'nin 700 metreyi aşan ikinci megatall projesi.",
     "structuralSystem": "Çok kademeli outrigger kafesleri ve kompozit kolonlarla desteklenen yüksek dayanımlı betonarme mega çekirdek"
+  },
+  "tiger-sky-tower": {
+    "name": "Tiger Sky Tower",
+    "architect": "Archgroup Consultants & International Associates",
+    "developer": "Tiger Properties",
+    "district": "Business Bay",
+    "type": "Süper Yüksek Ultra Lüks Konut Kulesi",
+    "description": "Business Bay'de Dubai Kanalı üzerinde 532 metre yüksekliğe (122 kat) ulaşan Tiger Sky Tower, Tiger Properties tarafından geliştirilen 1 milyar dolarlık bir mühendislik şaheseridir. Beş Guinness Dünya Rekoruna sahip kulede, 447 metrede dünyanın en yüksek konut içi yağmur ormanı ve macera teleferiği, 431 metrede en yüksek sonsuzluk havuzu ve 439 metrede en yüksek restoran yer almaktadır.",
+    "architecturalHighlights": [
+      "447 metre irtifada dünyanın en yüksek konut içi yağmur ormanı ve macera parkuru",
+      "Dünyanın en yüksek konut sonsuzluk havuzu (431 m) ve gökyüzü restoranı (439 m)",
+      "Rüzgar yüklerini azaltmak için aerodinamik helezonik spiralle tasarlanmış 532 metrelik profil",
+      "Business Bay Dubai Kanalı kordonunda Burj Khalifa manzaralı prestijli konum"
+    ],
+    "historicalNote": "Mayıs 2024'te Tiger Group tarafından 3.6 milyar AED ($1 Milyar) bütçeyle resmen duyuruldu.",
+    "structuralSystem": "Yüksek performanslı betonarme mega çekirdek ve kompozit çevre kolonları"
   }
 };
 
@@ -3338,6 +3450,22 @@ export const LOCALIZED_BUILDINGS_HI: Record<string, LocalizedBuildingData> = {
     ],
     "historicalNote": "सितंबर 2024 में अज़ीज़ी डेवलपमेंट्स द्वारा 700 मीटर से अधिक ऊंचाई वाले दुबई के दूसरे मेगाटॉल टॉवर के रूप में आधिकारिक तौर पर बिक्री शुरू की गई।",
     "structuralSystem": "मल्टी-टियर आउटरिगर्स और कम्पोजिट कॉलम के साथ उच्च-शक्ति प्रबलित कंक्रीट कोर"
+  },
+  "tiger-sky-tower": {
+    "name": "टाइगर स्काई टॉवर (Tiger Sky Tower)",
+    "architect": "आर्कग्रुप कंसल्टेंट्स एंड इंटरनेशनल एसोसिएट्स",
+    "developer": "टाइगर प्रॉपर्टीज (Tiger Properties)",
+    "district": "बिजनेस बे (Business Bay)",
+    "type": "अल्ट्रा-लक्जरी आवासीय सुपरटॉल",
+    "description": "दुबई कैनाल के ऊपर बिजनेस बे में 532 मीटर (122 मंजिल) की ऊंचाई पर स्थित, टाइगर स्काई टॉवर $1 बिलियन का एक विश्व स्तरीय वास्तुशिल्प चमत्कार है। यह प्रतिष्ठित टॉवर पांच गिनीज वर्ल्ड रिकॉर्ड बनाता है: जिसमें 447 मीटर पर दुनिया का सबसे ऊंचा आवासीय वर्षावन व एडवेंचर रोलग्लाइडर, 431 मीटर पर सबसे ऊंचा इन्फिनिटी पूल और 439 मीटर पर सबसे ऊंचा रेस्टोरेंट शामिल है।",
+    "architecturalHighlights": [
+      "447 मीटर की ऊंचाई पर दुनिया का सबसे ऊंचा इनडोर आवासीय वर्षावन और रोलग्लाइडर",
+      "दुनिया का सबसे ऊंचा आवासीय इन्फिनिटी पूल (431 मी) और स्काई रेस्टोरेंट (439 मी)",
+      "हवा के दबाव को बेअसर करने वाला 532 मीटर ऊंचा एरोडायनामिक घुमावदार डिजाइन",
+      "दुबई कैनाल तट पर बुर्ज खलीफा के मनोरम दृश्यों के साथ प्राइम लोकेशन"
+    ],
+    "historicalNote": "मई 2024 में टाइगर ग्रुप द्वारा 3.6 बिलियन एईडी ($1 बिलियन) के निवेश से घोषित किया गया।",
+    "structuralSystem": "हाई-परफॉर्मेंस प्रबलित कंक्रीट कोर और कंपोजिट परिधि कॉलम संरचना"
   }
 };
 
@@ -3749,6 +3877,22 @@ export const LOCALIZED_BUILDINGS_UR: Record<string, LocalizedBuildingData> = {
     ],
     "historicalNote": "ستمبر 2024 میں عزیزی ڈویلپمنٹس کی جانب سے 700 میٹر سے زائد بلند دبئی کے دوسرے میگا ٹال ٹاور کے طور پر باضابطہ آغاز۔",
     "structuralSystem": "ہائی پرفارمنس کنکریٹ کور، آؤٹ رگر ٹرسز اور کمپوزٹ کالمز پر مبنی مضبوط ساختی نظام"
+  },
+  "tiger-sky-tower": {
+    "name": "ٹائیگر اسکائی ٹاور (Tiger Sky Tower)",
+    "architect": "آرک گروپ کنسلٹنٹس اینڈ انٹرنیشنل ایسوسی ایٹس",
+    "developer": "ٹائیگر پراپرٹیز (Tiger Properties)",
+    "district": "بزنس بے (Business Bay)",
+    "type": "الٹرا لگژری رہائشی فلک بوس عمارت",
+    "description": "دبئی کینال کے اوپر بزنس بے کے قلب میں 532 میٹر (122 منزلیں) بلندی پر تعمیر شدہ، ٹائیگر اسکائی ٹاور ٹائیگر پراپرٹیز کا ایک ارب ڈالر کا شاہکار ہے۔ یہ ٹاور پانچ گینز ورلڈ ریکارڈز توڑتا ہے، جن میں 447 میٹر پر دنیا کا سب سے اونچا رہائشی برساتی جنگل اور ایڈونچر رول گلائیڈر، 431 میٹر پر سب سے اونچا انفینٹی پول اور 439 میٹر پر سب سے اونچا ریستوران شامل ہے۔",
+    "architecturalHighlights": [
+      "447 میٹر بلندی پر دنیا کا سب سے اونچا رہائشی برساتی جنگل اور رول گلائیڈر",
+      "دنیا کا بلند ترین رہائشی انفینٹی پول (431 میٹر) اور اسکائی ریستوران (439 میٹر)",
+      "ہوا کے دباؤ کو کم کرنے والا 532 میٹر ایروڈائنامک لہراتی ڈیزائن",
+      "بزنس بے میں دبئی کینال پر برج خلیفہ کے نظاروں کے ساتھ فرسٹ لائن لوکیشن"
+    ],
+    "historicalNote": "مئی 2024 میں ٹائیگر گروپ نے 3.6 ارب درہم (ایک ارب ڈالر) کے ساتھ اس کا باضابطہ اعلان کیا۔",
+    "structuralSystem": "انتہائی مضبوط کنکریٹ کور اور کمپوزٹ کالمز کا جدید سٹرکچر"
   }
 };
 

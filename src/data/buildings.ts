@@ -3223,6 +3223,102 @@ export const BUILDINGS: Building[] = [
       hiddenOperatingCosts: "Empower district cooling capacity charges apply; premium service fees (~28 AED/sq.ft) reflect supertall facade maintenance."
     },
   },
+  {
+    id: "tiger-sky-tower",
+    legacyId: "DUB-038",
+    slug: "tiger-sky-tower",
+    image: "/images/buildings/tiger-sky-tower.webp",
+    name: "Tiger Sky Tower",
+    heightMeters: 532,
+    heightFeet: 1745,
+    floors: 122,
+    yearBuilt: 2029,
+    architect: "Archgroup Consultants",
+    architectFirm: "Archgroup Consultants & International Associates",
+    developer: "Tiger Properties",
+    district: "Business Bay",
+    districtSlug: "business-bay",
+    type: "Mixed-Use",
+    status: "Under Construction",
+    rating: 5.0,
+    featured: true,
+    investmentYield: "8.1% - 9.4%",
+    startingPriceAed: "2,200,000 AED",
+    startingPriceUsd: "$599,000",
+    description:
+      "Soaring 532 meters (122 storeys) into the Business Bay skyline above Dubai Canal, Tiger Sky Tower is a $1 billion supertall architectural marvel by Tiger Properties. Breaking five Guinness World Records, the monumental golden-spiral tower hosts the world's highest residential tropical rainforest and adventure rollglider at 447 meters, the highest residential infinity pool at 431 meters, and the highest fine-dining restaurant at 439 meters. Engineered with high-strength composite columns, dual tuned liquid mass dampers, and expansive wrap-around balconies, Tiger Sky Tower sets a peerless global benchmark for biophilic high-altitude living.",
+    architecturalHighlights: [
+      "World's highest residential tropical rainforest and adventure rollglider at 447 meters altitude",
+      "World's highest residential infinity pool (431m) and highest sky restaurant (439m)",
+      "Sculptural 532-meter (122-storey) aerodynamic twisting profile engineered to minimize vortex shedding",
+      "Prime Dubai Canal waterfront frontage in Business Bay with direct panoramic views of Burj Khalifa",
+    ],
+    historicalNote: "Unveiled in May 2024 as Tiger Group's flagship AED 3.6 billion ($1 Billion) record-shattering supertall tower.",
+    structuralSystem: "High-performance reinforced concrete mega-core with composite steel-concrete perimeter columns and spiral outriggers",
+    mainContractor: "Tiger Contracting (In-House General Contractor)",
+    structuralEngineer: "Archgroup Consultants & Global Wind Engineering Testing Associates",
+    mepEngineer: "Archgroup MEP Consultants",
+    urbanIntegration: "Direct frontage on Dubai Canal Promenade in Business Bay with rapid access to Al Khail and Financial Centre Roads",
+    foundation: {
+      pilesCount: 420,
+      pileDepthMeters: 62,
+      pileDiameterMeters: "2.5 m",
+      raftThicknessMeters: "4.5 m solid reinforced concrete mat with crystalline waterproofing",
+      bedrockType: "Dense calcisiltite and coastal sandstone with deep cathodic corrosion protection",
+    },
+    windStructural: {
+      lateralSystem: "Central mega-shear core linked with 4 multi-tier outrigger steel belt trusses",
+      dampingMechanism: "Dual tuned liquid mass dampers (TLMD) and upper mechanical floor tuned mass damping system",
+      maxApexSwayMeters: "± 0.42 m at 532m apex",
+      concreteStrengthGrade: "C80 / C90 Self-Compacting High-Performance Concrete",
+    },
+    facade: {
+      glazingType: "Unitized double-glazed Low-E with solar control ceramic frit and acoustic interlayers",
+      shgcSolarCoefficient: "SHGC 0.21",
+      uValueWPerM2K: "1.3 W/m²K",
+      bmuCleaningSystem: "Automated perimeter track gantry and articulated telescopic BMU booms",
+      cleaningCycleDays: "75 days",
+    },
+    verticalTransport: {
+      elevatorManufacturer: "Otis / Schindler SkyRise",
+      totalElevators: 28,
+      maxSpeedMs: 8.0,
+      doubleDeckCars: true,
+      zoningStrategy: "Dual sky lobbies at Levels 42 and 84 with dedicated express shuttles and local residential lifts",
+      peakWaitingSeconds: "< 30 seconds",
+    },
+    operatingSpecs: {
+      coolingProvider: "Empower District Cooling",
+      chillerBilling: "Consumption-Billed (Empower)",
+      annualServiceChargeAedSqFt: 24.0,
+      acousticRatingDb: "STC 56 dB (ultra-quiet double skin acoustic insulation)",
+      slabToSlabHeightMeters: 3.7,
+      clearCeilingHeightMeters: 3.1,
+    },
+    layoutEfficiency: {
+      columnImpact: "Minimal (Open Spans)",
+      netToGrossRatio: "85% - 88%",
+      balconyUsability: "Wind-deflecting curved glass loggias and private sky pools on select penthouses",
+    },
+    auditReview: {
+      honestVerdict: "At 532 meters, Tiger Sky Tower is not just another supertall—it is a vertical biome and lifestyle destination that breaks multiple Guinness World Records with its 447m rainforest and 431m infinity pool. Located in prime Business Bay overlooking the Canal, the project offers unprecedented investor appeal, particularly for short-term luxury rental yields and international capital appreciation. The entry ticket from 2.2M AED ($599K) is remarkably competitive for a record-breaking supertall. Investors should note the 2029 handover timeline and factor in supertall service fees (~24 AED/sq.ft).",
+      strengths: [
+        "Iconic 532-meter supertall holding world records for highest rainforest, infinity pool, and sky restaurant.",
+        "Highly attractive pricing (from 2.2M AED) and flexible 7-year payment plans directly from Tier-1 developer Tiger Group.",
+        "Prime Dubai Canal frontage in Business Bay with panoramic Downtown and Burj Khalifa views."
+      ],
+      pitfallsAndWeaknesses: [
+        "Long-term construction cycle with anticipated handover in Q4 2029.",
+        "Business Bay arterial traffic during evening peak hours along Financial Centre Road exits.",
+        "High-altitude living requires multi-stage elevator transfers to reach upper residential penthouses."
+      ],
+      airbnbHolidayHomesPolicy: "Full holiday home permissions with dedicated concierge services; anticipated high premium ADR for world-record amenities.",
+      guestParkingReality: "Multi-level podium parking with automated valet parking systems for residents and visitors.",
+      soundproofingRating: "STC 56 dB (Advanced acoustic glazing dampening urban Business Bay sound).",
+      elevatorPeakWaitReality: "< 30 seconds via high-speed double-deck destination dispatch system.",
+      hiddenOperatingCosts: "District cooling capacity charges (Empower); premium service fee of 24 AED/sq.ft to sustain the vertical rainforest biome."
+    },
+  },
 ];
 
 /**

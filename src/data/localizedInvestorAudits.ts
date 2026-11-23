@@ -2200,6 +2200,68 @@ export const BESPOKE_INVESTOR_AUDITS_I18N: Record<string, Partial<Record<Languag
         dailyEssentialsOnFoot: "ورلڈ ٹریڈ سینٹر، ڈی آئی ایف سی گیٹ ایونیو کے ریسٹورنٹس، سپر مارکیٹس اور فنانشل ڈسٹرکٹ کی تمام سہولیات تک فوری رسائی۔"
       }
     }
+  },
+  "tiger-sky-tower": {
+    en: {
+      viewRadar: {
+        riskLevel: "protected",
+        status: "Permanent Protected Canal & Downtown Skyline Views",
+        assessment: "At 532 meters, Tiger Sky Tower permanently towers over the entire Business Bay and Canal corridor. North-facing residences enjoy unblockable vistas of Burj Khalifa and Downtown Dubai, while South and West orientations look directly over the flowing Dubai Canal, Meydan horizons, and the Jumeirah coastline.",
+        protectedOrientations: [
+          "North / North-East (Burj Khalifa & Downtown Dubai skyline panorama)",
+          "South / South-West (Direct Dubai Canal waterfront & Arabian Gulf horizon)",
+          "East (Dubai Creek Harbour & Ras Al Khor sanctuary vistas)"
+        ],
+        threatOrientations: [
+          "Low podium floors (Levels 2-10) face adjacent street level commercial buildings in Business Bay"
+        ]
+      },
+      solarExposure: {
+        optimalAspect: "North-West (Sea breezes, soft diffused light, spectacular sunset)",
+        harshAspect: "South-West (Intense high-altitude afternoon heat gain 14:00–18:30)",
+        coolingEnergyImpact: "Moderate (+12% on SW tiers, optimized via Empower District Cooling)",
+        solarHeatGainRating: "Superior (Acoustic triple-glazed Low-E with solar control, SHGC 0.21)",
+        residentTip: "Residences facing North-West enjoy continuous maritime natural daylight without glare; South-facing suites benefit from motorized automated thermal blinds during midday."
+      },
+      walkability: {
+        score: 91,
+        category: "Walker's Paradise",
+        metroStation: "Business Bay Metro Station (Red Line)",
+        metroDistanceMinutes: 5,
+        metroAccessType: "Canal Promenade Footbridge",
+        dailyEssentialsOnFoot: "Direct footbridge connectivity to Dubai Canal boardwalk, fine dining restaurants, Spinneys supermarket, pharmacies, and 24/7 financial district amenities."
+      }
+    },
+    ru: {
+      viewRadar: {
+        riskLevel: "protected",
+        status: "Защищенный панорамный обзор на Дубайский канал и Бурдж-Халифа",
+        assessment: "Благодаря высоте 532 метра Tiger Sky Tower доминирует над всей застройкой Business Bay. Северные лоты получают защищенный вечный вид на Бурдж-Халифа и Даунтаун, а южные и западные выходят на русло Дубайского канала и горизонт Персидского залива.",
+        protectedOrientations: [
+          "Север / Северо-Восток (Панорама Бурдж-Халифа и небоскребов Downtown)",
+          "Юг / Юго-Запад (Первая линия Дубайского канала и закатный горизонт)",
+          "Восток (Панорама Dubai Creek Harbour и заповедника Рас-Аль-Хор)"
+        ],
+        threatOrientations: [
+          "Нижние этажи стилобата (2-10 этажи) обращены к локальным офисным зданиям Business Bay"
+        ]
+      },
+      solarExposure: {
+        optimalAspect: "Северо-Запад (Морской бриз, мягкий рассеянный свет и закаты)",
+        harshAspect: "Юго-Запад (Интенсивное солнце пустыни с 14:00 до 18:30)",
+        coolingEnergyImpact: "Умеренное (+12% на ЮЗ фасадах, оптимизировано системой Empower)",
+        solarHeatGainRating: "Превосходный (Тройной энергосберегающий Low-E с солнцезащитным слоем, SHGC 0.21)",
+        residentTip: "Северо-западные резиденции залиты приятным естественным светом без перегрева; для южных окон рекомендованы моторизованные шторы в полуденные часы."
+      },
+      walkability: {
+        score: 91,
+        category: "Пешеходный рай (все необходимое рядом)",
+        metroStation: "Станция метро Business Bay (красная ветка)",
+        metroDistanceMinutes: 5,
+        metroAccessType: "Пешеходный мост через Дубайский канал",
+        dailyEssentialsOnFoot: "Прямой выход на променад канала, рестораны авторской кухни, супермаркеты Spinneys и Carrefour, аптеки и инфраструктура делового района."
+      }
+    }
   }
 };
 

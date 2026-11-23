@@ -121,6 +121,7 @@ function computeUrlPriorityScore(url) {
   const iconicTowers = [
     "burj-khalifa",
     "burj-azizi",
+    "tiger-sky-tower",
     "emirates-towers",
     "burj-al-arab",
     "cayan-tower",
@@ -145,7 +146,7 @@ function computeUrlPriorityScore(url) {
   }
 
   // Tier 5: Top developers
-  const topDevs = ["emaar", "sobha", "nakheel", "omniyat", "binghatti", "meraas", "azizi"];
+  const topDevs = ["emaar", "sobha", "nakheel", "omniyat", "binghatti", "meraas", "azizi", "tiger-properties"];
   for (const dev of topDevs) {
     if (clean.includes(`/developers/${dev}`)) return 500;
   }
