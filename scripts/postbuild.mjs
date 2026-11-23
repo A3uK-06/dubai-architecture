@@ -34,5 +34,29 @@ if (fs.existsSync(outDir)) {
   } catch (err) {
     console.error("Warning: Failed to generate sitemaps:", err.message);
   }
+
+  // Ensure official Google tag is placed immediately after <head> across all HTML pages
+  try {
+    const googleTag = `<script async src="https://www.googletagmanager.com/gtm.js?id=GTM-P5QVMKMB"></script><script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());</script>`;
+    function injectTagInDir(dir) {
+      const files = fs.readdirSync(dir, { withFileTypes: true });
+      for (const f of files) {
+        const full = path.join(dir, f.name);
+        if (f.isDirectory()) {
+          injectTagInDir(full);
+        } else if (f.name.endsWith(".html")) {
+          let c = fs.readFileSync(full, "utf8");
+          if (c.includes("<head>") && !c.includes("gtm.js?id=GTM-P5QVMKMB")) {
+            c = c.replace("<head>", `<head>${googleTag}`);
+            fs.writeFileSync(full, c, "utf8");
+          }
+        }
+      }
+    }
+    injectTagInDir(outDir);
+    console.log("Successfully ensured official Google tag is placed immediately after <head> in all pages.");
+  } catch (err) {
+    console.error("Warning: Tag injection error:", err.message);
+  }
 }
 
