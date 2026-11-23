@@ -120,8 +120,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         </>
       )}
 
-      {/* 2. Direct GA4 (Fallback if direct G-ID is used without GTM) */}
-      {!GTM_ID && GA_ID && (
+      {/* 2. Direct GA4 (Always active when GA_ID is set, ensuring reliable data collection) */}
+      {GA_ID && (
         <>
           <Script
             src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
