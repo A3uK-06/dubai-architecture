@@ -57,8 +57,9 @@ async function submitToIndexNow(urls) {
     urlList: urls,
   };
 
-  // Endpoints: api.indexnow.org automatically propagates to Bing, Yandex, Seznam, Naver
+  // Endpoints: Yandex, IndexNow gateway, and Bing
   const endpoints = [
+    "https://yandex.com/indexnow",
     "https://api.indexnow.org/indexnow",
     "https://www.bing.com/indexnow",
   ];
