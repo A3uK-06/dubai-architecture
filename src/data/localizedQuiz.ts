@@ -772,3 +772,34 @@ export function getQuizTranslation(lang: string): QuizTranslations {
   if (QUIZ_I18N[lang]) return QUIZ_I18N[lang];
   return QUIZ_I18N.en;
 }
+
+/**
+ * Ordered list of investor & resident countries for Dubai Real Estate.
+ * Sorted according to official Dubai Land Department (DLD) transaction rankings,
+ * market volume, and international buyer demographics.
+ */
+export const POPULAR_COUNTRIES: string[] = [
+  "ОАЭ (UAE)",
+  "Индия (India)",
+  "Великобритания (UK)",
+  "Саудовская Аравия (KSA)",
+  "Китай (China)",
+  "США (USA)",
+  "Пакистан (Pakistan)",
+  "Россия (Russia)",
+  "Германия (Germany)",
+  "Франция (France)",
+  "Турция (Turkey)",
+  "Италия (Italy)",
+  "Канада (Canada)",
+  "Швейцария (Switzerland)",
+  "Кувейт (Kuwait)",
+  "Катар (Qatar)",
+  "Оман (Oman)",
+  "Казахстан (Kazakhstan)",
+  "Узбекистан (Uzbekistan)",
+  "Азербайджан (Azerbaijan)",
+  "Беларусь (Belarus)",
+  "Другая страна (Other)",
+];
+

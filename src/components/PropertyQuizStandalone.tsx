@@ -5,7 +5,7 @@ import { useLang } from "@/context/LangContext";
 import { getAttributionData } from "@/lib/attribution";
 import { dispatchLead } from "@/lib/leadRouting";
 import { trackEvent } from "@/lib/analytics";
-import { getQuizTranslation } from "@/data/localizedQuiz";
+import { getQuizTranslation, POPULAR_COUNTRIES } from "@/data/localizedQuiz";
 
 const CURRENCIES = [
   { code: "USD", symbol: "$" },
@@ -38,24 +38,7 @@ const LANGUAGES = [
   { code: "ur", name: "اردو" },
 ];
 
-const POPULAR_COUNTRIES = [
-  "ОАЭ (UAE)",
-  "Россия",
-  "Казахстан",
-  "Узбекистан",
-  "США (USA)",
-  "Великобритания (UK)",
-  "Германия (Germany)",
-  "Саудовская Аравия (KSA)",
-  "Оман (Oman)",
-  "Индия (India)",
-  "Китай (China)",
-  "Франция (France)",
-  "Турция (Turkey)",
-  "Азербайджан",
-  "Беларусь",
-  "Другая страна",
-];
+
 
 export default function PropertyQuizStandalone() {
   const { lang: siteLang, isRtl } = useLang();
@@ -134,7 +117,8 @@ export default function PropertyQuizStandalone() {
       trackEvent("quiz_step_3_complete", { budget, currency });
       setStep(4);
     } else if (step === 4) {
-      const finalCountry = clientCountry === "Другая страна" ? customCountry.trim() : clientCountry;
+      const isOther = clientCountry.startsWith("Другая страна") || clientCountry === "Other";
+      const finalCountry = isOther ? customCountry.trim() : clientCountry;
       if (!finalCountry) {
         setErrorMsg("Пожалуйста, укажите страну клиента");
         return;
@@ -162,7 +146,8 @@ export default function PropertyQuizStandalone() {
     setIsSubmitting(true);
     setSubmittedMessenger(targetMessenger);
 
-    const finalCountry = clientCountry === "Другая страна" ? customCountry.trim() : clientCountry;
+    const isOther = clientCountry.startsWith("Другая страна") || clientCountry === "Other";
+    const finalCountry = isOther ? customCountry.trim() : clientCountry;
     const finalPropertyTypeObj = propertyTypeItems.find((p) => p.id === propertyType);
     const finalAreaObj = areaItems.find((a) => a.id === area);
     const finalHandoverObj = handoverItems.find((h) => h.id === handoverTimeline);
@@ -573,7 +558,7 @@ export default function PropertyQuizStandalone() {
                 ))}
               </select>
 
-              {clientCountry === "Другая страна" && (
+              {(clientCountry.startsWith("Другая страна") || clientCountry === "Other") && (
                 <input
                   type="text"
                   value={customCountry}
