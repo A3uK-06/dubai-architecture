@@ -1693,5 +1693,83 @@ export const CUSTOM_TOWER_AUDITS: TowerCustomAuditTranslations = {
       elevatorPeakWaitReality: "< 30 секунд благодаря скоростным двухэтажным лифтам с интеллектуальным распределением.",
       hiddenOperatingCosts: "Базовая плата за мощность охлаждения Empower; сервисный сбор 24 AED/кв. фут на обслуживание высотного биома."
     }
+  },
+  "baccarat-residences": {
+    en: {
+      honestVerdict: "Baccarat Residences Dubai is one of the most elite branded residential offerings in Downtown Dubai. Rising 237 meters with signature Daniel Libeskind architecture and 1508 London interiors, it targets ultra-high-net-worth trophy collectors prioritizing global brand prestige and direct Burj Khalifa sightlines over rental yield. The entry threshold exceeding 18M AED reflects unprecedented exclusivity with only 49 private residences. Handover in 2026 and service fees around 28 AED/sq.ft are appropriate for white-glove 5-star Baccarat hotel services and private residential amenities.",
+      strengths: [
+        "Prestigous global heritage: first Baccarat-branded residences in the Middle East with authentic French crystal artistry.",
+        "Crystalline signature architecture by world-acclaimed architect Daniel Libeskind (Studio Libeskind).",
+        "Ultra-low density with just 49 private residences, ensuring peerless privacy, security, and white-glove concierge services.",
+        "Unbeatable Downtown location walking distance to Dubai Mall, Burj Khalifa, and Dubai Opera."
+      ],
+      pitfallsAndWeaknesses: [
+        "Extremely high entry ticket (from 18M AED / $4.9M USD), catering exclusively to UHNW trophy buyers.",
+        "Handover timeline slated for 2026, requiring staged milestone capital allocation.",
+        "Downtown Boulevard traffic during peak events and New Year's Eve fireworks requires route planning."
+      ],
+      airbnbHolidayHomesPolicy: "Strictly regulated residential bylaws; rental management available via Baccarat luxury hotel program for certified suites.",
+      guestParkingReality: "Dedicated multi-level subterranean bays with 24/7 white-glove VIP valet and private chauffeur lounge.",
+      soundproofingRating: "STC 57 dB (Acoustic facade isolation dampening Downtown traffic and boulevard events).",
+      elevatorPeakWaitReality: "< 25 seconds via dedicated residential high-speed lifts with private elevator lobbies on select tiers.",
+      hiddenOperatingCosts: "Empower district cooling demand charges; 28 AED/sq.ft luxury service charge maintaining five-star Baccarat amenities."
+    },
+    ru: {
+      honestVerdict: "Baccarat Residences Dubai — один из самых эксклюзивных брендовых проектов в Downtown Dubai. 237-метровая кристаллическая башня от Даниэля Либескинда с авторскими интерьерами от 1508 London создана для ультрасостоятельных покупателей, ценящих мировой престиж и прямой вид на Бурдж-Халифу. Порог входа от 18 млн AED ($4,9 млн) подчеркивает абсолютную клубность — в комплексе всего 49 приватных резиденций. Срок сдачи в 2026 году и сервисные сборы около 28 AED/кв. фут полностью оправданы пятизвездочным сервисом отеля Baccarat и закрытым доступом.",
+      strengths: [
+        "Мировой легендарный бренд: первые на Ближнем Востоке резиденции легендарного 260-летнего хрустального дома Baccarat.",
+        "Авторская граненая архитектура от мэтра мировой деконструкции Даниэля Либескинда (Studio Libeskind).",
+        "Клубный формат — всего 49 приватных резиденций, гарантирующий максимальную безопасность и индивидуальный сервис.",
+        "Престижная локация в сердце Downtown Dubai в нескольких минутах пешком от Dubai Mall и Дубайской оперы."
+      ],
+      pitfallsAndWeaknesses: [
+        "Высокий порог входа (от 18 млн AED / $4,9M), ориентированный исключительно на коллекционеров трофейной недвижимости.",
+        "Срок сдачи в 2026 году требует графика поэтапных инвестиционных траншей.",
+        "Плотное движение по бульвару Mohammed Bin Rashid в дни праздников и новогоднего фейерверка Бурдж-Халифа."
+      ],
+      airbnbHolidayHomesPolicy: "Строгий внутренний регламент; возможность сдачи через премиальную программу отельного пула Baccarat Hotel.",
+      guestParkingReality: "Многоуровневый подземный паркинг с круглосуточным VIP-валет-сервисом и лаунжем для личных водителей.",
+      soundproofingRating: "STC 57 дБ (Премиальная звукоизоляция фасада, полностью отсекающая шум центрального бульвара).",
+      elevatorPeakWaitReality: "< 25 секунд благодаря скоростным лифтам с индивидуальным доступом в приватные холлы.",
+      hiddenOperatingCosts: "Базовые тарифы Empower за мощность; сервисный сбор 28 AED/кв. фут на обслуживание инфраструктуры Baccarat."
+    },
+    ar: {
+      honestVerdict: "تعد باكارا ريزيدنسز دبي واحدة من أكثر الوجهات السكنية الفندقية نخبوية في قلب داون تاون دبي. بارتفاع يبلغ 237 متراً وتصميم معماري مميز من دانيال ليبسكيند، يستهدف المشروع نخبة المستثمرين العالميين الباحثين عن علامة تجارية عالمية وإطلالات مباشرة لا تُحجب على برج خليفة. يعكس سعر البداية الذي يتجاوز 18 مليون درهم الحصرية القصوى للمشروع الذي يضم 49 شقة سكنية خاصة فقط مع خدمات فندقية راقية بإدارة علامة باكارا العالمية.",
+      strengths: [
+        "علامة تجارية عالمية مرموقة: أول شقق سكنية تحمل علامة باكارا في الشرق الأوسط بتراث فرنسي يمتد لـ 260 عاماً.",
+        "عمارة بلورية مذهلة ومبتكرة من تصميم المعماري العالمي دانيال ليبسكيند.",
+        "كثافة منخفضة للغاية مع 49 مسكناً فقط لضمان أقصى درجات الخصوصية والأمان والخدمة الحصرية.",
+        "موقع لا يُضاهى في داون تاون دبي على مسافة قصيرة سيراً على الأقدام من دبي مول وبرج خليفة وأوبرا دبي."
+      ],
+      pitfallsAndWeaknesses: [
+        "حاجز دخول مالي مرتفع للغاية (من 18 مليون درهم)، موجه للمشترين المتميزين وأصحاب الثروات الفائقة.",
+        "تاريخ التسليم في عام 2026 يتطلب الالتزام بجدول سداد استثماري مرحلي.",
+        "ازدحام مروري على بوليفارد محمد بن راشد خلال الفعاليات الكبرى واحتفالات رأس السنة."
+      ],
+      airbnbHolidayHomesPolicy: "لوائح صارمة ومقننة؛ إدارة التأجير متاحة من خلال البرنامج الفندقي الفاخر التابع لفندق باكارا.",
+      guestParkingReality: "مواقف سيارات خاصة تحت الأرض مع خدمة صف سيارات VIP واستراحة خاصة للسائقين على مدار الساعة.",
+      soundproofingRating: "STC 57 dB (عزل صوتي فائق للواجهة الزجاجية يعزل ضجيج فعاليات البوليفارد تماماً).",
+      elevatorPeakWaitReality: "أقل من 25 ثانية عبر مصاعد سكنية سريعة مخصصة مع مصاعد خاصة لبعض الطوابق.",
+      hiddenOperatingCosts: "رسوم سعة تبريد إمباور؛ رسوم صيانة تبلغ 28 درهم/قدم مربع للحفاظ على معايير فندق باكارا 5 نجوم."
+    },
+    zh: {
+      honestVerdict: "迪拜巴卡拉官邸（Baccarat Residences Dubai）是迪拜市中心最具标杆意义的传奇品牌豪宅之一。项目高237米，由大师丹尼尔·里伯斯金担纲水晶切面建筑构想，室内由伦敦1508倾力雕琢，专为追求世界顶级品牌底蕴与哈利法塔正席风光的全球超高净值藏家打造。起售价超1800万迪拉姆（约490万美元），整栋仅限量49席私属府邸，尊享法国巴卡拉奢华酒店的全套白手套服务。2026年竣工预期及约28 AED/平方英尺的物业维护费完全匹配其传世顶级资产定位。",
+      strengths: [
+        "260年法国皇家水晶传奇：巴卡拉首次在中东打造品牌奢华酒店与传世私邸。",
+        "解构主义建筑巨匠丹尼尔·里伯斯金（Studio Libeskind）操刀的标志性水晶切面立面。",
+        "极致私密与尊贵：全栋仅49席独家私宅，配备顶级安防与24小时专属私人管家服务。",
+        "市中心绝版核心地段，步行可达迪拜购物中心、哈利法塔喷泉湖及迪拜歌剧院。"
+      ],
+      pitfallsAndWeaknesses: [
+        "极高的准入门槛（1800万迪拉姆起），定位专属于全球顶级家族与超高净值投资者。",
+        "预计2026年交付，需按工程节点安排中长期期房资金规划。",
+        "大型节庆与跨年烟花秀期间，市中心林荫大道车流量密集需提前规划出行。"
+      ],
+      airbnbHolidayHomesPolicy: "受豪宅业主公约严格监管；部分认证套房可通过巴卡拉奢华酒店官方托管计划进行高品质出租运营。",
+      guestParkingReality: "配有多层地下私属停车区，提供24小时全天候白手套代客泊车及专职司机休息室。",
+      soundproofingRating: "STC 57 dB（高规格声学夹胶幕墙，彻底阻隔市中心林荫大道与繁华车流声）。",
+      elevatorPeakWaitReality: "配备专属高速直达电梯，高区户型享有私家独立电梯厅，平均候梯时间少于25秒。",
+      hiddenOperatingCosts: "需缴纳Empower集中供冷备用金；28 AED/平方英尺的物业费涵盖巴卡拉五星级奢华配套的高标准维保。"
+    }
   }
 };

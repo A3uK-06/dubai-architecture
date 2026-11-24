@@ -2262,6 +2262,68 @@ export const BESPOKE_INVESTOR_AUDITS_I18N: Record<string, Partial<Record<Languag
         dailyEssentialsOnFoot: "Прямой выход на променад канала, рестораны авторской кухни, супермаркеты Spinneys и Carrefour, аптеки и инфраструктура делового района."
       }
     }
+  },
+  "baccarat-residences": {
+    en: {
+      viewRadar: {
+        riskLevel: "protected",
+        status: "Permanent Protected Burj Khalifa & Fountain Views",
+        assessment: "Strategically located at the nexus of Downtown Dubai adjacent to Dubai Mall, Baccarat Residences commands clear, protected view corridors towards Burj Khalifa, the Dubai Fountain lake, and Mohammed Bin Rashid Boulevard. Upper residential floors (Levels 20+) enjoy unobstructed panoramic vistas across the entire Downtown skyline and the Arabian Gulf sunset horizon.",
+        protectedOrientations: [
+          "North / North-West (Burj Khalifa, Dubai Fountain Lake & Downtown Skyline - 100% Protected Corridor)",
+          "West / South-West (Arabian Gulf sunset & Jumeirah coastal horizon)",
+          "South (Dubai Water Canal & Business Bay skyline panorama)"
+        ],
+        threatOrientations: [
+          "East / South-East (Lower podium levels face adjacent Downtown boulevard developments and commercial corridors)"
+        ]
+      },
+      solarExposure: {
+        optimalAspect: "North-West (Soft indirect daylight, spectacular fountain spectacles & sunset vistas without severe thermal gain)",
+        harshAspect: "South / South-East (Direct morning desert sun exposure from 08:00 to 13:00)",
+        coolingEnergyImpact: "Low to Moderate (+8% on South-East tiers; mitigated by high-efficiency Empower District Cooling)",
+        solarHeatGainRating: "Superior (Acoustic Low-E triple glazing with reflective solar coating, SHGC 0.20)",
+        residentTip: "Suites facing North-West provide the ultimate Dubai living experience with continuous diffused natural light, iconic Burj Khalifa fountain panoramas, and zero midday heat glare."
+      },
+      walkability: {
+        score: 98,
+        category: "Walker's Paradise",
+        metroStation: "Burj Khalifa / Dubai Mall Metro Station (Red Line)",
+        metroDistanceMinutes: 6,
+        metroAccessType: "Direct Covered Walkway",
+        dailyEssentialsOnFoot: "Direct pedestrian connection to Dubai Mall (over 1,200 luxury boutiques, Galeries Lafayette, gourmet dining), Dubai Opera, Burj Park, Waitrose supermarket, and Mohammed Bin Rashid Boulevard cafes."
+      }
+    },
+    ru: {
+      viewRadar: {
+        riskLevel: "protected",
+        status: "Защищенный вечный вид на Бурдж-Халифа и фонтаны",
+        assessment: "Благодаря расположению в самом сердце Downtown Dubai рядом с Dubai Mall, Baccarat Residences обладает защищенными видовыми коридорами на Бурдж-Халифа, озеро фонтанов и бульвар. Верхние жилые уровни (с 20 этажа) открывают беспрепятственную 360-градусную панораму на весь Даунтаун и морской закатный горизонт.",
+        protectedOrientations: [
+          "Север / Северо-Запад (Панорама Бурдж-Халифа, озера фонтанов и Даунтауна — 100% защита)",
+          "Запад / Юго-Запад (Закат над Персидским заливом и побережьем Джумейры)",
+          "Юг (Дубайский канал и скайлайн Business Bay)"
+        ],
+        threatOrientations: [
+          "Восток / Юго-Восток (Нижние этажи стилобата обращены к соседней застройке бульвара)"
+        ]
+      },
+      solarExposure: {
+        optimalAspect: "Северо-Запад (Мягкий рассеянный дневной свет, шоу фонтанов и закаты без перегрева)",
+        harshAspect: "Юг / Юго-Восток (Прямое утреннее солнце с 08:00 до 13:00)",
+        coolingEnergyImpact: "Низкое (+8% на юго-восточных фасадах, компенсировано системой Empower)",
+        solarHeatGainRating: "Превосходный (Тройное энергоэффективное остекление Low-E с защитой от ультрафиолета, SHGC 0.20)",
+        residentTip: "Северо-западные резиденции предлагают лучший вид на Дубай с постоянным мягким светом и панорамой фонтанов без ослепляющих солнечных бликов."
+      },
+      walkability: {
+        score: 98,
+        category: "Рай для пешехода (Вся инфраструктура рядом)",
+        metroStation: "Станция метро Burj Khalifa / Dubai Mall (красная ветка)",
+        metroDistanceMinutes: 6,
+        metroAccessType: "Прямой крытый переход с кондиционированием",
+        dailyEssentialsOnFoot: "Прямой пешеходный доступ к Dubai Mall (более 1200 бутиков, Galeries Lafayette, премиальные рестораны), Дубайской опере, парку Burj Park, супермаркету Waitrose и кафе бульвара."
+      }
+    }
   }
 };
 

@@ -55,6 +55,7 @@ export const DISTRICTS: District[] = [
       "Dubai Opera (Janus Rostock / Atkins)",
       "Dubai Mall & Lake Promenade",
       "Address Downtown & Address Sky View",
+      "Baccarat Residences (Studio Libeskind)",
       "Il Primo (Opera District)",
     ],
     averageRoi: "6.5% - 7.8%",

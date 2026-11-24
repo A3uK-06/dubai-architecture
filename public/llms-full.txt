@@ -14,7 +14,7 @@ Key principles:
 - Multi-jurisdictional accessibility: Fully localized across 10 languages: English (en), Russian (ru), Arabic (ar), Hindi (hi), Chinese (zh), German (de), French (fr), Urdu (ur), Italian (it), and Turkish (tr).
 
 ================================================================================
-2. SKYSCRAPERS & TOWERS CATALOG (38 TOWERS)
+2. SKYSCRAPERS & TOWERS CATALOG (39 TOWERS)
 ================================================================================
 
 ---
@@ -625,6 +625,22 @@ Service Charge (Mollak): 24 AED/sq.ft
 District Cooling: Consumption-Billed (Empower)
 Description: Soaring 532 meters (122 storeys) into the Business Bay skyline above Dubai Canal, Tiger Sky Tower is a $1 billion supertall architectural marvel by Tiger Properties. Breaking five Guinness World Records, the monumental golden-spiral tower hosts the world's highest residential tropical rainforest and adventure rollglider at 447 meters, the highest residential infinity pool at 431 meters, and the highest fine-dining restaurant at 439 meters. Engineered with high-strength composite columns, dual tuned liquid mass dampers, and expansive wrap-around balconies, Tiger Sky Tower sets a peerless global benchmark for biophilic high-altitude living.
 
+---
+Tower: Baccarat Residences
+Slug: baccarat-residences
+URL: https://dubai-architecture.info/buildings/baccarat-residences/
+Architectural Height: 237 m (778 ft)
+Floors: 44
+Completion Year: 2026
+District: Downtown Dubai
+Architect: Studio Libeskind (Daniel Libeskind)
+Developer: Shamal Holding / H&H Development
+Structural System: Reinforced concrete central core with post-tensioned floor plates, perimeter columns, and faceted glass curtain wall
+Estimated Gross Yield: 5.8% - 6.5%
+Service Charge (Mollak): 28 AED/sq.ft
+District Cooling: Consumption-Billed (Empower)
+Description: Baccarat Residences Dubai is an ultra-luxury crystalline twin-tower landmark rising 237 meters in Downtown Dubai adjacent to Dubai Mall and Burj Khalifa. Conceived by world-renowned architect Daniel Libeskind (Studio Libeskind) with interiors by London design house 1508 London, the project is owned by Shamal Holding and developed by H&H Development in collaboration with SH Hotels & Resorts. Translating the 260-year artisan heritage of French crystal legend Baccarat into a faceted, light-refracting architectural sculpture, the development houses 49 ultra-exclusive private residences alongside a 144-key luxury Baccarat hotel, crowned by bespoke crystal chandeliers, signature Baccarat rouge accents, and panoramic vistas of Burj Khalifa.
+
 ================================================================================
 3. DUBAI DISTRICTS & MASTER COMMUNITIES (14 DISTRICTS)
 ================================================================================
@@ -635,7 +651,7 @@ Slug: downtown-dubai
 URL: https://dubai-architecture.info/districts/downtown-dubai/
 Master Developer: Emaar Properties
 Average Net ROI: 6.5% - 7.8%
-Key Landmarks: Burj Khalifa (828 m), Dubai Opera (Janus Rostock / Atkins), Dubai Mall & Lake Promenade, Address Downtown & Address Sky View, Il Primo (Opera District)
+Key Landmarks: Burj Khalifa (828 m), Dubai Opera (Janus Rostock / Atkins), Dubai Mall & Lake Promenade, Address Downtown & Address Sky View, Baccarat Residences (Studio Libeskind), Il Primo (Opera District)
 Overview: The prestigious epicenter of modern Dubai, master-planned around the 500-acre Burj Complex. The undisputed global focal point for prime capital preservation and trophy skyscraper ownership.
 
 ---

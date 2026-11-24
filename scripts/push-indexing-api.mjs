@@ -122,6 +122,7 @@ function computeUrlPriorityScore(url) {
     "burj-khalifa",
     "burj-azizi",
     "tiger-sky-tower",
+    "baccarat-residences",
     "emirates-towers",
     "burj-al-arab",
     "cayan-tower",

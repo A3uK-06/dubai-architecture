@@ -562,6 +562,23 @@ export const LOCALIZED_BUILDINGS_RU: Record<string, LocalizedBuildingData> = {
     "historicalNote": "Официально анонсирован в мае 2024 года как флагманский супертолл Tiger Group стоимостью 3,6 млрд дирхамов ($1 млрд).",
     "structuralSystem": "Высокопрочное монолитное ядро с композитными колоннами и спиральными балконами"
   }
+,
+  "baccarat-residences": {
+      "name": "Баккара Резиденсес (Baccarat Residences)",
+      "architect": "Даниэль Либескинд (Studio Libeskind) и AECOM",
+      "developer": "Shamal Holding / H&H Development",
+      "district": "Даунтаун Дубай",
+      "type": "Жилой комплекс ультра-роскоши и отель",
+      "description": "Baccarat Residences Dubai — 237-метровый ультрароскошный архитектурный ансамбль из двух хрустальных башен в самом сердце Downtown Dubai рядом с Dubai Mall и Бурдж-Халифа. Спроектированный всемирно известным архитектором Даниэлем Либескиндом (Studio Libeskind) с интерьерами от лондонского бюро 1508 London, проект принадлежит Shamal Holding и реализуется девелопером H&H Development в партнерстве с SH Hotels & Resorts. Проект воплощает 260-летнее наследие легендарного французского хрустального дома Baccarat в граненый скульптурный силуэт. Комплекс включает закрытую коллекцию из 49 брендовых резиденций и отель Baccarat на 144 номера, авторские хрустальные люстры, акценты рубинового стекла Baccarat rouge и непревзойденные панорамы на Бурдж-Халифа.",
+      "architecturalHighlights": [
+          "Граненая кристаллическая архитектура Даниэля Либескинда, преломляющая свет подобно огранке хрусталя Baccarat",
+          "Эксклюзивные хрустальные люстры Baccarat и акценты фирменного рубинового стекла в парадных лобби",
+          "Топовая локация в Downtown Dubai в пешей доступности от Dubai Mall, Бурдж-Халифа и Дубайской оперы",
+          "Приватная коллекция всего из 49 резиденций с авторскими интерьерами от 1508 London и мрамором редких пород"
+      ],
+      "historicalNote": "Первый в истории Ближнего Востока ультрароскошный отельный и жилой проект под легендарным 260-летним брендом Baccarat.",
+      "structuralSystem": "Монолитное ядро из высокопрочного бетона с преднапряженными перекрытиями и граненым навесным стеклянным фасадом"
+  }
 };
 
 export const LOCALIZED_BUILDINGS_AR: Record<string, LocalizedBuildingData> = {
@@ -904,6 +921,23 @@ export const LOCALIZED_BUILDINGS_AR: Record<string, LocalizedBuildingData> = {
     ],
     "historicalNote": "تم إطلاقه رسمياً في مايو 2024 كأحد أضخم المشاريع السكنية لشركة تايجر باستثمار يتجاوز 3.6 مليار درهم.",
     "structuralSystem": "نواة خرسانية مسلحة فائقة القوة مع أعمدة محيطية مركبة وتصميم حلزوني متقدم"
+  }
+,
+  "baccarat-residences": {
+      "name": "باكارا ريزيدنسز دبي (Baccarat Residences)",
+      "architect": "استوديو دانيال ليبسكيند (Studio Libeskind) و إيكوم",
+      "developer": "شمال القابضة / إتش آند إتش للتطوير (Shamal / H&H)",
+      "district": "وسط مدينة دبي (Downtown Dubai)",
+      "type": "مجمع سكني وفندقي فائق الفخامة",
+      "description": "باكارا ريزيدنسز دبي هي تحفة معمارية فائقة الفخامة ترتفع 237 متراً في قلب داون تاون دبي بالقرب من دبي مول وبرج خليفة. صممه المعماري العالمي دانيال ليبسكيند مع تصاميم داخلية من دار 1508 London، وتملكه شمال القابضة بالشراكة مع إتش آند إتش للتطوير وإدارة فنادق إس إتش (SH Hotels & Resorts). يجسد المشروع تراث دار الكريستال الفرنسية باكارا الممتد لأكثر من 260 عاماً في برجين بتصميم بلوري هندسي مذهل. يضم 49 مسكناً خاصاً فائق الحصرية وفندق باكارا بـ 144 مفتاحاً، وثريات كريستالية مخصصة وإطلالات بانورامية ساحرة على برج خليفة.",
+      "architecturalHighlights": [
+          "واجهة بلورية منشوريه من تصميم دانيال ليبسكيند تحاكي بريق الكريستال المصقول",
+          "ثريات كريستالية مخصصة من باكارا مع لمسات زجاج الروبي الأحمر في البهو الفاخر",
+          "موقع استثنائي في داون تاون دبي على بعد خطوات من دبي مول وأوبرا دبي",
+          "مجموعة حصرية فائقة الخصوصية تضم 49 مسكناً بتشطيبات رخامية وكريستالية من 1508 London"
+      ],
+      "historicalNote": "أول ظهور لعلامة باكارا الفرنسية العريقة في قطاع الضيافة والإقامات فائقة الفخامة في منطقة الشرق الأوسط.",
+      "structuralSystem": "نواة خرسانية مسلحة فائقة القوة مع بلاطات لاحقة الشد وواجهة زجاجية منشوريه"
   }
 };
 
@@ -1332,6 +1366,23 @@ export const LOCALIZED_BUILDINGS_ZH: Record<string, LocalizedBuildingData> = {
     "historicalNote": "于2024年5月由阿联酋老牌实力财团Tiger Group正式发布，耗资约36亿迪拉姆（10亿美元）。",
     "structuralSystem": "超高强钢筋混凝土核心筒结构配合外围复合巨型钢骨混凝土柱体系"
   }
+,
+  "baccarat-residences": {
+      "name": "迪拜巴卡拉官邸 (Baccarat Residences)",
+      "architect": "丹尼尔·里伯斯金工作室 (Studio Libeskind) & AECOM",
+      "developer": "Shamal Holding / H&H Development",
+      "district": "迪拜市中心 (Downtown Dubai)",
+      "type": "超奢品牌住宅与奢华酒店",
+      "description": "迪拜巴卡拉官邸（Baccarat Residences Dubai）高237米，傲立于迪拜市中心黄金地段，紧邻迪拜购物中心与哈利法塔。由享誉世界的解构主义建筑大师丹尼尔·里伯斯金（Studio Libeskind）担纲建筑设计，伦敦顶级设计行1508 London倾力打造室内空间，由Shamal Holding与H&H Development联合SH Hotels & Resorts共同开发。项目将法国顶级水晶品牌巴卡拉260年的璀璨匠艺注入现代棱镜建筑之中，仅限量发售49席私属传世官邸，并配有144间超五星级巴卡拉奢华酒店客房，尊享巨型定制水晶吊灯、标志性巴卡拉红水晶装饰及哈利法塔无遮挡环幕全景。",
+      "architecturalHighlights": [
+          "大师丹尼尔·里伯斯金打造的璀璨棱镜切面立面，如巨型天然水晶般折射沙漠日光与天际线霞光",
+          "奢华挑高大堂悬挂定制巴卡拉水晶艺术吊灯与传世标志性红色水晶艺术品",
+          "地处市中心核心门户，步行直达迪拜购物中心、哈利法塔湖畔步道与迪拜歌剧院",
+          "全栋仅限量49席珍罕品牌住宅，由伦敦1508倾力定制奢华大理石与水晶细节"
+      ],
+      "historicalNote": "拥有260年法国皇家奢华历史的水晶传奇品牌巴卡拉首次进驻中东超奢酒店与顶奢豪宅领域。",
+      "structuralSystem": "高强度钢筋混凝土核心筒结构配合后张预应力楼板与水晶多棱幕墙系统"
+  }
 };
 
 export const LOCALIZED_BUILDINGS_DE: Record<string, LocalizedBuildingData> = {
@@ -1758,6 +1809,23 @@ export const LOCALIZED_BUILDINGS_DE: Record<string, LocalizedBuildingData> = {
     ],
     "historicalNote": "Offiziell im Mai 2024 von der Tiger Group als 3,6-Milliarden-AED-Megaprojekt vorgestellt.",
     "structuralSystem": "Hochleistungs-Betonkern mit Verbund-Perimetersäulen und aerodynamischen Spiralbalkonen"
+  }
+,
+  "baccarat-residences": {
+      "name": "Baccarat Residences Dubai",
+      "architect": "Studio Libeskind (Daniel Libeskind) & AECOM",
+      "developer": "Shamal Holding / H&H Development",
+      "district": "Downtown Dubai",
+      "type": "Ultra-Luxus-Residenzen und Hotel",
+      "description": "Baccarat Residences Dubai ist ein 237 Meter hohes architektonisches Juwel im Herzen von Downtown Dubai nahe der Dubai Mall und dem Burj Khalifa. Entworfen vom weltberühmten Architekten Daniel Libeskind mit Innenarchitektur von 1508 London, wird das Projekt von Shamal Holding und H&H Development in Partnerschaft mit SH Hotels & Resorts realisiert. Es überträgt die 260-jährige Handwerkstradition des französischen Kristallhauses Baccarat in eine prismatische Glasskulptur. Mit nur 49 exklusiven Privatresidenzen und einem 144-Zimmer-Luxushotel setzt es neue Maßstäbe für Luxus mit Baccarat-Kronleuchtern und Blick auf den Burj Khalifa.",
+      "architecturalHighlights": [
+          "Prismatische Kristallfassade von Daniel Libeskind, die das Licht wie geschliffenes Kristallglas bricht",
+          "Maßgefertigte Baccarat-Kristalllüster und ikonische rubinrote Baccarat-Akzente in den Lobbys",
+          "Erstklassige Lage in Downtown Dubai in fußläufiger Entfernung zu Dubai Mall und Dubai Opera",
+          "Streng limitierte Kollektion von 49 Residenzen mit edelsten Marmor- und Kristallinterieurs von 1508 London"
+      ],
+      "historicalNote": "Das Nahost-Debüt der legendären, 260 Jahre alten französischen Kristallmarke Baccarat im Bereich der Markenresidenzen.",
+      "structuralSystem": "Hochfester Stahlbetonkern mit vorgespannten Geschossdecken und facettierter Vorhangfassade"
   }
 };
 
@@ -2186,6 +2254,23 @@ export const LOCALIZED_BUILDINGS_FR: Record<string, LocalizedBuildingData> = {
     "historicalNote": "Dévoilé officiellement en mai 2024 par le groupe Tiger avec un investissement de 3,6 milliards d'AED.",
     "structuralSystem": "Noyau en béton haute performance avec mégacolonnes composites et balcons hélicoïdaux"
   }
+,
+  "baccarat-residences": {
+      "name": "Baccarat Residences Dubai",
+      "architect": "Studio Libeskind (Daniel Libeskind) & AECOM",
+      "developer": "Shamal Holding / H&H Development",
+      "district": "Downtown Dubai",
+      "type": "Résidences de grand luxe et hôtel",
+      "description": "Baccarat Residences Dubai s'élève à 237 mètres au cœur de Downtown Dubai, à quelques pas du Dubai Mall et du Burj Khalifa. Conçu par l'architecte de renommée mondiale Daniel Libeskind (Studio Libeskind) et décoré par le cabinet londonien 1508 London, ce chef-d'œuvre est porté par Shamal Holding et H&H Development en partenariat avec SH Hotels & Resorts. Il transpose l'héritage d'excellence de 260 ans de la maison de cristal française Baccarat dans une sculpture architecturale prismatique. Offrant une collection ultra-exclusive de 49 résidences privées et un hôtel Baccarat de 144 clés, le projet se distingue par ses lustres majestueux, ses touches de cristal rouge Baccarat et ses vues imprenables sur le Burj Khalifa.",
+      "architecturalHighlights": [
+          "Façade prismatique et cristalline sculptée par Daniel Libeskind évoquant le cristal taillé à la main",
+          "Lustres monumentaux en cristal de Baccarat et touches emblématiques de cristal rouge dans les grands halls",
+          "Emplacement ultra-prime à Downtown Dubai, à proximité immédiate du Dubai Mall et de l'Opéra de Dubaï",
+          "Collection confidentielle de seulement 49 résidences de prestige avec intérieurs sur-mesure par 1508 London"
+      ],
+      "historicalNote": "Première incursion au Moyen-Orient de la prestigieuse maison bicentenaire Baccarat dans l'hôtellerie et les résidences de luxe.",
+      "structuralSystem": "Noyau central en béton armé haute résistance, dalles post-contraintes et mur-rideau facetté"
+  }
 };
 
 export const LOCALIZED_BUILDINGS_IT: Record<string, LocalizedBuildingData> = {
@@ -2612,6 +2697,23 @@ export const LOCALIZED_BUILDINGS_IT: Record<string, LocalizedBuildingData> = {
     ],
     "historicalNote": "Presentato ufficialmente nel maggio 2024 da Tiger Group per un investimento di 3,6 miliardi di AED.",
     "structuralSystem": "Nucleo in cemento armato ad altissima resistenza con megacolonne perimetrali composite"
+  }
+,
+  "baccarat-residences": {
+      "name": "Baccarat Residences Dubai",
+      "architect": "Studio Libeskind (Daniel Libeskind) & AECOM",
+      "developer": "Shamal Holding / H&H Development",
+      "district": "Downtown Dubai",
+      "type": "Residenze di lusso estremo e hotel",
+      "description": "Baccarat Residences Dubai è una gemma architettonica di 237 metri nel cuore di Downtown Dubai, vicino al Dubai Mall e al Burj Khalifa. Progettata dall'archistar Daniel Libeskind (Studio Libeskind) con interni curati dallo studio londinese 1508 London, l'opera è promossa da Shamal Holding e H&H Development con SH Hotels & Resorts. Traduce oltre 260 anni di eccellenza artigianale della leggendaria cristalleria francese Baccarat in una luminosa scultura prismatica. Con sole 49 esclusive residenze private e un hotel a 5 stelle lusso con 144 camere, vanta sontuosi lampadari in cristallo, tocchi di rosso Baccarat e una vista panoramica sul Burj Khalifa.",
+      "architecturalHighlights": [
+          "Facciata cristallina prismatica firmata da Daniel Libeskind ispirata alla purezza del cristallo intagliato",
+          "Spettacolari lampadari in cristallo Baccarat e dettagli in vetro rosso rubino nelle prestigiose lobby",
+          "Posizione d'élite a Downtown Dubai a pochi passi dal Dubai Mall e dalla Dubai Opera",
+          "Collezione ultra-esclusiva di sole 49 residenze rifinite con marmi pregiati da 1508 London"
+      ],
+      "historicalNote": "Il debutto in Medio Oriente della leggendaria maison française Baccarat nel settore dell'ospitalità di lusso e del branded living.",
+      "structuralSystem": "Nucleo in calcestruzzo armato ad alte prestazioni con solai post-tesi e facciata continua vetrata"
   }
 };
 
@@ -3040,6 +3142,23 @@ export const LOCALIZED_BUILDINGS_TR: Record<string, LocalizedBuildingData> = {
     "historicalNote": "Mayıs 2024'te Tiger Group tarafından 3.6 milyar AED ($1 Milyar) bütçeyle resmen duyuruldu.",
     "structuralSystem": "Yüksek performanslı betonarme mega çekirdek ve kompozit çevre kolonları"
   }
+,
+  "baccarat-residences": {
+      "name": "Baccarat Residences Dubai",
+      "architect": "Studio Libeskind (Daniel Libeskind) & AECOM",
+      "developer": "Shamal Holding / H&H Development",
+      "district": "Downtown Dubai",
+      "type": "Ultra Lüks Rezidans ve Otel",
+      "description": "Baccarat Residences Dubai, Downtown Dubai'de Dubai Mall ve Burj Khalifa'nın yanı başında yükselen 237 metre yüksekliğinde iki kristal kuleden oluşan ultra lüks bir simgedir. Dünyaca ünlü mimar Daniel Libeskind tarafından tasarlanan ve iç mekanları Londra merkezli 1508 London tarafından hazırlanan proje, Shamal Holding ve H&H Development ortaklığıyla hayata geçirilmektedir. Fransız kristal efsanesi Baccarat'ın 260 yıllık mirasını prizmatik cam bir heykele dönüştüren kompleks, 49 özel markalı rezidans ve 144 odalı Baccarat lüks oteline ev sahipliği yapar.",
+      "architecturalHighlights": [
+          "Daniel Libeskind imzalı, el işi kesme kristal gibi ışığı yansıtan prizmatik kristal cephe",
+          "Görkemli giriş lobilerinde özel tasarım Baccarat kristal avizeler ve imza kırmızı kristal detaylar",
+          "Downtown Dubai'de Dubai Mall, Burj Khalifa ve Dubai Operası'na yürüme mesafesinde benzersiz konum",
+          "Yalnızca 49 özel rezidanstan oluşan, 1508 London tasarımı mermer ve kristal iç mekanlar"
+      ],
+      "historicalNote": "260 yıllık köklü Fransız kristal devi Baccarat'ın Orta Doğu'daki ilk ultra lüks otel ve rezidans projesi.",
+      "structuralSystem": "Yüksek mukavemetli betonarme çekirdek, ard-germeli döşemeler ve prizmatik cam giydirme cephe"
+  }
 };
 
 export const LOCALIZED_BUILDINGS_HI: Record<string, LocalizedBuildingData> = {
@@ -3467,6 +3586,23 @@ export const LOCALIZED_BUILDINGS_HI: Record<string, LocalizedBuildingData> = {
     "historicalNote": "मई 2024 में टाइगर ग्रुप द्वारा 3.6 बिलियन एईडी ($1 बिलियन) के निवेश से घोषित किया गया।",
     "structuralSystem": "हाई-परफॉर्मेंस प्रबलित कंक्रीट कोर और कंपोजिट परिधि कॉलम संरचना"
   }
+,
+  "baccarat-residences": {
+      "name": "बैकारेट रेजिडेंस दुबई (Baccarat Residences)",
+      "architect": "डेनियल लिबेस्काइंड (Studio Libeskind) और AECOM",
+      "developer": "शमाल होल्डिंग / एचएंडएच डेवलपमेंट (Shamal / H&H)",
+      "district": "डाउनटाउन दुबई (Downtown Dubai)",
+      "type": "अल्ट्रा-लक्जरी ब्रांडेड आवास और होटल",
+      "description": "बैकारेट रेजिडेंस दुबई (Baccarat Residences Dubai) डाउनटाउन दुबई में दुबई मॉल और बुर्ज खलीफा के पास स्थित 237 मीटर ऊंची एक क्रिस्टलीय अल्ट्रा-लक्जरी परियोजना है। विश्व प्रसिद्ध वास्तुकार डेनियल लिबेस्काइंड (Studio Libeskind) द्वारा डिजाइन और 1508 लंदन द्वारा आंतरिक साज-सज्जा से सुसज्जित, यह परियोजना शमाल होल्डिंग और एचएंडएच डेवलपमेंट द्वारा विकसित की जा रही है। 260 साल पुराने फ्रांसीसी क्रिस्टल ब्रांड बैकारेट की विरासत को समर्पित इस परियोजना में केवल 49 अनन्य निजी आवास और 144 कमरों का लक्जरी बैकारेट होटल शामिल है, जिसमें बुर्ज खलीफा के शानदार दृश्य मिलते हैं।",
+      "architecturalHighlights": [
+          "डेनियल लिबेस्काइंड द्वारा तराशे गए क्रिस्टल की तरह प्रकाश को प्रतिबिंबित करने वाला भव्य प्रिज्म मुखौटा",
+          "भव्य लॉबी में विशेष बैकारेट क्रिस्टल झूमर और हस्ताक्षर रूबी लाल क्रिस्टल विवरण",
+          "डाउनटाउन दुबई में प्रमुख स्थान, दुबई मॉल और दुबई ओपेरा से पैदल दूरी पर",
+          "1508 लंदन द्वारा तैयार इतालवी संगमरमर से सजे केवल 49 विशेष निजी आवासों का दुर्लभ संग्रह"
+      ],
+      "historicalNote": "मध्य पूर्व में 260 साल पुराने प्रसिद्ध फ्रांसीसी क्रिस्टल ब्रांड बैकारेट की पहली अल्ट्रा-लक्जरी हॉस्पिटैलिटी और रेजिडेंशियल परियोजना।",
+      "structuralSystem": "उच्च शक्ति प्रबलित कंक्रीट कोर और पोस्ट-तनावयुक्त स्लैब के साथ प्रिज्मैटिक कर्टेन वॉल"
+  }
 };
 
 export const LOCALIZED_BUILDINGS_UR: Record<string, LocalizedBuildingData> = {
@@ -3893,6 +4029,23 @@ export const LOCALIZED_BUILDINGS_UR: Record<string, LocalizedBuildingData> = {
     ],
     "historicalNote": "مئی 2024 میں ٹائیگر گروپ نے 3.6 ارب درہم (ایک ارب ڈالر) کے ساتھ اس کا باضابطہ اعلان کیا۔",
     "structuralSystem": "انتہائی مضبوط کنکریٹ کور اور کمپوزٹ کالمز کا جدید سٹرکچر"
+  }
+,
+  "baccarat-residences": {
+      "name": "باکارا ریزیڈنسز دبئی (Baccarat Residences)",
+      "architect": "اسٹوڈیو ڈینیل لیبسکائنڈ (Studio Libeskind) اور AECOM",
+      "developer": "شمال ہولڈنگ / ایچ اینڈ ایچ ڈویلپمنٹ (Shamal / H&H)",
+      "district": "ڈاون ٹاون دبئی (Downtown Dubai)",
+      "type": "انتہائی پرتعیش رہائشی ٹاور اور ہوٹل",
+      "description": "باکارا ریزیڈنسز دبئی ڈاون ٹاون دبئی میں دبئی مال اور برج خلیفہ کے قریب 237 میٹر بلند دو کرسٹل ٹاورز پر مشتمل ایک بے مثال شاہکار ہے۔ عالمی شہرت یافتہ معمار ڈینیل لیبسکائنڈ کی ڈیزائن کردہ اور لندن کے 1508 اسٹوڈیو کے تیار کردہ اندرونی ڈیزائن کے ساتھ، یہ پروجیکٹ شمال ہولڈنگ اور ایچ اینڈ ایچ ڈویلپمنٹ کی مشترکہ کاوش ہے۔ 260 سالہ فرانسیسی کرسٹل برانڈ باکارا کی روایت کا آئینہ دار یہ پروجیکٹ صرف 49 انتہائی پرتعیش نجی رہائش گاہوں اور 144 کمروں کے فائیو اسٹار ہوٹل پر مشتمل ہے، جس میں برج خلیفہ کے سحر انگیز نظارے شامل ہیں۔",
+      "architecturalHighlights": [
+          "ڈینیل لیبسکائنڈ کا ڈیزائن کردہ کرسٹل نما پرزمیٹک اگلا رخ جو قدرتی روشنی کو منعکس کرتا ہے",
+          "عظیم الشان لابی میں خصوصی باکارا کرسٹل فانوس اور دستخطی سرخ کرسٹل کی جھلکیاں",
+          "ڈاون ٹاون دبئی میں بہترین مقام، دبئی مال اور دبئی اوپیرا کے بالکل قریب پیدل فاصلے پر",
+          "صرف 49 نایاب رہائش گاہوں پر مشتمل مجموعہ جس میں اطالوی ماربل اور 1508 لندن کی کاریگری نمایاں ہے"
+      ],
+      "historicalNote": "مشرق وسطیٰ میں تاریخی 260 سالہ فرانسیسی کرسٹل برانڈ باکارا کا پہلا الٹرا لگژری ہوٹل اور رہائشی پروجیکٹ۔",
+      "structuralSystem": "اعلیٰ طاقت کا حامل کنکریٹ کور، پوسٹ ٹینشنڈ سلیبس اور پرزمیٹک گلاس کرٹن وال"
   }
 };
 

@@ -3319,6 +3319,103 @@ export const BUILDINGS: Building[] = [
       hiddenOperatingCosts: "District cooling capacity charges (Empower); premium service fee of 24 AED/sq.ft to sustain the vertical rainforest biome."
     },
   },
+  {
+    id: "baccarat-residences",
+    legacyId: "DUB-039",
+    slug: "baccarat-residences",
+    image: "/images/buildings/baccarat-residences.webp",
+    name: "Baccarat Residences",
+    heightMeters: 237,
+    heightFeet: 778,
+    floors: 44,
+    yearBuilt: 2026,
+    architect: "Studio Libeskind (Daniel Libeskind)",
+    architectFirm: "Studio Libeskind / AECOM",
+    developer: "Shamal Holding / H&H Development",
+    district: "Downtown Dubai",
+    districtSlug: "downtown-dubai",
+    type: "Mixed-Use",
+    status: "Under Construction",
+    rating: 5.0,
+    featured: true,
+    investmentYield: "5.8% - 6.5%",
+    startingPriceAed: "18,000,000 AED",
+    startingPriceUsd: "$4,900,000",
+    description:
+      "Baccarat Residences Dubai is an ultra-luxury crystalline twin-tower landmark rising 237 meters in Downtown Dubai adjacent to Dubai Mall and Burj Khalifa. Conceived by world-renowned architect Daniel Libeskind (Studio Libeskind) with interiors by London design house 1508 London, the project is owned by Shamal Holding and developed by H&H Development in collaboration with SH Hotels & Resorts. Translating the 260-year artisan heritage of French crystal legend Baccarat into a faceted, light-refracting architectural sculpture, the development houses 49 ultra-exclusive private residences alongside a 144-key luxury Baccarat hotel, crowned by bespoke crystal chandeliers, signature Baccarat rouge accents, and panoramic vistas of Burj Khalifa.",
+    architecturalHighlights: [
+      "Prismatic crystalline silhouette by Daniel Libeskind reflecting light like hand-cut crystal facets",
+      "Bespoke Baccarat crystal chandeliers and signature rouge crystal accents in grand arrival lobbies",
+      "Prime Downtown location facing Burj Khalifa, Dubai Mall, and the Burj Lake fountain promenade",
+      "Ultra-exclusive limited collection of 49 branded private residences with interiors by 1508 London",
+    ],
+    historicalNote: "The Middle East debut of the legendary 260-year-old French crystal house Baccarat into ultra-luxury hospitality and branded real estate.",
+    structuralSystem: "Reinforced concrete central core with post-tensioned floor plates, perimeter columns, and faceted glass curtain wall",
+    mainContractor: "Arabian Construction Company (ACC)",
+    structuralEngineer: "AECOM Middle East",
+    mepEngineer: "AECOM / Koltay Facades (Facade Consultant)",
+    urbanIntegration: "Direct pedestrian connectivity to Mohammed Bin Rashid Boulevard, Dubai Mall, and Dubai Opera",
+    foundation: {
+      pilesCount: 185,
+      pileDepthMeters: 48,
+      pileDiameterMeters: "1.2 m - 1.5 m",
+      raftThicknessMeters: "3.2 m solid reinforced concrete mat with crystalline waterproofing",
+      bedrockType: "Dense calcarenite and marine sandstone with cathodic corrosion barrier system",
+    },
+    windStructural: {
+      lateralSystem: "Central reinforced concrete shear core coupled with rigid outrigger frames and shear walls",
+      dampingMechanism: "Prismatic aerodynamic chamfers and crystalline geometry disrupt vortex shedding; natural high torsional stiffness",
+      maxApexSwayMeters: "± 0.28 m under 50-year maximum design wind event",
+      concreteStrengthGrade: "C70 / C80 High-Performance Self-Compacting Concrete",
+    },
+    facade: {
+      glazingType: "Bespoke high-performance Low-E double and triple-glazed crystalline curtain wall with acoustic laminated interlayers",
+      shgcSolarCoefficient: "SHGC 0.20 (blocks 80% of radiant solar heat gain)",
+      uValueWPerM2K: "1.25 W/m²K",
+      bmuCleaningSystem: "Dual concealed roof-mounted telescoping BMU cranes with articulated cradles for faceted geometry",
+      cleaningCycleDays: "60 days full exterior wash cycle",
+    },
+    verticalTransport: {
+      elevatorManufacturer: "Schindler / Otis High-Speed",
+      totalElevators: 14,
+      maxSpeedMs: 6.0,
+      doubleDeckCars: false,
+      zoningStrategy: "Segregated private residential express banks with biometric access and dedicated Baccarat hotel elevators",
+      peakWaitingSeconds: "< 25 seconds via touchless smart destination dispatch",
+    },
+    operatingSpecs: {
+      coolingProvider: "Empower District Cooling",
+      chillerBilling: "Consumption-Billed (Empower)",
+      annualServiceChargeAedSqFt: 28.0,
+      acousticRatingDb: "STC 57 dB (Acoustic laminated glazing attenuating Downtown urban sound)",
+      slabToSlabHeightMeters: 3.8,
+      clearCeilingHeightMeters: 3.4,
+    },
+    layoutEfficiency: {
+      columnImpact: "Minimal (Open Spans)",
+      netToGrossRatio: "87% - 90%",
+      balconyUsability: "Deep sheltered loggias and cantilevered crystal viewing terraces framing unobstructed Burj Khalifa views",
+    },
+    auditReview: {
+      honestVerdict: "Baccarat Residences Dubai is one of the most elite branded residential offerings in Downtown Dubai. Rising 237 meters with signature Daniel Libeskind architecture and 1508 London interiors, it targets ultra-high-net-worth trophy collectors prioritizing global brand prestige and direct Burj Khalifa sightlines over rental yield. The entry threshold exceeding 18M AED reflects unprecedented exclusivity with only 49 private residences. Handover in 2026 and service fees around 28 AED/sq.ft are appropriate for white-glove 5-star Baccarat hotel services and private residential amenities.",
+      strengths: [
+        "Prestigous global heritage: first Baccarat-branded residences in the Middle East with authentic French crystal artistry.",
+        "Crystalline signature architecture by world-acclaimed architect Daniel Libeskind (Studio Libeskind).",
+        "Ultra-low density with just 49 private residences, ensuring peerless privacy, security, and white-glove concierge services.",
+        "Unbeatable Downtown location walking distance to Dubai Mall, Burj Khalifa, and Dubai Opera."
+      ],
+      pitfallsAndWeaknesses: [
+        "Extremely high entry ticket (from 18M AED / $4.9M USD), catering exclusively to UHNW trophy buyers.",
+        "Handover timeline slated for 2026, requiring staged milestone capital allocation.",
+        "Downtown Boulevard traffic during peak events and New Year's Eve fireworks requires route planning."
+      ],
+      airbnbHolidayHomesPolicy: "Strictly regulated residential bylaws; rental management available via Baccarat luxury hotel program for certified suites.",
+      guestParkingReality: "Dedicated multi-level subterranean bays with 24/7 white-glove VIP valet and private chauffeur lounge.",
+      soundproofingRating: "STC 57 dB (Acoustic facade isolation dampening Downtown traffic and boulevard events).",
+      elevatorPeakWaitReality: "< 25 seconds via dedicated residential high-speed lifts with private elevator lobbies on select tiers.",
+      hiddenOperatingCosts: "Empower district cooling demand charges; 28 AED/sq.ft luxury service charge maintaining five-star Baccarat amenities."
+    },
+  },
 ];
 
 /**
