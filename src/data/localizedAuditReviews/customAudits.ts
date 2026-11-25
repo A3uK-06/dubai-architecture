@@ -1771,5 +1771,83 @@ export const CUSTOM_TOWER_AUDITS: TowerCustomAuditTranslations = {
       elevatorPeakWaitReality: "配备专属高速直达电梯，高区户型享有私家独立电梯厅，平均候梯时间少于25秒。",
       hiddenOperatingCosts: "需缴纳Empower集中供冷备用金；28 AED/平方英尺的物业费涵盖巴卡拉五星级奢华配套的高标准维保。"
     }
+  },
+  "six-senses-residences-dubai-marina": {
+    en: {
+      honestVerdict: "Standing at a monumental 517 meters, Six Senses Residences Dubai Marina is poised to be the world's tallest residential tower upon completion in 2028. Developed by Select Group on the former Pentominium site, the project combines supertall architectural prominence with the world-renowned Six Senses longevity and wellness philosophy. With starting prices from 5.8M AED ($1.58M USD), entry valuations are remarkably compelling for a record-breaking supertall in Dubai Marina. Buyers should note the 2028 delivery horizon and factor in supertall service fees (~26 AED/sq.ft) that fund the extensive 6-tier wellness ecosystem.",
+      strengths: [
+        "World's tallest residential skyscraper at 517 meters, securing instant global trophy status and international liquidity.",
+        "Renowned Six Senses brand integration offering 61,250 sq.ft of world-class wellness, longevity, and spa facilities.",
+        "Unobstructed panoramic vistas over Palm Jumeirah, Dubai Marina yacht canal, and the open Arabian Gulf.",
+        "Tier-1 delivery team: developed by Select Group, designed by Woods Bagot, engineered by WSP, and built by ACC."
+      ],
+      pitfallsAndWeaknesses: [
+        "Extended construction timeline with handover projected for Q4 2028.",
+        "Supertall living requires sky lobby elevator transfers to reach upper-tier residences above Level 60.",
+        "Marina arterial exit traffic on Al Emreef Street during peak weekend leisure hours."
+      ],
+      airbnbHolidayHomesPolicy: "Strictly regulated residential bylaws; short-term leases permitted exclusively through certified Six Senses hospitality management.",
+      guestParkingReality: "Dedicated multi-level podium and subterranean parking with automated 24/7 VIP valet and EV supercharging bays.",
+      soundproofingRating: "STC 58 dB (Triple-glazed acoustic curtain wall completely eliminating urban Marina and high-altitude wind noise).",
+      elevatorPeakWaitReality: "< 28 seconds via double-deck high-speed elevators traveling at up to 9 m/s.",
+      hiddenOperatingCosts: "Empower district cooling demand charges; 26 AED/sq.ft service fee maintaining the 6-level wellness ecosystem."
+    },
+    ru: {
+      honestVerdict: "При монументальной высоте 517 метров Six Senses Residences Dubai Marina станет самым высоким жилым небоскребом в мире после завершения строительства в 2028 году. Проект от Select Group на легендарной площадке Pentominium объединяет рекордный супертолл с мировой философией долголетия и велнеса Six Senses. Входной порог от 5,8 млн AED ($1,58 млн) делает объект исключительно привлекательным для инвестиций в мировой рекорд в локации Dubai Marina. Инвесторам следует учитывать срок сдачи в 2028 году и сервисный сбор (~26 AED/кв. фут) на содержание 6-уровневого велнес-комплекса.",
+      strengths: [
+        "Самый высокий жилой небоскреб на планете (517 м), обеспечивающий абсолютный статус мирового трофея и высшую международную ликвидность.",
+        "Интеграция глобального люкс-бренда Six Senses: 5700 кв. м спа, криотерапии, долголетия и панорамный бассейн на 109 этаже.",
+        "Панорамные вечные виды на остров Palm Jumeirah, гавань Dubai Marina и открытый Персидский залив.",
+        "Команда высшей лиги: девелопер Select Group, архитекторы Woods Bagot, инженеры WSP и генподрядчик ACC."
+      ],
+      pitfallsAndWeaknesses: [
+        "Длительный горизонт строительства со сдачей объекта в конце 2028 года.",
+        "Особенности сверхвысотного проживания: для этажей выше 60-го требуется пересадка в скоростном скай-лобби.",
+        "Плотное движение на выезде с Al Emreef Street в вечерние часы пик выходных дней."
+      ],
+      airbnbHolidayHomesPolicy: "Строгий внутренний устав кондоминиума; сдача в краткосрочную аренду только через программу премиального гостиничного пула Six Senses.",
+      guestParkingReality: "Многоуровневый подиумный и подземный паркинг с автоматизированным VIP-валет-сервисом и станциями быстрой зарядки электромобилей.",
+      soundproofingRating: "STC 58 дБ (Трехкамерное ламинированное остекление, полностью гасящее шум ветра на полукилометровой высоте).",
+      elevatorPeakWaitReality: "< 28 секунд благодаря двухпалубным экспресс-лифтам со скоростью до 9 м/с.",
+      hiddenOperatingCosts: "Базовый тариф мощности охлаждения Empower; сервисный сбор 26 AED/кв. фут на обслуживание 6-уровневой велнес-инфраструктуры."
+    },
+    ar: {
+      honestVerdict: "بارتفاعه الأسطوري البالغ 517 متراً، يستعد برج سيكس سينسز ريزيدنسز دبي مارينا ليكون أطول ناطحة سحاب سكنية في العالم عند اكتماله عام 2028. يجمع المشروع الذي تطوره مجموعة سيلكت على موقع بينتومينيوم الشهير بين هيبة الأبراج الشاهقة وفلسفة سيكس سينسز العالمية للاستشفاء وجودة الحياة. وبأسعار تبدأ من 5.8 مليون درهم، يوفر المشروع فرصة استثمارية استثنائية في دبي مارينا مع تسليم في 2028 ورسوم صيانة تبلغ نحو 26 درهماً/قدم مربع.",
+      strengths: [
+        "أطول برج سكني في العالم (517 متراً) مما يمنحه مكانة أسطورية وسيولة إعادة بيع فائقة بين أثرياء العالم.",
+        "شراكة مع علامة سيكس سينسز الفاخرة لتوفير 61,250 قدماً مربعاً من مرافق السبا وطول العمر ومسبح في الطابق 109.",
+        "إطلالات بانورامية مفتوحة لا تُحجب على نخلة جميرا وقناة دبي مارينا والخليج العربي.",
+        "تحالف نخبة المطورين والمعماريين: سيلكت جروب، وودز باجوت، دبليو إس بي، والإنشاءات العربية (ACC)."
+      ],
+      pitfallsAndWeaknesses: [
+        "أفق بناء ممتد مع توقع التسليم في الربع الأخير من عام 2028.",
+        "الارتفاع الفائق يتطلب التبديل في ردهة السكاي لوبي للوصول إلى الطوابق السكنية العليا فوق الطابق 60.",
+        "كثافة مرورية على مخارج شارع العريف في أوقات ذروة العطلات الأسبوعية."
+      ],
+      airbnbHolidayHomesPolicy: "لوائح سكنية مقننة بدقة؛ يُسمح بالتأجير قصير الأجل حصرياً عبر برنامج إدارة الضيافة المعتمد من سيكس سينسز.",
+      guestParkingReality: "مواقف متعددة الطوابق تحت الأرض وفي البوديوم مع خدمة صف سيارات VIP ومحطات شحن فائقة للسيارات الكهربائية.",
+      soundproofingRating: "STC 58 dB (واجهة زجاجية ثلاثية الطبقات عازلة تماماً لأصوات الرياح العاتية وضوضاء المارينا).",
+      elevatorPeakWaitReality: "أقل من 28 ثانية بفضل مصاعد دبل-ديك فائقة السرعة تصل سرعتها إلى 9 م/ث.",
+      hiddenOperatingCosts: "رسوم سعة تبريد إمباور؛ ورسوم صيانة تبلغ 26 درهم/قدم مربع لتشغيل منظومة الرفاهية الممتدة على 6 طوابق."
+    },
+    zh: {
+      honestVerdict: "迪拜游艇港六善水疗官邸（Six Senses Residences Dubai Marina）高达517米，将于2028年竣工并正式加冕全球最高纯住宅摩天大楼。Select Group在昔日传奇Pentominium地块上重新构想这一建筑奇迹，将超级地标高度与享誉全球的六善长寿与身心健康哲学深度融合。起售价580万迪拉姆（约158万美元），对于一座打破世界纪录的超高层豪宅而言极具全球竞争优势。买家需规划2028年交付期，并考量约26 AED/平方英尺的超奢养生物业维保支出。",
+      strengths: [
+        "517米全球最高纯住宅摩天大楼，奠定不可撼动的传世地标地位与全球超级富豪流动性。",
+        "六善全球顶级品牌入驻，倾力构筑61,250平方英尺超大规模健康养生水疗中心及109层高空天际泳池。",
+        "坐拥朱美拉棕榈岛全景、迪拜游艇港奢华运河及波斯湾浩瀚日落一线永久开阔视野。",
+        "全明星开发阵容：Select Group联手Woods Bagot大师设计、WSP工程顾问及ACC建筑总包。"
+      ],
+      pitfallsAndWeaknesses: [
+        "建设周期较长，官方预计竣工交付时间为2028年第四季度。",
+        "超高层居住体验：60层以上的高区住户需通过空中大堂（Sky Lobby）进行电梯转换。",
+        "周末及节假日游艇港休闲高峰期，Al Emreef街出入干道车流量较为集中。"
+      ],
+      airbnbHolidayHomesPolicy: "受豪宅业主委员会公约严格监管；短租仅限通过六善官方奢华托管服务开展合规运营。",
+      guestParkingReality: "配备多层地下及裙楼专属车库，全天候提供VIP自动化代客泊车与新能源超级充电车位。",
+      soundproofingRating: "STC 58 dB（三玻两腔高规格声学幕墙，完全消除500米高空风噪及游艇港地面噪音）。",
+      elevatorPeakWaitReality: "配备运行速度达9米/秒的双层轿厢高速电梯，智能派梯高峰期候梯时间小于28秒。",
+      hiddenOperatingCosts: "需缴纳Empower集中供冷备用金；26 AED/平方英尺的物业费用于支持全栋6层六善养生生态系统的顶奢运转。"
+    }
   }
 };

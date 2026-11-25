@@ -116,6 +116,7 @@ export const DISTRICTS: District[] = [
     urbanConcept:
       "Excavated from coastal desert and flooded with Arabian Gulf seawater in 2003, Dubai Marina is an engineering marvel designed by HOK Canada. The urban canyon is flanked by a 7 km continuous pedestrian promenade (Marina Walk). High-density supertall residential clusters are organized along two parallel relief arteries: Al Marsa Street and Marina Promenade.",
     keyLandmarks: [
+      "Six Senses Residences (517 m, world's tallest residential tower)",
       "Cayan Tower (306 m, 90° helical twist)",
       "Marina 101 (425 m, second tallest in Dubai)",
       "Princess Tower (413 m)",

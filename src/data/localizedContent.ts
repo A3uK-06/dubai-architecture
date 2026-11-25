@@ -579,6 +579,23 @@ export const LOCALIZED_BUILDINGS_RU: Record<string, LocalizedBuildingData> = {
       "historicalNote": "Первый в истории Ближнего Востока ультрароскошный отельный и жилой проект под легендарным 260-летним брендом Baccarat.",
       "structuralSystem": "Монолитное ядро из высокопрочного бетона с преднапряженными перекрытиями и граненым навесным стеклянным фасадом"
   }
+,
+  "six-senses-residences-dubai-marina": {
+      "name": "Сикс Сенсес Марина (Six Senses Residences Dubai Marina)",
+      "architect": "Woods Bagot & WSP Middle East",
+      "developer": "Select Group",
+      "district": "Дубай Марина (Dubai Marina)",
+      "type": "Жилой супертолл ультра-роскоши",
+      "description": "Грандиозный 122-этажный жилой небоскреб высотой 517 метров в Dubai Marina — будущий самый высокий жилой небоскреб в мире (сдача в 2028 году). Проект от ведущего девелопера Select Group, спроектированный бюро Woods Bagot при инженерном руководстве WSP Middle East, возрождает легендарную площадку башни Pentominium, трансформируя ее в мировой флагман велнес-архитектуры под брендом Six Senses. Включает 251 резиденцию премиум-класса (от 2 до 4 спален, полуэтажные скай-особняки и трехэтажные пентхаусы), биофильный дизайн, принципы фэншуй, сертификат LEED Silver и 5700 кв. м (61 250 кв. футов) холистической спа- и велнес-инфраструктуры на 6 уровнях с инфинити-бассейном на 109 этаже.",
+      "architecturalHighlights": [
+          "Самый высокий жилой небоскреб на планете (517 метров, 122 этажа), устанавливающий новый мировой рекорд",
+          "Скульптурный аэродинамический силуэт от Woods Bagot с террасами, снижающими ветровые нагрузки на высоте более 500 м",
+          "5700 кв. м велнес-пространств Six Senses на 6 уровнях: криотерапия, барокамеры, клиника долголетия и высотный бассейн на 109 этаже",
+          "Полный инженерный редевелопмент легендарного супертолла Pentominium в сертифицированный эко-небоскреб"
+      ],
+      "historicalNote": "Изначально заложен как 516-метровый Pentominium до остановки в 2011 году; в 2024 году выкуплен с аукциона девелопером Select Group за $100 млн и полностью перепроектирован совместно с Six Senses.",
+      "structuralSystem": "Высокопрочное монолитное железобетонное ядро с композитными мегаколоннами, 3 поясами аутригерных ферм и демпферами колебаний"
+  }
 };
 
 export const LOCALIZED_BUILDINGS_AR: Record<string, LocalizedBuildingData> = {
@@ -938,6 +955,23 @@ export const LOCALIZED_BUILDINGS_AR: Record<string, LocalizedBuildingData> = {
       ],
       "historicalNote": "أول ظهور لعلامة باكارا الفرنسية العريقة في قطاع الضيافة والإقامات فائقة الفخامة في منطقة الشرق الأوسط.",
       "structuralSystem": "نواة خرسانية مسلحة فائقة القوة مع بلاطات لاحقة الشد وواجهة زجاجية منشوريه"
+  }
+,
+  "six-senses-residences-dubai-marina": {
+      "name": "سيكس سينسز ريزيدنسز دبي مارينا (Six Senses Residences Dubai Marina)",
+      "architect": "وودز باجوت (Woods Bagot) و دبليو إس بي (WSP)",
+      "developer": "مجموعة سيلكت (Select Group)",
+      "district": "دبي مارينا (Dubai Marina)",
+      "type": "برج سكني فائق الارتفاع والرفاهية",
+      "description": "بارتفاع مهيب يبلغ 517 متراً (122 طابقاً) في قلب دبي مارينا، يستعد برج سيكس سينسز ريزيدنسز ليصبح أطول برج سكني في العالم عند اكتماله عام 2028. تم تطويره بواسطة مجموعة سيلكت وتصميمه بقيادة مكتب وودز باجوت والهندسة الإنشائية من WSP، حيث يحول موقع برج بينتومينيوم التاريخي إلى واحة عالمية للصحة والعافية. يضم 251 مسكناً فاخراً، وتصميماً حيوياً مستوحى من الطبيعة ومبادئ الفينغ شوي، ومرافق صحية شاملة من سيكس سينسز تمتد على مساحة 61,250 قدماً مربعاً موزعة على 6 طوابق ومسبحاً سماوياً في الطابق 109.",
+      "architecturalHighlights": [
+          "أطول ناطحة سحاب سكنية في العالم بارتفاع 517 متراً (122 طابقاً) مسجلة رقماً قياسياً جديداً",
+          "تصميم انسيابي ديناميكي هوائي من وودز باجوت يقلل من اهتزازات الرياح الجوية وتدرجات حيوية خضراء",
+          "61,250 قدماً مربعاً من مرافق العافية والاستشفاء من سيكس سينسز ومسبح إنفينيتي مذهل في الطابق 109",
+          "إعادة إحياء وتطوير موقع برج بينتومينيوم التاريخي إلى أيقونة سكنية متكاملة ومستدامة"
+      ],
+      "historicalNote": "بدأ أصلاً باسم برج بينتومينيوم بارتفاع 516 متراً قبل توقفه في 2011؛ استحوذت عليه مجموعة سيلكت في مزاد 2024 مقابل 100 مليون دولار وأعادت هندسته بالكامل تحت علامة سيكس سينسز الفاخرة.",
+      "structuralSystem": "نواة خرسانية مسلحة فائقة القوة مع أعمدة عملاقة مركبة و3 أحزمة دعامات فولاذية ونظام تخميد الكتلة"
   }
 };
 
@@ -1383,6 +1417,23 @@ export const LOCALIZED_BUILDINGS_ZH: Record<string, LocalizedBuildingData> = {
       "historicalNote": "拥有260年法国皇家奢华历史的水晶传奇品牌巴卡拉首次进驻中东超奢酒店与顶奢豪宅领域。",
       "structuralSystem": "高强度钢筋混凝土核心筒结构配合后张预应力楼板与水晶多棱幕墙系统"
   }
+,
+  "six-senses-residences-dubai-marina": {
+      "name": "迪拜游艇港六善水疗官邸 (Six Senses Residences Dubai Marina)",
+      "architect": "伍兹贝格 (Woods Bagot) & WSP Middle East",
+      "developer": "Select Group (精选集团)",
+      "district": "迪拜游艇港 (Dubai Marina)",
+      "type": "全球最高超奢住宅摩天楼",
+      "description": "迪拜游艇港六善水疗官邸（Six Senses Residences Dubai Marina）拔地而起517米（122层），预计于2028年竣工并荣膺全球最高纯住宅摩天大楼。由中东顶尖开发商Select Group联袂国际建筑巨擘伍兹贝格（Woods Bagot）与知名工程顾问WSP倾力打造，项目承接传奇超高层Pentominium地块并进行彻底的工程重塑，蜕变为全球顶级六善养生主题旗舰住宅。共规划251套传世豪宅，汇聚亲自然设计、古典风水哲学与LEED银级环保标准，专设6层面积超61,250平方英尺的六善康养水疗生态系统，并于109层高空构筑天际无边际泳池。",
+      "architecturalHighlights": [
+          "517米（122层）人类历史上最高的纯住宅摩天大楼，重塑全球豪宅高度天花板",
+          "伍兹贝格雕塑感修长立面，采用气动退台与亲自然露台，强力化解高空涡流风阻",
+          "跨越6层、总面积达61,250平方英尺的六善奢华康养生态，配有109层天际无边际泳池与长寿理疗中心",
+          "全面重塑昔日传奇烂尾超高层Pentominium，实现绿色建筑与可持续工程的辉煌新生"
+      ],
+      "historicalNote": "项目前身为2008-2011年停工的516米Pentominium；2024年由Select Group以1亿美元竞得并彻底颠覆重构，携手六善顶级奢华度假品牌重新启幕。",
+      "structuralSystem": "超高强钢筋混凝土核心筒配合外围复合型巨柱、3道伸臂钢桁架腰桁及阻尼系统"
+  }
 };
 
 export const LOCALIZED_BUILDINGS_DE: Record<string, LocalizedBuildingData> = {
@@ -1826,6 +1877,23 @@ export const LOCALIZED_BUILDINGS_DE: Record<string, LocalizedBuildingData> = {
       ],
       "historicalNote": "Das Nahost-Debüt der legendären, 260 Jahre alten französischen Kristallmarke Baccarat im Bereich der Markenresidenzen.",
       "structuralSystem": "Hochfester Stahlbetonkern mit vorgespannten Geschossdecken und facettierter Vorhangfassade"
+  }
+,
+  "six-senses-residences-dubai-marina": {
+      "name": "Six Senses Residences Dubai Marina",
+      "architect": "Woods Bagot & WSP Middle East",
+      "developer": "Select Group",
+      "district": "Dubai Marina",
+      "type": "Ultra-Luxus-Wohn-Supertall",
+      "description": "Mit einer atemberaubenden Höhe von 517 Metern (122 Etagen) wird Six Senses Residences Dubai Marina bei Fertigstellung 2028 der höchste reine Wohnturm der Welt sein. Entwickelt von Select Group und entworfen von Woods Bagot mit Statik von WSP Middle East, revitalisiert der Turm das traditionsreiche Pentominium-Areal und verwandelt es in ein globales Wellness-Refugium. Mit 251 exklusiven Residenzen, biophilem Design, Feng-Shui-Harmonie und 61.250 Quadratfuß Six Senses Wellness-Fläche auf 6 Etagen inklusive Sky-Pool im 109. Stockwerk setzt das Projekt neue Weltrekorde.",
+      "architecturalHighlights": [
+          "Höchster Wohnturm der Erde mit 517 Metern und 122 Stockwerken setzt globale Maßstäbe",
+          "Skulpturales, windabweisendes Profil von Woods Bagot mit biophilen Himmelsgärten",
+          "Über 5.700 m² Six Senses Wellness- und Langlebigkeitseinrichtungen mit 109.-Stock-Sky-Pool",
+          "Erfolgreiche Neuentwicklung des berühmten Pentominium-Standorts zum nachhaltigen Wahrzeichen"
+      ],
+      "historicalNote": "Ursprünglich als 516-Meter-Pentominium begonnen und 2011 gestoppt; 2024 von Select Group ersteigert und unter der Luxusmarke Six Senses neu konzipiert.",
+      "structuralSystem": "Hochfester Stahlbetonkern mit Verbundstützen, Outrigger-Stahlfachwerken und Schwingungstilgern"
   }
 };
 
@@ -2271,6 +2339,23 @@ export const LOCALIZED_BUILDINGS_FR: Record<string, LocalizedBuildingData> = {
       "historicalNote": "Première incursion au Moyen-Orient de la prestigieuse maison bicentenaire Baccarat dans l'hôtellerie et les résidences de luxe.",
       "structuralSystem": "Noyau central en béton armé haute résistance, dalles post-contraintes et mur-rideau facetté"
   }
+,
+  "six-senses-residences-dubai-marina": {
+      "name": "Six Senses Residences Dubai Marina",
+      "architect": "Woods Bagot & WSP Middle East",
+      "developer": "Select Group",
+      "district": "Dubai Marina",
+      "type": "Gratte-ciel résidentiel d'ultra-luxe",
+      "description": "Culminant à 517 mètres (122 étages) au-dessus de Dubai Marina, Six Senses Residences Dubai Marina deviendra la plus haute tour résidentielle au monde lors de sa livraison en 2028. Développé par Select Group, conçu par Woods Bagot et structuré par WSP Middle East, ce supertall réinvente l'emblématique site du 'Pentominium' en sanctuaire mondial de bien-être. Offrant 251 résidences d'exception, un design biophilique, les préceptes du feng shui et 61 250 pieds carrés d'équipements de longévité Six Senses répartis sur 6 niveaux avec piscine suspendue au 109e étage.",
+      "architecturalHighlights": [
+          "Plus haute tour résidentielle du monde (517 m, 122 étages), établissant un record mondial absolu",
+          "Silhouette élancée et aérodynamique par Woods Bagot réduisant la prise au vent à plus de 500 mètres",
+          "61 250 sq.ft d'installations holistiques Six Senses avec cryothérapie et piscine ciel au 109e étage",
+          "Renaissance spectaculaire et réingénierie intégrale du projet légendaire Pentominium"
+      ],
+      "historicalNote": "Initié à l'origine sous le nom de Pentominium (516 m) avant d'être suspendu en 2011; racheté aux enchères en 2024 par Select Group pour 100M$ sous la bannière Six Senses.",
+      "structuralSystem": "Noyau en béton armé haute résistance, méga-poteaux mixtes, 3 ceintures de treillis outrigger et amortisseurs"
+  }
 };
 
 export const LOCALIZED_BUILDINGS_IT: Record<string, LocalizedBuildingData> = {
@@ -2714,6 +2799,23 @@ export const LOCALIZED_BUILDINGS_IT: Record<string, LocalizedBuildingData> = {
       ],
       "historicalNote": "Il debutto in Medio Oriente della leggendaria maison française Baccarat nel settore dell'ospitalità di lusso e del branded living.",
       "structuralSystem": "Nucleo in calcestruzzo armato ad alte prestazioni con solai post-tesi e facciata continua vetrata"
+  }
+,
+  "six-senses-residences-dubai-marina": {
+      "name": "Six Senses Residences Dubai Marina",
+      "architect": "Woods Bagot & WSP Middle East",
+      "developer": "Select Group",
+      "district": "Dubai Marina",
+      "type": "Grattacielo residenziale ultra-lusso",
+      "description": "Con un'altezza di 517 metri e 122 piani, Six Senses Residences Dubai Marina sarà la torre residenziale più alta del mondo al suo completamento nel 2028. Sviluppata da Select Group e firmata dallo studio Woods Bagot con ingegneria WSP, l'opera riqualifica lo storico cantiere del 'Pentominium' trasformandolo in un tempio mondiale del benessere. Comprende 251 residenze esclusive, design biofilico, principi di feng shui e 61.250 piedi quadrati di servizi Six Senses distribuiti su 6 livelli con piscina panoramica al 109° piano.",
+      "architecturalHighlights": [
+          "Il grattacielo residenziale più alto del pianeta (517 metri, 122 piani), nuovo record mondiale",
+          "Sagoma affusolata progettata da Woods Bagot per mitigare le correnti ventose ad alta quota",
+          "61.250 sq.ft dedicati al benessere Six Senses con piscina a sfioro cielo al 109° piano",
+          "Riqualificazione d'avanguardia del celebre supertall incompiuto Pentominium"
+      ],
+      "historicalNote": "Nato originariamente come Pentominium (516 m) e fermatosi nel 2011; acquisito all'asta nel 2024 da Select Group per 100M$ e riprogettato con il brand Six Senses.",
+      "structuralSystem": "Nucleo in calcestruzzo armato ad altissime prestazioni con mega-colonne composite e cinture stabilizzatrici outrigger"
   }
 };
 
@@ -3159,6 +3261,23 @@ export const LOCALIZED_BUILDINGS_TR: Record<string, LocalizedBuildingData> = {
       "historicalNote": "260 yıllık köklü Fransız kristal devi Baccarat'ın Orta Doğu'daki ilk ultra lüks otel ve rezidans projesi.",
       "structuralSystem": "Yüksek mukavemetli betonarme çekirdek, ard-germeli döşemeler ve prizmatik cam giydirme cephe"
   }
+,
+  "six-senses-residences-dubai-marina": {
+      "name": "Six Senses Residences Dubai Marina",
+      "architect": "Woods Bagot & WSP Middle East",
+      "developer": "Select Group",
+      "district": "Dubai Marina",
+      "type": "Ultra Lüks Konut Gökdeleni",
+      "description": "Dubai Marina siluetinde 517 metreye (122 kat) yükselen Six Senses Residences Dubai Marina, 2028'de tamamlandığında dünyanın en yüksek konut kulesi unvanını alacaktır. Select Group tarafından geliştirilen ve mimari tasarımı Woods Bagot, mühendisliği WSP Middle East imzası taşıyan dev yapı, tarihi 'Pentominium' sahasını küresel bir sağlıklı yaşam merkezine dönüştürmektedir. 251 ultra lüks rezidans, biyofilik tasarım, feng shui uyumu ve 109. katta gökyüzü havuzunu içeren 6 kata yayılmış 61.250 fit kare Six Senses sağlıklı yaşam alanı sunar.",
+      "architecturalHighlights": [
+          "517 metre ve 122 kat ile dünyanın en yüksek konut gökdeleni, yeni bir küresel rekor",
+          "Woods Bagot imzalı, 500 metreyi aşan irtifalarda rüzgar yükünü dağıtan aerodinamik heykelsi form",
+          "6 kata yayılan 61.250 sq.ft Six Senses sağlıklı yaşam alanı ve 109. katta gökyüzü havuzu",
+          "Eski Pentominium süpertol sahasının çevre dostu bir dünya simgesi olarak yeniden doğuşu"
+      ],
+      "historicalNote": "İlk olarak 516 metrelik Pentominium olarak başlamış ve 2011'de durmuştu; 2024'te Select Group tarafından 100 milyon dolara devralınarak Six Senses markasıyla baştan yaratıldı.",
+      "structuralSystem": "Yüksek mukavemetli betonarme mega çekirdek, kompozit kolonlar, 3 kademeli outrigger kuşak kirişleri ve TMD damper"
+  }
 };
 
 export const LOCALIZED_BUILDINGS_HI: Record<string, LocalizedBuildingData> = {
@@ -3603,6 +3722,23 @@ export const LOCALIZED_BUILDINGS_HI: Record<string, LocalizedBuildingData> = {
       "historicalNote": "मध्य पूर्व में 260 साल पुराने प्रसिद्ध फ्रांसीसी क्रिस्टल ब्रांड बैकारेट की पहली अल्ट्रा-लक्जरी हॉस्पिटैलिटी और रेजिडेंशियल परियोजना।",
       "structuralSystem": "उच्च शक्ति प्रबलित कंक्रीट कोर और पोस्ट-तनावयुक्त स्लैब के साथ प्रिज्मैटिक कर्टेन वॉल"
   }
+,
+  "six-senses-residences-dubai-marina": {
+      "name": "सिक्स सेंसेस रेजिडेंस दुबई मरीना (Six Senses Residences Dubai Marina)",
+      "architect": "वुड्स बैगोट (Woods Bagot) और WSP Middle East",
+      "developer": "सिलेक्ट ग्रुप (Select Group)",
+      "district": "दुबई मरीना (Dubai Marina)",
+      "type": "अल्ट्रा-लक्जरी आवासीय सुपरटॉल",
+      "description": "दुबई मरीना में 517 मीटर (122 मंजिल) की ऊंचाई पर स्थित सिक्स सेंसेस रेजिडेंस दुबई मरीना 2028 में पूरा होने पर दुनिया का सबसे ऊंचा आवासीय गगनचुंबी टॉवर बन जाएगा। सिलेक्ट ग्रुप द्वारा विकसित और वुड्स बैगोट द्वारा डिजाइन किया गया यह सुपरटॉल ऐतिहासिक 'पेंटोमिनियम' स्थल को पुनर्जीवित करता है। इसमें 251 अल्ट्रा-लक्जरी आवास, बायोफिलिक डिजाइन, फेंग शुई सिद्धांत और 109वीं मंजिल पर स्काई पूल सहित 6 स्तरों में फैली 61,250 वर्ग फुट की सिक्स सेंसेस वेलनेस सुविधाएं शामिल हैं।",
+      "architecturalHighlights": [
+          "517 मीटर (122 मंजिल) पर दुनिया का सबसे ऊंचा आवासीय गगनचुंबी टॉवर, नया वैश्विक कीर्तिमान",
+          "वुड्स बैगोट द्वारा उच्च ऊंचाई वाली हवा के प्रभाव को कम करने वाला आकर्षक वायुगतिकीय डिजाइन",
+          "6 स्तरों में 61,250 वर्ग फुट की सिक्स सेंसेस वेलनेस और दीर्घायु सुविधाएं व 109वीं मंजिल पर पूल",
+          "ऐतिहासिक पेंटोमिनियम परियोजना का एक प्रमाणित टिकाऊ लैंडमार्क के रूप में पूर्ण पुनर्विकास"
+      ],
+      "historicalNote": "मूल रूप से 516 मीटर के पेंटोमिनियम के रूप में शुरू हुआ और 2011 में रुका; 2024 में सिलेक्ट ग्रुप द्वारा $100M में अधिग्रहित और सिक्स सेंसेस ब्रांड के तहत पूरी तरह से नया रूप दिया गया।",
+      "structuralSystem": "उच्च शक्ति प्रबलित कंक्रीट कोर, समग्र मेगा-कॉलम, 3 आउटट्रिगर बेल्ट ट्रस और ट्यून्ड मास डैम्पर्स"
+  }
 };
 
 export const LOCALIZED_BUILDINGS_UR: Record<string, LocalizedBuildingData> = {
@@ -4046,6 +4182,23 @@ export const LOCALIZED_BUILDINGS_UR: Record<string, LocalizedBuildingData> = {
       ],
       "historicalNote": "مشرق وسطیٰ میں تاریخی 260 سالہ فرانسیسی کرسٹل برانڈ باکارا کا پہلا الٹرا لگژری ہوٹل اور رہائشی پروجیکٹ۔",
       "structuralSystem": "اعلیٰ طاقت کا حامل کنکریٹ کور، پوسٹ ٹینشنڈ سلیبس اور پرزمیٹک گلاس کرٹن وال"
+  }
+,
+  "six-senses-residences-dubai-marina": {
+      "name": "سکس سینسز ریزیڈنسز دبئی مرینا (Six Senses Residences Dubai Marina)",
+      "architect": "ووڈز باگوٹ (Woods Bagot) اور WSP Middle East",
+      "developer": "سلیکٹ گروپ (Select Group)",
+      "district": "دبئی مرینا (Dubai Marina)",
+      "type": "انتہائی پرتعیش رہائشی فلک بوس عمارت",
+      "description": "دبئی مرینا کے افق پر 517 میٹر (122 منزلیں) بلندی کے ساتھ، سکس سینسز ریزیڈنسز دبئی مرینا 2028 میں مکمل ہونے پر دنیا کا سب سے اونچا رہائشی ٹاور بننے جا رہا ہے۔ سلیکٹ گروپ کے زیر اہتمام اور ووڈز باگوٹ کے ڈیزائن کردہ اس عظیم منصوبے نے تاریخی 'پینٹومینیم' سائٹ کو عالمی فلاح و بہبود کے مرکز میں بدل دیا ہے۔ اس میں 251 الٹرا لگژری رہائش گاہیں، بائیوفیلک ڈیزائن، فینگ شوئی اصول اور 109 ویں منزل پر اسکائی پول کے ساتھ 6 منزلوں پر محیط 61,250 مربع فٹ کی سکس سینسز ویلنس سہولیات شامل ہیں۔",
+      "architecturalHighlights": [
+          "517 میٹر (122 منزلیں) پر دنیا کی بلند ترین رہائشی عمارت جو نیا عالمی ریکارڈ قائم کرتی ہے",
+          "ووڈز باگوٹ کا خوبصورت ایروڈائنامک ڈیزائن جو تیز ہواؤں کے دباؤ کو مؤثر طریقے سے کنٹرول کرتا ہے",
+          "6 منزلوں پر 61,250 مربع فٹ سکس سینسز ویلنس اور 109ویں منزل پر سحر انگیز اسکائی پول",
+          "پرانے تاریخی پینٹومینیم سپرٹال پروجیکٹ کی پائیدار عالمی شاہکار کے طور پر مکمل بحالی"
+      ],
+      "historicalNote": "اصل میں 516 میٹر بلند پینٹومینیم کے طور پر شروع ہوا جو 2011 میں رک گیا؛ 2024 میں سلیکٹ گروپ نے 100 ملین ڈالر میں نیلامی میں حاصل کر کے سکس سینسز برانڈ کے تحت دوبارہ تعمیر کیا۔",
+      "structuralSystem": "انتہائی مضبوط کنکریٹ کور، کمپوزٹ میگا کالمز، 3 آؤٹ رگر بیلٹ ٹرسز اور ٹی ایم ڈی ڈیمپرز"
   }
 };
 

@@ -14,7 +14,7 @@ Key principles:
 - Multi-jurisdictional accessibility: Fully localized across 10 languages: English (en), Russian (ru), Arabic (ar), Hindi (hi), Chinese (zh), German (de), French (fr), Urdu (ur), Italian (it), and Turkish (tr).
 
 ================================================================================
-2. SKYSCRAPERS & TOWERS CATALOG (39 TOWERS)
+2. SKYSCRAPERS & TOWERS CATALOG (40 TOWERS)
 ================================================================================
 
 ---
@@ -641,6 +641,22 @@ Service Charge (Mollak): 28 AED/sq.ft
 District Cooling: Consumption-Billed (Empower)
 Description: Baccarat Residences Dubai is an ultra-luxury crystalline twin-tower landmark rising 237 meters in Downtown Dubai adjacent to Dubai Mall and Burj Khalifa. Conceived by world-renowned architect Daniel Libeskind (Studio Libeskind) with interiors by London design house 1508 London, the project is owned by Shamal Holding and developed by H&H Development in collaboration with SH Hotels & Resorts. Translating the 260-year artisan heritage of French crystal legend Baccarat into a faceted, light-refracting architectural sculpture, the development houses 49 ultra-exclusive private residences alongside a 144-key luxury Baccarat hotel, crowned by bespoke crystal chandeliers, signature Baccarat rouge accents, and panoramic vistas of Burj Khalifa.
 
+---
+Tower: Six Senses Residences Dubai Marina
+Slug: six-senses-residences-dubai-marina
+URL: https://dubai-architecture.info/buildings/six-senses-residences-dubai-marina/
+Architectural Height: 517 m (1696 ft)
+Floors: 122
+Completion Year: 2028
+District: Dubai Marina
+Architect: Woods Bagot
+Developer: Select Group
+Structural System: High-performance reinforced concrete central mega-core with composite steel perimeter columns, 3 outrigger belt trusses, and tuned mass dampers
+Estimated Gross Yield: 6.2% - 7.5%
+Service Charge (Mollak): 26 AED/sq.ft
+District Cooling: Consumption-Billed (Empower)
+Description: Soaring 517 meters (122 storeys) into the Dubai Marina skyline, Six Senses Residences Dubai Marina is poised to become the world's tallest residential tower upon completion in 2028. Developed by Select Group and masterminded by lead architect Woods Bagot with engineering by WSP Middle East, this monumental supertall transforms the historic 'Pentominium' site into a global wellness sanctuary. Featuring 251 ultra-luxury residences—ranging from 2-to-4-bedroom deluxe apartments to half-floor sky mansions and 5-bedroom triplex sky penthouses—the tower integrates biophilic design, classical feng shui principles, LEED Silver certification, and 61,250 sq.ft of Six Senses holistic wellness amenities across six dedicated levels.
+
 ================================================================================
 3. DUBAI DISTRICTS & MASTER COMMUNITIES (14 DISTRICTS)
 ================================================================================
@@ -660,7 +676,7 @@ Slug: dubai-marina
 URL: https://dubai-architecture.info/districts/dubai-marina/
 Master Developer: Emaar Properties / Multiple Private Developers
 Average Net ROI: 7.4% - 9.0%
-Key Landmarks: Cayan Tower (306 m, 90° helical twist), Marina 101 (425 m, second tallest in Dubai), Princess Tower (413 m), Dubai Marina Mall & Pier 7, Address Dubai Marina (JW Marriott Marina)
+Key Landmarks: Six Senses Residences (517 m, world's tallest residential tower), Cayan Tower (306 m, 90° helical twist), Marina 101 (425 m, second tallest in Dubai), Princess Tower (413 m), Dubai Marina Mall & Pier 7, Address Dubai Marina (JW Marriott Marina)
 Overview: The world's largest purpose-built man-made marina canal city. Over 200 residential skyscrapers clustered along a 3.5 km turquoise waterway accommodating 500+ luxury berths.
 
 ---

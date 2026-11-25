@@ -3416,6 +3416,103 @@ export const BUILDINGS: Building[] = [
       hiddenOperatingCosts: "Empower district cooling demand charges; 28 AED/sq.ft luxury service charge maintaining five-star Baccarat amenities."
     },
   },
+  {
+    id: "six-senses-residences-dubai-marina",
+    legacyId: "DUB-040",
+    slug: "six-senses-residences-dubai-marina",
+    image: "/images/buildings/six-senses-residences-dubai-marina.webp",
+    name: "Six Senses Residences Dubai Marina",
+    heightMeters: 517,
+    heightFeet: 1696,
+    floors: 122,
+    yearBuilt: 2028,
+    architect: "Woods Bagot",
+    architectFirm: "Woods Bagot / WSP Middle East",
+    developer: "Select Group",
+    district: "Dubai Marina",
+    districtSlug: "dubai-marina",
+    type: "Residential",
+    status: "Under Construction",
+    rating: 5.0,
+    featured: true,
+    investmentYield: "6.2% - 7.5%",
+    startingPriceAed: "5,800,000 AED",
+    startingPriceUsd: "$1,580,000",
+    description:
+      "Soaring 517 meters (122 storeys) into the Dubai Marina skyline, Six Senses Residences Dubai Marina is poised to become the world's tallest residential tower upon completion in 2028. Developed by Select Group and masterminded by lead architect Woods Bagot with engineering by WSP Middle East, this monumental supertall transforms the historic 'Pentominium' site into a global wellness sanctuary. Featuring 251 ultra-luxury residences—ranging from 2-to-4-bedroom deluxe apartments to half-floor sky mansions and 5-bedroom triplex sky penthouses—the tower integrates biophilic design, classical feng shui principles, LEED Silver certification, and 61,250 sq.ft of Six Senses holistic wellness amenities across six dedicated levels.",
+    architecturalHighlights: [
+      "World's tallest residential skyscraper at 517 meters (122 storeys), establishing a new global benchmark",
+      "Slender, sculptured silhouette by Woods Bagot engineered with aerodynamic setbacks to mitigate high-altitude wind vortex shedding",
+      "61,250 sq.ft of Six Senses wellness and longevity amenities spanning 6 dedicated levels, including cryotherapy and a 109th-floor sky pool",
+      "Masterful revival and complete re-engineering of the iconic former Pentominium supertall into a certified sustainable landmark",
+    ],
+    historicalNote: "Originally conceived as the legendary 516-meter 'Pentominium' before halting during the 2011 global slowdown; acquired at auction in 2024 by Select Group for $100M and completely re-engineered under the Six Senses luxury hospitality brand.",
+    structuralSystem: "High-performance reinforced concrete central mega-core with composite steel perimeter columns, 3 outrigger belt trusses, and tuned mass dampers",
+    mainContractor: "Arabian Construction Company (ACC)",
+    structuralEngineer: "WSP Middle East",
+    mepEngineer: "WSP Middle East / Koltay Facades (Facade Consultant)",
+    urbanIntegration: "Prime Dubai Marina location with direct pedestrian connectivity to Marina Walk, Dubai Tram, and the JBR beachfront promenade",
+    foundation: {
+      pilesCount: 250,
+      pileDepthMeters: 65,
+      pileDiameterMeters: "1.5 m - 2.4 m",
+      raftThicknessMeters: "4.0 m solid reinforced concrete mat with crystalline waterproofing",
+      bedrockType: "Dense marine calcarenite and competent sandstone with specialized cathodic anti-corrosion barrier",
+    },
+    windStructural: {
+      lateralSystem: "Central high-performance concrete core wall coupled with four perimeter composite mega-columns and 3 outrigger truss belts",
+      dampingMechanism: "Upper mechanical floor tuned mass damper (TMD) and aerodynamic porous setbacks disrupting vortex shedding at 500m+ altitudes",
+      maxApexSwayMeters: "± 0.45 m under 50-year design hurricane winds",
+      concreteStrengthGrade: "C80 / C90 Self-Compacting High-Strength Concrete",
+    },
+    facade: {
+      glazingType: "Triple-glazed high-performance Low-E unitized curtain wall with acoustic laminates and ceramic frit sun shading",
+      shgcSolarCoefficient: "SHGC 0.20 (reflects 80% solar radiant energy)",
+      uValueWPerM2K: "1.25 W/m²K",
+      bmuCleaningSystem: "Dual heavy-duty articulated telescopic roof BMU cranes with specialized high-wind restraint systems",
+      cleaningCycleDays: "75 days full exterior cleaning cycle",
+    },
+    verticalTransport: {
+      elevatorManufacturer: "Schindler / Otis SkyRise High-Speed",
+      totalElevators: 22,
+      maxSpeedMs: 9.0,
+      doubleDeckCars: true,
+      zoningStrategy: "Tri-zone destination dispatch with express sky shuttles to mid-tower wellness decks and private penthouse banks",
+      peakWaitingSeconds: "< 28 seconds via intelligent biometric destination control",
+    },
+    operatingSpecs: {
+      coolingProvider: "Empower District Cooling",
+      chillerBilling: "Consumption-Billed (Empower)",
+      annualServiceChargeAedSqFt: 26.0,
+      acousticRatingDb: "STC 58 dB (Ultra-quiet acoustic facade insulation shielding high-altitude wind shear)",
+      slabToSlabHeightMeters: 3.9,
+      clearCeilingHeightMeters: 3.4,
+    },
+    layoutEfficiency: {
+      columnImpact: "Minimal (Open Spans)",
+      netToGrossRatio: "86% - 89%",
+      balconyUsability: "Deep wind-deflecting loggias and cantilevered private plunge pools on select sky mansions",
+    },
+    auditReview: {
+      honestVerdict: "Standing at a monumental 517 meters, Six Senses Residences Dubai Marina is poised to be the world's tallest residential tower upon completion in 2028. Developed by Select Group on the former Pentominium site, the project combines supertall architectural prominence with the world-renowned Six Senses longevity and wellness philosophy. With starting prices from 5.8M AED ($1.58M USD), entry valuations are remarkably compelling for a record-breaking supertall in Dubai Marina. Buyers should note the 2028 delivery horizon and factor in supertall service fees (~26 AED/sq.ft) that fund the extensive 6-tier wellness ecosystem.",
+      strengths: [
+        "World's tallest residential skyscraper at 517 meters, securing instant global trophy status and international liquidity.",
+        "Renowned Six Senses brand integration offering 61,250 sq.ft of world-class wellness, longevity, and spa facilities.",
+        "Unobstructed panoramic vistas over Palm Jumeirah, Dubai Marina yacht canal, and the open Arabian Gulf.",
+        "Tier-1 delivery team: developed by Select Group, designed by Woods Bagot, engineered by WSP, and built by ACC."
+      ],
+      pitfallsAndWeaknesses: [
+        "Extended construction timeline with handover projected for Q4 2028.",
+        "Supertall living requires sky lobby elevator transfers to reach upper-tier residences above Level 60.",
+        "Marina arterial exit traffic on Al Emreef Street during peak weekend leisure hours."
+      ],
+      airbnbHolidayHomesPolicy: "Strictly regulated residential bylaws; short-term leases permitted exclusively through certified Six Senses hospitality management.",
+      guestParkingReality: "Dedicated multi-level podium and subterranean parking with automated 24/7 VIP valet and EV supercharging bays.",
+      soundproofingRating: "STC 58 dB (Triple-glazed acoustic curtain wall completely eliminating urban Marina and high-altitude wind noise).",
+      elevatorPeakWaitReality: "< 28 seconds via double-deck high-speed elevators traveling at up to 9 m/s.",
+      hiddenOperatingCosts: "Empower district cooling demand charges; 26 AED/sq.ft service fee maintaining the 6-level wellness ecosystem."
+    },
+  },
 ];
 
 /**

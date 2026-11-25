@@ -2324,6 +2324,68 @@ export const BESPOKE_INVESTOR_AUDITS_I18N: Record<string, Partial<Record<Languag
         dailyEssentialsOnFoot: "Прямой пешеходный доступ к Dubai Mall (более 1200 бутиков, Galeries Lafayette, премиальные рестораны), Дубайской опере, парку Burj Park, супермаркету Waitrose и кафе бульвара."
       }
     }
+  },
+  "six-senses-residences-dubai-marina": {
+    en: {
+      viewRadar: {
+        riskLevel: "protected",
+        status: "Permanent Protected Palm Jumeirah & Marina Skyline Views",
+        assessment: "Rising an extraordinary 517 meters above Dubai Marina, Six Senses Residences permanently clears all surrounding residential towers, including Marina 101, Princess Tower, and 23 Marina. Levels 40+ command unobstructed 360-degree panoramic vistas encompassing Palm Jumeirah, the open Arabian Gulf horizon, Ain Dubai, and the entirety of Dubai Marina's winding yacht canal.",
+        protectedOrientations: [
+          "North / North-West (Palm Jumeirah archipelago & open Arabian Gulf - 100% Permanently Protected)",
+          "South / South-West (Dubai Marina canal, Ain Dubai & Bluewaters Island)",
+          "East (Emirates Golf Club green fairways & Dubai skyline horizon)"
+        ],
+        threatOrientations: [
+          "Lower podium levels (Floors 2-15) face adjacent Marina high-rise developments along Al Emreef Street"
+        ]
+      },
+      solarExposure: {
+        optimalAspect: "North-West (Gentle marine breezes, soft diffused daylight, and spectacular sunset over Palm Jumeirah)",
+        harshAspect: "South-East (Intense high-altitude morning desert sun exposure from 08:00 to 13:30)",
+        coolingEnergyImpact: "Moderate (+10% on South-East tiers; fully mitigated by Empower District Cooling and high-spec Low-E triple glazing)",
+        solarHeatGainRating: "Superior (Acoustic Low-E triple glazing with ceramic solar control frits, SHGC 0.20)",
+        residentTip: "Residences facing North-West provide peerless sunset vistas across Palm Jumeirah without heat glare; South-facing suites benefit from automated motorized solar blinds during peak midday hours."
+      },
+      walkability: {
+        score: 95,
+        category: "Walker's Paradise",
+        metroStation: "Sobha Realty Metro Station & Dubai Marina Tram",
+        metroDistanceMinutes: 4,
+        metroAccessType: "Direct Covered Walkway",
+        dailyEssentialsOnFoot: "Direct pedestrian access to Marina Walk (over 200 cafes and gourmet restaurants), Carrefour Market, Spinneys, pharmacies, water taxi stations, and JBR beach."
+      }
+    },
+    ru: {
+      viewRadar: {
+        riskLevel: "protected",
+        status: "Защищенный вечный вид на Palm Jumeirah и гавань Marina",
+        assessment: "При высоте 517 метров Six Senses Residences возвышается над всеми соседними небоскребами района, включая Marina 101 и Princess Tower. Начиная с 40 этажа открывается непревзойденный 360-градусный обзор на весь архипелаг Palm Jumeirah, открытый Персидский залив, колесо обозрения Ain Dubai и яхтенную марину.",
+        protectedOrientations: [
+          "Север / Северо-Запад (Пальма Джумейра и открытый Персидский залив — 100% вечная защита)",
+          "Юг / Юго-Запад (Канал Дубай Марина, Ain Dubai и остров Bluewaters)",
+          "Восток (Зеленые поля гольф-клуба Emirates Golf Club и городской горизонт)"
+        ],
+        threatOrientations: [
+          "Нижние этажи (2-15 этажи) обращены к соседней застройке улицы Al Emreef"
+        ]
+      },
+      solarExposure: {
+        optimalAspect: "Северо-Запад (Морской бриз, мягкий рассеянный свет и закаты над Пальмой Джумейра)",
+        harshAspect: "Юго-Восток (Интенсивное утреннее солнце пустыни с 08:00 до 13:30)",
+        coolingEnergyImpact: "Умеренное (+10% на ЮВ фасадах, оптимизировано системой Empower)",
+        solarHeatGainRating: "Превосходный (Тройной энергоэффективный стеклопакет Low-E с керамическим напылением, SHGC 0.20)",
+        residentTip: "Северо-западные резиденции дарят лучшие закаты над островом Пальма Джумейра без перегрева; для южных окон рекомендуются автоматические термошторы в полдень."
+      },
+      walkability: {
+        score: 95,
+        category: "Рай для пешехода (Вся инфраструктура рядом)",
+        metroStation: "Станция метро Sobha Realty и трамвайная остановка Dubai Marina",
+        metroDistanceMinutes: 4,
+        metroAccessType: "Прямой крытый переход",
+        dailyEssentialsOnFoot: "Прямой выход на променад Marina Walk (более 200 ресторанов и кафе), супермаркеты Spinneys и Carrefour, причалы водного такси и пляж JBR."
+      }
+    }
   }
 };
 
