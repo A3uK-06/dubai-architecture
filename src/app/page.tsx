@@ -228,7 +228,7 @@ export default function Home() {
       </section>
 
       {/* 3. SHOWCASE: Top 6 Iconic Skyscrapers (Concise, not 37) */}
-      <section className="py-16 md:py-20 border-b border-[#E2E8F0]">
+      <section id="catalog" className="py-16 md:py-20 border-b border-[#E2E8F0]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
             <div>
@@ -318,7 +318,7 @@ export default function Home() {
       </section>
 
       {/* 4. SHOWCASE: Top 4 Master Communities (Concise) */}
-      <section className="py-16 bg-[#F8FAFC] border-b border-[#E2E8F0]">
+      <section id="districts" className="py-16 bg-[#F8FAFC] border-b border-[#E2E8F0]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
           <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4">
             <div>
@@ -379,7 +379,7 @@ export default function Home() {
       </section>
 
       {/* 5. INVESTOR TOOLS SUITE: 3 Distinct Hub Cards */}
-      <section className="py-16 md:py-20 bg-white">
+      <section id="calculator" className="py-16 md:py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-8">
           <div className="text-center max-w-2xl mx-auto space-y-2">
             <span className="text-xs font-bold text-[#8C6A48] tracking-wider uppercase">

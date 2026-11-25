@@ -64,11 +64,11 @@ export default function DistrictDetailClient({
       <div className="border-b border-[#E2E8F0] bg-[#F1F5F9]/60 pt-10 pb-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <nav className="flex items-center gap-2 text-xs text-[#78716C] mb-6 font-semibold">
-            <Link href="/" className="hover:text-[#8C6A48] transition-colors">
+            <Link href={lang === "en" ? "/" : `/${lang}/`} className="hover:text-[#8C6A48] transition-colors">
               {dd.breadcrumbHome}
             </Link>
             <span className="text-[#DDD7CA]">/</span>
-            <Link href="/#districts" className="hover:text-[#8C6A48] transition-colors">
+            <Link href={lang === "en" ? "/districts/" : `/${lang}/districts/`} className="hover:text-[#8C6A48] transition-colors">
               {dd.breadcrumbDistricts}
             </Link>
             <span className="text-[#DDD7CA]">/</span>

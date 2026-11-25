@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback, useSyncExternalStore } from "react";
+import { createPortal } from "react-dom";
 import { useLang } from "@/context/LangContext";
 import { getAttributionData } from "@/lib/attribution";
 import { dispatchLead } from "@/lib/leadRouting";
@@ -74,20 +75,44 @@ export default function PropertyQuizModal({ isOpen, onClose, targetTower }: Prop
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isCompleted, setIsCompleted] = useState(false);
   const [errorMsg, setErrorMsg] = useState("");
+  const mounted = useSyncExternalStore(() => () => {}, () => true, () => false);
+
+  const handleCloseModal = useCallback(() => {
+    setStep(1);
+    setIsCompleted(false);
+    setErrorMsg("");
+    setMessengerStatusMsg("");
+    setSelectedMessenger("whatsapp");
+    onClose();
+  }, [onClose]);
 
   useEffect(() => {
     if (isOpen) {
       trackEvent("quiz_open", { location: window.location.pathname });
-    } else {
-      setStep(1);
-      setIsCompleted(false);
-      setErrorMsg("");
-      setMessengerStatusMsg("");
-      setSelectedMessenger("whatsapp");
     }
   }, [isOpen]);
 
-  if (!isOpen) return null;
+  // Close on Escape key & lock background body scroll
+  useEffect(() => {
+    if (!isOpen) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        handleCloseModal();
+      }
+    };
+
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.body.style.overflow = originalOverflow;
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isOpen, handleCloseModal]);
+
+  if (!isOpen || !mounted) return null;
 
   const propertyTypeItems = [
     { id: "primary", icon: "🏗️", ...tq.propertyTypes.primary },
@@ -237,11 +262,26 @@ export default function PropertyQuizModal({ isOpen, onClose, targetTower }: Prop
     }
   };
 
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-black/70 backdrop-blur-md animate-in fade-in duration-200">
-      <div className={`relative w-full max-w-2xl rounded-3xl bg-white border border-[#E2E8F0] shadow-2xl overflow-hidden text-[#0F172A] flex flex-col max-h-[92vh] ${isRtl ? "text-right" : "text-left"}`}>
+  const handleBackdropClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (e.target === e.currentTarget) {
+      handleCloseModal();
+    }
+  };
+
+  const modalContent = (
+    <div
+      role="dialog"
+      aria-modal="true"
+      aria-label={tq.modalTitle}
+      onClick={handleBackdropClick}
+      className="fixed inset-0 z-[9999] flex items-center justify-center p-3 sm:p-4 bg-black/75 backdrop-blur-md animate-in fade-in duration-200 overflow-y-auto"
+    >
+      <div
+        onClick={(e) => e.stopPropagation()}
+        className={`relative w-full max-w-2xl rounded-3xl bg-white border border-[#E2E8F0] shadow-2xl overflow-hidden text-[#0F172A] flex flex-col max-h-[92vh] my-auto ${isRtl ? "text-right" : "text-left"}`}
+      >
         {/* Header */}
-        <div className="px-6 py-5 border-b border-[#F1F5F9] bg-[#FAFAFA] flex items-center justify-between">
+        <div className="px-6 py-5 border-b border-[#F1F5F9] bg-[#FAFAFA] flex items-center justify-between shrink-0">
           <div className="flex items-center gap-3">
             <div className="w-10 h-10 rounded-2xl bg-[#0F172A] text-amber-400 flex items-center justify-center font-bold text-lg shadow-md shrink-0">
               🏛️
@@ -262,9 +302,10 @@ export default function PropertyQuizModal({ isOpen, onClose, targetTower }: Prop
           </div>
           <button
             type="button"
-            onClick={onClose}
-            className="w-9 h-9 flex items-center justify-center rounded-xl bg-white hover:bg-[#F1F5F9] border border-[#E2E8F0] text-[#64748B] hover:text-[#0F172A] transition-colors cursor-pointer"
-            aria-label="Закрыть"
+            onClick={handleCloseModal}
+            className="w-10 h-10 flex items-center justify-center rounded-xl bg-white hover:bg-[#F1F5F9] border border-[#E2E8F0] text-[#64748B] hover:text-[#0F172A] transition-colors cursor-pointer text-base font-bold shadow-xs active:scale-95"
+            aria-label={siteLang === "ru" ? "Закрыть окно" : "Close window"}
+            title={siteLang === "ru" ? "Закрыть" : "Close"}
           >
             ✕
           </button>
@@ -961,4 +1002,6 @@ export default function PropertyQuizModal({ isOpen, onClose, targetTower }: Prop
       </div>
     </div>
   );
+
+  return createPortal(modalContent, document.body);
 }

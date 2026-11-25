@@ -12,16 +12,16 @@ export default function Header() {
   const [isQuizOpen, setIsQuizOpen] = useState(false);
 
   const langPrefix = lang === "en" ? "" : `/${lang}`;
-  const homeUrl = langPrefix || "/";
-  const catalogUrl = `${homeUrl}#catalog`;
-  const districtsUrl = `${homeUrl}#districts`;
-  const calculatorUrl = `${homeUrl}#calculator`;
-  const goldenVisaUrl = `${homeUrl}#golden-visa`;
+  const homeUrl = langPrefix ? `${langPrefix}/` : "/";
+  const catalogUrl = `${langPrefix}/buildings/`;
+  const districtsUrl = `${langPrefix}/districts/`;
+  const calculatorUrl = `${langPrefix}/calculator/`;
+  const goldenVisaUrl = `${langPrefix}/golden-visa/`;
   const developersUrl = `${langPrefix}/developers/`;
-  const contactUrl = `${homeUrl}#contact`;
 
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-white/30 bg-white/85 backdrop-blur-[16px] shadow-soft-tint transition-all duration-200 print:hidden">
+    <>
+      <header className="sticky top-0 z-40 w-full border-b border-white/30 bg-white/85 backdrop-blur-[16px] shadow-soft-tint transition-all duration-200 print:hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo & Historical Archive Badge */}
@@ -228,12 +228,13 @@ export default function Header() {
           </div>
         </div>
       )}
-
-      {/* Property Quiz Modal */}
-      <PropertyQuizModal
-        isOpen={isQuizOpen}
-        onClose={() => setIsQuizOpen(false)}
-      />
     </header>
+
+    {/* Property Quiz Modal */}
+    <PropertyQuizModal
+      isOpen={isQuizOpen}
+      onClose={() => setIsQuizOpen(false)}
+    />
+  </>
   );
 }

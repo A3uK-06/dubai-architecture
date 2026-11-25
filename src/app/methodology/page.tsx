@@ -208,7 +208,7 @@ export default function MethodologyPage() {
             </p>
           </div>
           <Link
-            href="/#calculator"
+            href="/calculator/"
             className="px-5 py-2.5 rounded-xl bg-[#8C6A48] hover:bg-[#A37B55] text-white font-bold text-xs uppercase tracking-wider transition-colors shrink-0"
           >
             Launch ROI Calculator →

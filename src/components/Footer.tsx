@@ -11,6 +11,9 @@ export default function Footer() {
   const [isMethodologyOpen, setIsMethodologyOpen] = useState(false);
   const tF = FOOTER_I18N[lang] || FOOTER_I18N.en;
 
+  const langPrefix = lang === "en" ? "" : `/${lang}`;
+  const homeUrl = langPrefix ? `${langPrefix}/` : "/";
+
   return (
     <>
       <footer className="w-full bg-[#0F172A] text-white border-t border-[#1E293B] mt-auto print:hidden">
@@ -73,57 +76,57 @@ export default function Footer() {
               </h3>
               <ul className="space-y-2.5 text-sm text-slate-400 font-medium">
                 <li>
-                  <Link href="/" className="hover:text-amber-400 transition-colors">
+                  <Link href={homeUrl} className="hover:text-amber-400 transition-colors">
                     {t.nav.home}
                   </Link>
                 </li>
                 <li>
-                  <Link href="/#catalog" className="hover:text-amber-400 transition-colors">
+                  <Link href={`${langPrefix}/buildings/`} className="hover:text-amber-400 transition-colors">
                     {t.nav.catalog}
                   </Link>
                 </li>
                 <li>
-                  <Link href="/#districts" className="hover:text-amber-400 transition-colors">
+                  <Link href={`${langPrefix}/districts/`} className="hover:text-amber-400 transition-colors">
                     {t.nav.districts}
                   </Link>
                 </li>
                 <li>
-                  <Link href="/developers/" className="hover:text-amber-400 transition-colors">
+                  <Link href={`${langPrefix}/developers/`} className="hover:text-amber-400 transition-colors">
                     {tF.developersLink}
                   </Link>
                 </li>
                 <li>
-                  <Link href="/#calculator" className="hover:text-amber-400 transition-colors">
+                  <Link href={`${langPrefix}/calculator/`} className="hover:text-amber-400 transition-colors">
                     {t.nav.calculator}
                   </Link>
                 </li>
                 <li>
-                  <Link href="/#golden-visa" className="hover:text-amber-400 transition-colors">
+                  <Link href={`${langPrefix}/golden-visa/`} className="hover:text-amber-400 transition-colors">
                     {t.nav.goldenVisa}
                   </Link>
                 </li>
                 <li>
-                  <Link href="/methodology/" className="hover:text-amber-400 transition-colors">
+                  <Link href={`${langPrefix}/methodology/`} className="hover:text-amber-400 transition-colors">
                     {tF.methodologyLink}
                   </Link>
                 </li>
                 <li>
-                  <Link href="/about/" className="hover:text-amber-400 transition-colors">
+                  <Link href={`${langPrefix}/about/`} className="hover:text-amber-400 transition-colors">
                     {tF.aboutLink}
                   </Link>
                 </li>
                 <li>
-                  <Link href="/editorial-policy/" className="hover:text-amber-400 transition-colors">
+                  <Link href={`${langPrefix}/editorial-policy/`} className="hover:text-amber-400 transition-colors">
                     {tF.editorialPolicyLink}
                   </Link>
                 </li>
                 <li>
-                  <Link href="/affiliate-disclosure/" className="hover:text-amber-400 transition-colors">
+                  <Link href={`${langPrefix}/affiliate-disclosure/`} className="hover:text-amber-400 transition-colors">
                     {tF.affiliateDisclosureLink}
                   </Link>
                 </li>
                 <li>
-                  <Link href="/contact/" className="hover:text-amber-400 transition-colors">
+                  <Link href={`${langPrefix}/contact/`} className="hover:text-amber-400 transition-colors">
                     {tF.contactLink}
                   </Link>
                 </li>

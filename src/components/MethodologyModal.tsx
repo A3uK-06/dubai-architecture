@@ -1,6 +1,7 @@
 "use client";
 
-import React from "react";
+import React, { useEffect, useSyncExternalStore } from "react";
+import { createPortal } from "react-dom";
 import { useLang } from "@/context/LangContext";
 import { METHODOLOGY_I18N } from "@/data/localizedMethodology";
 
@@ -11,15 +12,38 @@ interface MethodologyModalProps {
 
 export default function MethodologyModal({ isOpen, onClose }: MethodologyModalProps) {
   const { lang, isRtl } = useLang();
+  const mounted = useSyncExternalStore(() => () => {}, () => true, () => false);
 
-  if (!isOpen) return null;
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.body.style.overflow = originalOverflow;
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isOpen, onClose]);
+
+  if (!isOpen || !mounted) return null;
 
   const tM = METHODOLOGY_I18N[lang] || METHODOLOGY_I18N.en;
 
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 sm:p-6 bg-black/60 backdrop-blur-sm animate-fade-in">
+  const modalContent = (
+    <div
+      role="dialog"
+      aria-modal="true"
+      onClick={(e) => {
+        if (e.target === e.currentTarget) onClose();
+      }}
+      className="fixed inset-0 z-[9999] flex items-center justify-center p-4 sm:p-6 bg-black/60 backdrop-blur-sm animate-fade-in overflow-y-auto"
+    >
       <div
-        className={`relative w-full max-w-3xl max-h-[90vh] overflow-y-auto bg-white rounded-3xl border border-[#E5DFD3] shadow-2xl p-6 sm:p-8 text-[#1C1917] ${
+        onClick={(e) => e.stopPropagation()}
+        className={`relative w-full max-w-3xl max-h-[90vh] overflow-y-auto bg-white rounded-3xl border border-[#E5DFD3] shadow-2xl p-6 sm:p-8 text-[#1C1917] my-auto ${
           isRtl ? "text-right" : "text-left"
         }`}
       >
@@ -146,4 +170,6 @@ export default function MethodologyModal({ isOpen, onClose }: MethodologyModalPr
       </div>
     </div>
   );
+
+  return createPortal(modalContent, document.body);
 }

@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { useState, useEffect, useSyncExternalStore } from "react";
+import { createPortal } from "react-dom";
 import { useLang } from "@/context/LangContext";
 import { getAttributionData } from "@/lib/attribution";
 import { dispatchLead, LeadRoutingResult } from "@/lib/leadRouting";
@@ -32,8 +33,23 @@ export default function LeadModal({
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
   const [, setRoutingResult] = useState<LeadRoutingResult | null>(null);
+  const mounted = useSyncExternalStore(() => () => {}, () => true, () => false);
 
-  if (isOpen === false) return null;
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.body.style.overflow = originalOverflow;
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isOpen, onClose]);
+
+  if (isOpen === false || !mounted) return null;
 
   const tLead = LEAD_MODAL_I18N[lang] || LEAD_MODAL_I18N.en;
   const targetBuildingName = towerName || initialTower || "General Dubai Top-10 Catalog";
@@ -68,9 +84,19 @@ export default function LeadModal({
     tLead.getWhatsAppMessage(name, targetBuildingName)
   );
 
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-md animate-in fade-in duration-200">
-      <div className="relative w-full max-w-lg rounded-3xl bg-white border border-[#E2E8F0] p-6 sm:p-8 shadow-float-card-hover space-y-6 text-[#0F172A]">
+  const modalContent = (
+    <div
+      role="dialog"
+      aria-modal="true"
+      onClick={(e) => {
+        if (e.target === e.currentTarget) onClose();
+      }}
+      className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-black/60 backdrop-blur-md animate-in fade-in duration-200 overflow-y-auto"
+    >
+      <div
+        onClick={(e) => e.stopPropagation()}
+        className="relative w-full max-w-lg rounded-3xl bg-white border border-[#E2E8F0] p-6 sm:p-8 shadow-float-card-hover space-y-6 text-[#0F172A] my-auto"
+      >
         {!isSuccess ? (
           <>
             <div className="space-y-3">
@@ -233,4 +259,6 @@ export default function LeadModal({
       </div>
     </div>
   );
+
+  return createPortal(modalContent, document.body);
 }

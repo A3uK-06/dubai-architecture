@@ -1,6 +1,7 @@
 "use client";
 
-import React, { useMemo } from "react";
+import React, { useMemo, useEffect, useSyncExternalStore } from "react";
+import { createPortal } from "react-dom";
 import { Building, getBuildingFloorPlans, getBuildingDldLedger } from "@/data/buildings";
 import { useLang } from "@/context/LangContext";
 import { getLocalizedFloorPlan, TYPOLOGY_NAMES } from "@/data/floorPlanI18n";
@@ -37,7 +38,23 @@ export default function DossierViewerModal({
     return rawPlans.map((p) => getLocalizedFloorPlan(p, lang, building.name));
   }, [rawPlans, lang, building.name]);
 
-  if (!isOpen) return null;
+  const mounted = useSyncExternalStore(() => () => {}, () => true, () => false);
+
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
+    const originalOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      document.body.style.overflow = originalOverflow;
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isOpen, onClose]);
+
+  if (!isOpen || !mounted) return null;
 
   const handlePrint = () => {
     if (typeof window !== "undefined") {
@@ -45,9 +62,19 @@ export default function DossierViewerModal({
     }
   };
 
-  return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-black/70 backdrop-blur-md overflow-y-auto animate-in fade-in duration-200 print:p-0 print:bg-white">
-      <div className="relative w-full max-w-4xl max-h-[92vh] overflow-y-auto rounded-3xl bg-white border border-[#E2E8F0] shadow-2xl p-6 sm:p-10 text-[#0F172A] space-y-8 print:border-none print:shadow-none print:max-h-none print:overflow-visible print:p-4">
+  const modalContent = (
+    <div
+      role="dialog"
+      aria-modal="true"
+      onClick={(e) => {
+        if (e.target === e.currentTarget) onClose();
+      }}
+      className="fixed inset-0 z-[9999] flex items-center justify-center p-3 sm:p-6 bg-black/70 backdrop-blur-md overflow-y-auto animate-in fade-in duration-200 print:p-0 print:bg-white"
+    >
+      <div
+        onClick={(e) => e.stopPropagation()}
+        className="relative w-full max-w-4xl max-h-[92vh] overflow-y-auto rounded-3xl bg-white border border-[#E2E8F0] shadow-2xl p-6 sm:p-10 text-[#0F172A] space-y-8 my-auto print:border-none print:shadow-none print:max-h-none print:overflow-visible print:p-4"
+      >
         {/* Top Control Bar (Hidden on print) */}
         <div className="flex items-center justify-between border-b border-[#F1F5F9] pb-4 print:hidden">
           <div className="flex items-center gap-2">
@@ -457,4 +484,6 @@ export default function DossierViewerModal({
       </div>
     </div>
   );
+
+  return createPortal(modalContent, document.body);
 }

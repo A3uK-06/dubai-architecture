@@ -119,16 +119,16 @@ export default function BuildingDetailClient({
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Breadcrumb */}
           <nav className="flex items-center gap-2 text-xs text-[#78716C] mb-6 font-semibold">
-            <Link href="/" className="hover:text-[#8C6A48] transition-colors">
+            <Link href={lang === "en" ? "/" : `/${lang}/`} className="hover:text-[#8C6A48] transition-colors">
               {bd.breadcrumbHome}
             </Link>
             <span className="text-[#DDD7CA]">/</span>
-            <Link href="/#catalog" className="hover:text-[#8C6A48] transition-colors">
+            <Link href={lang === "en" ? "/buildings/" : `/${lang}/buildings/`} className="hover:text-[#8C6A48] transition-colors">
               {bd.breadcrumbCatalog}
             </Link>
             <span className="text-[#DDD7CA]">/</span>
             <Link
-              href={`/districts/${building.districtSlug}/`}
+              href={lang === "en" ? `/districts/${building.districtSlug}/` : `/${lang}/districts/${building.districtSlug}/`}
               className="hover:text-[#8C6A48] transition-colors"
             >
               {building.district}

@@ -189,7 +189,7 @@ export default function InvestmentLivabilityMatrix({
             <span>{tM.footerNote}</span>
           </div>
           <Link
-            href="/#calculator"
+            href={lang === "en" ? "/calculator/" : `/${lang}/calculator/`}
             className="text-[#8C6A48] hover:underline font-bold shrink-0"
           >
             {tM.calculatorLink}
