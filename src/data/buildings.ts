@@ -3513,6 +3513,103 @@ export const BUILDINGS: Building[] = [
       hiddenOperatingCosts: "Empower district cooling demand charges; 26 AED/sq.ft service fee maintaining the 6-level wellness ecosystem."
     },
   },
+  {
+    id: "bulgari-lighthouse",
+    legacyId: "DUB-041",
+    slug: "bulgari-lighthouse",
+    image: "/images/buildings/bulgari-lighthouse.webp",
+    name: "Bulgari Lighthouse",
+    heightMeters: 110,
+    heightFeet: 361,
+    floors: 27,
+    yearBuilt: 2027,
+    architect: "Antonio Citterio Patricia Viel (ACPV Architects)",
+    architectFirm: "Antonio Citterio Patricia Viel / ACPV Architects",
+    developer: "Meraas",
+    district: "Jumeirah Bay Island",
+    districtSlug: "city-walk",
+    type: "Residential",
+    status: "Under Construction",
+    rating: 5.0,
+    featured: true,
+    investmentYield: "5.8% - 7.2%",
+    startingPriceAed: "65,000,000 AED",
+    startingPriceUsd: "$17,700,000",
+    description:
+      "Rising 27 storeys above the secluded waters of Jumeira Bay Island ('Billionaires' Island'), Bulgari Lighthouse is Dubai's ultimate monument to bespoke Italian craftsmanship, oceanic serenity, and ultra-prime privacy. Masterminded by world-renowned Milanese architects Antonio Citterio Patricia Viel (ACPV Architects) and developed by Meraas in collaboration with legendary Roman jeweler Bulgari, this sculptural beacon comprises just 31 ultra-exclusive 4-to-5-bedroom penthouses crowned by a monumental 3-tier, 9-bedroom Sky Villa. Surrounded by Mediterranean gardens, private yacht berths, and panoramic vistas of the Arabian Gulf and Downtown Dubai skyline, the tower reinterprets the maritime lighthouse motif through layered horizontal curved louvers, handcrafted Italian marble, private infinity pools, and bespoke white-glove hospitality curated by Bulgari Hotels & Resorts.",
+    architecturalHighlights: [
+      "Exclusive private island landmark rising 27 storeys on Jumeira Bay Island ('Billionaires' Island')",
+      "Sculpted horizontal architectural louvers designed by Antonio Citterio Patricia Viel filtering sunlight and mimicking natural coral",
+      "Ultra-low density featuring only 31 bespoke penthouses and a crowning 3-level Sky Villa that set Dubai's all-time penthouse sales record at 410M AED ($112M USD)",
+      "Crown engineered as an architectural beacon lantern illuminating at dusk into a glowing lighthouse silhouette across the Arabian Gulf",
+    ],
+    historicalNote: "Developed as the crowning residential centerpiece of the seahorse-shaped Jumeira Bay Island; set Dubai's all-time historical penthouse transaction record of 410M AED ($112M USD) in 2023.",
+    structuralSystem: "High-durability marine-grade post-tensioned reinforced concrete core with perimeter composite shear columns and cantilevered curved terrace slabs",
+    mainContractor: "ASGC Construction",
+    structuralEngineer: "Meinhardt Group",
+    mepEngineer: "Meinhardt Group / Buro Happold",
+    urbanIntegration: "Ultra-private position on the seahorse-shaped Jumeira Bay Island, connected via a private 300m vehicular bridge with direct access to Bulgari Marina & Yacht Club",
+    foundation: {
+      pilesCount: 180,
+      pileDepthMeters: 42,
+      pileDiameterMeters: "1.2 m - 1.8 m",
+      raftThicknessMeters: "2.8 m solid reinforced concrete mat with crystalline waterproof tanking and cathodic barrier",
+      bedrockType: "Competent marine calcarenite and siltstone bedrock with specialized sulphate-resistant marine concrete (SRC)",
+    },
+    windStructural: {
+      lateralSystem: "Central high-durability reinforced concrete core coupled with perimeter shear blades and cantilevered diaphragm slabs",
+      dampingMechanism: "Aerodynamic curvilinear horizontal louvers dispersing sea breeze vortices and mitigating offshore wind turbulence",
+      maxApexSwayMeters: "± 0.08 m under 50-year design marine storm winds",
+      concreteStrengthGrade: "C70 / C80 Marine Durability High-Performance Self-Compacting Concrete",
+    },
+    facade: {
+      glazingType: "Double-laminated acoustic Low-E floor-to-ceiling panoramic curved glass with custom marine-grade aluminum curved architectural louvers",
+      shgcSolarCoefficient: "SHGC 0.18 (82% solar heat rejection via horizontal louver deep overhangs)",
+      uValueWPerM2K: "1.20 W/m²K",
+      bmuCleaningSystem: "Concealed integrated facade maintenance track system with automated wash gantries preserving pure sculpted aesthetic",
+      cleaningCycleDays: "30 days full exterior cleaning cycle",
+    },
+    verticalTransport: {
+      elevatorManufacturer: "KONE / Otis Custom Luxury Marine",
+      totalElevators: 8,
+      maxSpeedMs: 4.0,
+      doubleDeckCars: false,
+      zoningStrategy: "Dual private elevator access direct into each individual penthouse residence with dedicated service and staff lifts",
+      peakWaitingSeconds: "< 15 seconds with dedicated resident-to-lift ratio",
+    },
+    operatingSpecs: {
+      coolingProvider: "Empower District Cooling / High-Efficiency Sea-Exchange Chiller Plant",
+      chillerBilling: "Consumption-Billed (Empower)",
+      annualServiceChargeAedSqFt: 38.0,
+      acousticRatingDb: "STC 60 dB (Bespoke acoustic laminated glazing completely blocking marine surf and wind noise)",
+      slabToSlabHeightMeters: 4.2,
+      clearCeilingHeightMeters: 3.6,
+    },
+    layoutEfficiency: {
+      columnImpact: "Minimal (Open Spans)",
+      netToGrossRatio: "90% - 92%",
+      balconyUsability: "Deep wrap-around 360-degree terraces with private cantilevered infinity pools and outdoor Mediterranean dining lounges",
+    },
+    auditReview: {
+      honestVerdict: "Bulgari Lighthouse represents the undisputed zenith of ultra-prime branded real estate in the Middle East. Positioned on the ultra-exclusive Jumeira Bay Island ('Billionaires' Island'), the tower offers complete seclusion, private yacht berthing, and unmatched global prestige under the Roman high jewelry brand Bulgari. Designed by ACPV Architects (Antonio Citterio Patricia Viel), each of the 31 penthouses functions as an independent mansion in the sky, validated by the record-breaking 410M AED ($112M USD) Sky Villa sale. While starting prices (>65M AED) and annual service charges (~38 AED/sq.ft) filter out all but the ultra-high-net-worth elite, capital preservation and long-term liquidity on this finite private island are virtually unassailable.",
+      strengths: [
+        "Ultra-exclusive location on Jumeira Bay Island ('Billionaires' Island') with finite beachfront land and extreme security gatekeeping.",
+        "Record-setting brand pedigree: Bulgari hospitality management, ACPV Italian design, and the historic 410M AED penthouse benchmark.",
+        "Bespoke private island amenities: 50-meter lap pool, Bulgari Yacht Club marina berths, private cabanas, and dedicated butler service.",
+        "Spectacular 360-degree unobstructed panoramas over the Arabian Gulf horizon and the complete Downtown Dubai skyline."
+      ],
+      pitfallsAndWeaknesses: [
+        "Extreme capital barrier to entry with initial tickets starting at 65M AED ($17.7M USD).",
+        "Single bridge access to the mainland across Jumeira Bay Bridge during Jumeirah Beach Road peak event traffic.",
+        "Handover slated for 2027 requires off-plan staging and luxury fit-out oversight."
+      ],
+      airbnbHolidayHomesPolicy: "Strictly forbidden by island residential bylaws; short-term holiday letting is completely prohibited to preserve resident privacy and island tranquility.",
+      guestParkingReality: "Secure subterranean private garages with dedicated multi-car bays per penthouse, 24/7 white-glove VIP valet, and guest superyacht berth parking.",
+      soundproofingRating: "STC 60 dB (Marine acoustic insulated double-glazed curtain wall delivering library-grade quietness).",
+      elevatorPeakWaitReality: "< 15 seconds via private high-speed elevators opening directly into private residence foyers.",
+      hiddenOperatingCosts: "High service charges (~38 AED/sq.ft) funding private island security, 50m pool, landscape irrigation, and five-star Bulgari concierge service."
+    },
+  },
 ];
 
 /**

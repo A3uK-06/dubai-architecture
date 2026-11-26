@@ -14,7 +14,7 @@ Key principles:
 - Multi-jurisdictional accessibility: Fully localized across 10 languages: English (en), Russian (ru), Arabic (ar), Hindi (hi), Chinese (zh), German (de), French (fr), Urdu (ur), Italian (it), and Turkish (tr).
 
 ================================================================================
-2. SKYSCRAPERS & TOWERS CATALOG (40 TOWERS)
+2. SKYSCRAPERS & TOWERS CATALOG (41 TOWERS)
 ================================================================================
 
 ---
@@ -657,6 +657,22 @@ Service Charge (Mollak): 26 AED/sq.ft
 District Cooling: Consumption-Billed (Empower)
 Description: Soaring 517 meters (122 storeys) into the Dubai Marina skyline, Six Senses Residences Dubai Marina is poised to become the world's tallest residential tower upon completion in 2028. Developed by Select Group and masterminded by lead architect Woods Bagot with engineering by WSP Middle East, this monumental supertall transforms the historic 'Pentominium' site into a global wellness sanctuary. Featuring 251 ultra-luxury residences—ranging from 2-to-4-bedroom deluxe apartments to half-floor sky mansions and 5-bedroom triplex sky penthouses—the tower integrates biophilic design, classical feng shui principles, LEED Silver certification, and 61,250 sq.ft of Six Senses holistic wellness amenities across six dedicated levels.
 
+---
+Tower: Bulgari Lighthouse
+Slug: bulgari-lighthouse
+URL: https://dubai-architecture.info/buildings/bulgari-lighthouse/
+Architectural Height: 110 m (361 ft)
+Floors: 27
+Completion Year: 2027
+District: Jumeirah Bay Island
+Architect: Antonio Citterio Patricia Viel (ACPV Architects)
+Developer: Meraas
+Structural System: High-durability marine-grade post-tensioned reinforced concrete core with perimeter composite shear columns and cantilevered curved terrace slabs
+Estimated Gross Yield: 5.8% - 7.2%
+Service Charge (Mollak): 38 AED/sq.ft
+District Cooling: Consumption-Billed (Empower)
+Description: Rising 27 storeys above the secluded waters of Jumeira Bay Island ('Billionaires' Island'), Bulgari Lighthouse is Dubai's ultimate monument to bespoke Italian craftsmanship, oceanic serenity, and ultra-prime privacy. Masterminded by world-renowned Milanese architects Antonio Citterio Patricia Viel (ACPV Architects) and developed by Meraas in collaboration with legendary Roman jeweler Bulgari, this sculptural beacon comprises just 31 ultra-exclusive 4-to-5-bedroom penthouses crowned by a monumental 3-tier, 9-bedroom Sky Villa. Surrounded by Mediterranean gardens, private yacht berths, and panoramic vistas of the Arabian Gulf and Downtown Dubai skyline, the tower reinterprets the maritime lighthouse motif through layered horizontal curved louvers, handcrafted Italian marble, private infinity pools, and bespoke white-glove hospitality curated by Bulgari Hotels & Resorts.
+
 ================================================================================
 3. DUBAI DISTRICTS & MASTER COMMUNITIES (14 DISTRICTS)
 ================================================================================
@@ -766,7 +782,7 @@ Slug: city-walk
 URL: https://dubai-architecture.info/districts/city-walk/
 Master Developer: Meraas (Dubai Holding)
 Average Net ROI: 7.0% - 8.4%
-Key Landmarks: Central Park at City Walk (Meraas), Coca-Cola Arena (17,000 capacity indoor arena), The Green Planet Biodome, Roxy Cinemas & Gourmet Al Fresco Boulevard, Jumeirah Beach Road Connector
+Key Landmarks: Bulgari Lighthouse (Antonio Citterio / Meraas, Jumeira Bay Island), Central Park at City Walk (Meraas), Coca-Cola Arena (17,000 capacity indoor arena), The Green Planet Biodome, Roxy Cinemas & Gourmet Al Fresco Boulevard, Jumeirah Beach Road Connector
 Overview: A pedestrianized, design-forward European-style urban quarter located between Downtown Dubai and Jumeirah Beach, renowned for low-to-mid-rise modern architecture and Central Park green lungs.
 
 ---

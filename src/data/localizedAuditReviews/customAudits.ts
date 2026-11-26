@@ -1849,5 +1849,83 @@ export const CUSTOM_TOWER_AUDITS: TowerCustomAuditTranslations = {
       elevatorPeakWaitReality: "配备运行速度达9米/秒的双层轿厢高速电梯，智能派梯高峰期候梯时间小于28秒。",
       hiddenOperatingCosts: "需缴纳Empower集中供冷备用金；26 AED/平方英尺的物业费用于支持全栋6层六善养生生态系统的顶奢运转。"
     }
+  },
+  "bulgari-lighthouse": {
+    en: {
+      honestVerdict: "Bulgari Lighthouse represents the undisputed zenith of ultra-prime branded real estate in the Middle East. Positioned on the ultra-exclusive Jumeira Bay Island ('Billionaires' Island'), the tower offers complete seclusion, private yacht berthing, and unmatched global prestige under the Roman high jewelry brand Bulgari. Designed by ACPV Architects (Antonio Citterio Patricia Viel), each of the 31 penthouses functions as an independent mansion in the sky, validated by the record-breaking 410M AED ($112M USD) Sky Villa sale. While starting prices (>65M AED) and annual service charges (~38 AED/sq.ft) filter out all but the ultra-high-net-worth elite, capital preservation and long-term liquidity on this finite private island are virtually unassailable.",
+      strengths: [
+        "Ultra-exclusive location on Jumeira Bay Island ('Billionaires' Island') with finite beachfront land and extreme security gatekeeping.",
+        "Record-setting brand pedigree: Bulgari hospitality management, ACPV Italian design, and the historic 410M AED penthouse benchmark.",
+        "Bespoke private island amenities: 50-meter lap pool, Bulgari Yacht Club marina berths, private cabanas, and dedicated butler service.",
+        "Spectacular 360-degree unobstructed panoramas over the Arabian Gulf horizon and the complete Downtown Dubai skyline."
+      ],
+      pitfallsAndWeaknesses: [
+        "Extreme capital barrier to entry with initial tickets starting at 65M AED ($17.7M USD).",
+        "Single bridge access to the mainland across Jumeira Bay Bridge during Jumeirah Beach Road peak event traffic.",
+        "Handover slated for 2027 requires off-plan staging and luxury fit-out oversight."
+      ],
+      airbnbHolidayHomesPolicy: "Strictly forbidden by island residential bylaws; short-term holiday letting is completely prohibited to preserve resident privacy and island tranquility.",
+      guestParkingReality: "Secure subterranean private garages with dedicated multi-car bays per penthouse, 24/7 white-glove VIP valet, and guest superyacht berth parking.",
+      soundproofingRating: "STC 60 dB (Marine acoustic insulated double-glazed curtain wall delivering library-grade quietness).",
+      elevatorPeakWaitReality: "< 15 seconds via private high-speed elevators opening directly into private residence foyers.",
+      hiddenOperatingCosts: "High service charges (~38 AED/sq.ft) funding private island security, 50m pool, landscape irrigation, and five-star Bulgari concierge service."
+    },
+    ru: {
+      honestVerdict: "Bulgari Lighthouse — непревзойденная вершина ультрароскошной брендовой недвижимости на Ближнем Востоке. Расположенная на закрытом Jumeira Bay Island («Острове миллиардеров»), башня гарантирует абсолютную приватность, яхтенную стоянку и колоссальный мировой статус римского ювелирного дома Bulgari. Спроектированный бюро ACPV Architects (Antonio Citterio Patricia Viel), каждый из 31 пентхауса представляет собой обособленный особняк в небе, что подтверждено историческим рекордом Дубая — продажей пентхауса Sky Villa за 410 млн AED ($112 млн USD). Порог входа от 65 млн AED и сервисный сбор (~38 AED/кв. фут) ориентированы строго на сверхбогатую мировую элиту, обеспечивая исключительную ликвидность на острове с нулевым предложением новой земли.",
+      strengths: [
+        "Эксклюзивная локация на Jumeira Bay Island («Острове миллиардеров») с закрытым доступом и охраной 24/7.",
+        "Исторический бренд-рекорд: сервис отелей Bulgari, итальянский дизайн ACPV и рекордная сделка в истории Дубая на 410 млн AED.",
+        "Инфраструктура частного острова: 50-метровый бассейн, яхтенный клуб Bulgari Marina, приватные кабаны и персональные батлеры.",
+        "Панорамные 360-градусные виды на открытый Персидский залив и полный скайлайн Downtown Dubai."
+      ],
+      pitfallsAndWeaknesses: [
+        "Колоссальный ценовой ценз для входа: стоимость стартует от 65 млн AED ($17.7 млн USD).",
+        "Единственный автомобильный мост связывает остров с материком, где возможны заторы на Jumeirah Beach Road в праздничные дни.",
+        "Срок сдачи в 2027 году требует контроля промежуточных этапов строительства и премиальной чистовой отделки."
+      ],
+      airbnbHolidayHomesPolicy: "Категорически запрещено уставом острова; посуточная туристическая аренда полностью исключена для сохранения статуса и покоя резидентов.",
+      guestParkingReality: "Подземные охраняемые гаражи с мульти-парковочными местами для каждой резиденции, круглосуточный VIP-валетом и гостевые яхтенные причалы.",
+      soundproofingRating: "STC 60 dB (Премиальные шумоизоляционные морские стеклопакеты, гарантирующие абсолютную тишину).",
+      elevatorPeakWaitReality: "< 15 секунд благодаря выделенным скоростным лифтам с прямым доступом в персональный холл пентхауса.",
+      hiddenOperatingCosts: "Сервисный сбор около 38 AED/кв. фут покрывает круглосуточную охрану острова, 50-метровый бассейн и консьерж-сервис отеля Bulgari."
+    },
+    ar: {
+      honestVerdict: "يمثل بولغري لايتهاوس (Bulgari Lighthouse) قمة العقارات السكنية الفاخرة ذات العلامات التجارية العالمية في الشرق الأوسط. يتميز البرج بموقعه الاستثنائي في جزيرة جميرا باي الحصرية ('جزيرة المليارديرات')، موفراً أقصى درجات الخصوصية ومراسي اليخوت الخاصة مع الهيبة التاريخية لدار بولغري الإيطالية العريقة. تم تصميم البرج بواسطة المعماري العالمي أنطونيو سيتيريو، حيث تمثل كل شقة من الشقق الـ 31 قصراً معلقاً في السماء، وتأكد ذلك ببيعه أغلى بنتهاوس في تاريخ دبي بمبلغ قياسي بلغ 410 ملايين درهم (112 مليون دولار). على الرغم من أن أسعار البدء تتجاوز 65 مليون درهم ورسوم الصيانة (~38 درهم/قدم²)، فإن الحفاظ على رأس المال والسيولة العالمية على هذه الجزيرة المحدودة أمر مضمون للمستثمرين النخبة.",
+      strengths: [
+        "موقع فائق الخصوصية في جزيرة جميرا باي ('جزيرة المليارديرات') مع أمن وحراسة مشددة على مدار الساعة.",
+        "سجل تاريخي عالمي لعلامة بولغري وتصميم أنطونيو سيتيريو، مع تسجيل الرقم القياسي لأغلى بنتهاوس في دبي (410 مليون درهم).",
+        "مرافق حصرية تشمل مسبحاً بطول 50 متراً، ونادي بولغري لليخوت، وخدمة الخادم الشخصي (البتلر) والكونسيرج.",
+        "إطلالات بانورامية مفتوحة 360 درجة تجمع بين مياه الخليج العربي وأفق داون تاون دبي وبرج خليفة."
+      ],
+      pitfallsAndWeaknesses: [
+        "حاجز مالي استثنائي لدخول المشروع مع بدء الأسعار من 65 مليون درهم (17.7 مليون دولار).",
+        "مدخل وحيد عبر جسر جميرا باي يربط الجزيرة بالبر الرئيسي مع حركة مرورية متوقعة في شارع شاطئ جميرا أوقات الذروة.",
+        "موعد التسليم المتوقع في 2027 يتطلب متابعة دقيقة لمراحل الإنشاءات والتشطيبات الفاخرة."
+      ],
+      airbnbHolidayHomesPolicy: "محظور تماماً بموجب اللائحة الداخلية للجزيرة؛ يُمنع التأجير السياحي قصير الأجل للحفاظ على راحة الملاك والسكينة.",
+      guestParkingReality: "مواقف سيارات خاصة تحت الأرض مخصصة لكل بنتهاوس، وخدمة ركن السيارات VIP البيضاء، ومراسي لليخوت الفاخرة.",
+      soundproofingRating: "STC 60 dB (واجهات زجاجية بحرية عازلة للصوت تضمن هدوءاً مطلقاً بمستوى المكتبات الخاصة).",
+      elevatorPeakWaitReality: "أقل من 15 ثانية عبر مصاعد خاصة فائقة السرعة تفتح مباشرة داخل بهو كل بنتهاوس.",
+      hiddenOperatingCosts: "رسوم صيانة تبلغ حوالي 38 درهم/قدم² لتغطية الأمن المشدد على الجزيرة وصيانة المسبح الأولمبي وخدمات ضيافة فنادق بولغري."
+    },
+    zh: {
+      honestVerdict: "宝格丽灯塔（Bulgari Lighthouse）是中东顶级高定奢华品牌住宅的巅峰之作。坐落于迪拜极致私密的朱美拉湾岛（Jumeira Bay Island，俗称'亿万富翁之岛'），该塔楼依托罗马殿堂级珠宝腕表品牌宝格丽的百年奢华底蕴，提供纯粹的私密隐逸生活与私人游艇码头。由米兰著名建筑大师安东尼奥·奇特里奥（Antonio Citterio Patricia Viel）操刀设计，全楼仅限量规划31套超豪华顶层复式平层与天空别墅。顶层Sky Villa曾以4.1亿迪拉姆（约1.12亿美元）的成交天价打破迪拜全历史最昂贵顶层公寓成交纪录。6500万迪拉姆起的极高准入门槛与每年约38迪拉姆/平方英尺的物业维护费，筑牢了全球顶尖家族资产传承的绝对护城河。",
+      strengths: [
+        "尊踞朱美拉湾岛（亿万富豪之岛）黄金绝版地段，全封闭海岛极致安保与顶级私密性。",
+        "宝格丽与ACPV建筑大师联袂背书，曾以4.1亿迪拉姆创下迪拜住宅历史最高单套成交纪录。",
+        "尊享海岛高定专属配套：50米无边际奥林匹克泳池、宝格丽游艇俱乐部专属泊位与24小时意式白手套管家服务。",
+        "独享阿拉伯湾浩瀚海平线与哈利法塔天际线360度永无遮挡的双重震撼全景。"
+      ],
+      pitfallsAndWeaknesses: [
+        "极高的资本进入门槛，起步总价不低于6500万迪拉姆（约1770万美元）。",
+        "出入主陆仅依托一条专属跨海桥梁，周末及节假日朱美拉海滩路周边交通偶尔较为繁忙。",
+        "工程计划于2027年完工交付，期房阶段需关注工程交付节点与高标准精装落地。"
+      ],
+      airbnbHolidayHomesPolicy: "岛屿业主公约严格明令禁止；杜绝任何形式的短租民宿，确保海岛纯粹顶豪的尊贵安宁。",
+      guestParkingReality: "配备多层封闭式私家地下车库（每套公寓享有多车位配置）、24小时VIP代客泊车与访客游艇泊位。",
+      soundproofingRating: "STC 60 dB（海洋级特制双层夹胶隔音幕墙，完全隔绝海风波涛与外界声响）。",
+      elevatorPeakWaitReality: "候梯时间少于15秒，配备直达入户的私人专属超高速电梯。",
+      hiddenOperatingCosts: "约38 AED/平方英尺的物业管理费用于保障全天候海岛特勤安保、50米泳池、地中海园林养护及宝格丽酒店级私享服务。"
+    }
   }
 };

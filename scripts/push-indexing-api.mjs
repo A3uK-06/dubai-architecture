@@ -123,6 +123,7 @@ function computeUrlPriorityScore(url) {
     "burj-azizi",
     "tiger-sky-tower",
     "six-senses-residences-dubai-marina",
+    "bulgari-lighthouse",
     "baccarat-residences",
     "emirates-towers",
     "burj-al-arab",

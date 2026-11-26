@@ -595,6 +595,22 @@ export const LOCALIZED_BUILDINGS_RU: Record<string, LocalizedBuildingData> = {
       ],
       "historicalNote": "Изначально заложен как 516-метровый Pentominium до остановки в 2011 году; в 2024 году выкуплен с аукциона девелопером Select Group за $100 млн и полностью перепроектирован совместно с Six Senses.",
       "structuralSystem": "Высокопрочное монолитное железобетонное ядро с композитными мегаколоннами, 3 поясами аутригерных ферм и демпферами колебаний"
+  },
+  "bulgari-lighthouse": {
+      "name": "Булгари Лайтхаус (Bulgari Lighthouse)",
+      "architect": "Antonio Citterio Patricia Viel (ACPV Architects)",
+      "developer": "Meraas & Bulgari",
+      "district": "Остров Джумейра Бэй (Jumeirah Bay Island)",
+      "type": "Ультрароскошная жилая башня пентхаусов",
+      "description": "Эксклюзивная 27-этажная башня-маяк на приватном острове Jumeira Bay Island («Остров миллиардеров») — высшее воплощение итальянского архитектурного мастерства и безмятежности океана. Проект создан всемирно известным миланским бюро Antonio Citterio Patricia Viel (ACPV Architects) совместно с девелопером Meraas и легендарным римским ювелирным домом Bulgari. Здание включает всего 31 штучный пентхаус с 4–5 спальнями и грандиозную трехэтажную виллу Sky Villa с 9 спальнями. В окружении средиземноморских садов, приватной марины и вод Персидского залива башня переосмысливает морской маяк с помощью горизонтальных ламелей, итальянского мрамора, персональных инфинити-бассейнов и безупречного сервиса Bulgari Hotels & Resorts.",
+      "architecturalHighlights": [
+          "Приватный островной шедевр высотой 27 этажей на Jumeira Bay Island («Остров миллиардеров»)",
+          "Скульптурные горизонтальные ламели от Антонио Читтерио, создающие естественную тень и повторяющие форму кораллов",
+          "Клубный формат всего на 31 пентхаус и венчающая башню Sky Villa, установившая абсолютный исторический рекорд продаж в Дубае (410 млн AED / $112 млн USD)",
+          "Архитектурный светящийся купол-маяк, озаряющий Персидский залив в сумерках"
+      ],
+      "historicalNote": "Венчающий жилой флагман острова Jumeira Bay в форме морского конька; в 2023 году пентхаус башни был продан за рекордные в истории Дубая 410 млн AED ($112 млн).",
+      "structuralSystem": "Высокопрочный монолитный железобетон морского класса с композитными пилонами, антикоррозийной защитой и консольными изогнутыми плитами террас"
   }
 };
 
@@ -972,6 +988,22 @@ export const LOCALIZED_BUILDINGS_AR: Record<string, LocalizedBuildingData> = {
       ],
       "historicalNote": "بدأ أصلاً باسم برج بينتومينيوم بارتفاع 516 متراً قبل توقفه في 2011؛ استحوذت عليه مجموعة سيلكت في مزاد 2024 مقابل 100 مليون دولار وأعادت هندسته بالكامل تحت علامة سيكس سينسز الفاخرة.",
       "structuralSystem": "نواة خرسانية مسلحة فائقة القوة مع أعمدة عملاقة مركبة و3 أحزمة دعامات فولاذية ونظام تخميد الكتلة"
+  },
+  "bulgari-lighthouse": {
+      "name": "بولغري لايتهاوس (Bulgari Lighthouse)",
+      "architect": "أنطونيو سيتيريو وباتريشيا فييل (ACPV Architects)",
+      "developer": "مِراس (Meraas) وبولغري (Bulgari)",
+      "district": "جزيرة جميرا باي (Jumeirah Bay Island)",
+      "type": "برج بنتهاوس فائق الفخامة",
+      "description": "منارة معمارية حصرية بارتفاع 27 طابقاً تتربع على شواطئ جزيرة جميرا باي الخاصة ('جزيرة المليارديرات')، وتعد التجسيد الأسمى للحرفية الإيطالية الرفيعة والسكينة البحرية. صُمم البرج بواسطة المكتب المعماري الميلاني الشهير أنطونيو سيتيريو وباتريشيا فييل (ACPV) بالتعاون مع شركة مِراس ودار بولغري الرومانية العريقة. يضم البرج 31 بنتهاوس فاخراً فقط من 4 و5 غرف نوم وتتوجها فيلا السماء (Sky Villa) الأسطورية المؤلفة من 3 طوابق و9 غرف نوم. تحيط به الحدائق المتوسطية ومراسي اليخوت الخاصة مع إطلالات بانورامية على الخليج العربي وأفق دبي، حيث يعيد تصميم البرج ابتكار مفهوم المنارة البحرية من خلال شفرات معمارية منحنية من الرخام الإيطالي وأحواض سباحة خاصة وخدمات الضيافة الفاخرة من فنادق بولغري.",
+      "architecturalHighlights": [
+          "تحفة معمارية حصرية على جزيرة جميرا باي الخاصة ('جزيرة المليارديرات')",
+          "كواسر شمسية معمارية أفقية صممها أنطونيو سيتيريو لتوفير الظل ومحاكاة التكوينات المرجانية البحرية",
+          "كثافة سكنية منخفضة للغاية تقتصر على 31 بنتهاوس مع فيلا معلقة حققت الرقم القياسي لأغلى عقار سكني في دبي بقيمة 410 ملايين درهم",
+          "تاج علوي مضاء كمنارة بحرية مشعة في المساء عبر مياه الخليج العربي"
+      ],
+      "historicalNote": "الجوهرة السكنية لجزيرة جميرا باي المصممة على شكل فرس البحر؛ سجل أعلى صفقة بيع بنتهاوس في تاريخ دبي بقيمة 410 ملايين درهم (112 مليون دولار) في عام 2023.",
+      "structuralSystem": "هيكل خرساني مسلح عالي المتانة ومقاوم للبيئة البحرية مع بلاطات لاحقة الشد وشرفات كابولية منحنية عريضة"
   }
 };
 
@@ -1433,6 +1465,22 @@ export const LOCALIZED_BUILDINGS_ZH: Record<string, LocalizedBuildingData> = {
       ],
       "historicalNote": "项目前身为2008-2011年停工的516米Pentominium；2024年由Select Group以1亿美元竞得并彻底颠覆重构，携手六善顶级奢华度假品牌重新启幕。",
       "structuralSystem": "超高强钢筋混凝土核心筒配合外围复合型巨柱、3道伸臂钢桁架腰桁及阻尼系统"
+  },
+  "bulgari-lighthouse": {
+      "name": "宝格丽灯塔 (Bulgari Lighthouse)",
+      "architect": "Antonio Citterio Patricia Viel (ACPV建筑事务所)",
+      "developer": "Meraas 与 宝格丽 (Bulgari)",
+      "district": "朱美拉湾岛 (Jumeirah Bay Island)",
+      "type": "顶级高定传世天际平墅",
+      "description": "宝格丽灯塔（Bulgari Lighthouse）傲立于朱美拉湾岛（'亿万富豪之岛'）的私密海疆之上，高27层，是当代意式高定匠艺与海洋隐逸奢华的极致结晶。项目由米兰国宝级建筑大师 Antonio Citterio Patricia Viel 倾力擘画，迪拜顶尖国企 Meraas 携手罗马殿堂级珠宝品牌宝格丽联袂筑造。全栋仅尊享31席奢华定制大平层顶豪，顶峰加冕一座跨越3层的9居室天空别墅（Sky Villa）。在私家游艇码头与地中海风情园林的环抱中，整栋建筑以天然珊瑚纹理格栅为灵感，搭配珍罕意大利大理石、私属悬挑无边泳池及宝格丽酒店与度假村全套私享管家服务，将灯塔引航意境演绎至登峰造极。",
+      "architecturalHighlights": [
+          "尊踞朱美拉湾岛（亿万富翁之岛）绝版海疆，全封闭式27层私岛传世地标",
+          "ACPV大师定制珊瑚灵感水平遮阳曲面格栅，巧妙平衡自然采光与建筑微气候",
+          "极致低密仅限量31席全景大平层，顶层天空别墅以4.1亿迪拉姆创下迪拜历史最贵单套公寓交易纪录",
+          "建筑顶部精心构筑灯塔发光皇冠，夜幕降临辉映波斯湾浩瀚碧波"
+      ],
+      "historicalNote": "作为海马形状朱美拉湾岛的住宅旗舰皇冠，其顶层九居室复式豪宅于2023年以4.1亿迪拉姆（约1.12亿美元）成交，一举刷新迪拜全历史住宅成交纪录。",
+      "structuralSystem": "海洋耐久级高强度后张预应力混凝土核心筒，配备外围复合剪力柱与超大悬挑圆弧景观露台"
   }
 };
 
@@ -1894,6 +1942,22 @@ export const LOCALIZED_BUILDINGS_DE: Record<string, LocalizedBuildingData> = {
       ],
       "historicalNote": "Ursprünglich als 516-Meter-Pentominium begonnen und 2011 gestoppt; 2024 von Select Group ersteigert und unter der Luxusmarke Six Senses neu konzipiert.",
       "structuralSystem": "Hochfester Stahlbetonkern mit Verbundstützen, Outrigger-Stahlfachwerken und Schwingungstilgern"
+  },
+  "bulgari-lighthouse": {
+      "name": "Bulgari Lighthouse",
+      "architect": "Antonio Citterio Patricia Viel (ACPV Architects)",
+      "developer": "Meraas & Bulgari",
+      "district": "Jumeirah Bay Island",
+      "type": "Ultra-Luxus-Penthouse-Turm",
+      "description": "Mit 27 Stockwerken über den privaten Ufern der Jumeira Bay Island ('Billionaires' Island') ist das Bulgari Lighthouse Dubais ultimatives Denkmal für italienische Handwerkskunst und maritime Privatsphäre. Entworfen von den renommierten Mailänder Architekten Antonio Citterio Patricia Viel (ACPV) und entwickelt von Meraas in Partnerschaft mit dem römischen Luxushaus Bulgari, umfasst dieses architektonische Wahrzeichen nur 31 Penthäuser und eine dreistöckige Sky Villa mit 9 Schlafzimmern. Umgeben von mediterranen Gärten, privaten Yacht-Liegeplätzen und dem Arabischen Golf interpretiert der Turm das klassische Leuchtturmmotiv neu – mit eleganten horizontalen Lamellen, feinstem italienischem Marmor, privaten Infinity-Pools und Bulgari-Hotelservice.",
+      "architecturalHighlights": [
+          "Exklusives 27-stöckiges Inselmonument auf Jumeira Bay Island ('Insel der Milliardäre')",
+          "Geschwungene horizontale Architekturlamellen von Antonio Citterio, die korallenartige Muster zeichnen und ideale Beschattung bieten",
+          "Exklusive Privatsphäre mit nur 31 Penthäusern und einer Sky Villa, die mit 410 Mio. AED (112 Mio. USD) den Allzeit-Rekord für Penthouse-Verkäufe in Dubai aufstellte",
+          "Illuminierte Laternenkrone, die bei Dämmerung als weithin sichtbarer Leuchtturm über dem Arabischen Golf erstrahlt"
+      ],
+      "historicalNote": "Die krönende Landmarke auf der seepferdchenförmigen Jumeira Bay Island; stellte 2023 mit einem 410-Millionen-AED-Verkauf ($112M) den absoluten Allzeit-Rekord für Penthäuser in Dubai auf.",
+      "structuralSystem": "Maritimer Hochleistungsbeton mit Verbundstützen, kathodischem Korrosionsschutz und weit auskragenden Terrassenplatten"
   }
 };
 
@@ -2355,6 +2419,22 @@ export const LOCALIZED_BUILDINGS_FR: Record<string, LocalizedBuildingData> = {
       ],
       "historicalNote": "Initié à l'origine sous le nom de Pentominium (516 m) avant d'être suspendu en 2011; racheté aux enchères en 2024 par Select Group pour 100M$ sous la bannière Six Senses.",
       "structuralSystem": "Noyau en béton armé haute résistance, méga-poteaux mixtes, 3 ceintures de treillis outrigger et amortisseurs"
+  },
+  "bulgari-lighthouse": {
+      "name": "Bulgari Lighthouse",
+      "architect": "Antonio Citterio Patricia Viel (ACPV Architects)",
+      "developer": "Meraas & Bulgari",
+      "district": "Jumeirah Bay Island",
+      "type": "Tour résidentielle de penthouses ultra-luxe",
+      "description": "S'élevant sur 27 étages au-dessus des rivages exclusifs de Jumeira Bay Island (« l'île des milliardaires »), Bulgari Lighthouse incarne le summum du savoir-faire italien et de la sérénité côtière à Dubaï. Conçu par le prestigieux cabinet milanais Antonio Citterio Patricia Viel (ACPV) et développé par Meraas en partenariat avec la maison romaine Bulgari, ce phare sculptural réunit seulement 31 penthouses d'exception et une majestueuse Sky Villa triplex de 9 chambres. Entourée de jardins méditerranéens, de pontons privés pour yachts et des eaux du golfe Arabique, la tour réinterprète le phare maritime à travers des persiennes courbées, du marbre italien ciselé, des piscines privées à débordement et l'art de vivre Bulgari Hotels & Resorts.",
+      "architecturalHighlights": [
+          "Chef-d'œuvre insulaire ultra-exclusif de 27 étages sur Jumeira Bay Island (« l'île des milliardaires »)",
+          "Persiennes architecturales horizontales signées Antonio Citterio inspirées des coraux et offrant une régulation thermique naturelle",
+          "Basse densité absolue de 31 résidences seulement, dominée par une Sky Villa ayant battu le record historique de vente à Dubaï (410M AED / 112M USD)",
+          "Couronne lumineuse conçue comme un phare maritime radiant au crépuscule sur le golfe Arabique"
+      ],
+      "historicalNote": "Point d'orgue résidentiel de l'île en forme d'hippocampe Jumeira Bay ; a établi en 2023 le record historique absolu de vente de penthouse à Dubaï à 410 millions d'AED (112 millions USD).",
+      "structuralSystem": "Béton armé post-tensionné de qualité marine avec colonnes composites, protection cathodique et vastes dalles de terrasses en porte-à-faux"
   }
 };
 
@@ -2816,6 +2896,22 @@ export const LOCALIZED_BUILDINGS_IT: Record<string, LocalizedBuildingData> = {
       ],
       "historicalNote": "Nato originariamente come Pentominium (516 m) e fermatosi nel 2011; acquisito all'asta nel 2024 da Select Group per 100M$ e riprogettato con il brand Six Senses.",
       "structuralSystem": "Nucleo in calcestruzzo armato ad altissime prestazioni con mega-colonne composite e cinture stabilizzatrici outrigger"
+  },
+  "bulgari-lighthouse": {
+      "name": "Bulgari Lighthouse",
+      "architect": "Antonio Citterio Patricia Viel (ACPV Architects)",
+      "developer": "Meraas & Bulgari",
+      "district": "Jumeirah Bay Island",
+      "type": "Torre residenziale di superattici ultra-lusso",
+      "description": "Con i suoi 27 piani eretti sulle coste esclusive di Jumeira Bay Island ('l'Isola dei Miliardari'), Bulgari Lighthouse rappresenta il vertice assoluto dell'alto artigianato italiano e della privacy a Dubai. Progettata dal celebre studio milanese Antonio Citterio Patricia Viel (ACPV Architects) e sviluppata da Meraas in collaborazione con la maison romana Bulgari, questa scultura architettonica racchiude solo 31 esclusivi attici di 4 e 5 camere e una monumentale Sky Villa su tre livelli con 9 suite. Circondata da giardini mediterranei, ormeggi per yacht e dalle acque del Golfo Persico, la torre reinterpreta la figura del faro marino attraverso frangisole orizzontali curvi, marmi pregiati italiani, piscine a sfioro private e il servizio a cinque stelle di Bulgari Hotels & Resorts.",
+      "architecturalHighlights": [
+          "Icona privata di 27 piani sulla prestigiosa Jumeira Bay Island ('Isola dei Miliardari')",
+          "Frangisole orizzontali curvi disegnati da Antonio Citterio che richiamano le formazioni coralline e schermano l'irraggiamento solare",
+          "Bassissima densità con appena 31 dimore esclusive e una Sky Villa che ha segnato il record storico di vendita a Dubai (410 milioni di AED / $112M USD)",
+          "Corona scultorea illuminata come lanterna di un faro marino visibile al tramonto su tutto il Golfo Arabico"
+      ],
+      "historicalNote": "Fiore all'occhiello dell'isola a forma di cavalluccio marino Jumeira Bay; ha stabilito nel 2023 il record assoluto di vendita per un attico a Dubai con 410 milioni di AED (112 milioni di dollari).",
+      "structuralSystem": "Nucleo in calcestruzzo armato post-teso per ambiente marino con colonne composite, barriere catodiche anticorrosione e terrazze a sbalzo sagomate"
   }
 };
 
@@ -3277,6 +3373,22 @@ export const LOCALIZED_BUILDINGS_TR: Record<string, LocalizedBuildingData> = {
       ],
       "historicalNote": "İlk olarak 516 metrelik Pentominium olarak başlamış ve 2011'de durmuştu; 2024'te Select Group tarafından 100 milyon dolara devralınarak Six Senses markasıyla baştan yaratıldı.",
       "structuralSystem": "Yüksek mukavemetli betonarme mega çekirdek, kompozit kolonlar, 3 kademeli outrigger kuşak kirişleri ve TMD damper"
+  },
+  "bulgari-lighthouse": {
+      "name": "Bulgari Lighthouse",
+      "architect": "Antonio Citterio Patricia Viel (ACPV Architects)",
+      "developer": "Meraas & Bulgari",
+      "district": "Jumeirah Bay Island",
+      "type": "Ultra lüks rezidans ve çatı villası kulesi",
+      "description": "Jumeira Bay Island'ın ('Milyarderler Adası') kıyısında 27 kat yükselen Bulgari Lighthouse, İtalyan mimari ustalığının ve ada mahremiyetinin Dubai'deki en prestijli anıtıdır. Dünyaca ünlü Milano merkezli Antonio Citterio Patricia Viel (ACPV Architects) tarafından tasarlanan ve Meraas ile Roma'nın ikonik mücevher evi Bulgari ortaklığında geliştirilen kule, yalnızca 31 adet 4-5 yatak odalı çatı dairesi ve 3 katlı görkemli bir Sky Villa barındırır. Akdeniz bahçeleri, özel yat bağlama marinaları ve Basra Körfezi manzarasıyla çevrili olan kule; deniz feneri temasını kavisli güneş kırıcı lameller, İtalyan mermeri, özel sonsuzluk havuzları ve Bulgari Hotels & Resorts lüks hizmetiyle yeniden tanımlar.",
+      "architecturalHighlights": [
+          "Jumeira Bay Island'da ('Milyarderler Adası') 27 katlı ultra ayrıcalıklı ada simgesi",
+          "Antonio Citterio tasarımı kavisli yatay güneş kırıcı lameller ile doğal gölgelendirme ve mercan esintili mimari",
+          "Sadece 31 özel penthouse ve 410 milyon AED ($112M USD) ile Dubai tarihindeki en pahalı penthouse satış rekorunu kıran Sky Villa",
+          "Alacakaranlıkta Basra Körfezi boyunca parıldayan fener tacı aydınlatması"
+      ],
+      "historicalNote": "Denizatı formundaki Jumeira Bay Adası'nın başyapıtı; 2023 yılında 410 milyon AED ($112 milyon USD) bedelle Dubai tarihinin tüm zamanların en pahalı penthouse satış rekorunu kırmıştır.",
+      "structuralSystem": "Deniz ortamına dayanıklı yüksek mukavemetli ard-germeli betonarme çekirdek, kompozit kolonlar, katodik koruma ve konsol kavisli teras plakaları"
   }
 };
 
@@ -3738,6 +3850,22 @@ export const LOCALIZED_BUILDINGS_HI: Record<string, LocalizedBuildingData> = {
       ],
       "historicalNote": "मूल रूप से 516 मीटर के पेंटोमिनियम के रूप में शुरू हुआ और 2011 में रुका; 2024 में सिलेक्ट ग्रुप द्वारा $100M में अधिग्रहित और सिक्स सेंसेस ब्रांड के तहत पूरी तरह से नया रूप दिया गया।",
       "structuralSystem": "उच्च शक्ति प्रबलित कंक्रीट कोर, समग्र मेगा-कॉलम, 3 आउटट्रिगर बेल्ट ट्रस और ट्यून्ड मास डैम्पर्स"
+  },
+  "bulgari-lighthouse": {
+      "name": "बुल्गारी लाइटहाउस (Bulgari Lighthouse)",
+      "architect": "Antonio Citterio Patricia Viel (ACPV Architects)",
+      "developer": "Meraas और Bulgari",
+      "district": "जुमेराह बे आइलैंड (Jumeirah Bay Island)",
+      "type": "अल्ट्रा-लक्जरी पेंटहाउस टॉवर",
+      "description": "जुमेराह बे आइलैंड ('अरबपतियों का द्वीप') के शांत तटों पर 27 मंजिलों में फैला बुल्गारी लाइटहाउस इतालवी शिल्प कौशल और महासागरीय एकांत का शिखर है। प्रसिद्ध मिलानी वास्तुकार Antonio Citterio Patricia Viel द्वारा डिजाइन और Meraas व रोमन ज्वेलरी ब्रांड बुल्गारी द्वारा विकसित, इस प्रतिष्ठित लाइटहाउस में केवल 31 विशिष्ट 4 और 5-बेडरूम पेंटहाउस तथा एक भव्य 3-मंजिला 9-बेडरूम स्काई विला शामिल हैं। भूमध्यसागरीय उद्यानों, निजी नौका मरीना और अरब की खाड़ी से घिरा यह टॉवर घुमावदार क्षैतिज लौवर्स, इतालवी संगमरमर, निजी इन्फिनिटी पूल और बुल्गारी होटल्स की 5-स्टार सेवाओं से सुसज्जित है।",
+      "architecturalHighlights": [
+          "जुमेराह बे आइलैंड ('अरबपतियों का द्वीप') पर 27 मंजिला विशेष निजी द्वीप लैंडमार्क",
+          "एंटोनियो सिटेरियो द्वारा डिजाइन किए गए घुमावदार लौवर्स जो प्राकृतिक धूप को नियंत्रित करते हैं",
+          "केवल 31 उत्कृष्ट पेंटहाउस और 410M AED ($112M USD) में दुबई के सबसे महंगे पेंटहाउस बिक्री का रिकॉर्ड बनाने वाला स्काई विला",
+          "शाम ढलते ही अरब की खाड़ी में चमकने वाला भव्य लाइटहाउस बीकन क्राउन"
+      ],
+      "historicalNote": "समुद्री घोड़े के आकार वाले जुमेराह बे द्वीप का आवासीय मुकुट; 2023 में 410 मिलियन एईडी ($112 मिलियन अमरीकी डालर) में बिककर दुबई का सर्वकालिक सबसे महंगा पेंटहाउस बना।",
+      "structuralSystem": "समुद्री संक्षारण रोधी पोस्ट-टेंशन कंक्रीट कोर, समग्र कॉलम और बड़े कैंटिलीवर घुमावदार टेरेस स्लैब"
   }
 };
 
@@ -4199,6 +4327,22 @@ export const LOCALIZED_BUILDINGS_UR: Record<string, LocalizedBuildingData> = {
       ],
       "historicalNote": "اصل میں 516 میٹر بلند پینٹومینیم کے طور پر شروع ہوا جو 2011 میں رک گیا؛ 2024 میں سلیکٹ گروپ نے 100 ملین ڈالر میں نیلامی میں حاصل کر کے سکس سینسز برانڈ کے تحت دوبارہ تعمیر کیا۔",
       "structuralSystem": "انتہائی مضبوط کنکریٹ کور، کمپوزٹ میگا کالمز، 3 آؤٹ رگر بیلٹ ٹرسز اور ٹی ایم ڈی ڈیمپرز"
+  },
+  "bulgari-lighthouse": {
+      "name": "بلغاری لائٹ ہاؤس (Bulgari Lighthouse)",
+      "architect": "انتونیو سیتیریو پیٹریشیا ویل (ACPV Architects)",
+      "developer": "میراس (Meraas) اور بلغاری (Bulgari)",
+      "district": "جمیرہ بے آئی لینڈ (Jumeirah Bay Island)",
+      "type": "الٹرا لگژری رہائشی پینٹ ہاؤس ٹاور",
+      "description": "جمیرہ بے آئی لینڈ ('ارب پتیوں کے جزیرے') کے ساحل پر 27 منزلوں پر محیط بلغاری لائٹ ہاؤس اطالوی کاریگری اور سمندری سکون کا شاندار شاہکار ہے۔ میلان کے عالمی شہرت یافتہ معمار انتونیو سیتیریو اور میراس نے تاریخی رومی جیولری برانڈ بلغاری کے اشتراک سے اسے تخلیق کیا ہے۔ اس میں صرف 31 انتہائی پرتعیش 4 اور 5 بیڈ روم پینٹ ہاؤسز اور ایک عظیم الشان 3 منزلہ 9 بیڈ روم اسکائی ولا شامل ہے۔ بحیرہ روم کے باغات، نجی یاٹ میرینا اور خلیج عرب کے دلکش نظاروں میں گھرا یہ ٹاور محرابی شیڈز، اطالوی سنگ مرمر، پرائیویٹ انفینٹی پولز اور بلغاری ہوٹلز کی شاندار خدمات فراہم کرتا ہے۔",
+      "architecturalHighlights": [
+          "جمیرہ بے جزیرے ('ارب پتیوں کا جزیرہ') پر 27 منزلہ خصوصی نجی لینڈ مارک",
+          "انتونیو سیتیریو کے ڈیزائن کردہ محرابی ہورائزنٹل شیڈز جو مرجان کی ساخت اور قدرتی ٹھنڈک پیدا کرتے ہیں",
+          "صرف 31 شاہکار پینٹ ہاؤسز اور اسکائی ولا جس نے 410 ملین درہم ($112M) میں دبئی کی تاریخ کے سب سے مہنگے پینٹ ہاؤس کی فروخت کا ریکارڈ قائم کیا",
+          "شام کے وقت خلیج عرب میں روشن ہونے والا شاندار لائٹ ہاؤس لالٹین کراؤن"
+      ],
+      "historicalNote": "سمندری گھوڑے کی شکل کے جمیرہ بے جزیرے کا مرکزی رہائشی تاج؛ 2023 میں 410 ملین درہم (112 ملین ڈالر) میں فروخت ہو کر دبئی کی تاریخ کا سب سے مہنگا پینٹ ہاؤس بنا۔",
+      "structuralSystem": "سمندری موسم سے محفوظ انتہائی مضبوط کنکریٹ کور، کمپوزٹ شیئر کالمز اور کینٹی لیورڈ محرابی ٹیرس سلیبس"
   }
 };
 

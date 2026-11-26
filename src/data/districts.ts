@@ -741,6 +741,7 @@ export const DISTRICTS: District[] = [
     urbanConcept:
       "Master-planned as a counter-concept to Dubai's typical high-rise sprawl, City Walk features wide tree-lined boulevards, public art installations, open-air retail arcades, and Central Park: a lush 48,000 m² residential green sanctuary with 80+ sports and lifestyle amenities.",
     keyLandmarks: [
+      "Bulgari Lighthouse (Antonio Citterio / Meraas, Jumeira Bay Island)",
       "Central Park at City Walk (Meraas)",
       "Coca-Cola Arena (17,000 capacity indoor arena)",
       "The Green Planet Biodome",

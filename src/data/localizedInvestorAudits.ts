@@ -2386,6 +2386,68 @@ export const BESPOKE_INVESTOR_AUDITS_I18N: Record<string, Partial<Record<Languag
         dailyEssentialsOnFoot: "Прямой выход на променад Marina Walk (более 200 ресторанов и кафе), супермаркеты Spinneys и Carrefour, причалы водного такси и пляж JBR."
       }
     }
+  },
+  "bulgari-lighthouse": {
+    en: {
+      viewRadar: {
+        riskLevel: "protected",
+        status: "Permanently Protected 360° Island & Skyline Views",
+        assessment: "Situated directly on the water's edge of the private Jumeira Bay Island, Bulgari Lighthouse commands permanently unblockable 360-degree panoramas. Looking west and north gives infinite, unbuildable open Arabian Gulf horizons and spectacular sunsets. Looking east reveals the iconic Dubai skyline, including Burj Khalifa and Downtown Dubai, framed across open sea waters with zero possibility of future offshore obstruction.",
+        protectedOrientations: [
+          "North / North-West (Open Arabian Gulf horizon & private island marina - 100% Permanently Protected)",
+          "West (Unobstructed open sea sunset vistas - 100% Permanently Protected)",
+          "East (Downtown Dubai skyline & Burj Khalifa framed across open coastal waters - Permanently Protected)"
+        ],
+        threatOrientations: [
+          "None (Private island zoning prevents any obstruction to the tower's 360-degree vantage)"
+        ]
+      },
+      solarExposure: {
+        optimalAspect: "North-West & West (Spectacular ocean sunsets, cooling sea breezes, and soft evening glow)",
+        harshAspect: "South-East (Direct morning sun exposure; fully shielded by ACPV deep architectural horizontal louvers)",
+        coolingEnergyImpact: "Low (-22% due to continuous horizontal louver deep overhangs and specialized marine Low-E glass)",
+        solarHeatGainRating: "Superior (Curved double-laminated acoustic Low-E glass with coral-patterned louver shading, SHGC 0.18)",
+        residentTip: "Horizontal louver overhangs act as architectural brise-soleil, keeping interior marble floors naturally cool while preserving wall-to-wall ocean views."
+      },
+      walkability: {
+        score: 70,
+        category: "Somewhat Walkable (Private Island Enclave)",
+        metroStation: "Business Bay Metro Station (Mainland Connector)",
+        metroDistanceMinutes: 8,
+        metroAccessType: "Private Chauffeur / Limousine Bridge Crossing",
+        dailyEssentialsOnFoot: "Doorstep access to Bulgari Marina & Yacht Club, fine dining (Il Ristorante - Niko Romito, Hoseki), Bulgari Spa, private sandy coves, and waterfront promenade."
+      }
+    },
+    ru: {
+      viewRadar: {
+        riskLevel: "protected",
+        status: "Вечно защищенная 360° панорама острова и горизонта Дубая",
+        assessment: "Расположенная на береговой линии частного острова Jumeira Bay, башня Bulgari Lighthouse обладает вечно защищенным 360-градусным обзором. На западе и севере — бесконечный открытый Персидский залив и закаты без возможности застройки. На востоке через водную гладь открывается открытка горизонта Дубая с Бурдж-Халифой и башнями Даунтауна.",
+        protectedOrientations: [
+          "Север / Северо-Запад (Открытый Персидский залив и яхтенная марина — 100% вечная защита)",
+          "Запад (Бескрайний морской горизонт и закаты — 100% вечная защита)",
+          "Восток (Скайлайн Downtown Dubai и Бурдж-Халифа через морской залив — вечная защита)"
+        ],
+        threatOrientations: [
+          "Отсутствуют (Регламент застройки частного острова исключает любые помехи обзору)"
+        ]
+      },
+      solarExposure: {
+        optimalAspect: "Северо-Запад и Запад (Закаты над заливом, морской бриз и мягкий вечерний свет)",
+        harshAspect: "Юго-Восток (Прямое утреннее солнце, полностью нивелированное глубокими карнизами-ламелями)",
+        coolingEnergyImpact: "Низкое (-22% благодаря глубоким горизонтальным террасам и энергоэффективному стеклу)",
+        solarHeatGainRating: "Превосходный (Двойной ламинированный морской стеклопакет Low-E с защитными ламелями, SHGC 0.18)",
+        residentTip: "Итальянские горизонтальные ламели работают как природный солнцезащитный щит, сохраняя прохладу мраморных полов без ущерба панорамным видам."
+      },
+      walkability: {
+        score: 70,
+        category: "Приватный островной анклав",
+        metroStation: "Станция метро Business Bay (материковый коннектор)",
+        metroDistanceMinutes: 8,
+        metroAccessType: "Приватный трансфер через мост острова",
+        dailyEssentialsOnFoot: "В шаговой доступности: яхт-клуб Bulgari Marina, мишленовские рестораны (Il Ristorante - Niko Romito, Hoseki), спа-комплекс Bulgari Spa, частные песчаные пляжи и набережная."
+      }
+    }
   }
 };
 
